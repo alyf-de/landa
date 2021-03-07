@@ -1,0 +1,43 @@
+{
+ "cards": [
+  {
+   "hidden": 0,
+   "label": "Master Data",
+   "links": "[\n    {\n        \"label\": \"Organization\",\n        \"name\": \"Organization\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"label\": \"Member\",\n        \"name\": \"Member\",\n        \"type\": \"doctype\"\n    }\n]"
+  }
+ ],
+ "category": "Modules",
+ "charts": [],
+ "creation": "2021-03-07 16:40:07.677349",
+ "developer_mode_only": 0,
+ "disable_user_customization": 0,
+ "docstatus": 0,
+ "doctype": "Desk Page",
+ "extends_another_page": 0,
+ "hide_custom": 0,
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "label": "Organization",
+ "modified": "2021-03-07 16:40:07.677349",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "Organization",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 0,
+ "shortcuts": [
+  {
+   "doc_view": "New",
+   "label": "New Member",
+   "link_to": "Member",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "New",
+   "label": "New Organization",
+   "link_to": "Organization",
+   "type": "DocType"
+  }
+ ]
+}
