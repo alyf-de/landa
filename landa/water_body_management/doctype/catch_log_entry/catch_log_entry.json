@@ -1,0 +1,101 @@
+{
+ "actions": [],
+ "creation": "2021-02-22 14:55:25.304231",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "water_body",
+  "year",
+  "fishing_days",
+  "column_break_5",
+  "organization",
+  "organization_name",
+  "section_break_7",
+  "fish_catches"
+ ],
+ "fields": [
+  {
+   "fieldname": "water_body",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Water Body",
+   "options": "Water Body",
+   "reqd": 1
+  },
+  {
+   "default": "2020",
+   "fieldname": "year",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Year",
+   "options": "\n2019\n2020\n2021\n2022\n2023",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fishing_days",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Fishing Days",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "water_body.organization",
+   "fetch_if_empty": 1,
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Organization",
+   "options": "Organization",
+   "remember_last_selected_value": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "organization.organization_name",
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Organization Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "fish_catches",
+   "fieldtype": "Table",
+   "label": "Fish Catches",
+   "options": "Catch Log Fish Table",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-03-07 16:31:21.493412",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Catch Log Entry",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
