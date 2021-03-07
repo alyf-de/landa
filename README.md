@@ -1,7 +1,3 @@
 ## LANDA
 
-Datenmanagementsystem des 
-
-#### License
-
---
+Datenmanagementsystem des Landesverbands Sächsischer Angler.
