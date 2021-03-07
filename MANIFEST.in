@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include landa *.css
+recursive-include landa *.csv
+recursive-include landa *.html
+recursive-include landa *.ico
+recursive-include landa *.js
+recursive-include landa *.json
+recursive-include landa *.md
+recursive-include landa *.png
+recursive-include landa *.py
+recursive-include landa *.svg
+recursive-include landa *.txt
+recursive-exclude landa *.pyc
