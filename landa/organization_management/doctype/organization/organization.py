@@ -32,7 +32,7 @@ def add_node():
 	args = frappe.form_dict
 	args = make_tree_args(**args)
 
-	if args.parent_company == 'All Organizations':
-		args.parent_company = None
+	if args.parent_organization == 'All Organizations':
+		args.parent_organization = None
 
 	frappe.get_doc(args).insert()
