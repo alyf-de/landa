@@ -63,6 +63,7 @@
   {
    "fieldname": "old_parent",
    "fieldtype": "Link",
+   "ignore_user_permissions": 1,
    "label": "Old Parent",
    "options": "Organization"
   },
@@ -70,6 +71,7 @@
    "allow_in_quick_entry": 1,
    "fieldname": "parent_organization",
    "fieldtype": "Link",
+   "ignore_user_permissions": 1,
    "label": "Parent Organization",
    "options": "Organization"
   }
@@ -86,7 +88,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-07 15:33:17.966704",
+ "modified": "2021-03-17 19:27:14.592202",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
