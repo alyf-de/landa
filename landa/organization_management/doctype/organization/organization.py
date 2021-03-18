@@ -6,9 +6,50 @@ from __future__ import unicode_literals
 import frappe
 from frappe.utils.nestedset import NestedSet
 from frappe.desk.treeview import make_tree_args
+from frappe.model.naming import make_autoname
+from frappe.model.naming import revert_series_if_last
 
 class Organization(NestedSet):
 	nsm_parent_field = 'parent_organization'
+
+	def autoname(self):
+		"""Generate the unique organization number (name field)
+
+		Top-Level-Organization:		according to short code (LVSA, AVL, AVE, ...)
+		Organization:				AVL-0001, AVE-0001, ...
+		Local group:				AVL-0001-01, AVL-0001-02, ...
+		"""
+		if self.name:
+			return
+
+		if self.is_top_level():
+			# Landesverband oder Regionalverband
+			self.name = self.short_code
+		elif len(self.parent_organization) <= 4:
+			# Organizations, parent_organization ist nach short_code benannt
+			self.name = make_autoname(self.parent_organization + '-.####', 'Organization')
+		else:
+			# Local groups
+			self.name = make_autoname(self.parent_organization + '-.##', 'Organization')
+
+	def on_trash(self):
+		self.revert_series()
+	
+	def is_top_level(self):
+		"""Return true if I am the root organization or my parent is the root."""
+		parent_is_root = lambda: not frappe.db.get_value('Organization', self.parent_organization, 'parent_organization')
+		return not self.parent_organization or parent_is_root()
+
+	def revert_series(self):
+		"""Decrease the naming counter when the newest organization gets deleted."""
+		if self.is_top_level():
+			return
+
+		# reconstruct the key used to generate the name
+		number_part_len = len(self.name.split('-')[-1])
+		key = self.name[:-number_part_len] + '.' + '#' * number_part_len
+
+		revert_series_if_last(key, self.name)
 
 
 @frappe.whitelist()
