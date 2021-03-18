@@ -16,7 +16,7 @@ def get_children(doctype, parent=None, organization=None, is_root=False):
 	if parent == None or parent == "All Organizations":
 		parent = ""
 
-	return frappe.get_list(doctype, fields=[
+	return frappe.db.get_all(doctype, fields=[
 			'name as value',
 			'organization_name as title',
 			'is_group as expandable'
