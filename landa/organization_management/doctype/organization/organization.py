@@ -16,8 +16,8 @@ class Organization(NestedSet):
 		"""Generate the unique organization number (name field)
 
 		Top-Level-Organization:		according to short code (LVSA, AVL, AVE, ...)
-		Organization:				AVL-0001, AVE-0001, ...
-		Local group:				AVL-0001-01, AVL-0001-02, ...
+		Organization:				AVL-001, AVE-001, ...
+		Local group:				AVL-001-01, AVL-001-02, ...
 		"""
 		if self.name:
 			return
@@ -27,14 +27,14 @@ class Organization(NestedSet):
 			self.name = self.short_code
 		elif len(self.parent_organization) <= 4:
 			# Organizations, parent_organization ist nach short_code benannt
-			self.name = make_autoname(self.parent_organization + '-.####', 'Organization')
+			self.name = make_autoname(self.parent_organization + '-.###', 'Organization')
 		else:
 			# Local groups
 			self.name = make_autoname(self.parent_organization + '-.##', 'Organization')
 
 	def on_trash(self):
 		self.revert_series()
-	
+
 	def is_top_level(self):
 		"""Return true if I am the root organization or my parent is the root."""
 		parent_is_root = lambda: not frappe.db.get_value('Organization', self.parent_organization, 'parent_organization')
