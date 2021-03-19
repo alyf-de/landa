@@ -9,9 +9,19 @@
  "field_order": [
   "organization_name",
   "short_code",
+  "section_break_3",
   "location",
   "fishing_area",
-  "column_break_2",
+  "section_break_6",
+  "address",
+  "column_break_8",
+  "email",
+  "address_line1",
+  "pincode",
+  "city",
+  "phone",
+  "fax",
+  "section_break_15",
   "is_group",
   "lft",
   "rgt",
@@ -35,10 +45,6 @@
    "label": "Short Code",
    "reqd": 1,
    "unique": 1
-  },
-  {
-   "fieldname": "column_break_2",
-   "fieldtype": "Column Break"
   },
   {
    "default": "0",
@@ -87,6 +93,64 @@
    "fieldtype": "Link",
    "label": "Fishing area",
    "options": "Fishing Area"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "label": "Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "address.email_id",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fetch_from": "address.address_line1",
+   "fieldname": "address_line1",
+   "fieldtype": "Data",
+   "label": "Address line 1"
+  },
+  {
+   "fetch_from": "address.pincode",
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "fetch_from": "address.city",
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City/Town"
+  },
+  {
+   "fetch_from": "address.phone",
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone"
+  },
+  {
+   "fetch_from": "address.fax",
+   "fieldname": "fax",
+   "fieldtype": "Data",
+   "label": "Fax"
+  },
+  {
+   "fieldname": "section_break_15",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -101,7 +165,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-19 13:46:07.969118",
+ "modified": "2021-03-19 18:27:00.905358",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
