@@ -13,10 +13,17 @@
   "organization",
   "column_break_6",
   "organization_name",
+  "section_break_8",
   "member_type",
   "section_break_9",
-  "user",
-  "create_user_permission"
+  "address",
+  "column_break_5",
+  "address_line1",
+  "pincode",
+  "city",
+  "section_break_15",
+  "create_user_permission",
+  "user"
  ],
  "fields": [
   {
@@ -79,11 +86,47 @@
    "fieldname": "create_user_permission",
    "fieldtype": "Check",
    "label": "Create User Permission"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "label": "Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "address.address_line1",
+   "fieldname": "address_line1",
+   "fieldtype": "Data",
+   "label": "Address line 1"
+  },
+  {
+   "fetch_from": "address.pincode",
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_15",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "address.city",
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City/Town"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-07 17:44:46.136068",
+ "modified": "2021-03-19 15:37:43.178435",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
