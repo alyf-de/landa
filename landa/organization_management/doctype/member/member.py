@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 import frappe
+from frappe import _
 from frappe.model.document import Document
 from frappe.model.naming import make_autoname
 from frappe.model.naming import revert_series_if_last
@@ -20,6 +21,12 @@ class Member(Document):
 			return
 
 		self.name = make_autoname(self.organization + '-.####', 'Member')
+
+	def validate(self):
+		organization_is_group = lambda: frappe.db.get_value('Organization', self.organization, 'is_group')
+
+		if organization_is_group():
+			frappe.throw(_('Cannot be a member of organization {} because it is a group.').format(self.organization))
 
 	def on_update(self):
 		if self.user and self.create_user_permission:
