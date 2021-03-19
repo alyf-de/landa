@@ -18,12 +18,15 @@
   "section_break_9",
   "address",
   "column_break_5",
+  "email",
   "address_line1",
   "pincode",
   "city",
+  "phone",
+  "fax",
   "section_break_15",
-  "create_user_permission",
-  "user"
+  "user",
+  "create_user_permission"
  ],
  "fields": [
   {
@@ -122,11 +125,29 @@
    "fieldname": "city",
    "fieldtype": "Data",
    "label": "City/Town"
+  },
+  {
+   "fetch_from": "address.email_id",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fetch_from": "address.phone",
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone"
+  },
+  {
+   "fetch_from": "address.fax",
+   "fieldname": "fax",
+   "fieldtype": "Data",
+   "label": "Fax"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-19 15:37:43.178435",
+ "modified": "2021-03-19 18:33:25.519209",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
