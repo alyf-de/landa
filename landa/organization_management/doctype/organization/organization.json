@@ -81,15 +81,22 @@
  "is_tree": 1,
  "links": [
   {
+   "group": "Organization Management",
    "link_doctype": "Member",
    "link_fieldname": "organization"
   },
   {
+   "group": "Water Management",
    "link_doctype": "Water Body",
+   "link_fieldname": "organization"
+  },
+  {
+   "group": "Water Management",
+   "link_doctype": "Fishing Area",
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-18 18:08:56.020067",
+ "modified": "2021-03-18 19:08:52.354178",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",

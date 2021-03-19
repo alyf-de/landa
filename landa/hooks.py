@@ -13,7 +13,8 @@ app_license = "--"
 
 
 fixtures = [
-	"Organization"
+	"Organization",
+	"Fishing Area"
 ]
 
 # Includes in <head>
