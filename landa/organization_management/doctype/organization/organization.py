@@ -32,7 +32,12 @@ class Organization(NestedSet):
 			# Local groups
 			self.name = make_autoname(self.parent_organization + '-.##', 'Organization')
 
+	def on_update(self):
+		NestedSet.on_update(self)
+
 	def on_trash(self):
+		NestedSet.validate_if_child_exists(self)
+		frappe.utils.nestedset.update_nsm(self)
 		self.revert_series()
 
 	def is_top_level(self):
