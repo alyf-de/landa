@@ -2,7 +2,20 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Member', {
-	// refresh: function(frm) {
+    refresh: function(frm) {
+        // Automatically add the backlink to Member when a new Address or
+        // Contact is added.
+        frappe.dynamic_link = { doc: frm.doc, fieldname: 'name', doctype: 'Member' };
 
-	// }
+        // Display Address and Contact only after the Member has been created,
+        // not on the initial form.
+        frm.toggle_display(['address_html','contact_html'], !frm.doc.__islocal);
+
+        if (frm.doc.__islocal) {
+            frappe.contacts.clear_address_and_contact(frm);
+        }
+        else {
+            frappe.contacts.render_address_and_contact(frm);
+        }
+    }
 });
