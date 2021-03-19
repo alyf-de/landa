@@ -9,7 +9,7 @@
   "first_name",
   "last_name",
   "date_of_birth",
-  "section_break_4",
+  "section_address_and_contact",
   "address_html",
   "column_break_5",
   "contact_html",
@@ -39,11 +39,6 @@
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
    "label": "Date of Birth"
-  },
-  {
-   "fieldname": "section_break_4",
-   "fieldtype": "Section Break",
-   "label": "Address and Contact"
   },
   {
    "fieldname": "organization",
@@ -102,11 +97,16 @@
   {
    "fieldname": "section_break_8",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_address_and_contact",
+   "fieldtype": "Section Break",
+   "label": "Address and Contact"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-19 18:14:01.512419",
+ "modified": "2021-03-19 18:44:12.339104",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",

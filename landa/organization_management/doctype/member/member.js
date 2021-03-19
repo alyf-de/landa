@@ -9,7 +9,7 @@ frappe.ui.form.on('Member', {
 
         // Display Address and Contact only after the Member has been created,
         // not on the initial form.
-        frm.toggle_display(['address_html','contact_html'], !frm.doc.__islocal);
+        frm.toggle_display(['section_address_and_contact'], !frm.doc.__islocal);
 
         if (frm.doc.__islocal) {
             frappe.contacts.clear_address_and_contact(frm);
