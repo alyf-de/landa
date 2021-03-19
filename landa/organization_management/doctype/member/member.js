@@ -2,7 +2,14 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Member', {
-	// refresh: function(frm) {
-
-	// }
+    setup: function(frm) {
+        // only the leaves of the organiztaion tree can have members
+        frm.set_query("organization", function() {
+            return {
+                filters: {
+                    'is_group': 0
+                }
+            };
+        });
+    },
 });
