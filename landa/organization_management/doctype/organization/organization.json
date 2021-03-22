@@ -1,7 +1,7 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
- "autoname": "field:short_code",
  "creation": "2021-02-18 17:40:08.627933",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -46,14 +46,14 @@
    "reqd": 1
   },
   {
-   "fetch_from": "parent_organization.short_code",
-   "fetch_if_empty": 1,
+   "allow_in_quick_entry": 1,
+   "depends_on": "is_group",
    "fieldname": "short_code",
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Short Code",
-   "reqd": 1,
+   "length": 4,
    "unique": 1
   },
   {
@@ -81,6 +81,7 @@
   {
    "fieldname": "old_parent",
    "fieldtype": "Link",
+   "hidden": 1,
    "ignore_user_permissions": 1,
    "in_list_view": 1,
    "label": "Old Parent",
@@ -222,15 +223,26 @@
  "is_tree": 1,
  "links": [
   {
+   "group": "Organization Management",
    "link_doctype": "Member",
    "link_fieldname": "organization"
   },
   {
+   "group": "Water Management",
    "link_doctype": "Water Body",
+   "link_fieldname": "organization"
+  },
+  {
+   "group": "Water Management",
+   "link_doctype": "Fishing Area",
    "link_fieldname": "organization"
   }
  ],
+<<<<<<< HEAD
  "modified": "2021-03-22 16:10:35.689835",
+=======
+ "modified": "2021-03-18 19:08:52.354178",
+>>>>>>> origin/version-13-beta
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",

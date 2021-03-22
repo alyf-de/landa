@@ -1,0 +1,14 @@
+[
+ {
+  "country": "Germany",
+  "docstatus": 0,
+  "doctype": "Address Template",
+  "is_default": 1,
+  "modified": "2021-03-19 18:17:13.124698",
+  "name": "Germany",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "template": "{{ address_line1 }}<br>\n{% if address_line2 %}{{ address_line2 }}<br>{% endif -%}\n{{ pincode }} {{ city }}<br>"
+ }
+]

@@ -11,9 +11,10 @@ app_color = "grey"
 app_email = "office@realexperts.de"
 app_license = "--"
 
-
 fixtures = [
-	"Organization"
+	"Organization",
+	"Address Template",
+	"Fishing Area"
 ]
 
 # Includes in <head>

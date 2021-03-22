@@ -12,9 +12,17 @@
   "column_break_4",
   "personal_details",
   "date_of_birth",
+<<<<<<< HEAD
   "nationality",
   "section_break_6",
   "organization_heading",
+=======
+  "section_address_and_contact",
+  "address_html",
+  "column_break_5",
+  "contact_html",
+  "section_break_8",
+>>>>>>> origin/version-13-beta
   "organization",
   "organization_name",
   "column_break_11",
@@ -108,16 +116,23 @@
    "label": "Create User Permission"
   },
   {
+<<<<<<< HEAD
    "fieldname": "address",
    "fieldtype": "Link",
    "label": "Address",
    "options": "Address"
+=======
+   "fieldname": "address_html",
+   "fieldtype": "HTML",
+   "label": "Address HTML"
+>>>>>>> origin/version-13-beta
   },
   {
    "fieldname": "column_break_5",
    "fieldtype": "Column Break"
   },
   {
+<<<<<<< HEAD
    "fetch_from": "address.address_line1",
    "fieldname": "address_line1",
    "fieldtype": "Data",
@@ -267,11 +282,29 @@
    "fieldname": "address_details",
    "fieldtype": "Heading",
    "label": "Address Details"
+=======
+   "fieldname": "contact_html",
+   "fieldtype": "HTML",
+   "label": "Contact HTML"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_address_and_contact",
+   "fieldtype": "Section Break",
+   "label": "Address and Contact"
+>>>>>>> origin/version-13-beta
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2021-03-22 16:07:47.058044",
+=======
+ "modified": "2021-03-19 18:44:12.339104",
+>>>>>>> origin/version-13-beta
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
