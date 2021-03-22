@@ -7,19 +7,22 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "organization_heading",
   "organization_name",
   "short_code",
   "section_break_3",
-  "location",
+  "organization_details",
   "fishing_area",
-  "section_break_6",
+  "location",
+  "website",
+  "register_number",
   "is_charitable",
   "charitable_until",
-  "register_number",
   "section_break_10",
-  "website",
+  "address_heading",
   "address",
   "column_break_8",
+  "address_details",
   "email",
   "address_line1",
   "pincode",
@@ -27,6 +30,7 @@
   "phone",
   "fax",
   "section_break_15",
+  "landa_properties",
   "is_group",
   "lft",
   "rgt",
@@ -47,6 +51,7 @@
    "fieldname": "short_code",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Short Code",
    "reqd": 1,
    "unique": 1
@@ -77,11 +82,11 @@
    "fieldname": "old_parent",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
+   "in_list_view": 1,
    "label": "Old Parent",
    "options": "Organization"
   },
   {
-   "allow_in_quick_entry": 1,
    "fieldname": "parent_organization",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
@@ -89,23 +94,23 @@
    "options": "Organization"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "location",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Location"
   },
   {
    "fieldname": "fishing_area",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Fishing area",
    "options": "Fishing Area"
   },
   {
    "fieldname": "section_break_3",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "section_break_6",
-   "fieldtype": "Section Break"
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "address",
@@ -158,22 +163,26 @@
    "fieldtype": "Section Break"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "website",
    "fieldtype": "Data",
    "label": "Website"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "register_number",
    "fieldtype": "Data",
    "label": "Register Number"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "0",
    "fieldname": "is_charitable",
    "fieldtype": "Check",
    "label": "Is Charitable"
   },
   {
+   "allow_in_quick_entry": 1,
    "depends_on": "eval:doc.is_charitable == 1",
    "fieldname": "charitable_until",
    "fieldtype": "Date",
@@ -182,6 +191,31 @@
   {
    "fieldname": "section_break_10",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "organization_heading",
+   "fieldtype": "Heading",
+   "label": "Organization Title"
+  },
+  {
+   "fieldname": "organization_details",
+   "fieldtype": "Heading",
+   "label": "Organization Details"
+  },
+  {
+   "fieldname": "address_heading",
+   "fieldtype": "Heading",
+   "label": "Linked Address"
+  },
+  {
+   "fieldname": "landa_properties",
+   "fieldtype": "Heading",
+   "label": "LANDA Properties"
+  },
+  {
+   "fieldname": "address_details",
+   "fieldtype": "Heading",
+   "label": "Address Details"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -196,7 +230,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-22 14:56:47.226131",
+ "modified": "2021-03-22 16:10:35.689835",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
