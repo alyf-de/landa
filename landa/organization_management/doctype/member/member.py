@@ -6,8 +6,21 @@ from __future__ import unicode_literals
 import frappe
 from frappe import _
 from frappe.model.document import Document
+from frappe.model.naming import make_autoname
+from frappe.model.naming import revert_series_if_last
 
 class Member(Document):
+
+	def autoname(self):
+		"""Generate the unique member number (name field)
+
+		Organization:				AVL-001-0001, AVE-001-0001, ...
+		Local group:				AVL-001-01-0001, AVL-001-02-0001, ...
+		"""
+		if self.name:
+			return
+
+		self.name = make_autoname(self.organization + '-.####', 'Member')
 
 	def validate(self):
 		organization_is_group = lambda: frappe.db.get_value('Organization', self.organization, 'is_group')
@@ -18,6 +31,9 @@ class Member(Document):
 	def on_update(self):
 		if self.user and self.create_user_permission:
 			self.create_user_permissions()
+
+	def on_trash(self):
+		self.revert_series()
 
 	def create_user_permissions(self):
 		"""Restrict Member to itself and it's Organization."""
@@ -37,3 +53,11 @@ class Member(Document):
 			)).insert()
 		except frappe.DuplicateEntryError:
 			frappe.clear_messages()
+
+	def revert_series(self):
+		"""Decrease the naming counter when the newest member gets deleted."""
+		# reconstruct the key used to generate the name
+		number_part_len = len(self.name.split('-')[-1])
+		key = self.name[:-number_part_len] + '.' + '#' * number_part_len
+
+		revert_series_if_last(key, self.name)
