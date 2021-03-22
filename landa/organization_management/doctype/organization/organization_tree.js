@@ -15,6 +15,29 @@ frappe.treeview_settings["Organization"] = {
 			}
 		},
 	],
+	fields: [
+		{
+			fieldtype: 'Check',
+			fieldname: 'is_group',
+			label: __('Is Group'),
+			description: __("Can contain suborganizations")
+		},
+		{
+			fieldtype: 'Data',
+			fieldname: 'organization_name',
+			label: __('Organization Name'),
+			reqd: 1,
+			description: __('Full name of the organization. For example, "Landesverband Sächsischer Angler e.V."')
+		},
+		{
+			fieldtype: 'Data',
+			fieldname: 'short_code',
+			length: 4,
+			depends_on: 'is_group',
+			label: __('Organization Name'),
+			description: __('Short code for regional organizations. For example, "LVSA", "AVL", etc.')
+		}
+	],
 	root_label: "All Organizations",
 	get_tree_root: false,
 	onload: function(treeview) {
