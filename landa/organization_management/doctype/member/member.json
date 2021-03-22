@@ -9,7 +9,11 @@
   "first_name",
   "last_name",
   "date_of_birth",
-  "section_break_4",
+  "section_address_and_contact",
+  "address_html",
+  "column_break_5",
+  "contact_html",
+  "section_break_8",
   "organization",
   "column_break_6",
   "organization_name",
@@ -35,10 +39,6 @@
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
    "label": "Date of Birth"
-  },
-  {
-   "fieldname": "section_break_4",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "organization",
@@ -79,11 +79,34 @@
    "fieldname": "create_user_permission",
    "fieldtype": "Check",
    "label": "Create User Permission"
+  },
+  {
+   "fieldname": "address_html",
+   "fieldtype": "HTML",
+   "label": "Address HTML"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact_html",
+   "fieldtype": "HTML",
+   "label": "Contact HTML"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_address_and_contact",
+   "fieldtype": "Section Break",
+   "label": "Address and Contact"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-07 17:44:46.136068",
+ "modified": "2021-03-19 18:44:12.339104",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",

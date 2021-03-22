@@ -6,11 +6,14 @@ from __future__ import unicode_literals
 import frappe
 from frappe import _
 from frappe.model.document import Document
+from frappe.contacts.address_and_contact import load_address_and_contact
+from frappe.contacts.address_and_contact import delete_contact_and_address
 from frappe.model.naming import make_autoname
 from frappe.model.naming import revert_series_if_last
 
-class Member(Document):
 
+class Member(Document):
+	
 	def autoname(self):
 		"""Generate the unique member number (name field)
 
@@ -21,6 +24,9 @@ class Member(Document):
 			return
 
 		self.name = make_autoname(self.organization + '-.####', 'Member')
+
+	def onload(self):
+		load_address_and_contact(self)
 
 	def validate(self):
 		organization_is_group = lambda: frappe.db.get_value('Organization', self.organization, 'is_group')
@@ -33,6 +39,7 @@ class Member(Document):
 			self.create_user_permissions()
 
 	def on_trash(self):
+		delete_contact_and_address(self.doctype, self.name)
 		self.revert_series()
 
 	def create_user_permissions(self):

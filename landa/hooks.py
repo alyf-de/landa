@@ -11,9 +11,9 @@ app_color = "grey"
 app_email = "office@realexperts.de"
 app_license = "--"
 
-
 fixtures = [
 	"Organization",
+	"Address Template",
 	"Fishing Area"
 ]
 
