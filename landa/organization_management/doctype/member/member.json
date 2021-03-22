@@ -46,20 +46,25 @@
  ],
  "fields": [
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "first_name",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "First Name"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "last_name",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Last Name"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Date of Birth"
   },
   {
@@ -73,10 +78,13 @@
    "fetch_from": "organization.organization_name",
    "fieldname": "organization_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Organization Name",
    "read_only": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "member_type",
    "fieldtype": "Select",
    "label": "Member Type",
@@ -89,6 +97,7 @@
   {
    "fieldname": "user",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "User",
    "options": "User"
   },
@@ -149,27 +158,35 @@
    "label": "Fax"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "German",
    "fieldname": "nationality",
    "fieldtype": "Data",
    "label": "Nationality"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "Today",
    "fieldname": "member_since",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Member Since"
   },
   {
    "default": "0",
    "fieldname": "magazine_recipient",
    "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Is Magazine Recipient"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "0",
    "fieldname": "has_key",
    "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Has Key"
   },
   {
@@ -178,12 +195,15 @@
    "label": "Member"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "0",
    "fieldname": "has_fishing_permit",
    "fieldtype": "Check",
+   "in_list_view": 1,
    "label": "Has Fishing Permit"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "0",
    "depends_on": "eval:doc.has_fishing_permit==1",
    "fieldname": "permit_is_valid_for_life",
@@ -191,6 +211,7 @@
    "label": "Permit is valid for life"
   },
   {
+   "allow_in_quick_entry": 1,
    "depends_on": "eval:doc.has_fishing_permit==1 & doc.permit_is_valid_for_life==0",
    "fieldname": "permit_expiration_date",
    "fieldtype": "Date",
@@ -250,7 +271,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-22 15:43:02.707580",
+ "modified": "2021-03-22 16:07:47.058044",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
