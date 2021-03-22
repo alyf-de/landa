@@ -13,6 +13,10 @@
   "location",
   "fishing_area",
   "section_break_6",
+  "is_charitable",
+  "charitable_until",
+  "register_number",
+  "section_break_10",
   "website",
   "address",
   "column_break_8",
@@ -157,6 +161,27 @@
    "fieldname": "website",
    "fieldtype": "Data",
    "label": "Website"
+  },
+  {
+   "fieldname": "register_number",
+   "fieldtype": "Data",
+   "label": "Register Number"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_charitable",
+   "fieldtype": "Check",
+   "label": "Is Charitable"
+  },
+  {
+   "depends_on": "eval:doc.is_charitable == 1",
+   "fieldname": "charitable_until",
+   "fieldtype": "Date",
+   "label": "Charitable until"
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -171,7 +196,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-19 19:05:11.033593",
+ "modified": "2021-03-22 14:56:47.226131",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
