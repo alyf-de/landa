@@ -1,7 +1,7 @@
 {
  "actions": [],
- "allow_import": 1,
  "allow_rename": 1,
+ "autoname": "field:short_code",
  "creation": "2021-02-18 17:40:08.627933",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -19,18 +19,10 @@
   "is_charitable",
   "charitable_until",
   "section_break_10",
-  "address_heading",
-  "address",
+  "address_html",
   "column_break_8",
-  "address_details",
-  "email",
-  "address_line1",
-  "pincode",
-  "city",
-  "phone",
-  "fax",
+  "contact_html",
   "section_break_15",
-  "landa_properties",
   "is_group",
   "lft",
   "rgt",
@@ -42,18 +34,17 @@
    "fieldname": "organization_name",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Organization Name",
    "reqd": 1
   },
   {
-   "allow_in_quick_entry": 1,
-   "depends_on": "is_group",
+   "fetch_from": "parent_organization.short_code",
+   "fetch_if_empty": 1,
    "fieldname": "short_code",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Short Code",
-   "length": 4,
+   "reqd": 1,
    "unique": 1
   },
   {
@@ -81,9 +72,7 @@
   {
    "fieldname": "old_parent",
    "fieldtype": "Link",
-   "hidden": 1,
    "ignore_user_permissions": 1,
-   "in_list_view": 1,
    "label": "Old Parent",
    "options": "Organization"
   },
@@ -91,6 +80,8 @@
    "fieldname": "parent_organization",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Parent Organization",
    "options": "Organization"
   },
@@ -114,54 +105,14 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "address",
-   "fieldtype": "Link",
-   "label": "Address",
-   "options": "Address"
-  },
-  {
    "fieldname": "column_break_8",
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "address.email_id",
-   "fieldname": "email",
-   "fieldtype": "Data",
-   "label": "Email"
-  },
-  {
-   "fetch_from": "address.address_line1",
-   "fieldname": "address_line1",
-   "fieldtype": "Data",
-   "label": "Address line 1"
-  },
-  {
-   "fetch_from": "address.pincode",
-   "fieldname": "pincode",
-   "fieldtype": "Data",
-   "label": "Postal Code"
-  },
-  {
-   "fetch_from": "address.city",
-   "fieldname": "city",
-   "fieldtype": "Data",
-   "label": "City/Town"
-  },
-  {
-   "fetch_from": "address.phone",
-   "fieldname": "phone",
-   "fieldtype": "Data",
-   "label": "Phone"
-  },
-  {
-   "fetch_from": "address.fax",
-   "fieldname": "fax",
-   "fieldtype": "Data",
-   "label": "Fax"
-  },
-  {
+   "collapsible": 1,
    "fieldname": "section_break_15",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "LANDA Properties"
   },
   {
    "allow_in_quick_entry": 1,
@@ -191,7 +142,8 @@
   },
   {
    "fieldname": "section_break_10",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Address and Contacts"
   },
   {
    "fieldname": "organization_heading",
@@ -204,45 +156,31 @@
    "label": "Organization Details"
   },
   {
-   "fieldname": "address_heading",
-   "fieldtype": "Heading",
-   "label": "Linked Address"
+   "fieldname": "address_html",
+   "fieldtype": "HTML",
+   "label": "Address HTML",
+   "read_only": 1
   },
   {
-   "fieldname": "landa_properties",
-   "fieldtype": "Heading",
-   "label": "LANDA Properties"
-  },
-  {
-   "fieldname": "address_details",
-   "fieldtype": "Heading",
-   "label": "Address Details"
+   "fieldname": "contact_html",
+   "fieldtype": "HTML",
+   "label": "Contact HTML",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [
   {
-   "group": "Organization Management",
    "link_doctype": "Member",
    "link_fieldname": "organization"
   },
   {
-   "group": "Water Management",
    "link_doctype": "Water Body",
-   "link_fieldname": "organization"
-  },
-  {
-   "group": "Water Management",
-   "link_doctype": "Fishing Area",
    "link_fieldname": "organization"
   }
  ],
-<<<<<<< HEAD
- "modified": "2021-03-22 16:10:35.689835",
-=======
- "modified": "2021-03-18 19:08:52.354178",
->>>>>>> origin/version-13-beta
+ "modified": "2021-03-24 14:26:50.869087",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",

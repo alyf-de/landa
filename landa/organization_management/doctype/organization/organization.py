@@ -8,6 +8,8 @@ from frappe.utils.nestedset import NestedSet
 from frappe.desk.treeview import make_tree_args
 from frappe.model.naming import make_autoname
 from frappe.model.naming import revert_series_if_last
+from frappe.contacts.address_and_contact import load_address_and_contact
+from frappe.contacts.address_and_contact import delete_contact_and_address
 
 class Organization(NestedSet):
 	nsm_parent_field = 'parent_organization'
@@ -31,6 +33,8 @@ class Organization(NestedSet):
 		else:
 			# Local groups
 			self.name = make_autoname(self.parent_organization + '-.##', 'Organization')
+	def onload(self):
+		load_address_and_contact(self)
 
 	def on_update(self):
 		NestedSet.on_update(self)
@@ -38,6 +42,7 @@ class Organization(NestedSet):
 	def on_trash(self):
 		NestedSet.validate_if_child_exists(self)
 		frappe.utils.nestedset.update_nsm(self)
+		delete_contact_and_address(self.doctype, self.name)
 		self.revert_series()
 
 	def is_top_level(self):
