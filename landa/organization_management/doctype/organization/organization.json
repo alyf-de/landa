@@ -178,9 +178,13 @@
   {
    "link_doctype": "Water Body",
    "link_fieldname": "organization"
+  },
+  {
+   "link_doctype": "Member Function",
+   "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-24 14:26:50.869087",
+ "modified": "2021-03-24 18:15:18.691909",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",

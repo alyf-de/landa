@@ -205,9 +205,13 @@
   {
    "link_doctype": "Award",
    "link_fieldname": "recipient"
+  },
+  {
+   "link_doctype": "Member Function",
+   "link_fieldname": "member"
   }
  ],
- "modified": "2021-03-24 16:44:30.180456",
+ "modified": "2021-03-24 17:34:06.299142",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
@@ -227,6 +231,7 @@
   }
  ],
  "quick_entry": 1,
+ "search_fields": "last_name",
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1
