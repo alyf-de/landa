@@ -35,6 +35,11 @@
  ],
  "fields": [
   {
+   "fieldname": "member_heading",
+   "fieldtype": "Heading",
+   "label": "Member"
+  },
+  {
    "allow_in_quick_entry": 1,
    "fieldname": "first_name",
    "fieldtype": "Data",
@@ -50,11 +55,32 @@
    "label": "Last Name"
   },
   {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "personal_details",
+   "fieldtype": "Heading",
+   "label": "Personal Details"
+  },
+  {
    "allow_in_quick_entry": 1,
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Date of Birth"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "German",
+   "fieldname": "nationality",
+   "fieldtype": "Data",
+   "label": "Nationality"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break",
+   "label": "Organization"
   },
   {
    "fieldname": "organization",
@@ -73,45 +99,15 @@
    "read_only": 1
   },
   {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
    "allow_in_quick_entry": 1,
    "fieldname": "member_type",
    "fieldtype": "Select",
    "label": "Member Type",
    "options": "\nF\u00f6rdermitglied"
-  },
-  {
-   "fieldname": "section_break_9",
-   "fieldtype": "Section Break",
-   "label": "Fishing permit"
-  },
-  {
-   "fieldname": "user",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "User",
-   "options": "User"
-  },
-  {
-   "default": "0",
-   "fieldname": "create_user_permission",
-   "fieldtype": "Check",
-   "label": "Create User Permission"
-  },
-  {
-   "fieldname": "address_html",
-   "fieldtype": "HTML",
-   "label": "Address HTML"
-  },
-  {
-   "fieldname": "column_break_5",
-   "fieldtype": "Column Break"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "default": "German",
-   "fieldname": "nationality",
-   "fieldtype": "Data",
-   "label": "Nationality"
   },
   {
    "allow_in_quick_entry": 1,
@@ -139,9 +135,28 @@
    "label": "Has Key"
   },
   {
-   "fieldname": "member_heading",
-   "fieldtype": "Heading",
-   "label": "Member"
+   "fieldname": "section_address_and_contact",
+   "fieldtype": "Section Break",
+   "label": "Address and Contact"
+  },
+  {
+   "fieldname": "address_html",
+   "fieldtype": "HTML",
+   "label": "Address HTML"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact_html",
+   "fieldtype": "HTML",
+   "label": "Contact HTML"
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break",
+   "label": "Fishing permit"
   },
   {
    "allow_in_quick_entry": 1,
@@ -167,42 +182,32 @@
    "label": "Permit expiration date"
   },
   {
-   "fieldname": "section_break_6",
-   "fieldtype": "Section Break",
-   "label": "Organization"
-  },
-  {
    "fieldname": "section_break_22",
    "fieldtype": "Section Break",
    "label": "LANDA Account"
   },
   {
-   "fieldname": "column_break_4",
-   "fieldtype": "Column Break"
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User"
   },
   {
-   "fieldname": "column_break_11",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "personal_details",
-   "fieldtype": "Heading",
-   "label": "Personal Details"
-  },
-  {
-   "fieldname": "contact_html",
-   "fieldtype": "HTML",
-   "label": "Contact HTML"
-  },
-  {
-   "fieldname": "section_address_and_contact",
-   "fieldtype": "Section Break",
-   "label": "Address and Contact"
+   "default": "0",
+   "fieldname": "create_user_permission",
+   "fieldtype": "Check",
+   "label": "Create User Permission"
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2021-03-22 18:10:34.774440",
+ "links": [
+  {
+   "link_doctype": "Award",
+   "link_fieldname": "recipient"
+  }
+ ],
+ "modified": "2021-03-24 16:44:30.180456",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
