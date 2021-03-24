@@ -19,8 +19,8 @@
  "is_default": 0,
  "is_standard": 1,
  "label": "Organization",
- "modified": "2021-03-18 17:50:13.022416",
- "modified_by": "raffael@alyf.de",
+ "modified": "2021-03-23 15:48:46.485215",
+ "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
  "owner": "Administrator",
@@ -38,6 +38,12 @@
    "label": "Organization Tree",
    "link_to": "Organization",
    "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Member Address List",
+   "link_to": "Member Address List",
+   "type": "Report"
   }
  ]
 }

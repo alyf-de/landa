@@ -12,43 +12,24 @@
   "column_break_4",
   "personal_details",
   "date_of_birth",
-<<<<<<< HEAD
   "nationality",
   "section_break_6",
-  "organization_heading",
-=======
-  "section_address_and_contact",
-  "address_html",
-  "column_break_5",
-  "contact_html",
-  "section_break_8",
->>>>>>> origin/version-13-beta
   "organization",
   "organization_name",
   "column_break_11",
-  "member_ship_details_heading",
   "member_type",
   "member_since",
   "magazine_recipient",
   "has_key",
+  "section_address_and_contact",
+  "address_html",
+  "column_break_5",
+  "contact_html",
   "section_break_9",
-  "fishing_permit_heading",
   "has_fishing_permit",
   "permit_is_valid_for_life",
   "permit_expiration_date",
   "section_break_22",
-  "address_heading",
-  "address",
-  "column_break_5",
-  "address_details",
-  "email",
-  "address_line1",
-  "pincode",
-  "city",
-  "phone",
-  "fax",
-  "section_break_15",
-  "landa_account_heading",
   "user",
   "create_user_permission"
  ],
@@ -100,7 +81,8 @@
   },
   {
    "fieldname": "section_break_9",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Fishing permit"
   },
   {
    "fieldname": "user",
@@ -116,61 +98,13 @@
    "label": "Create User Permission"
   },
   {
-<<<<<<< HEAD
-   "fieldname": "address",
-   "fieldtype": "Link",
-   "label": "Address",
-   "options": "Address"
-=======
    "fieldname": "address_html",
    "fieldtype": "HTML",
    "label": "Address HTML"
->>>>>>> origin/version-13-beta
   },
   {
    "fieldname": "column_break_5",
    "fieldtype": "Column Break"
-  },
-  {
-<<<<<<< HEAD
-   "fetch_from": "address.address_line1",
-   "fieldname": "address_line1",
-   "fieldtype": "Data",
-   "label": "Address line 1"
-  },
-  {
-   "fetch_from": "address.pincode",
-   "fieldname": "pincode",
-   "fieldtype": "Data",
-   "label": "Postal Code"
-  },
-  {
-   "fieldname": "section_break_15",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fetch_from": "address.city",
-   "fieldname": "city",
-   "fieldtype": "Data",
-   "label": "City/Town"
-  },
-  {
-   "fetch_from": "address.email_id",
-   "fieldname": "email",
-   "fieldtype": "Data",
-   "label": "Email"
-  },
-  {
-   "fetch_from": "address.phone",
-   "fieldname": "phone",
-   "fieldtype": "Data",
-   "label": "Phone"
-  },
-  {
-   "fetch_from": "address.fax",
-   "fieldname": "fax",
-   "fieldtype": "Data",
-   "label": "Fax"
   },
   {
    "allow_in_quick_entry": 1,
@@ -234,35 +168,12 @@
   },
   {
    "fieldname": "section_break_6",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "organization_heading",
-   "fieldtype": "Heading",
+   "fieldtype": "Section Break",
    "label": "Organization"
   },
   {
-   "fieldname": "member_ship_details_heading",
-   "fieldtype": "Heading",
-   "label": "Membership Details"
-  },
-  {
-   "fieldname": "fishing_permit_heading",
-   "fieldtype": "Heading",
-   "label": "Fishing permit"
-  },
-  {
    "fieldname": "section_break_22",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "address_heading",
-   "fieldtype": "Heading",
-   "label": "Linked Address"
-  },
-  {
-   "fieldname": "landa_account_heading",
-   "fieldtype": "Heading",
+   "fieldtype": "Section Break",
    "label": "LANDA Account"
   },
   {
@@ -279,32 +190,19 @@
    "label": "Personal Details"
   },
   {
-   "fieldname": "address_details",
-   "fieldtype": "Heading",
-   "label": "Address Details"
-=======
    "fieldname": "contact_html",
    "fieldtype": "HTML",
    "label": "Contact HTML"
   },
   {
-   "fieldname": "section_break_8",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "section_address_and_contact",
    "fieldtype": "Section Break",
    "label": "Address and Contact"
->>>>>>> origin/version-13-beta
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
-<<<<<<< HEAD
- "modified": "2021-03-22 16:07:47.058044",
-=======
- "modified": "2021-03-19 18:44:12.339104",
->>>>>>> origin/version-13-beta
+ "modified": "2021-03-22 18:10:34.774440",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
