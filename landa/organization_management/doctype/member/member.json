@@ -1,6 +1,5 @@
 {
  "actions": [],
- "autoname": "format:{organization}-{#####}",
  "creation": "2021-02-18 17:47:15.286220",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -172,7 +171,7 @@
    "depends_on": "eval:doc.has_fishing_permit==1",
    "fieldname": "permit_is_valid_for_life",
    "fieldtype": "Check",
-   "label": "Permit is valid for life"
+   "label": "Permit Is Valid For Life"
   },
   {
    "allow_in_quick_entry": 1,
@@ -204,14 +203,14 @@
  "links": [
   {
    "link_doctype": "Award",
-   "link_fieldname": "recipient"
+   "link_fieldname": "member"
   },
   {
    "link_doctype": "Member Function",
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-03-24 17:34:06.299142",
+ "modified": "2021-03-25 15:50:47.181245",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
