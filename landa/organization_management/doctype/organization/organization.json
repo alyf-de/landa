@@ -42,7 +42,6 @@
    "fieldname": "short_code",
    "fieldtype": "Data",
    "label": "Short Code",
-   "reqd": 1,
    "unique": 1
   },
   {
@@ -186,7 +185,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-25 16:04:37.711418",
+ "modified": "2021-03-25 16:06:35.158603",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
