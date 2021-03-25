@@ -1,17 +1,17 @@
 {
  "actions": [],
- "autoname": "format:{recipient}-{issue_date}-{##}",
+ "autoname": "format:{member}-{issue_date}-{##}",
  "creation": "2021-03-22 16:24:54.535292",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "award_type",
-  "recipient",
   "recipient_first_name",
   "recipient_last_name",
   "issue_date",
-  "issuing_organization"
+  "organization",
+  "member"
  ],
  "fields": [
   {
@@ -30,16 +30,6 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Issue Date"
-  },
-  {
-   "fetch_from": "recipient.organization",
-   "fetch_if_empty": 1,
-   "fieldname": "issuing_organization",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Issuing Organization",
-   "options": "Organization"
   },
   {
    "fetch_from": "recipient.first_name",
@@ -65,11 +55,21 @@
    "label": "Award Type",
    "options": "\nGoldene \u00c4sche\nEhrennadel Bronze\nEhrennadel Silber\nEhrennadel Gold",
    "reqd": 1
+  },
+  {
+   "fetch_from": "recipient.organization",
+   "fetch_if_empty": 1,
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Issuing Organization",
+   "options": "Organization"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-24 16:40:22.356361",
+ "modified": "2021-03-25 15:49:17.881915",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Award",
