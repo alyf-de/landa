@@ -34,7 +34,7 @@ frappe.treeview_settings["Organization"] = {
 			fieldname: 'short_code',
 			length: 4,
 			depends_on: 'is_group',
-			label: __('Organization Name'),
+			label: __('Short Code'),
 			description: __('Short code for regional organizations. For example, "LVSA", "AVL", etc.')
 		}
 	],
