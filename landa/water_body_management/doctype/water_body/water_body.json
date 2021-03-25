@@ -11,9 +11,7 @@
   "number",
   "fishing_area",
   "section_break_2",
-  "organization",
-  "column_break_4",
-  "organization_name",
+  "water_body_organization_table",
   "section_break_6",
   "fish_species"
  ],
@@ -48,26 +46,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fetch_from": "fishing_area.organization",
-   "fetch_if_empty": 1,
-   "fieldname": "organization",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Organization",
-   "options": "Organization"
-  },
-  {
-   "fieldname": "column_break_4",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": "organization.organization_name",
-   "fieldname": "organization_name",
-   "fieldtype": "Data",
-   "label": "Organization Name",
-   "read_only": 1
-  },
-  {
    "fieldname": "section_break_6",
    "fieldtype": "Section Break"
   },
@@ -76,11 +54,18 @@
    "fieldtype": "Table",
    "label": "Main Fish Species",
    "options": "Fish Species Table"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "water_body_organization_table",
+   "fieldtype": "Table",
+   "label": "Organization Table",
+   "options": "Water Body Organization Table"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-07 16:31:18.777991",
+ "modified": "2021-03-25 17:18:21.938603",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
