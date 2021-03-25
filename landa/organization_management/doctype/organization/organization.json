@@ -38,6 +38,7 @@
    "reqd": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fetch_if_empty": 1,
    "fieldname": "short_code",
    "fieldtype": "Data",
@@ -185,7 +186,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-25 16:06:35.158603",
+ "modified": "2021-03-25 16:09:01.888615",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
