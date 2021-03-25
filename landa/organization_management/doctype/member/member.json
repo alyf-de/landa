@@ -156,7 +156,7 @@
   {
    "fieldname": "section_break_9",
    "fieldtype": "Section Break",
-   "label": "Fishing permit"
+   "label": "Fishing Permit"
   },
   {
    "allow_in_quick_entry": 1,
@@ -179,7 +179,7 @@
    "depends_on": "eval:doc.has_fishing_permit==1 & doc.permit_is_valid_for_life==0",
    "fieldname": "permit_expiration_date",
    "fieldtype": "Date",
-   "label": "Permit expiration date"
+   "label": "Permit Expiration Date"
   },
   {
    "fieldname": "section_break_22",
