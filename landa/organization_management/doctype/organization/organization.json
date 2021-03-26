@@ -1,15 +1,27 @@
 {
  "actions": [],
- "allow_import": 1,
  "allow_rename": 1,
  "creation": "2021-02-18 17:40:08.627933",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "organization_heading",
   "organization_name",
   "short_code",
-  "column_break_2",
+  "section_break_3",
+  "organization_details",
+  "fishing_area",
+  "location",
+  "website",
+  "register_number",
+  "is_charitable",
+  "charitable_until",
+  "section_break_10",
+  "address_html",
+  "column_break_8",
+  "contact_html",
+  "section_break_15",
   "is_group",
   "lft",
   "rgt",
@@ -21,22 +33,17 @@
    "fieldname": "organization_name",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Organization Name",
    "reqd": 1
   },
   {
    "allow_in_quick_entry": 1,
-   "depends_on": "is_group",
+   "fetch_if_empty": 1,
    "fieldname": "short_code",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Short Code",
-   "length": 4,
    "unique": 1
-  },
-  {
-   "fieldname": "column_break_2",
-   "fieldtype": "Column Break"
   },
   {
    "default": "0",
@@ -69,34 +76,118 @@
    "options": "Organization"
   },
   {
-   "allow_in_quick_entry": 1,
    "fieldname": "parent_organization",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Parent Organization",
    "options": "Organization"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Location"
+  },
+  {
+   "fieldname": "fishing_area",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Fishing area",
+   "options": "Fishing Area"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_15",
+   "fieldtype": "Section Break",
+   "label": "LANDA Properties"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "register_number",
+   "fieldtype": "Data",
+   "label": "Register Number"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "0",
+   "fieldname": "is_charitable",
+   "fieldtype": "Check",
+   "label": "Is Charitable"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval:doc.is_charitable == 1",
+   "fieldname": "charitable_until",
+   "fieldtype": "Date",
+   "label": "Charitable until"
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break",
+   "label": "Address and Contacts"
+  },
+  {
+   "fieldname": "organization_heading",
+   "fieldtype": "Heading",
+   "label": "Organization Title"
+  },
+  {
+   "fieldname": "organization_details",
+   "fieldtype": "Heading",
+   "label": "Organization Details"
+  },
+  {
+   "fieldname": "address_html",
+   "fieldtype": "HTML",
+   "label": "Address HTML",
+   "read_only": 1
+  },
+  {
+   "fieldname": "contact_html",
+   "fieldtype": "HTML",
+   "label": "Contact HTML",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [
   {
-   "group": "Organization Management",
    "link_doctype": "Member",
    "link_fieldname": "organization"
   },
   {
-   "group": "Water Management",
    "link_doctype": "Water Body",
    "link_fieldname": "organization"
   },
   {
-   "group": "Water Management",
-   "link_doctype": "Fishing Area",
+   "link_doctype": "Member Function",
+   "link_fieldname": "organization"
+  },
+  {
+   "link_doctype": "Award",
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-18 19:08:52.354178",
+ "modified": "2021-03-26 12:36:50.260384",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
