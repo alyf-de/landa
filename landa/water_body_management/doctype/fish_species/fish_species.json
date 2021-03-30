@@ -1,33 +1,48 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "field:title",
+ "autoname": "format:{title}-{short_code}",
  "creation": "2021-02-18 16:46:22.832743",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "title",
+  "short_code",
   "scientific_name"
  ],
  "fields": [
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "title",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Title",
    "reqd": 1,
    "unique": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "scientific_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Scientific Name"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "short_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Short Code",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-07 17:43:49.785194",
+ "modified": "2021-03-30 15:24:07.423608",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Species",
@@ -47,8 +62,8 @@
   }
  ],
  "quick_entry": 1,
- "sort_field": "modified",
- "sort_order": "DESC",
+ "sort_field": "title",
+ "sort_order": "ASC",
  "title_field": "title",
  "track_changes": 1
 }
