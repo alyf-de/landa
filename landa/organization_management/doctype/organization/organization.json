@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "creation": "2021-02-18 17:40:08.627933",
  "doctype": "DocType",
@@ -183,7 +184,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-30 21:47:15.407915",
+ "modified": "2021-03-30 21:48:34.581153",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
