@@ -175,10 +175,6 @@
    "link_fieldname": "organization"
   },
   {
-   "link_doctype": "Water Body",
-   "link_fieldname": "organization"
-  },
-  {
    "link_doctype": "Member Function",
    "link_fieldname": "organization"
   },
@@ -187,7 +183,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-26 12:36:50.260384",
+ "modified": "2021-03-30 21:47:15.407915",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
