@@ -33,13 +33,13 @@
    "label": "Issue Date"
   },
   {
-   "fetch_from": "recipient.first_name",
+   "fetch_from": "member.first_name",
    "fieldname": "recipient_first_name",
    "fieldtype": "Data",
    "label": "Recipient First Name"
   },
   {
-   "fetch_from": "recipient.last_name",
+   "fetch_from": "member.last_name",
    "fieldname": "recipient_last_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -76,7 +76,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-26 14:44:11.048781",
+ "modified": "2021-03-31 11:01:00.998957",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Award",
