@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "creation": "2021-02-18 17:40:08.627933",
  "doctype": "DocType",
@@ -175,10 +176,6 @@
    "link_fieldname": "organization"
   },
   {
-   "link_doctype": "Water Body",
-   "link_fieldname": "organization"
-  },
-  {
    "link_doctype": "Member Function",
    "link_fieldname": "organization"
   },
@@ -187,7 +184,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-26 12:36:50.260384",
+ "modified": "2021-03-30 16:23:00.049460",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
@@ -199,6 +196,7 @@
    "delete": 1,
    "email": 1,
    "export": 1,
+   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,
