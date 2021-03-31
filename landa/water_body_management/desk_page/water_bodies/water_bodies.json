@@ -2,13 +2,13 @@
  "cards": [
   {
    "hidden": 0,
-   "label": "Master Data",
-   "links": "[\n    {\n        \"label\": \"Fish Species\",\n        \"name\": \"Fish Species\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"label\": \"Fishing Area\",\n        \"name\": \"Fishing Area\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"label\": \"Water Body\",\n        \"name\": \"Water Body\",\n        \"type\": \"doctype\"\n    }\n]"
+   "label": "Water Body Management",
+   "links": "[\n    {\n        \"label\": \"Water Body List\",\n        \"doc_view\": \"Report Builder\",\n        \"name\": \"Water Body\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"label\": \"Fish Species List\",\n        \"doc_view\": \"Report Builder\",\n        \"name\": \"Fish Species\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"label\": \"Fishing Area List\",\n        \"doc_view\": \"Report Builder\",\n        \"name\": \"Fishing Area\",\n        \"type\": \"doctype\"\n    }\n]"
   },
   {
    "hidden": 0,
-   "label": "Transactions",
-   "links": "[\n    {\n        \"type\": \"doctype\",\n        \"name\": \"Catch Log Entry\",\n        \"label\": \"Catch Log Entry\"\n    }\n]"
+   "label": "Fish Catch Entry Management",
+   "links": "[\n    {\n        \"label\": \"Catch Log Entry List\",\n        \"doc_view\": \"Report Builder\",\n        \"name\": \"Catch Log Entry\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"doc_view\": \"New\",\n        \"label\": \"Create New Catch Log Entry\",\n        \"name\": \"Catch Log Entry\",\n        \"type\": \"doctype\"\n    }\n]"
   }
  ],
  "category": "Modules",
@@ -24,7 +24,7 @@
  "is_default": 0,
  "is_standard": 1,
  "label": "Water Bodies",
- "modified": "2021-03-07 16:38:50.962186",
+ "modified": "2021-03-26 17:58:20.345572",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Bodies",
