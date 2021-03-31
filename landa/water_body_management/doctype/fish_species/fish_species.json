@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "format:{title}-{short_code}",
+ "autoname": "field:short_code",
  "creation": "2021-02-18 16:46:22.832743",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -37,12 +37,13 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Short Code",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-30 15:24:07.423608",
+ "modified": "2021-03-31 11:59:44.742128",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Species",
@@ -53,6 +54,7 @@
    "delete": 1,
    "email": 1,
    "export": 1,
+   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,
@@ -62,6 +64,7 @@
   }
  ],
  "quick_entry": 1,
+ "search_fields": "title",
  "sort_field": "title",
  "sort_order": "ASC",
  "title_field": "title",
