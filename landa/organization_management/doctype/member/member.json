@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "autoname": "prompt",
  "creation": "2021-02-18 17:47:15.286220",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -210,7 +211,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-03-25 15:50:47.181245",
+ "modified": "2021-04-01 16:56:51.103396",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
