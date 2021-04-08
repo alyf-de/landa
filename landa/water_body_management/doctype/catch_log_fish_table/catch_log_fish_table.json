@@ -21,7 +21,7 @@
    "fieldname": "amount",
    "fieldtype": "Int",
    "in_list_view": 1,
-   "label": "Amount",
+   "label": "Number of Fish",
    "non_negative": 1
   },
   {
@@ -35,7 +35,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-03-07 16:31:22.782986",
+ "modified": "2021-04-07 21:43:00.401930",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Fish Table",
