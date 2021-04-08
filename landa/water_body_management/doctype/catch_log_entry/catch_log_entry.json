@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "creation": "2021-02-22 14:55:25.304231",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -75,7 +76,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-07 16:31:21.493412",
+ "modified": "2021-04-07 21:47:52.171353",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
@@ -86,6 +87,7 @@
    "delete": 1,
    "email": 1,
    "export": 1,
+   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,
