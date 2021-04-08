@@ -1,10 +1,13 @@
 Address HTML,HTML Adresse 
 Address and Contact,Adresse und Kontakt
 Address and Contacts,Adressen und Kontakte
+Address Line 1,Adresse Zeile 1
 Area Code,Kürzel Region
 Area Name,Name der Region
 Attachment Limit Reached,Maximale Größe des Anhangs wurde überschritten
 Award,Auszeichnung
+Award List,Auszeichnung Listenansicht
+Award Management,Auszeichnungsverwaltung
 Award Type,Art der Auszeichnung
 Before Validate,Before Validate
 Belongs to Organization,Gehört zu Verein
@@ -13,8 +16,10 @@ Belongs to Parent Organization,Gehört zu Dachverband
 Can contain suborganizations,Kann untergeordnete Vereine enthalten
 Cannot be a member of organization {} because it is a group.,"Kann kein Mitglied von Verein/Verband {} sein, da nur Vereine bzw. Ortsgruppen Mitglieder haben dürfen, keine Regional- und Landesverbände."
 Catch Log Entry,Fangbucheintrag
+Catch Log Entry List,Fangbucheintrag Listenansicht
 Catch Log Fish Table,Fangbucheintrag Fisch Tabelle
 Charitable until,Gemeinnützig bis
+City,Ort
 Connect to {},Verbinden mit {}
 Connected App,Verbundene Anwendung
 Consumer,Verbraucher
@@ -29,9 +34,12 @@ Ehrennadel Gold,Ehrennadel Gold
 Ehrennadel Silber,Ehrennadel Silber
 Extra Parameters,Zusätzliche Parameter
 Fish Catches,Gefangene Fische
+Fish Catch Entry Management,Fangbucheintragsverwaltung
 Fish Species,Fischart
+Fish Species List,Fischart Listenansicht
 Fish Species Table,Fischart Tabelle
 Fishing Area,Angelgebiet
+Fishing Area List,Angelgebiet Listenansicht
 Fishing Days,Angeltage
 Fishing Permit,Angelschein
 Fishing area,Angelgebiet
@@ -59,20 +67,30 @@ Maximum Attachment Limit of {0} has been reached for {1} {2}.,Die Maximale Anzah
 Maximum attachment limit of {0} has been reached.,Die Maximale Anzahl von Anhängen von {0} wurde erreicht.
 Member Address List,Adressliste Mitglieder
 Member Birthday List,Geburtstagsliste Mitglieder
+Member Count,Mitgliedszahlen
 Member First Name,Vorname des Mitglieds
 Member Function,Mitgliedsfunktion
 Member Function Category,Mitgliedsfunktionskategorie
+Member Function List, Mitgliedsfunktion Listenansicht
+Member Function Management,Mitgliedsfunktionsverwaltung
 Member Function Title,Mitgliedsfunktionsname
 Member Last Name,Nachname des Mitglieds
+Member List, Mitglied Listenansicht
 Member Since,Mitglied seit
 Member Type,Mitgliedschaftsart
 Module HTML,Modul HTML
 Module Profile,Modul Profil
 Module Profile Name,Modul Profilname
 Nationality,Staatsangehörigkeit
+New Award Entry,Neue Auszeichnung anlegen
+New Catch Log Entry,Neuen Fangmengeneintrag anlegen
+New Member Entry,Neues Mitglied anlegen
+New Member Function Entry,Neue Mitgliedsfunktion anlegen
+Number of Fish, Anzahl der Fische
 OK,OK
 Old Parent,Übergeordnetes Objekt
 Organization Details,Vereinsdetails
+Organization List, Verein Listenansicht
 Organization Management,Vereinsverwaltung
 Organization Name,Vereinsname
 Organization Table,Vereinstabelle
@@ -97,15 +115,19 @@ Sets the current page as default for all users,Setzt die aktuelle Seite als Stan
 Short Code,Kürzel
 Short code for regional organizations. For example; "LVSA"; "AVL"; etc.,Kürzel für Verbände und Vereine; z.B. "LVSA"; "AVL"; etc.
 Show Absolute Values,Absolutwerte anzeigen
+Show Organization Tree,Baumansicht Verein anzeigen
 Submit on Creation,Nach Erstellung absenden
 This Doctype does not contain latitude and longitude fields,Dieser Doctype enthält keine geographoschen Koordinaten (Felder latitude und longitude)
 This Doctype does not contain location fields,Dieser Doctype enthält keine Angaben zum Ort
 Track if your email has been opened by the recipient.|||<br>|||Note: If you're sending to multiple recipients; even if 1 recipient reads the email; it'll be considered "Opened",Lesebestätigung des Empfänger verfolgen.|||<br>|||Hinweis: Sollten sie an mehr als einen Empfänger versenden; wird die Email als "geöffnet" gesetzt; auch wenn nur einer der Empfänger die Email gelesen hat.
 Use HTML,HTML verwenden
+Water Bodies,Gewässer
 Water Body,Gewässer
+Water Body List,Gewässer Listenansicht
 Water Body Management,Gewässerverwaltung
 Water Body Organization Table,Vereinstabelle des Gewässers
 Weight in Kg,Gewicht in Kg
+Zipcode,PLZ
 {0} Map,{0} Karte
 {0} changed {1} to {2},{0} wurde von {1} zu {2} geändert
 {0} from {1} to {2},{0} von {1} zu/bis {2}
