@@ -2,23 +2,23 @@
  "cards": [
   {
    "hidden": 0,
-   "label": "Organization management",
+   "label": "Organization Management",
    "links": "[\n    {\n        \"label\": \"Organization List\",\n        \"doc_view\": \"Report Builder\",\n        \"name\": \"Organization\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"doc_view\": \"Tree\",\n        \"label\": \"Show Organization Tree\",\n        \"name\": \"Organization\",\n        \"type\": \"doctype\"\n    }\n]"
   },
   {
    "hidden": 0,
-   "label": "Member management",
-   "links": "[\n    {\n        \"label\": \"Member List\",\n        \"doc_view\": \"Report Builder\",\n        \"name\": \"Member\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"doc_view\": \"New\",\n        \"label\": \"Create New Member Entry\",\n        \"name\": \"Member\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"is_query_report\": true,\n        \"label\": \"Member Address List\",\n        \"name\": \"Member Address List\",\n        \"reference_doctype\": \"Member\",\n        \"type\": \"report\"\n    },\n    {\n        \"is_query_report\": true,\n        \"label\": \"Member Birthday List\",\n        \"name\": \"Member Birthday List\",\n        \"reference_doctype\": \"Member\",\n        \"type\": \"report\"\n    }\n]"
+   "label": "Member Management",
+   "links": "[\n    {\n        \"label\": \"Member List\",\n        \"doc_view\": \"Report Builder\",\n        \"name\": \"Member\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"doc_view\": \"New\",\n        \"label\": \"New Member Entry\",\n        \"name\": \"Member\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"is_query_report\": true,\n        \"label\": \"Member Address List\",\n        \"name\": \"Member Address List\",\n        \"reference_doctype\": \"Member\",\n        \"type\": \"report\"\n    },\n    {\n        \"is_query_report\": true,\n        \"label\": \"Member Birthday List\",\n        \"name\": \"Member Birthday List\",\n        \"reference_doctype\": \"Member\",\n        \"type\": \"report\"\n    }\n]"
   },
   {
    "hidden": 0,
-   "label": "Award management",
-   "links": "[\n    {\n        \"label\": \"Award List\",\n        \"doc_view\": \"Report Builder\",\n        \"name\": \"Award\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"doc_view\": \"New\",\n        \"label\": \"Create New Award Entry\",\n        \"name\": \"Award\",\n        \"type\": \"doctype\"\n    }\n]"
+   "label": "Award Management",
+   "links": "[\n    {\n        \"label\": \"Award List\",\n        \"doc_view\": \"Report Builder\",\n        \"name\": \"Award\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"doc_view\": \"New\",\n        \"label\": \"New Award Entry\",\n        \"name\": \"Award\",\n        \"type\": \"doctype\"\n    }\n]"
   },
   {
    "hidden": 0,
    "label": "Member Function Management",
-   "links": "[\n    {\n        \"label\": \"Member Function List\",\n        \"doc_view\": \"Report Builder\",\n        \"name\": \"Member Function\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"doc_view\": \"New\",\n        \"label\": \"Create New Member Function Entry\",\n        \"name\": \"Member Function\",\n        \"type\": \"doctype\"\n    }\n]"
+   "links": "[\n    {\n        \"label\": \"Member Function List\",\n        \"doc_view\": \"Report Builder\",\n        \"name\": \"Member Function\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"doc_view\": \"New\",\n        \"label\": \"New Member Function Entry\",\n        \"name\": \"Member Function\",\n        \"type\": \"doctype\"\n    }\n]"
   }
  ],
  "category": "Modules",
@@ -39,7 +39,7 @@
  "is_default": 0,
  "is_standard": 1,
  "label": "Organization",
- "modified": "2021-03-26 18:28:36.667245",
+ "modified": "2021-04-07 14:55:10.339357",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
