@@ -52,7 +52,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Fish Catch Entry Management",
+   "label": "Catch Log Entries",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -67,7 +67,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-04-19 18:13:46.066944",
+ "modified": "2021-04-19 19:47:51.450557",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management",

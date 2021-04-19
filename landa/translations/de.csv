@@ -6,6 +6,7 @@ Area Code,Kürzel Region
 Area Name,Name der Region
 Attachment Limit Reached,Maximale Größe des Anhangs wurde überschritten
 Award,Auszeichnung
+Awards,Auszeichnungen
 Award List,Auszeichnung Listenansicht
 Award Management,Auszeichnungsverwaltung
 Award Type,Art der Auszeichnung
@@ -34,7 +35,7 @@ Ehrennadel Gold,Ehrennadel Gold
 Ehrennadel Silber,Ehrennadel Silber
 Extra Parameters,Zusätzliche Parameter
 Fish Catches,Gefangene Fische
-Fish Catch Entry Management,Fangbucheintragsverwaltung
+Catch Log Entries,Fangbucheinträge
 Fish Species,Fischart
 Fish Species List,Fischart Listenansicht
 Fish Species Table,Fischart Tabelle
@@ -65,11 +66,14 @@ Main Fish Species,Hauptfischarten
 Map,Karte
 Maximum Attachment Limit of {0} has been reached for {1} {2}.,Die Maximale Anzahl von Anhängen von {0} wurde für {1} {2} erreicht.
 Maximum attachment limit of {0} has been reached.,Die Maximale Anzahl von Anhängen von {0} wurde erreicht.
+Member,Mitglied
+Members,Mitglieder
 Member Address List,Adressliste Mitglieder
 Member Birthday List,Geburtstagsliste Mitglieder
 Member Count,Mitgliedszahlen
 Member First Name,Vorname des Mitglieds
 Member Function,Mitgliedsfunktion
+Member Functions,Mitgliedsfunktionen
 Member Function Category,Mitgliedsfunktionskategorie
 Member Function List, Mitgliedsfunktion Listenansicht
 Member Function Management,Mitgliedsfunktionsverwaltung
@@ -87,8 +91,9 @@ New Catch Log Entry,Neuen Fangmengeneintrag anlegen
 New Member Entry,Neues Mitglied anlegen
 New Member Function Entry,Neue Mitgliedsfunktion anlegen
 Number of Fish, Anzahl der Fische
-OK,OK
 Old Parent,Übergeordnetes Objekt
+Organization,Verein
+Organizations,Vereine
 Organization Details,Vereinsdetails
 Organization List, Verein Listenansicht
 Organization Management,Vereine

@@ -22,7 +22,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Organization Management",
+   "label": "Organizations",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -39,11 +39,10 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Award",
-   "link_to": "Award",
+   "label": "Members",
    "link_type": "DocType",
    "onboard": 0,
-   "type": "Link"
+   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -56,16 +55,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Member Function",
-   "link_to": "Member Function",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Member Address List",
    "link_to": "Member Address List",
    "link_type": "Report",
@@ -74,15 +64,49 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Member Birthday List",
    "link_to": "Member Birthday List",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Awards",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Award",
+   "link_to": "Award",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Member Functions",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Member Function",
+   "link_to": "Member Function",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2021-04-19 18:24:53.700808",
+ "modified": "2021-04-19 20:21:19.567972",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
