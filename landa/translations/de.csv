@@ -2,6 +2,7 @@ Address HTML,HTML Adresse
 Address and Contact,Adresse und Kontakt
 Address and Contacts,Adressen und Kontakte
 Address Line 1,Adresse Zeile 1
+Age at Birthday,Geburtstagsalter
 Area Code,Kürzel Region
 Area Name,Name der Region
 Attachment Limit Reached,Maximale Größe des Anhangs wurde überschritten
@@ -29,6 +30,7 @@ Contact HTML,HTML Kontakt
 Create User Permission,Benutzer Berechtigungen erstellen
 Customize Child Table,Untergeordnete Tabelle (Child Table) anpassen
 Date of Birth,Geburtsdatum
+Days Until Birthday,Tage Bis Geburtstag
 Deny,Ablehnen
 Ehrennadel Bronze,Ehrennadel Bronze
 Ehrennadel Gold,Ehrennadel Gold
@@ -125,6 +127,7 @@ Submit on Creation,Nach Erstellung absenden
 This Doctype does not contain latitude and longitude fields,Dieser Doctype enthält keine geographoschen Koordinaten (Felder latitude und longitude)
 This Doctype does not contain location fields,Dieser Doctype enthält keine Angaben zum Ort
 Track if your email has been opened by the recipient.|||<br>|||Note: If you're sending to multiple recipients; even if 1 recipient reads the email; it'll be considered "Opened",Lesebestätigung des Empfänger verfolgen.|||<br>|||Hinweis: Sollten sie an mehr als einen Empfänger versenden; wird die Email als "geöffnet" gesetzt; auch wenn nur einer der Empfänger die Email gelesen hat.
+Upcoming Birthday,Nächster Geburtstag
 Use HTML,HTML verwenden
 Water Bodies,Gewässer
 Water Body,Gewässer
