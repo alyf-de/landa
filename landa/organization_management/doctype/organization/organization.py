@@ -34,6 +34,17 @@ class Organization(NestedSet):
 			# Local groups
 			self.name = make_autoname(self.parent_organization + '-.##', 'Organization')
 
+	def after_insert(self):
+		if self.is_top_level():
+			# Landesverband oder Regionalverband
+			pass
+		elif len(self.parent_organization) <= 4:
+			# Organizations 
+			self.create_customer()
+		else:
+			# Local groups
+			pass
+
 	def onload(self):
 		load_address_and_contact(self)
 
@@ -61,6 +72,15 @@ class Organization(NestedSet):
 		key = self.name[:-number_part_len] + '.' + '#' * number_part_len
 
 		revert_series_if_last(key, self.name)
+	
+	def create_customer(self):
+		"""Create a Customer corresponding to this organization."""
+		customer = frappe.new_doc("Customer")
+		customer.customer_name = self.organization_name
+		customer.insert()
+
+		self.customer = customer.name
+		self.save()
 
 
 @frappe.whitelist()
