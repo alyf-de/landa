@@ -210,9 +210,13 @@
   {
    "link_doctype": "Member Function",
    "link_fieldname": "member"
+  },
+  {
+   "link_doctype": "Yearly Fishing Permit",
+   "link_fieldname": "member"
   }
  ],
- "modified": "2021-04-01 16:56:51.103396",
+ "modified": "2021-04-21 16:40:37.603248",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
