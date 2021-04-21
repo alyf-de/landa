@@ -18,6 +18,7 @@ fixtures = [
 	"Fishing Area",
 	"Fish Species",
 	"Item Attribute",
+	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
 ]
 
 # Includes in <head>
