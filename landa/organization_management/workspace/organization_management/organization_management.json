@@ -1,0 +1,154 @@
+{
+ "category": "Modules",
+ "charts": [
+  {
+   "chart_name": "Member Count",
+   "label": "Member Count"
+  }
+ ],
+ "creation": "2021-04-19 18:01:23.947644",
+ "developer_mode_only": 0,
+ "disable_user_customization": 0,
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "extends_another_page": 0,
+ "hide_custom": 1,
+ "icon": "organization",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "label": "Organization Management",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Organizations",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Organization",
+   "link_to": "Organization",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Members",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Member",
+   "link_to": "Member",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Member Address List",
+   "link_to": "Member Address List",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Member Birthday List",
+   "link_to": "Member Birthday List",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Awards",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Award",
+   "link_to": "Award",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Member Functions",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Member Function",
+   "link_to": "Member Function",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2021-04-19 20:21:19.567972",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "Organization Management",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 1,
+ "shortcuts": [
+  {
+   "doc_view": "New",
+   "label": "New Member Entry",
+   "link_to": "Member",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Member Address List",
+   "link_to": "Member Address List",
+   "type": "Report"
+  },
+  {
+   "doc_view": "",
+   "label": "Member Birthday List",
+   "link_to": "Member Birthday List",
+   "type": "Report"
+  },
+  {
+   "doc_view": "New",
+   "label": "New Award Entry",
+   "link_to": "Award",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "New",
+   "label": "New Member Function Entry",
+   "link_to": "Member Function",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "Tree",
+   "label": "Show Organization Tree",
+   "link_to": "Organization",
+   "type": "DocType"
+  }
+ ]
+}
