@@ -16,7 +16,8 @@ fixtures = [
 	"Address Template",
 	"Member Function Category",
 	"Fishing Area",
-	"Fish Species"
+	"Fish Species",
+	"Item Attribute",
 ]
 
 # Includes in <head>
