@@ -8,6 +8,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Am",
   "title": "Amurkarpfen"
  },
  {
@@ -19,6 +20,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "A",
   "title": "Aal"
  },
  {
@@ -30,6 +32,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Ad",
   "title": "Aland"
  },
  {
@@ -41,6 +44,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "L",
   "title": "Atlantischer Lachs"
  },
  {
@@ -52,6 +56,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Bf",
   "title": "Bachforelle"
  },
  {
@@ -63,6 +68,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "B",
   "title": "Barsch"
  },
  {
@@ -74,6 +80,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Rf",
   "title": "Regenbogenforelle"
  },
  {
@@ -85,6 +92,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Ro",
   "title": "Rotfeder"
  },
  {
@@ -96,6 +104,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "S",
   "title": "Schleie"
  },
  {
@@ -107,6 +116,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Ss",
   "title": "Seesaibling"
  },
  {
@@ -118,6 +128,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Bs",
   "title": "Bachsaibling"
  },
  {
@@ -129,6 +140,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Ba",
   "title": "Barbe"
  },
  {
@@ -140,6 +152,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "GM",
   "title": "Gro\u00dfe Mar\u00e4ne"
  },
  {
@@ -151,6 +164,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "H",
   "title": "Hecht"
  },
  {
@@ -162,6 +176,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Ka",
   "title": "Karausche"
  },
  {
@@ -173,6 +188,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "K",
   "title": "Karpfen"
  },
  {
@@ -184,6 +200,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Mf",
   "title": "Meerforelle"
  },
  {
@@ -195,6 +212,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Ra",
   "title": "Rapfen"
  },
  {
@@ -206,6 +224,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Sh",
   "title": "St\u00f6rhybride"
  },
  {
@@ -217,6 +236,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Wf",
   "title": "Wei\u00dffisch"
  },
  {
@@ -228,6 +248,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Z",
   "title": "Zander"
  },
  {
@@ -239,6 +260,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "W",
   "title": "Wels"
  },
  {
@@ -250,6 +272,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "D",
   "title": "D\u00f6bel"
  },
  {
@@ -261,6 +284,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Zw",
   "title": "Zwergwels"
  },
  {
@@ -272,6 +296,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Q",
   "title": "Quappe"
  },
  {
@@ -283,6 +308,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "KM",
   "title": "Kleine Mar\u00e4ne"
  },
  {
@@ -294,6 +320,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Pl",
   "title": "Pl\u00f6tze"
  },
  {
@@ -305,6 +332,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Bl",
   "title": "Blei"
  },
  {
@@ -316,6 +344,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Gi",
   "title": "Giebel"
  },
  {
@@ -327,6 +356,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "G\u00fc",
   "title": "G\u00fcster"
  },
  {
@@ -338,6 +368,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Kb",
   "title": "Kaulbarsch"
  },
  {
@@ -349,6 +380,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Uk",
   "title": "Ukelei"
  },
  {
@@ -360,6 +392,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Gru",
   "title": "Grundelarten"
  },
  {
@@ -371,6 +404,7 @@
   "parentfield": null,
   "parenttype": null,
   "scientific_name": null,
+  "short_code": "Sb",
   "title": "Sonnenbarsch"
  }
 ]
