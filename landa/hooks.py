@@ -13,7 +13,6 @@ app_license = "--"
 
 fixtures = [
 	"Organization",
-	"Address Template",
 	"Member Function Category",
 	"Fishing Area",
 	"Fish Species"
