@@ -2,6 +2,12 @@
 
 Datenmanagementsystem des Landesverbands Sächsischer Angler.
 
+### Installation 
+
+> ERPNext muss bereits installiert und über den Setup-Wizard **eingerichtet** sein, bevor diese App installiert werden kann.
+
+`bench --site [site-name] install-app landa`
+
 ### Data Import with pre-defined IDs
 
 1. Temporarily enable naming by prompt
@@ -23,3 +29,4 @@ In [2]: frappe.db.commit()
 
     1. Go to "Customize Form" for the related DocType
     2. In the "Naming" section, set autoname to "" (empty) and click save
+    
