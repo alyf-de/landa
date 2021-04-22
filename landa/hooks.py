@@ -15,7 +15,9 @@ fixtures = [
 	"Organization",
 	"Member Function Category",
 	"Fishing Area",
-	"Fish Species"
+	"Fish Species",
+	"Item Attribute",
+	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
 ]
 
 # Includes in <head>
