@@ -2,10 +2,12 @@ Address HTML,HTML Adresse
 Address and Contact,Adresse und Kontakt
 Address and Contacts,Adressen und Kontakte
 Address Line 1,Adresse Zeile 1
+Age at Birthday,Geburtstagsalter
 Area Code,Kürzel Region
 Area Name,Name der Region
 Attachment Limit Reached,Maximale Größe des Anhangs wurde überschritten
 Award,Auszeichnung
+Awards,Auszeichnungen
 Award List,Auszeichnung Listenansicht
 Award Management,Auszeichnungsverwaltung
 Award Type,Art der Auszeichnung
@@ -28,13 +30,14 @@ Contact HTML,HTML Kontakt
 Create User Permission,Benutzer Berechtigungen erstellen
 Customize Child Table,Untergeordnete Tabelle (Child Table) anpassen
 Date of Birth,Geburtsdatum
+Days Until Birthday,Tage Bis Geburtstag
 Deny,Ablehnen
 Ehrennadel Bronze,Ehrennadel Bronze
 Ehrennadel Gold,Ehrennadel Gold
 Ehrennadel Silber,Ehrennadel Silber
 Extra Parameters,Zusätzliche Parameter
 Fish Catches,Gefangene Fische
-Fish Catch Entry Management,Fangbucheintragsverwaltung
+Catch Log Entries,Fangbucheinträge
 Fish Species,Fischart
 Fish Species List,Fischart Listenansicht
 Fish Species Table,Fischart Tabelle
@@ -65,11 +68,14 @@ Main Fish Species,Hauptfischarten
 Map,Karte
 Maximum Attachment Limit of {0} has been reached for {1} {2}.,Die Maximale Anzahl von Anhängen von {0} wurde für {1} {2} erreicht.
 Maximum attachment limit of {0} has been reached.,Die Maximale Anzahl von Anhängen von {0} wurde erreicht.
+Member,Mitglied
+Members,Mitglieder
 Member Address List,Adressliste Mitglieder
 Member Birthday List,Geburtstagsliste Mitglieder
 Member Count,Mitgliedszahlen
 Member First Name,Vorname des Mitglieds
 Member Function,Mitgliedsfunktion
+Member Functions,Mitgliedsfunktionen
 Member Function Category,Mitgliedsfunktionskategorie
 Member Function List, Mitgliedsfunktion Listenansicht
 Member Function Management,Mitgliedsfunktionsverwaltung
@@ -87,11 +93,12 @@ New Catch Log Entry,Neuen Fangmengeneintrag anlegen
 New Member Entry,Neues Mitglied anlegen
 New Member Function Entry,Neue Mitgliedsfunktion anlegen
 Number of Fish, Anzahl der Fische
-OK,OK
 Old Parent,Übergeordnetes Objekt
+Organization,Verein
+Organizations,Vereine
 Organization Details,Vereinsdetails
 Organization List, Verein Listenansicht
-Organization Management,Vereinsverwaltung
+Organization Management,Vereine
 Organization Name,Vereinsname
 Organization Table,Vereinstabelle
 Organization Title,Vereinsname
@@ -120,11 +127,12 @@ Submit on Creation,Nach Erstellung absenden
 This Doctype does not contain latitude and longitude fields,Dieser Doctype enthält keine geographoschen Koordinaten (Felder latitude und longitude)
 This Doctype does not contain location fields,Dieser Doctype enthält keine Angaben zum Ort
 Track if your email has been opened by the recipient.|||<br>|||Note: If you're sending to multiple recipients; even if 1 recipient reads the email; it'll be considered "Opened",Lesebestätigung des Empfänger verfolgen.|||<br>|||Hinweis: Sollten sie an mehr als einen Empfänger versenden; wird die Email als "geöffnet" gesetzt; auch wenn nur einer der Empfänger die Email gelesen hat.
+Upcoming Birthday,Nächster Geburtstag
 Use HTML,HTML verwenden
 Water Bodies,Gewässer
 Water Body,Gewässer
 Water Body List,Gewässer Listenansicht
-Water Body Management,Gewässerverwaltung
+Water Body Management,Gewässer
 Water Body Organization Table,Vereinstabelle des Gewässers
 Weight in Kg,Gewicht in Kg
 Zipcode,PLZ

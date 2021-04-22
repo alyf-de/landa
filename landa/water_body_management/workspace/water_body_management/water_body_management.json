@@ -1,0 +1,85 @@
+{
+ "category": "Modules",
+ "charts": [],
+ "creation": "2021-04-19 18:02:17.002154",
+ "developer_mode_only": 0,
+ "disable_user_customization": 0,
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "extends_another_page": 0,
+ "hide_custom": 1,
+ "icon": "folder-open",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "label": "Water Body Management",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Water Body Management",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Water Body",
+   "link_to": "Water Body",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Fish Species",
+   "link_to": "Fish Species",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Fishing Area",
+   "link_to": "Fishing Area",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Catch Log Entries",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Catch Log Entry",
+   "link_to": "Catch Log Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2021-04-19 19:47:51.450557",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Water Body Management",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 1,
+ "shortcuts": [
+  {
+   "doc_view": "New",
+   "label": "New Catch Log Entry",
+   "link_to": "Catch Log Entry",
+   "type": "DocType"
+  }
+ ]
+}

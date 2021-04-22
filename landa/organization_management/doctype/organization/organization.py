@@ -33,6 +33,7 @@ class Organization(NestedSet):
 		else:
 			# Local groups
 			self.name = make_autoname(self.parent_organization + '-.##', 'Organization')
+
 	def onload(self):
 		load_address_and_contact(self)
 
