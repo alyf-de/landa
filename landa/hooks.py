@@ -20,6 +20,8 @@ fixtures = [
 	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
 ]
 
+treeviews = ["Organization"]
+
 # Includes in <head>
 # ------------------
 
