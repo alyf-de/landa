@@ -39,7 +39,7 @@ class Organization(NestedSet):
 			# Landesverband oder Regionalverband
 			pass
 		elif len(self.parent_organization) <= 4:
-			# Organizations 
+			# Vereine
 			self.create_customer()
 		else:
 			# Local groups
