@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 import frappe
+from frappe import _
 from frappe.utils.nestedset import NestedSet
 from frappe.desk.treeview import make_tree_args
 from frappe.model.naming import make_autoname
@@ -24,15 +25,21 @@ class Organization(NestedSet):
 		if self.name:
 			return
 
-		if self.is_top_level():
+		if self.is_level(0) or self.is_level(1):
 			# Landesverband oder Regionalverband
 			self.name = self.short_code
-		elif len(self.parent_organization) <= 4:
-			# Organizations, parent_organization ist nach short_code benannt
+
+		if not self.parent_organization:
+			frappe.throw(_("Please set a Parent Organization."))
+
+		elif self.is_level(2):
+			# Vereine
 			self.name = make_autoname(self.parent_organization + '-.###', 'Organization')
-		else:
-			# Local groups
+		elif self.is_level(3):
+			# Ortsgruppen
 			self.name = make_autoname(self.parent_organization + '-.##', 'Organization')
+		else:
+			frappe.throw(_("Cannot set Parent Organization to a local group."))
 
 	def after_insert(self):
 		if self.is_level(2):
@@ -50,11 +57,6 @@ class Organization(NestedSet):
 		frappe.utils.nestedset.update_nsm(self)
 		delete_contact_and_address(self.doctype, self.name)
 		self.revert_series()
-
-	def is_top_level(self):
-		"""Return true if I am the root organization or my parent is the root."""
-		parent_is_root = lambda: not frappe.db.get_value('Organization', self.parent_organization, 'parent_organization')
-		return not self.parent_organization or parent_is_root()
 
 	def revert_series(self):
 		"""Decrease the naming counter when the newest organization gets deleted."""
