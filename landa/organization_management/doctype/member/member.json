@@ -1,7 +1,6 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "prompt",
  "creation": "2021-02-18 17:47:15.286220",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -88,7 +87,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Organization",
-   "options": "Organization"
+   "options": "Organization",
+   "reqd": 1
   },
   {
    "fetch_from": "organization.organization_name",
@@ -216,7 +216,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-04-21 16:40:37.603248",
+ "modified": "2021-04-22 18:19:56.070170",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",

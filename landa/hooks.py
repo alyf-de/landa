@@ -13,10 +13,11 @@ app_license = "--"
 
 fixtures = [
 	"Organization",
-	"Address Template",
 	"Member Function Category",
 	"Fishing Area",
-	"Fish Species"
+	"Fish Species",
+	"Item Attribute",
+	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
 ]
 
 # Includes in <head>
@@ -99,13 +100,11 @@ fixtures = [
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Delivery Note": {
+		"on_submit": "landa.landa_sales.delivery_note.on_submit"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
