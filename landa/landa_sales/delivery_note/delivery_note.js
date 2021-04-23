@@ -1,7 +1,6 @@
 frappe.ui.form.on('Delivery Note',  {
     refresh: function (frm) {
         if (frm.doc.is_return) {
-            msgprint('Countdown inizialized');
             // some items cannot be returned
             frm.set_query("item_code", "items", function () {
                 return {
