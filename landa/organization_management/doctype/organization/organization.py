@@ -42,7 +42,7 @@ class Organization(NestedSet):
 			# Vereine
 			self.create_customer()
 		else:
-			# Local groups
+			# Local groups (Ortsgruppen)
 			pass
 
 	def onload(self):
