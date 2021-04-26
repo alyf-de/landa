@@ -74,7 +74,7 @@
    "creation": "2021-04-20 16:22:56.263500",
    "default": null,
    "depends_on": null,
-   "description": null,
+   "description": "Set to 0 to disable.",
    "docstatus": 0,
    "dt": "Item",
    "fetch_from": null,
