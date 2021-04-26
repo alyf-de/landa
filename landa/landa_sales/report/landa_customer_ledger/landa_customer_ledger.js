@@ -10,7 +10,8 @@ frappe.query_reports["LANDA Customer Ledger"] = {
 			"label": "Company",
 			"mandatory": 1,
 			"options": "Company",
-			"wildcard_filter": 0
+			"wildcard_filter": 0,
+			"default": frappe.defaults.get_user_default("Company"),
 		},
 		{
 			"fieldname": "customer",
