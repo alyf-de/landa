@@ -142,3 +142,5 @@ Zipcode,PLZ
 {0} from {1} to {2} in row #{3},{0} von {1} zu/bis {2} in Zeile #{3}
 {0} is not a field of doctype {1},{0} ist kein Feld in Doctype {1}
 {} wants to access the following details from your account,{} möchte Zugriff auf die folgenden Angaben von Ihrem Account
+LANDA Customer Ledger,Kostenübersicht
+Outstanding Amount,Ausstehender Betrag
