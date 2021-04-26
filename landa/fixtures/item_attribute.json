@@ -15,57 +15,6 @@
   "to_range": 2030.0
  },
  {
-  "attribute_name": "Erlaubnisscheinart",
-  "docstatus": 0,
-  "doctype": "Item Attribute",
-  "from_range": 0.0,
-  "increment": 0.0,
-  "item_attribute_values": [
-   {
-    "abbr": "ALLG",
-    "attribute_value": "Allgemein",
-    "parent": "Erlaubnisscheinart",
-    "parentfield": "item_attribute_values",
-    "parenttype": "Item Attribute"
-   },
-   {
-    "abbr": "SALMON",
-    "attribute_value": "Salmoniden",
-    "parent": "Erlaubnisscheinart",
-    "parentfield": "item_attribute_values",
-    "parenttype": "Item Attribute"
-   },
-   {
-    "abbr": "DE-BB",
-    "attribute_value": "Brandenburg",
-    "parent": "Erlaubnisscheinart",
-    "parentfield": "item_attribute_values",
-    "parenttype": "Item Attribute"
-   },
-   {
-    "abbr": "DE-ST",
-    "attribute_value": "Sachen-Anhalt",
-    "parent": "Erlaubnisscheinart",
-    "parentfield": "item_attribute_values",
-    "parenttype": "Item Attribute"
-   },
-   {
-    "abbr": "KOMBI",
-    "attribute_value": "Kombi",
-    "parent": "Erlaubnisscheinart",
-    "parentfield": "item_attribute_values",
-    "parenttype": "Item Attribute"
-   }
-  ],
-  "modified": "2021-04-20 17:43:58.759511",
-  "name": "Erlaubnisscheinart",
-  "numeric_values": 0,
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "to_range": 0.0
- },
- {
   "attribute_name": "Beitragsart",
   "docstatus": 0,
   "doctype": "Item Attribute",
