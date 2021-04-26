@@ -7,6 +7,9 @@ import frappe
 from frappe.model.document import Document
 
 class YearlyFishingPermitType(Document):
+	def before_insert(self):
+		self.short_code = self.short_code.upper()
+
 	def on_submit(self):
 		add_attribute_value(
 			"Erlaubnisscheinart",
