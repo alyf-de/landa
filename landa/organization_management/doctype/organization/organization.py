@@ -28,11 +28,8 @@ class Organization(NestedSet):
 		if self.is_level(0) or self.is_level(1):
 			# Landesverband oder Regionalverband
 			self.name = self.short_code
-			return
-
-		if not self.parent_organization:
+		elif not self.parent_organization:
 			frappe.throw(_("Please set a Parent Organization."))
-
 		elif self.is_level(2):
 			# Vereine
 			self.name = make_autoname(self.parent_organization + '-.###', 'Organization')
