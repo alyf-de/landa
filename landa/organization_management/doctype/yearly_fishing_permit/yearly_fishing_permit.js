@@ -2,7 +2,13 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Yearly Fishing Permit', {
-	// refresh: function(frm) {
-
-	// }
+	setup: function(frm) {
+		frm.set_query('type', function() {
+			return {
+				filters: {
+					'docstatus': ["!=","0"]
+				}
+			}
+		})
+	}
 });
