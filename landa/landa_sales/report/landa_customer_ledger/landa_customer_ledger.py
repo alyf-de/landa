@@ -7,6 +7,9 @@ import frappe
 class LandaCustomerLedger(object):
 
 	def __init__(self, filters):
+		if 'organization' in filters:
+			filters['customer'] = frappe.db.get_value('Organization', filters.get('organization'), 'customer')
+
 		self.filters = filters
 
 	def run(self):
