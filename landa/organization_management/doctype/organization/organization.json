@@ -27,9 +27,11 @@
   "lft",
   "rgt",
   "old_parent",
-  "parent_organization"
+  "parent_organization",
+  "customer"
  ],
- "fields": [{
+ "fields": [
+  {
    "fieldname": "organization_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -165,11 +167,18 @@
    "fieldtype": "HTML",
    "label": "Contact HTML",
    "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
- "links": [{
+ "links": [
+  {
    "link_doctype": "Member",
    "link_fieldname": "organization"
   },
@@ -182,25 +191,27 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-03-30 21:48:34.581153",
+ "modified": "2021-04-20 13:13:20.550507",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
  "nsm_parent_field": "parent_organization",
  "owner": "Administrator",
- "permissions": [{
-  "create": 1,
-  "delete": 1,
-  "email": 1,
-  "export": 1,
-  "import": 1,
-  "print": 1,
-  "read": 1,
-  "report": 1,
-  "role": "System Manager",
-  "share": 1,
-  "write": 1
- }],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
  "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
