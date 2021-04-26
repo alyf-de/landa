@@ -34,8 +34,13 @@
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2021-04-26 18:00:44.413188",
+ "links": [
+  {
+   "link_doctype": "Yearly Fishing Permit",
+   "link_fieldname": "type"
+  }
+ ],
+ "modified": "2021-04-26 19:20:33.908874",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Yearly Fishing Permit Type",
