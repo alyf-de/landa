@@ -107,6 +107,9 @@ doctype_js = {
 doc_events = {
 	"Delivery Note": {
 		"on_submit": "landa.landa_sales.delivery_note.on_submit"
+	},
+	"Item": {
+		"before_insert": "landa.landa_stock.item.item.before_insert"
 	}
 }
 
