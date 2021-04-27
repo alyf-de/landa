@@ -25,7 +25,7 @@ frappe.ui.form.on('Delivery Note',  {
         frm.trigger('prefill_delivery_items');
     },
     prefill_delivery_items: function (frm) {
-        if (typeof frm.doc.customer !== 'undefined' && typeof frm.doc.year_of_settlement !== 'undefined') {
+        if (frm.doc.customer != null && frm.doc.year_of_settlement != null) {
             frappe.call({
                 method: "landa.landa_sales.delivery_note.delivery_note.get_items",
                 args: {
@@ -33,7 +33,7 @@ frappe.ui.form.on('Delivery Note',  {
                 },
                 callback: function (r) {
                     frm.clear_table("items")
-                    frm.refresh_fields("items")
+                    frm.refresh_field("items")
                     for (const item of r.message) {
                         const row = frm.add_child("items")
                         row.item_code = item.item_code
@@ -45,7 +45,7 @@ frappe.ui.form.on('Delivery Note',  {
                         row.qty = item.qty
                         row.rate = item.rate
                     }
-                    frm.refresh_fields("items")
+                    frm.refresh_field("items");
                 }
             })
         }
