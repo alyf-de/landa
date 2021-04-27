@@ -13,6 +13,11 @@ frappe.ui.form.on('Delivery Note',  {
             });
         }
     },
+    before_save: function (frm) {
+        frm.doc.items = frm.doc.items.filter(function (value) {
+            return value.qty != 0;
+        });
+    },
     customer: function (frm) {
         frm.trigger('prefill_delivery_items');
     },
