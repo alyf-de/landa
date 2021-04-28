@@ -46,6 +46,7 @@ treeviews = ["Organization"]
 # include js in doctype views
 doctype_js = {
 	"Delivery Note": "landa_sales/delivery_note/delivery_note.js",
+	"Sales Order": "landa_sales/sales_order/sales_order.js",
 	"Item": "landa_stock/item/item.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
