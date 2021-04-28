@@ -18,32 +18,3 @@ def on_submit(delivery_note, event):
 		sales_invoice = make_sales_invoice(delivery_note.get('name'))
 		sales_invoice.save()
 		sales_invoice.submit()
-
-@frappe.whitelist()
-def get_items(year):
-	fields = ['item_code', 'item_name', 'cannot_be_returned', 'description']
-	items = frappe.get_list('Item',
-		filters={
-			'valid_to_year': ["<=", year],
-			'valid_from_year': [">=", year],
-			'has_variants': False
-		},
-		fields=fields,
-	)
-
-	items.extend(frappe.get_list('Item',
-		filters={
-			'valid_to_year': 0,
-			'valid_from_year': 0,
-			'has_variants': False
-		},
-		fields=fields,
-	))
-
-	for item in items:
-		item.qty = 0
-		item.uom = 'Nos'
-		item.uom_factor = 1
-		item.rate = 1 # TODO: Set correct rate.
-
-	return items
