@@ -71,7 +71,7 @@ class Member(Document):
 
 @frappe.whitelist()
 def belongs_to_parent_organization():
-	"""Return True if session user belongs to a parent organization (Landesverband) or no organization at all"""
+	"""Return True if session user belongs to a parent organization (Regionalverband) or no organization at all."""
 	member = frappe.get_list('Member', filters={'user': frappe.session.user})
 	
 	if member:

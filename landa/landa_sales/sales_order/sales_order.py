@@ -8,6 +8,7 @@ from frappe.utils.data import today
 
 @frappe.whitelist()
 def get_items(year):
+	"""Return all Items that are always valid of in the specified year."""
 	fields = ['item_code', 'item_name', 'cannot_be_returned', 'description']
 	items = frappe.get_list('Item',
 		filters={
