@@ -40,8 +40,6 @@ class Organization(NestedSet):
 			frappe.throw(_("Cannot set Parent Organization to a local group."))
 
 	def after_insert(self):
-		# NestedSet.on_update must be executed first for self.is_level() to work
-		NestedSet.on_update(self)
 		if self.is_level(2):
 			# Vereine
 			self.create_customer()
@@ -49,12 +47,16 @@ class Organization(NestedSet):
 	def onload(self):
 		load_address_and_contact(self)
 
+	def on_update(self):
+		super(Organization, self).on_update()
+
 	def on_trash(self):
 		delete_contact_and_address(self.doctype, self.name)
 		self.revert_series()
+
 		# NestedSet.on_trash should be the last command because it destroys the
 		# funtionality of NestedSet. Some methods will not work properly afterwards.
-		NestedSet.on_trash(self, allow_root_deletion=True)
+		super(Organization, self).on_trash(allow_root_deletion=True)
 
 	def revert_series(self):
 		"""Decrease the naming counter when the newest organization gets deleted."""
@@ -69,14 +71,10 @@ class Organization(NestedSet):
 
 	def is_level(self, n):
 		"""Return True if the number of ancestors equals n"""
-		if self.is_new():
-			# self.get_ancestors() is not available yet
-			if not self.parent_organization:
-				return n == 0
-			else:
-				return frappe.get_doc(self.doctype, self.parent_organization).is_level(n - 1)
-
-		return len(self.get_ancestors()) == n
+		if not self.parent_organization:
+			return n == 0
+		else:
+			return frappe.get_doc(self.doctype, self.parent_organization).is_level(n - 1)
 
 	def create_customer(self):
 		"""Create a Customer corresponding to this organization."""
