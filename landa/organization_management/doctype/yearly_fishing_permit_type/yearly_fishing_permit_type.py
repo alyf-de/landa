@@ -4,6 +4,8 @@
 
 from __future__ import unicode_literals
 import frappe
+from frappe import _
+from frappe.utils.data import get_link_to_form
 from frappe.model.document import Document
 
 class YearlyFishingPermitType(Document):
@@ -20,11 +22,21 @@ class YearlyFishingPermitType(Document):
 def add_attribute_value(name, attribute_value, abbr):
 	create_item_attribute(name)
 	item_attr = frappe.get_doc("Item Attribute", name)
-	item_attr.append('item_attribute_values', {
-		'attribute_value': attribute_value,
-		'abbr': abbr
-	})
-	item_attr.save()
+	item_attr_link = get_link_to_form(item_attr.doctype, item_attr.name)
+
+	existing_values = [row.attribute_value for row in item_attr.item_attribute_values]
+	existing_abbreviations = [row.abbr for row in item_attr.item_attribute_values]
+
+	if attribute_value in existing_values:
+		frappe.throw(_('Value "{}" exists already in Item Attribute {}.').format(attribute_value, item_attr_link))
+	elif abbr in existing_abbreviations:
+		frappe.throw(_('Abbreviation "{}" exists already in Item Attribute {}.').format(abbr, item_attr_link))
+	else:
+		item_attr.append('item_attribute_values', {
+			'attribute_value': attribute_value,
+			'abbr': abbr
+		})
+		item_attr.save()
 
 
 def create_item_attribute(name):
