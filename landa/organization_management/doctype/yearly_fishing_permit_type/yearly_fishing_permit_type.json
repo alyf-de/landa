@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "field:short_code",
+ "creation": "2021-04-26 17:50:19.649303",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "yearly_fishing_permit_type_name",
+  "short_code",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "yearly_fishing_permit_type_name",
+   "fieldtype": "Data",
+   "label": "Yearly Fishing Permit Type Name"
+  },
+  {
+   "fieldname": "short_code",
+   "fieldtype": "Data",
+   "label": "Short Code",
+   "unique": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Yearly Fishing Permit Type",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Yearly Fishing Permit",
+   "link_fieldname": "type"
+  }
+ ],
+ "modified": "2021-04-28 12:56:02.497951",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "Yearly Fishing Permit Type",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "set_user_permissions": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "yearly_fishing_permit_type_name",
+ "track_changes": 1
+}
