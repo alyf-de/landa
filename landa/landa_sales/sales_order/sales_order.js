@@ -29,15 +29,7 @@ frappe.ui.form.on('Sales Order',  {
                                 frm.refresh_field("items")
                                 for (const item of r.message) {
                                     const row = frm.add_child("items")
-                                    row.item_code = item.item_code
-                                    row.item_name = item.item_name
-                                    row.cannot_be_returned = item.cannot_be_returned
-                                    row.description = item.description
-                                    row.delivery_date = item.delivery_date
-                                    row.uom = item.uom
-                                    row.uom_factor = item.uom_factor
-                                    row.qty = item.qty
-                                    row.rate = item.rate
+                                    Object.assign(row, item);
                                 }
                                 frm.refresh_field("items");
                             }
