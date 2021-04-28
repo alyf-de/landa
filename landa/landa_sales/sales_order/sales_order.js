@@ -14,34 +14,41 @@ frappe.ui.form.on('Sales Order',  {
         frm.trigger('prefill_items');
     },
     prefill_items: function (frm) {
-        if (frm.doc.customer != null && frm.doc.year_of_settlement != null) {
-            frappe.call({
-                method: "landa.landa_sales.sales_order.sales_order.get_items",
-                args: {
-                    'year': frm.doc.year_of_settlement
-                },
-                callback: function (r) {
-                    frm.clear_table("items")
-                    frm.refresh_field("items")
-                    for (const item of r.message) {
-                        const row = frm.add_child("items")
-                        row.item_code = item.item_code
-                        row.item_name = item.item_name
-                        row.cannot_be_returned = item.cannot_be_returned
-                        row.description = item.description
-                        row.delivery_date = item.delivery_date
-                        row.uom = item.uom
-                        row.uom_factor = item.uom_factor
-                        row.qty = item.qty
-                        row.rate = item.rate
+        frappe.call({
+            method: "landa.organization_management.doctype.member.member.belongs_to_parent_organization",
+            callback: function(r) {
+                if (!r.message) {
+                    if (frm.doc.customer != null && frm.doc.year_of_settlement != null) {
+                        frappe.call({
+                            method: "landa.landa_sales.sales_order.sales_order.get_items",
+                            args: {
+                                'year': frm.doc.year_of_settlement
+                            },
+                            callback: function (r) {
+                                frm.clear_table("items")
+                                frm.refresh_field("items")
+                                for (const item of r.message) {
+                                    const row = frm.add_child("items")
+                                    row.item_code = item.item_code
+                                    row.item_name = item.item_name
+                                    row.cannot_be_returned = item.cannot_be_returned
+                                    row.description = item.description
+                                    row.delivery_date = item.delivery_date
+                                    row.uom = item.uom
+                                    row.uom_factor = item.uom_factor
+                                    row.qty = item.qty
+                                    row.rate = item.rate
+                                }
+                                frm.refresh_field("items");
+                            }
+                        })
                     }
-                    frm.refresh_field("items");
+                    else {
+                        frm.clear_table("items")
+                        frm.refresh_field("items")
+                    }
                 }
-            })
-        }
-        else {
-            frm.clear_table("items")
-            frm.refresh_field("items")
-        }
+            }
+        })
     }
 });

@@ -68,3 +68,10 @@ class Member(Document):
 		key = self.name[:-number_part_len] + '.' + '#' * number_part_len
 
 		revert_series_if_last(key, self.name)
+
+@frappe.whitelist()
+def belongs_to_parent_organization():
+	"""Return True if session user belongs to a parent organization (Landesverband)"""
+	# FIXME: Implement me
+
+	return False
