@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "creation": "2021-04-21 16:21:47.509071",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -111,22 +112,28 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-04-26 19:14:11.068391",
+ "modified": "2021-04-28 12:59:01.669133",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Yearly Fishing Permit",
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
    "export": 1,
+   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "select": 1,
+   "set_user_permissions": 1,
    "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],
