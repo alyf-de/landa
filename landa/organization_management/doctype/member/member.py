@@ -58,6 +58,14 @@ class Member(Document):
 				allow='Organization',
 				for_value=self.organization
 			)).insert()
+
+			frappe.get_doc(dict(
+				doctype='User Permission',
+				user=self.user,
+				allow='Customer',
+				for_value=frappe.get_value('Organization', self.organization, 'customer')
+			)).insert()
+
 		except frappe.DuplicateEntryError:
 			frappe.clear_messages()
 
