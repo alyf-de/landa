@@ -125,10 +125,19 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Yearly Fishing Permits Issued",
+   "link_to": "Yearly Fishing Permits Issued",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2021-04-28 13:03:21.903725",
- "modified_by": "linus@alyf.de",
+ "modified": "2021-04-28 16:40:38.523975",
+ "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
  "owner": "Administrator",
