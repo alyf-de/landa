@@ -25,10 +25,10 @@ frappe.ui.form.on('Sales Order',  {
                                 'year': frm.doc.year_of_settlement
                             },
                             callback: function (r) {
-                                frm.clear_table("items")
-                                frm.refresh_field("items")
+                                frm.clear_table("items");
+                                frm.refresh_field("items");
                                 for (const item of r.message) {
-                                    const row = frm.add_child("items")
+                                    const row = frm.add_child("items");
                                     Object.assign(row, item);
                                 }
                                 frm.refresh_field("items");
@@ -36,11 +36,11 @@ frappe.ui.form.on('Sales Order',  {
                         })
                     }
                     else {
-                        frm.clear_table("items")
-                        frm.refresh_field("items")
+                        frm.clear_table("items");
+                        frm.refresh_field("items");
                     }
                 }
             }
-        })
+        });
     }
 });
