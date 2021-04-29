@@ -45,7 +45,7 @@ treeviews = ["Organization"]
 
 # include js in doctype views
 doctype_js = {
-	"Delivery Note": "landa_sales/delivery_note/delivery_note.js",
+	"Delivery Note": "landa_stock/delivery_note/delivery_note.js",
 	"Sales Order": "landa_sales/sales_order/sales_order.js",
 	"Item": "landa_stock/item/item.js"
 }
@@ -108,8 +108,8 @@ doctype_js = {
 
 doc_events = {
 	"Delivery Note": {
-		"on_submit": "landa.landa_sales.delivery_note.delivery_note.on_submit",
-		"validate": "landa.landa_sales.delivery_note.delivery_note.validate"
+		"on_submit": "landa.landa_stock.delivery_note.delivery_note.on_submit",
+		"validate": "landa.landa_stock.delivery_note.delivery_note.validate"
 	},
 	"Item": {
 		"before_insert": "landa.landa_stock.item.item.before_insert"
