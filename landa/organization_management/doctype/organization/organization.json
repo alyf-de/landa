@@ -171,6 +171,7 @@
   {
    "fieldname": "customer",
    "fieldtype": "Link",
+   "ignore_user_permissions": 1,
    "label": "Customer",
    "options": "Customer"
   }
@@ -191,7 +192,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-04-20 13:13:20.550507",
+ "modified": "2021-05-03 15:27:11.358879",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
