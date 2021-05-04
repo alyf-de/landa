@@ -101,3 +101,12 @@ def belongs_to_parent_organization():
 		return True
 
 	return False
+
+
+def get_user(member_name):
+	"""Return the user object that belongs to this member."""
+	user_name = frappe.get_value('Member', member_name, 'user')
+	if user_name:
+		return frappe.get_doc('User', user_name)
+	else:
+		return None
