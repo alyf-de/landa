@@ -62,7 +62,8 @@
    "fieldname": "member_first_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Member First Name"
+   "label": "Member First Name",
+   "read_only": 1
   },
   {
    "fetch_from": "member.last_name",
@@ -70,7 +71,8 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Member Last Name"
+   "label": "Member Last Name",
+   "read_only": 1
   },
   {
    "allow_in_quick_entry": 1,
@@ -79,7 +81,8 @@
    "fieldtype": "Check",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Is Active"
+   "label": "Is Active",
+   "read_only": 1
   },
   {
    "allow_in_quick_entry": 1,
@@ -100,7 +103,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-26 12:45:43.772158",
+ "modified": "2021-05-04 18:09:24.289051",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function",
