@@ -31,3 +31,12 @@ class MemberFunction(Document):
 		else:
 			self.is_active = True
 
+
+def disable_expired_member_functions():
+	member_functions = frappe.get_all('Member Function', {
+		'end_date': ('<', today())
+	})
+
+	for member_function in member_functions:
+		doc = frappe.get_doc("Member Function", member_function.name)
+		doc.save()
