@@ -7,8 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "title",
-  "belongs_to_organization",
-  "belongs_to_parent_organization",
+  "access_level",
   "section_break_4",
   "roles_html",
   "roles"
@@ -17,25 +16,9 @@
   {
    "fieldname": "title",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Title",
    "reqd": 1
-  },
-  {
-   "default": "1",
-   "fieldname": "belongs_to_organization",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Belongs to Organization"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.belongs_to_organization!=1",
-   "fieldname": "belongs_to_parent_organization",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Belongs to Parent Organization"
   },
   {
    "fieldname": "section_break_4",
@@ -55,6 +38,12 @@
    "label": "Roles",
    "options": "Has Role",
    "read_only": 1
+  },
+  {
+   "fieldname": "access_level",
+   "fieldtype": "Select",
+   "label": "Access Level",
+   "options": "\nState\nRegion\nCity"
   }
  ],
  "links": [
@@ -63,7 +52,7 @@
    "link_fieldname": "member_function_category"
   }
  ],
- "modified": "2021-05-04 13:49:10.389917",
+ "modified": "2021-05-10 17:09:59.842828",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function Category",
