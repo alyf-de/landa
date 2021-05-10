@@ -32,7 +32,7 @@ class MemberFunctionCategory(Document):
 
 	def get_member_names(self):
 		"""Return a list of members to whom this Member Function Category applies."""
-		member_functions = frappe.get_all('Member Function',
+		member_names = frappe.get_all('Member Function',
 			filters={
 				'member_function_category': self.name
 			},
@@ -40,10 +40,10 @@ class MemberFunctionCategory(Document):
 				['end_date', 'is', 'not set'],
 				['end_date', '>=', today()]
 			],
-			fields=['member']
+			pluck='member'
 		)
 
-		return list(set(member_function.member for member_function in member_functions))
+		return list(set(member_names))
 
 	def get_roles(self):
 		return [role.role for role in self.roles]
@@ -87,21 +87,18 @@ def remove_roles(member_name: str, roles: list, disabled_member_function: str):
 
 	Keeps the roles from all active Member Functions into account, except from `disabled_member_function`.
 	"""
-	member_functions = frappe.get_all('Member Function', {
+	active_categories = frappe.get_all('Member Function', {
 		'end_date': ('>=', today()),
 		'member': member_name,
 		'name': ('!=', disabled_member_function)
-	}, ['member_function_category'])
+	}, pluck='member_function_category')
 
-	active_categories = [member_function.member_function_category for member_function in member_functions]
-
-	has_role = frappe.get_all('Has Role', {
+	active_roles = frappe.get_all('Has Role', {
 		'parenttype': 'Member Function Category',
 		'parent': ('in', active_categories)
-	}, ['role'])
+	}, pluck='role')
 
-	active_roles = set(row.role for row in has_role)
-	roles_to_remove = list(set(roles).difference(active_roles))
+	roles_to_remove = list(set(roles).difference(set(active_roles)))
 	user = get_user(member_name)
 
 	if roles_to_remove and user:
@@ -120,21 +117,19 @@ def get_organization(member_name: str, access_level: AccessLevel):
 
 def get_highest_access_level(member_name: str):
 	"""Return the highest AccessLevel needed for member's functions."""
-	member_functions = frappe.get_all('Member Function', {
+	active_categories = frappe.get_all('Member Function', {
 		'end_date': ('>=', today()),
 		'member': member_name
-	}, ['member_function_category'])
-
-	active_categories = [member_function.member_function_category for member_function in member_functions]
+	}, pluck='member_function_category')
 
 	access_levels = frappe.get_all('Member Function Category', {
 		'name': ('in', active_categories),
 		'access_level': ('is', 'set')
-	}, ['access_level'])
+	}, pluck='access_level')
 
 	min_level = AccessLevel.get_lowest()
 	if access_levels:
-		min_level = min((AccessLevel[level_name.upper()] for level_name in access_levels), key=lambda level: level.value)
+		min_level = min((AccessLevel[level.upper()] for level in access_levels), key=lambda level: level.value)
 
 	return min_level
 
