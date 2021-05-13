@@ -112,6 +112,9 @@ def get_organization(member_name: str, access_level: AccessLevel):
 	ancestors = organization.get_ancestors()
 	ancestors.reverse() # root as the first element
 
+	if access_level.value >= len(ancestors):
+		return organization_name
+
 	return ancestors[access_level.value]
 
 
