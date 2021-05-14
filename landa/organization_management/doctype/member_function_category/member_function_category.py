@@ -7,6 +7,7 @@ import frappe
 from frappe.model.document import Document
 from frappe.utils.data import today
 from landa.organization_management.doctype.member.member import get_user
+from landa.organization_management.doctype.member_function.member_function import get_active_member_functions
 
 class MemberFunctionCategory(Document):
 
@@ -18,14 +19,10 @@ class MemberFunctionCategory(Document):
 
 	def get_member_names(self):
 		"""Return a list of members to whom this Member Function Category applies."""
-		member_names = frappe.get_all('Member Function',
+		member_names = get_active_member_functions(
 			filters={
 				'member_function_category': self.name
 			},
-			or_filters=[
-				['end_date', 'is', 'not set'],
-				['end_date', '>=', today()]
-			],
 			pluck='member'
 		)
 
@@ -39,8 +36,7 @@ class MemberFunctionCategory(Document):
 		add_roles([member_name], self.get_roles())
 
 	def remove_roles(self, member_name, disabled_member_function):
-		"""Disable the roles of this Member Function Category for a specific Member.
-		"""
+		"""Disable the roles of this Member Function Category for a specific Member."""
 		remove_roles(member_name, self.get_roles(), disabled_member_function)
 
 
@@ -57,18 +53,23 @@ def remove_roles(member_name, roles, disabled_member_function):
 	
 	Keeps the roles from all active Member Functions into account, except from `disabled_member_function`.
 	"""
-	active_categories = frappe.get_all('Member Function', {
-		'end_date': ('>=', today()),
-		'member': member_name,
-		'name': ('!=', disabled_member_function)
-	}, pluck='member_function_category')
+	active_categories = get_active_member_functions(
+		filters={
+			'member': member_name,
+			'name': ('!=', disabled_member_function)
+		},
+		pluck='member_function_category'
+	)
 
 	active_roles = frappe.get_all('Has Role', {
 		'parenttype': 'Member Function Category',
 		'parent': ('in', active_categories)
 	}, pluck='role')
 
-	roles_to_remove = list(set(roles).difference(set(active_roles)))
+	active_categories = set(active_categories)
+	active_roles = set(active_roles)
+
+	roles_to_remove = list(roles - active_roles)
 	user = get_user(member_name)
 
 	if roles_to_remove and user:
