@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 
 import frappe
 
+from frappe import _
 from frappe.utils.data import today
 from frappe.utils.data import date_diff
 from frappe.model.document import Document
@@ -14,6 +15,11 @@ class MemberFunction(Document):
 
 	def before_validate(self):
 		self.update_is_active()
+	
+	def validate(self):
+		if self.start_date and self.end_date:
+			if date_diff(self.start_date, self.end_date) > 0:
+				frappe.throw(_('End Date cannot be before Start Date.'))
 
 	def on_update(self):
 		self.update_user_roles()
