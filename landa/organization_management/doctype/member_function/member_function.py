@@ -33,13 +33,16 @@ class MemberFunction(Document):
 
 
 def disable_expired_member_functions():
-	member_functions = frappe.get_all('Member Function', {
-		'end_date': ('<', today())
-	})
-
-	for member_function in member_functions:
+	for member_function in get_expired_member_functions():
 		doc = frappe.get_doc("Member Function", member_function.name)
 		doc.save()
+
+
+def get_expired_member_functions():
+	return frappe.get_all('Member Function', filters=[
+		['end_date', '<', today()],
+		['end_date', 'is', 'set'],
+	])
 
 
 def get_active_member_functions(filters: dict=None, pluck: str=None):
