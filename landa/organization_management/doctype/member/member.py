@@ -3,6 +3,7 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
+
 import frappe
 from frappe import _
 from frappe.model.document import Document
@@ -11,6 +12,7 @@ from frappe.contacts.address_and_contact import delete_contact_and_address
 from frappe.model.naming import make_autoname
 from frappe.model.naming import revert_series_if_last
 
+from landa.organization_management.doctype.member_function.member_function import apply_active_member_functions
 
 class Member(Document):
 	
@@ -35,8 +37,9 @@ class Member(Document):
 			frappe.throw(_('Cannot be a member of organization {} because it is a group.').format(self.organization))
 
 	def on_update(self):
-		if self.user and self.create_user_permission:
+		if self.user and self.has_value_changed('user'):
 			self.create_user_permissions()
+			apply_active_member_functions({'member': self.name})
 
 	def on_trash(self):
 		delete_contact_and_address(self.doctype, self.name)
@@ -101,3 +104,12 @@ def belongs_to_parent_organization():
 		return True
 
 	return False
+
+
+def get_user(member_name):
+	"""Return the user object that belongs to this member."""
+	user_name = frappe.get_value('Member', member_name, 'user')
+	if user_name:
+		return frappe.get_doc('User', user_name)
+	else:
+		return None

@@ -30,8 +30,7 @@
   "permit_is_valid_for_life",
   "permit_expiration_date",
   "section_break_22",
-  "user",
-  "create_user_permission"
+  "user"
  ],
  "fields": [
   {
@@ -193,12 +192,6 @@
    "in_list_view": 1,
    "label": "User",
    "options": "User"
-  },
-  {
-   "default": "0",
-   "fieldname": "create_user_permission",
-   "fieldtype": "Check",
-   "label": "Create User Permission"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -216,7 +209,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-04-22 18:19:56.070170",
+ "modified": "2021-05-14 16:23:29.368266",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",

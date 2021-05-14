@@ -14,7 +14,7 @@
   "organization_name",
   "start_date",
   "end_date",
-  "is_active"
+  "status"
  ],
  "fields": [
   {
@@ -29,14 +29,14 @@
    "fieldtype": "Link",
    "label": "Member",
    "options": "Member",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "allow_in_quick_entry": 1,
    "default": "Today",
    "fieldname": "start_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Start Date"
@@ -45,7 +45,6 @@
    "allow_in_quick_entry": 1,
    "fieldname": "end_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "End Date"
   },
@@ -62,7 +61,8 @@
    "fieldname": "member_first_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Member First Name"
+   "label": "Member First Name",
+   "read_only": 1
   },
   {
    "fetch_from": "member.last_name",
@@ -70,16 +70,8 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Member Last Name"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "default": "0",
-   "fieldname": "is_active",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Is Active"
+   "label": "Member Last Name",
+   "read_only": 1
   },
   {
    "allow_in_quick_entry": 1,
@@ -96,11 +88,20 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Organization Name"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Planned\nActive\nInactive",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-03-26 12:45:43.772158",
+ "modified": "2021-05-14 16:10:06.260396",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function",
