@@ -103,6 +103,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Member Function Category",
+   "link_to": "Member Function Category",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Yearly Fishing Permits",
    "link_type": "DocType",
    "onboard": 0,
@@ -136,7 +145,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-04-28 16:40:38.523975",
+ "modified": "2021-05-14 15:02:53.275822",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
