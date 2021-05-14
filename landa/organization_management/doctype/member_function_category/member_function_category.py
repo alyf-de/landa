@@ -30,11 +30,19 @@ class MemberFunctionCategory(Document):
 
 	def get_removed_roles(self):
 		doc_before_save = self.get_doc_before_save()
-		return list(set(role.role for role in doc_before_save.roles) - set(role.role for role in self.roles))
+
+		if doc_before_save:
+			return list(set(role.role for role in doc_before_save.roles) - set(role.role for role in self.roles))
+		else:
+			return []
 
 	def get_new_roles(self):
 		doc_before_save = self.get_doc_before_save()
-		return list(set(role.role for role in self.roles) - set(role.role for role in doc_before_save.roles))
+
+		if doc_before_save:
+			return list(set(role.role for role in self.roles) - set(role.role for role in doc_before_save.roles))
+		else:
+			return self.get_roles()
 
 	def get_roles(self):
 		return [role.role for role in self.roles]
