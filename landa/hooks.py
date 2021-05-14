@@ -18,6 +18,7 @@ fixtures = [
 	"Fish Species",
 	"Item Attribute",
 	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
+	{"dt": "Variant Field", "filters": [["field_name", "=", "description"]]},
 ]
 
 treeviews = ["Organization"]
