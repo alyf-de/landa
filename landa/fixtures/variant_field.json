@@ -1,0 +1,12 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Variant Field",
+  "field_name": "description",
+  "modified": "2021-05-14 14:55:24.318520",
+  "name": "e8f3ca3457",
+  "parent": "Item Variant Settings",
+  "parentfield": "fields",
+  "parenttype": "Item Variant Settings"
+ }
+]
