@@ -47,6 +47,12 @@ def disable_expired_member_functions():
 		doc.save()
 
 
+def apply_active_member_functions(filters):
+	for member_function in get_active_member_functions(filters=filters, pluck='name'):
+		doc = frappe.get_doc("Member Function", member_function)
+		doc.save()
+
+
 def get_expired_member_functions():
 	return frappe.get_all('Member Function', filters=[
 		['end_date', '<', today()],
