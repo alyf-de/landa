@@ -8,13 +8,17 @@
  "field_order": [
   "title",
   "belongs_to_organization",
-  "belongs_to_parent_organization"
+  "belongs_to_parent_organization",
+  "section_break_4",
+  "roles_html",
+  "roles"
  ],
  "fields": [
   {
    "fieldname": "title",
    "fieldtype": "Data",
-   "label": "Title"
+   "label": "Title",
+   "reqd": 1
   },
   {
    "default": "1",
@@ -32,16 +36,34 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Belongs to Parent Organization"
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break",
+   "label": "Roles"
+  },
+  {
+   "fieldname": "roles_html",
+   "fieldtype": "HTML",
+   "label": "Roles HTML",
+   "read_only": 1
+  },
+  {
+   "fieldname": "roles",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Roles",
+   "options": "Has Role",
+   "read_only": 1
   }
  ],
- "index_web_pages_for_search": 1,
  "links": [
   {
    "link_doctype": "Member Function",
    "link_fieldname": "member_function_category"
   }
  ],
- "modified": "2021-03-25 15:55:44.204317",
+ "modified": "2021-05-04 13:49:10.389917",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function Category",
@@ -56,6 +78,7 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "select": 1,
    "share": 1,
    "write": 1
   }

@@ -119,14 +119,14 @@ doc_events = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
+scheduler_events = {
 # 	"all": [
 # 		"landa.tasks.all"
 # 	],
-# 	"daily": [
-# 		"landa.tasks.daily"
-# 	],
-# 	"hourly": [
+	"daily": [
+		"landa.tasks.daily"
+	]
+# 	, "hourly": [
 # 		"landa.tasks.hourly"
 # 	],
 # 	"weekly": [
@@ -135,7 +135,7 @@ doc_events = {
 # 	"monthly": [
 # 		"landa.tasks.monthly"
 # 	]
-# }
+}
 
 # Testing
 # -------
