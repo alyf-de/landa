@@ -79,7 +79,7 @@ class Organization(NestedSet):
 	def create_customer(self):
 		"""Create a Customer corresponding to this organization."""
 		customer = frappe.new_doc("Customer")
-		customer.customer_name = self.organization_name
+		customer.customer_name = self.name
 		customer.insert()
 
 		self.customer = customer.name
