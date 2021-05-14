@@ -18,6 +18,10 @@ class MemberFunction(Document):
 	def on_update(self):
 		self.update_user_roles()
 
+	def on_trash(self):
+		self.status = 'Inactive'
+		self.update_user_roles()
+
 	def update_user_roles(self):
 		member_function_category = frappe.get_doc("Member Function Category", self.member_function_category)
 		if self.status == 'Active':
