@@ -14,7 +14,7 @@
   "organization_name",
   "start_date",
   "end_date",
-  "is_active"
+  "status"
  ],
  "fields": [
   {
@@ -36,7 +36,6 @@
    "default": "Today",
    "fieldname": "start_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Start Date"
@@ -45,7 +44,6 @@
    "allow_in_quick_entry": 1,
    "fieldname": "end_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "End Date"
   },
@@ -76,16 +74,6 @@
   },
   {
    "allow_in_quick_entry": 1,
-   "default": "0",
-   "fieldname": "is_active",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Is Active",
-   "read_only": 1
-  },
-  {
-   "allow_in_quick_entry": 1,
    "fetch_from": "member.organization",
    "fieldname": "organization",
    "fieldtype": "Link",
@@ -99,11 +87,20 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Organization Name"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Planned\nActive\nInactive",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-04 18:09:24.289051",
+ "modified": "2021-05-14 16:04:28.074545",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function",

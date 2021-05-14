@@ -20,16 +20,21 @@ class MemberFunction(Document):
 
 	def update_user_roles(self):
 		member_function_category = frappe.get_doc("Member Function Category", self.member_function_category)
-		if self.is_active:
+		if self.status == 'Active':
 			member_function_category.add_roles(self.member)
 		else:
 			member_function_category.remove_roles(self.member, disabled_member_function=self.name)
 
 	def update_is_active(self):
-		if self.end_date:
-			self.is_active = date_diff(today(), self.end_date) < 0
+		in_past = lambda date: date_diff(today(), date) > 0
+		in_future = lambda date: date_diff(today(), date) < 0
+
+		if self.start_date and in_future(self.start_date):
+			self.status = 'Planned'
+		elif self.end_date and in_past(self.end_date):
+			self.status = 'Inactive'
 		else:
-			self.is_active = True
+			self.status = 'Active'
 
 
 def disable_expired_member_functions():

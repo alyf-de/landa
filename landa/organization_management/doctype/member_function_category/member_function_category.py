@@ -66,8 +66,8 @@ def remove_roles(member_name, roles, disabled_member_function):
 		'parent': ('in', active_categories)
 	}, pluck='role')
 
-	active_categories = set(active_categories)
 	active_roles = set(active_roles)
+	roles = set(roles)
 
 	roles_to_remove = list(roles - active_roles)
 	user = get_user(member_name)
