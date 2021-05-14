@@ -79,8 +79,12 @@ class Organization(NestedSet):
 	def create_customer(self):
 		"""Create a Customer corresponding to this organization."""
 		customer = frappe.new_doc("Customer")
+		# Name (ID) of Customer is determined by customer_name on insert ...
 		customer.customer_name = self.name
 		customer.insert()
+		# ... so we can set the correct value only after insertion.
+		customer.customer_name = self.organization_name
+		customer.save()
 
 		self.customer = customer.name
 		self.save()
