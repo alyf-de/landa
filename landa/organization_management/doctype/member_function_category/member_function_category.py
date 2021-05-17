@@ -148,9 +148,11 @@ def get_roles_to_remove(member_name, roles, disabled_member_function=None):
 	return list(roles - active_roles)
 
 
-def get_organization_at_level(member_name, access_level):
+def get_organization_at_level(member_name, access_level, organization_name=None):
 	"""Get the member's organization at a given level in the tree."""
-	organization_name = frappe.get_value('Member', member_name, 'organization')
+	if not organization_name:
+		organization_name = frappe.get_value('Member', member_name, 'organization')
+
 	organization = frappe.get_doc('Organization', organization_name)
 	ancestors = organization.get_ancestors()
 	ancestors.reverse() # root as the first element

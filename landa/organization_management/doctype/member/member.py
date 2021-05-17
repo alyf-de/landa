@@ -15,6 +15,7 @@ from frappe.permissions import add_user_permission
 
 from landa.organization_management.doctype.member_function.member_function import apply_active_member_functions
 from landa.organization_management.doctype.member_function_category.member_function_category import get_highest_access_level
+from landa.organization_management.doctype.member_function_category.member_function_category import get_organization_at_level
 
 class Member(Document):
 	
@@ -49,8 +50,11 @@ class Member(Document):
 
 	def create_user_permissions(self):
 		"""Restrict Member to itself and it's Organization."""
+		# Members always have access at level 2 (Local Organization)
+		organization = get_organization_at_level(self.name, 2, self.organization)
+
 		add_user_permission('Member', self.name, self.user)
-		add_user_permission('Organization', self.organization, self.user)
+		add_user_permission('Organization', organization, self.user)
 
 	def revert_series(self):
 		"""Decrease the naming counter when the newest member gets deleted."""
