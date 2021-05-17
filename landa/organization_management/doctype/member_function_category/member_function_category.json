@@ -63,7 +63,7 @@
    "link_fieldname": "member_function_category"
   }
  ],
- "modified": "2021-05-04 13:49:10.389917",
+ "modified": "2021-05-17 18:29:01.225312",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function Category",
@@ -81,6 +81,26 @@
    "select": 1,
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "LANDA Regional Organization Management",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee"
+  },
+  {
+   "read": 1,
+   "role": "LANDA Regional Water Body Management"
+  },
+  {
+   "read": 1,
+   "role": "LANDA Local Organization Management"
   }
  ],
  "quick_entry": 1,

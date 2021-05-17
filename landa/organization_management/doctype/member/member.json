@@ -194,7 +194,6 @@
    "options": "User"
   }
  ],
- "index_web_pages_for_search": 1,
  "links": [
   {
    "link_doctype": "Award",
@@ -209,7 +208,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-05-14 16:23:29.368266",
+ "modified": "2021-05-17 18:19:52.662533",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
@@ -227,6 +226,42 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "role": "LANDA Member",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "LANDA State Organization Employee",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "import": 1,
+   "read": 1,
+   "role": "LANDA Regional Organization Management",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "LANDA Local Organization Management",
+   "write": 1
+  },
+  {
+   "role": "LANDA Catch Log User",
+   "select": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Magazine Manager"
   }
  ],
  "quick_entry": 1,
