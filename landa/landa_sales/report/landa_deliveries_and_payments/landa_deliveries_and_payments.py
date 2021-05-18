@@ -86,7 +86,6 @@ class LandaDeliveriesAndPayments(object):
 				"fieldname": "voucher_type",
 				"fieldtype": "Data",
 				"label": "Voucher Type",
-				"options": "DocType",
 				"width": 200
 			},
 			{
