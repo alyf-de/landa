@@ -1,3 +1,5 @@
+import frappe
+
 
 def before_insert(item, event):
 	if not frappe.flags.in_migrate:
