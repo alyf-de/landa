@@ -31,6 +31,7 @@ class LANDAMemberCount(object):
 	def get_data(self):
 		sql_query = """
 			SELECT dn.customer,
+				dn.customer_name,
 				iva.attribute_value,
 				dn.year_of_settlement,
 				SUM(dni.qty)
@@ -60,9 +61,16 @@ class LANDAMemberCount(object):
 		return [
 			{
 				"fieldname": "organization",
-				"fieldtype": "Data",
+				"fieldtype": "Link",
 				"label": "Organization",
-				"width": 300
+				"options": "Organization",
+				"width": 150
+			},
+			{
+				"fieldname": "customer_name",
+				"fieldtype": "Data",
+				"label": "Organization Name",
+				"width": 250
 			},
 			{
 				"fieldname": "beitragsart",
@@ -74,7 +82,7 @@ class LANDAMemberCount(object):
 				"fieldname": "year_of_settlement",
 				"fieldtype": "Data",
 				"label": "Year Of Settlement",
-				"width": 200
+				"width": 150
 			},
 			{
 				"fieldname": "count",
