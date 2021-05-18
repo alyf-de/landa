@@ -21,7 +21,7 @@ def get_items(year):
 	)
 
 	for item in items:
-		item.delivery_date = get_year_ending(today())
+		item.delivery_date = get_year_ending(year)
 		item.qty = 0
 		item.uom_factor = 1
 		item.rate = 1 # TODO: Set correct rate.
