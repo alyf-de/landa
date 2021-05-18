@@ -1,7 +1,8 @@
 
 def before_insert(item, event):
-	set_year_of_validity(item)
-	set_tax_template(item)
+	if not frappe.flags.in_migrate:
+		set_year_of_validity(item)
+		set_tax_template(item)
 
 
 def set_year_of_validity(item):
