@@ -26,22 +26,25 @@ class Organization(NestedSet):
 			return
 
 		if self.is_level(0) or self.is_level(1):
-			# Landesverband oder Regionalverband
+			# State and Regional Organizations
 			self.name = self.short_code
 		elif not self.parent_organization:
 			frappe.throw(_("Please set a Parent Organization."))
 		elif self.is_level(2):
-			# Vereine
+			# Local Organizations
 			self.name = make_autoname(self.parent_organization + '-.###', 'Organization')
 		elif self.is_level(3):
-			# Ortsgruppen
+			# Chapters
 			self.name = make_autoname(self.parent_organization + '-.##', 'Organization')
 		else:
 			frappe.throw(_("Cannot set Parent Organization to a local group."))
 
 	def after_insert(self):
-		if self.is_level(2):
-			# Vereine
+		if self.is_level(1):
+			# Regional Organizations
+			self.create_company()
+		elif self.is_level(2):
+			# Local Organizations
 			self.create_customer()
 
 	def onload(self):
@@ -88,6 +91,19 @@ class Organization(NestedSet):
 
 		self.customer = customer.name
 		self.save()
+
+	def create_company(self):
+		if frappe.db.exists('Company', self.organization_name):
+			return
+
+		company = frappe.new_doc('Company')
+		company.company_name = self.organization_name
+		company.abbr = self.name
+		company.default_currency = 'EUR'
+		company.country = 'Germany'
+		company.create_chart_of_accounts_based_on = 'Standard Template'
+		company.chart_of_accounts = 'Standard with Numbers'
+		company.save()
 
 
 @frappe.whitelist()
