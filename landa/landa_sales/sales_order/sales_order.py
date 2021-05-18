@@ -4,7 +4,7 @@
 
 import frappe
 from frappe import _
-from frappe.utils.data import today, get_year_ending
+from frappe.utils.data import get_year_ending
 
 @frappe.whitelist()
 def get_items(year):
