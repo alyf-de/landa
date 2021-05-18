@@ -39,7 +39,7 @@ class LANDAMemberCount(object):
 			JOIN `tabItem Variant Attribute` iva ON dni.item_code = iva.parent
 			JOIN `tabDelivery Note` dn ON dni.parent = dn.name
 			WHERE iva.attribute = "Beitragsart"
-				AND dn.docstatus = 2
+				AND dn.docstatus = 1
 				AND dn.year_of_settlement LIKE %s
 				AND iva.attribute_value LIKE %s
 				AND dn.customer LIKE %s
