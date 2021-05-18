@@ -27,8 +27,7 @@
   "lft",
   "rgt",
   "old_parent",
-  "parent_organization",
-  "customer"
+  "parent_organization"
  ],
  "fields": [
   {
@@ -167,13 +166,6 @@
    "fieldtype": "HTML",
    "label": "Contact HTML",
    "read_only": 1
-  },
-  {
-   "fieldname": "customer",
-   "fieldtype": "Link",
-   "ignore_user_permissions": 1,
-   "label": "Customer",
-   "options": "Customer"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -192,7 +184,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-05-03 15:27:11.358879",
+ "modified": "2021-05-18 13:22:37.383155",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",

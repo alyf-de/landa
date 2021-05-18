@@ -5,21 +5,6 @@
 frappe.query_reports["LANDA Deliveries and Payments"] = {
 	"filters": [
 		{
-			"fieldname": "parent_organization",
-			"fieldtype": "Link",
-			"label": "Parent Organization",
-			"mandatory": 1,
-			"options": "Organization",
-			"wildcard_filter": 0,
-			"get_query": function() {
-				return {
-					filters: {
-						parent_organization: 'LV'
-					}
-				}
-			}
-		},
-		{
 			"fieldname": "organization",
 			"fieldtype": "Link",
 			"label": "Organization",
@@ -29,8 +14,7 @@ frappe.query_reports["LANDA Deliveries and Payments"] = {
 			"get_query": function() {
 				return {
 					filters: [
-						["Organization", "parent_organization", "=", frappe.query_report.get_filter_value('parent_organization')],
-						["Organization", "customer", "is", "set"],
+						["parent_organization", "in", ["AVS", "AVL", "AVE"]]
 					]
 				}
 			}
