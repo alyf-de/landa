@@ -89,16 +89,9 @@
    "write": 1
   },
   {
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "import": 1,
    "permlevel": 1,
-   "print": 1,
    "read": 1,
-   "report": 1,
    "role": "System Manager",
-   "share": 1,
    "write": 1
   },
   {
@@ -110,10 +103,8 @@
    "write": 1
   },
   {
-   "delete": 1,
    "permlevel": 1,
    "read": 1,
-   "report": 1,
    "role": "LANDA State Organization Employee",
    "write": 1
   },
@@ -126,10 +117,8 @@
    "write": 1
   },
   {
-   "delete": 1,
    "permlevel": 1,
    "read": 1,
-   "report": 1,
    "role": "LANDA Regional Water Body Management",
    "write": 1
   },
@@ -172,10 +161,6 @@
    "permlevel": 1,
    "read": 1,
    "role": "LANDA Regional Organization Management"
-  },
-  {
-   "role": "LANDA Catch Log User",
-   "select": 1
   }
  ],
  "quick_entry": 1,

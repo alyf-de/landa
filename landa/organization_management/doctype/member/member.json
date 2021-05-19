@@ -255,10 +255,6 @@
    "write": 1
   },
   {
-   "role": "LANDA Catch Log User",
-   "select": 1
-  },
-  {
    "read": 1,
    "report": 1,
    "role": "LANDA Magazine Manager"

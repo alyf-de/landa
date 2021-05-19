@@ -233,10 +233,6 @@
    "read": 1,
    "role": "LANDA Local Organization Management",
    "write": 1
-  },
-  {
-   "role": "LANDA Catch Log User",
-   "select": 1
   }
  ],
  "quick_entry": 1,
