@@ -11,8 +11,11 @@ from frappe.contacts.address_and_contact import load_address_and_contact
 from frappe.contacts.address_and_contact import delete_contact_and_address
 from frappe.model.naming import make_autoname
 from frappe.model.naming import revert_series_if_last
+from frappe.permissions import add_user_permission
 
 from landa.organization_management.doctype.member_function.member_function import apply_active_member_functions
+from landa.organization_management.doctype.member_function_category.member_function_category import get_highest_access_level
+from landa.organization_management.doctype.member_function_category.member_function_category import get_organization_at_level
 
 class Member(Document):
 	
@@ -37,6 +40,26 @@ class Member(Document):
 			frappe.throw(_('Cannot be a member of organization {} because it is a group.').format(self.organization))
 
 	def on_update(self):
+		def create_user():
+			user = frappe.get_doc(
+				{
+					"doctype": "User",
+					"email": self.email,
+					"first_name": self.first_name,
+					"last_name": self.last_name,
+					"module_profile": "LANDA User",
+					"language": "de",
+				}
+			).insert(ignore_permissions=True)
+			user.add_roles("LANDA Member")
+
+			return user.name
+
+		if not self.user and self.create_user_account:
+			self.user = create_user()
+			self.email = None
+			self.create_user_account = False
+			
 		if self.user and self.has_value_changed('user'):
 			self.create_user_permissions()
 			apply_active_member_functions({'member': self.name})
@@ -47,30 +70,11 @@ class Member(Document):
 
 	def create_user_permissions(self):
 		"""Restrict Member to itself and it's Organization."""
-		try:
-			frappe.get_doc(dict(
-				doctype='User Permission',
-				user=self.user,
-				allow='Member',
-				for_value=self.name
-			)).insert()
+		# Members always have access at level 2 (Local Organization)
+		organization = get_organization_at_level(self.name, 2, self.organization)
 
-			frappe.get_doc(dict(
-				doctype='User Permission',
-				user=self.user,
-				allow='Organization',
-				for_value=self.organization
-			)).insert()
-
-			frappe.get_doc(dict(
-				doctype='User Permission',
-				user=self.user,
-				allow='Customer',
-				for_value=frappe.get_value('Organization', self.organization, 'customer')
-			)).insert()
-
-		except frappe.DuplicateEntryError:
-			frappe.clear_messages()
+		add_user_permission('Member', self.name, self.user)
+		add_user_permission('Organization', organization, self.user)
 
 	def revert_series(self):
 		"""Decrease the naming counter when the newest member gets deleted."""
@@ -80,36 +84,14 @@ class Member(Document):
 
 		revert_series_if_last(key, self.name)
 
+
 @frappe.whitelist()
 def belongs_to_parent_organization():
 	"""Return True if session user belongs to a parent organization (Regionalverband) or no organization at all."""
-	member = frappe.get_list('Member', filters={'user': frappe.session.user})
-	
-	if member:
-		member_functions = frappe.get_list('Member Function',
-			filters={
-				'member': member[0].name
-			},
-			fields = ['member_function_category', 'is_active']
-		)
+	member_name = frappe.get_value('Member', {'user': frappe.session.user}, 'name')
 
-		for member_function in member_functions:
-			if member_function.is_active and frappe.get_value(
-				'Member Function Category',
-				member_function.member_function_category,
-				'belongs_to_parent_organization'
-			):
-				return True
-	else:
-		return True
+	if member_name:
+		access_level = get_highest_access_level(member_name)
+		return access_level < 2
 
-	return False
-
-
-def get_user(member_name):
-	"""Return the user object that belongs to this member."""
-	user_name = frappe.get_value('Member', member_name, 'user')
-	if user_name:
-		return frappe.get_doc('User', user_name)
-	else:
-		return None
+	return True

@@ -19,6 +19,7 @@ fixtures = [
 	"Item Attribute",
 	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
 	{"dt": "Variant Field", "filters": [["field_name", "=", "description"]]},
+	"Module Profile"
 ]
 
 treeviews = ["Organization"]
@@ -114,6 +115,12 @@ doc_events = {
 	},
 	"Item": {
 		"before_insert": "landa.landa_stock.item.item.before_insert"
+	},
+	"Sales Order": {
+		"before_validate": "landa.landa_sales.sales_order.sales_order.before_validate"
+	},
+	"Payment Entry": {
+		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate"
 	}
 }
 
