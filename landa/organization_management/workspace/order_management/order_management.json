@@ -101,9 +101,35 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Member Count",
+   "link_to": "LANDA Member Count",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "LANDA Deliveries and Payments",
+   "link_to": "LANDA Deliveries and Payments",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2021-05-14 19:53:41.024272",
+ "modified": "2021-05-19 20:18:19.682012",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Order Management",
@@ -128,12 +154,6 @@
    "label": "New Payment Entry",
    "link_to": "Payment Entry",
    "type": "DocType"
-  },
-  {
-   "doc_view": "",
-   "label": "LANDA Deliveries and Payments",
-   "link_to": "LANDA Deliveries and Payments",
-   "type": "Report"
   }
  ]
 }
