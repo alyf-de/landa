@@ -137,7 +137,7 @@
    "description": null,
    "docstatus": 0,
    "dt": "Delivery Note",
-   "fetch_from": customer.organization,
+   "fetch_from": "customer.organization",
    "fetch_if_empty": 0,
    "fieldname": "organization",
    "fieldtype": "Link",
