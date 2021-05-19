@@ -7,22 +7,17 @@ import frappe
 class LANDAMemberCount(object):
 
 	def __init__(self, filters):
-		if 'organization' in filters:
-			company, customer = frappe.get_value(
+		if 'organization' in filters and filters['organization'] in ["AVL", "AVS", "AVE"]:
+			filters['company'] = frappe.get_value(
 				'Organization',
 				filters.pop('organization'),
-				['organization_name', 'customer']
+				'organization_name'
 			)
-
-			if customer:
-				filters['customer'] = customer
-			elif company:
-				filters['company'] = company
 
 		self.filters = filters
 
 	def run(self):
-		if 'company' in self.filters or 'customer' in self.filters:
+		if 'company' in self.filters or 'organization' in self.filters:
 			return self.get_columns(), self.get_data()
 		else:
 			return [], []
@@ -43,7 +38,7 @@ class LANDAMemberCount(object):
 				AND dn.docstatus = 1
 				AND dn.year_of_settlement LIKE %s
 				AND iva.attribute_value LIKE %s
-				AND dn.customer LIKE %s
+				AND dn.organization LIKE %s
 				AND dn.company LIKE %s
 			GROUP BY dni.item_code, dn.year_of_settlement, dn.customer
 			ORDER BY dn.customer, iva.attribute_value, dn.year_of_settlement
@@ -52,7 +47,7 @@ class LANDAMemberCount(object):
 		return frappe.db.sql(sql_query, (
 			self.filters.get('year_of_settlement', '%'),
 			self.filters.get('beitragsart', '%'),
-			self.filters.get('customer', '%'),
+			self.filters.get('organization', '%'),
 			self.filters.get('company', '%')
 		))
 
