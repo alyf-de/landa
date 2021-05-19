@@ -192,7 +192,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-05-03 15:27:11.358879",
+ "modified": "2021-05-17 18:12:06.039913",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
@@ -210,6 +210,28 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "LANDA Member"
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "import": 1,
+   "read": 1,
+   "role": "LANDA Regional Organization Management",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "LANDA Local Organization Management",
    "write": 1
   }
  ],
