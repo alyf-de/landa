@@ -118,9 +118,18 @@
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "LANDA Deliveries and Payments",
+   "link_to": "LANDA Deliveries and Payments",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2021-05-19 20:02:18.103744",
+ "modified": "2021-05-19 20:18:19.682012",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Order Management",
