@@ -4,7 +4,11 @@
 
 import frappe
 from frappe import _
-from frappe.utils.data import today
+from frappe.utils.data import get_year_ending
+
+def before_validate(delivery_note, event):
+	for item in delivery_note.items:
+		item.delivery_date = get_year_ending(str(delivery_note.year_of_settlement))
 
 @frappe.whitelist()
 def get_items(year):
@@ -21,7 +25,6 @@ def get_items(year):
 	)
 
 	for item in items:
-		item.delivery_date = today()
 		item.qty = 0
 		item.uom_factor = 1
 		item.rate = 1 # TODO: Set correct rate.
