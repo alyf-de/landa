@@ -19,7 +19,7 @@ class MemberFunctionCategory(Document):
 			remove_roles(member_names, self.get_removed_roles())
 			add_roles(member_names, self.get_new_roles())
 
-		if self.has_value_changed('member_administration') and self.member_administration:
+		if self.has_value_changed('member_administration'):
 			update_member_restrictions(self.get_member_names())
 
 		if self.has_value_changed('access_level'):
