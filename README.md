@@ -2,6 +2,13 @@
 
 Datenmanagementsystem des Landesverbands Sächsischer Angler.
 
+## Glossar
+
+Landesverband: State Organization (Wurzel)
+Regionalverband: Regional Organization (1. Ebene)
+Verein: Local Organization (2. Ebene)
+Ortsgruppe: Chapter (3. Ebene)
+
 ### Installation 
 
 > ERPNext muss bereits installiert und über den Setup-Wizard **eingerichtet** sein, bevor diese App installiert werden kann.

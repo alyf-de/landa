@@ -7,8 +7,9 @@
  "engine": "InnoDB",
  "field_order": [
   "title",
-  "belongs_to_organization",
-  "belongs_to_parent_organization",
+  "section_break_2",
+  "access_level",
+  "member_administration",
   "section_break_4",
   "roles_html",
   "roles"
@@ -17,25 +18,9 @@
   {
    "fieldname": "title",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Title",
    "reqd": 1
-  },
-  {
-   "default": "1",
-   "fieldname": "belongs_to_organization",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Belongs to Organization"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.belongs_to_organization!=1",
-   "fieldname": "belongs_to_parent_organization",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Belongs to Parent Organization"
   },
   {
    "fieldname": "section_break_4",
@@ -55,6 +40,27 @@
    "label": "Roles",
    "options": "Has Role",
    "read_only": 1
+  },
+  {
+   "description": "Grant access to all organizations below this level.",
+   "fieldname": "access_level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Access Level",
+   "options": "State Organization\nRegional Organization\nLocal Organization",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Remove the restriction that limits users to their own member data.",
+   "fieldname": "member_administration",
+   "fieldtype": "Check",
+   "label": "Member Administration"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "User Permissions"
   }
  ],
  "links": [

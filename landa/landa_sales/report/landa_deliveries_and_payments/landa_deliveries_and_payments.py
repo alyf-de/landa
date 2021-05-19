@@ -7,19 +7,10 @@ import frappe
 class LandaDeliveriesAndPayments(object):
 
 	def __init__(self, filters):
-		if 'parent_organization' in filters:
-			# look for a Company having the same name as the parent Organization
-			parent_organization_name = frappe.db.get_value('Organization', filters.pop('parent_organization'), 'organization_name')
-			filters['company'] = parent_organization_name
-
-		if 'organization' in filters:
-			# get the customer linked in Organization
-			filters['customer'] = frappe.db.get_value('Organization', filters.pop('organization'), 'customer')
-
 		self.filters = filters
 
 	def run(self):
-		if not ('company' in self.filters and 'customer' in self.filters):
+		if not ('organization' in self.filters):
 			return [], []
 
 		return self.get_columns(), self.get_data()
@@ -46,7 +37,6 @@ class LandaDeliveriesAndPayments(object):
 		payments_received_filters = self.filters.copy()
 		payments_received_filters['payment_type'] = 'Receive'
 		payments_received_filters['party_type'] = 'Customer'
-		payments_received_filters['party'] = payments_received_filters.pop('customer')
 		payments_received_filters['docstatus'] = 1
 		payments_received = frappe.get_list('Payment Entry', fields=[
 			'posting_date',
@@ -61,7 +51,6 @@ class LandaDeliveriesAndPayments(object):
 		payments_sent_filters = self.filters.copy()
 		payments_sent_filters['payment_type'] = 'Pay'
 		payments_sent_filters['party_type'] = 'Customer'
-		payments_sent_filters['party'] = payments_sent_filters.pop('customer')
 		payments_sent_filters['docstatus'] = 1
 		payments_sent = frappe.get_list('Payment Entry', fields=[
 			'posting_date',

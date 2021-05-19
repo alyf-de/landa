@@ -31,9 +31,9 @@ class MemberFunction(Document):
 	def update_user_roles(self):
 		member_function_category = frappe.get_doc("Member Function Category", self.member_function_category)
 		if self.status == 'Active':
-			member_function_category.add_roles(self.member)
+			member_function_category.add_roles_and_permissions(self.member)
 		else:
-			member_function_category.remove_roles(self.member, disabled_member_function=self.name)
+			member_function_category.remove_roles_and_permissions(self.member, disabled_member_function=self.name)
 
 	def update_is_active(self):
 		in_past = lambda date: date_diff(today(), date) > 0
