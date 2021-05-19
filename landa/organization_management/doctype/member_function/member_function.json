@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "creation": "2021-03-24 17:08:23.951584",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -101,7 +102,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-14 16:10:06.260396",
+ "modified": "2021-05-17 18:24:56.605269",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function",
@@ -117,6 +118,36 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "LANDA Member"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "LANDA State Organization Employee",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "import": 1,
+   "read": 1,
+   "role": "LANDA Regional Organization Management",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "LANDA Regional Water Body Management"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "LANDA Local Organization Management",
    "write": 1
   }
  ],

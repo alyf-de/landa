@@ -52,7 +52,7 @@
    "link_fieldname": "fishing_area"
   }
  ],
- "modified": "2021-03-07 16:31:20.844642",
+ "modified": "2021-05-17 19:38:51.093147",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fishing Area",
@@ -69,6 +69,21 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "role": "LANDA Member"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "LANDA Regional Water Body Management",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "LANDA Local Water Body Management"
   }
  ],
  "quick_entry": 1,
