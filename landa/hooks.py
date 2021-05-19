@@ -118,6 +118,9 @@ doc_events = {
 	},
 	"Sales Order": {
 		"before_validate": "landa.landa_sales.sales_order.sales_order.before_validate"
+	},
+	"Payment Entry": {
+		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate"
 	}
 }
 
