@@ -40,6 +40,26 @@ class Member(Document):
 			frappe.throw(_('Cannot be a member of organization {} because it is a group.').format(self.organization))
 
 	def on_update(self):
+		def create_user():
+			user = frappe.get_doc(
+				{
+					"doctype": "User",
+					"email": self.email,
+					"first_name": self.first_name,
+					"last_name": self.last_name,
+					"module_profile": "LANDA User",
+					"language": "de",
+				}
+			).insert(ignore_permissions=True)
+			user.add_roles("LANDA Member")
+
+			return user.name
+
+		if not self.user and self.create_user_account:
+			self.user = create_user()
+			self.email = None
+			self.create_user_account = False
+			
 		if self.user and self.has_value_changed('user'):
 			self.create_user_permissions()
 			apply_active_member_functions({'member': self.name})
