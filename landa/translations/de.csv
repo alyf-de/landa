@@ -89,7 +89,7 @@ Module Profile,Modul Profil
 Module Profile Name,Modul Profilname
 Nationality,Staatsangehörigkeit
 New Award Entry,Neue Auszeichnung anlegen
-New Catch Log Entry,Neuen Fangmengeneintrag anlegen
+New Catch Log Entry,Neuen Fangbucheintrag anlegen
 New Member Entry,Neues Mitglied anlegen
 New Member Function Entry,Neue Mitgliedsfunktion anlegen
 Number of Fish, Anzahl der Fische
@@ -142,5 +142,32 @@ Zipcode,PLZ
 {0} from {1} to {2} in row #{3},{0} von {1} zu/bis {2} in Zeile #{3}
 {0} is not a field of doctype {1},{0} ist kein Feld in Doctype {1}
 {} wants to access the following details from your account,{} möchte Zugriff auf die folgenden Angaben von Ihrem Account
-LANDA Customer Ledger,Kostenübersicht
+LANDA Deliveries and Payments,Kostenübersicht
+Order Management,Bestellwesen
+Sales Order,Bestellung
+Member Count,Mitgliedszahlen
+New Sales Order,Neue Bestellung anlegen
+New Delivery Note,Neuen Lieferschein anlegen
+Yearly Fishing Permits,Erlaubnisscheine
+Yearly Fishing Permit,Erlaubnisschein
+Yearly Fishing Permit Type,Erlaubnisscheinart
+Yearly Fishing Permits Issued,Vergebene Erlaubnisscheine
+Cannot be Returned,Kann nicht zurückgegeben werden
+Year of Settlement,Abrechnungsjahr
 Outstanding Amount,Ausstehender Betrag
+Reset Customizations,Anpassungen Zurücksetzen
+Toggle Sidebar,Seitenleiste ein-/ausblenden
+Your Shortcuts,Schnellzugriff
+Reports & Masters,Berichte & Stammdaten
+Masters,Stammdaten
+Toggle Full Width,Ansicht in voller Breite
+My Profile,Mein Profil
+My Settings,Meine Einstellungen
+Session Defaults,Voreinstellungen für diese Sitzung
+Modules,Module
+Domains,Branchen
+Places,Orte
+Administration,Verwaltung
+Setup,Einrichtung
+Add a Filter,Filter hinzufügen
+Apply Filters,Filter anwenden
