@@ -148,6 +148,7 @@ Sales Order,Bestellung
 Member Count,Mitgliedszahlen
 New Sales Order,Neue Bestellung anlegen
 New Delivery Note,Neuen Lieferschein anlegen
+New Payment Entry,Neue Zahlung anlegen
 Yearly Fishing Permits,Erlaubnisscheine
 Yearly Fishing Permit,Erlaubnisschein
 Yearly Fishing Permit Type,Erlaubnisscheinart
@@ -171,3 +172,12 @@ Administration,Verwaltung
 Setup,Einrichtung
 Add a Filter,Filter hinzufügen
 Apply Filters,Filter anwenden
+Save,Speichern
+New Chart,Neues Diagramm
+New Shortcut,Neuer Schnellzugriff
+Edit Chart,Diagramm bearbeiten
+Edit Shortcut,Schnellzugriff bearbeiten
+Save Customizations,Anpassungen speichern
+Connections,Verknüpfungen
+Overview,Übersicht
+{}  Available,{}  Verfügbar
