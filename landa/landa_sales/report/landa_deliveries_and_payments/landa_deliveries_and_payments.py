@@ -2,7 +2,9 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
+
 import frappe
+from frappe import _
 
 class LandaDeliveriesAndPayments(object):
 
@@ -22,7 +24,7 @@ class LandaDeliveriesAndPayments(object):
 		deliveries = frappe.get_list('Delivery Note', fields=[
 			'posting_date',
 			'"Delivery Note" as voucher_type',
-			'base_grand_total as voucher_value',
+			'base_grand_total as grand_total',
 		], filters=delivery_filters)
 
 		return_filters = self.filters.copy()
@@ -31,7 +33,7 @@ class LandaDeliveriesAndPayments(object):
 		returns = frappe.get_list('Delivery Note', fields=[
 			'posting_date',
 			'"Sales Return" as voucher_type',
-			'base_grand_total as voucher_value',
+			'base_grand_total as grand_total',
 		], filters=return_filters)
 
 		payments_received_filters = self.filters.copy()
@@ -41,12 +43,12 @@ class LandaDeliveriesAndPayments(object):
 		payments_received = frappe.get_list('Payment Entry', fields=[
 			'posting_date',
 			'"Incoming Payment" as voucher_type',
-			'base_paid_amount as voucher_value',
+			'base_paid_amount as grand_total',
 		], filters=payments_received_filters)
 
 		for payment in payments_received:
 			# received payments reduce the debt
-			payment['voucher_value'] = -1 * payment['voucher_value']
+			payment['grand_total'] = -1 * payment['grand_total']
 
 		payments_sent_filters = self.filters.copy()
 		payments_sent_filters['payment_type'] = 'Pay'
@@ -55,10 +57,15 @@ class LandaDeliveriesAndPayments(object):
 		payments_sent = frappe.get_list('Payment Entry', fields=[
 			'posting_date',
 			'"Outgoing Payment" as voucher_type',
-			'base_paid_amount as voucher_value',
+			'base_paid_amount as grand_total',
 		], filters=payments_sent_filters)
 
 		data = deliveries + returns + payments_received + payments_sent
+
+		# translate voucher type
+		for record in data:
+			record['voucher_type'] = _(record['voucher_type'])
+
 		data = sorted(data, key=lambda row: row['posting_date'])
 
 		return data
@@ -78,9 +85,9 @@ class LandaDeliveriesAndPayments(object):
 				"width": 200
 			},
 			{
-				"fieldname": "voucher_value",
+				"fieldname": "grand_total",
 				"fieldtype": "Currency",
-				"label": "Voucher Value",
+				"label": "Grand Total",
 				"width": 200
 			}
 		]
