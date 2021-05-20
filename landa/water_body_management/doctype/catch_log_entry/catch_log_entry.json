@@ -45,7 +45,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "water_body.organization",
    "fetch_if_empty": 1,
    "fieldname": "organization",
    "fieldtype": "Link",
@@ -76,7 +75,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-17 19:36:19.569400",
+ "modified": "2021-05-20 15:59:01.154113",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
