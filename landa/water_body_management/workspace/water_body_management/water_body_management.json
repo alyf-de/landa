@@ -1,4 +1,5 @@
 {
+ "cards_label": "",
  "category": "Modules",
  "charts": [],
  "creation": "2021-04-19 18:02:17.002154",
@@ -17,7 +18,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Water Body Management",
+   "label": "Masters",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -52,14 +53,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Catch Log Entries",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Catch Log Entry",
    "link_to": "Catch Log Entry",
    "link_type": "DocType",
@@ -67,7 +60,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-04-19 19:47:51.450557",
+ "modified": "2021-05-20 16:56:56.720614",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management",
