@@ -21,6 +21,33 @@ class MemberFunction(Document):
 			if date_diff(self.start_date, self.end_date) > 0:
 				frappe.throw(_('End Date cannot be before Start Date.'))
 
+		self.validate_member_function_category()
+
+
+	def validate_member_function_category(self):
+		has_role = lambda role: role in frappe.get_roles(frappe.session.user)
+		access_level = frappe.get_value('Member Function Category', self.member_function_category, 'access_level')
+
+		if access_level == 'State Organization' and has_role('LANDA State Organization Employee'):
+			return
+
+		if (
+			access_level == 'Regional Organization'
+			and (
+				has_role('LANDA State Organization Employee')
+				or has_role('LANDA Regional Organization Management')
+			)
+		):
+			return
+
+		if access_level == 'Local Organization':
+			return
+
+		frappe.throw(
+			_("No permission to set Member Function Category {0}").format(self.member_function_category),
+			frappe.PermissionError
+		)
+
 	def on_update(self):
 		self.update_user_roles()
 
