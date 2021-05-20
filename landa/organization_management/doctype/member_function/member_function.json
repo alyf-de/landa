@@ -7,7 +7,6 @@
  "engine": "InnoDB",
  "field_order": [
   "member_function_category",
-  "member_function_title",
   "member",
   "member_first_name",
   "member_last_name",
@@ -48,14 +47,6 @@
    "fieldtype": "Date",
    "in_standard_filter": 1,
    "label": "End Date"
-  },
-  {
-   "fetch_from": "member_function_category.title",
-   "fieldname": "member_function_title",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Member Function Title"
   },
   {
    "fetch_from": "member.first_name",
@@ -102,7 +93,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-17 18:24:56.605269",
+ "modified": "2021-05-21 00:37:43.379129",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function",
@@ -154,6 +145,6 @@
  "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "title_field": "member_function_title",
+ "title_field": "member_function_category",
  "track_changes": 1
 }
