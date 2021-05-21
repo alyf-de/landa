@@ -4,7 +4,7 @@ frappe.ui.form.on('Payment Entry', {
     },
     set_year_of_settlement(frm) {
         // Do nothing if year_of_settlement is already set
-        if (!frm.doc.year_of_settlement && frm.doc.references){
+        if (!frm.doc.year_of_settlement && frm.doc.references) {
             // Get all rows where a Sales Invoice or Sales Order is linked
             const references = frm.doc.references.filter(
                 (ref) =>
