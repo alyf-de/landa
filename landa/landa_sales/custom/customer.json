@@ -161,7 +161,7 @@
    "name": "Customer-cutomer_info_text",
    "no_copy": 0,
    "non_negative": 0,
-   "options": "<p>Vereine sind in diesem System auch als Kunden hinterlegt, weil diese Artikel bestellen und geliefert bekommen.</p>\n\n<p>Eine \u00dcbersicht aller bestehenden Kundenkonten finden Sie <b><a href=\"/app/customer\">hier</a></b>.</p>",
+   "options": "<p>Vereine sind in diesem System auch als Kunden hinterlegt, weil diese Artikel bestellen und geliefert bekommen.</p>\n\n<p>Eine \u00dcbersicht der Kunden finden Sie <b><a href=\"/app/customer\">hier</a></b>.</p>",
    "owner": "Administrator",
    "parent": null,
    "parentfield": null,

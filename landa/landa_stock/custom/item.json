@@ -521,7 +521,7 @@
    "name": "Item-item_info_text",
    "no_copy": 0,
    "non_negative": 0,
-   "options": "<p>Im System hinterlegte Artikel k\u00f6nnen durch den Verein bestellt bzw. angefordert und durch den Regionalverband geliefert werden.</p>\n\n<p>Eine \u00dcbersicht aller Artikel finden Sie <b><a href=\"/app/item\">hier</a></b>.</p>",
+   "options": "<p>Im System hinterlegte Artikel k\u00f6nnen durch den Verein bestellt bzw. angefordert und durch den Regionalverband geliefert werden.</p>\n\n<p>Eine \u00dcbersicht der Artikel finden Sie <b><a href=\"/app/item\">hier</a></b>.</p>",
    "owner": "Administrator",
    "parent": null,
    "parentfield": null,

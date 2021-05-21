@@ -101,7 +101,7 @@
    "name": "Company-company_info_text",
    "no_copy": 0,
    "non_negative": 0,
-   "options": "<p>Regionalverb\u00e4nde sind in diesem System auch als Unternehmen hinterlegt, weil diese Artikel an die Vereine liefern, welche wiederum als Kunden hinterlegt sind.</p>\n\n<p>Eine \u00dcbersicht aller bestehenden Kundenkonten finden Sie <b><a href=\"/app/customer\">hier</a></b>.</p>",
+   "options": "<p>Regionalverb\u00e4nde sind in diesem System auch als Unternehmen hinterlegt, weil diese Artikel an die Vereine liefern, welche wiederum als Kunden hinterlegt sind.</p>\n\n<p>Eine \u00dcbersicht der Unternehmen finden Sie <b><a href=\"/app/company\">hier</a></b>.</p>",
    "owner": "Administrator",
    "parent": null,
    "parentfield": null,

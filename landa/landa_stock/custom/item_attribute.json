@@ -101,7 +101,7 @@
    "name": "Item Attribute-item_attribute_info_text",
    "no_copy": 0,
    "non_negative": 0,
-   "options": "<p>Ein Artikelattribut bzw. eine Artikeleigenschaft ist etwas, das mehrere Artikel vereint. Dabei handelt es sich um Angaben wie z. B. G\u00fcltigkeitsjahr oder Erlaubnisscheinart.</p>\n\n<p>Wenn ein Artikel einer Bestellung oder einem Lieferschein hinzugef\u00fcgt wird, muss die entsprechende Auspr\u00e4gung des Artikelattributs gew\u00e4hlt werden, z. B. \"Erlaubnisschein - mit G\u00fcltigkeitsjahr 2022 und Erlaubnisscheinart Salmoniden Vollzahler\". Verf\u00fcgt ein Artikel \u00fcber ein G\u00fcltigkeitsjahr kann dieser nur ausgew\u00e4hlt werden, wenn zuvor das passende Abrechnungsjahr ausgew\u00e4hlt wurde.</p>\n\n<p>Eine \u00dcbersicht aller bestehenden Artikelattribute finden Sie <b><a href=\"/app/item-attribute\">hier</a></b>.</p>",
+   "options": "<p>Ein Artikelattribut bzw. eine Artikeleigenschaft ist etwas, das mehrere Artikel vereint. Dabei handelt es sich um Angaben wie z. B. G\u00fcltigkeitsjahr oder Erlaubnisscheinart.</p>\n\n<p>Wenn ein Artikel einer Bestellung oder einem Lieferschein hinzugef\u00fcgt wird, muss die entsprechende Auspr\u00e4gung des Artikelattributs gew\u00e4hlt werden, z. B. \"Erlaubnisschein - mit G\u00fcltigkeitsjahr 2022 und Erlaubnisscheinart Salmoniden Vollzahler\". Verf\u00fcgt ein Artikel \u00fcber ein G\u00fcltigkeitsjahr kann dieser nur ausgew\u00e4hlt werden, wenn zuvor das passende Abrechnungsjahr ausgew\u00e4hlt wurde.</p>\n\n<p>Eine \u00dcbersicht der Artikelattribute finden Sie <b><a href=\"/app/item-attribute\">hier</a></b>.</p>",
    "owner": "Administrator",
    "parent": null,
    "parentfield": null,
