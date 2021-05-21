@@ -25,6 +25,7 @@ frappe.ui.form.on('Sales Order',  {
     },
     year_of_settlement: function (frm) {
         frm.trigger('prefill_items');
+        frm.doc.delivery_date = new Date(frm.doc.year_of_settlement, 11, 31);
     },
     prefill_items: function (frm) {
         frappe.call({
