@@ -2,6 +2,19 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Sales Order',  {
+    refresh: function (frm) {
+        frm.set_query("item_code", "items", function() {
+            return {
+                query: "erpnext.controllers.queries.item_query",
+                filters: {
+                    'valid_from_year': ["<=", doc.year_of_settlement],
+                    'valid_to_year': [">=", doc.year_of_settlement],
+                    'cannot_be_ordered': 0,
+                    'is_sales_item': 1
+                }
+            }
+        });
+    },
     before_save: function (frm) {
         frm.doc.items = frm.doc.items.filter(function (value) {
             return value.qty != 0;
