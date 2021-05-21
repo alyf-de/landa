@@ -35,6 +35,8 @@ landa_create_after_install = [
 
 landa_add_to_session_defaults = ["Organization"]
 
+on_session_creation = "landa.overrides.set_user_defaults"
+
 treeviews = ["Organization"]
 
 # Includes in <head>
