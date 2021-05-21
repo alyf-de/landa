@@ -52,6 +52,9 @@ frappe.ui.form.on('Sales Order',  {
                         frm.clear_table("items");
                         frm.refresh_field("items");
                     }
+                } else {
+                    frm.clear_table("items");
+                    frm.refresh_field("items");
                 }
             }
         });
