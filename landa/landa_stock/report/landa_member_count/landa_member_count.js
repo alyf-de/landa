@@ -26,7 +26,6 @@ frappe.query_reports["LANDA Member Count"] = {
 			"label": __("Year"),
 			"mandatory": 0,
 			"wildcard_filter": 0,
-			"default": new Date().getFullYear()
 		},
 		{
 			"fieldname": "total",
