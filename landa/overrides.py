@@ -10,10 +10,7 @@ import frappe
 
 
 def set_user_defaults():
-    try:
-        frappe.defaults.set_user_default(
-            "organization",
-            frappe.get_value("Member", {"user": frappe.session.user}, "organization"),
-        )
-    except:
-        pass
+    frappe.defaults.set_user_default(
+        "organization",
+        frappe.get_value("Member", {"user": frappe.session.user}, "organization"),
+    )
