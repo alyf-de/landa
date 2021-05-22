@@ -1,6 +1,10 @@
 {
  "category": "Modules",
- "charts": [],
+ "charts": [
+  {
+   "chart_name": "LANDA Member Count"
+  }
+ ],
  "creation": "2021-04-19 18:01:23.947644",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
@@ -129,7 +133,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-05-20 17:07:14.332858",
+ "modified": "2021-05-22 15:59:35.619284",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",

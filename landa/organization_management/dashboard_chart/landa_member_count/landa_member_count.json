@@ -1,0 +1,41 @@
+{
+ "chart_name": "LANDA Member Count",
+ "chart_type": "Report",
+ "creation": "2021-05-22 15:58:34.271670",
+ "custom_options": "{\"x_field\": \"year\", \"chart_type\": \"Bar\", \"y_axis_fields\": [{\"idx\": 1, \"__islocal\": true, \"y_field\": \"vollzahler\"}, {\"idx\": 2, \"__islocal\": true, \"y_field\": \"jugend\"}, {\"idx\": 3, \"__islocal\": true, \"y_field\": \"f\\u00f6rdermitglied\"}, {\"idx\": 4, \"__islocal\": true, \"y_field\": \"austauschmarke\"}], \"y_fields\": [\"vollzahler\", \"jugend\", \"f\\u00f6rdermitglied\", \"austauschmarke\"], \"colors\": [null, null, null, null]}",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart",
+ "dynamic_filters_json": "{\"organization\":\"frappe.defaults.get_user_default('Organization')\",\"total\":\"['AVL', 'AVS', 'AVE'].includes(frappe.defaults.get_user_default('Organization'))\"}",
+ "filters_json": "{}",
+ "group_by_type": "Count",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "modified": "2021-05-22 16:32:40.593910",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "LANDA Member Count",
+ "number_of_groups": 0,
+ "owner": "Administrator",
+ "report_name": "LANDA Member Count",
+ "time_interval": "Yearly",
+ "timeseries": 0,
+ "timespan": "Last Year",
+ "type": "Bar",
+ "use_report_chart": 0,
+ "x_field": "year",
+ "y_axis": [
+  {
+   "y_field": "vollzahler"
+  },
+  {
+   "y_field": "jugend"
+  },
+  {
+   "y_field": "f\u00f6rdermitglied"
+  },
+  {
+   "y_field": "austauschmarke"
+  }
+ ]
+}
