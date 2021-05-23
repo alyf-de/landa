@@ -11,6 +11,7 @@ frappe.query_reports["LANDA Member Count"] = {
 			"mandatory": 1,
 			"options": "Organization",
 			"wildcard_filter": 0,
+			"default": frappe.defaults.get_user_default("Organization"),
 			"get_query": function() {
 				return {
 					filters: [
@@ -24,7 +25,8 @@ frappe.query_reports["LANDA Member Count"] = {
 			"fieldtype": "Data",
 			"label": __("Year of Settlement"),
 			"mandatory": 0,
-			"wildcard_filter": 0
+			"wildcard_filter": 0,
+			"default": new Date().getFullYear()
 		},
 		{
 			"fieldname": "beitragsart",

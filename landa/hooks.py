@@ -22,6 +22,21 @@ fixtures = [
 	"Module Profile"
 ]
 
+# DocTypes to be created once, after installation of this app
+# Used in `landa.install.create_records_from_hooks`
+landa_create_after_install = [
+	{
+		# Cannot be a fixture because it would overwrite Item Attribute Values
+		# on every migrate
+		"doctype": "Item Attribute",
+		"attribute_name": "Erlaubnisscheinart"
+	}
+]
+
+landa_add_to_session_defaults = ["Organization"]
+
+on_session_creation = "landa.overrides.set_user_defaults"
+
 treeviews = ["Organization"]
 
 # Includes in <head>
@@ -77,7 +92,7 @@ doctype_js = {
 # ------------
 
 # before_install = "landa.install.before_install"
-# after_install = "landa.install.after_install"
+after_install = "landa.install.after_install"
 
 # Desk Notifications
 # ------------------
