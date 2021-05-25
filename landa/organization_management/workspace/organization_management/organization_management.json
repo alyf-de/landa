@@ -1,6 +1,10 @@
 {
  "category": "Modules",
- "charts": [],
+ "charts": [
+  {
+   "chart_name": "LANDA Member Count"
+  }
+ ],
  "creation": "2021-04-19 18:01:23.947644",
  "developer_mode_only": 0,
  "disable_user_customization": 0,

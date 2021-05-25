@@ -21,19 +21,17 @@ frappe.query_reports["LANDA Member Count"] = {
 			}
 		},
 		{
-			"fieldname": "year_of_settlement",
+			"fieldname": "year",
 			"fieldtype": "Data",
-			"label": __("Year of Settlement"),
+			"label": __("Year"),
 			"mandatory": 0,
 			"wildcard_filter": 0,
-			"default": new Date().getFullYear()
 		},
 		{
-			"fieldname": "beitragsart",
-			"fieldtype": "Select",
-			"label": __("Beitragsart"),
+			"fieldname": "total",
+			"fieldtype": "Check",
+			"label": __("Total (only for regional org.)"),
 			"mandatory": 0,
-			"options": "\nVollzahler\nFördermitglied\nJugend\nAustauschmarke",
 			"wildcard_filter": 0,
 		}
 	]
