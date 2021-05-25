@@ -94,7 +94,7 @@ class LANDAMemberCount(object):
 				"width": 150
 			},
 			{
-				"fieldname": "fördermitglied",
+				"fieldname": "foerdermitglied",
 				"fieldtype": "Data",
 				"label": "Fördermitglied",
 				"width": 150
