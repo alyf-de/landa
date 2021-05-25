@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "json": "{\"filters\":[[\"Yearly Fishing Permit\",\"member\",\"is\",\"set\",false],[\"Yearly Fishing Permit\",\"docstatus\",\"=\",\"1\",false]],\"fields\":[[\"name\",\"Yearly Fishing Permit\"],[\"docstatus\",\"Yearly Fishing Permit\"],[\"number\",\"Yearly Fishing Permit\"],[\"date_of_issue\",\"Yearly Fishing Permit\"],[\"member\",\"Yearly Fishing Permit\"],[\"organization_name\",\"Yearly Fishing Permit\"],[\"year\",\"Yearly Fishing Permit\"],[\"type\",\"Yearly Fishing Permit\"]],\"order_by\":\"`tabYearly Fishing Permit`.`modified` desc\",\"add_totals_row\":0,\"page_length\":20,\"column_widths\":{\"name\":120,\"docstatus\":120,\"number\":99,\"date_of_issue\":120,\"member\":120,\"organization_name\":156,\"year\":120,\"type\":120},\"group_by\":null}",
- "modified": "2021-04-28 16:39:47.608064",
+ "modified": "2021-05-24 18:53:24.396195",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Yearly Fishing Permits Issued",
@@ -22,6 +22,9 @@
  "roles": [
   {
    "role": "System Manager"
+  },
+  {
+   "role": "LANDA Member"
   }
  ]
 }

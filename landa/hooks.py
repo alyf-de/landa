@@ -64,7 +64,8 @@ treeviews = ["Organization"]
 doctype_js = {
 	"Delivery Note": "landa_stock/delivery_note/delivery_note.js",
 	"Sales Order": "landa_sales/sales_order/sales_order.js",
-	"Item": "landa_stock/item/item.js"
+	"Item": "landa_stock/item/item.js",
+	"Payment Entry": "landa_sales/payment_entry/payment_entry.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
