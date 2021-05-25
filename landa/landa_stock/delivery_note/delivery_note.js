@@ -11,7 +11,6 @@ frappe.ui.form.on('Delivery Note',  {
             const filters = {
                 'valid_from_year': ["<=", frm.doc.year_of_settlement],
                 'valid_to_year': [">=", frm.doc.year_of_settlement],
-                'cannot_be_ordered': 0,
                 'is_sales_item': 1
             }
 
