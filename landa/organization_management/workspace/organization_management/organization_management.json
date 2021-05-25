@@ -76,6 +76,7 @@
    "type": "Card Break"
   },
   {
+   "dependencies": "Member",
    "hidden": 0,
    "is_query_report": 1,
    "label": "Member Address List",
@@ -85,6 +86,7 @@
    "type": "Link"
   },
   {
+   "dependencies": "Member",
    "hidden": 0,
    "is_query_report": 1,
    "label": "Member Birthday List",
@@ -94,6 +96,7 @@
    "type": "Link"
   },
   {
+   "dependencies": "Yearly Fishing Permit",
    "hidden": 0,
    "is_query_report": 0,
    "label": "Yearly Fishing Permits Issued",
@@ -129,7 +132,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-05-20 17:07:14.332858",
+ "modified": "2021-05-24 19:05:36.251819",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",

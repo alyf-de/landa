@@ -111,6 +111,7 @@
    "type": "Card Break"
   },
   {
+   "dependencies": "Delivery Note",
    "hidden": 0,
    "is_query_report": 1,
    "label": "Member Count",
@@ -120,6 +121,7 @@
    "type": "Link"
   },
   {
+   "dependencies": "Delivery Note",
    "hidden": 0,
    "is_query_report": 1,
    "label": "LANDA Deliveries and Payments",
@@ -129,7 +131,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-05-19 20:18:19.682012",
+ "modified": "2021-05-24 19:34:06.008624",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Order Management",
