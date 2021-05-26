@@ -10,9 +10,12 @@ class LANDAMemberCount(object):
 		if 'organization' in filters and filters['organization'] in ["AVL", "AVS", "AVE"]:
 			filters['company'] = frappe.get_value(
 				'Organization',
-				filters.pop('organization'),
+				filters.get('organization'),
 				'organization_name'
 			)
+			filters['company_abbr'] = filters.pop('organization')
+		else:
+			filters['total'] = 0
 
 		self.filters = filters
 
@@ -25,11 +28,14 @@ class LANDAMemberCount(object):
 
 	def get_data(self):
 		sql_query = """
-			SELECT dn.customer,
-				dn.customer_name,
-				iva.attribute_value,
-				dn.year_of_settlement,
-				SUM(dni.qty)
+			SELECT CASE WHEN %s = 0 THEN dn.customer ELSE %s END,
+				CASE WHEN %s = 0 THEN dn.customer_name ELSE dn.company END,
+				-- cast to make it usable on x-axis in a chart
+				CAST(dn.year_of_settlement AS CHAR(4)),
+				SUM(CASE WHEN iva.attribute_value = 'Vollzahler' THEN dni.qty ELSE 0 END),
+				SUM(CASE WHEN iva.attribute_value = 'Jugend' THEN dni.qty ELSE 0 END),
+				SUM(CASE WHEN iva.attribute_value = 'Fördermitglied' THEN dni.qty ELSE 0 END),
+				SUM(CASE WHEN iva.attribute_value = 'Austauschmarke' THEN dni.qty ELSE 0 END)
 			FROM `tabDelivery Note Item` dni
 			JOIN `tabItem` i ON dni.item_code = i.item_code
 			JOIN `tabItem Variant Attribute` iva ON dni.item_code = iva.parent
@@ -37,18 +43,20 @@ class LANDAMemberCount(object):
 			WHERE iva.attribute = "Beitragsart"
 				AND dn.docstatus = 1
 				AND dn.year_of_settlement LIKE %s
-				AND iva.attribute_value LIKE %s
 				AND dn.organization LIKE %s
 				AND dn.company LIKE %s
-			GROUP BY dni.item_code, dn.year_of_settlement, dn.customer
-			ORDER BY dn.customer, iva.attribute_value, dn.year_of_settlement
+			GROUP BY dn.year_of_settlement, CASE WHEN %s = 0 THEN dn.customer ELSE dn.company END
+			ORDER BY dn.customer, dn.year_of_settlement
 			"""
 		
 		return frappe.db.sql(sql_query, (
-			self.filters.get('year_of_settlement', '%'),
-			self.filters.get('beitragsart', '%'),
+			self.filters.get('total', 0),
+			self.filters.get('company_abbr', ''),
+			self.filters.get('total', 0),
+			self.filters.get('year', '%'),
 			self.filters.get('organization', '%'),
-			self.filters.get('company', '%')
+			self.filters.get('company', '%'),
+			self.filters.get('total', 0)
 		))
 
 
@@ -68,22 +76,34 @@ class LANDAMemberCount(object):
 				"width": 250
 			},
 			{
-				"fieldname": "beitragsart",
+				"fieldname": "year",
 				"fieldtype": "Data",
-				"label": "Beitragsart",
-				"width": 200
-			},
-			{
-				"fieldname": "year_of_settlement",
-				"fieldtype": "Data",
-				"label": "Year Of Settlement",
+				"label": "Year",
 				"width": 150
 			},
 			{
-				"fieldname": "count",
+				"fieldname": "vollzahler",
 				"fieldtype": "Data",
-				"label": "Count",
-				"width": 100
+				"label": "Vollzahler",
+				"width": 150
+			},
+			{
+				"fieldname": "jugend",
+				"fieldtype": "Data",
+				"label": "Jugend",
+				"width": 150
+			},
+			{
+				"fieldname": "foerdermitglied",
+				"fieldtype": "Data",
+				"label": "Fördermitglied",
+				"width": 150
+			},
+			{
+				"fieldname": "austauschmarke",
+				"fieldtype": "Data",
+				"label": "Austauschmarke",
+				"width": 150
 			}
 		]
 
