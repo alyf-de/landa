@@ -58,6 +58,7 @@ class Member(Document):
 			self.user = create_user()
 			self.email = None
 			self.create_user_account = False
+			self.save()
 			
 		if self.user and self.has_value_changed('user'):
 			self.create_user_permissions()
