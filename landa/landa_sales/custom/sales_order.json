@@ -13,7 +13,7 @@
    "columns": 0,
    "creation": "2021-04-21 14:50:39.866910",
    "default": null,
-   "depends_on": null,
+   "depends_on": "eval: doc.customer",
    "description": null,
    "docstatus": 0,
    "dt": "Sales Order",
