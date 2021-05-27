@@ -6,7 +6,6 @@
   "fishing_area": null,
   "is_charitable": 0,
   "is_group": 1,
-  "lft": 1,
   "location": null,
   "modified": "2021-03-18 15:32:32.192739",
   "name": "LV",
@@ -17,7 +16,6 @@
   "parentfield": null,
   "parenttype": null,
   "register_number": null,
-  "rgt": 8,
   "short_code": "LV",
   "website": null
  },
@@ -28,7 +26,6 @@
   "fishing_area": null,
   "is_charitable": 0,
   "is_group": 1,
-  "lft": 2,
   "location": null,
   "modified": "2021-02-23 12:08:54.426348",
   "name": "AVE",
@@ -39,7 +36,6 @@
   "parentfield": null,
   "parenttype": null,
   "register_number": null,
-  "rgt": 3,
   "short_code": "AVE",
   "website": null
  },
@@ -50,7 +46,6 @@
   "fishing_area": null,
   "is_charitable": 0,
   "is_group": 1,
-  "lft": 4,
   "location": null,
   "modified": "2021-02-23 12:09:52.642421",
   "name": "AVS",
@@ -61,7 +56,6 @@
   "parentfield": null,
   "parenttype": null,
   "register_number": null,
-  "rgt": 5,
   "short_code": "AVS",
   "website": null
  },
@@ -72,7 +66,6 @@
   "fishing_area": null,
   "is_charitable": 0,
   "is_group": 1,
-  "lft": 6,
   "location": null,
   "modified": "2021-03-18 15:32:32.192739",
   "name": "AVL",
@@ -83,7 +76,6 @@
   "parentfield": null,
   "parenttype": null,
   "register_number": null,
-  "rgt": 7,
   "short_code": "AVL",
   "website": null
  }

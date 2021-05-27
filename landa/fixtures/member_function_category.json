@@ -1,158 +1,158 @@
 [
  {
-  "belongs_to_organization": 0,
-  "belongs_to_parent_organization": 1,
+  "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
+  "member_administration": 0,
   "modified": "2021-03-26 16:21:10.571950",
-  "name": "ef6611838b",
+  "name": "Pr\u00e4sidiumsmitglied",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "Pr\u00e4sidiumsmitglied"
+  "roles": []
  },
  {
-  "belongs_to_organization": 0,
-  "belongs_to_parent_organization": 1,
+  "access_level": "Regional Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
+  "member_administration": 0,
   "modified": "2021-03-26 16:25:32.831479",
-  "name": "9201535d54",
+  "name": "RV Besatz Obmann",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "RV Besatz Obmann"
+  "roles": []
  },
  {
-  "belongs_to_organization": 0,
-  "belongs_to_parent_organization": 1,
+  "access_level": "State Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
+  "member_administration": 0,
   "modified": "2021-03-26 16:22:12.761033",
-  "name": "8543fe2748",
+  "name": "Revision",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "Revision"
+  "roles": []
  },
  {
-  "belongs_to_organization": 0,
-  "belongs_to_parent_organization": 1,
+  "access_level": "Regional Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
+  "member_administration": 0,
   "modified": "2021-03-26 16:22:29.907117",
-  "name": "99ccfa79d3",
+  "name": "RV Schatzmeister",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "RV Schatzmeister"
+  "roles": []
  },
  {
-  "belongs_to_organization": 0,
-  "belongs_to_parent_organization": 1,
+  "access_level": "Regional Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
+  "member_administration": 0,
   "modified": "2021-03-26 16:22:51.408422",
-  "name": "254b4d6cf5",
+  "name": "RV VGA Obmann",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "RV VGA Obmann"
+  "roles": []
  },
  {
-  "belongs_to_organization": 0,
-  "belongs_to_parent_organization": 1,
+  "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
+  "member_administration": 0,
   "modified": "2021-03-26 16:23:20.552078",
-  "name": "68fc49f634",
+  "name": "Vorstand",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "Vorstand"
+  "roles": []
  },
  {
-  "belongs_to_organization": 1,
-  "belongs_to_parent_organization": 0,
+  "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
+  "member_administration": 0,
   "modified": "2021-03-26 16:23:59.473058",
-  "name": "35f3dd0e02",
+  "name": "1. Vorsitzender",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "1. Vorsitzender"
+  "roles": []
  },
  {
-  "belongs_to_organization": 1,
-  "belongs_to_parent_organization": 0,
+  "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
+  "member_administration": 0,
   "modified": "2021-03-26 16:24:09.906314",
-  "name": "74c24496b4",
+  "name": "2. Vorsitzender",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "2. Vorsitzender"
+  "roles": []
  },
  {
-  "belongs_to_organization": 1,
-  "belongs_to_parent_organization": 0,
+  "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
+  "member_administration": 0,
   "modified": "2021-03-26 16:24:28.505131",
-  "name": "1b85a3d770",
+  "name": "Gew\u00e4sserwart",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "Gew\u00e4sserwart"
+  "roles": []
  },
  {
-  "belongs_to_organization": 1,
-  "belongs_to_parent_organization": 0,
+  "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
+  "member_administration": 0,
   "modified": "2021-03-26 16:24:38.408000",
-  "name": "32973358ae",
+  "name": "Jugendwart",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "Jugendwart"
+  "roles": []
  },
  {
-  "belongs_to_organization": 1,
-  "belongs_to_parent_organization": 0,
+  "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
+  "member_administration": 0,
   "modified": "2021-03-26 16:24:57.951146",
-  "name": "a1894adb65",
+  "name": "Verein Schatzmeister",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "Verein Schatzmeister"
+  "roles": []
  },
  {
-  "belongs_to_organization": 1,
-  "belongs_to_parent_organization": 0,
+  "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
+  "member_administration": 0,
   "modified": "2021-03-26 16:25:58.210518",
-  "name": "e85ce4f92f",
+  "name": "Verein Besatz Obmann",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "Verein Besatz Obmann"
+  "roles": []
  },
  {
-  "belongs_to_organization": 1,
-  "belongs_to_parent_organization": 0,
+  "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
-  "modified": "2021-03-26 16:26:12.046795",
-  "name": "600aa0a614",
+  "member_administration": 0,
+  "modified": "2021-05-18 18:37:23.310320",
+  "name": "Verein VGA Obmann",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "title": "Verein VGA Obmann"
+  "roles": []
  }
 ]

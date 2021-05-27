@@ -30,7 +30,9 @@
   "permit_is_valid_for_life",
   "permit_expiration_date",
   "section_break_22",
-  "user"
+  "create_user_account",
+  "user",
+  "email"
  ],
  "fields": [
   {
@@ -187,14 +189,28 @@
    "label": "LANDA Account"
   },
   {
+   "depends_on": "eval: !doc.create_user_account",
    "fieldname": "user",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "User",
    "options": "User"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: !doc.user",
+   "fieldname": "create_user_account",
+   "fieldtype": "Check",
+   "label": "Create User Account"
+  },
+  {
+   "depends_on": "eval: doc.create_user_account",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "mandatory_depends_on": "eval: doc.create_user_account"
   }
  ],
- "index_web_pages_for_search": 1,
  "links": [
   {
    "link_doctype": "Award",
@@ -209,7 +225,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-05-14 16:23:29.368266",
+ "modified": "2021-05-19 00:55:43.528883",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
@@ -227,6 +243,38 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "role": "LANDA Member",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "LANDA State Organization Employee",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "import": 1,
+   "read": 1,
+   "role": "LANDA Regional Organization Management",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "LANDA Local Organization Management",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Magazine Manager"
   }
  ],
  "quick_entry": 1,

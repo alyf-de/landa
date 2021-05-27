@@ -19,18 +19,24 @@ fixtures = [
 	"Item Attribute",
 	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
 	{"dt": "Variant Field", "filters": [["field_name", "=", "description"]]},
+	"Module Profile"
 ]
 
 # DocTypes to be created once, after installation of this app
 # Used in `landa.install.create_records_from_hooks`
 landa_create_after_install = [
 	{
-		# cannot be a fixture because it would overwrite Item Attribute Values
+		# Cannot be a fixture because it would overwrite Item Attribute Values
 		# on every migrate
 		"doctype": "Item Attribute",
 		"attribute_name": "Erlaubnisscheinart"
 	}
 ]
+
+
+landa_add_to_session_defaults = ["Organization"]
+
+on_session_creation = "landa.overrides.set_user_defaults"
 
 treeviews = ["Organization"]
 
@@ -59,7 +65,8 @@ treeviews = ["Organization"]
 doctype_js = {
 	"Delivery Note": "landa_stock/delivery_note/delivery_note.js",
 	"Sales Order": "landa_sales/sales_order/sales_order.js",
-	"Item": "landa_stock/item/item.js"
+	"Item": "landa_stock/item/item.js",
+	"Payment Entry": "landa_sales/payment_entry/payment_entry.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -125,6 +132,12 @@ doc_events = {
 	},
 	"Item": {
 		"before_insert": "landa.landa_stock.item.item.before_insert"
+	},
+	"Sales Order": {
+		"before_validate": "landa.landa_sales.sales_order.sales_order.before_validate"
+	},
+	"Payment Entry": {
+		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate"
 	}
 }
 

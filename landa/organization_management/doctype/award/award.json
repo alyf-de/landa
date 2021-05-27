@@ -74,9 +74,8 @@
    "label": "Organization Name"
   }
  ],
- "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-04-06 02:23:31.214828",
+ "modified": "2021-05-17 18:42:02.080102",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Award",
@@ -94,6 +93,29 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "role": "LANDA Member"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "LANDA State Organization Employee",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "import": 1,
+   "read": 1,
+   "role": "LANDA Regional Organization Management",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "LANDA Local Organization Management"
   }
  ],
  "quick_entry": 1,
