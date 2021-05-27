@@ -32,6 +32,9 @@ landa_create_after_install = [
 	}
 ]
 
+# Used in `landa.install.disable_modes_of_payment`
+disable_modes_of_payment = ["Wire Transfer", "Cash", "Bank Draft", "Credit Card", "Cheque"]
+
 treeviews = ["Organization"]
 
 # Includes in <head>
