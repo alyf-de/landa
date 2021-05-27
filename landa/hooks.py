@@ -19,6 +19,7 @@ fixtures = [
 	"Item Attribute",
 	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
 	{"dt": "Variant Field", "filters": [["field_name", "=", "description"]]},
+	{"dt": "Mode of Payment", "filters": [["name", "in", ["Banküberweisung", "Bar"]]]},
 ]
 
 # DocTypes to be created once, after installation of this app
