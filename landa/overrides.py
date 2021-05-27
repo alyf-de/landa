@@ -3,8 +3,14 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
-# import frappe
-from frappe.model.document import Document
 
-class FishSpeciesTable(Document):
-	pass
+import json
+
+import frappe
+
+
+def set_user_defaults():
+    frappe.defaults.set_user_default(
+        "organization",
+        frappe.get_value("Member", {"user": frappe.session.user}, "organization"),
+    )

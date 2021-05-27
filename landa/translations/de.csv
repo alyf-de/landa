@@ -89,7 +89,7 @@ Module Profile,Modul Profil
 Module Profile Name,Modul Profilname
 Nationality,Staatsangehörigkeit
 New Award Entry,Neue Auszeichnung anlegen
-New Catch Log Entry,Neuen Fangmengeneintrag anlegen
+New Catch Log Entry,Neuen Fangbucheintrag anlegen
 New Member Entry,Neues Mitglied anlegen
 New Member Function Entry,Neue Mitgliedsfunktion anlegen
 Number of Fish, Anzahl der Fische
@@ -142,5 +142,59 @@ Zipcode,PLZ
 {0} from {1} to {2} in row #{3},{0} von {1} zu/bis {2} in Zeile #{3}
 {0} is not a field of doctype {1},{0} ist kein Feld in Doctype {1}
 {} wants to access the following details from your account,{} möchte Zugriff auf die folgenden Angaben von Ihrem Account
-LANDA Customer Ledger,Kostenübersicht
+LANDA Deliveries and Payments,Kostenübersicht
+Order Management,Bestellwesen
+Sales Order,Bestellung
+Member Count,Mitgliedszahlen
+New Sales Order,Neue Bestellung anlegen
+New Delivery Note,Neuen Lieferschein anlegen
+New Payment Entry,Neue Zahlung anlegen
+Yearly Fishing Permits,Erlaubnisscheine
+Yearly Fishing Permit,Erlaubnisschein
+Yearly Fishing Permit Type,Erlaubnisscheinart
+Yearly Fishing Permits Issued,Vergebene Erlaubnisscheine
+Cannot be Returned,Kann nicht zurückgegeben werden
+Year of Settlement,Abrechnungsjahr
+Incoming Payment,Eingehende Zahlung
+Outgoing Payment,Ausgehende Zahlung
+Sales Return,Retoure
 Outstanding Amount,Ausstehender Betrag
+Reset Customizations,Anpassungen Zurücksetzen
+Toggle Sidebar,Seitenleiste ein-/ausblenden
+Your Shortcuts,Schnellzugriff
+Reports & Masters,Berichte & Stammdaten
+Masters,Stammdaten
+Toggle Full Width,Ansicht in voller Breite
+My Profile,Mein Profil
+My Settings,Meine Einstellungen
+Session Defaults,Voreinstellungen für diese Sitzung
+Modules,Module
+Domains,Branchen
+Places,Orte
+Administration,Verwaltung
+Setup,Einrichtung
+Add a Filter,Filter hinzufügen
+Apply Filters,Filter anwenden
+Save,Speichern
+New Chart,Neues Diagramm
+New Shortcut,Neuer Schnellzugriff
+Edit Chart,Diagramm bearbeiten
+Edit Shortcut,Schnellzugriff bearbeiten
+Save Customizations,Anpassungen speichern
+Connections,Verknüpfungen
+Overview,Übersicht
+{}  Available,{}  Verfügbar
+Search or type a command (Ctrl + G),Suchen oder Befehl eingeben (Strg + G)
+Documentation,Dokumentation
+User Forum,Anwenderforum
+Report an Issue,Ein Problem melden
+About,Info
+No New notifications,Keine neuen Benachrichtigungen
+Looks like you haven’t received any notifications.,"Sieht aus, als hätten Sie keine Benachrichtigungen erhalten."
+No Upcoming Events,Keine anstehenden Termine
+There are no upcoming events for you.,Es sind keine Termine für Sie geplant.
+Mark all as read,Alle als gelesen markieren
+Today's Events,Heutige Termine
+LANDA Member Count,Anzahl Mitglieder
+Total (only for regional org.),Summe (nur für RV)
+No,Nein

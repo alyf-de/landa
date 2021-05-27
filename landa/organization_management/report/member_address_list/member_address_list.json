@@ -47,7 +47,7 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2021-03-23 15:38:36.766048",
+ "modified": "2021-05-17 18:30:01.186758",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Address List",
@@ -60,6 +60,12 @@
  "roles": [
   {
    "role": "System Manager"
+  },
+  {
+   "role": "LANDA Local Organization Management"
+  },
+  {
+   "role": "LANDA Magazine Manager"
   }
  ]
 }
