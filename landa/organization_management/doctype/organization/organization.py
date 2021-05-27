@@ -123,6 +123,12 @@ class Organization(NestedSet):
 					# bank account same as a CoA entry
 					pass
 
+		def set_mode_of_payment_account(docname, company, default_account):
+			frappe.get_doc('Mode of Payment', docname).append('accounts', {
+				'company': company,
+				'default_account': default_account
+			}).save()
+			
 		if frappe.db.exists('Company', self.organization_name):
 			return
 
@@ -141,6 +147,18 @@ class Organization(NestedSet):
 				'account_number': '1201',
 				'company_name': self.organization_name
 			}
+		))
+
+		set_mode_of_payment_account(
+			'Banküberweisung',
+			company.name,
+			frappe.get_value('Company', company.name, 'default_bank_account'
+		))
+
+		set_mode_of_payment_account(
+			'Bar',
+			company.name,
+			frappe.get_value('Company', company.name, 'default_cash_account'
 		))
 
 @frappe.whitelist()
