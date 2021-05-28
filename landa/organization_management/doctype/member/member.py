@@ -14,7 +14,6 @@ from frappe.model.naming import revert_series_if_last
 from frappe.permissions import add_user_permission
 
 from landa.organization_management.doctype.member_function.member_function import apply_active_member_functions
-from landa.organization_management.doctype.member_function_category.member_function_category import get_highest_access_level
 from landa.organization_management.doctype.member_function_category.member_function_category import get_organization_at_level
 
 class Member(Document):
@@ -84,15 +83,3 @@ class Member(Document):
 		key = self.name[:-number_part_len] + '.' + '#' * number_part_len
 
 		revert_series_if_last(key, self.name)
-
-
-@frappe.whitelist()
-def belongs_to_parent_organization():
-	"""Return True if session user belongs to a parent organization (Regionalverband) or no organization at all."""
-	member_name = frappe.get_value('Member', {'user': frappe.session.user}, 'name')
-
-	if member_name:
-		access_level = get_highest_access_level(member_name)
-		return access_level < 2
-
-	return True

@@ -90,9 +90,6 @@ class Organization(NestedSet):
 		customer.customer_name = self.organization_name
 		customer.save()
 
-		self.customer = customer.name
-		self.save()
-
 	def create_company(self):
 		# erpnext.setup.setup_wizard.operations.install_fixtures + account_number
 		def create_bank_account(args):
@@ -129,7 +126,7 @@ class Organization(NestedSet):
 				'company': company,
 				'default_account': default_account
 			}).save()
-			
+
 		if frappe.db.exists('Company', self.organization_name):
 			return
 
@@ -161,6 +158,7 @@ class Organization(NestedSet):
 			company.name,
 			frappe.get_value('Company', company.name, 'default_cash_account'
 		))
+
 
 @frappe.whitelist()
 def get_children(doctype, parent=None, organization=None, is_root=False):
