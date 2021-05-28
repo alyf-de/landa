@@ -13,7 +13,7 @@ from frappe.contacts.address_and_contact import load_address_and_contact
 from frappe.contacts.address_and_contact import delete_contact_and_address
 
 class Organization(NestedSet):
-	nsm_parent_field = 'parent_organization'
+	nsm_parent_field = "parent_organization"
 
 	def autoname(self):
 		"""Generate the unique organization number (name field)
@@ -32,10 +32,10 @@ class Organization(NestedSet):
 			frappe.throw(_("Please set a Parent Organization."))
 		elif self.is_level(2):
 			# Local Organizations
-			self.name = make_autoname(self.parent_organization + '-.###', 'Organization')
+			self.name = make_autoname(self.parent_organization + "-.###", "Organization")
 		elif self.is_level(3):
 			# Chapters
-			self.name = make_autoname(self.parent_organization + '-.##', 'Organization')
+			self.name = make_autoname(self.parent_organization + "-.##", "Organization")
 		else:
 			frappe.throw(_("Cannot set Parent Organization to a local group."))
 
@@ -67,8 +67,8 @@ class Organization(NestedSet):
 			return
 
 		# reconstruct the key used to generate the name
-		number_part_len = len(self.name.split('-')[-1])
-		key = self.name[:-number_part_len] + '.' + '#' * number_part_len
+		number_part_len = len(self.name.split("-")[-1])
+		key = self.name[:-number_part_len] + "." + "#" * number_part_len
 
 		revert_series_if_last(key, self.name)
 
@@ -96,22 +96,24 @@ class Organization(NestedSet):
 			if not args.bank_account:
 				return
 
-			company_name = args.company_name
-			bank_account_group =  frappe.db.get_value("Account",
-				{"account_type": "Bank", "is_group": 1, "root_type": "Asset",
-					"company": company_name})
+			bank_account_group =  frappe.db.get_value("Account", {
+				"account_type": "Bank",
+				"is_group": 1,
+				"root_type": "Asset",
+				"company": args.company_name
+			})
 			if bank_account_group:
 				bank_account = frappe.get_doc({
 					"doctype": "Account",
-					'account_name': args.bank_account,
-					'account_number': args.account_number,
-					'parent_account': bank_account_group,
-					'is_group':0,
-					'company': company_name,
+					"account_name": args.bank_account,
+					"account_number": args.account_number,
+					"parent_account": bank_account_group,
+					"is_group":0,
+					"company": args.company_name,
 					"account_type": "Bank",
 				})
 				try:
-					doc = bank_account.insert()
+					bank_account.insert()
 
 					frappe.db.set_value("Company", args.company_name, "default_bank_account", bank_account.name, update_modified=False)
 
@@ -122,41 +124,41 @@ class Organization(NestedSet):
 					pass
 
 		def set_mode_of_payment_account(docname, company, default_account):
-			frappe.get_doc('Mode of Payment', docname).append('accounts', {
-				'company': company,
-				'default_account': default_account
+			frappe.get_doc("Mode of Payment", docname).append("accounts", {
+				"company": company,
+				"default_account": default_account
 			}).save()
 
-		if frappe.db.exists('Company', self.organization_name):
+		if frappe.db.exists("Company", self.organization_name):
 			return
 
-		company = frappe.new_doc('Company')
+		company = frappe.new_doc("Company")
 		company.company_name = self.organization_name
 		company.abbr = self.name
-		company.default_currency = 'EUR'
-		company.country = 'Germany'
-		company.create_chart_of_accounts_based_on = 'Standard Template'
-		company.chart_of_accounts = 'Standard with Numbers'
+		company.default_currency = "EUR"
+		company.country = "Germany"
+		company.create_chart_of_accounts_based_on = "Standard Template"
+		company.chart_of_accounts = "Standard with Numbers"
 		company.save()
 
 		create_bank_account(frappe._dict(
 			{
-				'bank_account': 'Default Bank Account',
-				'account_number': '1201',
-				'company_name': self.organization_name
+				"bank_account": "Default Bank Account",
+				"account_number": "1201",
+				"company_name": self.organization_name
 			}
 		))
 
 		set_mode_of_payment_account(
-			'Banküberweisung',
+			"Banküberweisung",
 			company.name,
-			frappe.get_value('Company', company.name, 'default_bank_account'
+			frappe.get_value("Company", company.name, "default_bank_account"
 		))
 
 		set_mode_of_payment_account(
-			'Bar',
+			"Bar",
 			company.name,
-			frappe.get_value('Company', company.name, 'default_cash_account'
+			frappe.get_value("Company", company.name, "default_cash_account"
 		))
 
 
@@ -166,12 +168,12 @@ def get_children(doctype, parent=None, organization=None, is_root=False):
 		parent = ""
 
 	return frappe.db.get_all(doctype, fields=[
-			'name as value',
-			'organization_name as title',
-			'is_group as expandable'
+			"name as value",
+			"organization_name as title",
+			"is_group as expandable"
 		],
 		filters={
-			'parent_organization': parent
+			"parent_organization": parent
 		}
 	)
 
@@ -181,7 +183,7 @@ def add_node():
 	args = frappe.form_dict
 	args = make_tree_args(**args)
 
-	if args.parent_organization == 'All Organizations':
+	if args.parent_organization == "All Organizations":
 		args.parent_organization = None
 
 	frappe.get_doc(args).insert()
