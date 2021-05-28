@@ -91,37 +91,26 @@ class Organization(NestedSet):
 		customer.save()
 
 	def create_company(self):
-		# erpnext.setup.setup_wizard.operations.install_fixtures + account_number
-		def create_bank_account(args):
-			if not args.bank_account:
-				return
-
+		def create_bank_account(bank_account, account_number, company_name):
 			bank_account_group =  frappe.db.get_value("Account", {
 				"account_type": "Bank",
 				"is_group": 1,
 				"root_type": "Asset",
-				"company": args.company_name
+				"company": company_name
 			})
 			if bank_account_group:
 				bank_account = frappe.get_doc({
 					"doctype": "Account",
-					"account_name": args.bank_account,
-					"account_number": args.account_number,
+					"account_name": bank_account,
+					"account_number": account_number,
 					"parent_account": bank_account_group,
 					"is_group":0,
-					"company": args.company_name,
+					"company": company_name,
 					"account_type": "Bank",
 				})
-				try:
-					bank_account.insert()
 
-					frappe.db.set_value("Company", args.company_name, "default_bank_account", bank_account.name, update_modified=False)
-
-				except erpnext.accounts.doctype.account.account.RootNotEditable:
-					frappe.throw(_("Bank account cannot be named as {0}").format(args.bank_account))
-				except frappe.DuplicateEntryError:
-					# bank account same as a CoA entry
-					pass
+				bank_account.insert()
+				frappe.db.set_value("Company", company_name, "default_bank_account", bank_account.name, update_modified=False)
 
 		def set_mode_of_payment_account(docname, company, default_account):
 			frappe.get_doc("Mode of Payment", docname).append("accounts", {
@@ -141,13 +130,7 @@ class Organization(NestedSet):
 		company.chart_of_accounts = "Standard with Numbers"
 		company.save()
 
-		create_bank_account(frappe._dict(
-			{
-				"bank_account": "Default Bank Account",
-				"account_number": "1201",
-				"company_name": self.organization_name
-			}
-		))
+		create_bank_account("Default Bank Account", "1201", company.name)
 
 		set_mode_of_payment_account(
 			"Banküberweisung",
