@@ -17,5 +17,55 @@ frappe.ui.form.on('Organization', {
         else {
             frappe.contacts.render_address_and_contact(frm);
         }
+
+        if (frappe.user_roles.includes("System Manager") && !frm.is_new()) {
+            frm.page.add_menu_item(__('Update Naming Series'), () => frm.trigger('update_naming_series'));
+        }
+    },
+    update_naming_series: function(frm) {
+        frm.call('get_series_current').then((r) => {
+            debugger;
+            const current = r.message;
+            if (!current) {
+                frappe.show_alert({
+                    message: __('No child records'),
+                    indicator: 'yellow'
+                });
+            } else {
+                const d = new frappe.ui.Dialog({
+                    title: __('Update Naming Series'),
+                    fields: [
+                        {
+                            "label": "Current",
+                            "fieldname": "current",
+                            "fieldtype": "Int",
+                            "default": current
+                        }
+                    ],
+                    primary_action: function() {
+                        debugger;
+                        const data = d.get_values();
+    
+                        if(data.current === current) {
+                            d.hide();
+                            return;
+                        } else {
+                            frm.call('set_series_current', { current: data.current }).then(r => {
+                                debugger;
+                                if (!r.exc) {
+                                    frappe.show_alert({
+                                        message: __('Naming Series Updated'),
+                                        indicator: 'green'
+                                    });
+                                }
+                                d.hide();
+                            });
+                        }
+                    },
+                    primary_action_label: __('Update')
+                });
+                d.show();
+            }
+        });
     },
 });
