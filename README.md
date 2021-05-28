@@ -35,7 +35,7 @@ Open the browser and complete the setup wizard, for example with the following v
 
 #### 2. Install landa
 
-> ERPNext msut be already installed and the setup wizard completed before installing landa.
+> ERPNext must be already installed and the setup wizard completed before installing landa.
 
 ```
 bench --site [site-name] install-app landa
