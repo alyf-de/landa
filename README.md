@@ -29,7 +29,7 @@ Open the browser and complete the setup wizard, for example with the following v
 | Company Name         | Landesverband Sächsischer Angler |         |
 | Company Abbreviation | LVSA                             |         |
 | What does it do?     | Landesverband Sächsischer Angler |         |
-| Bank Name            | Bank                             |         |
+| Bank Name            | Default Bank Account             |         |
 | Chart of Accounts    | Standard with Numbers            |         |
 
 
