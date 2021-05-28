@@ -1,0 +1,28 @@
+[
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "Bar",
+  "modified": "2021-05-27 17:32:54.859542",
+  "name": "Bar",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "Bank\u00fcberweisung",
+  "modified": "2021-05-27 17:50:33.995761",
+  "name": "Bank\u00fcberweisung",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "type": "Bank"
+ }
+]

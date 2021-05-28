@@ -4,7 +4,8 @@ from frappe import get_hooks
 
 def after_install():
 	create_records_from_hooks()
-  add_session_defaults()
+	disable_modes_of_payment()
+	add_session_defaults()
 
 
 def create_records_from_hooks():
@@ -14,6 +15,15 @@ def create_records_from_hooks():
 			doc = frappe.get_doc(record)
 			doc.save()
 		except frappe.DuplicateEntryError:
+			continue
+
+
+def disable_modes_of_payment():
+	names = get_hooks('disable_modes_of_payment', default=[], app_name='landa')
+	for name in names:
+		try:
+			doc = frappe.set_value('Mode of Payment', name, 'enabled', False)
+		except frappe.DoesNotExistError:
 			continue
 
 
