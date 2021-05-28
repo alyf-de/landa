@@ -2,18 +2,44 @@
 
 Datenmanagementsystem des Landesverbands Sächsischer Angler.
 
-## Glossar
+### Glossary
 
-Landesverband: State Organization (Wurzel)
-Regionalverband: Regional Organization (1. Ebene)
-Verein: Local Organization (2. Ebene)
-Ortsgruppe: Chapter (3. Ebene)
+| German          | English               | Comment   |
+|-----------------|-----------------------|-----------|
+| Landesverband   | State Organization    | Root      |
+| Regionalverband | Regional Organization | 1st Level |
+| Verein          | Local Organization    | 2nd Level |
+| Ortsgruppe      | Chapter               | 3rd Level |
 
 ### Installation 
 
-> ERPNext muss bereits installiert und über den Setup-Wizard **eingerichtet** sein, bevor diese App installiert werden kann.
+#### 1. Create a site (optional)
 
-`bench --site [site-name] install-app landa`
+```
+bench new-site [site-name] --install-app erpnext
+```
+
+Open the browser and complete the setup wizard, for example with the following values:
+
+| Field                | Value                            | Comment |
+|----------------------|----------------------------------|---------|
+| Language             | English                          |         |
+| Your Country         | Germany                          |         |
+| Domains              | Non Profit (beta)                |         |
+| Company Name         | Landesverband Sächsischer Angler |         |
+| Company Abbreviation | LVSA                             |         |
+| What does it do?     | Landesverband Sächsischer Angler |         |
+| Bank Name            | Bank                             |         |
+| Chart of Accounts    | Standard with Numbers            |         |
+
+
+#### 2. Install landa
+
+> ERPNext msut be already installed and the setup wizard completed before installing landa.
+
+```
+bench --site [site-name] install-app landa
+```
 
 ### Data Import with pre-defined IDs
 
