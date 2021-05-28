@@ -62,4 +62,13 @@ In [2]: frappe.db.commit()
 
     1. Go to "Customize Form" for the related DocType
     2. In the "Naming" section, set autoname to "" (empty) and click save
-    
+
+### Create Demo Accounts
+
+With the bench command `make-demo-accounts` you can create a **Member**, **Member Function** and **User** for every existing **Member Function Category**. Just specify an existing local organization:
+
+```
+bench --site landa make-demo-accounts AVS-001 
+```
+
+> The above example uses a site called "landa" and an organization called "AVS-001" as examples. Please replace these with your own values.
