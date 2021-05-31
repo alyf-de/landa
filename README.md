@@ -51,12 +51,10 @@ bench --site [site-name] install-app landa
 2. Do the data import
 3. Manually set the naming series counter to the correct value
 
-```
-In [1]: frappe.db.sql("UPDATE `tabSeries` SET current = %(current)s WHERE name=%(prefix)s", {"prefix": "MY-SERIES-001-", "current": 17})
-Out[1]: ()
+    a) Open the Regional Orgnaization to update the current number of it's Local Organizations
+    b) Open Local Organization to Update the current number of it's Chapters or Members 
 
-In [2]: frappe.db.commit()
-```
+    Click on Menu > Update Naming Series
 
 4. Disable naming by prompt
 

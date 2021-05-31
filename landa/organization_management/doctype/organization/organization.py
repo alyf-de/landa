@@ -5,6 +5,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe import _
+from frappe.utils import cint
 from frappe.utils.nestedset import NestedSet
 from frappe.desk.treeview import make_tree_args
 from frappe.model.naming import make_autoname
@@ -57,6 +58,19 @@ class Organization(NestedSet):
 		# NestedSet.on_trash should be the last command because it destroys the
 		# funtionality of NestedSet. Some methods will not work properly afterwards.
 		super(Organization, self).on_trash(allow_root_deletion=True)
+
+	@frappe.whitelist()
+	def get_series_current(self):
+		frappe.only_for("System Manager")
+		return frappe.db.get_value("Series", self.name + "-", "current", order_by="name")
+
+	@frappe.whitelist()
+	def set_series_current(self, current):
+		frappe.only_for("System Manager")
+		frappe.db.sql(
+			"UPDATE `tabSeries` SET current = %s WHERE name = %s",
+			(cint(current), self.name + "-")
+		)
 
 	def revert_series(self):
 		"""Decrease the naming counter when the newest organization gets deleted."""
