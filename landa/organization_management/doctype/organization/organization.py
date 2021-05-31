@@ -14,7 +14,7 @@ from frappe.contacts.address_and_contact import load_address_and_contact
 from frappe.contacts.address_and_contact import delete_contact_and_address
 
 class Organization(NestedSet):
-	nsm_parent_field = 'parent_organization'
+	nsm_parent_field = "parent_organization"
 
 	def autoname(self):
 		"""Generate the unique organization number (name field)
@@ -27,22 +27,25 @@ class Organization(NestedSet):
 			return
 
 		if self.is_level(0) or self.is_level(1):
-			# Landesverband oder Regionalverband
+			# State and Regional Organizations
 			self.name = self.short_code
 		elif not self.parent_organization:
 			frappe.throw(_("Please set a Parent Organization."))
 		elif self.is_level(2):
-			# Vereine
-			self.name = make_autoname(self.parent_organization + '-.###', 'Organization')
+			# Local Organizations
+			self.name = make_autoname(self.parent_organization + "-.###", "Organization")
 		elif self.is_level(3):
-			# Ortsgruppen
-			self.name = make_autoname(self.parent_organization + '-.##', 'Organization')
+			# Chapters
+			self.name = make_autoname(self.parent_organization + "-.##", "Organization")
 		else:
 			frappe.throw(_("Cannot set Parent Organization to a local group."))
 
 	def after_insert(self):
-		if self.is_level(2):
-			# Vereine
+		if self.is_level(1):
+			# Regional Organizations
+			self.create_company()
+		elif self.is_level(2):
+			# Local Organizations
 			self.create_customer()
 
 	def onload(self):
@@ -78,8 +81,8 @@ class Organization(NestedSet):
 			return
 
 		# reconstruct the key used to generate the name
-		number_part_len = len(self.name.split('-')[-1])
-		key = self.name[:-number_part_len] + '.' + '#' * number_part_len
+		number_part_len = len(self.name.split("-")[-1])
+		key = self.name[:-number_part_len] + "." + "#" * number_part_len
 
 		revert_series_if_last(key, self.name)
 
@@ -101,6 +104,60 @@ class Organization(NestedSet):
 		customer.customer_name = self.organization_name
 		customer.save()
 
+	def create_company(self):
+		def create_bank_account(bank_account, account_number, company_name):
+			bank_account_group =  frappe.db.get_value("Account", {
+				"account_type": "Bank",
+				"is_group": 1,
+				"root_type": "Asset",
+				"company": company_name
+			})
+			if bank_account_group:
+				bank_account = frappe.get_doc({
+					"doctype": "Account",
+					"account_name": bank_account,
+					"account_number": account_number,
+					"parent_account": bank_account_group,
+					"is_group":0,
+					"company": company_name,
+					"account_type": "Bank",
+				})
+
+				bank_account.insert()
+				frappe.db.set_value("Company", company_name, "default_bank_account", bank_account.name, update_modified=False)
+
+		def set_mode_of_payment_account(docname, company, default_account):
+			frappe.get_doc("Mode of Payment", docname).append("accounts", {
+				"company": company,
+				"default_account": default_account
+			}).save()
+
+		if frappe.db.exists("Company", self.organization_name):
+			return
+
+		company = frappe.new_doc("Company")
+		company.company_name = self.organization_name
+		company.abbr = self.name
+		company.default_currency = "EUR"
+		company.country = "Germany"
+		company.create_chart_of_accounts_based_on = "Standard Template"
+		company.chart_of_accounts = "Standard with Numbers"
+		company.save()
+
+		create_bank_account("Default Bank Account", "1201", company.name)
+
+		set_mode_of_payment_account(
+			"Banküberweisung",
+			company.name,
+			frappe.get_value("Company", company.name, "default_bank_account"
+		))
+
+		set_mode_of_payment_account(
+			"Bar",
+			company.name,
+			frappe.get_value("Company", company.name, "default_cash_account"
+		))
+
 
 @frappe.whitelist()
 def get_children(doctype, parent=None, organization=None, is_root=False):
@@ -108,12 +165,12 @@ def get_children(doctype, parent=None, organization=None, is_root=False):
 		parent = ""
 
 	return frappe.db.get_all(doctype, fields=[
-			'name as value',
-			'organization_name as title',
-			'is_group as expandable'
+			"name as value",
+			"organization_name as title",
+			"is_group as expandable"
 		],
 		filters={
-			'parent_organization': parent
+			"parent_organization": parent
 		}
 	)
 
@@ -123,7 +180,7 @@ def add_node():
 	args = frappe.form_dict
 	args = make_tree_args(**args)
 
-	if args.parent_organization == 'All Organizations':
+	if args.parent_organization == "All Organizations":
 		args.parent_organization = None
 
 	frappe.get_doc(args).insert()
