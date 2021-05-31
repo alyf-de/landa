@@ -24,7 +24,6 @@ frappe.ui.form.on('Organization', {
     },
     update_naming_series: function(frm) {
         frm.call('get_series_current').then((r) => {
-            debugger;
             const current = r.message;
             if (!current) {
                 frappe.show_alert({
@@ -43,7 +42,6 @@ frappe.ui.form.on('Organization', {
                         }
                     ],
                     primary_action: function() {
-                        debugger;
                         const data = d.get_values();
     
                         if(data.current === current) {
@@ -51,7 +49,6 @@ frappe.ui.form.on('Organization', {
                             return;
                         } else {
                             frm.call('set_series_current', { current: data.current }).then(r => {
-                                debugger;
                                 if (!r.exc) {
                                     frappe.show_alert({
                                         message: __('Naming Series Updated'),
