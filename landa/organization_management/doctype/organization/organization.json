@@ -50,7 +50,8 @@
    "default": "0",
    "fieldname": "is_group",
    "fieldtype": "Check",
-   "label": "Is Group"
+   "label": "Is Group",
+   "set_only_once": 1
   },
   {
    "fieldname": "lft",
@@ -83,7 +84,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Parent Organization",
-   "options": "Organization"
+   "options": "Organization",
+   "set_only_once": 1
   },
   {
    "allow_in_quick_entry": 1,
@@ -184,7 +186,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-05-18 13:22:37.383155",
+ "modified": "2021-05-28 19:07:02.616114",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
