@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2021-05-18 17:16:18.368875",
+ "modified": "2021-06-02 15:08:08.847800",
  "modified_by": "Administrator",
  "module": "LANDA Stock",
  "name": "LANDA Member Count",
@@ -18,5 +18,9 @@
  "ref_doctype": "Delivery Note",
  "report_name": "LANDA Member Count",
  "report_type": "Script Report",
- "roles": []
+ "roles": [
+  {
+   "role": "Sales User"
+  }
+ ]
 }
