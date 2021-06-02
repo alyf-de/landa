@@ -88,7 +88,8 @@ bench --site landa make-demo-accounts AVS-001
 > The above example uses a site called "landa" and an organization called "AVS-001" as examples. Please replace these with your own values.
 
 
-## Systemkonfiguration
+## System configuration
 
 Open **Item Variant Settings** and add the field `item_tax_template` to the table.
 
+Users with **Role** "LANDA Regional Organization Management" and "LANDA Local Organization Management" need to set the **Company** corresponding to their regional **Organization** to their **Session Defaults**.
