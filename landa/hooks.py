@@ -20,6 +20,7 @@ fixtures = [
 	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
 	{"dt": "Variant Field", "filters": [["field_name", "=", "description"]]},
 	{"dt": "Mode of Payment", "filters": [["name", "in", ["Banküberweisung", "Bar"]]]},
+	"System Settings",
 	"Module Profile"
 ]
 
