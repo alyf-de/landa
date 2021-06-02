@@ -13,11 +13,13 @@ Datenmanagementsystem des Landesverbands Sächsischer Angler.
 
 ### Installation 
 
-#### 1. Create a site (optional)
+#### 1. Create a site
 
 ```
 bench new-site [site-name] --install-app erpnext
 ```
+
+#### 2. Complete the setup wizard
 
 Open the browser and complete the setup wizard, for example with the following values:
 
@@ -27,19 +29,33 @@ Open the browser and complete the setup wizard, for example with the following v
 | Your Country         | Germany                          |         |
 | Domains              | Non Profit (beta)                |         |
 | Company Name         | Landesverband Sächsischer Angler |         |
-| Company Abbreviation | LVSA                             |         |
+| Company Abbreviation | LV                               |         |
 | What does it do?     | Landesverband Sächsischer Angler |         |
 | Bank Name            | Default Bank Account             |         |
 | Chart of Accounts    | Standard with Numbers            |         |
 
 
-#### 2. Install landa
+#### 3. Install landa
 
 > ERPNext must be already installed and the setup wizard completed before installing landa.
 
 ```
 bench --site [site-name] install-app landa
 ```
+
+### Reinstallation (developers only)
+
+> **Warning**: all site data will get deleted by the following commands
+
+1. Uninstall landa and reinstall the site
+
+    ```bash
+    bench --site [site-name] uninstall-app landa
+    bench --site [site-name] reinstall
+    ```
+
+2. Open your browser and complete the setup wizard, as described above.
+3. Install landa, as described above.
 
 ### Data Import with pre-defined IDs
 
@@ -70,3 +86,9 @@ bench --site landa make-demo-accounts AVS-001
 ```
 
 > The above example uses a site called "landa" and an organization called "AVS-001" as examples. Please replace these with your own values.
+
+
+## Systemkonfiguration
+
+Open **Item Variant Settings** and add the field `item_tax_template` to the table.
+
