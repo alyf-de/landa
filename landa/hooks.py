@@ -4,8 +4,8 @@ from . import __version__ as app_version
 
 app_name = "landa"
 app_title = "LANDA"
-app_publisher = "Landesverband Sächsischer Angler e. V.Real Experts GmbH"
-app_description = "Datenmanagementsystem des "
+app_publisher = "Real Experts GmbH"
+app_description = "Datenmanagementsystem des Landesverband Sächsischer Angler e. V."
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "office@realexperts.de"
