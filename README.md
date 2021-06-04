@@ -40,6 +40,7 @@ Open the browser and complete the setup wizard, for example with the following v
 > ERPNext must be already installed and the setup wizard completed before installing landa.
 
 ```
+bench get-app https://github.com/realexperts/landa.git
 bench --site [site-name] install-app landa
 ```
 
