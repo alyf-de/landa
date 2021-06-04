@@ -99,6 +99,7 @@ doctype_js = {
 
 # before_install = "landa.install.before_install"
 after_install = "landa.install.after_install"
+after_migrate = "landa.migrate.after_migrate"
 
 # Desk Notifications
 # ------------------
