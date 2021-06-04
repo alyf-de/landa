@@ -8,7 +8,22 @@ import frappe
 
 
 def set_user_defaults():
-    frappe.defaults.set_user_default(
-        "organization",
-        frappe.get_value("Member", {"user": frappe.session.user}, "organization"),
-    )
+    organization = frappe.get_value("Member", {"user": frappe.session.user}, "organization")
+    if not organization:
+        return
+
+    frappe.defaults.set_user_default("organization", organization)
+    frappe.defaults.set_user_default("company", get_default_company(organization))
+
+
+def get_default_company(organization):
+    doc = frappe.get_doc("Organization", organization)
+    ancestors = doc.get_ancestors()
+
+    if len(ancestors) < 2:
+        return None
+
+    ancestors.reverse()
+    regional_organization = ancestors[1]
+
+    return frappe.get_value("Company", {"abbr": regional_organization})
