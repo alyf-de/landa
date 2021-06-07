@@ -14,7 +14,7 @@ app_license = "--"
 fixtures = [
 	"System Settings",
 	"Module Profile",
-	{"dt": "Role", "filters": [["name", "=", "LANDA Member"]]},
+	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
 	{"dt": "Mode of Payment", "filters": [["name", "in", ["Banküberweisung", "Bar"]]]},
 	"Organization",
 	"Member Function Category",
