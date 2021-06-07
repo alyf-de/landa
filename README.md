@@ -39,9 +39,10 @@ Open the browser and complete the setup wizard, for example with the following v
 
 > ERPNext must be already installed and the setup wizard completed before installing landa.
 
-```
+```bash
 bench get-app https://github.com/realexperts/landa.git
 bench --site [site-name] install-app landa
+bench --site landa migrate # currently necessary to get the "Member Count" chart
 ```
 
 ### Reinstallation (developers only)

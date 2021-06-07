@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2021-06-02 15:08:08.847800",
+ "modified": "2021-06-07 17:44:43.004074",
  "modified_by": "Administrator",
  "module": "LANDA Stock",
  "name": "LANDA Member Count",
@@ -21,6 +21,15 @@
  "roles": [
   {
    "role": "Sales User"
+  },
+  {
+   "role": "LANDA Local Organization Management"
+  },
+  {
+   "role": "LANDA Regional Organization Management"
+  },
+  {
+   "role": "LANDA State Organization Employee"
   }
  ]
 }
