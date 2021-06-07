@@ -14,6 +14,7 @@ def set_user_defaults():
 
     frappe.defaults.set_user_default("organization", organization)
     frappe.defaults.set_user_default("company", get_default_company(organization))
+    frappe.defaults.set_user_default("customer", organization)
 
 
 def get_default_company(organization):
