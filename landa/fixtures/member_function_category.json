@@ -3,156 +3,62 @@
   "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-03-26 16:21:10.571950",
-  "name": "Pr\u00e4sidiumsmitglied",
+  "member_administration": 1,
+  "modified": "2021-06-04 18:19:56.131793",
+  "name": "MV Verein",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "roles": []
+  "roles": [
+   {
+    "parent": "MV Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Local Organization Management"
+   }
+  ]
  },
  {
   "access_level": "Regional Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-03-26 16:25:32.831479",
-  "name": "RV Besatz Obmann",
+  "member_administration": 1,
+  "modified": "2021-06-07 13:17:03.683907",
+  "name": "MV Regionalverband",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "roles": []
- },
- {
-  "access_level": "State Organization",
-  "docstatus": 0,
-  "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-03-26 16:22:12.761033",
-  "name": "Revision",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "roles": []
- },
- {
-  "access_level": "Regional Organization",
-  "docstatus": 0,
-  "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-03-26 16:22:29.907117",
-  "name": "RV Schatzmeister",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "roles": []
- },
- {
-  "access_level": "Regional Organization",
-  "docstatus": 0,
-  "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-03-26 16:22:51.408422",
-  "name": "RV VGA Obmann",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "roles": []
- },
- {
-  "access_level": "Local Organization",
-  "docstatus": 0,
-  "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-03-26 16:23:20.552078",
-  "name": "Vorstand",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "roles": []
- },
- {
-  "access_level": "Local Organization",
-  "docstatus": 0,
-  "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-03-26 16:23:59.473058",
-  "name": "1. Vorsitzender",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "roles": []
- },
- {
-  "access_level": "Local Organization",
-  "docstatus": 0,
-  "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-03-26 16:24:09.906314",
-  "name": "2. Vorsitzender",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "roles": []
- },
- {
-  "access_level": "Local Organization",
-  "docstatus": 0,
-  "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-03-26 16:24:28.505131",
-  "name": "Gew\u00e4sserwart",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "roles": []
- },
- {
-  "access_level": "Local Organization",
-  "docstatus": 0,
-  "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-03-26 16:24:38.408000",
-  "name": "Jugendwart",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "roles": []
- },
- {
-  "access_level": "Local Organization",
-  "docstatus": 0,
-  "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-03-26 16:24:57.951146",
-  "name": "Verein Schatzmeister",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "roles": []
- },
- {
-  "access_level": "Local Organization",
-  "docstatus": 0,
-  "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-03-26 16:25:58.210518",
-  "name": "Verein Besatz Obmann",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "roles": []
- },
- {
-  "access_level": "Local Organization",
-  "docstatus": 0,
-  "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-05-18 18:37:23.310320",
-  "name": "Verein VGA Obmann",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "roles": []
+  "roles": [
+   {
+    "parent": "MV Regionalverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Regional Organization Management"
+   },
+   {
+    "parent": "MV Regionalverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "Sales Master Manager"
+   },
+   {
+    "parent": "MV Regionalverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "Sales User"
+   },
+   {
+    "parent": "MV Regionalverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "MV Regionalverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "Accounts User"
+   }
+  ]
  }
 ]
