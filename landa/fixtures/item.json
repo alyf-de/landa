@@ -74,14 +74,15 @@
   "is_stock_item": 0,
   "is_sub_contracted_item": 0,
   "item_code": "ES",
-  "item_defaults": null,
+  "item_defaults": [],
   "item_group": "All Item Groups",
   "item_name": "Erlaubnisschein",
+  "item_tax_template": null,
   "last_purchase_rate": 0.0,
   "lead_time_days": 0,
   "max_discount": 0.0,
   "min_order_qty": 0.0,
-  "modified": "2021-05-14 15:01:24.042908",
+  "modified": "2021-06-07 14:45:00.164711",
   "name": "ES",
   "naming_series": "STO-ITEM-.YYYY.-",
   "no_of_months": 0,
@@ -110,7 +111,32 @@
   "stock_uom": "Nos",
   "supplier_items": [],
   "synced_with_hub": 0,
-  "taxes": [],
+  "taxes": [
+   {
+    "item_tax_template": "Umsatzsteuer 19% - AVS",
+    "parent": "ES",
+    "parentfield": "taxes",
+    "parenttype": "Item",
+    "tax_category": "Umsatzsteuer",
+    "valid_from": null
+   },
+   {
+    "item_tax_template": "Umsatzsteuer 19% - AVL",
+    "parent": "ES",
+    "parentfield": "taxes",
+    "parenttype": "Item",
+    "tax_category": "Umsatzsteuer",
+    "valid_from": null
+   },
+   {
+    "item_tax_template": "Umsatzsteuer 19% - AVE",
+    "parent": "ES",
+    "parentfield": "taxes",
+    "parenttype": "Item",
+    "tax_category": "Umsatzsteuer",
+    "valid_from": null
+   }
+  ],
   "thumbnail": null,
   "total_projected_qty": 0.0,
   "uoms": [
@@ -123,7 +149,7 @@
    }
   ],
   "valid_from_year": 0,
-  "valid_to_year": 0,
+  "valid_to_year": 2100,
   "valuation_method": "",
   "valuation_rate": 0.0,
   "variant_based_on": "Item Attribute",
@@ -215,14 +241,15 @@
   "is_stock_item": 0,
   "is_sub_contracted_item": 0,
   "item_code": "BA",
-  "item_defaults": null,
+  "item_defaults": [],
   "item_group": "All Item Groups",
   "item_name": "Beitragsmarke",
+  "item_tax_template": null,
   "last_purchase_rate": 0.0,
   "lead_time_days": 0,
   "max_discount": 0.0,
   "min_order_qty": 0.0,
-  "modified": "2021-04-21 14:27:20.827136",
+  "modified": "2021-06-07 14:50:19.074473",
   "name": "BA",
   "naming_series": "STO-ITEM-.YYYY.-",
   "no_of_months": 0,
@@ -251,7 +278,32 @@
   "stock_uom": "Nos",
   "supplier_items": [],
   "synced_with_hub": 0,
-  "taxes": [],
+  "taxes": [
+   {
+    "item_tax_template": "Umsatzsteuer 19% - AVL",
+    "parent": "BA",
+    "parentfield": "taxes",
+    "parenttype": "Item",
+    "tax_category": "Umsatzsteuer",
+    "valid_from": null
+   },
+   {
+    "item_tax_template": "Umsatzsteuer 19% - AVS",
+    "parent": "BA",
+    "parentfield": "taxes",
+    "parenttype": "Item",
+    "tax_category": "Umsatzsteuer",
+    "valid_from": null
+   },
+   {
+    "item_tax_template": "Umsatzsteuer 19% - AVE",
+    "parent": "BA",
+    "parentfield": "taxes",
+    "parenttype": "Item",
+    "tax_category": "Umsatzsteuer",
+    "valid_from": null
+   }
+  ],
   "thumbnail": null,
   "total_projected_qty": 0.0,
   "uoms": [
@@ -264,7 +316,7 @@
    }
   ],
   "valid_from_year": 0,
-  "valid_to_year": 0,
+  "valid_to_year": 2100,
   "valuation_method": "",
   "valuation_rate": 0.0,
   "variant_based_on": "Item Attribute",
