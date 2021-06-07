@@ -12,17 +12,17 @@ app_email = "office@realexperts.de"
 app_license = "--"
 
 fixtures = [
+	"System Settings",
+	"Module Profile",
+	{"dt": "Role", "filters": [["name", "=", "LANDA Member"]]},
+	{"dt": "Mode of Payment", "filters": [["name", "in", ["Banküberweisung", "Bar"]]]},
 	"Organization",
 	"Member Function Category",
-	"Fishing Area",
 	"Fish Species",
+	"Fishing Area",
 	"Item Attribute",
-	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
 	{"dt": "Variant Field", "filters": [["field_name", "=", "description"]]},
-	{"dt": "Mode of Payment", "filters": [["name", "in", ["Banküberweisung", "Bar"]]]},
-	{"dt": "Role", "filters": [["name", "=", "LANDA Member"]]},
-	"System Settings",
-	"Module Profile"
+	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
 ]
 
 # DocTypes to be created once, after installation of this app
