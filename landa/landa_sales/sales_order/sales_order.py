@@ -4,9 +4,9 @@
 
 from frappe.utils.data import get_year_ending
 
-def before_validate(delivery_note, event):
-	for item in delivery_note.items:
-		item.delivery_date = get_year_ending(str(delivery_note.year_of_settlement))
+def before_validate(sales_order, event):
+	for item in sales_order.items:
+		item.delivery_date = get_year_ending(str(sales_order.year_of_settlement))
 
-	if not delivery_note.tax_category:
-		delivery_note.tax_category = "Umsatzsteuer"
+	if not sales_order.tax_category:
+		sales_order.tax_category = "Umsatzsteuer"
