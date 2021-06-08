@@ -22,6 +22,7 @@ fixtures = [
 	"Item Attribute",
 	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
 	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
+	"Translation"
 ]
 
 # DocTypes to be created once, after installation of this app
