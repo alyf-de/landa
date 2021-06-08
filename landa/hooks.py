@@ -56,7 +56,7 @@ landa_create_after_install = [
 # Used in `landa.install.disable_modes_of_payment`
 disable_modes_of_payment = ["Wire Transfer", "Cash", "Bank Draft", "Credit Card", "Cheque"]
 
-landa_add_to_session_defaults = "Organization"
+landa_add_to_session_defaults = ["Organization", "Customer"]
 
 on_session_creation = "landa.overrides.set_user_defaults"
 
