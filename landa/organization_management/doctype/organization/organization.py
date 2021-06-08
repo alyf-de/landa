@@ -65,14 +65,20 @@ class Organization(NestedSet):
 	@frappe.whitelist()
 	def get_series_current(self):
 		frappe.only_for("System Manager")
-		return frappe.db.get_value("Series", self.name + "-", "current", order_by="name")
+		return frappe.db.get_value("Series", self.name + "-", "current", order_by="name") or 0
 
 	@frappe.whitelist()
 	def set_series_current(self, current):
 		frappe.only_for("System Manager")
+		series = self.name + "-"
+
+		# insert series if missing
+		if frappe.db.get_value("Series", series, "name", order_by="name") == None:
+			frappe.db.sql("insert into tabSeries (name, current) values (%s, 0)", (series))
+
 		frappe.db.sql(
 			"UPDATE `tabSeries` SET current = %s WHERE name = %s",
-			(cint(current), self.name + "-")
+			(cint(current), series)
 		)
 
 	def revert_series(self):
