@@ -63,11 +63,6 @@ on_session_creation = "landa.overrides.set_user_defaults"
 
 treeviews = "Organization"
 
-get_translated_dict = {
-	# force frappe to load all of this app's translations on boot / user login
-	("boot", None): "landa.overrides.get_translated_dict"
-}
-
 # Includes in <head>
 # ------------------
 
