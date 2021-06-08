@@ -1,4 +1,4 @@
-// Copyright (c) 2016, Landesverband Sächsischer Angler e. V.Real Experts GmbH and contributors
+// Copyright (c) 2016, Real Experts GmbH and contributors
 // For license information, please see license.txt
 /* eslint-disable */
 

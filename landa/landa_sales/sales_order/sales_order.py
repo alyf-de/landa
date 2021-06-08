@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2021, Landesverband Sächsischer Angler e. V.Real Experts GmbH and contributors
+# Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
 from frappe.utils.data import get_year_ending
