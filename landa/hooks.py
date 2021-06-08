@@ -15,7 +15,6 @@ fixtures = [
 	"System Settings",
 	"Module Profile",
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
-	{"dt": "Mode of Payment", "filters": [["name", "in", ["Banküberweisung", "Bar"]]]},
 	"Organization",
 	"Member Function Category",
 	"Fish Species",
@@ -26,6 +25,10 @@ fixtures = [
 ]
 
 # DocTypes to be created once, after installation of this app
+#
+# Used for records that cannot be a fixture because they will be modified later.
+# (Being fixtures would overwrite the data on every migrate.)
+#
 # Used in `landa.install.create_records_from_hooks`
 landa_create_after_install = [
 	{
@@ -33,6 +36,20 @@ landa_create_after_install = [
 		# on every migrate
 		"doctype": "Item Attribute",
 		"attribute_name": "Erlaubnisscheinart"
+	},
+	{
+		# Cannot be a fixture because it would accounts on every migrate
+		"doctype": "Mode of Payment",
+		"enabled": 1,
+		"mode_of_payment": "Bar",
+		"type": "Cash"
+	},
+	{
+		# Cannot be a fixture because it would accounts on every migrate
+		"doctype": "Mode of Payment",
+		"enabled": 1,
+		"mode_of_payment": "Bank\u00fcberweisung",
+		"type": "Bank"
 	}
 ]
 
