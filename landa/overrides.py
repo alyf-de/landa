@@ -4,7 +4,10 @@
 
 from __future__ import unicode_literals
 
+import os
+
 import frappe
+from frappe.translate import get_translation_dict_from_file
 
 
 def set_user_defaults():
@@ -28,3 +31,12 @@ def get_default_company(organization):
     regional_organization = ancestors[1]
 
     return frappe.get_value("Company", {"abbr": regional_organization})
+
+
+def get_translated_dict():
+    """Return a dict with this app's translations for the current user's language."""
+    app = "landa"
+    lang = frappe.local.lang
+    path = os.path.join(frappe.get_pymodule_path(app), "translations", lang + ".csv")
+
+    return get_translation_dict_from_file(path, lang, app)
