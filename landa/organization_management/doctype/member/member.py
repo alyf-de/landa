@@ -73,8 +73,8 @@ class Member(Document):
 		# Members always have access at level 2 (Local Organization)
 		organization = get_organization_at_level(self.name, 2, self.organization)
 
-		add_user_permission('Member', self.name, self.user)
-		add_user_permission('Organization', organization, self.user)
+		add_user_permission('Member', self.name, self.user, ignore_permissions=True)
+		add_user_permission('Organization', organization, self.user, ignore_permissions=True)
 
 	def revert_series(self):
 		"""Decrease the naming counter when the newest member gets deleted."""
