@@ -62,8 +62,6 @@ on_session_creation = "landa.overrides.set_user_defaults"
 
 treeviews = "Organization"
 
-get_translated_dict = "landa.overrides.get_translated_dict"
-
 # Includes in <head>
 # ------------------
 

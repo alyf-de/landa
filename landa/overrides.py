@@ -5,7 +5,6 @@
 from __future__ import unicode_literals
 
 import frappe
-from frappe.translate import load_lang
 
 
 def set_user_defaults():
@@ -29,7 +28,3 @@ def get_default_company(organization):
     regional_organization = ancestors[1]
 
     return frappe.get_value("Company", {"abbr": regional_organization})
-
-
-def get_translated_dict():
-    return load_lang(frappe.local.lang, apps=["landa"])
