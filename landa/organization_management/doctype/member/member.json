@@ -225,7 +225,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-05-19 00:55:43.528883",
+ "modified": "2021-06-22 17:35:29.334309",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
@@ -261,6 +261,7 @@
    "delete": 1,
    "import": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA Regional Organization Management",
    "write": 1
   },
@@ -268,6 +269,7 @@
    "create": 1,
    "delete": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA Local Organization Management",
    "write": 1
   },
