@@ -6,7 +6,6 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 from frappe.permissions import add_user_permission
-from frappe.permissions import clear_user_permissions_for_doctype
 
 from landa.organization_management.doctype.member_function.member_function import get_active_member_functions
 
@@ -90,6 +89,7 @@ def add_roles_to_member(member_name, roles):
 	"""Add a list of roles to a specific member."""
 	user = get_user(member_name)
 	if user:
+		user.flags.ignore_permissions = 1
 		user.add_roles(*roles)
 
 
@@ -102,6 +102,7 @@ def remove_roles_from_member(member_name, roles, disabled_member_function=None):
 	user = get_user(member_name)
 
 	if roles_to_remove and user:
+		user.flags.ignore_permissions = 1
 		user.remove_roles(*roles_to_remove)
 
 
@@ -112,7 +113,7 @@ def update_user_permission_on_member(member_name, disabled_member_function=None)
 		return
 
 	if is_member_administration(member_name, disabled_member_function):
-		clear_user_permissions_for_doctype('Member', user.name)
+		clear_user_permissions_for_doctype('Member', user.name, ignore_permissions=True)
 	else:
 		add_user_permission('Member', member_name, user.name, ignore_permissions=True)
 
@@ -126,7 +127,7 @@ def update_user_permission_on_organization(member_name, disabled_member_function
 	highest_access_level = get_highest_access_level(member_name, disabled_member_function)
 	organization_name = get_organization_at_level(member_name, highest_access_level)
 
-	clear_user_permissions_for_doctype('Organization', user.name)
+	clear_user_permissions_for_doctype('Organization', user.name, ignore_permissions=True)
 	add_user_permission('Organization', organization_name, user.name, ignore_permissions=True)
 
 
@@ -209,3 +210,13 @@ def get_user(member_name):
 		return frappe.get_doc('User', user_name)
 	else:
 		return None
+
+
+def clear_user_permissions_for_doctype(doctype, user=None, ignore_permissions=False):
+	"""Copy of `frappe.permissions` with additional parameter `ignore_permissions`."""
+	filters = {'allow': doctype}
+	if user:
+		filters['user'] = user
+	user_permissions_for_doctype = frappe.db.get_all('User Permission', filters=filters)
+	for d in user_permissions_for_doctype:
+		frappe.delete_doc('User Permission', d.name, ignore_permissions=ignore_permissions)
