@@ -100,6 +100,16 @@
    "type": "Link"
   },
   {
+   "dependencies": "Delivery Note",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Member Count",
+   "link_to": "LANDA Member Count",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
    "dependencies": "Yearly Fishing Permit",
    "hidden": 0,
    "is_query_report": 0,
@@ -136,7 +146,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-05-24 19:05:36.251819",
+ "modified": "2021-06-22 17:27:56.773948",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",

@@ -114,16 +114,6 @@
    "dependencies": "Delivery Note",
    "hidden": 0,
    "is_query_report": 1,
-   "label": "Member Count",
-   "link_to": "LANDA Member Count",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Delivery Note",
-   "hidden": 0,
-   "is_query_report": 1,
    "label": "LANDA Deliveries and Payments",
    "link_to": "LANDA Deliveries and Payments",
    "link_type": "Report",
@@ -131,7 +121,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-05-24 19:34:06.008624",
+ "modified": "2021-06-22 17:28:01.723964",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Order Management",
