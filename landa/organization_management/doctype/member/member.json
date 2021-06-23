@@ -17,8 +17,8 @@
   "organization",
   "organization_name",
   "column_break_11",
-  "member_type",
   "member_since",
+  "is_supporting_member",
   "magazine_recipient",
   "has_key",
   "section_address_and_contact",
@@ -103,13 +103,6 @@
   {
    "fieldname": "column_break_11",
    "fieldtype": "Column Break"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "fieldname": "member_type",
-   "fieldtype": "Select",
-   "label": "Member Type",
-   "options": "\nF\u00f6rdermitglied"
   },
   {
    "allow_in_quick_entry": 1,
@@ -209,6 +202,12 @@
    "fieldtype": "Data",
    "label": "Email",
    "mandatory_depends_on": "eval: doc.create_user_account"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_supporting_member",
+   "fieldtype": "Check",
+   "label": "Is Supporting Member"
   }
  ],
  "links": [
@@ -225,7 +224,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-06-22 17:35:29.334309",
+ "modified": "2021-06-23 13:35:29.111684",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member",
