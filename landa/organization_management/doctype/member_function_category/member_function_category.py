@@ -113,9 +113,9 @@ def update_user_permission_on_member(member_name, disabled_member_function=None)
 		return
 
 	if is_member_administration(member_name, disabled_member_function):
-		clear_user_permissions_for_doctype('Member', user.name, ignore_permissions=True)
+		clear_user_permissions_for_doctype('LANDA Member', user.name, ignore_permissions=True)
 	else:
-		add_user_permission('Member', member_name, user.name, ignore_permissions=True)
+		add_user_permission('LANDA Member', member_name, user.name, ignore_permissions=True)
 
 
 def update_user_permission_on_organization(member_name, disabled_member_function=None):
@@ -152,7 +152,7 @@ def get_roles_to_remove(member_name, roles, disabled_member_function=None):
 def get_organization_at_level(member_name, access_level, organization_name=None):
 	"""Get the member's organization at a given level in the tree."""
 	if not organization_name:
-		organization_name = frappe.get_value('Member', member_name, 'organization')
+		organization_name = frappe.get_value('LANDA Member', member_name, 'organization')
 
 	organization = frappe.get_doc('Organization', organization_name)
 	ancestors = organization.get_ancestors()
@@ -205,7 +205,7 @@ def get_values_from_categories(member_name, filters, fieldname=None, disabled_me
 
 def get_user(member_name):
 	"""Return the user object that belongs to this member."""
-	user_name = frappe.get_value('Member', member_name, 'user')
+	user_name = frappe.get_value('LANDA Member', member_name, 'user')
 	if user_name:
 		return frappe.get_doc('User', user_name)
 	else:

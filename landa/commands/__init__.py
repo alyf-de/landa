@@ -58,7 +58,7 @@ def make_member(organization: str, member_function_category: str):
 		click.echo(f"User {email} already exists.")
 		return
 
-	member = frappe.new_doc("Member")
+	member = frappe.new_doc("LANDA Member")
 	member.organization = organization
 	member.create_user_account = 1
 	member.first_name = f"Demo {member_function_category}"

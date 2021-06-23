@@ -5,7 +5,7 @@
    "fieldname": "member",
    "fieldtype": "Link",
    "label": "Member",
-   "options": "Member",
+   "options": "LANDA Member",
    "width": 0
   },
   {
@@ -65,8 +65,8 @@
  "name": "Member Birthday List",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT\n    member.name,\n    member.first_name,\n    member.last_name,\n    member.date_of_birth,\n    CASE\n        WHEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR >= CURRENT_DATE THEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR\n        ELSE member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) + 1 YEAR\n    END,\n    DATEDIFF(\n    CASE\n        WHEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR >= CURRENT_DATE THEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR\n        ELSE member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) + 1 YEAR\n    END,\n    CURRENT_DATE\n    ) AS daysuntilbirthday,\n    (YEAR(\n    CASE\n        WHEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR >= CURRENT_DATE THEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR\n        ELSE member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) + 1 YEAR\n    END\n    )\n    -YEAR(member.date_of_birth)),\n    (YEAR(\n    CASE\n        WHEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR >= CURRENT_DATE THEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR\n        ELSE member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) + 1 YEAR\n    END\n    )\n    -YEAR(member.date_of_birth)) MOD 10 = 0\nFROM `tabMember` member\n\nORDER BY daysuntilbirthday",
- "ref_doctype": "Member",
+ "query": "SELECT\n    member.name,\n    member.first_name,\n    member.last_name,\n    member.date_of_birth,\n    CASE\n        WHEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR >= CURRENT_DATE THEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR\n        ELSE member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) + 1 YEAR\n    END,\n    DATEDIFF(\n    CASE\n        WHEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR >= CURRENT_DATE THEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR\n        ELSE member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) + 1 YEAR\n    END,\n    CURRENT_DATE\n    ) AS daysuntilbirthday,\n    (YEAR(\n    CASE\n        WHEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR >= CURRENT_DATE THEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR\n        ELSE member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) + 1 YEAR\n    END\n    )\n    -YEAR(member.date_of_birth)),\n    (YEAR(\n    CASE\n        WHEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR >= CURRENT_DATE THEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR\n        ELSE member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) + 1 YEAR\n    END\n    )\n    -YEAR(member.date_of_birth)) MOD 10 = 0\nFROM `tabLANDA Member` member\n\nORDER BY daysuntilbirthday",
+ "ref_doctype": "LANDA Member",
  "report_name": "Member Birthday List",
  "report_type": "Query Report",
  "roles": [

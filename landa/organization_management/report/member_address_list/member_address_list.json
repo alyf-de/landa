@@ -5,7 +5,7 @@
    "fieldname": "member",
    "fieldtype": "Link",
    "label": "Member",
-   "options": "Member",
+   "options": "LANDA Member",
    "width": 0
   },
   {
@@ -47,14 +47,14 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2021-06-22 17:24:48.540312",
+ "modified": "2021-06-23 14:24:48.540312",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Address List",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT\n    member.name,\n    member.first_name,\n    member.last_name,\n    address.address_line1,\n    address.pincode,\n    address.city\nFROM `tabAddress` address\n\nJOIN `tabDynamic Link` dl\nON dl.parent = address.name\nAND dl.parenttype = 'Address'\nAND dl.link_doctype = 'Member'\n\nJOIN `tabMember` member\nON member.name = dl.link_name\n",
- "ref_doctype": "Member",
+ "query": "SELECT\n    member.name,\n    member.first_name,\n    member.last_name,\n    address.address_line1,\n    address.pincode,\n    address.city\nFROM `tabAddress` address\n\nJOIN `tabDynamic Link` dl\nON dl.parent = address.name\nAND dl.parenttype = 'Address'\nAND dl.link_doctype = 'LANDA Member'\n\nJOIN `tabLANDA Member` member\nON member.name = dl.link_name\n",
+ "ref_doctype": "LANDA Member",
  "report_name": "Member Address List",
  "report_type": "Query Report",
  "roles": [

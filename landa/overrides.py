@@ -8,7 +8,7 @@ import frappe
 
 
 def set_user_defaults():
-    organization = frappe.get_value("Member", {"user": frappe.session.user}, "organization")
+    organization = frappe.get_value("LANDA Member", {"user": frappe.session.user}, "organization")
     if not organization:
         return
 

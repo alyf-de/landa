@@ -39,7 +39,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Member",
-   "link_to": "Member",
+   "link_to": "LANDA Member",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -80,7 +80,7 @@
    "type": "Card Break"
   },
   {
-   "dependencies": "Member",
+   "dependencies": "LANDA Member",
    "hidden": 0,
    "is_query_report": 1,
    "label": "Member Address List",
@@ -90,7 +90,7 @@
    "type": "Link"
   },
   {
-   "dependencies": "Member",
+   "dependencies": "LANDA Member",
    "hidden": 0,
    "is_query_report": 1,
    "label": "Member Birthday List",
@@ -157,7 +157,7 @@
   {
    "doc_view": "New",
    "label": "New Member Entry",
-   "link_to": "Member",
+   "link_to": "LANDA Member",
    "type": "DocType"
   },
   {

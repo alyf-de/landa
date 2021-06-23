@@ -174,7 +174,7 @@
  "is_tree": 1,
  "links": [
   {
-   "link_doctype": "Member",
+   "link_doctype": "LANDA Member",
    "link_fieldname": "organization"
   },
   {
@@ -186,7 +186,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-05-28 19:07:02.616114",
+ "modified": "2021-06-23 14:25:02.616114",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
