@@ -3198,5 +3198,21 @@
   "parenttype": null,
   "source_text": "LANDA Member",
   "translated_text": "Mitglied"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-07-08 14:03:02.522894",
+  "name": "160feb7d7d",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "List View",
+  "translated_text": "Listenansicht"
  }
 ]
