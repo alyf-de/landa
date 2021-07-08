@@ -174,19 +174,42 @@
  "is_tree": 1,
  "links": [
   {
-   "link_doctype": "Member",
+   "group": "Organization Management",
+   "link_doctype": "LANDA Member",
    "link_fieldname": "organization"
   },
   {
+   "group": "Organization Management",
    "link_doctype": "Member Function",
    "link_fieldname": "organization"
   },
   {
+   "group": "Organization Management",
    "link_doctype": "Award",
+   "link_fieldname": "organization"
+  },
+  {
+   "group": "Order Management",
+   "link_doctype": "Delivery Note",
+   "link_fieldname": "organization"
+  },
+  {
+   "group": "Order Management",
+   "link_doctype": "Sales Order",
+   "link_fieldname": "organization"
+  },
+  {
+   "group": "Order Management",
+   "link_doctype": "Payment Entry",
+   "link_fieldname": "organization"
+  },
+  {
+   "group": "Order Management",
+   "link_doctype": "Sales Invoice",
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-05-28 19:07:02.616114",
+ "modified": "2021-06-25 13:07:52.347754",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",

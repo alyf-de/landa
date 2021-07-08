@@ -28,7 +28,7 @@
    "fieldname": "member",
    "fieldtype": "Link",
    "label": "Member",
-   "options": "Member",
+   "options": "LANDA Member",
    "reqd": 1,
    "set_only_once": 1
   },
@@ -93,7 +93,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-21 00:37:43.379129",
+ "modified": "2021-06-23 14:17:45.688831",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function",

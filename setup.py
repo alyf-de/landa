@@ -10,8 +10,8 @@ from landa import __version__ as version
 setup(
 	name='landa',
 	version=version,
-	description='Datenmanagementsystem des ',
-	author='Landesverband Sächsischer Angler e. V.Real Experts GmbH',
+	description='Datenmanagementsystem des Landesverband Sächsischer Angler e. V.',
+	author='Real Experts GmbH',
 	author_email='office@realexperts.de',
 	packages=find_packages(),
 	zip_safe=False,

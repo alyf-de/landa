@@ -39,7 +39,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Member",
-   "link_to": "Member",
+   "link_to": "LANDA Member",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -80,7 +80,7 @@
    "type": "Card Break"
   },
   {
-   "dependencies": "Member",
+   "dependencies": "LANDA Member",
    "hidden": 0,
    "is_query_report": 1,
    "label": "Member Address List",
@@ -90,11 +90,21 @@
    "type": "Link"
   },
   {
-   "dependencies": "Member",
+   "dependencies": "LANDA Member",
    "hidden": 0,
    "is_query_report": 1,
    "label": "Member Birthday List",
    "link_to": "Member Birthday List",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Delivery Note",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Member Count",
+   "link_to": "LANDA Member Count",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
@@ -136,7 +146,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-05-24 19:05:36.251819",
+ "modified": "2021-06-23 16:52:18.552461",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
@@ -147,7 +157,7 @@
   {
    "doc_view": "New",
    "label": "New Member Entry",
-   "link_to": "Member",
+   "link_to": "LANDA Member",
    "type": "DocType"
   },
   {

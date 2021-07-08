@@ -1,4 +1,4 @@
-// Copyright (c) 2021, Landesverband Sächsischer Angler e. V.Real Experts GmbH and contributors
+// Copyright (c) 2021, Real Experts GmbH and contributors
 // For license information, please see license.txt
 
 frappe.ui.form.on('Organization', {
@@ -25,44 +25,37 @@ frappe.ui.form.on('Organization', {
     update_naming_series: function(frm) {
         frm.call('get_series_current').then((r) => {
             const current = r.message;
-            if (!current) {
-                frappe.show_alert({
-                    message: __('No child records'),
-                    indicator: 'yellow'
-                });
-            } else {
-                const d = new frappe.ui.Dialog({
-                    title: __('Update Naming Series'),
-                    fields: [
-                        {
-                            "label": "Current",
-                            "fieldname": "current",
-                            "fieldtype": "Int",
-                            "default": current
-                        }
-                    ],
-                    primary_action: function() {
-                        const data = d.get_values();
-    
-                        if(data.current === current) {
+            const d = new frappe.ui.Dialog({
+                title: __('Update Naming Series'),
+                fields: [
+                    {
+                        "label": "Current",
+                        "fieldname": "current",
+                        "fieldtype": "Int",
+                        "default": current
+                    }
+                ],
+                primary_action: function() {
+                    const data = d.get_values();
+
+                    if(data.current === current) {
+                        d.hide();
+                        return;
+                    } else {
+                        frm.call('set_series_current', { current: data.current }).then(r => {
+                            if (!r.exc) {
+                                frappe.show_alert({
+                                    message: __('Naming Series Updated'),
+                                    indicator: 'green'
+                                });
+                            }
                             d.hide();
-                            return;
-                        } else {
-                            frm.call('set_series_current', { current: data.current }).then(r => {
-                                if (!r.exc) {
-                                    frappe.show_alert({
-                                        message: __('Naming Series Updated'),
-                                        indicator: 'green'
-                                    });
-                                }
-                                d.hide();
-                            });
-                        }
-                    },
-                    primary_action_label: __('Update')
-                });
-                d.show();
-            }
+                        });
+                    }
+                },
+                primary_action_label: __('Update')
+            });
+            d.show();
         });
     },
 });

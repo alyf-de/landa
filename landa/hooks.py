@@ -4,26 +4,32 @@ from . import __version__ as app_version
 
 app_name = "landa"
 app_title = "LANDA"
-app_publisher = "Landesverband Sächsischer Angler e. V.Real Experts GmbH"
-app_description = "Datenmanagementsystem des "
+app_publisher = "Real Experts GmbH"
+app_description = "Datenmanagementsystem des Landesverband Sächsischer Angler e. V."
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "office@realexperts.de"
 app_license = "--"
 
 fixtures = [
+	"System Settings",
+	"Module Profile",
+	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
 	"Organization",
 	"Member Function Category",
-	"Fishing Area",
 	"Fish Species",
+	"Fishing Area",
 	"Item Attribute",
+	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
 	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
-	{"dt": "Variant Field", "filters": [["field_name", "=", "description"]]},
-	{"dt": "Mode of Payment", "filters": [["name", "in", ["Banküberweisung", "Bar"]]]},
-	"Module Profile"
+	"Translation"
 ]
 
 # DocTypes to be created once, after installation of this app
+#
+# Used for records that cannot be a fixture because they will be modified later.
+# (Being fixtures would overwrite the data on every migrate.)
+#
 # Used in `landa.install.create_records_from_hooks`
 landa_create_after_install = [
 	{
@@ -31,17 +37,31 @@ landa_create_after_install = [
 		# on every migrate
 		"doctype": "Item Attribute",
 		"attribute_name": "Erlaubnisscheinart"
+	},
+	{
+		# Cannot be a fixture because it would accounts on every migrate
+		"doctype": "Mode of Payment",
+		"enabled": 1,
+		"mode_of_payment": "Bar",
+		"type": "Cash"
+	},
+	{
+		# Cannot be a fixture because it would accounts on every migrate
+		"doctype": "Mode of Payment",
+		"enabled": 1,
+		"mode_of_payment": "Bank\u00fcberweisung",
+		"type": "Bank"
 	}
 ]
 
 # Used in `landa.install.disable_modes_of_payment`
 disable_modes_of_payment = ["Wire Transfer", "Cash", "Bank Draft", "Credit Card", "Cheque"]
 
-landa_add_to_session_defaults = ["Organization"]
+landa_add_to_session_defaults = ["Organization", "Customer"]
 
 on_session_creation = "landa.overrides.set_user_defaults"
 
-treeviews = ["Organization"]
+treeviews = "Organization"
 
 # Includes in <head>
 # ------------------
@@ -97,6 +117,7 @@ doctype_js = {
 
 # before_install = "landa.install.before_install"
 after_install = "landa.install.after_install"
+after_migrate = "landa.migrate.after_migrate"
 
 # Desk Notifications
 # ------------------

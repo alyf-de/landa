@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2021, Landesverband Sächsischer Angler e. V.Real Experts GmbH and contributors
+# Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
@@ -16,7 +16,7 @@ from frappe.permissions import add_user_permission
 from landa.organization_management.doctype.member_function.member_function import apply_active_member_functions
 from landa.organization_management.doctype.member_function_category.member_function_category import get_organization_at_level
 
-class Member(Document):
+class LANDAMember(Document):
 	
 	def autoname(self):
 		"""Generate the unique member number (name field)
@@ -27,7 +27,7 @@ class Member(Document):
 		if self.name:
 			return
 
-		self.name = make_autoname(self.organization + '-.####', 'Member')
+		self.name = make_autoname(self.organization + '-.####', 'LANDA Member')
 
 	def onload(self):
 		load_address_and_contact(self)
@@ -62,19 +62,19 @@ class Member(Document):
 			
 		if self.user and self.has_value_changed('user'):
 			self.create_user_permissions()
-			apply_active_member_functions({'member': self.name})
+			apply_active_member_functions({"member": self.name})
 
 	def on_trash(self):
 		delete_contact_and_address(self.doctype, self.name)
 		self.revert_series()
 
 	def create_user_permissions(self):
-		"""Restrict Member to itself and it's Organization."""
-		# Members always have access at level 2 (Local Organization)
+		"""Restrict LANDA Member to itself and it's Organization."""
+		# LANDAMembers always have access at level 2 (Local Organization)
 		organization = get_organization_at_level(self.name, 2, self.organization)
 
-		add_user_permission('Member', self.name, self.user)
-		add_user_permission('Organization', organization, self.user)
+		add_user_permission("LANDA Member", self.name, self.user, ignore_permissions=True)
+		add_user_permission('Organization', organization, self.user, ignore_permissions=True)
 
 	def revert_series(self):
 		"""Decrease the naming counter when the newest member gets deleted."""
