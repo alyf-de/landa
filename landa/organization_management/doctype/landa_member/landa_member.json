@@ -89,7 +89,8 @@
    "in_list_view": 1,
    "label": "Organization",
    "options": "Organization",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fetch_from": "organization.organization_name",
@@ -224,7 +225,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-06-23 13:35:29.111684",
+ "modified": "2021-07-09 13:26:38.328191",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
