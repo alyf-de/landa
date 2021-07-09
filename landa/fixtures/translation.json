@@ -759,13 +759,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-06-08 19:04:02.177707",
+  "modified": "2021-07-09 15:47:06.298644",
   "name": "7043fe16f2",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Fishing Permit",
-  "translated_text": "Angelschein"
+  "translated_text": "Fischereischein"
  },
  {
   "context": null,
@@ -823,13 +823,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-06-08 19:04:02.293585",
+  "modified": "2021-07-09 15:47:22.778270",
   "name": "eed2ca660d",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Has Fishing Permit",
-  "translated_text": "Hat Angelschein"
+  "translated_text": "Hat Fischereischein"
  },
  {
   "context": null,
