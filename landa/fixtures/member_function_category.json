@@ -4,7 +4,7 @@
   "docstatus": 0,
   "doctype": "Member Function Category",
   "member_administration": 1,
-  "modified": "2021-06-04 18:19:56.131793",
+  "modified": "2021-07-13 22:07:12.358089",
   "name": "MV Verein",
   "parent": null,
   "parentfield": null,
@@ -15,6 +15,18 @@
     "parentfield": "roles",
     "parenttype": "Member Function Category",
     "role": "LANDA Local Organization Management"
+   },
+   {
+    "parent": "MV Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Catch Log User"
+   },
+   {
+    "parent": "MV Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Member"
    }
   ]
  },
@@ -23,7 +35,7 @@
   "docstatus": 0,
   "doctype": "Member Function Category",
   "member_administration": 1,
-  "modified": "2021-06-07 13:17:03.683907",
+  "modified": "2021-07-13 22:07:34.993896",
   "name": "MV Regionalverband",
   "parent": null,
   "parentfield": null,
@@ -58,7 +70,306 @@
     "parentfield": "roles",
     "parenttype": "Member Function Category",
     "role": "Accounts User"
+   },
+   {
+    "parent": "MV Regionalverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Catch Log User"
+   },
+   {
+    "parent": "MV Regionalverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Member"
    }
   ]
+ },
+ {
+  "access_level": "State Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 1,
+  "modified": "2021-07-13 21:59:11.209040",
+  "name": "MV Landesverband",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": [
+   {
+    "parent": "MV Landesverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA State Organization Employee"
+   },
+   {
+    "parent": "MV Landesverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Member"
+   },
+   {
+    "parent": "MV Landesverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Catch Log User"
+   }
+  ]
+ },
+ {
+  "access_level": "Regional Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 1,
+  "modified": "2021-07-13 22:18:31.519498",
+  "name": "Gew\u00e4sserwirtschaft Regionalverband",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": [
+   {
+    "parent": "Gew\u00e4sserwirtschaft Regionalverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Catch Log User"
+   },
+   {
+    "parent": "Gew\u00e4sserwirtschaft Regionalverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Regional Water Body Management"
+   },
+   {
+    "parent": "Gew\u00e4sserwirtschaft Regionalverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Member"
+   }
+  ]
+ },
+ {
+  "access_level": "Local Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 1,
+  "modified": "2021-07-13 22:04:46.595153",
+  "name": "Gew\u00e4sserwart Verein",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": [
+   {
+    "parent": "Gew\u00e4sserwart Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Catch Log User"
+   },
+   {
+    "parent": "Gew\u00e4sserwart Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Member"
+   },
+   {
+    "parent": "Gew\u00e4sserwart Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Local Water Body Management"
+   }
+  ]
+ },
+ {
+  "access_level": "Local Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 1,
+  "modified": "2021-07-13 22:05:20.484521",
+  "name": "Fangmengenerfassung Verein",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": [
+   {
+    "parent": "Fangmengenerfassung Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Catch Log User"
+   },
+   {
+    "parent": "Fangmengenerfassung Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Member"
+   }
+  ]
+ },
+ {
+  "access_level": "State Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 1,
+  "modified": "2021-07-13 22:06:00.591055",
+  "name": "Zeitschriftenverwalter Landesverband",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": [
+   {
+    "parent": "Zeitschriftenverwalter Landesverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Member"
+   },
+   {
+    "parent": "Zeitschriftenverwalter Landesverband",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Magazine Manager"
+   }
+  ]
+ },
+ {
+  "access_level": "Local Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-07-13 22:17:24.713435",
+  "name": "VGA Obmann Verein ",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": []
+ },
+ {
+  "access_level": "Local Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-07-13 22:17:52.811287",
+  "name": "Besatz Obmann Verein",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": []
+ },
+ {
+  "access_level": "Local Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-07-13 22:18:08.750758",
+  "name": "Schatzmeister Verein",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": []
+ },
+ {
+  "access_level": "Local Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-07-13 22:19:04.387027",
+  "name": "Jugendwart Verein",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": []
+ },
+ {
+  "access_level": "Local Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-07-13 22:19:23.024735",
+  "name": "2. Vorsitzender Verein",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": []
+ },
+ {
+  "access_level": "Local Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-07-13 22:19:53.611457",
+  "name": "1. Vorsitzender Verein",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": []
+ },
+ {
+  "access_level": "Regional Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-07-13 22:20:19.515162",
+  "name": "Vorstand Regionalverband",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": []
+ },
+ {
+  "access_level": "Regional Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-07-13 22:20:38.848818",
+  "name": "VGA Obmann Regionalverband",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": []
+ },
+ {
+  "access_level": "Regional Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-07-13 22:20:50.229340",
+  "name": "Schatzmeister  Regionalverband",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": []
+ },
+ {
+  "access_level": "Regional Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-07-13 22:25:21.797223",
+  "name": "Revision Regionalverband",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": []
+ },
+ {
+  "access_level": "Regional Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-07-13 22:21:28.091834",
+  "name": "Pr\u00e4sidiumsmitglied Regionalverband",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": []
+ },
+ {
+  "access_level": "Regional Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-07-13 22:21:39.426479",
+  "name": "Besatz Obmann Regionalverband",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": []
  }
 ]
