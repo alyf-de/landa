@@ -21,6 +21,7 @@
   "is_supporting_member",
   "magazine_recipient",
   "has_key",
+  "skills",
   "section_address_and_contact",
   "address_html",
   "column_break_5",
@@ -208,6 +209,11 @@
    "fieldname": "is_supporting_member",
    "fieldtype": "Check",
    "label": "Is Supporting Member"
+  },
+  {
+   "fieldname": "skills",
+   "fieldtype": "Data",
+   "label": "Skills and organization specific tasks"
   }
  ],
  "links": [
@@ -224,7 +230,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-06-23 13:35:29.111684",
+ "modified": "2021-07-13 23:16:58.278981",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",

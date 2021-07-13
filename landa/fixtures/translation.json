@@ -3694,5 +3694,21 @@
   "parenttype": null,
   "source_text": "Phone number may be listed on a public website",
   "translated_text": "Telefonnummer darf auf einer \u00f6ffentlichen Webseite erscheinen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-07-13 23:18:15.686641",
+  "name": "bcb90e1079",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Skills and organization specific tasks",
+  "translated_text": "F\u00e4higkeiten und vereinsspezifische Mitgliedsfunktionen"
  }
 ]
