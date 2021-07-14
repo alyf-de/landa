@@ -1607,13 +1607,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-06-08 19:04:03.967183",
+  "modified": "2021-07-14 20:41:11.004857",
   "name": "6874dc1042",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Organization Management",
-  "translated_text": "Vereine"
+  "translated_text": "Vereinsverwaltung"
  },
  {
   "context": null,
@@ -2151,13 +2151,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-06-08 19:04:05.170668",
+  "modified": "2021-07-14 20:41:46.943774",
   "name": "889c1df2fe",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Water Body Management",
-  "translated_text": "Gew\u00e4sser"
+  "translated_text": "Gew\u00e4sserverwaltung"
  },
  {
   "context": null,
