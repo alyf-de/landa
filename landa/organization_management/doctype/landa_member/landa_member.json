@@ -90,7 +90,8 @@
    "in_list_view": 1,
    "label": "Organization",
    "options": "Organization",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fetch_from": "organization.organization_name",
