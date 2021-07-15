@@ -47,6 +47,7 @@
    "description": "Remove the restriction that limits users to their own member data.",
    "fieldname": "member_administration",
    "fieldtype": "Check",
+   "in_list_view": 1,
    "label": "Member Administration"
   },
   {
@@ -61,7 +62,7 @@
    "link_fieldname": "member_function_category"
   }
  ],
- "modified": "2021-05-21 14:54:29.864947",
+ "modified": "2021-07-13 22:31:36.536770",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function Category",
@@ -97,7 +98,7 @@
   }
  ],
  "quick_entry": 1,
- "sort_field": "modified",
+ "sort_field": "access_level",
  "sort_order": "DESC",
  "track_changes": 1
 }
