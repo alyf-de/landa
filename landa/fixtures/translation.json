@@ -3710,5 +3710,21 @@
   "parenttype": null,
   "source_text": "Skills and organization specific tasks",
   "translated_text": "F\u00e4higkeiten und vereinsspezifische Mitgliedsfunktionen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-07-26 15:07:12.300341",
+  "name": "c7241c8ebc",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Info Text",
+  "translated_text": "Allgemeine Informationen"
  }
 ]
