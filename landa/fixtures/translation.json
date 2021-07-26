@@ -3726,5 +3726,21 @@
   "parenttype": null,
   "source_text": "Info Text",
   "translated_text": "Allgemeine Informationen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-07-26 15:42:09.817087",
+  "name": "4f73b7f804",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Name",
+  "translated_text": "K\u00fcrzel"
  }
 ]
