@@ -146,7 +146,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-06-23 16:52:18.552461",
+ "modified": "2021-07-27 10:05:15.556330",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
@@ -185,8 +185,8 @@
    "type": "DocType"
   },
   {
-   "doc_view": "Tree",
-   "label": "Show Organization Tree",
+   "doc_view": "List",
+   "label": "Show Organization List",
    "link_to": "Organization",
    "type": "DocType"
   }
