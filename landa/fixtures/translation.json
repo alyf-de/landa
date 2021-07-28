@@ -71,13 +71,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-06-08 19:04:00.622050",
+  "modified": "2021-07-26 15:49:51.759342",
   "name": "591752421c",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Address Line 1",
-  "translated_text": "Adresse Zeile 1"
+  "translated_text": "Adresse Zeile 1 (Stra\u00dfe + Hausnummer)"
  },
  {
   "context": null,
@@ -1607,13 +1607,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-06-08 19:04:03.967183",
+  "modified": "2021-07-14 20:41:11.004857",
   "name": "6874dc1042",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Organization Management",
-  "translated_text": "Vereine"
+  "translated_text": "Vereinsverwaltung"
  },
  {
   "context": null,
@@ -2151,13 +2151,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-06-08 19:04:05.170668",
+  "modified": "2021-07-14 20:41:46.943774",
   "name": "889c1df2fe",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Water Body Management",
-  "translated_text": "Gew\u00e4sser"
+  "translated_text": "Gew\u00e4sserverwaltung"
  },
  {
   "context": null,
@@ -3710,5 +3710,37 @@
   "parenttype": null,
   "source_text": "Skills and organization specific tasks",
   "translated_text": "F\u00e4higkeiten und vereinsspezifische Mitgliedsfunktionen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-07-26 15:07:12.300341",
+  "name": "c7241c8ebc",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Info Text",
+  "translated_text": "Allgemeine Informationen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-07-26 15:42:09.817087",
+  "name": "4f73b7f804",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Name",
+  "translated_text": "K\u00fcrzel"
  }
 ]
