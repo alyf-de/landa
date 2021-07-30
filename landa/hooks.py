@@ -161,6 +161,9 @@ doc_events = {
 	},
 	"Payment Entry": {
 		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate"
+	},
+	"Item": {
+		"autoname": "landa.landa_stock.item.item.autoname"
 	}
 }
 
