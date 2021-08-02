@@ -3886,5 +3886,37 @@
   "parenttype": null,
   "source_text": "Company",
   "translated_text": "Bestellwesenkonto Regionalverband"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-08-02 18:08:14.569886",
+  "name": "b8524c6eb6",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Nos",
+  "translated_text": "Anzahl"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-08-02 18:34:11.051819",
+  "name": "0914f82dd2",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "All Item Groups",
+  "translated_text": "Alle Artikelarten"
  }
 ]
