@@ -1,2 +1,3 @@
 landa.patches.checkbox_supporting_member
 landa.patches.rename_member_doctype
+landa.patches.add_user_perm_on_company

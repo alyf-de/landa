@@ -6,6 +6,9 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "section_break_info_text",
+  "landa_member_info_text",
+  "section_break_master_data",
   "member_heading",
   "first_name",
   "last_name",
@@ -90,8 +93,7 @@
    "in_list_view": 1,
    "label": "Organization",
    "options": "Organization",
-   "reqd": 1,
-   "set_only_once": 1
+   "reqd": 1
   },
   {
    "fetch_from": "organization.organization_name",
@@ -215,6 +217,22 @@
    "fieldname": "skills",
    "fieldtype": "Data",
    "label": "Skills and organization specific tasks"
+  },
+  {
+   "fieldname": "landa_member_info_text",
+   "fieldtype": "HTML",
+   "label": "LANDA Member Info Text",
+   "options": "<p>Mitglieder in LANDA sind Angler:innen, die das Mitglied eines  Vereins oder einer Ortsgruppe sind. Zu den Mitgliedsvereinen und Ortsgruppen geht es <b><a href=\"/app/organization\">hier.</a></b></p>\n\n<p>Pflichtfelder sind mit <span style=\"color: #FF0000;\">*</span> markiert.</p>\n\n<p>Jedes Mitglied kann Auszeichnungen, Mitgliedsfunktionen und Erlaubnisscheine zugewiesen bekommen. Diese sind eigene Formulare und werden im Abschnitt \"Verkn\u00fcpfungen\" zusammengefasst. Bestehende verlinkte Eintr\u00e4ge k\u00f6nnen durch Klicken auf den entsprechenden Begriff eingesehen werden, neue Eintr\u00e4ge k\u00f6nnen durch Klick auf das + Symbol erzeugt werden.</p>\n\n<p>Adressen und Kontakte sind ebenfalls eigenst\u00e4ndige Formulare. Sie k\u00f6nnen \u00fcber die Felder weiter unten in der Eingabemaske hinzugef\u00fcgt werden. Es k\u00f6nnen mehrere Adressen und Kontakte f\u00fcr ein Mitglied bestehen. Um Uneindeutigkeiten zu vermeiden, gibt es die M\u00f6glichkeit im jeweiligen Formular die Adresse bzw. Emailadresse oder Telefonnummer als \"prim\u00e4r\" zu markieren.</p>"
+  },
+  {
+   "fieldname": "section_break_info_text",
+   "fieldtype": "Section Break",
+   "label": "Info Text"
+  },
+  {
+   "fieldname": "section_break_master_data",
+   "fieldtype": "Section Break",
+   "label": "Master Data"
   }
  ],
  "links": [
@@ -231,7 +249,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-07-13 23:16:58.278981",
+ "modified": "2021-07-26 14:55:54.347092",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",

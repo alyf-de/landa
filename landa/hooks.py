@@ -21,7 +21,6 @@ fixtures = [
 	"Fishing Area",
 	"Item Attribute",
 	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
-	{"dt": "Item", "filters": [["has_variants", "=", "1"]]},
 	"Translation"
 ]
 
@@ -61,7 +60,7 @@ landa_add_to_session_defaults = ["Organization", "Customer"]
 
 on_session_creation = "landa.overrides.set_user_defaults"
 
-treeviews = "Organization"
+#treeviews = "Organization"
 
 # Includes in <head>
 # ------------------
@@ -162,6 +161,9 @@ doc_events = {
 	},
 	"Payment Entry": {
 		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate"
+	},
+	"Item": {
+		"autoname": "landa.landa_stock.item.item.autoname"
 	}
 }
 
