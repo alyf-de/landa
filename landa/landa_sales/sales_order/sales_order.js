@@ -50,6 +50,7 @@ frappe.ui.form.on('Sales Order',  {
                     for (const item of r.message) {
                         const row = frm.add_child('items');
                         frappe.model.set_value(row.doctype, row.name, 'item_code', item.name);
+                        frappe.model.set_value(row.doctype, row.name, 'qty', 0);
 
                         // `ControlLink.validate()` does not get triggered by `frappe.model.set_value`,
                         // therefore we have to set the "fetch from"-fields manually.
