@@ -25,7 +25,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Sales Order",
+   "label": "Sales Order List",
    "link_to": "Sales Order",
    "link_type": "DocType",
    "onboard": 0,
@@ -34,7 +34,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Delivery Note",
+   "label": "Delivery Note List",
    "link_to": "Delivery Note",
    "link_type": "DocType",
    "onboard": 0,
@@ -105,6 +105,24 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Price List",
+   "link_to": "Item Price",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Item Tax Template List",
+   "link_to": "Item Tax Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Reports",
    "link_type": "DocType",
    "onboard": 0,
@@ -121,7 +139,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-06-23 16:52:53.314432",
+ "modified": "2021-07-27 13:43:29.875479",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Order Management",
@@ -130,8 +148,8 @@
  "pin_to_top": 1,
  "shortcuts": [
   {
-   "doc_view": "New",
-   "label": "New Sales Order",
+   "doc_view": "List",
+   "label": "Manage Sales Orders",
    "link_to": "Sales Order",
    "type": "DocType"
   },
