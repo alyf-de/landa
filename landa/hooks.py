@@ -157,6 +157,9 @@ doc_events = {
 		"before_insert": "landa.landa_stock.item.item.before_insert",
 		"autoname": "landa.landa_stock.item.item.autoname"
 	},
+	"Item Price": {
+		"validate": "landa.landa_sales.item_price.item_price.validate"
+	},
 	"Sales Order": {
 		"before_validate": "landa.landa_sales.sales_order.sales_order.before_validate"
 	},
