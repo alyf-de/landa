@@ -18,6 +18,11 @@ def autoname(address, event):
 				address.address_title = organization_name
 				link.link_title = organization_name
 
+			if link.link_doctype == "Customer":
+				customer_name = frappe.get_value("Customer", link.link_name, "customer_name")
+				address.address_title = customer_name
+				link.link_title = customer_name
+
 			if link.link_doctype == "LANDA Member":
 				member_names = frappe.get_value("LANDA Member", link.link_name, ["first_name", "last_name"])
 				full_name = " ".join(member_names)
