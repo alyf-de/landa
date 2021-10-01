@@ -39,5 +39,5 @@ def autoname(item, event):
 		# For example, `ART-AVL-0001`
 		from frappe.model.naming import make_autoname
 		company_abbr = frappe.get_value("Company", item.company, "abbr")
-		item.name = make_autoname("ART-" + company_abbr + '-.####', "Item")
+		item.name = make_autoname("A-" + company_abbr + '-.####', "Item")
 		item.item_code = item.name
