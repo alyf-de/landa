@@ -13,3 +13,26 @@ def has_permission(doc, ptype, user):
 
 	# There are linked docs but we don't have permission on any of them
 	return False
+
+
+def validate(doc, event):
+	"""
+	Set explicit links to Customer, LANDA Member and Organization in the parent
+	doc, if they are found in the child table. This lets us apply user
+	permissions on child table links to the parent doc.
+	"""
+	doc.customer = ""
+	doc.landa_member = ""
+	doc.organization = ""
+
+	for link in doc.links:
+		if link.link_doctype == "Customer":
+			doc.customer = link.link_name
+			doc.organization = link.link_name
+
+		if link.link_doctype == "LANDA Member":
+			doc.landa_member = link.link_name
+			doc.organization = link.link_name[:7]
+
+		if link.link_doctype == "Organization":
+			doc.organization = link.link_name

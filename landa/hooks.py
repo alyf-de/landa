@@ -167,6 +167,12 @@ doc_events = {
 	"Payment Entry": {
 		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate"
 	},
+	"Address": {
+		"validate": "landa.address_and_contact.validate"
+	},
+	"Contact": {
+		"validate": "landa.address_and_contact.validate"
+	}
 }
 
 # Scheduled Tasks
