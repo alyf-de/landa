@@ -234,7 +234,7 @@
   "doctype": "Member Function Category",
   "member_administration": 0,
   "modified": "2021-07-13 22:17:24.713435",
-  "name": "VGA Obmann Verein ",
+  "name": "VGA Obmann Verein",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
@@ -256,13 +256,32 @@
   "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
-  "member_administration": 0,
-  "modified": "2021-07-13 22:18:08.750758",
+  "member_administration": 1,
+  "modified": "2021-10-05 19:51:41.684664",
   "name": "Schatzmeister Verein",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "roles": []
+  "roles": [
+   {
+    "parent": "Schatzmeister Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Catch Log User"
+   },
+   {
+    "parent": "Schatzmeister Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Local Organization Management"
+   },
+   {
+    "parent": "Schatzmeister Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Member"
+   }
+  ]
  },
  {
   "access_level": "Local Organization",
@@ -293,12 +312,31 @@
   "docstatus": 0,
   "doctype": "Member Function Category",
   "member_administration": 0,
-  "modified": "2021-07-13 22:19:53.611457",
+  "modified": "2021-10-05 19:52:19.158178",
   "name": "1. Vorsitzender Verein",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "roles": []
+  "roles": [
+   {
+    "parent": "1. Vorsitzender Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Catch Log User"
+   },
+   {
+    "parent": "1. Vorsitzender Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Local Organization Management"
+   },
+   {
+    "parent": "1. Vorsitzender Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Member"
+   }
+  ]
  },
  {
   "access_level": "Regional Organization",
