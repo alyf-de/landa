@@ -24,7 +24,7 @@
   "is_supporting_member",
   "magazine_recipient",
   "has_key",
-  "skills",
+  "additional_information",
   "section_address_and_contact",
   "address_html",
   "column_break_5",
@@ -214,11 +214,6 @@
    "label": "Is Supporting Member"
   },
   {
-   "fieldname": "skills",
-   "fieldtype": "Data",
-   "label": "Skills and organization specific tasks"
-  },
-  {
    "fieldname": "landa_member_info_text",
    "fieldtype": "HTML",
    "label": "LANDA Member Info Text",
@@ -233,6 +228,11 @@
    "fieldname": "section_break_master_data",
    "fieldtype": "Section Break",
    "label": "Master Data"
+  },
+  {
+   "fieldname": "additional_information",
+   "fieldtype": "Data",
+   "label": "Additional Information"
   }
  ],
  "links": [
@@ -249,7 +249,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-07-26 14:55:54.347092",
+ "modified": "2021-10-05 19:35:54.945846",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
