@@ -221,7 +221,7 @@
    "name": "Sales Invoice-sales_invoice_info_text",
    "no_copy": 0,
    "non_negative": 0,
-   "options": "<p>Eine Rechnung wird in der Regel automatisch aus der Lieferung bzw. dem Lieferschein erzeugt und gebucht. Rechnungen k\u00f6nnen an den Verein gesendet werden und dienen der Buchhaltung. Bei Zahlungseingang kann direkt aus der Rechnung heraus ein Zahlungseintrag erzeugt werden.</p>\n\n<p>Eine \u00dcbersicht der Rechnungen finden Sie <b><a href=\"/app/sales-invoice\">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente unter Verknüpfungen.</p>",
+   "options": "<p>Eine Rechnung wird in der Regel automatisch aus der Lieferung bzw. dem Lieferschein erzeugt und gebucht. Rechnungen k\u00f6nnen an den Verein gesendet werden und dienen der Buchhaltung. Bei Zahlungseingang kann direkt aus der Rechnung heraus ein Zahlungseintrag erzeugt werden.</p>\n\n<p>Eine \u00dcbersicht der Rechnungen finden Sie <b><a href=\"/app/sales-invoice\">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente unter Verkn\u00fcpfungen.</p>",
    "owner": "Administrator",
    "parent": null,
    "parentfield": null,

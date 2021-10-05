@@ -281,7 +281,7 @@
    "name": "Delivery Note-delivery_note_info_text",
    "no_copy": 0,
    "non_negative": 0,
-   "options": "<p>Eine Lieferung bzw. ein Lieferschein kann entweder direkt oder aus einer <b><a href=\"/app/sales-order\">Bestellung</a></b> heraus erzeugt werden. Sollte er aus einer Bestellung heraus erzeugt worden sein ist diese unter Verknüpfungen verlinkt. Nur der Regionalverband kann Lieferscheine erstellen.</p>\n\n<p>Lieferscheine werden beim erstmaligen Speichern als Entwurf im System hinterlegt und k\u00f6nnen anschlie\u00dfend noch bearbeitet werden. Erst wenn ein Lieferschein gebucht wird ist dieser endg\u00fcltig best\u00e4tigt.</p>\n\n<p>Alle verbuchten Lieferungen werden in der <b><a href=\"/app/query-report/LANDA%20Deliveries%20and%20Payments\">Kosten\u00fcbersicht</a></b> aufgelistet. </p>",
+   "options": "<p>Eine Lieferung bzw. ein Lieferschein kann entweder direkt oder aus einer <b><a href=\"/app/sales-order\">Bestellung</a></b> heraus erzeugt werden. Sollte er aus einer Bestellung heraus erzeugt worden sein ist diese unter Verkn\u00fcpfungen verlinkt. Nur der Regionalverband kann Lieferscheine erstellen.</p>\n\n<p>Lieferscheine werden beim erstmaligen Speichern als Entwurf im System hinterlegt und k\u00f6nnen anschlie\u00dfend noch bearbeitet werden. Erst wenn ein Lieferschein gebucht wird ist dieser endg\u00fcltig best\u00e4tigt.</p>\n\n<p>Alle verbuchten Lieferungen werden in der <b><a href=\"/app/query-report/LANDA%20Deliveries%20and%20Payments\">Kosten\u00fcbersicht</a></b> aufgelistet. </p>",
    "owner": "Administrator",
    "parent": null,
    "parentfield": null,
