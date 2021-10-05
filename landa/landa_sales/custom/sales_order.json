@@ -221,7 +221,7 @@
    "name": "Sales Order-sales_order_info_text",
    "no_copy": 0,
    "non_negative": 0,
-   "options": "<p>Eine Bestellung ist eine Bedarfsanmeldung vom Verein (Kunde) an den Regionalverband (Unternehmen). Der Regionalverband erstellt daraus anschlie\u00dfend eine Lieferung, kann dabei aber die bestellten Artikel noch beliebig anpassen.</p>\n\n<p>Wenn Sie eine Bestellung erstmalig speichern wird diese zun\u00e4chst als Entwurf im System hinterlegt und kann anschlie\u00dfend noch bearbeitet werden. Erst wenn Sie eine Bestellung buchen wird diese festgeschrieben und vom Regionalverband bearbeitet.</p>\n\n<p>Eine \u00dcbersicht der Bestellungen finden Sie <b><a href=\"/app/sales-order\">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente im Dashboard.</p>",
+   "options": "<p>Eine Bestellung ist eine Bedarfsanmeldung vom Verein (Kunde) an den Regionalverband (Unternehmen). Der Regionalverband erstellt daraus anschlie\u00dfend eine Lieferung, kann dabei aber die bestellten Artikel noch beliebig anpassen.</p>\n\n<p>Wenn Sie eine Bestellung erstmalig speichern wird diese zun\u00e4chst als Entwurf im System hinterlegt und kann anschlie\u00dfend noch bearbeitet werden. Erst wenn Sie eine Bestellung buchen wird diese festgeschrieben und vom Regionalverband bearbeitet.</p>\n\n<p>Eine \u00dcbersicht der Bestellungen finden Sie <b><a href=\"/app/sales-order\">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente unter Verknüpfungen.</p>",
    "owner": "Administrator",
    "parent": null,
    "parentfield": null,
