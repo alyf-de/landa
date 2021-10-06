@@ -154,7 +154,11 @@ doc_events = {
 		"validate": "landa.landa_stock.delivery_note.delivery_note.validate"
 	},
 	"Item": {
-		"before_insert": "landa.landa_stock.item.item.before_insert"
+		"before_insert": "landa.landa_stock.item.item.before_insert",
+		"autoname": "landa.landa_stock.item.item.autoname"
+	},
+	"Item Price": {
+		"validate": "landa.landa_sales.item_price.item_price.validate"
 	},
 	"Sales Order": {
 		"before_validate": "landa.landa_sales.sales_order.sales_order.before_validate"
@@ -162,8 +166,8 @@ doc_events = {
 	"Payment Entry": {
 		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate"
 	},
-	"Item": {
-		"autoname": "landa.landa_stock.item.item.autoname"
+	"Address": {
+		"autoname": "landa.organization_management.address.address.autoname"
 	}
 }
 
