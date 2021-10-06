@@ -3,22 +3,22 @@
 /* eslint-disable */
 
 frappe.query_reports["Member Address List"] = {
-	"filters": [
+    "filters": [
         {
             "fieldname": "first_name",
             "fieldtype": "Data",
             "label": __("First Name"),
             "mandatory": 0,
             "wildcard_filter": 0
-           },
-           {
+        },
+        {
             "fieldname": "last_name",
             "fieldtype": "Data",
             "label": __("Last Name"),
             "mandatory": 0,
             "wildcard_filter": 0
-           },
-           {
+        },
+        {
             "fieldname": "organization",
             "fieldtype": "Link",
             "options": "Organization",
@@ -26,7 +26,6 @@ frappe.query_reports["Member Address List"] = {
             "mandatory": 0,
             "wildcard_filter": 0,
             "default": frappe.defaults.get_user_default("Organization"),
-           }
-
-	]
+        }
+    ]
 };
