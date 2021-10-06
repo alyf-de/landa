@@ -27,27 +27,33 @@
    "width": 0
   },
   {
+   "fieldname": "member_age",
+   "fieldtype": "Int",
+   "label": "Age",
+   "width": 0
+  },
+  {
    "fieldname": "upcomingbirthday",
    "fieldtype": "Date",
    "label": "Upcoming Birthday",
    "width": 0
   },
   {
-   "fieldname": "days_until_birthday",
-   "fieldtype": "Int",
-   "label": "Days Until Birthday",
-   "width": 0
-  },
-  {
-   "fieldname": "age_at_birthday",
-   "fieldtype": "Int",
-   "label": "Age at Birthday",
-   "width": 0
-  },
-  {
    "fieldname": "is_decadal_birthday",
    "fieldtype": "Check",
    "label": "Decadal Birthday (set filter to 1 for yes)",
+   "width": 0
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "width": 0
+  },
+  {
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Organization Name",
    "width": 0
   }
  ],
@@ -59,7 +65,7 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2021-06-22 17:23:58.882552",
+ "modified": "2021-10-01 15:33:44.111759",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Birthday List",
@@ -68,7 +74,7 @@
  "query": "SELECT\n    member.name,\n    member.first_name,\n    member.last_name,\n    member.date_of_birth,\n    CASE\n        WHEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR >= CURRENT_DATE THEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR\n        ELSE member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) + 1 YEAR\n    END,\n    DATEDIFF(\n    CASE\n        WHEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR >= CURRENT_DATE THEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR\n        ELSE member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) + 1 YEAR\n    END,\n    CURRENT_DATE\n    ) AS daysuntilbirthday,\n    (YEAR(\n    CASE\n        WHEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR >= CURRENT_DATE THEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR\n        ELSE member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) + 1 YEAR\n    END\n    )\n    -YEAR(member.date_of_birth)),\n    (YEAR(\n    CASE\n        WHEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR >= CURRENT_DATE THEN member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) YEAR\n        ELSE member.date_of_birth + INTERVAL (YEAR(CURRENT_DATE) - YEAR(member.date_of_birth)) + 1 YEAR\n    END\n    )\n    -YEAR(member.date_of_birth)) MOD 10 = 0\nFROM `tabLANDA Member` member\n\nORDER BY daysuntilbirthday",
  "ref_doctype": "LANDA Member",
  "report_name": "Member Birthday List",
- "report_type": "Query Report",
+ "report_type": "Script Report",
  "roles": [
   {
    "role": "System Manager"
