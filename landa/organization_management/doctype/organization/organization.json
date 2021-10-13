@@ -215,7 +215,7 @@
    "fieldname": "organization_info_text",
    "fieldtype": "HTML",
    "label": "Organization Info Text",
-   "options": "<p>Der Begriff Verein in LANDA bezieht sich auf die Regionalverb\u00e4nde, die Mitgliedsvereine der Regionalverb\u00e4nde sowie die ggf. vorhandenen Ortsgruppen der Mitgliedsvereine. Deren Hierarchie l\u00e4sst sich anhand der Vereinsnummer und in der <b><a href=\"/app/organization/view/tree\">Baumansicht</a></b> erkennen.</p>\n\n<p>Pflichtfelder dieser Eingabemaske sind mit <span style=\"color: #FF0000;\">*</span> markiert.</p>\n\n<p>Jeder Verein kann mit Mitgliedern, Mitgliedsfunktionen und Auszeichnungen verkn\u00fcpft werden. Diese sind eigene Formulare und werden im Abschnitt \"Verkn\u00fcpfungen\" zusammengefasst. Bestehende verlinkte Eintr\u00e4ge k\u00f6nnen durch Klicken auf den entsprechenden Begriff eingesehen werden, neue Eintr\u00e4ge k\u00f6nnen durch Klick auf das + Symbol erzeugt werden.</p>\n\n<p>Achtung: Jeder Mitgliedsverein eines Regionalverbands bekommt bei der Erstellung automatisch auch ein <b><a href=\"/app/customer\">Konto f\u00fcr das Bestellwesen</a></b> zugeteilt, \u00fcber das die Buchhaltung abgewickelt wird. Die im Bestellwesen hinterlegten Bestellungen, Lieferungen, Zahlungen und Rechnungen dieses Bestellkontos sind ebenfalls hier unter Verkn\u00fcpfungen aufgef\u00fchrt.</p>"
+   "options": "<p>Der Begriff Verein in LANDA bezieht sich auf die Regionalverb\u00e4nde, die Mitgliedsvereine der Regionalverb\u00e4nde sowie die ggf. vorhandenen Ortsgruppen der Mitgliedsvereine. Deren Hierarchie l\u00e4sst sich anhand der Vereinsnummer und in der <b><a href=\"/app/organization/view/tree\">Baumansicht</a></b> erkennen.</p>\n\n<p>Pflichtfelder dieser Eingabemaske sind mit <span style=\"color: #FF0000;\">*</span> markiert.</p>\n\n<p>Jeder Verein kann mit Mitgliedern, Mitgliedsfunktionen und Auszeichnungen verkn\u00fcpft werden. Diese sind eigene Formulare und werden im Abschnitt \"Verkn\u00fcpfungen\" zusammengefasst. Bestehende verlinkte Eintr\u00e4ge k\u00f6nnen durch Klicken auf den entsprechenden Begriff eingesehen werden, neue Eintr\u00e4ge k\u00f6nnen durch Klick auf das + Symbol erzeugt werden.</p>\n\n<p>Achtung: Jeder Mitgliedsverein eines Regionalverbands bekommt bei der Erstellung automatisch auch ein <b><a href=\"/app/customer\">Konto f\u00fcr das Bestellwesen</a></b> zugeteilt, \u00fcber das die Buchhaltung abgewickelt wird. Die im Bestellwesen hinterlegten Bestellungen, Lieferungen, Zahlungen und Rechnungen dieses Bestellkontos sind ebenfalls hier unter Verkn\u00fcpfungen aufgef\u00fchrt.\nEine \u00dcbersicht \u00fcber den zu zahlenden Betrag, der sich aus Lieferungen und Retouren sowie den ein- und ausgegangenen Zahlungen ergibt, findet sich in der <b><a href=\"/app/query-report/LANDA%20Deliveries%20and%20Payments\">Kosten\u00fcbersicht</a></b>.\n</p>"
   },
   {
    "fieldname": "master_data_section",
@@ -262,7 +262,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-09-14 10:10:39.656703",
+ "modified": "2021-10-13 17:27:57.837020",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
