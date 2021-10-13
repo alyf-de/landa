@@ -30,8 +30,8 @@ def validate(doc, event):
 	linked_doctypes = set(link.link_doctype for link in doc.links)
 	mandatory_links = {"Company", "LANDA Member", "Organization", "Customer"}
 	if not linked_doctypes.intersection(mandatory_links):
-		frappe.throw(
-			_("This document must be linked to at least one Company, LANDA Member, Organization or Customer")
+		frappe.msgprint(
+			_("This document should be linked to at least one Company, LANDA Member, Organization or Customer")
 		)
 
 	doc.customer = ""
