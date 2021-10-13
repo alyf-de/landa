@@ -129,20 +129,20 @@ after_migrate = "landa.migrate.after_migrate"
 # Permissions evaluated in scripted ways
 
 # permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
+#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
 # }
 
-has_permission = {
-	"Contact": "landa.address_and_contact.has_permission",
-	"Address": "landa.address_and_contact.has_permission"
-}
+# has_permission = {
+#	"Contact": "landa.address_and_contact.has_permission",
+#	"Address": "landa.address_and_contact.has_permission"
+# }
 
 # DocType Class
 # ---------------
 # Override standard doctype classes
 
 # override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
+#	"ToDo": "custom_app.overrides.CustomToDo"
 # }
 
 # Document Events
@@ -168,8 +168,8 @@ doc_events = {
 		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate"
 	},
 	"Address": {
-		"validate": "landa.address_and_contact.validate"
- 		"autoname": "landa.organization_management.address.address.autoname"
+		"validate": "landa.address_and_contact.validate",
+		"autoname": "landa.organization_management.address.address.autoname"
 	},
 	"Contact": {
 		"validate": "landa.address_and_contact.validate"
@@ -180,21 +180,21 @@ doc_events = {
 # ---------------
 
 scheduler_events = {
-# 	"all": [
-# 		"landa.tasks.all"
-# 	],
+#	"all": [
+#		"landa.tasks.all"
+#	],
 	"daily": [
 		"landa.tasks.daily"
 	]
-# 	, "hourly": [
-# 		"landa.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"landa.tasks.weekly"
-# 	]
-# 	"monthly": [
-# 		"landa.tasks.monthly"
-# 	]
+#	, "hourly": [
+#		"landa.tasks.hourly"
+#	],
+#	"weekly": [
+#		"landa.tasks.weekly"
+#	]
+#	"monthly": [
+#		"landa.tasks.monthly"
+#	]
 }
 
 # Testing
@@ -206,14 +206,14 @@ scheduler_events = {
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "landa.event.get_events"
+#	"frappe.desk.doctype.event.event.get_events": "landa.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "landa.task.get_dashboard_data"
+#	"Task": "landa.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
