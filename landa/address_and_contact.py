@@ -1,4 +1,6 @@
 import frappe
+from frappe import _
+
 
 def has_permission(doc, ptype, user):
 	if not doc.links and not frappe.db.get_single_value("System Settings", "apply_strict_user_permissions"):
@@ -21,6 +23,13 @@ def validate(doc, event):
 	doc, if they are found in the child table. This lets us apply user
 	permissions on child table links to the parent doc.
 	"""
+	linked_doctypes = set(link.link_doctype for link in doc.links)
+	mandatory_links = {"Company", "LANDA Member", "Organization", "Customer"}
+	if not linked_doctypes.intersection(mandatory_links):
+		frappe.throw(
+			_("This document must be linked to at least one Company, LANDA Member, Organization or Customer")
+		)
+
 	doc.customer = ""
 	doc.landa_member = ""
 	doc.organization = ""
