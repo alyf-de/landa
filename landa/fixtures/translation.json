@@ -3975,13 +3975,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-07-27 13:46:43.397960",
+  "modified": "2021-10-13 17:57:17.186343",
   "name": "326eb6d878",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Price List",
-  "translated_text": "Artikelpreise"
+  "translated_text": "Artikelpreisliste"
  },
  {
   "context": null,
