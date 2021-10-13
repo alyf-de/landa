@@ -4007,6 +4007,7 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
+<<<<<<< HEAD
   "modified": "2021-10-05 18:41:33.178754",
   "name": "629001162e",
   "parent": null,
@@ -4014,6 +4015,15 @@
   "parenttype": null,
   "source_text": "Party",
   "translated_text": "Bestellkonto Verein"
+=======
+  "modified": "2021-10-04 17:06:00.106424",
+  "name": "ed74a49a8e",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Address Line 2",
+  "translated_text": "Adresszusatz (z. B. Hinterhaus, Stockwerk etc.)"
+>>>>>>> version-13
  },
  {
   "context": null,
@@ -4023,6 +4033,7 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
+<<<<<<< HEAD
   "modified": "2021-10-05 18:41:55.574016",
   "name": "f3653bd714",
   "parent": null,
@@ -4030,6 +4041,15 @@
   "parenttype": null,
   "source_text": "Party Name",
   "translated_text": "Vereinsname"
+=======
+  "modified": "2021-10-04 17:10:20.191394",
+  "name": "64753eca4d",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Address Title",
+  "translated_text": "Adressbezeichnung (nur zur Suche, wird nicht bei Adressierung verwendet)"
+>>>>>>> version-13
  },
  {
   "context": null,
@@ -4039,6 +4059,7 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
+<<<<<<< HEAD
   "modified": "2021-10-05 18:42:54.366982",
   "name": "784f71f5dc",
   "parent": null,
@@ -4046,6 +4067,15 @@
   "parenttype": null,
   "source_text": "Company Bank Account",
   "translated_text": "Konto Regionalverband"
+=======
+  "modified": "2021-10-04 17:12:09.334016",
+  "name": "0ba615ac37",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Address Type",
+  "translated_text": "Adresstyp (kann, muss aber nicht ge\u00e4ndert werden)"
+>>>>>>> version-13
  },
  {
   "context": null,
@@ -4055,6 +4085,7 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
+<<<<<<< HEAD
   "modified": "2021-10-05 18:43:15.887854",
   "name": "002f5bfbaf",
   "parent": null,
@@ -4078,5 +4109,14 @@
   "parenttype": null,
   "source_text": "Party Type",
   "translated_text": "Art des Zahlenden/Zahlungsempf\u00e4ngers (nicht \u00e4ndern)"
+=======
+  "modified": "2021-10-04 18:06:55.717219",
+  "name": "fb5bc4b64b",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "User Id",
+  "translated_text": "Nutzername"
+>>>>>>> version-13
  }
 ]
