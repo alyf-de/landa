@@ -79,7 +79,7 @@
   },
   {
    "allow_in_quick_entry": 1,
-   "default": "German",
+   "default": "Deutsch",
    "fieldname": "nationality",
    "fieldtype": "Data",
    "label": "Nationality"
@@ -263,7 +263,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-10-05 19:59:23.892644",
+ "modified": "2021-10-13 17:33:57.419736",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
