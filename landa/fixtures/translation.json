@@ -4014,5 +4014,21 @@
   "parenttype": null,
   "source_text": "User Id",
   "translated_text": "Nutzername"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-10-14 18:23:48.670884",
+  "name": "17ee773e84",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "This document should be linked to at least one Company, LANDA Member, Organization or Customer",
+  "translated_text": "Dieses Dokument muss mindestens mit einem Bestellwesenkonto Regionalverband, einem Mitglied, einem Verein bzw. Verband oder einem Bestellwesenkonto Verein verkn\u00fcpft sein (s. Referenzen)."
  }
 ]
