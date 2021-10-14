@@ -172,7 +172,8 @@ doc_events = {
 		"autoname": "landa.organization_management.address.address.autoname"
 	},
 	"Contact": {
-		"validate": "landa.address_and_contact.validate"
+		"validate": "landa.address_and_contact.validate",
+		"after_insert": "landa.organization_management.contact.contact.after_insert",
 	}
 }
 
