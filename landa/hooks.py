@@ -131,8 +131,10 @@ after_migrate = "landa.migrate.after_migrate"
 # permission_query_conditions = {
 #	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
 # }
-#
+
 # has_permission = {
+#	"Contact": "landa.address_and_contact.has_permission",
+#	"Address": "landa.address_and_contact.has_permission"
 #	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
@@ -173,8 +175,13 @@ doc_events = {
 		"autoname": "landa.landa_sales.payment_entry.pament_entry.autoname",
 	},
 	"Address": {
+		"validate": "landa.address_and_contact.validate",
 		"autoname": "landa.organization_management.address.address.autoname"
 	},
+	"Contact": {
+		"validate": "landa.address_and_contact.validate",
+		"after_insert": "landa.organization_management.contact.contact.after_insert",
+	}
 }
 
 # Scheduled Tasks
