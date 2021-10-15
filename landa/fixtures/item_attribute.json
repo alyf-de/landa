@@ -57,5 +57,56 @@
   "parentfield": null,
   "parenttype": null,
   "to_range": 0.0
+ },
+ {
+  "attribute_name": "Bundesland",
+  "docstatus": 0,
+  "doctype": "Item Attribute",
+  "from_range": 0.0,
+  "increment": 0.0,
+  "item_attribute_values": [
+   {
+    "abbr": "SNA",
+    "attribute_value": "Sachsen-Anhalt",
+    "parent": "Bundesland",
+    "parentfield": "item_attribute_values",
+    "parenttype": "Item Attribute"
+   },
+   {
+    "abbr": "BB",
+    "attribute_value": "Brandenburg",
+    "parent": "Bundesland",
+    "parentfield": "item_attribute_values",
+    "parenttype": "Item Attribute"
+   },
+   {
+    "abbr": "TH",
+    "attribute_value": "Th\u00fcringen",
+    "parent": "Bundesland",
+    "parentfield": "item_attribute_values",
+    "parenttype": "Item Attribute"
+   },
+   {
+    "abbr": "BE",
+    "attribute_value": "Berlin",
+    "parent": "Bundesland",
+    "parentfield": "item_attribute_values",
+    "parenttype": "Item Attribute"
+   },
+   {
+    "abbr": "MV",
+    "attribute_value": "Mecklenburg-Vorpommern",
+    "parent": "Bundesland",
+    "parentfield": "item_attribute_values",
+    "parenttype": "Item Attribute"
+   }
+  ],
+  "modified": "2021-10-07 16:21:25.071783",
+  "name": "Bundesland",
+  "numeric_values": 0,
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "to_range": 0.0
  }
 ]

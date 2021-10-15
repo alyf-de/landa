@@ -135,6 +135,7 @@ after_migrate = "landa.migrate.after_migrate"
 # has_permission = {
 #	"Contact": "landa.address_and_contact.has_permission",
 #	"Address": "landa.address_and_contact.has_permission"
+#	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
 # DocType Class
@@ -152,7 +153,8 @@ after_migrate = "landa.migrate.after_migrate"
 doc_events = {
 	"Delivery Note": {
 		"on_submit": "landa.landa_stock.delivery_note.delivery_note.on_submit",
-		"validate": "landa.landa_stock.delivery_note.delivery_note.validate"
+		"validate": "landa.landa_stock.delivery_note.delivery_note.validate",
+		"autoname": "landa.landa_stock.delivery_note.delivery_note.autoname",
 	},
 	"Item": {
 		"before_insert": "landa.landa_stock.item.item.before_insert",
@@ -162,10 +164,15 @@ doc_events = {
 		"validate": "landa.landa_sales.item_price.item_price.validate"
 	},
 	"Sales Order": {
-		"before_validate": "landa.landa_sales.sales_order.sales_order.before_validate"
+		"before_validate": "landa.landa_sales.sales_order.sales_order.before_validate",
+		"autoname": "landa.landa_sales.sales_order.sales_order.autoname",
+	},
+	"Sales Invoice": {
+		"autoname": "landa.landa_sales.sales_invoice.sales_invoice.autoname",
 	},
 	"Payment Entry": {
-		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate"
+		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate",
+		"autoname": "landa.landa_sales.payment_entry.pament_entry.autoname",
 	},
 	"Address": {
 		"validate": "landa.address_and_contact.validate",
