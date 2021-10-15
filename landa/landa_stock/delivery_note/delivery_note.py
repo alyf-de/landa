@@ -18,7 +18,17 @@ def on_submit(delivery_note, event):
 	# from erpnext.stock.doctype.delivery_note.delivery_note import make_sales_invoice
 	#
 	# if delivery_note.get('create_sales_invoice'):
-	# 	sales_invoice = make_sales_invoice(delivery_note.get('name'))
-	# 	sales_invoice.save()
-	# 	sales_invoice.submit()
+	#	sales_invoice = make_sales_invoice(delivery_note.get('name'))
+	#	sales_invoice.save()
+	#	sales_invoice.submit()
 	pass
+
+
+def autoname(doc, event):
+	"""Create Company-specific Delivery Note name."""
+	from landa.utils import get_new_name
+
+	if doc.is_return:
+		doc.name = get_new_name("RET", doc.company, "Delivery Note")
+	else:
+		doc.name = get_new_name("LIEF", doc.company, "Delivery Note")

@@ -129,11 +129,11 @@ after_migrate = "landa.migrate.after_migrate"
 # Permissions evaluated in scripted ways
 
 # permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
+#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
 # }
 #
 # has_permission = {
-# 	"Event": "frappe.desk.doctype.event.event.has_permission",
+#	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
 # DocType Class
@@ -141,7 +141,7 @@ after_migrate = "landa.migrate.after_migrate"
 # Override standard doctype classes
 
 # override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
+#	"ToDo": "custom_app.overrides.CustomToDo"
 # }
 
 # Document Events
@@ -151,7 +151,8 @@ after_migrate = "landa.migrate.after_migrate"
 doc_events = {
 	"Delivery Note": {
 		"on_submit": "landa.landa_stock.delivery_note.delivery_note.on_submit",
-		"validate": "landa.landa_stock.delivery_note.delivery_note.validate"
+		"validate": "landa.landa_stock.delivery_note.delivery_note.validate",
+		"autoname": "landa.landa_stock.delivery_note.delivery_note.autoname",
 	},
 	"Item": {
 		"before_insert": "landa.landa_stock.item.item.before_insert",
@@ -161,35 +162,40 @@ doc_events = {
 		"validate": "landa.landa_sales.item_price.item_price.validate"
 	},
 	"Sales Order": {
-		"before_validate": "landa.landa_sales.sales_order.sales_order.before_validate"
+		"before_validate": "landa.landa_sales.sales_order.sales_order.before_validate",
+		"autoname": "landa.landa_sales.sales_order.sales_order.autoname",
+	},
+	"Sales Invoice": {
+		"autoname": "landa.landa_sales.sales_invoice.sales_invoice.autoname",
 	},
 	"Payment Entry": {
-		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate"
+		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate",
+		"autoname": "landa.landa_sales.payment_entry.pament_entry.autoname",
 	},
 	"Address": {
 		"autoname": "landa.organization_management.address.address.autoname"
-	}
+	},
 }
 
 # Scheduled Tasks
 # ---------------
 
 scheduler_events = {
-# 	"all": [
-# 		"landa.tasks.all"
-# 	],
+#	"all": [
+#		"landa.tasks.all"
+#	],
 	"daily": [
 		"landa.tasks.daily"
 	]
-# 	, "hourly": [
-# 		"landa.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"landa.tasks.weekly"
-# 	]
-# 	"monthly": [
-# 		"landa.tasks.monthly"
-# 	]
+#	, "hourly": [
+#		"landa.tasks.hourly"
+#	],
+#	"weekly": [
+#		"landa.tasks.weekly"
+#	]
+#	"monthly": [
+#		"landa.tasks.monthly"
+#	]
 }
 
 # Testing
@@ -201,14 +207,14 @@ scheduler_events = {
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "landa.event.get_events"
+#	"frappe.desk.doctype.event.event.get_events": "landa.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "landa.task.get_dashboard_data"
+#	"Task": "landa.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled

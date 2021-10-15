@@ -24,7 +24,9 @@
   "is_supporting_member",
   "magazine_recipient",
   "has_key",
-  "skills",
+  "has_special_yearly_fishing_permit_1",
+  "has_special_yearly_fishing_permit_2",
+  "additional_information",
   "section_address_and_contact",
   "address_html",
   "column_break_5",
@@ -77,7 +79,7 @@
   },
   {
    "allow_in_quick_entry": 1,
-   "default": "German",
+   "default": "Deutsch",
    "fieldname": "nationality",
    "fieldtype": "Data",
    "label": "Nationality"
@@ -117,7 +119,7 @@
    "label": "Member Since"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "magazine_recipient",
    "fieldtype": "Check",
    "in_list_view": 1,
@@ -214,11 +216,6 @@
    "label": "Is Supporting Member"
   },
   {
-   "fieldname": "skills",
-   "fieldtype": "Data",
-   "label": "Skills and organization specific tasks"
-  },
-  {
    "fieldname": "landa_member_info_text",
    "fieldtype": "HTML",
    "label": "LANDA Member Info Text",
@@ -233,6 +230,23 @@
    "fieldname": "section_break_master_data",
    "fieldtype": "Section Break",
    "label": "Master Data"
+  },
+  {
+   "fieldname": "additional_information",
+   "fieldtype": "Data",
+   "label": "Additional Information"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_1",
+   "fieldtype": "Check",
+   "label": "Hat Sachsen-Anhalt Erlaubnisschein"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_2",
+   "fieldtype": "Check",
+   "label": "Hat Brandenburg Erlaubnisschein"
   }
  ],
  "links": [
@@ -249,7 +263,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-07-26 14:55:54.347092",
+ "modified": "2021-10-13 17:33:57.419736",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
