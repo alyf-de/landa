@@ -290,13 +290,16 @@
   {
    "create": 1,
    "delete": 1,
+   "export": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA State Organization Employee",
    "write": 1
   },
   {
    "create": 1,
    "delete": 1,
+   "export": 1,
    "import": 1,
    "read": 1,
    "report": 1,
@@ -306,12 +309,14 @@
   {
    "create": 1,
    "delete": 1,
+   "export": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA Local Organization Management",
    "write": 1
   },
   {
+   "export": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA Magazine Manager"

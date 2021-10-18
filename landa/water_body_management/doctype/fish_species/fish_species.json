@@ -39,7 +39,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-17 19:31:27.326053",
+ "modified": "2021-10-04 15:17:36.774455",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Species",
@@ -67,6 +67,7 @@
   {
    "create": 1,
    "delete": 1,
+   "export": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA State Organization Employee",
@@ -75,8 +76,9 @@
   {
    "create": 1,
    "delete": 1,
-   "import": 1,
+   "export": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA Regional Water Body Management",
    "write": 1
   }

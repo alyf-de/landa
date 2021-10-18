@@ -93,7 +93,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-06-23 14:17:45.688831",
+ "modified": "2021-10-04 15:01:13.356611",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function",
@@ -118,15 +118,19 @@
   {
    "create": 1,
    "delete": 1,
+   "export": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA State Organization Employee",
    "write": 1
   },
   {
    "create": 1,
    "delete": 1,
+   "export": 1,
    "import": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA Regional Organization Management",
    "write": 1
   },
@@ -137,7 +141,9 @@
   {
    "create": 1,
    "delete": 1,
+   "export": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA Local Organization Management",
    "write": 1
   }

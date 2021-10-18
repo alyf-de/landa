@@ -75,7 +75,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-05-20 15:59:01.154113",
+ "modified": "2021-10-04 15:20:33.965582",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
@@ -94,6 +94,7 @@
    "write": 1
   },
   {
+   "export": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA State Organization Employee"
@@ -101,41 +102,51 @@
   {
    "create": 1,
    "delete": 1,
+   "export": 1,
    "import": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA Regional Organization Management",
    "write": 1
   },
   {
    "create": 1,
    "delete": 1,
+   "export": 1,
    "import": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA Regional Water Body Management",
    "write": 1
   },
   {
    "create": 1,
    "delete": 1,
+   "export": 1,
    "import": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA Local Water Body Management",
    "write": 1
   },
   {
    "create": 1,
    "delete": 1,
+   "export": 1,
    "import": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA Local Organization Management",
    "write": 1
   },
   {
    "create": 1,
    "delete": 1,
+   "export": 1,
    "if_owner": 1,
    "import": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA Catch Log User",
    "write": 1
   }

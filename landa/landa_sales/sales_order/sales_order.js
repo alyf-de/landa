@@ -1,9 +1,9 @@
 // Copyright (c) 2021, Real Experts GmbH and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Sales Order', {
+frappe.ui.form.on('Sales Order',  {
     refresh: function (frm) {
-        frm.set_query('item_code', 'items', function () {
+        frm.set_query('item_code', 'items', function() {
             return {
                 query: 'erpnext.controllers.queries.item_query',
                 filters: {
