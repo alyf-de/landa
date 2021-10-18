@@ -63,3 +63,12 @@ frappe.ui.form.on('Sales Order',  {
         }
     }
 });
+
+frappe.ui.form.on('Sales Order Item', {
+    price_list_rate: function (frm, cdt, cdn) {
+        // `price_list_rate` is set only once, when item details are loaded. We
+        // use this as an indicator to see that all item details are complete.
+        // Then we reset the quantity from 1 to 0.
+        frappe.model.set_value(cdt, cdn, 'qty', 0);
+    }
+});
