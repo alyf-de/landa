@@ -43,7 +43,7 @@
   "home_page": "about",
   "indexing_authorization_code": null,
   "indexing_refresh_token": null,
-  "modified": "2021-10-18 17:05:06.274891",
+  "modified": "2021-10-18 17:24:55.329941",
   "name": "Website Settings",
   "navbar_search": 0,
   "navbar_template": null,
@@ -89,17 +89,6 @@
     "parenttype": "Website Settings",
     "right": 0,
     "url": "/privacy"
-   },
-   {
-    "icon": null,
-    "label": "Login",
-    "open_in_new_tab": 0,
-    "parent": "Website Settings",
-    "parent_label": null,
-    "parentfield": "top_bar_items",
-    "parenttype": "Website Settings",
-    "right": 1,
-    "url": "/login"
    }
   ],
   "website_theme": "Standard",
