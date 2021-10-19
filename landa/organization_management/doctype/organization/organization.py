@@ -189,17 +189,18 @@ class Organization(NestedSet):
 
 @frappe.whitelist()
 def get_children(doctype, parent=None, organization=None, is_root=False):
-	if parent == None or parent == "All Organizations":
+	if parent is None or parent == "All Organizations":
 		parent = ""
 
-	return frappe.db.get_all(doctype, fields=[
+	return frappe.get_list(
+		doctype,
+		fields=[
 			"name as value",
 			"organization_name as title",
-			"is_group as expandable"
+			"is_group as expandable",
 		],
-		filters={
-			"parent_organization": parent
-		}
+		filters={"parent_organization": parent},
+		ignore_permissions=parent in ("LV", ""),
 	)
 
 
