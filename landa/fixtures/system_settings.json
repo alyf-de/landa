@@ -50,6 +50,7 @@
   "strip_exif_metadata_from_uploaded_images": 1,
   "time_format": "HH:mm",
   "time_zone": "Europe/Berlin",
-  "two_factor_method": "OTP App"
+  "two_factor_method": "OTP App",
+  "use_original_name_for_amended_document": 0
  }
 ]
