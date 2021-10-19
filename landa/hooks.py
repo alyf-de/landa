@@ -13,10 +13,10 @@ app_license = "--"
 
 fixtures = [
 	"System Settings",
-    "Website Settings",
-    "About Us Settings",
-    "Contact Us Settings",
-    "Web Page",
+	"Website Settings",
+	"About Us Settings",
+	"Contact Us Settings",
+	"Web Page",
 	"Module Profile",
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
 	"Organization",
