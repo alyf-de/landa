@@ -2,3 +2,4 @@ landa.patches.checkbox_supporting_member
 landa.patches.rename_member_doctype
 landa.patches.add_user_perm_on_company
 landa.patches.validate_address_and_contact
+execute:frappe.delete_doc_if_exists("Custom Field", "Letter Head-organization")
