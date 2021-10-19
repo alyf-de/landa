@@ -22,7 +22,7 @@ def disable_modes_of_payment():
 	names = get_hooks('disable_modes_of_payment', default=[], app_name='landa')
 	for name in names:
 		try:
-			doc = frappe.set_value('Mode of Payment', name, 'enabled', False)
+			frappe.set_value('Mode of Payment', name, 'enabled', False)
 		except frappe.DoesNotExistError:
 			continue
 
