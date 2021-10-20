@@ -43,6 +43,61 @@ def make_demo_accounts(context, organization, dry_run=False):
 				click.echo(member.user)
 
 
+@click.command("update-organization-series")
+@click.option(
+	"--dry-run", help="Don't commit the changes, just test the code.", is_flag=True
+)
+@pass_context
+def update_organization_series(context, dry_run=False):
+	# frappe.local.flags.in_test = True	 # avoid permission check
+	site = get_site(context)
+
+	with frappe.init_site(site):
+		frappe.connect()
+
+		for organization in frappe.get_all(
+			"Organization", filters={"name": ("!=", "LV")}, pluck="name"
+		):
+			doc = frappe.get_doc("Organization", organization)
+			if doc.is_group:
+				highest_number = frappe.get_all(
+					"Organization",
+					filters={
+						"parent_organization": organization,
+						"name": ("not in", ("AVL", "AVS", "AVE")),
+					},
+					pluck="name",
+					order_by="name desc",
+					limit=1,
+				)
+			else:
+				highest_number = frappe.get_all(
+					"LANDA Member",
+					filters={
+						"organization": organization,
+					},
+					pluck="name",
+					order_by="name desc",
+					limit=1,
+				)
+
+			if not highest_number:
+				continue
+
+			highest_number = highest_number[0]
+
+			# security check -- don't do stupid things
+			if organization != highest_number[: len(organization)]:
+				click.echo(f"Could not update series for {organization}.")
+				continue
+
+			highest_number = int(highest_number.split("-")[-1])
+			doc.set_series_current(highest_number)
+
+		if not dry_run:
+			frappe.db.commit()
+
+
 def validate_organization(organization: str):
 	if not frappe.db.exists("Organization", organization):
 		frappe.throw(f"No Organization named {organization}. Please create a new Organization or use an existing one.")
