@@ -149,6 +149,4 @@ def scrub(txt):
 	return '-'.join(result)
 
 
-commands = [
-	make_demo_accounts
-]
+commands = [make_demo_accounts, update_organization_series]
