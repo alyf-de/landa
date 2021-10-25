@@ -114,8 +114,10 @@
                 {% for n in doc.items %}
                 <tr>
                     <td>{{ loop.index }}</td>
-                    <td><b>{{ _(n.item_name) }}</b><br>
-                        {{ n.description }}</td>
+                    <td>
+                        <strong>{{ _(n.item_name) }}</strong>
+                        {% if not doc.flags.print_settings.compact_item_print %}<br>{{ n.description }}{% endif %}
+                    </td>
                     <td>{{ _(n.uom) }}</td>
                     <td>{{ n.qty }}</td>
                     <td>{{ n.get_formatted('rate') }}</td>
