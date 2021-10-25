@@ -148,6 +148,7 @@
                 </tr>
             {% else %}
                 {% for tax_row in doc.taxes -%}
+                    {% if doc.flags.print_settings.print_taxes_with_zero_amount or tax_row.tax_amount > 0 %}
                     <tr>
                         <td>
                         {{ tax_row.description }}
@@ -156,6 +157,7 @@
                             {{ tax_row.get_formatted('tax_amount') }}
                         </td>
                     </tr>
+                    {% endif %}
                 {%- endfor %}
             {%- endif %}
             <tr>
