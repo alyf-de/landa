@@ -29,7 +29,7 @@
 <div class="contact-row">
     <div id="address">
         <div id="sender">
-            <p>{{ cmp_addr.address_title }}<br>
+            <p>{{ company.name }}<br>
                 {{ cmp_addr.address_line1 }} &#183;
                 {% if cmp_addr.address_line2 %}{{ cmp_addr.address_line2 }} <br>{% endif %}
                 {{ cmp_addr.pincode }} {{ cmp_addr.city }}
@@ -38,9 +38,16 @@
                 {%- endif %}
             </p>
         </div>
-        <strong>{{ doc.customer_name }}</strong><br />
         {% if contact %}
-            {{ contact.first_name }}{% if contact.last_name %} {{ contact.last_name }}{% endif %}<br>
+            {% if company.render_contact_name_first_in_address %}
+                <strong>{{ contact.first_name }}{% if contact.last_name %} {{ contact.last_name }}{% endif %}</strong><br>
+                {{ doc.customer_name }}<br />
+            {% else  %}
+                <strong>{{ doc.customer_name }}</strong><br />
+                {{ contact.first_name }}{% if contact.last_name %} {{ contact.last_name }}{% endif %}<br>
+            {% endif %}
+        {% else %}
+            <strong>{{ doc.customer_name }}</strong><br />
         {% endif %}
         {{ doc.address_display if doc.address_display else _('<i>Address not set!</i>')}}
     </div>
