@@ -29,10 +29,11 @@ fixtures = [
 	{
 		"doctype": "Letter Head",
 		"filters":	{
-			"name": ["in", "DIN Lang A4 mit Fensterdruck"]
+			"name": ["in", "Extended Information in Footer"]
 		}
 	}
 ]
+
 
 # DocTypes to be created once, after installation of this app
 #
