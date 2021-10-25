@@ -6,7 +6,7 @@
     <tbody>
         <tr>
             <td>{% if company.company_name %}{{company.company_name}}{% else %}-{% endif %}</td>
-            <td>{{ _("Geschäftsführer") }}:</td>
+            <td>{{ _("Managing Director") }}:</td>
             <td>{% if company.bank_name %}{{company.bank_name}}{% else %}-{% endif %}</td>
         </tr>
         <tr>
@@ -15,18 +15,18 @@
             <td>IBAN: {% if company.iban %}{{company.iban}}{% else %}-{% endif %}</td>
         </tr>
         <tr>
-            <td>{{ _("Tel.") }}: {% if company.phone_no %}{{company.phone_no}}{% else %}-{% endif %}</td>
-            <td>{{ _("USt-IdNr") }}.: {% if company.tax_id %}{{company.tax_id}}{% else %}-{% endif %}</td>
+            <td>{{ _("Phone") }}: {% if company.phone_no %}{{company.phone_no}}{% else %}-{% endif %}</td>
+            <td>{{ _("Tax ID") }}.: {% if company.tax_id %}{{company.tax_id}}{% else %}-{% endif %}</td>
             <td>BIC: {% if company.bic %}{{company.bic}}{% else %}-{% endif %}</td>
         </tr>
         <tr>
-            <td>E-Mail: {% if company.email %}{{company.email}}{% else %}-{% endif %}</td>
+            <td>{{ _("Email") }}: {% if company.email %}{{company.email}}{% else %}-{% endif %}</td>
             <td>{% if company.district_court %}{{company.district_court}}{% else %}-{% endif %}</td>
             <td></td>
         </tr>
         <tr>
             <td>{% if company.website %}{{company.website}}{% else %}https://lvsa-landa.de/{% endif %}</td>
-            <td>{{ _("Handelsregister") }}: {% if company.company_register %}{{company.company_register}}{% else %}-{% endif %}</td>
+            <td>{{ _("Company Register") }}: {% if company.company_register %}{{company.company_register}}{% else %}-{% endif %}</td>
             <td></td>
         </tr>
     </tbody>

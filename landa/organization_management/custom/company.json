@@ -1061,7 +1061,7 @@
    "name": "Company-info_document_settings",
    "no_copy": 0,
    "non_negative": 0,
-   "options": "<p>Settings used to render documents such as invoices, delivery notes and returns.<br/></p>\n\n",
+   "options": "<p>Einstellungen f\u00fcr die Darstellung von Dokumenten wie Rechnungen, Lieferscheinen und Retouren.<br/></p>\n\n",
    "owner": "Administrator",
    "parent": null,
    "parentfield": null,
