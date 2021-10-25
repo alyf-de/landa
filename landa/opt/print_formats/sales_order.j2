@@ -1,0 +1,257 @@
+<style>
+    .print-format {
+        margin-left: 0mm;
+        margin-right: 0mm;
+        margin-top: 10mm;
+        margin-bottom: 60mm;
+        font-size: 10pt;
+    }
+</style>
+
+{% set company_addresses = frappe.get_list("Dynamic Link", filters={"link_doctype": "Company", "link_name": doc.company, "parenttype": "Address"}, fields=["parent"]) %}
+{% set cmp_addr = frappe.get_doc("Address", company_addresses[0]['parent']) %}
+{% set company = frappe.get_doc("Company", doc.company) %}
+{% set pay_addr = frappe.get_doc("Address", doc.customer_address) if doc.customer_address else _('<i>Address not set!</i>') %}
+
+{% if doc.contact_person %}
+    {% set contact = frappe.get_doc("Contact", doc.contact_person) %}
+{% endif %}
+
+<!-- HEAD -->
+<div id="header">
+    {% if company.company_logo %}
+        <img id="logo" src="{{company.company_logo}}">
+    {% endif %}
+</div>
+
+<div class="contact-row">
+    <div id="address">
+        <div id="sender">
+            <p>{{ cmp_addr.address_title }}<br>
+                {{ cmp_addr.address_line1 }} &#183;
+                {% if cmp_addr.address_line2 %}{{ cmp_addr.address_line2 }} <br>{% endif %}
+                {{ cmp_addr.pincode }} {{ cmp_addr.city }}
+                {% if cmp_addr.country != pay_addr.country -%}
+                    &#183; {{ cmp_addr.country | upper }}
+                {%- endif %}
+            </p>
+        </div>
+        <strong>{{ doc.customer_name }}</strong><br />
+        {% if contact %}
+            {{ contact.first_name }}{% if contact.last_name %} {{ contact.last_name }}{% endif %}<br>
+        {% endif %}
+        {{ doc.address_display if doc.address_display else _('<i>Address not set!</i>')}}
+    </div>
+
+    <div id="contact">
+        <table>
+            <tr>
+                <td class="text-right">{{ _("Date") }}:</td>
+                <td class="text-right">{{ frappe.utils.formatdate(doc.posting_date, "dd. MMMM yyyy") }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Phone") }}:</td>
+                <td class="text-right">{{ company.phone_no }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Email") }}:</td>
+                <td class="text-right">{{ company.email }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Association ID") }}:</td>
+                <td class="text-right">{{ company.abbr }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="faltmarke-1">-</div>
+<div id="lochmarke">-</div>
+<div id="faltmarke-2">-</div>
+
+<!-- CONTENT -->
+<div id="text" class="">
+	<div id="subject">
+		<strong>{% if doc.is_return %}{{ _("Retoure") }}{% else %}{{ _("Invoice") }}{% endif %} {{ doc.name }}</strong>
+    </div>
+    <div class="salutation">
+    {% if doc.is_return %}
+        {% if frappe.form_dict.get("_lang", doc.language) == "de" %}
+            <p>Folgende Artikelpositionen nehmen wir hiermit zurück in Bestand unseres Verbandes:</p>
+        {% else %}
+            <p>We hereby take the following items back into inventory of our association:</p>
+        {% endif %}
+    {% else %}
+        {% if frappe.form_dict.get("_lang", doc.language) == "de" %}
+            <p>Den für Sie ausgeführten Auftrag berechnen wir wie folgt:</p>
+        {% else %}
+            <p>We charge the order executed for you as follows:</p>
+        {% endif %}
+    {% endif %}
+    </div>
+    <br>
+    <div class="invoice">
+        <table class="w-100">
+            <thead class="black-border">
+                <tr>
+                    <th style="width: 10%">{{ _("Sr") }}</th>
+                    <th style="width: 30%">
+                        {{ _("Description") }}</th>
+                    <th style="width: 10%">{{ _("Unit") }}</th>
+                    <th style="width: 10%">{{ _("Qty") }}</th>
+                    <th style="width: 15%">{{ _("Price") }}</th>
+                    <th style="width: 15%" class="text-right">{{ _("Amount") }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for n in doc.items %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><b>{{ _(n.item_name) }}</b><br>
+                        {{ n.description }}</td>
+                    <td>{{ _(n.uom) }}</td>
+                    <td>{{ n.qty }}</td>
+                    <td>{{ n.get_formatted('rate') }}</td>
+                    <td class="text-right">{{ n.get_formatted('amount') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p></p>
+        <table class="w-100 black-border">
+            <tr>
+                <td>{{ _("Total") }}</td>
+                <td class="text-right">{{ doc.get_formatted('total') }}</td>
+            </tr>
+            {% if doc.discount_amount %}
+                <tr>
+                    <td>
+                        {{ _("Discount") }}
+                        {% if doc.additional_discount_percentage %}
+                            {{ doc.get_formatted('additional_discount_percentage') }} &percnt;
+                        {% endif %}
+                    </td>
+                    <td class="text-right">
+                        {{ doc.get_formatted('discount_amount') }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ _("Net Total") }}</td>
+                    <td class="text-right">{{ doc.get_formatted('net_total') }}</td>
+                </tr>
+            {% endif %}
+            {% if doc.tax_category == "Reverse Charge" -%}
+                <tr>
+                    <td>Steuerschuldnerschaft des Leistungsempfängers.</td>
+                    <td class="text-right"></td>
+                </tr>
+            {% else %}
+                {% for tax_row in doc.taxes -%}
+                    <tr>
+                        <td>
+                        {{ tax_row.description }}
+                        </td>
+                        <td class="text-right">
+                            {{ tax_row.get_formatted('tax_amount') }}
+                        </td>
+                    </tr>
+                {%- endfor %}
+            {%- endif %}
+            <tr>
+                <td>
+                    <strong>{{ _("Grand Total") }}</strong></td>
+                <td class="text-right"><strong>{{ doc.get_formatted('grand_total') }}</strong>
+                </td>
+            </tr>
+            {% if doc.total_advance %}
+                <tr>
+                    <td>
+                    {{ _("Total Advance") }}
+                    </td>
+                    <td class="text-right">
+                        {{ doc.get_formatted('total_advance') }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ _("Outstanding Amount") }}
+                    </td>
+                    <td class="text-right">
+                        {{ doc.get_formatted('outstanding_amount') }}
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+    <br>
+
+    <div class="epilogue">
+        {% if doc.terms %}
+            {{ doc.terms }}
+            <br>
+        {% endif %}
+
+        {% if doc.is_return %}
+            {{ company.retoure_information_text if company.retoure_information_text else _('<i>Please set retoure information text in your company configuration</i>')}}
+        {% else %}
+            {{ company.invoice_information_text if company.invoice_information_text else _('<i>Please set invoice information text in your company configuration</i>')}}
+        {% endif %}
+    </div>
+
+    {% if doc.timesheets -%}
+    <div style="page-break-after: always"></div>
+    <div class="timesheets">
+        <h3>Zeiterfassung</h3>
+        <div data-fieldname="timesheets" data-fieldtype="Table">
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th style="width: 40px" class="table-sr">{{ _("Sr") }}</th>
+                        <th style="width: 150px;" class="" data-fieldname="timesheets" data-fieldtype="Table">
+                            {{_("Date")}}</th>
+                        <th style="width: 300px;" class="" data-fieldname="timesheets" data-fieldtype="Table">
+                            {{_("Note")}}</th>
+                        <th style="width: 80px;" class="text-right" data-fieldname="timesheets" data-fieldtype="Table">
+                            {{_("Hours")}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ts in doc.timesheets | sort(attribute='start_date') %}
+                    {% set timesheet = frappe.get_doc("Timesheet", ts.time_sheet)%}
+                        {% if timesheet.total_billable_amount > 0 and timesheet.customer_note %}
+                            <tr style="page-break-inside: avoid;">
+                                <td class="table-sr">{{ loop.index }}</td>
+                                <td class="" data-fieldname="timesheets" data-fieldtype="Table">
+                                    <div class="value">
+                                        {{ timesheet.get_formatted('start_date') }}
+                                    </div>
+                                </td>
+                                <td class="" data-fieldname="timesheets" data-fieldtype="Table">
+                                    <div class="value">
+                                        {{ timesheet.note }}
+                                    </div>
+                                </td>
+                                <td class="text-right" data-fieldname="timesheets" data-fieldtype="Table">
+                                    <div class="value">
+                                        {{ "{:.2f}".format(timesheet.total_billable_hours) | replace(".", ",") }}
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {%- endif %}
+</div>
+
+<!-- FOOTER -->
+<div id="footer-html" class="visible-pdf">
+    <p id="pagenum">
+        {{ _("Page {0} of {1}").format('<span class="page"></span>', '<span class="topage"></span>') }}
+    </p>
+    <div class="print-format-footer">
+         {{ footer }}
+    </div>
+</div>
