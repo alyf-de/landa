@@ -25,7 +25,13 @@ fixtures = [
 	"Fishing Area",
 	"Item Attribute",
 	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
-	"Translation"
+	"Translation",
+	{
+		"doctype": "Letter Head",
+		"filters":	{
+			"name": ["in", "DIN Lang A4 mit Fensterdruck"]
+		}
+	}
 ]
 
 # DocTypes to be created once, after installation of this app
@@ -232,3 +238,8 @@ scheduler_events = {
 #
 # auto_cancel_exempted_doctypes = ["Auto Repeat"]
 
+jenv = {
+	"methods": [
+		"debug_print_var:landa.landa_sales.sales_order.sales_order.debug_print_var"
+	]
+}

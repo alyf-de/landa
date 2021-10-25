@@ -4,6 +4,9 @@
 
 import frappe
 from frappe.utils.data import get_year_ending
+import inspect
+from erpnext.accounts.doctype.sales_invoice.sales_invoice import SalesInvoice
+from erpnext.stock.doctype.delivery_note.delivery_note import DeliveryNote
 
 
 def before_validate(sales_order, event):
@@ -15,9 +18,25 @@ def before_validate(sales_order, event):
 	):
 		sales_order.tax_category = "Umsatzsteuer"
 
-
 def autoname(doc, event):
 	"""Create Company-specific Sales Order name."""
 	from landa.utils import get_new_name
 
 	doc.name = get_new_name("BEST", doc.company, "Sales Order")
+
+@frappe.whitelist()
+def debug_print_var(var_to_debug):
+
+	print()
+	print(" - - - - - - - - - - - - - - - - - - - - -")
+
+	if isinstance(var_to_debug, SalesInvoice) or isinstance(var_to_debug, DeliveryNote):
+		attrs = vars(var_to_debug)
+		print(', '.join("%s: %s" % item for item in attrs.items()))
+	else:
+		print(" DEBUG: ", var_to_debug)
+	
+	print(" - - - - - - - - - - - - - - - - - - - - -")
+	print()
+
+	return ''
