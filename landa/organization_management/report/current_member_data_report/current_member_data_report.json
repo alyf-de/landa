@@ -1,0 +1,157 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {
+   "fieldname": "Member ID",
+   "fieldtype": "Link",
+   "label": "name",
+   "options": "LANDA Member",
+   "width": 0
+  },
+  {
+   "fieldname": "Last Name",
+   "fieldtype": "Data",
+   "label": "last_name",
+   "width": 0
+  },
+  {
+   "fieldname": "First Name",
+   "fieldtype": "Data",
+   "label": "first_name",
+   "width": 0
+  },
+  {
+   "fieldname": "Date of Birth",
+   "fieldtype": "Check",
+   "label": "date_of_birth",
+   "width": 0
+  },
+  {
+   "fieldname": "Address ID",
+   "fieldtype": "Link",
+   "label": "address_name",
+   "options": "Address",
+   "width": 0
+  },
+  {
+   "fieldname": "Address Line 1",
+   "fieldtype": "Data",
+   "label": "address_line1",
+   "width": 0
+  },
+  {
+   "fieldname": "Pincode",
+   "fieldtype": "Data",
+   "label": "pincode",
+   "width": 0
+  },
+  {
+   "fieldname": "City",
+   "fieldtype": "Data",
+   "label": "city",
+   "width": 0
+  },
+  {
+   "fieldname": "Is Supporting Member",
+   "fieldtype": "Check",
+   "label": "is_supporting_member",
+   "width": 0
+  },
+  {
+   "fieldname": "Has Key",
+   "fieldtype": "Check",
+   "label": "has_key",
+   "width": 0
+  },
+  {
+   "fieldname": "Year of Yearly Fishing Permit",
+   "fieldtype": "Int",
+   "label": "year",
+   "width": 0
+  },
+  {
+   "fieldname": "Yearly Fishing Permit Type",
+   "fieldtype": "Link",
+   "label": "type",
+   "options": "Yearly Fishing Permit Type",
+   "width": 0
+  },
+  {
+   "fieldname": "Issue Date of Yearly Fishing Permit",
+   "fieldtype": "Data",
+   "label": "date_of_issue",
+   "width": 0
+  },
+  {
+   "fieldname": "Yearly Fishing Permit Number",
+   "fieldtype": "Data",
+   "label": "number",
+   "width": 0
+  },
+  {
+   "fieldname": "Hat Sachsen-Anhalt Erlaubnisschein",
+   "fieldtype": "Check",
+   "label": "has_special_yearly_fishing_permit_1",
+   "width": 0
+  },
+  {
+   "fieldname": "Hat Brandenburg Erlaubnisschein",
+   "fieldtype": "Check",
+   "label": "has_special_yearly_fishing_permit_2",
+   "width": 0
+  },
+  {
+   "fieldname": "Additional Information",
+   "fieldtype": "Data",
+   "label": "additional_information",
+   "width": 0
+  }
+ ],
+ "creation": "2021-10-27 15:00:21.698726",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Extended Information in Footer",
+ "modified": "2021-10-27 15:00:21.698726",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "Current Member Data Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "LANDA Member",
+ "reference_report": "",
+ "report_name": "Current Member Data Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "LANDA Member"
+  },
+  {
+   "role": "LANDA State Organization Employee"
+  },
+  {
+   "role": "LANDA Regional Organization Management"
+  },
+  {
+   "role": "LANDA Local Organization Management"
+  },
+  {
+   "role": "LANDA Magazine Manager"
+  }
+ ]
+}
