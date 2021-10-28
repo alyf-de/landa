@@ -22,20 +22,12 @@ class LANDACurrentMemberData(object):
             df.set_index('member',inplace=True)
             return df
 
-        def remove_duplicate_indices(df,index='member', sort_by=None,keep='last'):
-            """Remove rows in dataframe with duplicate indeces. 
-            If sort_by is specified the dataframe is firsted sorted by these columns keeping the entry specified in keep, e.g. 'last'"""
-            if sort_by is not None:
-                df=df.sort_values(sort_by)
-            return df.reset_index().drop_duplicates(subset=[index],keep=keep).set_index(index)
-
         def get_link_filters(frappe_tuple):
             member_ids=[m[0] for m in frappe_tuple] # list of member names (ID)
             link_filters = [
                     ["Dynamic Link", "link_doctype", "=", "LANDA Member"],
                     ["Dynamic Link", "link_name", "in", member_ids],
                 ]
-            #print(member_ids,link_filters)
             return member_ids,link_filters
 
         # define the member master data that are supposed to be loaded
@@ -56,8 +48,6 @@ class LANDACurrentMemberData(object):
         # define the labels of db entries that are supposed to be loaded
         link_field_label="`tabDynamic Link`.link_name as member"
         member_ids, link_filters = get_link_filters(members)
-        reindex_df=member_df
-
         # load addresses from db    
         address_fields = ["name","address_line1", "pincode", "city"]
         addresses = frappe.get_list("Address", filters=link_filters, fields=address_fields+[link_field_label], 
@@ -66,17 +56,13 @@ class LANDACurrentMemberData(object):
         addresses_df=frappe_tuple_to_pandas_df(addresses,address_fields+["member"])
         # rename index column
         addresses_df.rename({'name': 'address_name'}, axis=1, inplace=True)
-        ## remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
-        #addresses_df=remove_duplicate_indices(addresses_df,sort_by='is_primary_address')
         
-        # merge all dataframes from different doctypes and load data of all members without member functions only if necessary
-        data=pd.concat([member_df[['last_name', 'first_name', "date_of_birth"]], 
-                        addresses_df, 
-                        member_df[['is_supporting_member','has_key','organization']],
-                        member_df[fishing_permit_columns],
-                        member_df[['has_special_yearly_fishing_permit_1',
-                                    'has_special_yearly_fishing_permit_2','additional_information']]
-                        ], axis=1).reindex(reindex_df.index)
+        # merge members and addresses from different doctypes
+        data=pd.merge(member_df,addresses_df, on='member',how='outer')
+
+        # sort dataframe like report columns
+        sorted_columns=[c['fieldname'] for c in self.get_columns()][1:]
+        data=data[sorted_columns]
         # replace NaNs with empty strings
         data.fillna('', inplace=True)
         # convert data back to tuple
