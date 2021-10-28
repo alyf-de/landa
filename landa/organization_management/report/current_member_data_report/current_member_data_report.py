@@ -9,7 +9,7 @@ import numpy as np
 class LANDACurrentMemberData(object):
     def __init__(self, filters):
         # set attribute to load only members and remove it from filters
-        self.filter=filters.pop('organization', None)
+        self.filter=filters#.pop('organization', None)
 
     def run(self):
         return self.get_columns(), self.get_data()
