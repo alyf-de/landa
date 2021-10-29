@@ -2,7 +2,7 @@
 	Hallo {{ first_name }}{% if last_name %} {{ last_name}}{% endif %},
 </p>
 {% set site_link = "<a href='" + site_url + "'>" + site_url + "</a>" %}
-<p>{{("Auf der Seite {0} wurde ein neues Nutzerkonto für dich angelegt").format(site_link)}}.</p>
+<p>Auf der Seite {{ site_link }} wurde ein neues Nutzerkonto für dich angelegt.</p>
 <p>{{("Deine Emailadresse bzw. der Name deines Nutzerkontos ist")}}: <b>{{ user }}</b>
 <p>{{("Klicke unten auf die Schaltfläche 'Registrierung abschließen' um deine Registrierung abzuschließen und wähle ein neues Passwort")}}!</p>
 <p>{{("Achtung, merke dir dieses Passwort gut oder speichere es in deinem Passwort Manager!")}}</p>
