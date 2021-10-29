@@ -4526,5 +4526,21 @@
   "parenttype": null,
   "source_text": "Register",
   "translated_text": "Registrieren"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-10-29 14:44:43.451746",
+  "name": "ec6287a5f9",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Welcome to {0}",
+  "translated_text": "Willkommen beim {0}"
  }
 ]
