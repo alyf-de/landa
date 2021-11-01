@@ -4686,5 +4686,21 @@
   "parenttype": null,
   "source_text": "Retoure Information Text",
   "translated_text": "Informationstext Retoure"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-11-01 09:16:31.386710",
+  "name": "7f72fa2487",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Address not set!",
+  "translated_text": "Adresse nicht konfiguriert!"
  }
 ]
