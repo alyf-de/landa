@@ -1,6 +1,6 @@
 {% set company = frappe.get_doc("Company", doc.company) %}
-{% set company_addresses = frappe.get_list("Dynamic Link", filters={"link_doctype": "Company", "link_name": doc.company, "parenttype": "Address"}, fields=["parent"]) %}
-{% set address = frappe.get_doc("Address", company_addresses[0]['parent']) %}
+{% set company_address_name = frappe.db.get_value("Dynamic Link", filters={"link_doctype": "Company", "link_name": doc.company, "parenttype": "Address"}, fieldname="parent") %}
+{% set address = frappe.get_doc("Address", company_address_name) if company_address_name else None %}
 
 <table class="footer-table">
     <tbody>
@@ -10,7 +10,13 @@
             <td>{% if company.bank_name %}{{company.bank_name}}{% else %}-{% endif %}</td>
         </tr>
         <tr>
-            <td>{{ address.address_line1 }} &#183; {{ address.pincode }} {{ address.city }}</td>
+            <td>
+                {% if address %}
+                    {{ address.address_line1 }} &#183; {{ address.pincode }} {{ address.city }}
+                {% else %}
+                    <i>{{ _("Address not set!") }}</i>
+                {% endif %}
+            </td>
             <td>{% if company.ceo %}{{company.ceo}}{% else %}-{% endif %}</td>
             <td>IBAN: {% if company.iban %}{{company.iban}}{% else %}-{% endif %}</td>
         </tr>
