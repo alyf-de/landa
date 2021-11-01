@@ -8,10 +8,10 @@
     }
 </style>
 
-{% set company_addresses = frappe.get_list("Dynamic Link", filters={"link_doctype": "Company", "link_name": doc.company, "parenttype": "Address"}, fields=["parent"]) %}
-{% set cmp_addr = frappe.get_doc("Address", company_addresses[0]['parent']) %}
 {% set company = frappe.get_doc("Company", doc.company) %}
-{% set pay_addr = frappe.get_doc("Address", doc.customer_address) if doc.customer_address else _('<i>Address not set!</i>') %}
+{% set company_address_name = frappe.db.get_value("Dynamic Link", filters={"link_doctype": "Company", "link_name": doc.company, "parenttype": "Address"}, fieldname="parent") %}
+{% set company_address = frappe.get_doc("Address", company_address_name) if company_address_name else None %}
+{% set pay_addr = frappe.get_doc("Address", doc.customer_address) if doc.customer_address else None %}
 
 {% if doc.contact_person %}
     {% set contact = frappe.get_doc("Contact", doc.contact_person) %}
@@ -28,12 +28,16 @@
     <div id="address">
         <div id="sender">
             <p>{{ company.name }}<br>
-                {{ cmp_addr.address_line1 }} &#183;
-                {% if cmp_addr.address_line2 %}{{ cmp_addr.address_line2 }} <br>{% endif %}
-                {{ cmp_addr.pincode }} {{ cmp_addr.city }}
-                {% if cmp_addr.country != pay_addr.country -%}
-                    &#183; {{ cmp_addr.country | upper }}
-                {%- endif %}
+                {% if company_address %}
+                    {{ company_address.address_line1 }} &#183;
+                    {% if company_address.address_line2 %}{{ company_address.address_line2 }} <br>{% endif %}
+                    {{ company_address.pincode }} {{ company_address.city }}
+                    {% if company_address.country != pay_addr.country -%}
+                        &#183; {{ company_address.country | upper }}
+                    {%- endif %}
+                {% else %}
+                    <i>{{ _("Address not set!") }}</i>
+                {% endif %}
             </p>
         </div>
         {% if contact %}
@@ -47,7 +51,7 @@
         {% else %}
             <strong>{{ doc.customer_name }}</strong><br />
         {% endif %}
-        {{ doc.address_display if doc.address_display else _('<i>Address not set!</i>')}}
+         {{ doc.address_display if doc.address_display else "<i>" + _("Address not set!") + "</i>" }}
     </div>
 
     <div id="contact">
