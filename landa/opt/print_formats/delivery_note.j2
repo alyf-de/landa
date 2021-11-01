@@ -32,8 +32,8 @@
                     {{ company_address.address_line1 }} &#183;
                     {% if company_address.address_line2 %}{{ company_address.address_line2 }} <br>{% endif %}
                     {{ company_address.pincode }} {{ company_address.city }}
-                    {% if company_address.country != pay_addr.country -%}
-                        &#183; {{ company_address.country | upper }}
+                    {% if company_address.country and company_address.country != pay_addr.country -%}
+                        &#183; {{ company_address.country.upper() }}
                     {%- endif %}
                 {% else %}
                     <i>{{ _("Address not set!") }}</i>
