@@ -2,8 +2,8 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["Current Member Data Report"] = {
-    "filters": [
+frappe.query_reports["Current Member Data"] = {
+	"filters": [
         {
             "fieldname": "organization",
             "fieldtype": "Link",
