@@ -1,0 +1,151 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "creation": "2021-11-03 11:14:55.023196",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member",
+  "last_name",
+  "first_name",
+  "date_of_birth",
+  "address_name",
+  "address_line1",
+  "pincode",
+  "city",
+  "is_supporting_member",
+  "has_key",
+  "organization",
+  "year",
+  "type",
+  "date_of_issue",
+  "number",
+  "has_special_yearly_fishing_permit_1",
+  "has_special_yearly_fishing_permit_2",
+  "additional_information"
+ ],
+ "fields": [
+  {
+   "fieldname": "member",
+   "fieldtype": "Data",
+   "label": "Member"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Data",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "address_line1",
+   "fieldtype": "Data",
+   "label": "Address Line 1"
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Pincode"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "is_supporting_member",
+   "fieldtype": "Data",
+   "label": "Is Supporting Member"
+  },
+  {
+   "fieldname": "has_key",
+   "fieldtype": "Data",
+   "label": "Has Key"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Data",
+   "label": "Organization"
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Data",
+   "label": "Year of Yearly Fishing Permit"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "label": "Yearly Fishing Permit Type"
+  },
+  {
+   "fieldname": "date_of_issue",
+   "fieldtype": "Data",
+   "label": "Issue Date of Yearly Fishing Permit"
+  },
+  {
+   "fieldname": "number",
+   "fieldtype": "Data",
+   "label": "Yearly Fishing Permit Number"
+  },
+  {
+   "fieldname": "has_special_yearly_fishing_permit_1",
+   "fieldtype": "Data",
+   "label": "Hat Sachsen-Anhalt Erlaubnisschein"
+  },
+  {
+   "fieldname": "has_special_yearly_fishing_permit_2",
+   "fieldtype": "Data",
+   "label": "Hat Brandenburg Erlaubnisschein"
+  },
+  {
+   "fieldname": "additional_information",
+   "fieldtype": "Data",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "address_name",
+   "fieldtype": "Data",
+   "label": "Address ID"
+  }
+ ],
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2021-11-03 14:15:35.781465",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "Member Data Import",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "role": "LANDA Regional Organization Management"
+  },
+  {
+   "create": 1,
+   "role": "LANDA Local Organization Management"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
