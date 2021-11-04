@@ -3,6 +3,8 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.utils.dateutils import parse_date
+
 from datetime import datetime
 
 
@@ -79,15 +81,7 @@ class MemberDataImport(Document):
 			if not self.get(field):
 				continue
 
-			data = self.get(field).replace(" ", "").replace(",", ".").replace("-", ".")
-			if len(data) == len("01.01.99"):
-				date_format = "%d.%m.%y"
-			elif len(data) == len("01.01.1999"):
-				date_format = "%d.%m.%Y"
-			else:
-				frappe.throw("Datumsformat konnte nicht erkannt werden.")
-
-			self.set(field, datetime.strptime(data, date_format).date().isoformat())
+			self.set(field, parse_date(self.get(field)))
 
 	def process_member(self):
 		if self.member:
