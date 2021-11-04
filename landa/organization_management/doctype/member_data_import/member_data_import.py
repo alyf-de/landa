@@ -50,25 +50,7 @@ class MemberDataImport(Document):
 		self.preprocess()
 		self.process_member()
 		self.process_address()
-
-	def process_member(self):
-		if self.member:
-			self.member_doc = frappe.get_doc("LANDA Member", self.member)
-		elif self.organization and self.last_name:
-			self.member_doc = self.create_member()
-		else:
-			frappe.throw(
-				'Es müssen entweder die Felder "Familienname" und "Verein" ausgefüllt sein, um ein neues Mitglied zu erstellen oder es muss eine Mitgliedsnummer angegeben werden, um die Daten eines bestehenden Mitglieds zu bearbeiten.'
-			)
-
-		self.update_doc(self.member_doc, self.MEMBER_FIELDS)
-
-	def process_address(self):
-		if self.address_name:
-			self.address_doc = frappe.get_doc("Address", self.address_name)
-			self.update_doc(self.address_doc, self.ADDRESS_FIELDS)
-		else:
-			self.create_address()
+		self.process_fishing_permit()
 
 	def load_from_db(self):
 		pass
@@ -105,11 +87,36 @@ class MemberDataImport(Document):
 
 			self.set(field, datetime.strptime(data, date_format).date().isoformat())
 
+	def process_member(self):
+		if self.member:
+			member_doc = frappe.get_doc("LANDA Member", self.member)
+		elif self.organization and self.last_name:
+			member_doc = self.create_member()
+			self.member = member_doc.name
+		else:
+			frappe.throw(
+				'Es müssen entweder die Felder "Familienname" und "Verein" ausgefüllt sein, um ein neues Mitglied zu erstellen oder es muss eine Mitgliedsnummer angegeben werden, um die Daten eines bestehenden Mitglieds zu bearbeiten.'
+			)
+
+		self.update_doc(member_doc, self.MEMBER_FIELDS)
+
+	def process_address(self):
+		if self.address_name:
+			address_doc = frappe.get_doc("Address", self.address_name)
+			self.update_doc(address_doc, self.ADDRESS_FIELDS)
+		else:
+			self.create_address()
+
+	def process_fishing_permit(self):
+		if self.year and self.type:
+			self.create_yearly_fishing_permit()
+
 	def create_member(self):
 		"""Return a new LANDA Member."""
 		member = frappe.new_doc("LANDA Member")
 		member.organization = self.organization
 		member.last_name = self.last_name
+
 		return member.insert()
 
 	def update_doc(self, doc, fields):
@@ -141,6 +148,17 @@ class MemberDataImport(Document):
 		address.is_primary_address = 1
 		address.is_shipping_address = 1
 		address.append(
-			"links", {"link_doctype": "LANDA Member", "link_name": self.member_doc.name}
+			"links", {"link_doctype": "LANDA Member", "link_name": self.member}
 		)
-		address.insert()
+
+		return address.insert()
+
+	def create_yearly_fishing_permit(self):
+		yfp = frappe.new_doc("Yearly Fishing Permit")
+		yfp.member = self.member
+		yfp.year = int(self.year)
+		yfp.type = self.type.upper()
+		yfp.number = self.number
+		yfp.date_of_issue = self.date_of_issue
+
+		return yfp.insert()
