@@ -29,7 +29,7 @@
   {
    "fieldname": "member",
    "fieldtype": "Data",
-   "label": "Member"
+   "label": "Member ID"
   },
   {
    "fieldname": "last_name",
@@ -119,7 +119,7 @@
  ],
  "is_virtual": 1,
  "links": [],
- "modified": "2021-11-03 14:15:35.781465",
+ "modified": "2021-11-04 15:27:57.989441",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Data Import",
