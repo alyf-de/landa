@@ -1,0 +1,193 @@
+[
+ {
+  "app_logo": "/files/android-icon-36x36.png",
+  "docstatus": 0,
+  "doctype": "Navbar Settings",
+  "help_dropdown": [
+   {
+    "action": null,
+    "hidden": 1,
+    "is_standard": 1,
+    "item_label": "Documentation",
+    "item_type": "Route",
+    "parent": "Navbar Settings",
+    "parentfield": "help_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": "https://erpnext.com/docs/user/manual"
+   },
+   {
+    "action": null,
+    "hidden": 1,
+    "is_standard": 1,
+    "item_label": "User Forum",
+    "item_type": "Route",
+    "parent": "Navbar Settings",
+    "parentfield": "help_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": "https://discuss.erpnext.com"
+   },
+   {
+    "action": null,
+    "hidden": 1,
+    "is_standard": 1,
+    "item_label": "Report an Issue",
+    "item_type": "Route",
+    "parent": "Navbar Settings",
+    "parentfield": "help_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": "https://github.com/frappe/erpnext/issues"
+   },
+   {
+    "action": "frappe.ui.toolbar.show_about()",
+    "hidden": 1,
+    "is_standard": 1,
+    "item_label": "About",
+    "item_type": "Action",
+    "parent": "Navbar Settings",
+    "parentfield": "help_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": null
+   },
+   {
+    "action": null,
+    "hidden": 0,
+    "is_standard": 0,
+    "item_label": "Contact",
+    "item_type": "Route",
+    "parent": "Navbar Settings",
+    "parentfield": "help_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": "https://lvsa-landa.de/contact"
+   },
+   {
+    "action": null,
+    "hidden": 0,
+    "is_standard": 0,
+    "item_label": "About",
+    "item_type": "Route",
+    "parent": "Navbar Settings",
+    "parentfield": "help_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": "https://lvsa-landa.de/about"
+   },
+   {
+    "action": "frappe.ui.toolbar.show_shortcuts(event)",
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "Keyboard Shortcuts",
+    "item_type": "Action",
+    "parent": "Navbar Settings",
+    "parentfield": "help_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": null
+   }
+  ],
+  "logo_width": 0,
+  "modified": "2021-11-04 17:46:33.060116",
+  "name": "Navbar Settings",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "settings_dropdown": [
+   {
+    "action": null,
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "My Profile",
+    "item_type": "Route",
+    "parent": "Navbar Settings",
+    "parentfield": "settings_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": "/app/user-profile"
+   },
+   {
+    "action": "frappe.ui.toolbar.route_to_user()",
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "My Settings",
+    "item_type": "Action",
+    "parent": "Navbar Settings",
+    "parentfield": "settings_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": null
+   },
+   {
+    "action": "frappe.ui.toolbar.setup_session_defaults()",
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "Session Defaults",
+    "item_type": "Action",
+    "parent": "Navbar Settings",
+    "parentfield": "settings_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": null
+   },
+   {
+    "action": "frappe.ui.toolbar.clear_cache()",
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "Reload",
+    "item_type": "Action",
+    "parent": "Navbar Settings",
+    "parentfield": "settings_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": null
+   },
+   {
+    "action": "frappe.ui.toolbar.view_website()",
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "View Website",
+    "item_type": "Action",
+    "parent": "Navbar Settings",
+    "parentfield": "settings_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": null
+   },
+   {
+    "action": "frappe.ui.toolbar.toggle_full_width()",
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "Toggle Full Width",
+    "item_type": "Action",
+    "parent": "Navbar Settings",
+    "parentfield": "settings_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": null
+   },
+   {
+    "action": null,
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "Background Jobs",
+    "item_type": "Route",
+    "parent": "Navbar Settings",
+    "parentfield": "settings_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": "/app/background_jobs"
+   },
+   {
+    "action": null,
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": null,
+    "item_type": "Separator",
+    "parent": "Navbar Settings",
+    "parentfield": "settings_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": null
+   },
+   {
+    "action": "frappe.app.logout()",
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "Logout",
+    "item_type": "Action",
+    "parent": "Navbar Settings",
+    "parentfield": "settings_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": null
+   }
+  ]
+ }
+]
