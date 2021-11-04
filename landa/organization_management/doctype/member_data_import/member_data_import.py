@@ -84,6 +84,8 @@ class MemberDataImport(Document):
 				date_format = "%d.%m.%y"
 			elif len(data) == len("01.01.1999"):
 				date_format = "%d.%m.%Y"
+			else:
+				frappe.throw("Datumsformat konnte nicht erkannt werden.")
 
 			self.set(field, datetime.strptime(data, date_format).date().isoformat())
 
@@ -104,7 +106,7 @@ class MemberDataImport(Document):
 		if self.address_name:
 			address_doc = frappe.get_doc("Address", self.address_name)
 			self.update_doc(address_doc, self.ADDRESS_FIELDS)
-		else:
+		elif all([self.address_line1, self.pincode, self.city]):
 			self.create_address()
 
 	def process_fishing_permit(self):
