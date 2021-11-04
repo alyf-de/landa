@@ -24,8 +24,20 @@ fixtures = [
 	"Fish Species",
 	"Fishing Area",
 	"Item Attribute",
-	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
-	"Translation"
+	{
+		"dt": "Variant Field",
+		"filters": [["field_name", "in", ["description", "item_tax_template"]]],
+	},
+	"Translation",
+	{
+		# export custom permission as fixture because Report is a core doctype
+		# and cannot be customized via customize form
+		"dt": "Custom DocPerm",
+		"filters": [
+			["role", "=", "LANDA Regional Organization Management"],
+			["parent", "=", "Report"],
+		],
+	},
 ]
 
 # DocTypes to be created once, after installation of this app
