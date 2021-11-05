@@ -4670,5 +4670,53 @@
   "parenttype": null,
   "source_text": "You haven't created a {0} yet",
   "translated_text": "Du hast noch keine(n) {0} erstellt."
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-11-05 12:30:02.414920",
+  "name": "b3b1d7bd0e",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "New Member Data Import",
+  "translated_text": "Neues Mitglied Datenimport"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-11-05 12:24:34.336762",
+  "name": "9018584d2f",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Single Member Data Import",
+  "translated_text": "Einzelmitglied Datenimport"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-11-05 12:28:26.533493",
+  "name": "252aa83b46",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Data Import Tool",
+  "translated_text": "Datenimport von (Excel-) Tabellen"
  }
 ]
