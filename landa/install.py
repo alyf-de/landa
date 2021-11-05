@@ -6,6 +6,7 @@ def after_install():
 	create_records_from_hooks()
 	disable_modes_of_payment()
 	add_session_defaults()
+	frappe.set_value("Stock Settings", "Stock Settings", "item_naming_by", "Naming Series")
 
 
 def create_records_from_hooks():
