@@ -4622,5 +4622,53 @@
   "parenttype": null,
   "source_text": "Yearly Fishing Permit Number",
   "translated_text": "Erlaubnisscheinnummer"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-11-05 12:08:42.918061",
+  "name": "a468eda0e4",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Current Member Data",
+  "translated_text": "Aktuelle Mitgliedsdaten"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-11-05 12:07:29.348186",
+  "name": "e7ae27db6e",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Member Data Import",
+  "translated_text": "Mitgliedsdatenimport"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-11-05 12:11:14.519033",
+  "name": "29f994345f",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "You haven't created a {0} yet",
+  "translated_text": "Du hast noch keine(n) {0} erstellt."
  }
 ]
