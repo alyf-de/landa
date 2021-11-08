@@ -119,7 +119,7 @@
  ],
  "is_virtual": 1,
  "links": [],
- "modified": "2021-11-08 14:25:07.117178",
+ "modified": "2021-11-08 15:00:53.594444",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Data Import",
@@ -139,12 +139,18 @@
   },
   {
    "create": 1,
+   "delete": 1,
+   "export": 1,
+   "import": 1,
    "read": 1,
    "role": "LANDA Regional Organization Management",
    "write": 1
   },
   {
    "create": 1,
+   "delete": 1,
+   "export": 1,
+   "import": 1,
    "read": 1,
    "role": "LANDA Local Organization Management",
    "write": 1
