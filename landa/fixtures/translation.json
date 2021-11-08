@@ -4718,5 +4718,21 @@
   "parenttype": null,
   "source_text": "Data Import Tool",
   "translated_text": "Datenimport von (Excel-) Tabellen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-11-08 14:23:03.447814",
+  "name": "8de78bffeb",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Imports",
+  "translated_text": "Importe"
  }
 ]
