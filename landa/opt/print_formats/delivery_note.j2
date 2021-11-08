@@ -9,6 +9,7 @@
 </style>
 
 {% set company = frappe.get_doc("Company", doc.company) %}
+{% set customer = frappe.get_doc("Customer", doc.customer) %}
 {% set company_address_name = frappe.db.get_value("Dynamic Link", filters={"link_doctype": "Company", "link_name": doc.company, "parenttype": "Address"}, fieldname="parent") %}
 {% set company_address = frappe.get_doc("Address", company_address_name) if company_address_name else None %}
 {% set pay_addr = frappe.get_doc("Address", doc.customer_address) if doc.customer_address else None %}
@@ -76,9 +77,9 @@
     </div>
 </div>
 
-<div id="faltmarke-1">-</div>
-<div id="lochmarke">-</div>
-<div id="faltmarke-2">-</div>
+<div class="din-mark" id="fold-mark-1"></div>
+<div class="din-mark" id="punch-mark"></div>
+<div class="din-mark" id="fold-mark-2"></div>
 
 <!-- CONTENT -->
 <div id="text" class="">

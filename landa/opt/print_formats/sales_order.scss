@@ -78,21 +78,22 @@
         font-size: 12pt;
     }
 
-    #faltmarke-1 {
+    .din-mark {
+        width: 3mm;
+        height: 1pt;
+        background-color: black;
         position: absolute;
-        /* ( 105 mm - 10 mm margin ) */
+        left: 10mm;
+    }
+    #fold-mark-1 {
         top: 95mm;
     }
 
-    #lochmarke {
-        position: absolute;
-        /* ( 148.5 mm - 10 mm margin ) */
+    #punch-mark {
         top: 138.5mm;
     }
 
-    #faltmarke-2 {
-        position: absolute;
-        /* ( 210 mm - 10 mm margin ) */
+    #fold-mark-2 {
         top: 200mm;
     }
 
