@@ -5,8 +5,6 @@ import frappe
 from frappe.model.document import Document
 from frappe.utils.dateutils import parse_date
 
-from datetime import datetime
-
 
 class MemberDataImport(Document):
 
@@ -104,8 +102,18 @@ class MemberDataImport(Document):
 			self.create_address()
 
 	def process_fishing_permit(self):
-		if self.year and self.type:
-			self.create_yearly_fishing_permit()
+		if not self.year:
+			return
+
+		doctype = "Yearly Fishing Permit Type"
+		default_type = "ALLG"
+		if (not self.type or not frappe.db.exists(doctype, self.type)):
+			if frappe.db.exists(doctype, default_type):
+				self.type = default_type
+			else:
+				return
+
+		self.create_yearly_fishing_permit()
 
 	def create_member(self):
 		"""Return a new LANDA Member."""
