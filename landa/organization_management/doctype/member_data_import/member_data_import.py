@@ -157,4 +157,6 @@ class MemberDataImport(Document):
 		yfp.number = self.number
 		yfp.date_of_issue = self.date_of_issue
 
-		return yfp.insert()
+		yfp.insert()
+		yfp.submit()
+		return yfp
