@@ -128,7 +128,7 @@ class MemberDataImport(Document):
 		"""Update all `fields` of `doc` with the values from `self`."""
 		for field in fields:
 			new_value = self.get(field)
-			if not new_value:
+			if not new_value and not type(new_value, int): # int == 0 is allowed to disable checkbox
 				continue
 
 			old_value = doc.get(field)
