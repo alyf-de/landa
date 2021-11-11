@@ -34,6 +34,7 @@ class MemberDataImport(Document):
 
 	MEMBER_FIELDS = [
 		"first_name",
+		"last_name",
 		"date_of_birth",
 		"is_supporting_member",
 		"has_key",
