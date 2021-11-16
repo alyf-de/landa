@@ -64,6 +64,8 @@ landa_add_to_session_defaults = ["Organization", "Customer"]
 
 on_session_creation = "landa.overrides.set_user_defaults"
 
+welcome_email = "landa.utils.welcome_email"
+
 #treeviews = "Organization"
 
 # Includes in <head>
