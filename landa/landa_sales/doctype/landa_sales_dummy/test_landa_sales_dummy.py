@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestLANDASalesSummy(unittest.TestCase):
+class TestLANDASalesDummy(unittest.TestCase):
 	pass
