@@ -88,6 +88,8 @@ landa_add_to_session_defaults = ["Organization", "Customer"]
 
 on_session_creation = "landa.overrides.set_user_defaults"
 
+welcome_email = "landa.utils.welcome_email"
+
 # treeviews = "Organization"
 
 # Includes in <head>
@@ -237,9 +239,12 @@ scheduler_events = {
 # Overriding Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
-#	"frappe.desk.doctype.event.event.get_events": "landa.event.get_events"
-# }
+
+override_whitelisted_methods = {
+	# Use frappe's send message so that the website contact form doesn't create a Lead and Opportunity
+	"erpnext.templates.utils.send_message": "frappe.www.contact.send_message"
+}
+
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
