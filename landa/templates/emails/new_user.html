@@ -1,0 +1,25 @@
+<p>
+	Hallo {{ first_name }}{% if last_name %} {{ last_name}}{% endif %},
+</p>
+{% set site_link = "<a href='" + site_url + "'>" + site_url + "</a>" %}
+<p>Auf der Seite {{ site_link }} wurde ein neues Nutzerkonto für dich angelegt.</p>
+<p>Deine Emailadresse bzw. der Name deines Nutzerkontos ist: <b>{{ user }}</b>
+<p>Klicke unten auf die Schaltfläche 'Registrierung abschließen' um deine Registrierung abzuschließen und wähle ein neues Passwort!</p>
+<p>Achtung, merke dir dieses Passwort gut oder speichere es in deinem Passwort Manager!</p>
+<p>Wir empfehlen, dass du dir die Seite {{ site_link }} als Lesezeichen setzt, damit du LANDA beim nächsten Mal schnell wieder findest.</p>
+<p style="margin: 15px 0px;">
+	<a href="{{ link }}" rel="nofollow" class="btn btn-primary">Registrierung abschließen</a>
+</p>
+
+{% if created_by != "Administrator" %}
+<br>
+<p style="margin-top: 15px">
+	Viele Grüße,<br>
+	{{ created_by }}
+</p>
+{% endif %}
+<br>
+<p>
+	Du kannst stattdessen auch folgenden Link kopieren und in deinem Browser einfügen<br>
+	<a href="{{ link }}">{{ link }}</a>
+</p>
