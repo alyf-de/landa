@@ -13,7 +13,6 @@ app_license = "--"
 
 fixtures = [
 	"System Settings",
-	"Navbar Settings",
 	"Website Settings",
 	{
 		"dt": "Web Page",
