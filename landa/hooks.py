@@ -23,7 +23,6 @@ fixtures = [
 	"Member Function Category",
 	"Fish Species",
 	"Fishing Area",
-	"Item Attribute",
 	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
 	"Translation"
 ]
@@ -53,8 +52,76 @@ landa_create_after_install = [
 		"doctype": "Mode of Payment",
 		"enabled": 1,
 		"mode_of_payment": "Bank\u00fcberweisung",
-		"type": "Bank"
-	}
+		"type": "Bank",
+	},
+	{
+		"attribute_name": "G\u00fcltigkeitsjahr",
+		"doctype": "Item Attribute",
+		"from_range": 2021.0,
+		"increment": 1.0,
+		"item_attribute_values": [],
+		"name": "G\u00fcltigkeitsjahr",
+		"numeric_values": 1,
+		"to_range": 2030.0,
+	},
+	{
+		"attribute_name": "Beitragsart",
+		"doctype": "Item Attribute",
+		"from_range": 0.0,
+		"increment": 0.0,
+		"item_attribute_values": [
+			{
+				"abbr": "V",
+				"attribute_value": "Vollzahler",
+			},
+			{
+				"abbr": "F",
+				"attribute_value": "F\u00f6rdermitglied",
+			},
+			{
+				"abbr": "J",
+				"attribute_value": "Jugend",
+			},
+			{
+				"abbr": "A",
+				"attribute_value": "Austauschmarke",
+			},
+		],
+		"name": "Beitragsart",
+		"numeric_values": 0,
+		"to_range": 0.0,
+	},
+	{
+		"attribute_name": "Bundesland",
+		"doctype": "Item Attribute",
+		"from_range": 0.0,
+		"increment": 0.0,
+		"item_attribute_values": [
+			{
+				"abbr": "SNA",
+				"attribute_value": "Sachsen-Anhalt",
+			},
+			{
+				"abbr": "BB",
+				"attribute_value": "Brandenburg",
+			},
+			{
+				"abbr": "TH",
+				"attribute_value": "Th\u00fcringen",
+			},
+			{
+				"abbr": "BE",
+				"attribute_value": "Berlin",
+			},
+			{
+				"abbr": "MV",
+				"attribute_value": "Mecklenburg-Vorpommern",
+			},
+		],
+		"name": "Bundesland",
+		"numeric_values": 0,
+		"to_range": 0.0,
+	},
 ]
 
 # Used in `landa.install.disable_modes_of_payment`
