@@ -32,6 +32,9 @@ fixtures = [
 # Used for records that cannot be a fixture because they will be modified later.
 # (Being fixtures would overwrite the data on every migrate.)
 #
+# ATTENTION: Below records cannot contain a "name" attribute as this will cause
+# a validation error in frappe.
+#
 # Used in `landa.install.create_records_from_hooks`
 landa_create_after_install = [
 	{
@@ -59,16 +62,12 @@ landa_create_after_install = [
 		"doctype": "Item Attribute",
 		"from_range": 2021.0,
 		"increment": 1.0,
-		"item_attribute_values": [],
-		"name": "G\u00fcltigkeitsjahr",
 		"numeric_values": 1,
 		"to_range": 2030.0,
 	},
 	{
 		"attribute_name": "Beitragsart",
 		"doctype": "Item Attribute",
-		"from_range": 0.0,
-		"increment": 0.0,
 		"item_attribute_values": [
 			{
 				"abbr": "V",
@@ -87,15 +86,11 @@ landa_create_after_install = [
 				"attribute_value": "Austauschmarke",
 			},
 		],
-		"name": "Beitragsart",
 		"numeric_values": 0,
-		"to_range": 0.0,
 	},
 	{
 		"attribute_name": "Bundesland",
 		"doctype": "Item Attribute",
-		"from_range": 0.0,
-		"increment": 0.0,
 		"item_attribute_values": [
 			{
 				"abbr": "SNA",
@@ -118,9 +113,7 @@ landa_create_after_install = [
 				"attribute_value": "Mecklenburg-Vorpommern",
 			},
 		],
-		"name": "Bundesland",
 		"numeric_values": 0,
-		"to_range": 0.0,
 	},
 ]
 
