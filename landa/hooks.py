@@ -38,7 +38,7 @@ fixtures = [
 	"Fish Species",
 	"Fishing Area",
 	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
-	"Translation"
+	"Translation",
 ]
 
 # DocTypes to be created once, after installation of this app
