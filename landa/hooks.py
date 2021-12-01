@@ -23,7 +23,6 @@ fixtures = [
 	"Member Function Category",
 	"Fish Species",
 	"Fishing Area",
-	"Item Attribute",
 	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
 	"Translation"
 ]
@@ -32,6 +31,9 @@ fixtures = [
 #
 # Used for records that cannot be a fixture because they will be modified later.
 # (Being fixtures would overwrite the data on every migrate.)
+#
+# ATTENTION: Below records cannot contain a "name" attribute as this will cause
+# a validation error in frappe.
 #
 # Used in `landa.install.create_records_from_hooks`
 landa_create_after_install = [
@@ -53,8 +55,66 @@ landa_create_after_install = [
 		"doctype": "Mode of Payment",
 		"enabled": 1,
 		"mode_of_payment": "Bank\u00fcberweisung",
-		"type": "Bank"
-	}
+		"type": "Bank",
+	},
+	{
+		"attribute_name": "G\u00fcltigkeitsjahr",
+		"doctype": "Item Attribute",
+		"from_range": 2021.0,
+		"increment": 1.0,
+		"numeric_values": 1,
+		"to_range": 2030.0,
+	},
+	{
+		"attribute_name": "Beitragsart",
+		"doctype": "Item Attribute",
+		"item_attribute_values": [
+			{
+				"abbr": "V",
+				"attribute_value": "Vollzahler",
+			},
+			{
+				"abbr": "F",
+				"attribute_value": "F\u00f6rdermitglied",
+			},
+			{
+				"abbr": "J",
+				"attribute_value": "Jugend",
+			},
+			{
+				"abbr": "A",
+				"attribute_value": "Austauschmarke",
+			},
+		],
+		"numeric_values": 0,
+	},
+	{
+		"attribute_name": "Bundesland",
+		"doctype": "Item Attribute",
+		"item_attribute_values": [
+			{
+				"abbr": "SNA",
+				"attribute_value": "Sachsen-Anhalt",
+			},
+			{
+				"abbr": "BB",
+				"attribute_value": "Brandenburg",
+			},
+			{
+				"abbr": "TH",
+				"attribute_value": "Th\u00fcringen",
+			},
+			{
+				"abbr": "BE",
+				"attribute_value": "Berlin",
+			},
+			{
+				"abbr": "MV",
+				"attribute_value": "Mecklenburg-Vorpommern",
+			},
+		],
+		"numeric_values": 0,
+	},
 ]
 
 # Used in `landa.install.disable_modes_of_payment`
@@ -63,6 +123,8 @@ disable_modes_of_payment = ["Wire Transfer", "Cash", "Bank Draft", "Credit Card"
 landa_add_to_session_defaults = ["Organization", "Customer"]
 
 on_session_creation = "landa.overrides.set_user_defaults"
+
+welcome_email = "landa.utils.welcome_email"
 
 #treeviews = "Organization"
 
@@ -217,9 +279,12 @@ scheduler_events = {
 # Overriding Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
-#	"frappe.desk.doctype.event.event.get_events": "landa.event.get_events"
-# }
+
+override_whitelisted_methods = {
+	# Use frappe's send message so that the website contact form doesn't create a Lead and Opportunity
+	"erpnext.templates.utils.send_message": "frappe.www.contact.send_message"
+}
+
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
