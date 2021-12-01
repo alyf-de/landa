@@ -1,11 +1,17 @@
 
 import frappe
+from frappe.utils import update_progress_bar
+
 from landa.organization_management.address.address import autoname
 
 
 def execute():
 	doctype = "Address"
-	for address in frappe.get_all(doctype):
+	all_addresses = frappe.get_all(doctype)
+	total_addresses = len(all_addresses)
+
+	for counter, address in enumerate(all_addresses):
+		update_progress_bar('Renaming Addresses', counter, total_addresses)
 		doc = frappe.get_doc(doctype, address.name)
 
 		old_name = address.name
@@ -18,4 +24,10 @@ def execute():
 		if old_name == new_name:
 			continue
 
-		frappe.rename_doc(doctype, old_name, new_name)
+		try:
+			frappe.rename_doc(doctype, old_name, new_name)
+		except frappe.exceptions.ValidationError:
+			pass
+
+		if counter > 0 and counter % 100 == 0:
+			frappe.db.commit()
