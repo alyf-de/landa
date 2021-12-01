@@ -14,17 +14,31 @@ app_license = "--"
 fixtures = [
 	"System Settings",
 	"Website Settings",
-	"About Us Settings",
+	{
+		"dt": "Web Page",
+		"filters": [
+			[
+				"name",
+				"in",
+				[
+					"über-landa",
+					"impressum",
+					"datenschutzangaben",
+					"nutzungshinweise",
+					"allgemeine-datenschutzinformation",
+				],
+			]
+		],
+	},
 	"Contact Us Settings",
-	"Web Page",
 	"Module Profile",
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
-	"Organization",
+	{"dt": "Organization", "filters": [["name", "in", ["LV", "AVE", "AVS", "AVL"]]]},
 	"Member Function Category",
 	"Fish Species",
 	"Fishing Area",
 	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
-	"Translation"
+	"Translation",
 ]
 
 # DocTypes to be created once, after installation of this app
@@ -41,14 +55,14 @@ landa_create_after_install = [
 		# Cannot be a fixture because it would overwrite Item Attribute Values
 		# on every migrate
 		"doctype": "Item Attribute",
-		"attribute_name": "Erlaubnisscheinart"
+		"attribute_name": "Erlaubnisscheinart",
 	},
 	{
 		# Cannot be a fixture because it would accounts on every migrate
 		"doctype": "Mode of Payment",
 		"enabled": 1,
 		"mode_of_payment": "Bar",
-		"type": "Cash"
+		"type": "Cash",
 	},
 	{
 		# Cannot be a fixture because it would accounts on every migrate
@@ -118,7 +132,13 @@ landa_create_after_install = [
 ]
 
 # Used in `landa.install.disable_modes_of_payment`
-disable_modes_of_payment = ["Wire Transfer", "Cash", "Bank Draft", "Credit Card", "Cheque"]
+disable_modes_of_payment = [
+	"Wire Transfer",
+	"Cash",
+	"Bank Draft",
+	"Credit Card",
+	"Cheque",
+]
 
 landa_add_to_session_defaults = ["Organization", "Customer"]
 
@@ -126,7 +146,7 @@ on_session_creation = "landa.overrides.set_user_defaults"
 
 welcome_email = "landa.utils.welcome_email"
 
-#treeviews = "Organization"
+# treeviews = "Organization"
 
 # Includes in <head>
 # ------------------
@@ -154,7 +174,7 @@ doctype_js = {
 	"Delivery Note": "landa_stock/delivery_note/delivery_note.js",
 	"Sales Order": "landa_sales/sales_order/sales_order.js",
 	"Item": "landa_stock/item/item.js",
-	"Payment Entry": "landa_sales/payment_entry/payment_entry.js"
+	"Payment Entry": "landa_sales/payment_entry/payment_entry.js",
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -224,11 +244,9 @@ doc_events = {
 	},
 	"Item": {
 		"before_insert": "landa.landa_stock.item.item.before_insert",
-		"autoname": "landa.landa_stock.item.item.autoname"
+		"autoname": "landa.landa_stock.item.item.autoname",
 	},
-	"Item Price": {
-		"validate": "landa.landa_sales.item_price.item_price.validate"
-	},
+	"Item Price": {"validate": "landa.landa_sales.item_price.item_price.validate"},
 	"Sales Order": {
 		"before_validate": "landa.landa_sales.sales_order.sales_order.before_validate",
 		"autoname": "landa.landa_sales.sales_order.sales_order.autoname",
@@ -242,33 +260,31 @@ doc_events = {
 	},
 	"Address": {
 		"validate": "landa.address_and_contact.validate",
-		"autoname": "landa.organization_management.address.address.autoname"
+		"autoname": "landa.organization_management.address.address.autoname",
 	},
 	"Contact": {
 		"validate": "landa.address_and_contact.validate",
 		"after_insert": "landa.organization_management.contact.contact.after_insert",
-	}
+	},
 }
 
 # Scheduled Tasks
 # ---------------
 
 scheduler_events = {
-#	"all": [
-#		"landa.tasks.all"
-#	],
-	"daily": [
-		"landa.tasks.daily"
-	]
-#	, "hourly": [
-#		"landa.tasks.hourly"
-#	],
-#	"weekly": [
-#		"landa.tasks.weekly"
-#	]
-#	"monthly": [
-#		"landa.tasks.monthly"
-#	]
+	#	"all": [
+	#		"landa.tasks.all"
+	#	],
+	"daily": ["landa.tasks.daily"]
+	#	, "hourly": [
+	#		"landa.tasks.hourly"
+	#	],
+	#	"weekly": [
+	#		"landa.tasks.weekly"
+	#	]
+	#	"monthly": [
+	#		"landa.tasks.monthly"
+	#	]
 }
 
 # Testing
@@ -296,4 +312,3 @@ override_whitelisted_methods = {
 # exempt linked doctypes from being automatically cancelled
 #
 # auto_cancel_exempted_doctypes = ["Auto Repeat"]
-
