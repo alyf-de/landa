@@ -1,4 +1,3 @@
-
 import frappe
 from frappe.utils import update_progress_bar
 
@@ -11,7 +10,7 @@ def execute():
 	total_addresses = len(all_addresses)
 
 	for counter, address in enumerate(all_addresses):
-		update_progress_bar('Renaming Addresses', counter, total_addresses)
+		update_progress_bar("Renaming Addresses", counter, total_addresses)
 		doc = frappe.get_doc(doctype, address.name)
 
 		old_name = address.name
@@ -25,7 +24,14 @@ def execute():
 			continue
 
 		try:
-			frappe.rename_doc(doctype, old_name, new_name)
+			frappe.rename_doc(
+				doctype,
+				old_name,
+				new_name,
+				ignore_permissions=True,  # checking permissions takes too long
+				ignore_if_exists=True,	# don't rename if a record with the same name exists already
+				show_alert=False,  # no need to show a UI alert, we're in the console
+			)
 		except frappe.exceptions.ValidationError:
 			pass
 
