@@ -1,0 +1,42 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
+  "modified": "2021-12-03 17:34:34.017813",
+  "name": "Herr",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Herr"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
+  "modified": "2021-12-03 17:34:43.285929",
+  "name": "Frau",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Frau"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
+  "modified": "2021-12-03 17:35:36.629375",
+  "name": "Dr.",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Dr."
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
+  "modified": "2021-12-03 17:35:43.638557",
+  "name": "Prof.",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Prof."
+ }
+]
