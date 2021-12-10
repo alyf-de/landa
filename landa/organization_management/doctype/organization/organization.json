@@ -107,7 +107,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Fishing area",
+   "label": "Fishing Area",
    "options": "Fishing Area"
   },
   {
@@ -262,7 +262,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2021-10-13 17:27:57.837020",
+ "modified": "2021-12-03 17:15:58.145204",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",

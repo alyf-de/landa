@@ -4719,4 +4719,52 @@
   "source_text": "Welcome to {0}",
   "translated_text": "Willkommen bei {0}"
  },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-12-03 17:18:24.425588",
+  "name": "0ba74f0c4d",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "No Data...",
+  "translated_text": "Keine Daten..."
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-12-03 17:21:54.178997",
+  "name": "27428ffeea",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Pincode",
+  "translated_text": "Postleitzahl"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-12-03 17:22:26.449471",
+  "name": "2418380635",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Primary Address (Full)",
+  "translated_text": "Prim\u00e4re Adresse (vollst\u00e4ndig)"
+ }
 ]

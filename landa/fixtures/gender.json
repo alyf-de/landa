@@ -1,0 +1,62 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Gender",
+  "gender": "Transgender",
+  "modified": "2021-10-21 11:56:43.124760",
+  "name": "Transgender",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Gender",
+  "gender": "Genderqueer",
+  "modified": "2021-10-21 11:56:43.129056",
+  "name": "Genderqueer",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Gender",
+  "gender": "Keine Angabe",
+  "modified": "2021-12-03 17:36:26.810697",
+  "name": "Keine Angabe",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Gender",
+  "gender": "M\u00e4nnlich",
+  "modified": "2021-12-03 17:36:45.769123",
+  "name": "M\u00e4nnlich",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Gender",
+  "gender": "Weiblich",
+  "modified": "2021-12-03 17:36:54.619201",
+  "name": "Weiblich",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Gender",
+  "gender": "Nicht-bin\u00e4r",
+  "modified": "2021-12-03 17:37:42.890160",
+  "name": "Nicht-bin\u00e4r",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ }
+]
