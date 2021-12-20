@@ -26,6 +26,7 @@ fixtures = [
 					"datenschutzangaben",
 					"nutzungshinweise",
 					"allgemeine-datenschutzinformation",
+					"kurzzusammenfassung-zum-thema-datenschutz-für-mitglieder",
 				],
 			]
 		],
