@@ -48,6 +48,7 @@ fixtures = [
 	},
 	"Salutation",
 	"Gender",
+    "Note",
 ]
 
 
