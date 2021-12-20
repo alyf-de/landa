@@ -39,9 +39,16 @@ fixtures = [
 	"Fishing Area",
 	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
 	"Translation",
-    "Salutation",
-    "Gender",
+	{
+		"doctype": "Letter Head",
+		"filters":	{
+			"name": ["in", "Extended Information in Footer"]
+		}
+	},
+	"Salutation",
+	"Gender",
 ]
+
 
 # DocTypes to be created once, after installation of this app
 #
@@ -314,3 +321,8 @@ override_whitelisted_methods = {
 # exempt linked doctypes from being automatically cancelled
 #
 # auto_cancel_exempted_doctypes = ["Auto Repeat"]
+# jenv = {
+# 	"methods": [
+# 		"debug_print_var:landa.landa_sales.sales_order.sales_order.debug_print_var"
+# 	]
+# }
