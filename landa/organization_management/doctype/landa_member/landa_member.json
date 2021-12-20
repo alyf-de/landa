@@ -33,6 +33,7 @@
   "contact_html",
   "section_break_9",
   "has_fishing_permit",
+  "fishing_permit_number",
   "permit_is_valid_for_life",
   "permit_expiration_date",
   "section_break_22",
@@ -248,6 +249,12 @@
    "fieldname": "has_special_yearly_fishing_permit_2",
    "fieldtype": "Check",
    "label": "Hat Brandenburg Erlaubnisschein"
+  },
+  {
+   "depends_on": "eval:doc.has_fishing_permit==1",
+   "fieldname": "fishing_permit_number",
+   "fieldtype": "Data",
+   "label": "Fishing Permit Number"
   }
  ],
  "links": [
@@ -264,7 +271,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2021-10-27 14:12:33.574141",
+ "modified": "2021-12-20 18:41:14.224796",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
