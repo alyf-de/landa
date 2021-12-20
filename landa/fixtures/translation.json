@@ -5054,5 +5054,21 @@
   "parenttype": null,
   "source_text": "{0} changed values for {1}",
   "translated_text": "{0} hat die Werte von {1} ge\u00e4ndert"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2021-12-20 18:42:20.135528",
+  "name": "47f51e9afd",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Fishing Permit Number",
+  "translated_text": "Fischereischein Nummer"
  }
 ]
