@@ -23,20 +23,29 @@ def add_attribute_value(name, attribute_value, abbr):
 	create_item_attribute(name)
 	item_attr = frappe.get_doc("Item Attribute", name)
 	item_attr_link = get_link_to_form(item_attr.doctype, item_attr.name)
+	item_attribute_values = [(row.attribute_value, row.abbr) for row in item_attr.item_attribute_values]
 
-	existing_values = [row.attribute_value for row in item_attr.item_attribute_values]
-	existing_abbreviations = [row.abbr for row in item_attr.item_attribute_values]
+	existing_pairs = [row for row in item_attribute_values if row == (attribute_value, abbr)]
+	if existing_pairs:
+		# Item attribute exists already, as intended
+		return
+
+	existing_values = [row[0] for row in item_attribute_values]
+	existing_abbreviations = [row[1] for row in item_attribute_values]
 
 	if attribute_value in existing_values:
+		# Attribute value exists, but with a different abbreviation
 		frappe.throw(_('Value "{}" exists already in Item Attribute {}.').format(attribute_value, item_attr_link))
-	elif abbr in existing_abbreviations:
+
+	if abbr in existing_abbreviations:
+		# Abbreviation exists, but with a different attribute value
 		frappe.throw(_('Abbreviation "{}" exists already in Item Attribute {}.').format(abbr, item_attr_link))
-	else:
-		item_attr.append('item_attribute_values', {
-			'attribute_value': attribute_value,
-			'abbr': abbr
-		})
-		item_attr.save()
+
+	item_attr.append('item_attribute_values', {
+		'attribute_value': attribute_value,
+		'abbr': abbr
+	})
+	item_attr.save()
 
 
 def create_item_attribute(name):
