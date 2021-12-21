@@ -1,28 +1,17 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "field:short_code",
+ "autoname": "Prompt",
  "creation": "2021-04-26 17:50:19.649303",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "yearly_fishing_permit_type_name",
-  "short_code",
+  "title",
+  "item_attribute",
   "amended_from"
  ],
  "fields": [
-  {
-   "fieldname": "yearly_fishing_permit_type_name",
-   "fieldtype": "Data",
-   "label": "Yearly Fishing Permit Type Name"
-  },
-  {
-   "fieldname": "short_code",
-   "fieldtype": "Data",
-   "label": "Short Code",
-   "unique": 1
-  },
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
@@ -31,6 +20,23 @@
    "options": "Yearly Fishing Permit Type",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "default": "Erlaubnisscheinart",
+   "fieldname": "item_attribute",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Attribute",
+   "options": "Item Attribute",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -41,10 +47,11 @@
    "link_fieldname": "type"
   }
  ],
- "modified": "2021-10-04 15:08:55.268764",
+ "modified": "2021-12-20 18:15:08.319425",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Yearly Fishing Permit Type",
+ "name_case": "UPPER CASE",
  "owner": "Administrator",
  "permissions": [
   {
@@ -90,6 +97,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "title_field": "yearly_fishing_permit_type_name",
+ "title_field": "title",
  "track_changes": 1
 }
