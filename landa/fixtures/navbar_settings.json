@@ -1,6 +1,6 @@
 [
  {
-  "app_logo": "/files/android-icon-36x36.png",
+  "app_logo": "/assets/landa/image/icon.png",
   "docstatus": 0,
   "doctype": "Navbar Settings",
   "help_dropdown": [
@@ -57,10 +57,10 @@
     "parent": "Navbar Settings",
     "parentfield": "help_dropdown",
     "parenttype": "Navbar Settings",
-    "route": "https://lvsa-landa.de/contact"
+    "route": "/contact"
    },
    {
-    "action": null,
+    "action": "",
     "hidden": 0,
     "is_standard": 0,
     "item_label": "About",
@@ -68,7 +68,7 @@
     "parent": "Navbar Settings",
     "parentfield": "help_dropdown",
     "parenttype": "Navbar Settings",
-    "route": "https://lvsa-landa.de/about"
+    "route": "/about"
    },
    {
     "action": "frappe.ui.toolbar.show_shortcuts(event)",
@@ -83,7 +83,7 @@
    }
   ],
   "logo_width": 0,
-  "modified": "2021-11-04 17:46:33.060116",
+  "modified": "2021-12-22 18:40:53.289269",
   "name": "Navbar Settings",
   "parent": null,
   "parentfield": null,
@@ -157,7 +157,7 @@
    },
    {
     "action": null,
-    "hidden": 0,
+    "hidden": 1,
     "is_standard": 1,
     "item_label": "Background Jobs",
     "item_type": "Route",
