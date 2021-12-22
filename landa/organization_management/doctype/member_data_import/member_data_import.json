@@ -7,29 +7,33 @@
  "engine": "InnoDB",
  "field_order": [
   "member",
-  "last_name",
   "first_name",
+  "last_name",
   "date_of_birth",
+  "organization",
+  "additional_information",
+  "column_break_7",
+  "has_key",
+  "is_supporting_member",
+  "has_special_yearly_fishing_permit_2",
+  "has_special_yearly_fishing_permit_1",
+  "section_break_9",
   "address_name",
   "address_line1",
   "pincode",
   "city",
-  "is_supporting_member",
-  "has_key",
-  "organization",
+  "section_break_14",
   "year",
   "type",
   "date_of_issue",
-  "number",
-  "has_special_yearly_fishing_permit_1",
-  "has_special_yearly_fishing_permit_2",
-  "additional_information"
+  "number"
  ],
  "fields": [
   {
    "fieldname": "member",
    "fieldtype": "Data",
-   "label": "Member ID"
+   "label": "Member ID",
+   "read_only": 1
   },
   {
    "fieldname": "last_name",
@@ -43,7 +47,7 @@
   },
   {
    "fieldname": "date_of_birth",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "Date of Birth"
   },
   {
@@ -62,33 +66,37 @@
    "label": "City"
   },
   {
+   "default": "0",
    "fieldname": "is_supporting_member",
-   "fieldtype": "Data",
+   "fieldtype": "Check",
    "label": "Is Supporting Member"
   },
   {
+   "default": "0",
    "fieldname": "has_key",
-   "fieldtype": "Data",
+   "fieldtype": "Check",
    "label": "Has Key"
   },
   {
    "fieldname": "organization",
-   "fieldtype": "Data",
-   "label": "Organization"
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "Organization"
   },
   {
    "fieldname": "year",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Year of Yearly Fishing Permit"
   },
   {
    "fieldname": "type",
-   "fieldtype": "Data",
-   "label": "Yearly Fishing Permit Type"
+   "fieldtype": "Link",
+   "label": "Yearly Fishing Permit Type",
+   "options": "Yearly Fishing Permit Type"
   },
   {
    "fieldname": "date_of_issue",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "Issue Date of Yearly Fishing Permit"
   },
   {
@@ -97,13 +105,15 @@
    "label": "Yearly Fishing Permit Number"
   },
   {
+   "default": "0",
    "fieldname": "has_special_yearly_fishing_permit_1",
-   "fieldtype": "Data",
+   "fieldtype": "Check",
    "label": "Hat Sachsen-Anhalt Erlaubnisschein"
   },
   {
+   "default": "0",
    "fieldname": "has_special_yearly_fishing_permit_2",
-   "fieldtype": "Data",
+   "fieldtype": "Check",
    "label": "Hat Brandenburg Erlaubnisschein"
   },
   {
@@ -114,12 +124,27 @@
   {
    "fieldname": "address_name",
    "fieldtype": "Data",
-   "label": "Address ID"
+   "label": "Address ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break",
+   "label": "Yearly Fishing Permit"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
   }
  ],
  "is_virtual": 1,
  "links": [],
- "modified": "2021-11-08 15:00:53.594444",
+ "modified": "2021-12-22 20:10:10.346094",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Data Import",
