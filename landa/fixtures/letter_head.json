@@ -1,0 +1,18 @@
+[
+ {
+  "content": "",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Letter Head",
+  "footer": "{% set company = frappe.get_doc(\"Company\", doc.company) %}\n{% set company_address_name = frappe.db.get_value(\"Dynamic Link\", filters={\"link_doctype\": \"Company\", \"link_name\": doc.company, \"parenttype\": \"Address\"}, fieldname=\"parent\") %}\n{% set address = frappe.get_doc(\"Address\", company_address_name) if company_address_name else None %}\n\n<table class=\"footer-info\">\n    <tbody><tr>\n        <td class=\"footer-info-left\">\n            <span>{% if company.company_name %}{{company.company_name}}{% else %}-{% endif %}</span><br>\n            <span>{% if address %}\n                    {{ address.address_line1 }} &#183; {{ address.pincode }} {{ address.city }}\n                {% else %}\n                    <i>{{ _(\"Address not set!\") }}</i>\n            {% endif %}</span><br>\n            <span>{{ _(\"Phone\") }}: {% if company.phone_no %}{{company.phone_no}}{% else %}-{% endif %}</span><br>\n            <span>{% if company.email %}{{company.email}}{% else %}-{% endif %}</span><br>\n            <span>{% if company.website %}{{company.website}}{% else %}https://lvsa-landa.de/{% endif %}</span>\n        </td>\n        <td class=\"footer-info-middle\">\n            <span>{{ _(\"Managing Director\") }}: </span><span>{% if company.ceo %}{{company.ceo}}{% else %}-{% endif %}</span><br>\n            <span>{{ _(\"Tax ID\") }}.: {% if company.tax_id %}{{company.tax_id}}{% else %}-{% endif %}</span><br>\n            <span>{% if company.district_court %}{{company.district_court}}{% else %}-{% endif %}</span><br>\n            <span>{{ _(\"Company Register\") }}: {% if company.company_register %}{{company.company_register}}{% else %}-{% endif %}</span>\n        </td>\n        <td class=\"footer-info-right\">\n            <span>{% if company.bank_name %}{{company.bank_name}}{% else %}-{% endif %}</span><br>\n            <span>IBAN: {% if company.iban %}{{company.iban}}{% else %}-{% endif %}</span><br>\n            <span>BIC: {% if company.bic %}{{company.bic}}{% else %}-{% endif %}</span>\n        </td>\n    </tr>\n</tbody></table>\n\n<style>\n    .footer-info {\n        display: flex;\n        font-size: 7pt;\n    }\n    .footer-info td {\n        width: 240px;\n    }\n    .footer-info td span {\n        white-space: nowrap;\n    }\n    .footer-info .footer-info-left, .footer-info .footer-info-middle {\n        padding-right: 20px !important;\n    }\n</style>",
+  "image": "",
+  "is_default": 1,
+  "letter_head_name": "Extended Information in Footer",
+  "modified": "2021-12-16 14:40:04.981501",
+  "name": "Extended Information in Footer",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source": "Image"
+ }
+]

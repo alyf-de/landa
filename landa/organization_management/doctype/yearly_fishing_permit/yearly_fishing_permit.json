@@ -103,7 +103,7 @@
    "read_only": 1
   },
   {
-   "fetch_from": "type.yearly_fishing_permit_type_name",
+   "fetch_from": "type.title",
    "fieldname": "type_name",
    "fieldtype": "Data",
    "label": "Type Name",
@@ -113,7 +113,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-10-13 17:37:02.047447",
+ "modified": "2021-12-21 15:10:02.047447",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Yearly Fishing Permit",

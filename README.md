@@ -61,6 +61,8 @@ bench --site [site-name] migrate # currently necessary to get the "Member Count"
 
 ### Data Import with pre-defined IDs
 
+> This section became obsolete with https://github.com/frappe/frappe/pull/15238. Data Import should work out of the box now.
+
 1. Temporarily enable naming by prompt
 
     1. Go to "Customize Form" for the related DocType
