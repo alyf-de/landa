@@ -1,9 +1,11 @@
 [
  {
   "address": "<div class=\"ql-editor read-mode\"><p><span style=\"color: rgb(187, 187, 187);\">Rennersdorfer Stra\u00dfe 1 </span></p><p><span style=\"color: rgb(187, 187, 187);\">01157 Dresden</span></p></div>",
+  "app_logo": "/assets/landa/image/icon.png",
+  "app_name": "LANDA",
   "banner_html": null,
-  "banner_image": null,
-  "brand_html": "Landesverband S\u00e4chsischer Angler",
+  "banner_image": "/assets/landa/image/icon.png",
+  "brand_html": "<img src='/assets/landa/image/icon.png'>",
   "call_to_action": null,
   "call_to_action_url": null,
   "chat_enable": 0,
@@ -18,7 +20,7 @@
   "doctype": "Website Settings",
   "enable_google_indexing": 0,
   "enable_view_tracking": 0,
-  "favicon": null,
+  "favicon": "/assets/landa/image/favicon.ico",
   "footer_items": [
    {
     "icon": null,
@@ -40,10 +42,10 @@
   "head_html": null,
   "hide_footer_signup": 1,
   "hide_login": 0,
-  "home_page": "about",
+  "home_page": "index",
   "indexing_authorization_code": null,
   "indexing_refresh_token": null,
-  "modified": "2021-10-19 12:39:32.905689",
+  "modified": "2021-11-12 16:57:08.481034",
   "name": "Website Settings",
   "navbar_search": 0,
   "navbar_template": null,
