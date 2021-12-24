@@ -284,7 +284,8 @@ scheduler_events = {
 	#	"all": [
 	#		"landa.tasks.all"
 	#	],
-	"daily": ["landa.tasks.daily"]
+	"daily": ["landa.tasks.daily"],
+	"all": ["landa.tasks.all"],
 	#	, "hourly": [
 	#		"landa.tasks.hourly"
 	#	],
@@ -322,7 +323,7 @@ override_whitelisted_methods = {
 #
 # auto_cancel_exempted_doctypes = ["Auto Repeat"]
 # jenv = {
-# 	"methods": [
-# 		"debug_print_var:landa.landa_sales.sales_order.sales_order.debug_print_var"
-# 	]
+#	"methods": [
+#		"debug_print_var:landa.landa_sales.sales_order.sales_order.debug_print_var"
+#	]
 # }

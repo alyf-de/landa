@@ -10,6 +10,7 @@ def autoname(address, event):
 	Copy of Address.autoname, but prefers to use LANDA Member or Organization
 	name as Address Title.
 	"""
+	link_name = None
 	if address.links:
 		for link in address.links:
 			if link.link_doctype == "LANDA Member":
@@ -53,3 +54,55 @@ def autoname(address, event):
 			address.name = make_autoname(address.name + "-.#")
 	else:
 		frappe.throw(_("Address Title and Links are mandatory."))
+
+
+def rename_addresses(limit: int):
+	doctype = "Address"
+	address_names = frappe.get_all(
+		doctype,
+		filters=[
+			["Dynamic Link", "link_name", "is", "set"],
+		],
+		or_filters=[
+			["name", "like", "%Personal"],
+			["name", "like", "%Persönlich"],
+		],
+		limit=limit,
+		pluck="name",
+	)
+
+	for old_name in address_names:
+		if not frappe.db.exists(doctype, old_name):
+			continue
+
+		doc = frappe.get_doc(doctype, old_name)
+
+		try:
+			autoname(doc, None)	 # changes doc.name to the new name
+		except frappe.exceptions.ValidationError:
+			continue
+
+		new_name = doc.name
+
+		if new_name[-2:] == "-1":
+			new_name = new_name[:-2]
+
+		if old_name == new_name:
+			continue
+
+		try:
+			frappe.rename_doc(
+				doctype,
+				old_name,
+				new_name,
+				ignore_permissions=True,  # checking permissions takes too long
+				ignore_if_exists=True,	# don't rename if a record with the same name exists already
+				show_alert=False,  # no need to show a UI alert, we're in the console
+				rebuild_search=False, # we do that explicitly at the end
+			)
+		except frappe.exceptions.ValidationError:
+			continue
+
+		frappe.db.commit()
+
+	frappe.enqueue("frappe.utils.global_search.rebuild_for_doctype", doctype=doctype)
