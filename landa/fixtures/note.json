@@ -17,12 +17,6 @@
     "parent": "Datenschutz Hinweise",
     "parentfield": "seen_by",
     "parenttype": "Note",
-    "user": "roedel@realexperts.de"
-   },
-   {
-    "parent": "Datenschutz Hinweise",
-    "parentfield": "seen_by",
-    "parenttype": "Note",
     "user": "Administrator"
    }
   ],
