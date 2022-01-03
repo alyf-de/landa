@@ -48,7 +48,7 @@ fixtures = [
 	},
 	"Salutation",
 	"Gender",
-    "Note",
+   {"dt": "Note", "filters": {"name": "Datenschutz Hinweise"},
 ]
 
 
