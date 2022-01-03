@@ -26,6 +26,7 @@ fixtures = [
 					"datenschutzangaben",
 					"nutzungshinweise",
 					"allgemeine-datenschutzinformation",
+					"kurzzusammenfassung-zum-thema-datenschutz-für-mitglieder",
 				],
 			]
 		],
@@ -47,6 +48,7 @@ fixtures = [
 	},
 	"Salutation",
 	"Gender",
+   {"dt": "Note", "filters": {"name": "Datenschutz Hinweise"},
 ]
 
 

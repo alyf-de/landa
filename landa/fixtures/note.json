@@ -1,0 +1,25 @@
+[
+ {
+  "content": "<div class=\"ql-editor read-mode\"><p>Wir nehmen den Schutz der Daten in LANDA ernst.</p><p>Bitte lies vor der Benutzung von LANDA die <a href=\"/privacy/kurze-datenschutzinformation\" rel=\"noopener noreferrer\">Kurzzusammenfassung zum Thema Datenschutz f\u00fcr Mitglieder</a>!</p><p>Durch das Schlie\u00dfen dieses Fensters erkl\u00e4rst du dich mit den <a href=\"/privacy/allgemeine-datenschutzinformation\" rel=\"noopener noreferrer\">Allgemeinen Datenschutzinformationen</a> sowie den <a href=\"/privacy/nutzungshinweise\" rel=\"noopener noreferrer\">Bedingungen und Hinweisen f\u00fcr die Nutzung von LANDA</a> einverstanden.</p><p>Du hast Fragen zum Thema Datenschutz? Im Bereich <a href=\"/privacy\" rel=\"noopener noreferrer\">Datenschutz auf der Webseite</a> findest du auch nach Schlie\u00dfen dieses Fensters weiterhin die Links zu diesen Webseiten.</p></div>",
+  "docstatus": 0,
+  "doctype": "Note",
+  "expire_notification_on": "2070-12-27",
+  "modified": "2021-12-20 17:50:13.144449",
+  "name": "Datenschutz Hinweise",
+  "notify_on_every_login": 0,
+  "notify_on_login": 1,
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "public": 1,
+  "seen_by": [
+   {
+    "parent": "Datenschutz Hinweise",
+    "parentfield": "seen_by",
+    "parenttype": "Note",
+    "user": "Administrator"
+   }
+  ],
+  "title": "Datenschutz Hinweise"
+ }
+]
