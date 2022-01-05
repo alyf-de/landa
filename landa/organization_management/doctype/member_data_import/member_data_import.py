@@ -5,6 +5,8 @@ import frappe
 from frappe.model.document import Document
 from frappe.utils.dateutils import parse_date
 from landa.organization_management.doctype.landa_member.landa_member import LANDAMember
+from datetime import datetime
+
 
 class MemberDataImport(Document):
 
@@ -115,7 +117,11 @@ class MemberDataImport(Document):
 			fieldtype = doc.meta.get_field(fieldname).fieldtype
 
 			if fieldtype == "Date":
-				old_value = old_value.date().isoformat() if old_value else ""
+				# For some reason `new_value` is of type `datetime`.
+				# `old_value` is of type `date` as expected.
+				if isinstance(new_value, datetime):
+					new_value = new_value.date()
+
 			elif fieldtype == "Data":
 				old_value = (old_value or "").strip()
 
