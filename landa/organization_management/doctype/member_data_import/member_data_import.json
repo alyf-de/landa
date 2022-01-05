@@ -1,0 +1,186 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "creation": "2021-11-03 11:14:55.023196",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member",
+  "first_name",
+  "last_name",
+  "date_of_birth",
+  "organization",
+  "additional_information",
+  "column_break_7",
+  "has_key",
+  "is_supporting_member",
+  "has_special_yearly_fishing_permit_2",
+  "has_special_yearly_fishing_permit_1",
+  "section_break_9",
+  "address_name",
+  "address_line1",
+  "pincode",
+  "city",
+  "section_break_14",
+  "year",
+  "type",
+  "date_of_issue",
+  "number"
+ ],
+ "fields": [
+  {
+   "fieldname": "member",
+   "fieldtype": "Data",
+   "label": "Member ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "address_line1",
+   "fieldtype": "Data",
+   "label": "Address Line 1"
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Pincode"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_supporting_member",
+   "fieldtype": "Check",
+   "label": "Is Supporting Member"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_key",
+   "fieldtype": "Check",
+   "label": "Has Key"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "Organization"
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "label": "Year of Yearly Fishing Permit"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Link",
+   "label": "Yearly Fishing Permit Type",
+   "options": "Yearly Fishing Permit Type"
+  },
+  {
+   "fieldname": "date_of_issue",
+   "fieldtype": "Date",
+   "label": "Issue Date of Yearly Fishing Permit"
+  },
+  {
+   "fieldname": "number",
+   "fieldtype": "Data",
+   "label": "Yearly Fishing Permit Number"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_1",
+   "fieldtype": "Check",
+   "label": "Hat Sachsen-Anhalt Erlaubnisschein"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_2",
+   "fieldtype": "Check",
+   "label": "Hat Brandenburg Erlaubnisschein"
+  },
+  {
+   "fieldname": "additional_information",
+   "fieldtype": "Data",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "address_name",
+   "fieldtype": "Data",
+   "label": "Address ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break",
+   "label": "Yearly Fishing Permit"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2021-12-22 20:10:10.346094",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "Member Data Import",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "import": 1,
+   "read": 1,
+   "role": "LANDA Regional Organization Management",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "import": 1,
+   "read": 1,
+   "role": "LANDA Local Organization Management",
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -138,6 +138,42 @@
    "type": "Link"
   },
   {
+   "dependencies": "LANDA Member",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Current Member Data",
+   "link_to": "Current Member Data",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Imports",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Data Import Tool",
+   "link_to": "Data Import",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Single Member Data Import",
+   "link_to": "Member Data Import",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
    "hidden": 0,
    "is_query_report": 0,
    "label": "Setup",
@@ -164,7 +200,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-10-07 17:59:07.011767",
+ "modified": "2021-11-05 12:26:25.515301",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
@@ -174,8 +210,8 @@
  "shortcuts": [
   {
    "doc_view": "New",
-   "label": "New Member Entry",
-   "link_to": "LANDA Member",
+   "label": "New Member Data Import",
+   "link_to": "Member Data Import",
    "type": "DocType"
   },
   {
