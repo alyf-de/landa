@@ -62,10 +62,7 @@ def rename_addresses(limit: int):
 		doctype,
 		filters=[
 			["Dynamic Link", "link_name", "is", "set"],
-		],
-		or_filters=[
-			["name", "like", "%Personal"],
-			["name", "like", "%Persönlich"],
+			["Address", "name", "like", "% - Pers%"],
 		],
 		limit=limit,
 		pluck="name",
