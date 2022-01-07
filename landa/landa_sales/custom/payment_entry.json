@@ -221,7 +221,7 @@
    "name": "Payment Entry-payment_entry_info_text",
    "no_copy": 0,
    "non_negative": 0,
-   "options": "<p>Es gibt Zahlungseing\u00e4nge und -ausg\u00e4nge. Gebuchte Zahlungen werden in der <b><a href=\"/app/query-report/LANDA%20Deliveries%20and%20Payments\">Kosten\u00fcbersicht</a></b> aufgelistet. Bei Zahlungseingang kann direkt aus der dazugeh\u00f6rigen Rechnung heraus ein Zahlungseintrag erzeugt werden.</p>\n\n<p>Eine \u00dcbersicht der Zahlungen finden Sie <b><a href=\"/app/payment-entry\">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente unter Verkn\u00fcpfungen.</p>",
+   "options": "<p>Es gibt Zahlungseing\u00e4nge und -ausg\u00e4nge. Gebuchte Zahlungen werden in der <b><a href=\"/app/query-report/LANDA%20Deliveries%20and%20Payments\">Kosten\u00fcbersicht</a></b> aufgelistet. Bei Zahlungseingang kann direkt aus der dazugeh\u00f6rigen Rechnung heraus ein Zahlungseintrag erzeugt werden.</p>\n\n<p>Eine \u00dcbersicht der Zahlungen finden Sie <b><a href=\"/app/payment-entry\">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente unter Verkn\u00fcpfungen.</p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=\"https://youtu.be/K_dRy4jVUYo\" style=\"color: blue;\">Bestellwesen #04 Zahlung und Kosten\u00fcbersicht</a> und in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML-cMx1lE7DD1gNFmIdE8cZF\" style=\"color: blue;\">LANDA Videotutorials - Bestellwesen</a></p>",
    "owner": "Administrator",
    "parent": null,
    "parentfield": null,
