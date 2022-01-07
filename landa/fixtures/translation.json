@@ -5598,5 +5598,21 @@
   "parenttype": null,
   "source_text": "Select Mandatory",
   "translated_text": "Verpflichtende Ausw\u00e4hlen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-01-07 02:45:20.404943",
+  "name": "a33e178bca",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Sales Order",
+  "translated_text": "Bestellung"
  }
 ]
