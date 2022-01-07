@@ -6,6 +6,9 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "info_text_section",
+  "award_info_text",
+  "award_section",
   "award_type",
   "member",
   "recipient_first_name",
@@ -72,10 +75,26 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Organization Name"
+  },
+  {
+   "fieldname": "info_text_section",
+   "fieldtype": "Section Break",
+   "label": "Info Text"
+  },
+  {
+   "fieldname": "award_info_text",
+   "fieldtype": "HTML",
+   "label": "Award Info Text",
+   "options": "<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=\" https://youtu.be/Futx9eqC5Ts\" style=\"color: blue;\">#7 Auszeichnungen</a> und in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML993pHOo16el5DGrKN5kCzh\" style=\"color: blue;\">LANDA Videotutorials - Vereinsverwaltung / Mitgliederverwaltung </a> </p>"
+  },
+  {
+   "fieldname": "award_section",
+   "fieldtype": "Section Break",
+   "label": "Award"
   }
  ],
  "links": [],
- "modified": "2021-10-04 15:05:07.459851",
+ "modified": "2022-01-07 02:26:08.405402",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Award",

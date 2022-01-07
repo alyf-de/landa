@@ -6,6 +6,9 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "info_text_section",
+  "yearly_fishing_permit_info_text",
+  "landa_member_section",
   "member",
   "column_break_2",
   "organization",
@@ -108,12 +111,28 @@
    "fieldtype": "Data",
    "label": "Type Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "info_text_section",
+   "fieldtype": "Section Break",
+   "label": "Info Text"
+  },
+  {
+   "fieldname": "yearly_fishing_permit_info_text",
+   "fieldtype": "HTML",
+   "label": "Yearly Fishing Permit Info Text",
+   "options": "<p>Erlaubnisscheine werden in LANDA mit besonderer Sorgfalt registriert, da sie an den Freistaat gemeldet werden m\u00fcssen. Deshalb ist es notwendig, Erlaubnisscheine sowohl zu speichern als auch zu buchen, um sie nach \u00dcberpr\u00fcfen der eingetragenen Daten endg\u00fcltig ins System zu \u00fcbernehmen.</p>\n\n<p>Pflichtfelder sind mit <span style=\"color: #FF0000;\">*</span> markiert.</p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=\"https://youtu.be/zfhkoILONXw\" style=\"color: blue;\">Vereinsverwaltung #10 Einen neuen Erlaubnisschein zuweisen </a></p>"
+  },
+  {
+   "fieldname": "landa_member_section",
+   "fieldtype": "Section Break",
+   "label": "LANDA Member"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-12-21 15:10:02.047447",
+ "modified": "2022-01-06 02:06:05.011729",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Yearly Fishing Permit",

@@ -6,6 +6,9 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "info_text_section",
+  "member_function_info_text",
+  "member_function_section",
   "member_function_category",
   "member",
   "member_first_name",
@@ -89,11 +92,27 @@
    "label": "Status",
    "options": "Planned\nActive\nInactive",
    "read_only": 1
+  },
+  {
+   "fieldname": "info_text_section",
+   "fieldtype": "Section Break",
+   "label": "Info Text"
+  },
+  {
+   "fieldname": "member_function_info_text",
+   "fieldtype": "HTML",
+   "label": "Member Function Info Text",
+   "options": "<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=\"https://youtu.be/KNM9rx9-A-8\" style=\"color: blue;\">Vereinsverwaltung #06 Mitgliedsfunktionen zuweisen</a> und in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML993pHOo16el5DGrKN5kCzh\" style=\"color: blue;\">LANDA Videotutorials - Vereinsverwaltung / Mitgliederverwaltung </a></p>"
+  },
+  {
+   "fieldname": "member_function_section",
+   "fieldtype": "Section Break",
+   "label": "Member Function"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-04 15:01:13.356611",
+ "modified": "2022-01-07 02:32:41.884792",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function",

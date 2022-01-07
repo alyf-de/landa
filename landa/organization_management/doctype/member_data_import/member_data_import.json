@@ -6,6 +6,9 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "info_text_section",
+  "member_data_import_info",
+  "landa_member_section",
   "member",
   "first_name",
   "last_name",
@@ -140,11 +143,27 @@
   {
    "fieldname": "column_break_7",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "info_text_section",
+   "fieldtype": "Section Break",
+   "label": "Info Text"
+  },
+  {
+   "fieldname": "member_data_import_info",
+   "fieldtype": "HTML",
+   "label": "Member Data Import Info",
+   "options": "<p>Dieses Formular erlaubt ein besonders schnelles Eintragen von neuen Mitgliedern und das Bearbeiten von verschiedenen verlinkten Formularen wie Adresse und Erlaubnisschein. M\u00f6chtest du mehrere solcher Eintr\u00e4ge oder \u00c4nderungen machen, f\u00fchre am besten einen Import zur Erlaubnisscheinausgabe durch.</p>\n\n<p>L\u00e4sst du in diesem Formular Felder leer, werden die entsprechenden Eintr\u00e4ge nicht neu erstellt bzw. die schon existierende Daten werden nicht \u00fcberschrieben.</p>"
+  },
+  {
+   "fieldname": "landa_member_section",
+   "fieldtype": "Section Break",
+   "label": "LANDA Member"
   }
  ],
  "is_virtual": 1,
  "links": [],
- "modified": "2021-12-22 20:10:10.346094",
+ "modified": "2022-01-07 02:03:38.122599",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Data Import",
