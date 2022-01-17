@@ -288,7 +288,7 @@ scheduler_events = {
 	#		"landa.tasks.all"
 	#	],
 	"daily": ["landa.tasks.daily"],
-	"all": ["landa.tasks.all"],
+	# "all": ["landa.tasks.all"],
 	#	, "hourly": [
 	#		"landa.tasks.hourly"
 	#	],

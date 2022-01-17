@@ -9,6 +9,7 @@ def daily():
 def all():
 	from frappe import enqueue
 
+	# probably no longer needed, disabled in hooks
 	enqueue(
 		"landa.organization_management.address.address.rename_addresses",
 		queue="long",
