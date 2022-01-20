@@ -903,13 +903,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-06-08 19:04:02.069919",
+  "modified": "2022-01-20 23:54:45.840574",
   "name": "b3d7fb52ec",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Fishing Area",
-  "translated_text": "Angelgebiet"
+  "translated_text": "Region"
  },
  {
   "context": null,
@@ -919,13 +919,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-06-08 19:04:02.098458",
+  "modified": "2022-01-20 23:54:37.906174",
   "name": "a667122399",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Fishing Area List",
-  "translated_text": "Angelgebiet Listenansicht"
+  "translated_text": "Region Listenansicht"
  },
  {
   "context": null,
