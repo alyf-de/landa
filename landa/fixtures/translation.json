@@ -5614,5 +5614,21 @@
   "parenttype": null,
   "source_text": "Sales Order",
   "translated_text": "Bestellung"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-01-20 23:51:27.306051",
+  "name": "9b902d23d7",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Number of Catch Log Books",
+  "translated_text": "Anzahl der Fangb\u00fccher"
  }
 ]

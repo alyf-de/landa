@@ -7,11 +7,14 @@
  "engine": "InnoDB",
  "field_order": [
   "water_body",
+  "fishing_area",
   "year",
+  "number_of_catch_log_books",
   "fishing_days",
   "column_break_5",
   "organization",
   "organization_name",
+  "note",
   "section_break_7",
   "fish_catches"
  ],
@@ -71,11 +74,31 @@
    "label": "Fish Catches",
    "options": "Catch Log Fish Table",
    "reqd": 1
+  },
+  {
+   "fetch_from": "water_body.fishing_area",
+   "fieldname": "fishing_area",
+   "fieldtype": "Link",
+   "label": "Fishing Area",
+   "options": "Fishing Area",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "number_of_catch_log_books",
+   "fieldtype": "Int",
+   "label": "Number of Catch Log Books",
+   "reqd": 1
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Small Text",
+   "label": "Note"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-04 15:20:33.965582",
+ "modified": "2022-01-20 23:49:57.914924",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
