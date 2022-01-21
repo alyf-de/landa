@@ -264,6 +264,7 @@ doc_events = {
 		"autoname": "landa.landa_sales.sales_order.sales_order.autoname",
 	},
 	"Sales Invoice": {
+		"before_validate": "landa.landa_sales.sales_invoice.sales_invoice.before_validate",
 		"autoname": "landa.landa_sales.sales_invoice.sales_invoice.autoname",
 	},
 	"Payment Entry": {
