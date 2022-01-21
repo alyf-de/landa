@@ -6,9 +6,13 @@ def validate(delivery_note, event):
 	"""Validate that only returnable items are returned."""
 	if delivery_note.is_return:
 		for item in delivery_note.items:
-			if frappe.db.get_value('Item', item.item_code, 'cannot_be_returned'):
-				frappe.throw(_('Item {} cannot be returned').format(item.item_name))
+			if frappe.db.get_value("Item", item.item_code, "cannot_be_returned"):
+				frappe.throw(_("Item {} cannot be returned").format(item.item_name))
 				return
+	elif not frappe.has_permission(ptype="submit", doc=delivery_note):
+		frappe.throw(
+			"""Nur der Regionalverband darf Lieferscheine für Lieferungen anlegen. Vereine dürfen Lieferscheine für Retouren aus im System gebuchten Lieferungen erzeugen. Dazu zur <a href="/app/delivery-note">Liste aller Lieferungen</a> wechseln, die Lieferung aufrufen und oben rechts unter "Erstellen" > "Retoure" auswählen."""
+		)
 
 
 def on_submit(delivery_note, event):
