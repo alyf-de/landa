@@ -63,7 +63,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Type",
-   "options": "Yearly Fishing Permit Type"
+   "options": "Yearly Fishing Permit Type",
+   "default": "ALLG"
   },
   {
    "allow_in_quick_entry": 1,
