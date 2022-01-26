@@ -5614,5 +5614,53 @@
   "parenttype": null,
   "source_text": "Sales Order",
   "translated_text": "Bestellung"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-01-26 22:36:36.851137",
+  "name": "29aeb4dbfa",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "You do not have Read or Select Permissions for {}",
+  "translated_text": "Sie haben keine Lese- oder Auswahlberechtigung f\u00fcr {}"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-01-26 22:37:07.009235",
+  "name": "36e5936b09",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Cannot Fetch Values",
+  "translated_text": "Kann Werte nicht beziehen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-01-26 22:38:45.807781",
+  "name": "649ae19181",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "You need {0} permission to fetch values from {1} {2}",
+  "translated_text": "Sie brauchen eine {0}-Berechtigung, um die Werte von {1} {2} zu beziehen"
  }
 ]
