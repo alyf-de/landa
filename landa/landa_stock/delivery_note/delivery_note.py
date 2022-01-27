@@ -1,6 +1,13 @@
 import frappe
 from frappe import _
 
+def before_validate(delivery_note, event):
+	"""Set Tax Category to 'Umsatzsteuer'"""
+
+	if (not delivery_note.tax_category) and frappe.db.exists(
+		"Tax Category", "Umsatzsteuer"
+	):
+		delivery_note.tax_category = "Umsatzsteuer"
 
 def validate(delivery_note, event):
 	"""Validate that only returnable items are returned."""

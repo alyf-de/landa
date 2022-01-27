@@ -251,6 +251,7 @@ after_migrate = "landa.migrate.after_migrate"
 doc_events = {
 	"Delivery Note": {
 		"on_submit": "landa.landa_stock.delivery_note.delivery_note.on_submit",
+        "before_validate": "landa.landa_stock.delivery_note.delivery_note.before_validate",
 		"validate": "landa.landa_stock.delivery_note.delivery_note.validate",
 		"autoname": "landa.landa_stock.delivery_note.delivery_note.autoname",
 	},
