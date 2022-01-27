@@ -45,7 +45,7 @@
   "home_page": "index",
   "indexing_authorization_code": null,
   "indexing_refresh_token": null,
-  "modified": "2021-11-12 16:57:08.481034",
+  "modified": "2022-01-27 16:29:17.263026",
   "name": "Website Settings",
   "navbar_search": 0,
   "navbar_template": null,
@@ -91,6 +91,17 @@
     "parenttype": "Website Settings",
     "right": 0,
     "url": "/privacy"
+   },
+   {
+    "icon": null,
+    "label": "Hilfebereich",
+    "open_in_new_tab": 0,
+    "parent": "Website Settings",
+    "parent_label": null,
+    "parentfield": "top_bar_items",
+    "parenttype": "Website Settings",
+    "right": 0,
+    "url": "/help-page"
    }
   ],
   "website_theme": "Standard",
