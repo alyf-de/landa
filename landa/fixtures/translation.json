@@ -5678,5 +5678,53 @@
   "parenttype": null,
   "source_text": "Number of Catch Log Books",
   "translated_text": "Anzahl der Fangb\u00fccher"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-01-27 15:46:08.714490",
+  "name": "46d2201c77",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "You hit the rate limit because of too many requests. Please try after sometime.",
+  "translated_text": "Sie haben die maximale Anzahl an Anfragen erreicht. Bitte versuchen Sie es sp\u00e4ter noch einmal!"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-01-27 15:50:04.486531",
+  "name": "10506d1cd0",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Your new password has been set successfully.",
+  "translated_text": "Ihr Passwort wurde erfolgreich aktualisiert."
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-01-27 15:50:24.379773",
+  "name": "4d9c3def70",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Password set",
+  "translated_text": "Passwort gesetzt"
  }
 ]
