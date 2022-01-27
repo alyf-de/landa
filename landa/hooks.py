@@ -34,6 +34,7 @@ fixtures = [
 		],
 	},
 	"Contact Us Settings",
+    "About Us Settings",
 	"Module Profile",
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
 	{"dt": "Organization", "filters": [["name", "in", ["LV", "AVE", "AVS", "AVL"]]]},
