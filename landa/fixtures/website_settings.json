@@ -91,6 +91,17 @@
     "parenttype": "Website Settings",
     "right": 0,
     "url": "/privacy"
+   },
+   {
+    "icon": null,
+    "label": "Hilfebereich",
+    "open_in_new_tab": 0,
+    "parent": "Website Settings",
+    "parent_label": null,
+    "parentfield": "top_bar_items",
+    "parenttype": "Website Settings",
+    "right": 0,
+    "url": "/help-page"
    }
   ],
   "website_theme": "Standard",
