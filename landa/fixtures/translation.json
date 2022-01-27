@@ -5662,7 +5662,6 @@
   "parenttype": null,
   "source_text": "You need {0} permission to fetch values from {1} {2}",
   "translated_text": "Sie brauchen eine {0}-Berechtigung, um die Werte von {1} {2} zu beziehen"
-<<<<<<< HEAD
  },
  {
   "context": null,
@@ -5679,7 +5678,5 @@
   "parenttype": null,
   "source_text": "Number of Catch Log Books",
   "translated_text": "Anzahl der Fangb\u00fccher"
-=======
->>>>>>> version-13
  }
 ]
