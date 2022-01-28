@@ -38,8 +38,14 @@ class MemberDataImport(Document):
 	def db_update(self):
 		pass
 
-	def get_list(self, args):
+	def get_list(self, _args=None) -> list:
 		return []
+
+	def get_count(self, _args=None) -> int:
+		return 0
+
+	def get_stats(self, _args=None) -> dict:
+		return {"stats": {}}
 
 	def preprocess(self):
 		"""Remove whitespaces, parse checkbox values and dates."""
