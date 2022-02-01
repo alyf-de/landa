@@ -181,6 +181,13 @@ class LANDAMemberFunction(object):
         
         # merge all dataframes from different doctypes and load data of all members without member functions only if necessary
         data=pd.concat([member_df, member_functions_df, contacts_df, addresses_df,awards_df], axis=1).reindex(reindex_df.index)
+        # sort columns as needed
+        data=data.reindex(['first_name', 'last_name', 'organization',
+        'organization_name',
+        'member_function_category', 'email_id', 'phone', 'mobile_no',
+        'full_address', 'address_line1', 'pincode', 'city', 'award_list', 
+        'date_of_birth', 'age', 'upcoming_birthday', 'is_decadal_birthday'],
+        axis=1)
         # replace NaNs with empty strings
         data.fillna('', inplace=True)
 
@@ -208,11 +215,6 @@ class LANDAMemberFunction(object):
             "label": "Last Name"
             },
             {
-            "fieldname": "date_of_birth",
-            "fieldtype": "Date",
-            "label": "Date of Birth"
-            },
-            {
             "fieldname": "organization",
             "fieldtype": "Link",
             "options": "Organization",
@@ -222,21 +224,6 @@ class LANDAMemberFunction(object):
             "fieldname": "organization_name",
             "fieldtype": "Data",
             "label": "Organization Name"
-            },
-            {
-            "fieldname": "member_age",
-            "fieldtype": "Data",
-            "label": "Age"
-            },
-            {
-            "fieldname": "upcoming_birthday",
-            "fieldtype": "Date",
-            "label": "Upcoming Birthday"
-            },
-            {
-            "fieldname": "is_decadal_birthday",
-            "fieldtype": "Check",
-            "label": "Is Decadal Birthday"
             },
             {
             "fieldname": "member_function_category",
@@ -282,6 +269,26 @@ class LANDAMemberFunction(object):
             "fieldname": "award_list",
             "fieldtype": "Data",
             "label": "Award List"
+            },
+            {
+            "fieldname": "date_of_birth",
+            "fieldtype": "Date",
+            "label": "Date of Birth"
+            },
+            {
+            "fieldname": "member_age",
+            "fieldtype": "Data",
+            "label": "Age"
+            },
+            {
+            "fieldname": "upcoming_birthday",
+            "fieldtype": "Date",
+            "label": "Upcoming Birthday"
+            },
+            {
+            "fieldname": "is_decadal_birthday",
+            "fieldtype": "Check",
+            "label": "Is Decadal Birthday"
             }
         ]
 
