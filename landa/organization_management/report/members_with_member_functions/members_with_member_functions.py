@@ -7,7 +7,7 @@ import calendar
 from datetime import date
 import numpy as np
 
-def calculate_this_years_birthday(date_of_birth):
+def determine_this_years_birthday(date_of_birth):
     if isinstance(date_of_birth, date):
         today = date.today()
         if ~calendar.isleap(today.year) and (date_of_birth.month==2 and date_of_birth.day==29):
@@ -20,8 +20,8 @@ def calculate_this_years_birthday(date_of_birth):
     else:
         return np.nan
 
-def calculate_age(date_of_birth,reference_date=date.today()):
-    this_years_birthday=calculate_this_years_birthday(date_of_birth)
+def determine_age(date_of_birth,reference_date=date.today()):
+    this_years_birthday=determine_this_years_birthday(date_of_birth)
     if isinstance(this_years_birthday, date):           
         if this_years_birthday > reference_date:
             return reference_date.year - date_of_birth.year - 1
@@ -31,7 +31,7 @@ def calculate_age(date_of_birth,reference_date=date.today()):
         return np.nan
 
 def determine_upcoming_birthday(date_of_birth):
-    this_years_birthday=calculate_this_years_birthday(date_of_birth)
+    this_years_birthday=determine_this_years_birthday(date_of_birth)
     if isinstance(this_years_birthday, date):
         today = date.today()
         # check if upcoming birthday is this year or next year
@@ -46,7 +46,7 @@ def determine_upcoming_birthday(date_of_birth):
 def determine_decadal_birthday(date_of_birth):
     if isinstance(date_of_birth, date):
         upcoming_birthday=determine_upcoming_birthday(date_of_birth)
-        age_at_upcoming_birthday=calculate_age(date_of_birth,reference_date=upcoming_birthday)
+        age_at_upcoming_birthday=determine_age(date_of_birth,reference_date=upcoming_birthday)
         return int((age_at_upcoming_birthday%10)==0)
     else:
         return np.nan
@@ -139,7 +139,7 @@ class LANDAMemberFunction(object):
         # convert to pandas dataframe
         member_df=frappe_tuple_to_pandas_df(members,['member']+member_fields[1:])
         # calculate todays age from birth date
-        member_df['age']=[calculate_age(bd) for bd in member_df['date_of_birth'].values]
+        member_df['age']=[determine_age(bd) for bd in member_df['date_of_birth'].values]
         # calculate upcoming birthday
         member_df['upcoming_birthday']=[determine_upcoming_birthday(bd) for bd in member_df['date_of_birth'].values]
         # determine if decadal birthday
