@@ -10,8 +10,10 @@
   "masters_section",
   "title",
   "number",
-  "status",
   "fishing_area",
+  "column_break_5",
+  "status",
+  "additional_information",
   "water_body_size_section",
   "water_body_size",
   "column_break_7",
@@ -106,11 +108,20 @@
    "fieldname": "water_body_size_section",
    "fieldtype": "Section Break",
    "label": "Water Body Size"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "additional_information",
+   "fieldtype": "Small Text",
+   "label": "Additional Information"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-07 17:31:00.106730",
+ "modified": "2022-02-07 17:36:08.406884",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
