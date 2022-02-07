@@ -11,12 +11,14 @@
   "title",
   "number",
   "fishing_area",
+  "status",
   "is_property_water_body",
   "is_active",
   "has_master_key_system",
   "column_break_5",
-  "status",
-  "additional_information",
+  "general_public_information",
+  "current_public_information",
+  "internal_information",
   "water_body_size_section",
   "water_body_size",
   "column_break_7",
@@ -119,11 +121,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "additional_information",
-   "fieldtype": "Small Text",
-   "label": "Additional Information"
-  },
-  {
    "fieldname": "section_break_14",
    "fieldtype": "Section Break"
   },
@@ -152,11 +149,26 @@
    "fieldname": "has_master_key_system",
    "fieldtype": "Check",
    "label": "Has Master Key System"
+  },
+  {
+   "fieldname": "general_public_information",
+   "fieldtype": "Small Text",
+   "label": "General Public Information"
+  },
+  {
+   "fieldname": "current_public_information",
+   "fieldtype": "Small Text",
+   "label": "Current Public Information "
+  },
+  {
+   "fieldname": "internal_information",
+   "fieldtype": "Small Text",
+   "label": "Internal Information"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-07 20:18:47.402529",
+ "modified": "2022-02-07 20:23:54.882867",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
