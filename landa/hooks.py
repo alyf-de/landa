@@ -41,6 +41,7 @@ fixtures = [
 	"Member Function Category",
 	"Fish Species",
 	"Fishing Area",
+    "Water Body Special Provision",
 	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
 	"Translation",
 	{

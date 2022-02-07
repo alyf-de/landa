@@ -1,0 +1,90 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Water Body Special Provision",
+  "modified": "2022-02-07 20:00:20.269314",
+  "name": "Sonderbestimmung-001",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "short_code": "BN",
+  "title": "Bootsnutzung untersagt"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Water Body Special Provision",
+  "modified": "2022-02-07 20:01:24.090165",
+  "name": "Sonderbestimmung-002",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "short_code": "B",
+  "title": "Bootsangeln gestattet"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Water Body Special Provision",
+  "modified": "2022-02-07 20:01:37.489931",
+  "name": "Sonderbestimmung-003",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "short_code": null,
+  "title": "E-Motoren zul\u00e4ssig"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Water Body Special Provision",
+  "modified": "2022-02-07 20:01:53.815285",
+  "name": "Sonderbestimmung-004",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "short_code": null,
+  "title": "Hegene zul\u00e4ssig"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Water Body Special Provision",
+  "modified": "2022-02-07 20:02:00.875835",
+  "name": "Sonderbestimmung-005",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "short_code": null,
+  "title": "Schleppangeln zul\u00e4ssig"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Water Body Special Provision",
+  "modified": "2022-02-07 20:02:13.913277",
+  "name": "Sonderbestimmung-006",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "short_code": "S",
+  "title": "Schlie\u00dfsystem"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Water Body Special Provision",
+  "modified": "2022-02-07 20:02:26.193729",
+  "name": "Sonderbestimmung-007",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "short_code": "H",
+  "title": "Behindertentauglich"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Water Body Special Provision",
+  "modified": "2022-02-07 20:02:38.744789",
+  "name": "Sonderbestimmung-008",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "short_code": "TW-TS",
+  "title": "Trinkwassertalsperre"
+ }
+]

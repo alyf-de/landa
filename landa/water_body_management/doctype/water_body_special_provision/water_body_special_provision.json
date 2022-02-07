@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:Sonderbestimmung-{###}",
+ "autoname": "Sonderbestimmung-.###",
  "creation": "2022-02-07 17:48:07.942361",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -12,6 +12,7 @@
  ],
  "fields": [
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "short_code",
    "fieldtype": "Data",
    "label": "Short Code"
@@ -26,7 +27,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-07 18:07:53.323502",
+ "modified": "2022-02-07 20:00:52.955770",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Special Provision",
