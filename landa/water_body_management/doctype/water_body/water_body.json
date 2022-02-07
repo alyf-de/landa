@@ -11,6 +11,7 @@
   "title",
   "number",
   "fishing_area",
+  "fishing_area_name",
   "status",
   "is_property_water_body",
   "is_active",
@@ -164,11 +165,19 @@
    "fieldname": "internal_information",
    "fieldtype": "Small Text",
    "label": "Internal Information"
+  },
+  {
+   "fetch_from": "fishing_area.area_name",
+   "fieldname": "fishing_area_name",
+   "fieldtype": "Data",
+   "label": "Fishing Area Name",
+   "permlevel": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-07 20:23:54.882867",
+ "modified": "2022-02-07 20:30:31.251740",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
