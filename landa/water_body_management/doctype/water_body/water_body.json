@@ -9,6 +9,7 @@
  "field_order": [
   "title",
   "number",
+  "status",
   "fishing_area",
   "section_break_2",
   "water_body_organization_table",
@@ -65,11 +66,20 @@
    "fieldtype": "Table",
    "label": "Organization Table",
    "options": "Water Body Organization Table"
+  },
+  {
+   "default": "Verbandsvertragsgew\u00e4sser",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Allgemeines Angelgew\u00e4sser\nVerbandsvertragsgew\u00e4sser\nSalmonidenstrecke gelb\nSalmonidenstrecke gr\u00fcn\nJugendgew\u00e4sser",
+   "permlevel": 1,
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-04 15:15:53.757433",
+ "modified": "2022-02-07 17:00:09.996348",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
