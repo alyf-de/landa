@@ -7,10 +7,15 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "masters_section",
   "title",
   "number",
   "status",
   "fishing_area",
+  "water_body_size_section",
+  "water_body_size",
+  "column_break_7",
+  "water_body_size_unit",
   "section_break_2",
   "water_body_organization_table",
   "section_break_6",
@@ -75,11 +80,37 @@
    "options": "Allgemeines Angelgew\u00e4sser\nVerbandsvertragsgew\u00e4sser\nSalmonidenstrecke gelb\nSalmonidenstrecke gr\u00fcn\nJugendgew\u00e4sser",
    "permlevel": 1,
    "reqd": 1
+  },
+  {
+   "fieldname": "water_body_size",
+   "fieldtype": "Float",
+   "label": "Water Body Size"
+  },
+  {
+   "fieldname": "water_body_size_unit",
+   "fieldtype": "Select",
+   "label": "Water Body Size Unit",
+   "mandatory_depends_on": "water_body_size",
+   "options": "ha\nkm"
+  },
+  {
+   "fieldname": "masters_section",
+   "fieldtype": "Section Break",
+   "label": "Masters"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "water_body_size_section",
+   "fieldtype": "Section Break",
+   "label": "Water Body Size"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-07 17:21:21.016386",
+ "modified": "2022-02-07 17:31:00.106730",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
