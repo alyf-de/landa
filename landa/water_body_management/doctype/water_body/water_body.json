@@ -11,6 +11,9 @@
   "title",
   "number",
   "fishing_area",
+  "is_property_water_body",
+  "is_active",
+  "has_master_key_system",
   "column_break_5",
   "status",
   "additional_information",
@@ -131,11 +134,29 @@
    "label": "Water Body Special Provisions",
    "options": "Water Body Special Provision Table",
    "permlevel": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_property_water_body",
+   "fieldtype": "Check",
+   "label": "Is Property Water Body"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_master_key_system",
+   "fieldtype": "Check",
+   "label": "Has Master Key System"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-07 18:11:35.528954",
+ "modified": "2022-02-07 20:18:47.402529",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
