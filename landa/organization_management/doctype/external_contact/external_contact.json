@@ -1,0 +1,164 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "creation": "2022-02-07 20:54:49.376478",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_info_text",
+  "external_contact_info_text",
+  "section_break_master_data",
+  "external_contact_heading",
+  "first_name",
+  "last_name",
+  "column_break_7",
+  "personal_details",
+  "date_of_birth",
+  "nationality",
+  "institution_or_company_section",
+  "organization",
+  "organization_name",
+  "column_break_14",
+  "external_contact_since",
+  "is_magazine_recipient",
+  "additional_information",
+  "section_address_and_contact",
+  "address_html",
+  "column_break_20",
+  "contact_html"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_info_text",
+   "fieldtype": "Section Break",
+   "label": "Info Text"
+  },
+  {
+   "fieldname": "external_contact_info_text",
+   "fieldtype": "HTML",
+   "label": "External Contact Info Text",
+   "options": "<p>Externe Kontakte in LANDA sind alle Leute, mit denen Landesverband, Regionalverb\u00e4nde und Vereine zusammenarbeiten, die aber weder deren Mitarbeiter:innen noch Mitglieder sind.</p>\n\n<p>Pflichtfelder sind mit <span style=\"color: #FF0000;\">*</span> markiert.</p>\n\n<p>Jeder externe Kontakt kann eine externe Funktionen zugewiesen bekommen. Diese sind eigene Formulare und werden im Abschnitt \"Verkn\u00fcpfungen\" zusammengefasst. Bestehende verlinkte Eintr\u00e4ge k\u00f6nnen durch Klicken auf den entsprechenden Begriff eingesehen werden, neue Eintr\u00e4ge k\u00f6nnen durch Klick auf das + Symbol erzeugt werden.</p>\n\n<p>Adressen und Kontakte sind ebenfalls eigenst\u00e4ndige Formulare. Sie k\u00f6nnen \u00fcber die Felder weiter unten in der Eingabemaske hinzugef\u00fcgt werden. Es k\u00f6nnen mehrere Adressen und Kontakte f\u00fcr einen Externen Kontakt bestehen. Um Uneindeutigkeiten zu vermeiden, gibt es die M\u00f6glichkeit im jeweiligen Formular die Adresse bzw. Emailadresse oder Telefonnummer als \"prim\u00e4r\" zu markieren.</p>"
+  },
+  {
+   "fieldname": "section_break_master_data",
+   "fieldtype": "Section Break",
+   "label": "Master Data"
+  },
+  {
+   "fieldname": "external_contact_heading",
+   "fieldtype": "Heading",
+   "label": "External Contact"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "personal_details",
+   "fieldtype": "Heading",
+   "label": "Personal Details"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Data",
+   "label": "Nationality"
+  },
+  {
+   "fieldname": "institution_or_company_section",
+   "fieldtype": "Section Break",
+   "label": "Institution or Company"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Data",
+   "label": "Institution or Company"
+  },
+  {
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Institution or Company Name"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "external_contact_since",
+   "fieldtype": "Date",
+   "label": "External Contact Since"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_magazine_recipient",
+   "fieldtype": "Check",
+   "label": "Is Magazine Recipient"
+  },
+  {
+   "fieldname": "additional_information",
+   "fieldtype": "Small Text",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "section_address_and_contact",
+   "fieldtype": "Section Break",
+   "label": "Address and Contact"
+  },
+  {
+   "fieldname": "address_html",
+   "fieldtype": "HTML",
+   "label": "Address HTML"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact_html",
+   "fieldtype": "Data",
+   "label": "Contact HTML"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-07 20:54:49.376478",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "External Contact",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "search_fields": "last_name",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
