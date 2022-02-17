@@ -4,56 +4,56 @@
 import pandas as pd
 import numpy as np
 from datetime import date
+import calendar
 
 import frappe
 
 
-def calculate_age(date_of_birth, reference_date=date.today()):
+def calculate_this_years_birthday(date_of_birth):
 	if isinstance(date_of_birth, date):
-		# source: https://www.geeksforgeeks.org/python-program-to-calculate-age-in-year/
-		try:
-			birthday = date_of_birth.replace(year=reference_date.year)
+		today = date.today()
+		if not calendar.isleap(today.year) and date_of_birth.month==2 and date_of_birth.day==29:
+			# handle dates of birth on February 29th in a leap year
+			this_years_birthday=date_of_birth.replace(year=today.year,month=3,day=1)
+		else:
+			# for every other date of birth
+			this_years_birthday=date_of_birth.replace(year=today.year)
+		return this_years_birthday
+	else:
+		return np.nan
 
-		# raised when birth date is February 29
-		# and the reference year is not a leap year
-		except ValueError:
-			birthday = date_of_birth.replace(
-				year=reference_date.year, month=date_of_birth.month + 1, day=1
-			)
-
-		if birthday > reference_date:
+def calculate_age(date_of_birth,reference_date=date.today()):
+	if not reference_date:
+		reference_date = date.today()
+	this_years_birthday=calculate_this_years_birthday(date_of_birth)
+	if isinstance(this_years_birthday, date):
+		if this_years_birthday > reference_date:
 			return reference_date.year - date_of_birth.year - 1
 		else:
 			return reference_date.year - date_of_birth.year
 	else:
 		return np.nan
 
-
-def determine_upcoming_birthday(date_of_birth):
-	if isinstance(date_of_birth, date):
+def calculate_upcoming_birthday(date_of_birth):
+	this_years_birthday=calculate_this_years_birthday(date_of_birth)
+	if isinstance(this_years_birthday, date):
 		today = date.today()
-		this_years_birthday = date_of_birth.replace(year=today.year)
-		if today <= this_years_birthday:
-			upcoming_birthday = this_years_birthday
+		# check if upcoming birthday is this year or next year
+		if today<=this_years_birthday:
+			upcoming_birthday=this_years_birthday
 		else:
-			upcoming_birthday = this_years_birthday.replace(year=today.year + 1)
+			upcoming_birthday=this_years_birthday.replace(year=today.year+1)
 		return upcoming_birthday
 	else:
 		return np.nan
 
-
-def determine_decadal_birthday(date_of_birth, upcoming_birthday=None):
-	if isinstance(date_of_birth, date) and isinstance(upcoming_birthday, date):
-		if upcoming_birthday is None:
-			upcoming_birthday = determine_upcoming_birthday(date_of_birth)
-		age_at_upcoming_birthday = calculate_age(
-			date_of_birth, reference_date=upcoming_birthday
-		)
-		return int((age_at_upcoming_birthday % 10) == 0)
+def calculate_decadal_birthday(date_of_birth):
+	if isinstance(date_of_birth, date):
+		upcoming_birthday=calculate_upcoming_birthday(date_of_birth)
+		age_at_upcoming_birthday=calculate_age(date_of_birth,reference_date=upcoming_birthday)
+		return int((age_at_upcoming_birthday%10)==0)
 	else:
 		return np.nan
-
-
 class Birthday(object):
 	def __init__(self, filters):
 		# set filters
@@ -103,14 +103,11 @@ class Birthday(object):
 		]
 		# calculate upcoming birthday
 		member_df["upcoming_birthday"] = [
-			determine_upcoming_birthday(bd) for bd in member_df["date_of_birth"].values
+			calculate_upcoming_birthday(bd) for bd in member_df["date_of_birth"].values
 		]
-		# determine if decadal birthday
+		# calculate if decadal birthday
 		member_df["is_decadal_birthday"] = [
-			determine_decadal_birthday(bd, ubd)
-			for bd, ubd in zip(
-				member_df["date_of_birth"].values, member_df["upcoming_birthday"].values
-			)
+			calculate_decadal_birthday(bd) for bd in member_df["date_of_birth"].values
 		]
 		# move organization columns to the end of the dataframe
 		member_df = member_df[
