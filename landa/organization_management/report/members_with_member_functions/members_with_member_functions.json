@@ -1,0 +1,59 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2022-01-31 12:16:02.591353",
+ "disable_prepared_report": 1,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "member_function_category",
+   "fieldtype": "Link",
+   "label": "Member Function Category",
+   "mandatory": 0,
+   "options": "Member Function Category",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "mandatory": 0,
+   "options": "Organization",
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Extended Information in Footer",
+ "modified": "2022-02-01 12:27:35.328669",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "Members with Member Functions",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Member Function",
+ "report_name": "Members with Member Functions",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "LANDA Member"
+  },
+  {
+   "role": "LANDA State Organization Employee"
+  },
+  {
+   "role": "LANDA Regional Organization Management"
+  },
+  {
+   "role": "LANDA Regional Water Body Management"
+  },
+  {
+   "role": "LANDA Local Organization Management"
+  }
+ ]
+}

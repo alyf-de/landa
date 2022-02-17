@@ -118,6 +118,15 @@
    "type": "Link"
   },
   {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Members with Member Functions",
+   "link_to": "Members with Member Functions",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
    "dependencies": "Delivery Note",
    "hidden": 0,
    "is_query_report": 1,
@@ -200,7 +209,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-11-05 12:26:25.515301",
+ "modified": "2022-02-17 15:58:52.166129",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
