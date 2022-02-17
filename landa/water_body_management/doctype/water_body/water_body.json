@@ -159,7 +159,7 @@
   {
    "fieldname": "current_public_information",
    "fieldtype": "Small Text",
-   "label": "Current Public Information "
+   "label": "Current Public Information"
   },
   {
    "fieldname": "internal_information",
@@ -177,7 +177,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-07 20:30:31.251740",
+ "modified": "2022-02-17 16:20:18.723040",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
