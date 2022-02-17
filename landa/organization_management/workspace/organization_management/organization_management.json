@@ -119,7 +119,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Members with Member Functions",
    "link_to": "Members with Member Functions",
    "link_type": "Report",
@@ -209,7 +209,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-02-01 15:12:54.304961",
+ "modified": "2022-02-17 15:58:52.166129",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
