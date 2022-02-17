@@ -23,6 +23,8 @@ def calculate_this_years_birthday(date_of_birth):
 		return np.nan
 
 def calculate_age(date_of_birth,reference_date=date.today()):
+	if not reference_date:
+		reference_date = date.today()
 	this_years_birthday=calculate_this_years_birthday(date_of_birth)
 	if isinstance(this_years_birthday, date):
 		if this_years_birthday > reference_date:
