@@ -12,11 +12,14 @@
   "external_contact_heading",
   "first_name",
   "last_name",
+  "institution_or_company_section",
+  "external_organization_name",
+  "position_description",
   "column_break_7",
   "personal_details",
   "date_of_birth",
   "nationality",
-  "institution_or_company_section",
+  "organization_section",
   "organization",
   "organization_name",
   "column_break_14",
@@ -51,14 +54,23 @@
    "label": "External Contact"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "first_name",
    "fieldtype": "Data",
-   "label": "First Name"
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "First Name",
+   "search_index": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "last_name",
    "fieldtype": "Data",
-   "label": "Last Name"
+   "in_list_view": 1,
+   "label": "Last Name",
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "column_break_7",
@@ -70,6 +82,7 @@
    "label": "Personal Details"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
    "label": "Date of Birth"
@@ -81,18 +94,24 @@
   },
   {
    "fieldname": "institution_or_company_section",
-   "fieldtype": "Section Break",
+   "fieldtype": "Heading",
    "label": "Institution or Company"
   },
   {
    "fieldname": "organization",
-   "fieldtype": "Data",
-   "label": "Institution or Company"
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Organization",
+   "options": "Organization",
+   "reqd": 1
   },
   {
+   "fetch_from": "organization.organization_name",
    "fieldname": "organization_name",
    "fieldtype": "Data",
-   "label": "Institution or Company Name"
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Organization Name"
   },
   {
    "fieldname": "column_break_14",
@@ -108,6 +127,8 @@
    "default": "0",
    "fieldname": "is_magazine_recipient",
    "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Is Magazine Recipient"
   },
   {
@@ -133,11 +154,32 @@
    "fieldname": "contact_html",
    "fieldtype": "Data",
    "label": "Contact HTML"
+  },
+  {
+   "fieldname": "organization_section",
+   "fieldtype": "Section Break",
+   "label": "Organization"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "external_organization_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Institution or Company Name",
+   "search_index": 1
+  },
+  {
+   "fieldname": "position_description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Position Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-07 20:54:49.376478",
+ "modified": "2022-02-18 09:52:08.285757",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Contact",
