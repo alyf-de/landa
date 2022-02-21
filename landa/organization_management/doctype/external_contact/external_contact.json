@@ -10,6 +10,7 @@
   "external_contact_info_text",
   "section_break_master_data",
   "external_contact_heading",
+  "external_contact",
   "first_name",
   "last_name",
   "institution_or_company_section",
@@ -178,11 +179,25 @@
    "in_standard_filter": 1,
    "label": "Position Description",
    "search_index": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "external_contact",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "External Contact",
+   "options": "External Contact",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2022-02-18 10:08:46.534195",
+ "links": [
+  {
+   "link_doctype": "External Function",
+   "link_fieldname": "external_contact"
+  }
+ ],
+ "modified": "2022-02-18 16:50:31.096278",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Contact",

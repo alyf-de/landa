@@ -1,0 +1,150 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "creation": "2022-02-18 10:53:23.889615",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "info_text_section",
+  "external_function_info_text",
+  "external_function_section",
+  "external_function_category",
+  "external_contact",
+  "first_name",
+  "last_name",
+  "institution_or_company_name",
+  "organization",
+  "organization_name",
+  "start_date",
+  "end_date",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "info_text_section",
+   "fieldtype": "Section Break",
+   "label": "Info Text"
+  },
+  {
+   "fieldname": "external_function_info_text",
+   "fieldtype": "HTML",
+   "label": "External Function Info Text",
+   "options": "<p>Externe Funktionen k\u00f6nnen externen Kontakten zugewiesen werden und funktionieren \u00e4hnlich wie die \"Mitgliedsfunktionen\" f\u00fcr Vereinsmitglieder. Da externe Kontakte aber keinen Zugang zu LANDA haben, dienen externe Funktionen aber nur der Kategorisierung und Verlinkung (z. B. in der Gew\u00e4sserverwaltung) und definieren keine Berechtigungen in LANDA.</p>"
+  },
+  {
+   "fieldname": "external_function_section",
+   "fieldtype": "Section Break",
+   "label": "External Function"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "external_contact",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "External Contact",
+   "options": "External Contact",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "external_contact.first_name",
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "First Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "external_contact.last_name",
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Last Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "external_contact.external_organization_name",
+   "fieldname": "institution_or_company_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Institution or Company Name",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fetch_from": "external_contact.organization",
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "Organization",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "organization.organization_name",
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Organization Name",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "Today",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Planned\nActive\nInactive",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "external_function_category",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "External Function Category",
+   "options": "External Function Category",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-18 16:10:35.458937",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "External Function",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "external_function_category",
+ "track_changes": 1
+}
