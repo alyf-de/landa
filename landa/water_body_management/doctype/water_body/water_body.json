@@ -42,8 +42,6 @@
   {
    "fieldname": "number",
    "fieldtype": "Data",
-   "in_global_search": 1,
-   "in_list_view": 1,
    "label": "Number",
    "non_negative": 1,
    "permlevel": 1,
@@ -51,9 +49,10 @@
    "unique": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "fishing_area",
    "fieldtype": "Link",
-   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Fishing Area",
    "options": "Fishing Area",
    "permlevel": 1,
@@ -71,9 +70,12 @@
    "permlevel": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "Verbandsvertragsgew\u00e4sser",
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Status",
    "options": "Allgemeines Angelgew\u00e4sser\nVerbandsvertragsgew\u00e4sser\nSalmonidenstrecke gelb\nSalmonidenstrecke gr\u00fcn\nJugendgew\u00e4sser",
    "permlevel": 1,
@@ -122,21 +124,27 @@
    "permlevel": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "0",
    "fieldname": "is_property_water_body",
    "fieldtype": "Check",
+   "in_standard_filter": 1,
    "label": "Is Property Water Body"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "1",
    "fieldname": "is_active",
    "fieldtype": "Check",
+   "in_standard_filter": 1,
    "label": "Is Active"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "0",
    "fieldname": "has_master_key_system",
    "fieldtype": "Check",
+   "in_standard_filter": 1,
    "label": "Has Master Key System"
   },
   {
@@ -153,6 +161,7 @@
    "fetch_from": "fishing_area.area_name",
    "fieldname": "fishing_area_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Fishing Area Name",
    "permlevel": 1,
    "read_only": 1
@@ -161,6 +170,8 @@
    "fetch_from": "fishing_area.organization",
    "fieldname": "organization",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Regional Organization",
    "options": "Organization",
    "read_only": 1
@@ -175,7 +186,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-22 22:20:00.941252",
+ "modified": "2022-02-22 22:32:48.114928",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
