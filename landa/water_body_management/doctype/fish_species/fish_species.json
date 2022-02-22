@@ -11,7 +11,13 @@
   "short_code",
   "title",
   "scientific_name",
-  "is_default_fish_species_for_population"
+  "is_default_fish_species_for_population",
+  "close_season",
+  "minimum_size",
+  "general_fishing_limit",
+  "special_fishing_limit",
+  "traits",
+  "wikipedia_link"
  ],
  "fields": [
   {
@@ -42,11 +48,41 @@
    "fieldname": "is_default_fish_species_for_population",
    "fieldtype": "Check",
    "label": "Is Default Fish Species For Population"
+  },
+  {
+   "fieldname": "close_season",
+   "fieldtype": "Data",
+   "label": "Close Season"
+  },
+  {
+   "fieldname": "minimum_size",
+   "fieldtype": "Data",
+   "label": "Minimum Size"
+  },
+  {
+   "fieldname": "general_fishing_limit",
+   "fieldtype": "Data",
+   "label": "General Fishing Limit"
+  },
+  {
+   "fieldname": "special_fishing_limit",
+   "fieldtype": "Data",
+   "label": "Special Fishing Limit"
+  },
+  {
+   "fieldname": "traits",
+   "fieldtype": "Small Text",
+   "label": "Traits"
+  },
+  {
+   "fieldname": "wikipedia_link",
+   "fieldtype": "Data",
+   "label": "Wikipedia Link"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-22 17:29:37.285907",
+ "modified": "2022-02-22 17:50:42.342360",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Species",
