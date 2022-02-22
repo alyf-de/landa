@@ -6126,5 +6126,37 @@
   "parenttype": null,
   "source_text": "External Contact",
   "translated_text": "Externer Kontakt"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-02-22 17:22:17.822235",
+  "name": "e946a1b260",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Water Body Special Provision Table",
+  "translated_text": "Tabelle Gew\u00e4ssersonderbestimmungen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-02-22 17:30:45.122036",
+  "name": "4811e7a559",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Is Default Fish Species For Population",
+  "translated_text": "Ist h\u00e4ufig Fischart f\u00fcr Besatz"
  }
 ]

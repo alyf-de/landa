@@ -10,7 +10,8 @@
  "field_order": [
   "short_code",
   "title",
-  "scientific_name"
+  "scientific_name",
+  "is_default_fish_species_for_population"
  ],
  "fields": [
   {
@@ -35,11 +36,17 @@
    "label": "Short Code",
    "reqd": 1,
    "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default_fish_species_for_population",
+   "fieldtype": "Check",
+   "label": "Is Default Fish Species For Population"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-07 18:18:32.956648",
+ "modified": "2022-02-22 17:29:37.285907",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Species",
