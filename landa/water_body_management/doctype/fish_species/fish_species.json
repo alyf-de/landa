@@ -2,14 +2,14 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "format:{short_code}-{title}",
+ "autoname": "title",
  "creation": "2021-02-18 16:46:22.832743",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "short_code",
   "title",
+  "short_code",
   "scientific_name",
   "is_default_fish_species_for_population",
   "close_season",
@@ -40,7 +40,6 @@
    "fieldname": "short_code",
    "fieldtype": "Data",
    "label": "Short Code",
-   "reqd": 1,
    "unique": 1
   },
   {
@@ -82,7 +81,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-22 17:50:42.342360",
+ "modified": "2022-02-22 18:01:13.480192",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Species",
