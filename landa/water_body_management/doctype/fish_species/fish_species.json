@@ -2,7 +2,7 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "title",
+ "autoname": "field:title",
  "creation": "2021-02-18 16:46:22.832743",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -37,20 +37,25 @@
    "label": "Scientific Name"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "short_code",
    "fieldtype": "Data",
-   "label": "Short Code",
-   "unique": 1
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Fish Species Short Code"
   },
   {
    "default": "0",
    "fieldname": "is_default_fish_species_for_population",
    "fieldtype": "Check",
+   "in_standard_filter": 1,
    "label": "Is Default Fish Species For Population"
   },
   {
    "fieldname": "close_season",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Close Season"
   },
   {
@@ -71,6 +76,8 @@
   {
    "fieldname": "traits",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Traits"
   },
   {
@@ -81,7 +88,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-22 18:01:13.480192",
+ "modified": "2022-02-22 18:39:13.817082",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Species",
