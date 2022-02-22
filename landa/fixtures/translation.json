@@ -6254,5 +6254,21 @@
   "parenttype": null,
   "source_text": "Fish Species Short Code",
   "translated_text": "Fischart Abk\u00fcrzung"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-02-22 22:10:03.388211",
+  "name": "d6b7c8b58c",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Regional Organization Name",
+  "translated_text": "Name des Regionalverbands"
  }
 ]
