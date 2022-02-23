@@ -39,9 +39,7 @@ fixtures = [
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
 	{"dt": "Organization", "filters": [["name", "in", ["LV", "AVE", "AVS", "AVL"]]]},
 	"Member Function Category",
-	"Fish Species",
 	"Fishing Area",
-    "Water Body Special Provision",
 	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
 	"Translation",
 	{
