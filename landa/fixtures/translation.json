@@ -6270,5 +6270,37 @@
   "parenttype": null,
   "source_text": "Regional Organization Name",
   "translated_text": "Name des Regionalverbands"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-02-24 17:04:21.298251",
+  "name": "3e0c55470c",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Water Body Management Local Organization",
+  "translated_text": "Gew\u00e4sserbetreuung Verein"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-02-24 17:05:08.593189",
+  "name": "0c80bac63a",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Water Body Local Contact Table",
+  "translated_text": "Gew\u00e4sser Ansprechpartner im Verein"
  }
 ]
