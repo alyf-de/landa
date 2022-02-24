@@ -45,8 +45,7 @@
    "label": "Number",
    "non_negative": 1,
    "permlevel": 1,
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   },
   {
    "allow_in_quick_entry": 1,
@@ -186,7 +185,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-22 22:32:48.114928",
+ "modified": "2022-02-24 13:10:22.813019",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
