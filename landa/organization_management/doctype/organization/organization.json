@@ -260,9 +260,14 @@
    "group": "Bestellwesen",
    "link_doctype": "Sales Invoice",
    "link_fieldname": "organization"
+  },
+  {
+   "group": "Gew\u00e4sserverwaltung",
+   "link_doctype": "Water Body Management Local Organization",
+   "link_fieldname": "organization"
   }
  ],
- "modified": "2022-01-07 02:36:35.372283",
+ "modified": "2022-02-24 17:10:37.022941",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
