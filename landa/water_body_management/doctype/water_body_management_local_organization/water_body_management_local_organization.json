@@ -7,7 +7,10 @@
  "engine": "InnoDB",
  "field_order": [
   "water_body",
+  "water_body_title",
+  "fishing_area",
   "organization",
+  "organization_name",
   "start_date",
   "end_date",
   "status",
@@ -18,7 +21,6 @@
    "allow_in_quick_entry": 1,
    "fieldname": "water_body",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Water Body",
@@ -29,7 +31,6 @@
    "allow_in_quick_entry": 1,
    "fieldname": "organization",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Organization",
@@ -64,11 +65,38 @@
    "fieldtype": "Table",
    "label": "Water Body Local Contact Table",
    "options": "Water Body Local Contact Table"
+  },
+  {
+   "fetch_from": "water_body.title",
+   "fieldname": "water_body_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Water Body Title",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "water_body.fishing_area",
+   "fieldname": "fishing_area",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Fishing Area",
+   "options": "Fishing Area",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "organization.organization_name",
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Organization Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-24 16:59:50.467508",
+ "modified": "2022-02-24 17:26:14.985479",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management Local Organization",

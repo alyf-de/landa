@@ -6302,5 +6302,21 @@
   "parenttype": null,
   "source_text": "Water Body Local Contact Table",
   "translated_text": "Gew\u00e4sser Ansprechpartner im Verein"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-02-24 17:27:36.143343",
+  "name": "54db3584e7",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Water Body Title",
+  "translated_text": "Gew\u00e4ssername"
  }
 ]
