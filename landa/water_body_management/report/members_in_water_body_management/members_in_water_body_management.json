@@ -27,26 +27,12 @@
    "label": "Fishing Area",
    "mandatory": 0,
    "wildcard_filter": 0
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Check",
-   "label": "Status",
-   "mandatory": 0,
-   "wildcard_filter": 0
-  },
-  {
-   "fieldname": "landa_member",
-   "fieldtype": "Link",
-   "label": "LANDA Member",
-   "mandatory": 0,
-   "wildcard_filter": 0
   }
  ],
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "Extended Information in Footer",
- "modified": "2022-02-24 17:55:41.144851",
+ "modified": "2022-02-25 13:25:19.929397",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Members in Water Body Management",

@@ -6318,5 +6318,21 @@
   "parenttype": null,
   "source_text": "Water Body Title",
   "translated_text": "Gew\u00e4ssername"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-02-25 13:55:37.470288",
+  "name": "018f922e4e",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Members in Water Body Management",
+  "translated_text": "Mitglieder in der Gew\u00e4sserbetreuung"
  }
 ]
