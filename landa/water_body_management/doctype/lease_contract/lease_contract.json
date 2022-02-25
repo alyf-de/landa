@@ -1,0 +1,186 @@
+{
+ "actions": [],
+ "creation": "2022-02-25 15:12:11.413179",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "info_text_section",
+  "lease_contract_info_text",
+  "contract_data_section",
+  "water_body",
+  "water_body_title",
+  "fishing_area",
+  "organization",
+  "organization_name",
+  "start_date",
+  "end_date",
+  "status",
+  "rent",
+  "additional_information",
+  "landlord_section",
+  "landlord",
+  "first_name",
+  "last_name",
+  "institution_or_company_name",
+  "additional_information_about_landlord"
+ ],
+ "fields": [
+  {
+   "fieldname": "info_text_section",
+   "fieldtype": "Section Break",
+   "label": "Info Text"
+  },
+  {
+   "fieldname": "lease_contract_info_text",
+   "fieldtype": "HTML",
+   "label": "Lease Contract Info Text",
+   "options": "<p>Pachtvertr\u00e4ge k\u00f6nnen Gew\u00e4ssern hinzugef\u00fcgt werden. Vereine und Vereinsmitglieder k\u00f6nnen diese nicht einsehen, auch wenn sie das Gew\u00e4sser mit betreuen. F\u00fcr Scans und andere Dokumente zum Pachtvertrag bitte \u00fcber die Seitenleiste die Dateien an dieses Formular  anh\u00e4ngen.</p>"
+  },
+  {
+   "fieldname": "contract_data_section",
+   "fieldtype": "Section Break",
+   "label": "Contract Data"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "water_body",
+   "fieldtype": "Link",
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Water Body",
+   "options": "Water Body",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "water_body.fishing_area",
+   "fieldname": "fishing_area",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Fishing Area",
+   "options": "Fishing Area",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "Today",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "End Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Planned\nActive\nInactive",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "rent",
+   "fieldtype": "Float",
+   "label": "Rent"
+  },
+  {
+   "fieldname": "additional_information",
+   "fieldtype": "Small Text",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "landlord_section",
+   "fieldtype": "Section Break",
+   "label": "Landlord"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "landlord",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Landlord",
+   "options": "External Contact"
+  },
+  {
+   "fetch_from": "landlord.first_name",
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "landlord.last_name",
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "additional_information_about_landlord",
+   "fieldtype": "Small Text",
+   "label": "Additional Information About Landlord"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Regional Organization",
+   "options": "Organization",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "organization.organization_name",
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Regional Organization Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "landlord.external_organization_name",
+   "fieldname": "institution_or_company_name",
+   "fieldtype": "Data",
+   "label": "Institution or Company Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "water_body.title",
+   "fieldname": "water_body_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Water Body Title",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-25 15:33:50.382877",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Lease Contract",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
