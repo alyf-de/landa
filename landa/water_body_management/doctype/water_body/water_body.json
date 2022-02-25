@@ -187,9 +187,13 @@
   {
    "link_doctype": "Water Body Management Local Organization",
    "link_fieldname": "water_body"
+  },
+  {
+   "link_doctype": "Lease Contract",
+   "link_fieldname": "water_body"
   }
  ],
- "modified": "2022-02-24 17:03:21.611836",
+ "modified": "2022-02-25 15:44:45.227423",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
