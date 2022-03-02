@@ -228,9 +228,9 @@ after_migrate = "landa.migrate.after_migrate"
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
+permission_query_conditions = {
+	"Report": "landa.permissions.report_query",
+}
 
 # has_permission = {
 #	"Contact": "landa.address_and_contact.has_permission",
