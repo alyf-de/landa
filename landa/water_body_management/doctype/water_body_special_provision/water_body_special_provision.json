@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "Sonderbestimmung-.###",
  "creation": "2022-02-07 17:48:07.942361",
@@ -25,9 +26,8 @@
    "reqd": 1
   }
  ],
- "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-07 20:00:52.955770",
+ "modified": "2022-03-03 13:25:35.328179",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Special Provision",
@@ -44,6 +44,25 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Member"
   }
  ],
  "quick_entry": 1,
