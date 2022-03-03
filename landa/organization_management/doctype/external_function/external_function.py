@@ -2,8 +2,6 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from __future__ import unicode_literals
-
 import frappe
 
 from frappe import _
@@ -20,7 +18,6 @@ class ExternalFunction(Document):
 		if self.start_date and self.end_date:
 			if date_diff(self.start_date, self.end_date) > 0:
 				frappe.throw(_("End Date cannot be before Start Date."))
-
 
 	def on_trash(self):
 		self.status = "Inactive"
@@ -47,7 +44,9 @@ def disable_expired_external_functions():
 
 
 def apply_active_external_functions(filters):
-	for external_function in get_active_external_functions(filters=filters, pluck="name"):
+	for external_function in get_active_external_functions(
+		filters=filters, pluck="name"
+	):
 		doc = frappe.get_doc("External Function", external_function)
 		doc.save()
 

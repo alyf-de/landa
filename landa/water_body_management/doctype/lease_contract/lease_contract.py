@@ -21,7 +21,6 @@ class LeaseContract(Document):
 			if date_diff(self.start_date, self.end_date) > 0:
 				frappe.throw(_("End Date cannot be before Start Date."))
 
-
 	def on_trash(self):
 		self.status = "Inactive"
 

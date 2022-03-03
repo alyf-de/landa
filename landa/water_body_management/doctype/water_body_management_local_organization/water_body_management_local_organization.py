@@ -42,13 +42,17 @@ class WaterBodyManagementLocalOrganization(Document):
 
 def disable_expired_local_management():
 	for local_management in get_expired_local_management():
-		doc = frappe.get_doc("Water Body Management Local Organization", local_management.name)
+		doc = frappe.get_doc(
+			"Water Body Management Local Organization", local_management.name
+		)
 		doc.save()
 
 
 def apply_active_local_management(filters):
 	for local_management in get_active_local_management(filters=filters, pluck="name"):
-		doc = frappe.get_doc("Water Body Management Local Organization", local_management)
+		doc = frappe.get_doc(
+			"Water Body Management Local Organization", local_management
+		)
 		doc.save()
 
 
