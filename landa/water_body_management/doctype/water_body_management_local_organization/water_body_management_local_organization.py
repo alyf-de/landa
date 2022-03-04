@@ -23,7 +23,6 @@ class WaterBodyManagementLocalOrganization(Document):
 
 	def on_trash(self):
 		self.status = "Inactive"
-		self.update_user_roles()
 
 	def update_is_active(self):
 		if self.is_planned():
