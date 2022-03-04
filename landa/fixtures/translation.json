@@ -5854,5 +5854,21 @@
   "parenttype": null,
   "source_text": "Members with Member Functions",
   "translated_text": "Mitglieder mit Mitgliedsfunktion"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-04 16:51:50.184296",
+  "name": "fb5fe0e0a8",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "My Reports",
+  "translated_text": "Meine Berichte"
  }
 ]
