@@ -88,7 +88,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-22 18:39:13.817082",
+ "modified": "2022-03-07 18:34:08.652428",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Species",
@@ -110,25 +110,20 @@
    "write": 1
   },
   {
+   "export": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA Member"
   },
   {
    "create": 1,
    "delete": 1,
+   "email": 1,
    "export": 1,
+   "import": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA State Organization Employee",
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "export": 1,
-   "read": 1,
-   "report": 1,
-   "role": "LANDA Regional Water Body Management",
    "write": 1
   }
  ],
