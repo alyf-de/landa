@@ -48,7 +48,8 @@
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
-   "label": "Date"
+   "label": "Date",
+   "reqd": 1
   },
   {
    "allow_in_quick_entry": 1,
@@ -239,7 +240,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-09 17:58:45.715739",
+ "modified": "2022-03-09 18:06:01.207997",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Measure",
