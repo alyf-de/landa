@@ -6558,5 +6558,37 @@
   "parenttype": null,
   "source_text": "Price for Total Weight",
   "translated_text": "Preis Gesamtgewicht"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-09 18:10:03.114925",
+  "name": "2d77cad04f",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Stocking Measure",
+  "translated_text": "Besatzma\u00dfnahme"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-09 18:10:14.990575",
+  "name": "5bf35c0c85",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Stocking Target",
+  "translated_text": "Besatzplanung"
  }
 ]
