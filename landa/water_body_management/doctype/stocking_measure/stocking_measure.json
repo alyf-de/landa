@@ -155,7 +155,7 @@
    "fieldname": "weight",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Weight",
+   "label": "Weight in Kg",
    "reqd": 1
   },
   {
@@ -239,7 +239,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-09 15:21:20.840823",
+ "modified": "2022-03-09 17:58:45.715739",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Measure",
