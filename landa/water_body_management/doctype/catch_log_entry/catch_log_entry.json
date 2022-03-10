@@ -107,12 +107,12 @@
    "in_standard_filter": 1,
    "label": "Origin of Catch Log Entry",
    "options": "Verein\nRegionalverband",
-   "read_only": 1
+   "set_only_once": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-10 14:55:32.116960",
+ "modified": "2022-03-10 14:58:50.653662",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
