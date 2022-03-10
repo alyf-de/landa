@@ -32,7 +32,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-10 13:34:10.328654",
+ "modified": "2022-03-10 14:01:25.147695",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Type For Stocking",
@@ -47,6 +47,27 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Regional Water Body Management",
+   "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee",
    "share": 1,
    "write": 1
   }
