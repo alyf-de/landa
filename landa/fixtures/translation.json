@@ -6590,5 +6590,21 @@
   "parenttype": null,
   "source_text": "Stocking Target",
   "translated_text": "Besatzplanung"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-10 14:56:10.124900",
+  "name": "f4261d1128",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Origin of Catch Log Entry",
+  "translated_text": "Herkunft des Fangbucheintrags"
  }
 ]

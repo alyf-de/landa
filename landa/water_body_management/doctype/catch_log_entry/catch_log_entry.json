@@ -16,7 +16,9 @@
   "organization_name",
   "note",
   "section_break_7",
-  "fish_catches"
+  "fish_catches",
+  "section_break_12",
+  "origin_of_catch_log_entry"
  ],
  "fields": [
   {
@@ -94,11 +96,23 @@
    "fieldname": "note",
    "fieldtype": "Small Text",
    "label": "Note"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "origin_of_catch_log_entry",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Origin of Catch Log Entry",
+   "options": "Verein\nRegionalverband",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-20 23:49:57.914924",
+ "modified": "2022-03-10 14:55:32.116960",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
