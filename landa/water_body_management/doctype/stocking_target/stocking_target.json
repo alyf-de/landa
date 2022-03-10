@@ -178,12 +178,12 @@
    "label": "Additional Information"
   },
   {
-   "default": "Draft",
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "\nDraft\nFinished"
+   "options": "In Progress\nCompleted"
   },
   {
    "fieldname": "column_break_7",
@@ -232,7 +232,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-09 17:58:18.631760",
+ "modified": "2022-03-10 13:18:00.463145",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",

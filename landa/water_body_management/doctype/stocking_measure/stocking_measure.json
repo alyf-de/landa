@@ -85,12 +85,11 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "Draft",
    "fieldname": "status",
    "fieldtype": "Select",
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "\nDraft\nFinished"
+   "options": "In Progress\nCompleted"
   },
   {
    "fieldname": "additional_information",
@@ -240,7 +239,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-09 18:06:01.207997",
+ "modified": "2022-03-10 13:19:19.986302",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Measure",
