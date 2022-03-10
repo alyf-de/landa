@@ -45,9 +45,12 @@
    "label": "Masters"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Date",
    "reqd": 1
   },
@@ -239,7 +242,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-10 13:19:19.986302",
+ "modified": "2022-03-10 13:21:50.212811",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Measure",
