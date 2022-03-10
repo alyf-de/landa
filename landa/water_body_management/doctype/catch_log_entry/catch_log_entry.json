@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "water_body",
+  "water_body_title",
   "fishing_area",
   "year",
   "number_of_catch_log_books",
@@ -18,30 +19,34 @@
   "section_break_7",
   "fish_catches",
   "section_break_12",
-  "origin_of_catch_log_entry"
+  "origin_of_catch_log_entry",
+  "status"
  ],
  "fields": [
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "water_body",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Water Body",
    "options": "Water Body",
    "reqd": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "2020",
    "fieldname": "year",
    "fieldtype": "Select",
-   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Year",
    "options": "\n2019\n2020\n2021\n2022\n2023",
    "reqd": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "fishing_days",
    "fieldtype": "Int",
-   "in_list_view": 1,
    "label": "Fishing Days",
    "reqd": 1
   },
@@ -50,10 +55,12 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_in_quick_entry": 1,
    "fetch_if_empty": 1,
    "fieldname": "organization",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Organization",
    "options": "Organization",
    "remember_last_selected_value": 1,
@@ -71,6 +78,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "fish_catches",
    "fieldtype": "Table",
    "label": "Fish Catches",
@@ -81,11 +89,13 @@
    "fetch_from": "water_body.fishing_area",
    "fieldname": "fishing_area",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Fishing Area",
    "options": "Fishing Area",
    "read_only": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "1",
    "fieldname": "number_of_catch_log_books",
    "fieldtype": "Int",
@@ -93,6 +103,7 @@
    "reqd": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "note",
    "fieldtype": "Small Text",
    "label": "Note"
@@ -108,11 +119,27 @@
    "label": "Origin of Catch Log Entry",
    "options": "Verein\nRegionalverband",
    "set_only_once": 1
+  },
+  {
+   "fetch_from": "water_body.title",
+   "fieldname": "water_body_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Water Body Title"
+  },
+  {
+   "default": "In Progress",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "In Progress\nFiled\nCompleted"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-10 14:58:50.653662",
+ "modified": "2022-03-10 15:36:28.140626",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
