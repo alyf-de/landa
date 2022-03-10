@@ -10,7 +10,6 @@
   "external_contact_info_text",
   "section_break_master_data",
   "external_contact_heading",
-  "external_contact",
   "first_name",
   "last_name",
   "institution_or_company_section",
@@ -179,15 +178,6 @@
    "in_standard_filter": 1,
    "label": "Position Description",
    "search_index": 1
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "fieldname": "external_contact",
-   "fieldtype": "Link",
-   "in_standard_filter": 1,
-   "label": "External Contact",
-   "options": "External Contact",
-   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -197,7 +187,7 @@
    "link_fieldname": "external_contact"
   }
  ],
- "modified": "2022-02-18 16:50:31.096278",
+ "modified": "2022-03-10 14:25:16.672698",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Contact",
@@ -212,6 +202,43 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Regional Water Body Management",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Regional Organization Management",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee",
    "share": 1,
    "write": 1
   }
