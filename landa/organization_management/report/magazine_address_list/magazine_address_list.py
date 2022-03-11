@@ -121,8 +121,16 @@ class Address(object):
 		permits_df = remove_duplicate_indices(
 			permits_df, sort_by="year"
 		)
-		permits_df["permit_active"]=[int(int(datetime.today().strftime('%Y'))-int(y)<1) for y in permits_df["year"].values]
+
 		
+		this_year=int(datetime.today().strftime('%Y'))
+		this_month=int(datetime.today().strftime('%m'))
+		# if this month is January to June: members need a permit for this year or last year:
+		if this_month<7:
+			permits_df["permit_active"]=[int((this_year-int(y))<=1) for y in permits_df["year"].values]
+		# if this month is July to December: members need a permit for this year:
+		else:
+			permits_df["permit_active"]=[int(this_year==int(y)) for y in permits_df["year"].values]
 		# merge all dataframes from different doctypes
 		data = pd.concat([member_df, permits_df, addresses_df], axis=1).reindex(member_df.index)
 		data["magazine_active"]=data["permit_active"]*data["magazine_recipient"]
