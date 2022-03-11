@@ -24,9 +24,9 @@ class Address(object):
 		add_key_from_filters("organization", self.filter_member)
 
 		if "only_active_magazine" in filters:
-			self.only_active_magazine=filters["only_active_magazine"]
+			self.only_active_magazine = filters["only_active_magazine"]
 		else:
-			self.only_active_magazine=False
+			self.only_active_magazine = False
 
 	def run(self):
 		return self.get_columns(), self.get_data()
@@ -67,7 +67,7 @@ class Address(object):
 			"last_name",
 			"organization",
 			"organization_name",
-			"magazine_recipient"
+			"magazine_recipient",
 		]
 		members = frappe.db.get_list(
 			"LANDA Member",
@@ -111,36 +111,41 @@ class Address(object):
 		addresses_df.drop("is_primary_address", axis=1, inplace=True)
 
 		# load addresses from db
-		permit_fields = ["year","member","docstatus"]
+		permit_fields = ["year", "member", "docstatus"]
 		permits = frappe.get_list(
 			"Yearly Fishing Permit",
-			filters=[['Yearly Fishing Permit', 'member', 'in', get_member_filter(members)]],
+			filters=[
+				["Yearly Fishing Permit", "member", "in", get_member_filter(members)]
+			],
 			fields=permit_fields,
 			as_list=True,
 		)
 		# convert to pandas dataframe
 		permits_df = frappe_tuple_to_pandas_df(permits, permit_fields)
-		permits_df=permits_df[permits_df['docstatus']==1]
+		permits_df = permits_df[permits_df["docstatus"] == 1]
 		# remove column 'status'
 		permits_df.drop("docstatus", axis=1, inplace=True)
-		permits_df = remove_duplicate_indices(
-			permits_df, sort_by="year"
-		)
+		permits_df = remove_duplicate_indices(permits_df, sort_by="year")
 
-		
-		this_year=int(datetime.today().strftime('%Y'))
-		this_month=int(datetime.today().strftime('%m'))
+		this_year = int(datetime.today().strftime("%Y"))
+		this_month = int(datetime.today().strftime("%m"))
 		# if this month is January to June: members need a permit for this year or last year:
-		if this_month<7:
-			permits_df["permit_active"]=[int((this_year-int(y))<=1) for y in permits_df["year"].values]
+		if this_month < 7:
+			permits_df["permit_active"] = [
+				int((this_year - int(y)) <= 1) for y in permits_df["year"].values
+			]
 		# if this month is July to December: members need a permit for this year:
 		else:
-			permits_df["permit_active"]=[int(this_year==int(y)) for y in permits_df["year"].values]
+			permits_df["permit_active"] = [
+				int(this_year == int(y)) for y in permits_df["year"].values
+			]
 		# merge all dataframes from different doctypes
-		data = pd.concat([member_df, permits_df, addresses_df], axis=1).reindex(member_df.index)
-		data["magazine_active"]=data["permit_active"]*data["magazine_recipient"]
+		data = pd.concat([member_df, permits_df, addresses_df], axis=1).reindex(
+			member_df.index
+		)
+		data["magazine_active"] = data["permit_active"] * data["magazine_recipient"]
 		if self.only_active_magazine:
-			data=data[data["magazine_active"]==1]
+			data = data[data["magazine_active"] == 1]
 		# replace NaNs with empty strings
 		data.fillna("", inplace=True)
 		# convert data back to tuple
@@ -200,7 +205,7 @@ class Address(object):
 				"fieldname": "magazine_active",
 				"fieldtype": "Check",
 				"label": "Magazine Is Active",
-			}
+			},
 		]
 
 
