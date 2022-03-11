@@ -108,7 +108,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Fishing Area",
-   "options": "Fishing Area"
+   "options": "Fishing Area",
+   "permlevel": 1
   },
   {
    "fieldname": "section_break_3",
@@ -262,7 +263,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2022-01-07 02:36:35.372283",
+ "modified": "2022-03-11 15:02:35.352043",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
@@ -283,14 +284,20 @@
    "write": 1
   },
   {
-   "read": 1,
-   "role": "LANDA Member"
-  },
-  {
    "export": 1,
    "read": 1,
    "report": 1,
-   "role": "LANDA State Organization Employee"
+   "role": "LANDA Member"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "import": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee",
+   "write": 1
   },
   {
    "create": 1,
@@ -306,6 +313,44 @@
    "read": 1,
    "report": 1,
    "role": "LANDA Local Organization Management",
+   "write": 1
+  },
+  {
+   "export": 1,
+   "permlevel": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Member"
+  },
+  {
+   "export": 1,
+   "permlevel": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Local Organization Management"
+  },
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Regional Organization Management",
+   "share": 1,
    "write": 1
   }
  ],
