@@ -5886,5 +5886,21 @@
   "parenttype": null,
   "source_text": "Permit Is Active",
   "translated_text": "Erlaubnisschein aktiv"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-11 17:35:44.473798",
+  "name": "1416070c13",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Show Only Current Recipients",
+  "translated_text": "Nur aktuelle Zeitschriftenempf\u00e4nger anzeigen"
  }
 ]

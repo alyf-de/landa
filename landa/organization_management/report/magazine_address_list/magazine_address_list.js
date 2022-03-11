@@ -26,6 +26,12 @@ frappe.query_reports["Magazine Address List"] = {
             "mandatory": 0,
             "wildcard_filter": 0,
             "default": frappe.defaults.get_user_default("Organization"),
+        },
+        {
+            "fieldname": "only_active_magazine",
+            "fieldtype": "Check",
+            "label": __("Show Only Current Recipients"),
+            "default": 1,
         }
     ]
 };

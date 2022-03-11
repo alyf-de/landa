@@ -23,6 +23,11 @@ class Address(object):
 		self.filter_member = self.filter_name.copy()
 		add_key_from_filters("organization", self.filter_member)
 
+		if "only_active_magazine" in filters:
+			self.only_active_magazine=filters["only_active_magazine"]
+		else:
+			self.only_active_magazine=False
+
 	def run(self):
 		return self.get_columns(), self.get_data()
 
@@ -134,6 +139,8 @@ class Address(object):
 		# merge all dataframes from different doctypes
 		data = pd.concat([member_df, permits_df, addresses_df], axis=1).reindex(member_df.index)
 		data["magazine_active"]=data["permit_active"]*data["magazine_recipient"]
+		if self.only_active_magazine:
+			data=data[data["magazine_active"]==1]
 		# replace NaNs with empty strings
 		data.fillna("", inplace=True)
 		# convert data back to tuple
