@@ -22,6 +22,10 @@ frappe.ui.form.on('Organization', {
             frm.page.add_menu_item(__('Update Naming Series'), () => frm.trigger('update_naming_series'));
         }
     },
+    onload: function (frm) {
+        frm.set_query("public_address", erpnext.queries.address_query);
+        frm.set_query("public_contact", erpnext.queries.contact_query);
+    },
     update_naming_series: function(frm) {
         frm.call('get_series_current').then((r) => {
             const current = r.message;

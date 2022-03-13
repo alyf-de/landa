@@ -16,7 +16,6 @@
   "section_break_3",
   "organization_details",
   "fishing_area",
-  "location",
   "website",
   "register_number",
   "is_charitable",
@@ -30,6 +29,11 @@
   "address_may_be_listed_on_a_public_website",
   "email_address_may_be_listed_on_a_public_website",
   "phone_number_may_be_listed_on_a_public_website",
+  "section_break_23",
+  "html_24",
+  "location",
+  "public_contact",
+  "public_address",
   "section_break_15",
   "is_group",
   "lft",
@@ -96,10 +100,8 @@
    "set_only_once": 1
   },
   {
-   "allow_in_quick_entry": 1,
    "fieldname": "location",
-   "fieldtype": "Data",
-   "in_list_view": 1,
+   "fieldtype": "Geolocation",
    "label": "Location"
   },
   {
@@ -221,6 +223,28 @@
    "fieldname": "master_data_section",
    "fieldtype": "Section Break",
    "label": "Master Data"
+  },
+  {
+   "fieldname": "section_break_23",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "html_24",
+   "fieldtype": "HTML",
+   "options": "<p>Standort, Adresse und Kontaktdaten, die in diesem Abschnitt angegeben werden, k\u00f6nnen auf den Webseiten des LVSA, der Regionalverb\u00e4nde und Vereine <strong>ver\u00f6ffentlicht</strong> werden.</p>",
+   "read_only": 1
+  },
+  {
+   "fieldname": "public_contact",
+   "fieldtype": "Link",
+   "label": "Public Contact",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "public_address",
+   "fieldtype": "Link",
+   "label": "Public Address",
+   "options": "Address"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -262,7 +286,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2022-01-07 02:36:35.372283",
+ "modified": "2022-03-13 21:40:23.066666",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
