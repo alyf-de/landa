@@ -22,11 +22,12 @@
    "fieldname": "organization",
    "fieldtype": "Link",
    "label": "Organization",
-   "options": "Organization"
+   "options": "Organization",
+   "reqd": 1
   }
  ],
  "links": [],
- "modified": "2022-03-15 17:06:07.033075",
+ "modified": "2022-03-15 17:09:41.758716",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Function",
@@ -81,7 +82,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1
