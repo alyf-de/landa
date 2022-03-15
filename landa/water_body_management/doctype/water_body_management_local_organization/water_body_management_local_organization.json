@@ -8,13 +8,14 @@
  "engine": "InnoDB",
  "field_order": [
   "water_body",
-  "water_body_title",
-  "fishing_area",
   "organization",
+  "column_break_4",
+  "water_body_title",
   "organization_name",
-  "start_date",
-  "end_date",
-  "status",
+  "fishing_area",
+  "regional_organization",
+  "disabled",
+  "members_section",
   "water_body_local_contact_table"
  ],
  "fields": [
@@ -30,6 +31,7 @@
   },
   {
    "allow_in_quick_entry": 1,
+   "depends_on": "regional_organization",
    "fieldname": "organization",
    "fieldtype": "Link",
    "in_preview": 1,
@@ -39,29 +41,7 @@
    "reqd": 1
   },
   {
-   "allow_in_quick_entry": 1,
-   "default": "Today",
-   "fieldname": "start_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Start Date"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "fieldname": "end_date",
-   "fieldtype": "Date",
-   "label": "End Date"
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "hidden": 1,
-   "in_list_view": 1,
-   "label": "Status",
-   "options": "Planned\nActive\nInactive",
-   "read_only": 1
-  },
-  {
+   "depends_on": "organization",
    "fieldname": "water_body_local_contact_table",
    "fieldtype": "Table",
    "label": "Water Body Local Contact Table",
@@ -93,11 +73,35 @@
    "in_standard_filter": 1,
    "label": "Organization Name",
    "read_only": 1
+  },
+  {
+   "fetch_from": "fishing_area.organization",
+   "fieldname": "regional_organization",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Regional Organization",
+   "options": "Organization",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.docstatus === 0;\n",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "members_section",
+   "fieldtype": "Section Break",
+   "label": "Members"
   }
  ],
- "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-03 13:08:10.053954",
+ "modified": "2022-03-15 18:42:40.839065",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management Local Organization",
@@ -147,8 +151,8 @@
    "role": "LANDA Local Water Body Management"
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "water_body_title",
  "track_changes": 1
 }
