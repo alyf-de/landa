@@ -5,3 +5,4 @@ landa.patches.validate_address_and_contact
 execute:frappe.delete_doc_if_exists("Custom Field", "Letter Head-organization")
 execute:frappe.set_value("Stock Settings", "Stock Settings", "item_naming_by", "Naming Series")
 # landa.patches.rename_addresses # takes too much time
+execute:from landa.install import setup_uoms; setup_uoms() # 1
