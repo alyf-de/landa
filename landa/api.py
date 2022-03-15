@@ -15,6 +15,9 @@ def organization(id: str = None) -> List[Dict]:
 		fields=[
 			"name as id",
 			"organization_name",
+			"fishing_area",
+			"website",
+			"register_number",
 			"location",
 			"public_contact",
 			"public_address",
@@ -47,9 +50,9 @@ def organization(id: str = None) -> List[Dict]:
 				fieldname=["address_line1", "address_line2", "pincode", "city"],
 				as_dict=True,
 			)
-		
+
 		location = organization.pop("location")
 		if location:
 			organization["geojson"] = json.loads(location)
-	
+
 	return organizations
