@@ -3,11 +3,15 @@
 
 import frappe
 import pandas as pd
-
+from landa.organization_management.doctype.member_function_category.member_function_category import get_organization_at_level
 
 class WaterBodyManagement(object):
 	def __init__(self, filters):
-		self.filters = filters
+		self.filters = filters.copy()
+
+		if frappe.session.user and frappe.session.user != "Administrator":
+			member_name, organization = frappe.get_value("LANDA Member", filters={"user": frappe.session.user}, fieldname=["name", "organization"])
+			self.filters["regional_organization"] = get_organization_at_level(member_name, 1, organization)
 
 	def run(self):
 		return self.get_columns(), self.get_data()
@@ -33,7 +37,7 @@ class WaterBodyManagement(object):
 			return link_filters
 
 		# load water body management from db
-		wbm = frappe.get_list(
+		wbm = frappe.get_all(
 			"Water Body Management Local Organization",
 			fields=[
 				"water_body",

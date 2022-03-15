@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "Extended Information in Footer",
- "modified": "2022-03-15 19:41:01.505233",
+ "modified": "2022-03-15 20:00:13.900544",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Members in Water Body Management",
@@ -22,6 +22,12 @@
  "roles": [
   {
    "role": "System Manager"
+  },
+  {
+   "role": "LANDA Local Water Body Management"
+  },
+  {
+   "role": "LANDA Regional Water Body Management"
   }
  ]
 }
