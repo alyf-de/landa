@@ -6,5 +6,5 @@
 from frappe.model.document import Document
 
 
-class ExternalFunction(Document):
+class ExternalContactFunction(Document):
 	pass
