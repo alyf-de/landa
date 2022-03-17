@@ -15,11 +15,11 @@
   "status",
   "additional_information",
   "column_break_7",
-  "water_body",
-  "water_body_size",
   "organization",
+  "water_body",
   "column_break_8",
   "fishing_area",
+  "water_body_size",
   "water_body_size_unit",
   "amount_section",
   "weight",
@@ -112,6 +112,7 @@
   },
   {
    "allow_in_quick_entry": 1,
+   "depends_on": "organization",
    "fieldname": "water_body",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -230,12 +231,11 @@
    "label": "Masters"
   },
   {
-   "fetch_from": "water_body.organization",
    "fieldname": "organization",
    "fieldtype": "Link",
    "label": "Organization",
    "options": "Organization",
-   "read_only": 1
+   "reqd": 1
   },
   {
    "default": "EUR",
@@ -248,7 +248,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-17 21:15:49.109491",
+ "modified": "2022-03-18 00:25:31.206259",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",
