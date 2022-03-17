@@ -28,29 +28,30 @@ fixtures = [
 					"nutzungshinweise",
 					"allgemeine-datenschutzinformation",
 					"kurzzusammenfassung-zum-thema-datenschutz-für-mitglieder",
-                    "hilfe",
+					"hilfe",
 				],
 			]
 		],
 	},
 	"Contact Us Settings",
-    "About Us Settings",
+	"About Us Settings",
 	"Module Profile",
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
 	{"dt": "Organization", "filters": [["name", "in", ["LV", "AVE", "AVS", "AVL"]]]},
 	"Member Function Category",
 	"Fishing Area",
-	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
+	{
+		"dt": "Variant Field",
+		"filters": [["field_name", "in", ["description", "item_tax_template"]]],
+	},
 	"Translation",
 	{
 		"doctype": "Letter Head",
-		"filters":	{
-			"name": ["in", "Extended Information in Footer"]
-		}
+		"filters": {"name": ["in", "Extended Information in Footer"]},
 	},
 	"Salutation",
 	"Gender",
-   {"dt": "Note", "filters": {"name": "Datenschutz Hinweise"}},
+	{"dt": "Note", "filters": {"name": "Datenschutz Hinweise"}},
 ]
 
 
