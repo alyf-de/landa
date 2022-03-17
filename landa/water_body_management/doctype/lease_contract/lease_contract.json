@@ -9,22 +9,29 @@
   "info_text_section",
   "lease_contract_info_text",
   "contract_data_section",
+  "organization",
   "water_body",
+  "additional_information",
+  "column_break_6",
+  "organization_name",
   "water_body_title",
   "fishing_area",
-  "organization",
-  "organization_name",
+  "section_break_10",
   "start_date",
-  "end_date",
   "status",
-  "rent",
-  "additional_information",
+  "column_break_13",
+  "end_date",
+  "section_break_15",
+  "rent_per_month",
+  "column_break_18",
+  "currency",
   "landlord_section",
   "landlord",
+  "additional_information_about_landlord",
+  "column_break_22",
   "first_name",
   "last_name",
-  "institution_or_company_name",
-  "additional_information_about_landlord"
+  "institution_or_company_name"
  ],
  "fields": [
   {
@@ -41,10 +48,11 @@
   {
    "fieldname": "contract_data_section",
    "fieldtype": "Section Break",
-   "label": "Contract Data"
+   "label": "Regional Organization and Water Body"
   },
   {
    "allow_in_quick_entry": 1,
+   "depends_on": "organization",
    "fieldname": "water_body",
    "fieldtype": "Link",
    "in_preview": 1,
@@ -86,17 +94,12 @@
    "read_only": 1
   },
   {
-   "allow_in_quick_entry": 1,
-   "fieldname": "rent",
-   "fieldtype": "Float",
-   "label": "Rent"
-  },
-  {
    "fieldname": "additional_information",
    "fieldtype": "Small Text",
    "label": "Additional Information"
   },
   {
+   "collapsible": 1,
    "fieldname": "landlord_section",
    "fieldtype": "Section Break",
    "label": "Landlord"
@@ -157,10 +160,53 @@
    "in_list_view": 1,
    "label": "Water Body Title",
    "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "rent_per_month",
+   "fieldtype": "Currency",
+   "label": "Rent per Month",
+   "options": "currency"
+  },
+  {
+   "default": "EUR",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break",
+   "label": "Status and Duration"
+  },
+  {
+   "fieldname": "column_break_13",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_15",
+   "fieldtype": "Section Break",
+   "label": "Rent"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
   }
  ],
  "links": [],
- "modified": "2022-03-03 13:12:15.482708",
+ "modified": "2022-03-17 18:04:36.118215",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Lease Contract",
@@ -204,8 +250,8 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "water_body_title",
  "track_changes": 1
 }

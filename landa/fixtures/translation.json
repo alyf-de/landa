@@ -6414,5 +6414,53 @@
   "parenttype": null,
   "source_text": "Contract Data",
   "translated_text": "Vertragsdaten"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-17 18:02:54.798092",
+  "name": "a635c65acb",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Rent per Month",
+  "translated_text": "Pachtzins pro Monat"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-17 18:03:13.636126",
+  "name": "ad4483d328",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Status and Duration",
+  "translated_text": "Status und Dauer"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-17 18:04:49.141340",
+  "name": "ec813c9cf9",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Regional Organization and Water Body",
+  "translated_text": "Regionalverband und Gew\u00e4sser"
  }
 ]
