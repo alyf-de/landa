@@ -6,33 +6,11 @@
  "disabled": 0,
  "docstatus": 0,
  "doctype": "Report",
- "filters": [
-  {
-   "fieldname": "water_body",
-   "fieldtype": "Link",
-   "label": "Water Body",
-   "mandatory": 0,
-   "wildcard_filter": 0
-  },
-  {
-   "fieldname": "organization",
-   "fieldtype": "Link",
-   "label": "Organization",
-   "mandatory": 0,
-   "wildcard_filter": 0
-  },
-  {
-   "fieldname": "fishing_area",
-   "fieldtype": "Link",
-   "label": "Fishing Area",
-   "mandatory": 0,
-   "wildcard_filter": 0
-  }
- ],
+ "filters": [],
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "Extended Information in Footer",
- "modified": "2022-02-25 13:25:19.929397",
+ "modified": "2022-03-15 20:00:13.900544",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Members in Water Body Management",
@@ -44,6 +22,12 @@
  "roles": [
   {
    "role": "System Manager"
+  },
+  {
+   "role": "LANDA Local Water Body Management"
+  },
+  {
+   "role": "LANDA Regional Water Body Management"
   }
  ]
 }

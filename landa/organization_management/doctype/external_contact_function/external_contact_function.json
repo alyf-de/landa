@@ -1,0 +1,30 @@
+{
+ "actions": [],
+ "creation": "2022-02-18 10:53:23.889615",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "external_function"
+ ],
+ "fields": [
+  {
+   "fieldname": "external_function",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "External Function",
+   "options": "External Function",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2022-03-15 16:57:26.688657",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "External Contact Function",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

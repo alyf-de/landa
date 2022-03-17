@@ -9,9 +9,6 @@ from frappe.contacts.address_and_contact import load_address_and_contact
 from frappe.contacts.address_and_contact import delete_contact_and_address
 from frappe.model.naming import make_autoname
 from frappe.model.naming import revert_series_if_last
-from landa.organization_management.doctype.external_function.external_function import (
-	apply_active_external_functions,
-)
 
 
 class ExternalContact(Document):
@@ -30,9 +27,6 @@ class ExternalContact(Document):
 
 	def onload(self):
 		load_address_and_contact(self)
-
-	def on_update(self):
-		apply_active_external_functions({"external_contact": self.name})
 
 	def on_trash(self):
 		delete_contact_and_address(self.doctype, self.name)

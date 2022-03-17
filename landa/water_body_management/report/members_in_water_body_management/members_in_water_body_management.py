@@ -3,23 +3,20 @@
 
 import frappe
 import pandas as pd
-
+from landa.organization_management.doctype.member_function_category.member_function_category import get_organization_at_level
 
 class WaterBodyManagement(object):
 	def __init__(self, filters):
-		self.filters = filters
+		self.filters = filters.copy()
+
+		if frappe.session.user and frappe.session.user != "Administrator":
+			member_name, organization = frappe.get_value("LANDA Member", filters={"user": frappe.session.user}, fieldname=["name", "organization"])
+			self.filters["regional_organization"] = get_organization_at_level(member_name, 1, organization)
 
 	def run(self):
 		return self.get_columns(), self.get_data()
 
 	def get_data(self):
-		def frappe_tuple_to_pandas_df(frappe_tuple, fields):
-			# convert to pandas dataframe
-			df = pd.DataFrame(frappe_tuple, columns=fields)
-			# set by member ID as dataframe index
-			df.set_index("member", inplace=True)
-			return df
-
 		def remove_duplicate_indices(df, index="member", sort_by=None, keep="last"):
 			"""Remove rows in dataframe with duplicate indeces.
 			If sort_by is specified the dataframe is firsted sorted by these columns keeping the entry specified in keep, e.g. 'last'"""
@@ -31,27 +28,16 @@ class WaterBodyManagement(object):
 				.set_index(index)
 			)
 
-		def get_link_filters(frappe_tuple, index=0):
+		def get_link_filters(frappe_tuple, index="member"):
 			member_ids = [m[index] for m in frappe_tuple]  # list of member names (ID)
 			link_filters = [
 				["Dynamic Link", "link_doctype", "=", "LANDA Member"],
 				["Dynamic Link", "link_name", "in", member_ids],
 			]
-			return member_ids, link_filters
+			return link_filters
 
 		# load water body management from db
-		wbm_fields = [
-			"water_body",
-			"water_body_title",
-			"fishing_area",
-			"organization",
-			"organization_name",
-			"status",
-			"member",
-			"first_name",
-			"last_name",
-		]
-		wbm = frappe.get_list(
+		wbm = frappe.get_all(
 			"Water Body Management Local Organization",
 			fields=[
 				"water_body",
@@ -60,36 +46,35 @@ class WaterBodyManagement(object):
 				"organization",
 				"organization_name",
 				"status",
-				"`tabWater Body Local Contact Table`.landa_member",
+				"`tabWater Body Local Contact Table`.landa_member as member",
 				"`tabWater Body Local Contact Table`.first_name",
 				"`tabWater Body Local Contact Table`.last_name",
 			],
-			filters=self.filters,
-			as_list=True,
+			filters={"disabled": 0, **self.filters},
 		)
 
 		# convert to pandas dataframe
-		wbm_df = frappe_tuple_to_pandas_df(wbm, wbm_fields)
-
-		# drop all lines in dataframe that are not active
-		wbm_df = wbm_df[wbm_df["status"] == "Active"]
-		wbm_df.drop("status", axis=1, inplace=True)
+		wbm_df = pd.DataFrame.from_records(wbm, index="member")
 
 		# define the labels of db entries that are supposed to be loaded
 		link_field_label = "`tabDynamic Link`.link_name as member"
-		member_ids, link_filters = get_link_filters(wbm, index=3)
+		link_filters = get_link_filters(wbm)
 		reindex_df = wbm_df
 
 		# load addresses from db
-		address_fields = ["address_line1", "pincode", "city", "is_primary_address"]
-		addresses = frappe.get_list(
+		addresses = frappe.get_all(
 			"Address",
 			filters=link_filters,
-			fields=address_fields + [link_field_label],
-			as_list=True,
+			fields=[
+				"address_line1",
+				"pincode",
+				"city",
+				"is_primary_address",
+				link_field_label,
+			],
 		)
 		# convert to pandas dataframe
-		addresses_df = frappe_tuple_to_pandas_df(addresses, address_fields + ["member"])
+		addresses_df = pd.DataFrame.from_records(addresses, index="member")
 		# remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
 		addresses_df = remove_duplicate_indices(
 			addresses_df, sort_by="is_primary_address"
@@ -109,15 +94,13 @@ class WaterBodyManagement(object):
 		addresses_df.drop("is_primary_address", axis=1, inplace=True)
 
 		# load contacts from db that are linked to the member fucntions loaded before
-		contact_fields = ["email_id", "phone", "mobile_no"]
-		contacts = frappe.get_list(
+		contacts = frappe.get_all(
 			"Contact",
 			filters=link_filters,
-			fields=contact_fields + [link_field_label],
-			as_list=True,
+			fields=["email_id", "phone", "mobile_no", link_field_label],
 		)
 		# convert to pandas dataframe
-		contacts_df = frappe_tuple_to_pandas_df(contacts, contact_fields + ["member"])
+		contacts_df = pd.DataFrame.from_records(contacts, index="member")
 		contacts_df = remove_duplicate_indices(contacts_df)
 
 		# merge all dataframes from different doctypes and load data of all members without member functions only if necessary
@@ -168,10 +151,20 @@ class WaterBodyManagement(object):
 				"label": "Organization",
 			},
 			{
+				"fieldname": "organization_name",
+				"fieldtype": "Data",
+				"label": "Organization Name",
+			},
+			{
 				"fieldname": "water_body",
 				"fieldtype": "Link",
 				"label": "Water Body",
 				"options": "Water Body",
+			},
+			{
+				"fieldname": "water_body_name",
+				"fieldtype": "Data",
+				"label": "Water Body Name",
 			},
 			{
 				"fieldname": "primary_email_address",
