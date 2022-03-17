@@ -20,7 +20,8 @@
   "fish_catches",
   "section_break_12",
   "origin_of_catch_log_entry",
-  "status"
+  "workflow_state",
+  "amended_from"
  ],
  "fields": [
   {
@@ -129,39 +130,63 @@
   },
   {
    "default": "In Progress",
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Status",
-   "options": "In Progress\nFiled\nCompleted"
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Workflow State",
+   "no_copy": 1,
+   "options": "Workflow State"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Catch Log Entry",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2022-03-10 15:36:28.140626",
+ "modified": "2022-03-17 13:10:53.992601",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
    "export": 1,
+   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
    "export": 1,
+   "import": 1,
+   "print": 1,
    "read": 1,
    "report": 1,
-   "role": "LANDA State Organization Employee"
+   "role": "LANDA State Organization Employee",
+   "share": 1,
+   "submit": 1,
+   "write": 1
   },
   {
    "create": 1,
@@ -171,6 +196,7 @@
    "read": 1,
    "report": 1,
    "role": "LANDA Regional Organization Management",
+   "submit": 1,
    "write": 1
   },
   {
@@ -181,6 +207,7 @@
    "read": 1,
    "report": 1,
    "role": "LANDA Regional Water Body Management",
+   "submit": 1,
    "write": 1
   },
   {
