@@ -6,7 +6,7 @@ def after_install():
 	create_records_from_hooks()
 	disable_modes_of_payment()
 	add_session_defaults()
-	frappe.set_value("Stock Settings", "Stock Settings", "item_naming_by", "Naming Series")
+	setup_uoms()
 
 
 def create_records_from_hooks():
@@ -42,3 +42,17 @@ def add_session_defaults():
 		})
 
 	settings.save()
+
+
+def setup_uoms():
+	# create new UOM "Anzahl"
+	if not frappe.db.exists("UOM", "Anzahl"):
+		doc = frappe.new_doc("UOM")
+		doc.uom_name = "Anzahl"
+		doc.insert()
+
+	# Disable all other UOMs
+	uom_table = frappe.qb.DocType("UOM")
+	frappe.qb.update(uom_table).set(uom_table.enabled, 0).where(
+		uom_table.uom_name != "Anzahl"
+	).run()
