@@ -35,7 +35,8 @@
   "company_of_supplier",
   "column_break_25",
   "price_per_kilogram",
-  "price_for_total_weight"
+  "price_for_total_weight",
+  "currency"
  ],
  "fields": [
   {
@@ -79,13 +80,15 @@
    "depends_on": "eval:doc.water_body_size>0",
    "fieldname": "weight_per_water_body_size",
    "fieldtype": "Float",
-   "label": "Weight per Water Body Size"
+   "label": "Weight per Water Body Size",
+   "read_only": 1
   },
   {
    "depends_on": "eval:doc.water_body_size>0",
    "fieldname": "unit_of_weight_per_water_body_size",
    "fieldtype": "Data",
-   "label": "Unit of Weight per Water Body Size"
+   "label": "Unit of Weight per Water Body Size",
+   "read_only": 1
   },
   {
    "allow_in_quick_entry": 1,
@@ -96,14 +99,16 @@
   {
    "depends_on": "eval:doc.water_body_size",
    "fieldname": "quantity_per_water_body_size",
-   "fieldtype": "Data",
-   "label": "Quantity per Water Body Size"
+   "fieldtype": "Float",
+   "label": "Quantity per Water Body Size",
+   "read_only": 1
   },
   {
    "depends_on": "eval:doc.water_body_size",
    "fieldname": "unit_of_quantity_per_water_body_size",
    "fieldtype": "Data",
-   "label": "Unit of Quantity per Water Body Size"
+   "label": "Unit of Quantity per Water Body Size",
+   "read_only": 1
   },
   {
    "allow_in_quick_entry": 1,
@@ -163,14 +168,17 @@
   {
    "allow_in_quick_entry": 1,
    "fieldname": "price_per_kilogram",
-   "fieldtype": "Float",
-   "label": "Price per Kilogram"
+   "fieldtype": "Currency",
+   "label": "Price per Kilogram",
+   "options": "currency"
   },
   {
    "depends_on": "weight",
    "fieldname": "price_for_total_weight",
-   "fieldtype": "Float",
-   "label": "Price for Total Weight"
+   "fieldtype": "Currency",
+   "label": "Price for Total Weight",
+   "options": "currency",
+   "read_only": 1
   },
   {
    "fieldname": "additional_information",
@@ -228,11 +236,19 @@
    "label": "Organization",
    "options": "Organization",
    "read_only": 1
+  },
+  {
+   "default": "EUR",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-10 13:55:35.721525",
+ "modified": "2022-03-17 21:15:49.109491",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",
