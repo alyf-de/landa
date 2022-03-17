@@ -2,6 +2,27 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Organization', {
+    onload: function(frm) {
+        frm.trigger('set_fishing_area_query')
+    },
+    set_fishing_area_query: function(frm) {
+        if (!frm.doc.parent_organization || frm.doc.parent_organization === 'LV') {
+            // If we're in a state or regional Organization, this doesn't make
+            // sense because Fishing Area depends on regional Organization.
+            return;
+        }
+
+        // allow only fishing areas within the own regional organization
+        frm.set_query('fishing_area', function(doc) {
+            return {
+                filters: {
+                    // own regional organization is determined by the first
+                    // three letters of the parent organization
+                    organization: doc.parent_organization.substring(0, 3),
+                },
+            };
+        });
+    },
     refresh: function(frm) {
         // Automatically add the backlink to Organization when a new Address or
         // Contact is added.
