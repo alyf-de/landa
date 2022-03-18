@@ -81,6 +81,7 @@
    "fieldname": "weight_per_water_body_size",
    "fieldtype": "Float",
    "label": "Weight per Water Body Size",
+   "no_copy": 1,
    "read_only": 1
   },
   {
@@ -88,6 +89,7 @@
    "fieldname": "unit_of_weight_per_water_body_size",
    "fieldtype": "Data",
    "label": "Unit of Weight per Water Body Size",
+   "no_copy": 1,
    "read_only": 1
   },
   {
@@ -101,6 +103,7 @@
    "fieldname": "quantity_per_water_body_size",
    "fieldtype": "Float",
    "label": "Quantity per Water Body Size",
+   "no_copy": 1,
    "read_only": 1
   },
   {
@@ -108,6 +111,7 @@
    "fieldname": "unit_of_quantity_per_water_body_size",
    "fieldtype": "Data",
    "label": "Unit of Quantity per Water Body Size",
+   "no_copy": 1,
    "read_only": 1
   },
   {
@@ -134,6 +138,7 @@
    "fieldname": "water_body_size",
    "fieldtype": "Float",
    "label": "Water Body Size",
+   "no_copy": 1,
    "read_only": 1
   },
   {
@@ -141,6 +146,7 @@
    "fieldname": "water_body_size_unit",
    "fieldtype": "Data",
    "label": "Water Body Size Unit",
+   "no_copy": 1,
    "read_only": 1
   },
   {
@@ -157,6 +163,7 @@
    "fieldname": "full_name_of_supplier",
    "fieldtype": "Data",
    "label": "Full Name of Supplier",
+   "no_copy": 1,
    "read_only": 1
   },
   {
@@ -164,6 +171,7 @@
    "fieldname": "company_of_supplier",
    "fieldtype": "Data",
    "label": "Company of Supplier",
+   "no_copy": 1,
    "read_only": 1
   },
   {
@@ -178,6 +186,7 @@
    "fieldname": "price_for_total_weight",
    "fieldtype": "Currency",
    "label": "Price for Total Weight",
+   "no_copy": 1,
    "options": "currency",
    "read_only": 1
   },
@@ -187,12 +196,14 @@
    "label": "Additional Information"
   },
   {
+   "default": "Draft",
    "fieldname": "status",
    "fieldtype": "Select",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "In Progress\nCompleted"
+   "no_copy": 1,
+   "options": "Draft\nIn Progress\nCompleted"
   },
   {
    "fieldname": "column_break_7",
@@ -248,7 +259,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-18 00:25:31.206259",
+ "modified": "2022-03-18 02:54:24.617766",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",
