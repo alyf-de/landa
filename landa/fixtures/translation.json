@@ -6462,5 +6462,37 @@
   "parenttype": null,
   "source_text": "Regional Organization and Water Body",
   "translated_text": "Regionalverband und Gew\u00e4sser"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-24 11:44:03.169682",
+  "name": "8c53e889d1",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Functions",
+  "translated_text": "Funktionen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-24 11:44:52.113253",
+  "name": "289080e19e",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "External Contact Function",
+  "translated_text": "Funktion von Externen Kontakten"
  }
 ]
