@@ -26,26 +26,8 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Catch Log Entry",
-   "link_to": "Catch Log Entry",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Water Body",
    "link_to": "Water Body",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Fishing Area",
-   "link_to": "Fishing Area",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -62,8 +44,8 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Water Body Special Provision",
-   "link_to": "Water Body Special Provision",
+   "label": "Fishing Area",
+   "link_to": "Fishing Area",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -71,66 +53,31 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Water Body Management Local Organization",
-   "link_to": "Water Body Management Local Organization",
+   "label": "Catch Log Entry",
+   "link_to": "Catch Log Entry",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   },
   {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Lease Contract",
-   "link_to": "Lease Contract",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Reports",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "My Reports",
-   "link_to": "Report",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Members in Water Body Management",
-   "link_to": "Members in Water Body Management",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Imports",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Data Import Tool",
-   "link_to": "Data Import",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  }
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Reports",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Card Break"
+   },
+   {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "My Reports",
+    "link_to": "Report",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+   }
  ],
- "modified": "2022-03-04 16:51:08.559105",
+ "modified": "2022-03-24 11:42:03.979165",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management",
