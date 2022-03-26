@@ -5854,5 +5854,21 @@
   "parenttype": null,
   "source_text": "Members with Member Functions",
   "translated_text": "Mitglieder mit Mitgliedsfunktion"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-26 16:05:49.915183",
+  "name": "d776879aad",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "User Enabled",
+  "translated_text": "Nutzer ist aktiviert"
  }
 ]
