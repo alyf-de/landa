@@ -55,7 +55,9 @@ class LANDAMember(Document):
 
 			return user.name
 
+		is_new_user = False
 		if not self.user and self.create_user_account:
+			is_new_user = True
 			self.user = create_user()
 			self.email = None
 			self.create_user_account = False
@@ -64,6 +66,11 @@ class LANDAMember(Document):
 		if self.user and self.has_value_changed('user'):
 			self.create_user_permissions()
 			apply_active_member_functions({"member": self.name})
+
+		if self.user and not is_new_user and self.has_value_changed("user_enabled"):
+			user = frappe.get_doc("User", self.user)
+			user.enabled = self.user_enabled
+			user.save(ignore_permissions=True)
 
 	def on_trash(self):
 		delete_contact_and_address(self.doctype, self.name)
