@@ -6670,5 +6670,37 @@
   "parenttype": null,
   "source_text": "Functions",
   "translated_text": "Funktionen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-28 13:59:23.402346",
+  "name": "e92420a0a0",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Filed",
+  "translated_text": "Eingereicht"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-28 13:59:50.186859",
+  "name": "dde2610f99",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "File this record",
+  "translated_text": "Eintrag einreichen"
  }
 ]
