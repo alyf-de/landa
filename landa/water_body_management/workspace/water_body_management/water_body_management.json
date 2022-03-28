@@ -107,6 +107,24 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "External Contact",
+   "link_to": "External Contact",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "External Function",
+   "link_to": "External Function",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Reports",
    "link_type": "DocType",
    "onboard": 0,
@@ -139,7 +157,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-03-09 18:09:22.464380",
+ "modified": "2022-03-24 11:57:37.526443",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management",
