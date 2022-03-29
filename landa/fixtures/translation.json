@@ -5902,5 +5902,21 @@
   "parenttype": null,
   "source_text": "Show Only Current Recipients",
   "translated_text": "Nur aktuelle Zeitschriftenempf\u00e4nger anzeigen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-29 16:19:48.850086",
+  "name": "7bbf67e974",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Magazine Address List",
+  "translated_text": "Fischer und Angler Adressverwaltung"
  }
 ]
