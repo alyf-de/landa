@@ -36,8 +36,8 @@
   {
    "fieldname": "year",
    "fieldtype": "Int",
-   "in_standard_filter": 1,
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Year",
    "reqd": 1
   },
@@ -139,18 +139,14 @@
    "read_only": 1
   }
  ],
- "index_web_pages_for_search": 0,
- "is_submittable": 1,
  "links": [],
- "modified": "2022-03-29 23:11:42.330348",
+ "modified": "2022-03-30 01:21:06.539137",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
  "owner": "Administrator",
  "permissions": [
   {
-   "amend": 1,
-   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -161,12 +157,9 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
-   "submit": 1,
    "write": 1
   },
   {
-   "amend": 1,
-   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -177,7 +170,6 @@
    "report": 1,
    "role": "LANDA State Organization Employee",
    "share": 1,
-   "submit": 1,
    "write": 1
   },
   {
@@ -188,7 +180,6 @@
    "read": 1,
    "report": 1,
    "role": "LANDA Regional Organization Management",
-   "submit": 1,
    "write": 1
   },
   {
@@ -199,7 +190,6 @@
    "read": 1,
    "report": 1,
    "role": "LANDA Regional Water Body Management",
-   "submit": 1,
    "write": 1
   },
   {
@@ -234,7 +224,6 @@
    "write": 1
   }
  ],
- "quick_entry": 0,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

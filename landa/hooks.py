@@ -51,9 +51,9 @@ fixtures = [
 	},
 	"Salutation",
 	"Gender",
-   {"dt": "Note", "filters": {"name": "Datenschutz Hinweise"}},
+	{"dt": "Note", "filters": {"name": "Datenschutz Hinweise"}},
 	"Workflow State",
-	"Workflow Action",
+	"Workflow Action Master",
 	"Workflow",
 ]
 
