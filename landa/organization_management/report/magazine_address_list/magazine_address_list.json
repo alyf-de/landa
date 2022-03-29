@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "Extended Information in Footer",
- "modified": "2022-03-15 17:20:31.352261",
+ "modified": "2022-03-29 16:23:17.172501",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Magazine Address List",
@@ -29,6 +29,9 @@
   },
   {
    "role": "LANDA Magazine Manager"
+  },
+  {
+   "role": "LANDA Regional Organization Management"
   }
  ]
 }
