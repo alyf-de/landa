@@ -98,15 +98,6 @@
    "type": "Card Break"
   },
   {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "My Reports",
-   "link_to": "Report",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
    "dependencies": "LANDA Member",
    "hidden": 0,
    "is_query_report": 1,
@@ -141,6 +132,15 @@
    "is_query_report": 1,
    "label": "Member Count",
    "link_to": "LANDA Member Count",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Magazine Address List",
+   "link_to": "Magazine Address List",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
@@ -218,7 +218,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-03-04 16:50:47.063411",
+ "modified": "2022-03-29 16:28:38.055396",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
