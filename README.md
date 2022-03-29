@@ -104,3 +104,13 @@ bench --site landa make-demo-accounts AVS-001
 9. Choose the required Item Tax Template. For example, "Umsatzsteuer 19%"
 10. Fill any additional fields (for example, "Description") that should get copied to all variants
 11. Click the "Save" button on the top right
+
+### API
+
+- `/api/method/landa.api.organization`
+
+    Return a list of organizations with ID, organization name, geojson, address and contact.
+
+    Parameters:
+
+    - `id` (optional): return only data of the organization with this ID.
