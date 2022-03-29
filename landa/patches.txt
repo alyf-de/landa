@@ -7,3 +7,4 @@ execute:frappe.set_value("Stock Settings", "Stock Settings", "item_naming_by", "
 # landa.patches.rename_addresses # takes too much time
 execute:from landa.install import setup_uoms; setup_uoms() # 1
 execute:from landa.utils import reset_workspace; reset_workspace("Organization Management")
+execute:frappe.db.sql("UPDATE `tabOrganization` SET location = NULL WHERE TRUE")
