@@ -167,7 +167,7 @@ welcome_email = "landa.utils.welcome_email"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/landa/css/landa.css"
-# app_include_js = "/assets/landa/js/landa.js"
+app_include_js = "/assets/landa/js/map_defaults.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/landa/css/landa.css"
@@ -190,7 +190,7 @@ doctype_js = {
 	"Item": "landa_stock/item/item.js",
 	"Payment Entry": "landa_sales/payment_entry/payment_entry.js",
 }
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_list_js = {"Report" : "scripts/report_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -228,9 +228,9 @@ after_migrate = "landa.migrate.after_migrate"
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
+permission_query_conditions = {
+	"Report": "landa.permissions.report_query",
+}
 
 # has_permission = {
 #	"Contact": "landa.address_and_contact.has_permission",

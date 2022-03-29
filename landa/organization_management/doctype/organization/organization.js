@@ -2,8 +2,11 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Organization', {
+    setup: function(frm) {
+        disable_map_controls(frm.fields_dict['location']);
+    },
     onload: function(frm) {
-        frm.trigger('set_fishing_area_query')
+        frm.trigger('set_fishing_area_query');
     },
     set_fishing_area_query: function(frm) {
         if (!frm.doc.parent_organization || frm.doc.parent_organization === 'LV') {
@@ -43,6 +46,10 @@ frappe.ui.form.on('Organization', {
             frm.page.add_menu_item(__('Update Naming Series'), () => frm.trigger('update_naming_series'));
         }
     },
+    onload: function (frm) {
+        frm.set_query("public_address", erpnext.queries.address_query);
+        frm.set_query("public_contact", erpnext.queries.contact_query);
+    },
     update_naming_series: function(frm) {
         frm.call('get_series_current').then((r) => {
             const current = r.message;
@@ -80,3 +87,23 @@ frappe.ui.form.on('Organization', {
         });
     },
 });
+
+
+function disable_map_controls(field) {
+    // disable all map controls except "marker"
+    field.map.removeControl(field.drawControl);
+    field.drawControl = new L.Control.Draw({
+        draw: {
+            polyline: false,
+            polygon: false,
+            circle: false,
+            circlemarker: false,
+            rectangle: false,
+        },
+        edit: {
+            featureGroup: field.editableLayers,
+            edit: false
+        }
+    });
+    field.map.addControl(field.drawControl);
+}
