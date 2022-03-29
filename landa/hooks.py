@@ -28,30 +28,31 @@ fixtures = [
 					"nutzungshinweise",
 					"allgemeine-datenschutzinformation",
 					"kurzzusammenfassung-zum-thema-datenschutz-für-mitglieder",
-                    "hilfe",
+					"hilfe",
 				],
 			]
 		],
 	},
 	"Contact Us Settings",
-    "About Us Settings",
+	"About Us Settings",
 	"Module Profile",
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
 	{"dt": "Organization", "filters": [["name", "in", ["LV", "AVE", "AVS", "AVL"]]]},
 	"Member Function Category",
 	"Fish Species",
 	"Fishing Area",
-	{"dt": "Variant Field", "filters": [["field_name", "in", ["description", "item_tax_template"]]]},
+	{
+		"dt": "Variant Field",
+		"filters": [["field_name", "in", ["description", "item_tax_template"]]],
+	},
 	"Translation",
 	{
 		"doctype": "Letter Head",
-		"filters":	{
-			"name": ["in", "Extended Information in Footer"]
-		}
+		"filters": {"name": ["in", "Extended Information in Footer"]},
 	},
 	"Salutation",
 	"Gender",
-   {"dt": "Note", "filters": {"name": "Datenschutz Hinweise"}},
+	{"dt": "Note", "filters": {"name": "Datenschutz Hinweise"}},
 ]
 
 
@@ -190,7 +191,7 @@ doctype_js = {
 	"Item": "landa_stock/item/item.js",
 	"Payment Entry": "landa_sales/payment_entry/payment_entry.js",
 }
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_list_js = {"Report" : "scripts/report_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -228,9 +229,9 @@ after_migrate = "landa.migrate.after_migrate"
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
+permission_query_conditions = {
+	"Report": "landa.permissions.report_query",
+}
 
 # has_permission = {
 #	"Contact": "landa.address_and_contact.has_permission",

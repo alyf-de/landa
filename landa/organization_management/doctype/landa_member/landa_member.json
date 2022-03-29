@@ -39,7 +39,8 @@
   "section_break_22",
   "create_user_account",
   "user",
-  "email"
+  "email",
+  "user_enabled"
  ],
  "fields": [
   {
@@ -255,6 +256,14 @@
    "fieldname": "fishing_permit_number",
    "fieldtype": "Data",
    "label": "Fishing Permit Number"
+  },
+  {
+   "default": "1",
+   "depends_on": "user",
+   "fieldname": "user_enabled",
+   "fieldtype": "Check",
+   "label": "User Enabled",
+   "permlevel": 1
   }
  ],
  "links": [
@@ -271,7 +280,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2022-01-07 02:22:16.602586",
+ "modified": "2022-03-17 19:43:27.213126",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
@@ -328,6 +337,18 @@
    "read": 1,
    "report": 1,
    "role": "LANDA Magazine Manager"
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "LANDA Regional Organization Management",
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "LANDA State Organization Employee",
+   "write": 1
   }
  ],
  "quick_entry": 1,
