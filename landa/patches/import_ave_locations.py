@@ -7,6 +7,8 @@ import json
 
 
 def execute():
+	frappe.reload_doctype("Organization")
+
 	organizations = get_organizations()
 	organization_ids_by_name = {
 		org["organization_name"]: org["name"] for org in organizations
