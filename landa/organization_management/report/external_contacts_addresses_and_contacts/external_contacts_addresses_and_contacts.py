@@ -1,6 +1,7 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
+from typing import List
 import pandas as pd
 
 import frappe
@@ -62,12 +63,12 @@ COLUMNS = [
 
 
 def get_data(filters):
-	def frappe_tuple_to_pandas_df(frappe_tuple, fields):
-		# convert to pandas dataframe
-		df = pd.DataFrame(frappe_tuple, columns=fields)
-		# set by external_contact ID as dataframe index
-		df.set_index("external_contact", inplace=True)
-		return df
+	def to_df(records, columns):
+		"""Convert a list of records to a dataframe."""
+		index = "external_contact"
+		return pd.DataFrame.from_records(
+			records, columns=[index] + columns, index=index
+		)
 
 	def remove_duplicate_indices(
 		df, index="external_contact", sort_by=None, keep="last"
@@ -81,49 +82,42 @@ def get_data(filters):
 			df.reset_index().drop_duplicates(subset=[index], keep=keep).set_index(index)
 		)
 
-	def get_link_filters(frappe_tuple):
+	def get_link_filters(link_names: List[str]):
 		return [
 			["Dynamic Link", "link_doctype", "=", "External Contact"],
-			["Dynamic Link", "link_name", "in", [m[0] for m in frappe_tuple]],
+			["Dynamic Link", "link_name", "in", link_names],
 		]
 
 	# define the external_contact master data that are supposed to be loaded
 	external_contact_fields = [
-		"name",
 		"first_name",
 		"last_name",
 		"organization",
 		"is_magazine_recipient",
-		# "organization_name",
 	]
 	external_contacts = frappe.db.get_list(
 		"External Contact",
 		filters=filters,
-		fields=external_contact_fields,
-		as_list=True,
+		fields=["name as external_contact"] + external_contact_fields,
 	)
 
 	# convert to pandas dataframe
-	external_contact_df = frappe_tuple_to_pandas_df(
-		external_contacts, ["external_contact"] + external_contact_fields[1:]
-	)
+	external_contact_df = to_df(external_contacts, external_contact_fields)
+	external_contact_ids = tuple(external_contact_df.index.values)
 
 	# define the labels of db entries that are supposed to be loaded
-	link_field_label = "`tabDynamic Link`.link_name as external_contact"
-	link_filters = get_link_filters(external_contacts)
+	link_field = "`tabDynamic Link`.link_name as external_contact"
+	link_filters = get_link_filters(external_contact_ids)
 
 	# load addresses from db
 	address_fields = ["address_line1", "pincode", "city", "is_primary_address"]
 	addresses = frappe.get_list(
 		"Address",
 		filters=link_filters,
-		fields=address_fields + [link_field_label],
-		as_list=True,
+		fields=[link_field] + address_fields,
 	)
 	# convert to pandas dataframe
-	addresses_df = frappe_tuple_to_pandas_df(
-		addresses, address_fields + ["external_contact"]
-	)
+	addresses_df = to_df(addresses, address_fields)
 	# remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
 	addresses_df = remove_duplicate_indices(addresses_df, sort_by="is_primary_address")
 
@@ -144,27 +138,21 @@ def get_data(filters):
 	contacts = frappe.get_list(
 		"Contact",
 		filters=link_filters,
-		fields=contact_fields + [link_field_label],
-		as_list=True,
+		fields=[link_field] + contact_fields,
 	)
 	# convert to pandas dataframe
-	contacts_df = frappe_tuple_to_pandas_df(
-		contacts, contact_fields + ["external_contact"]
-	)
+	contacts_df = to_df(contacts, contact_fields)
 	contacts_df = remove_duplicate_indices(contacts_df)
 
 	external_functions = frappe.get_list(
 		"External Contact Function",
 		filters={
 			"parenttype": "External Contact",
-			"parent": ("in", [m[0] for m in external_contacts]),
+			"parent": ("in", external_contact_ids),
 		},
 		fields=["parent as external_contact", "external_function"],
-		as_list=True,
 	)
-	external_functions_df = frappe_tuple_to_pandas_df(
-		external_functions, ["external_contact", "external_function"]
-	)
+	external_functions_df = to_df(external_functions, ["external_function"])
 	external_functions_df = pd.DataFrame(
 		external_functions_df.groupby("external_contact")["external_function"].apply(
 			lambda functions: ", ".join(functions.astype(str))
