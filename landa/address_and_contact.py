@@ -28,7 +28,7 @@ def validate(doc, event):
 	permissions on child table links to the parent doc.
 	"""
 	linked_doctypes = set(link.link_doctype for link in doc.links)
-	mandatory_links = {"Company", "LANDA Member", "Organization", "Customer"}
+	mandatory_links = {"Company", "LANDA Member", "Organization", "Customer", "External Contact"}
 	if not linked_doctypes.intersection(mandatory_links):
 		frappe.msgprint(
 			_("This document should be linked to at least one Company, LANDA Member, Organization or Customer")
@@ -49,3 +49,6 @@ def validate(doc, event):
 
 		if link.link_doctype == "Organization":
 			doc.organization = link.link_name
+
+		if link.link_doctype == "External Contact":
+			doc.organization = frappe.db.get_value("External Contact", link.link_name, "organization")

@@ -14,11 +14,18 @@ def autoname(address, event):
 	if address.links:
 		for link in address.links:
 			if link.link_doctype == "LANDA Member":
-				member_names = frappe.get_value(
-					"LANDA Member", link.link_name, ["first_name", "last_name"]
+				link.link_title = " ".join(
+					frappe.get_value(
+						"LANDA Member", link.link_name, ["first_name", "last_name"]
+					)
 				)
-				full_name = " ".join(member_names)
-				link.link_title = full_name
+
+			if link.link_doctype == "External Contact":
+				link.link_title = " ".join(
+					frappe.get_value(
+						"External Contact", link.link_name, ["first_name", "last_name"]
+					)
+				)
 
 			for dt, field in (
 				("Company", "company_name"),
@@ -28,8 +35,7 @@ def autoname(address, event):
 				if dt != link.link_doctype:
 					continue
 
-				title = frappe.get_value(dt, link.link_name, field)
-				link.link_title = title
+				link.link_title = frappe.get_value(dt, link.link_name, field)
 
 		# Prefer the member's name as address title otherwise, use any link title as address title
 		for link in address.links:
@@ -95,7 +101,7 @@ def rename_addresses(limit: int):
 				ignore_permissions=True,  # checking permissions takes too long
 				ignore_if_exists=True,	# don't rename if a record with the same name exists already
 				show_alert=False,  # no need to show a UI alert, we're in the console
-				rebuild_search=False, # we do that explicitly at the end
+				rebuild_search=False,  # we do that explicitly at the end
 			)
 		except frappe.exceptions.ValidationError:
 			continue
