@@ -20,6 +20,7 @@
   "personal_details",
   "date_of_birth",
   "nationality",
+  "disabled",
   "organization_section",
   "organization",
   "organization_name",
@@ -185,10 +186,16 @@
    "fieldtype": "Table MultiSelect",
    "label": "Functions",
    "options": "External Contact Function"
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
   }
  ],
  "links": [],
- "modified": "2022-03-15 16:53:09.903943",
+ "modified": "2022-03-18 02:35:50.187099",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Contact",

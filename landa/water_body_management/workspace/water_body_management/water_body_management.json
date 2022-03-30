@@ -35,6 +35,24 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Stocking Measure",
+   "link_to": "Stocking Measure",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Stocking Target",
+   "link_to": "Stocking Target",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Water Body",
    "link_to": "Water Body",
    "link_type": "DocType",

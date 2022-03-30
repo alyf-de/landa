@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "water_body",
+  "water_body_title",
   "fishing_area",
   "year",
   "number_of_catch_log_books",
@@ -16,30 +17,33 @@
   "organization_name",
   "note",
   "section_break_7",
-  "fish_catches"
+  "fish_catches",
+  "section_break_12",
+  "origin_of_catch_log_entry",
+  "workflow_state",
+  "amended_from"
  ],
  "fields": [
   {
    "fieldname": "water_body",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Water Body",
    "options": "Water Body",
    "reqd": 1
   },
   {
-   "default": "2020",
    "fieldname": "year",
-   "fieldtype": "Select",
+   "fieldtype": "Int",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Year",
-   "options": "\n2019\n2020\n2021\n2022\n2023",
    "reqd": 1
   },
   {
    "fieldname": "fishing_days",
    "fieldtype": "Int",
-   "in_list_view": 1,
    "label": "Fishing Days",
    "reqd": 1
   },
@@ -52,6 +56,7 @@
    "fieldname": "organization",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Organization",
    "options": "Organization",
    "remember_last_selected_value": 1,
@@ -79,6 +84,7 @@
    "fetch_from": "water_body.fishing_area",
    "fieldname": "fishing_area",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Fishing Area",
    "options": "Fishing Area",
    "read_only": 1
@@ -94,11 +100,47 @@
    "fieldname": "note",
    "fieldtype": "Small Text",
    "label": "Note"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "origin_of_catch_log_entry",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Origin of Catch Log Entry",
+   "options": "\nVerein\nRegionalverband",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "water_body.title",
+   "fieldname": "water_body_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Water Body Title"
+  },
+  {
+   "default": "In Progress",
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Workflow State",
+   "no_copy": 1,
+   "options": "Workflow State"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Catch Log Entry",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
- "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-29 19:13:41.536789",
+ "modified": "2022-03-30 01:21:06.539137",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
@@ -109,6 +151,7 @@
    "delete": 1,
    "email": 1,
    "export": 1,
+   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,
@@ -117,10 +160,17 @@
    "write": 1
   },
   {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
    "export": 1,
+   "import": 1,
+   "print": 1,
    "read": 1,
    "report": 1,
-   "role": "LANDA State Organization Employee"
+   "role": "LANDA State Organization Employee",
+   "share": 1,
+   "write": 1
   },
   {
    "create": 1,
@@ -174,7 +224,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "water_body",

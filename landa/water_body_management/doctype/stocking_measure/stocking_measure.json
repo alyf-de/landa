@@ -1,0 +1,307 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "format:BP-{organization}-{year}-{####}",
+ "creation": "2022-03-09 15:21:20.840823",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "master_data",
+  "date",
+  "year",
+  "fish_species",
+  "fish_type_for_stocking",
+  "column_break_4",
+  "status",
+  "stocking_target",
+  "additional_information",
+  "column_break_7",
+  "water_body",
+  "water_body_size",
+  "organization",
+  "column_break_8",
+  "fishing_area",
+  "water_body_size_unit",
+  "amount_section",
+  "weight",
+  "weight_per_water_body_size",
+  "unit_of_weight_per_water_body_size",
+  "data_14",
+  "quantity",
+  "quantity_per_water_body_size",
+  "unit_of_quantity_per_water_body_size",
+  "section_break_11",
+  "supplier",
+  "full_name_of_supplier",
+  "company_of_supplier",
+  "column_break_25",
+  "price_per_kilogram",
+  "price_for_total_weight"
+ ],
+ "fields": [
+  {
+   "fieldname": "master_data",
+   "fieldtype": "Section Break",
+   "label": "Masters"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "year",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Year",
+   "options": "2022\n2023\n2024\n2025\n2026\n2027\n2028\n2029",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "fish_species",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Fish Species",
+   "options": "Fish Species",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "fish_type_for_stocking",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Fish Type For Stocking",
+   "options": "Fish Type For Stocking",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "In Progress\nCompleted"
+  },
+  {
+   "fieldname": "additional_information",
+   "fieldtype": "Small Text",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Section Break",
+   "label": "Water Body"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "water_body",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Water Body",
+   "options": "Water Body",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "water_body.water_body_size",
+   "fieldname": "water_body_size",
+   "fieldtype": "Float",
+   "label": "Water Body Size",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "water_body.organization",
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "Organization",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "water_body.fishing_area",
+   "fieldname": "fishing_area",
+   "fieldtype": "Link",
+   "label": "Fishing Area",
+   "options": "Fishing Area",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "water_body.water_body_size_unit",
+   "fieldname": "water_body_size_unit",
+   "fieldtype": "Data",
+   "label": "Water Body Size Unit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amount_section",
+   "fieldtype": "Section Break",
+   "label": "Planned Quantity"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight in Kg",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.water_body_size>0",
+   "fieldname": "weight_per_water_body_size",
+   "fieldtype": "Float",
+   "label": "Weight per Water Body Size",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.water_body_size>0",
+   "fieldname": "unit_of_weight_per_water_body_size",
+   "fieldtype": "Data",
+   "label": "Unit of Weight per Water Body Size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "data_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "label": "Quantity"
+  },
+  {
+   "depends_on": "eval:doc.water_body_size",
+   "fieldname": "quantity_per_water_body_size",
+   "fieldtype": "Data",
+   "label": "Quantity per Water Body Size",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.water_body_size",
+   "fieldname": "unit_of_quantity_per_water_body_size",
+   "fieldtype": "Data",
+   "label": "Unit of Quantity per Water Body Size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_11",
+   "fieldtype": "Section Break",
+   "label": "Supplier"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier",
+   "options": "External Contact"
+  },
+  {
+   "fetch_from": "supplier.last_name",
+   "fieldname": "full_name_of_supplier",
+   "fieldtype": "Data",
+   "label": "Full Name of Supplier",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "supplier.external_organization_name",
+   "fieldname": "company_of_supplier",
+   "fieldtype": "Data",
+   "label": "Company of Supplier",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_25",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "price_per_kilogram",
+   "fieldtype": "Float",
+   "label": "Price per Kilogram"
+  },
+  {
+   "depends_on": "weight",
+   "fieldname": "price_for_total_weight",
+   "fieldtype": "Float",
+   "label": "Price for Total Weight",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stocking_target",
+   "fieldtype": "Link",
+   "label": "Stocking Target",
+   "options": "Stocking Target"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-03-30 02:55:26.321047",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Stocking Measure",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Regional Water Body Management",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
