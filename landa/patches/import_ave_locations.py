@@ -31,15 +31,15 @@ def execute():
 		org_id = organization_ids_by_name[result]
 
 		website = record.get("webseite")
-		leaflet = record.get("leaflet", dict())
-		lat = leaflet.get("lat")
-		lng = leaflet.get("lng")
 
 		doc = frappe.get_doc("Organization", org_id)
 		if website and not doc.website:
 			doc.website = website
 
-		doc.location = get_geojson(lat, lng)
+		leaflet = record.get("leaflet")
+		if leaflet:
+			doc.location = get_geojson(leaflet.get("lat"), leaflet.get("lng"))
+
 		doc.save()
 
 
