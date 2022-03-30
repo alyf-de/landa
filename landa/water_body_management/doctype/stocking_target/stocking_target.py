@@ -4,6 +4,7 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
+from frappe.model.mapper import get_mapped_doc
 from frappe.utils.data import get_link_to_form
 
 
@@ -50,3 +51,26 @@ def copy_to_next_year() -> None:
 			new_doc.supplier = None
 
 		new_doc.save()
+
+
+@frappe.whitelist()
+def create_stocking_measure(source_name, target_doc=None):
+	def set_missing_values(source, target):
+		pass
+
+	return get_mapped_doc(
+		"Stocking Target",
+		source_name,
+		{
+			"Stocking Target": {
+				"doctype": "Stocking Measure",
+				"field_map": {
+					# [field name in Stocking Target]: [field name in Stocking Measure]
+					"name": "stocking_target",
+				},
+			}
+		},
+		target_doc,
+		set_missing_values,
+		ignore_permissions=False,
+	)

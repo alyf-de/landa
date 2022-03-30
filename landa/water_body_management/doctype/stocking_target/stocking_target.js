@@ -1,68 +1,18 @@
 // Copyright (c) 2022, Real Experts GmbH and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on("Stocking Target", {
-	onload: function (frm) {
-		frm.set_query("organization", function (doc) {
-			return {
-				filters: {
-					parent_organization: "LV",
-				},
-			};
-		});
-		frm.set_query("water_body", function (doc) {
-			return {
-				filters: {
-					organization: doc.organization,
-				},
-			};
-		});
-	},
-	refresh: function (frm) {
-		frm.trigger("weight");
-		frm.trigger("quantity");
-	},
-	weight: function (frm) {
-		if (!frm.doc.weight || !frm.doc.water_body_size) {
-			frm.set_value("weight_per_water_body_size", 0.0);
-		} else {
-			frm.set_value(
-				"weight_per_water_body_size",
-				flt(frm.doc.weight / frm.doc.water_body_size, 3)
-			);
-			frm.set_value(
-				"unit_of_weight_per_water_body_size",
-				`Kg / ${frm.doc.water_body_size_unit}`
-			);
-		}
+{% include "landa/water_body_management/stocking_controller.js" %}
 
-		frm.trigger("update_price");
-	},
-	quantity: function (frm) {
-		if (!frm.doc.quantity || !frm.doc.water_body_size) {
-			frm.set_value("quantity_per_water_body_size", 0);
-		} else {
-			frm.set_value(
-				"quantity_per_water_body_size",
-				flt(frm.doc.quantity / frm.doc.water_body_size, 3)
-			);
-			frm.set_value(
-				"unit_of_quantity_per_water_body_size",
-				`Stk / ${frm.doc.water_body_size_unit}`
-			);
-		}
-	},
-	price_per_kilogram: function (frm) {
-		frm.trigger("update_price");
-	},
-	update_price: function (frm) {
-		if (!frm.doc.weight || !frm.doc.price_per_kilogram) {
-			frm.set_value("price_for_total_weight", 0);
-		} else {
-			frm.set_value(
-				"price_for_total_weight",
-				flt(frm.doc.weight * frm.doc.price_per_kilogram, 2)
-			);
-		}
+frappe.ui.form.on("Stocking Target", {
+	refresh: function (frm) {
+		frm.add_custom_button(__("Create Stocking Measure"), () =>
+			frappe.model.open_mapped_doc({
+				method:
+					"landa.water_body_management.doctype.stocking_target.stocking_target.create_stocking_measure",
+				frm: frm,
+			})
+		);
 	},
 });
+
+cur_frm.script_manager.make(landa.StockingController);
