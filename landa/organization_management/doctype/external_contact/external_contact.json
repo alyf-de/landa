@@ -182,6 +182,7 @@
    "search_index": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "functions",
    "fieldtype": "Table MultiSelect",
    "label": "Functions",
@@ -195,7 +196,7 @@
   }
  ],
  "links": [],
- "modified": "2022-03-18 02:35:50.187099",
+ "modified": "2022-03-30 21:48:07.708290",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Contact",
