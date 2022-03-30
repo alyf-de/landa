@@ -98,7 +98,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-20 23:49:57.914924",
+ "modified": "2022-03-29 19:13:41.536789",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
@@ -177,5 +177,6 @@
  "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "water_body",
  "track_changes": 1
 }
