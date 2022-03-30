@@ -51,6 +51,16 @@ COLUMNS = [
 		"label": "Origin of Catch Log Entry",
 	},
 	{
+		"fieldname": "number_of_catch_log_books",
+		"fieldtype": "Int",
+		"label": "Number of Catch Log Books",
+	},
+	{
+		"fieldname": "fishing_days",
+		"fieldtype": "Int",
+		"label": "Fishing Days",
+	},
+	{
 		"fieldname": "fish_species",
 		"fieldtype": "Link",
 		"label": "Fish Species",
@@ -100,6 +110,8 @@ def get_data(filters):
 			"fishing_area",
 			"organization",
 			"origin_of_catch_log_entry",
+			"number_of_catch_log_books",
+			"fishing_days",
 			"`tabCatch Log Fish Table`.fish_species",
 			"`tabCatch Log Fish Table`.amount",
 			"`tabCatch Log Fish Table`.weight_in_kg",
