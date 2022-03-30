@@ -7086,5 +7086,21 @@
   "parenttype": null,
   "source_text": "Catch Log Statistics",
   "translated_text": "Fangmengenstatistik"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-30 21:44:47.961996",
+  "name": "3aa1357a9e",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "External Functions",
+  "translated_text": "Externe Funktionen"
  }
 ]
