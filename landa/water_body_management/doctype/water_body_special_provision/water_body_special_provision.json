@@ -2,7 +2,7 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "Sonderbestimmung-.###",
+ "autoname": "field:title",
  "creation": "2022-02-07 17:48:07.942361",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -23,11 +23,12 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Title",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "links": [],
- "modified": "2022-03-03 13:25:35.328179",
+ "modified": "2022-03-29 18:29:51.664055",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Special Provision",

@@ -226,5 +226,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "water_body",
  "track_changes": 1
 }
