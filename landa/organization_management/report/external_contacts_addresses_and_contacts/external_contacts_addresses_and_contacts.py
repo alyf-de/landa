@@ -27,6 +27,11 @@ COLUMNS = [
 		"label": "Is Magazine Recipient",
 	},
 	{
+		"fieldname": "external_functions",
+		"fieldtype": "Data",
+		"label": "External Functions",
+	},
+	{
 		"fieldname": "address_line1",
 		"fieldtype": "Data",
 		"label": "Address Line 1",
@@ -148,16 +153,32 @@ def get_data(filters):
 	)
 	contacts_df = remove_duplicate_indices(contacts_df)
 
+	external_functions = frappe.get_list(
+		"External Contact Function",
+		filters={
+			"parenttype": "External Contact",
+			"parent": ("in", [m[0] for m in external_contacts]),
+		},
+		fields=["parent as external_contact", "external_function"],
+		as_list=True,
+	)
+	external_functions_df = frappe_tuple_to_pandas_df(
+		external_functions, ["external_contact", "external_function"]
+	)
+	external_functions_df = pd.DataFrame(
+		external_functions_df.groupby("external_contact")["external_function"].apply(
+			lambda functions: ", ".join(functions.astype(str))
+		),
+	)
+
 	# merge all dataframes from different doctypes
-	data = pd.concat([external_contact_df, addresses_df, contacts_df], axis=1).reindex(
-		external_contact_df.index
+	data = pd.concat(
+		[external_contact_df, external_functions_df, addresses_df, contacts_df], axis=1
 	)
 	# replace NaNs with empty strings
 	data.fillna("", inplace=True)
 	# convert data back to tuple
-	data.reset_index(inplace=True)
-	data = tuple(data.itertuples(index=False, name=None))
-	return data
+	return tuple(data.itertuples(index=True, name=None))
 
 
 def execute(filters=None):
