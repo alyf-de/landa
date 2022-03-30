@@ -7143,6 +7143,22 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
+  "modified": "2022-03-29 17:31:10.228511",
+  "name": "d9d8bc1079",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "External Contacts Addresses and Contacts",
+  "translated_text": "Kontakt- und Adressliste Externe Kontakte"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
   "modified": "2022-03-27 14:28:49.938958",
   "name": "ee40454880",
   "parent": null,
@@ -7150,5 +7166,21 @@
   "parenttype": null,
   "source_text": "Sales Auditing Voucher",
   "translated_text": "Ung\u00fcltiges Format Gutschrift"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-30 17:22:11.906476",
+  "name": "fb65aa46d2",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Lease Contract must belong to the same regional Organization as the Water Body.",
+  "translated_text": "Der Pachtvertrag muss zum selben Regionalverband geh\u00f6ren wie das im Pachtvertrag eingetragene Gew\u00e4sser."
  }
 ]
