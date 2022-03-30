@@ -175,7 +175,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "External Contacts Addresses and Contacts",
    "link_to": "External Contacts Addresses and Contacts",
    "link_type": "Report",
@@ -245,7 +245,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-03-29 17:33:21.131874",
+ "modified": "2022-03-30 15:17:35.103326",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
