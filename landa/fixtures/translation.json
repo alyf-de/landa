@@ -6942,5 +6942,21 @@
   "parenttype": null,
   "source_text": "Sales Auditing Voucher",
   "translated_text": "Ung\u00fcltiges Format Gutschrift"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-30 17:22:11.906476",
+  "name": "fb65aa46d2",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Lease Contract must belong to the same regional Organization as the Water Body.",
+  "translated_text": "Der Pachtvertrag muss zum selben Regionalverband geh\u00f6ren wie das im Pachtvertrag eingetragene Gew\u00e4sser."
  }
 ]
