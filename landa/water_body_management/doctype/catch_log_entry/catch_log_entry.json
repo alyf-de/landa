@@ -9,6 +9,7 @@
   "water_body",
   "water_body_title",
   "fishing_area",
+  "regional_organization",
   "year",
   "number_of_catch_log_books",
   "fishing_days",
@@ -137,10 +138,19 @@
    "options": "Catch Log Entry",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fetch_from": "fishing_area.organization",
+   "fieldname": "regional_organization",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Regional Organization",
+   "options": "Organization",
+   "read_only": 1
   }
  ],
  "links": [],
- "modified": "2022-03-30 01:21:06.539137",
+ "modified": "2022-03-30 19:26:02.918898",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",

@@ -184,9 +184,13 @@
   {
    "link_doctype": "Lease Contract",
    "link_fieldname": "water_body"
+  },
+  {
+   "link_doctype": "Catch Log Entry",
+   "link_fieldname": "water_body"
   }
  ],
- "modified": "2022-03-07 18:08:58.287057",
+ "modified": "2022-03-30 20:28:49.204270",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
