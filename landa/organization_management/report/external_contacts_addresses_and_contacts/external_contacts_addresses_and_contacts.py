@@ -27,7 +27,9 @@ class Address(object):
 			df.set_index("external_contact", inplace=True)
 			return df
 
-		def remove_duplicate_indices(df, index="external_contact", sort_by=None, keep="last"):
+		def remove_duplicate_indices(
+			df, index="external_contact", sort_by=None, keep="last"
+		):
 			"""Remove rows in dataframe with duplicate indeces.
 			If sort_by is specified the dataframe is firsted sorted by these columns keeping the entry specified in keep, e.g. 'last'"""
 			if sort_by is not None:
@@ -62,7 +64,9 @@ class Address(object):
 		)
 
 		# convert to pandas dataframe
-		external_contact_df = frappe_tuple_to_pandas_df(external_contacts, ["external_contact"] + external_contact_fields[1:])
+		external_contact_df = frappe_tuple_to_pandas_df(
+			external_contacts, ["external_contact"] + external_contact_fields[1:]
+		)
 
 		# define the labels of db entries that are supposed to be loaded
 		link_field_label = "`tabDynamic Link`.link_name as external_contact"
@@ -77,7 +81,9 @@ class Address(object):
 			as_list=True,
 		)
 		# convert to pandas dataframe
-		addresses_df = frappe_tuple_to_pandas_df(addresses, address_fields + ["external_contact"])
+		addresses_df = frappe_tuple_to_pandas_df(
+			addresses, address_fields + ["external_contact"]
+		)
 		# remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
 		addresses_df = remove_duplicate_indices(
 			addresses_df, sort_by="is_primary_address"
@@ -97,14 +103,22 @@ class Address(object):
 
 		# load contacts from db that are linked to the member fucntions loaded before
 		contact_fields = ["email_id", "phone", "mobile_no"]
-		contacts = frappe.get_list("Contact", filters=link_filters, fields=contact_fields+[link_field_label], 
-		as_list=True)
+		contacts = frappe.get_list(
+			"Contact",
+			filters=link_filters,
+			fields=contact_fields + [link_field_label],
+			as_list=True,
+		)
 		# convert to pandas dataframe
-		contacts_df=frappe_tuple_to_pandas_df(contacts,contact_fields+["external_contact"])
-		contacts_df=remove_duplicate_indices(contacts_df)
+		contacts_df = frappe_tuple_to_pandas_df(
+			contacts, contact_fields + ["external_contact"]
+		)
+		contacts_df = remove_duplicate_indices(contacts_df)
 
 		# merge all dataframes from different doctypes
-		data = pd.concat([external_contact_df, addresses_df, contacts_df], axis=1).reindex(external_contact_df.index)
+		data = pd.concat(
+			[external_contact_df, addresses_df, contacts_df], axis=1
+		).reindex(external_contact_df.index)
 		# replace NaNs with empty strings
 		data.fillna("", inplace=True)
 		# convert data back to tuple
@@ -128,7 +142,11 @@ class Address(object):
 				"options": "Organization",
 				"label": "Organization",
 			},
-			{"fieldname": "is_magazine_recipient", "fieldtype": "Check", "label": "Is Magazine Recipient"},
+			{
+				"fieldname": "is_magazine_recipient",
+				"fieldtype": "Check",
+				"label": "Is Magazine Recipient",
+			},
 			{
 				"fieldname": "address_line1",
 				"fieldtype": "Data",
@@ -142,20 +160,20 @@ class Address(object):
 				"label": "Primary Address (Full)",
 			},
 			{
-			"fieldname": "primary_email_address",
-			"fieldtype": "Data",
-			"label": "Primary Email Address"
+				"fieldname": "primary_email_address",
+				"fieldtype": "Data",
+				"label": "Primary Email Address",
 			},
 			{
-			"fieldname": "primary_phone",
-			"fieldtype": "Data",
-			"label": "Primary Phone"
+				"fieldname": "primary_phone",
+				"fieldtype": "Data",
+				"label": "Primary Phone",
 			},
 			{
-			"fieldname": "primary_mobile",
-			"fieldtype": "Data",
-			"label": "Primary Mobile"
-			}
+				"fieldname": "primary_mobile",
+				"fieldtype": "Data",
+				"label": "Primary Mobile",
+			},
 		]
 
 
