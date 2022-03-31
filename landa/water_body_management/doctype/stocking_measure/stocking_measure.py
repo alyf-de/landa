@@ -12,7 +12,10 @@ class StockingMeasure(StockingController):
 
 	def update_stocking_target(self):
 		"""Set status of Stocking Target to In Progress"""
+		if not self.stocking_target:
+			return
+
 		stocking_target = frappe.get_doc("Stocking Target", self.stocking_target)
-		if stocking_target and stocking_target.status == "Draft":
+		if stocking_target.status == "Draft":
 			stocking_target.status = "In Progress"
 			stocking_target.save()
