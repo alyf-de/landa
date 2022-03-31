@@ -7134,5 +7134,21 @@
   "parenttype": null,
   "source_text": "Please update the existing record: {0}",
   "translated_text": "Bitte aktualisieren Sie stattdessen den bestehenden Eintrag: {0}"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-31 16:13:40.431062",
+  "name": "742b88e8ec",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Stocking of Supported Water Bodies",
+  "translated_text": "Besatzma\u00dfnahmen in betreuten Gew\u00e4ssern"
  }
 ]

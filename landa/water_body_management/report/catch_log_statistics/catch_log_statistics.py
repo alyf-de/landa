@@ -2,6 +2,8 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
+
 from landa.organization_management.doctype.member_function_category.member_function_category import (
 	get_organization_at_level,
 )
@@ -111,14 +113,10 @@ def get_or_filters():
 		return or_filters
 
 	# User is not a state organization employee
-	member_name, member_organization = frappe.db.get_value(
-		"LANDA Member",
-		filters={"user": frappe.session.user},
-		fieldname=["name", "organization"],
-	)
-	member_organization = member_organization[
-		:7
-	]  # use local Organization instead of Ortsgruppe
+
+	member_name, member_organization = get_member_name_and_local_organization()
+	if not (member_name and member_organization):
+		frappe.throw(_("You are not a member of any organization."))
 
 	if user_roles.intersection(REGIONAL_ROLES):
 		regional_organization = get_organization_at_level(
@@ -135,6 +133,23 @@ def get_or_filters():
 		or_filters["organization"] = member_organization
 
 	return or_filters
+
+
+def get_member_name_and_local_organization():
+	member_name = None
+	member_organization = None
+
+	data = frappe.db.get_value(
+		"LANDA Member",
+		filters={"user": frappe.session.user},
+		fieldname=["name", "organization"],
+	)
+
+	if data:
+		member_name, member_organization = data
+		member_organization = member_organization[:7]  # use local Organization instead of Ortsgruppe
+
+	return member_name, member_organization
 
 
 def get_supported_water_bodies(organization):

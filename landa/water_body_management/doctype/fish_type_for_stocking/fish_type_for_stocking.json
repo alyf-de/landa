@@ -27,13 +27,11 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Short Code",
-   "reqd": 1
+   "label": "Short Code"
   }
  ],
- "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-31 11:54:51.081877",
+ "modified": "2022-03-31 16:38:29.235715",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Type For Stocking",
@@ -72,6 +70,11 @@
    "role": "LANDA State Organization Employee",
    "share": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Member"
   }
  ],
  "quick_entry": 1,

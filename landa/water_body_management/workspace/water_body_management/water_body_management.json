@@ -159,6 +159,16 @@
   },
   {
    "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stocking of Supported Water Bodies",
+   "link_to": "Stocking of Supported Water Bodies",
+   "link_type": "Report",
+   "onboard": 0,
+   "only_for": "",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
    "is_query_report": 0,
    "label": "Imports",
    "link_type": "DocType",
@@ -192,7 +202,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-03-31 12:46:20.301298",
+ "modified": "2022-03-31 16:14:58.982798",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management",
