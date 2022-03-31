@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "format:BP-{organization}-{year}-{####}",
+ "autoname": "format:BM-{organization}-{year}-{####}",
  "creation": "2022-03-09 15:21:20.840823",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -255,7 +255,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-30 02:55:26.321047",
+ "modified": "2022-03-31 14:24:14.257455",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Measure",
