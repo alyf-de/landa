@@ -138,7 +138,6 @@
    "fieldname": "water_body_size",
    "fieldtype": "Float",
    "label": "Water Body Size",
-   "no_copy": 1,
    "read_only": 1
   },
   {
@@ -146,7 +145,6 @@
    "fieldname": "water_body_size_unit",
    "fieldtype": "Data",
    "label": "Water Body Size Unit",
-   "no_copy": 1,
    "read_only": 1
   },
   {
@@ -263,7 +261,7 @@
    "link_fieldname": "stocking_target"
   }
  ],
- "modified": "2022-03-31 15:06:18.470624",
+ "modified": "2022-03-31 15:23:05.185322",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",

@@ -61,7 +61,7 @@ def copy_to_next_year() -> None:
 @frappe.whitelist()
 def create_stocking_measure(source_name, target_doc=None):
 	def set_missing_values(source, target):
-		pass
+		target.validate()
 
 	return get_mapped_doc(
 		"Stocking Target",
