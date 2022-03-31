@@ -3,13 +3,18 @@
 
 import frappe
 from frappe import _
-from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
 from frappe.utils.data import get_link_to_form
 
+from landa.water_body_management.stocking_controller import StockingController
 
-class StockingTarget(Document):
+
+class StockingTarget(StockingController):
 	def validate(self):
+		super(StockingTarget, self).validate()
+		self.validate_is_unique()
+
+	def validate_is_unique(self):
 		existing_stocking_target = frappe.db.get_value(
 			self.doctype,
 			{

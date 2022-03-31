@@ -2,10 +2,11 @@
 # For license information, please see license.txt
 
 import frappe
-from frappe.model.document import Document
+
+from landa.water_body_management.stocking_controller import StockingController
 
 
-class StockingMeasure(Document):
+class StockingMeasure(StockingController):
 	def after_insert(self):
 		self.update_stocking_target()
 
