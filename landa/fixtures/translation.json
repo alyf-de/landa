@@ -7102,5 +7102,21 @@
   "parenttype": null,
   "source_text": "External Functions",
   "translated_text": "Externe Funktionen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-31 12:47:20.050380",
+  "name": "d0bb53bc7d",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Catch Log Days and Counts",
+  "translated_text": "Fangb\u00fccher und Angeltage"
  }
 ]

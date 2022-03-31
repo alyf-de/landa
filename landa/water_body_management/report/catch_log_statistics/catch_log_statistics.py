@@ -12,7 +12,6 @@ REGIONAL_ROLES = {
 	"LANDA Regional Organization Management",
 	"LANDA Regional Water Body Management",
 }
-LOCAL_ROLES = {"LANDA Local Water Body Management"}
 
 COLUMNS = [
 	{
@@ -50,16 +49,6 @@ COLUMNS = [
 		"label": "Origin of Catch Log Entry",
 	},
 	{
-		"fieldname": "number_of_catch_log_books",
-		"fieldtype": "Int",
-		"label": "Number of Catch Log Books",
-	},
-	{
-		"fieldname": "fishing_days",
-		"fieldtype": "Int",
-		"label": "Fishing Days",
-	},
-	{
 		"fieldname": "fish_species",
 		"fieldtype": "Link",
 		"label": "Fish Species",
@@ -81,29 +70,6 @@ COLUMNS = [
 def get_data(filters):
 	filters["workflow_state"] = "Approved"
 
-	user_roles = set(frappe.get_roles())
-	or_filters = {}
-
-	if not user_roles.intersection(STATE_ROLES):
-		# User is not a state organization employee
-		member_name, member_organization = frappe.db.get_value(
-			"LANDA Member",
-			filters={"user": frappe.session.user},
-			fieldname=["name", "organization"],
-		)
-		member_organization = member_organization[:7] # use local Organization instead of Ortsgruppe
-
-		if user_roles.intersection(REGIONAL_ROLES):
-			regional_organization = get_organization_at_level(
-				member_name, 1, member_organization
-			)
-			or_filters["regional_organization"] = regional_organization
-			or_filters["organization"] = ("like", f"{regional_organization}-%")
-		else:
-			# User is not in regional organization management
-			or_filters["water_body"] = ("in", get_supported_water_bodies(member_organization))
-			or_filters["organization"] = member_organization
-
 	data = frappe.get_all(
 		"Catch Log Entry",
 		fields=[
@@ -113,14 +79,12 @@ def get_data(filters):
 			"fishing_area",
 			"organization",
 			"origin_of_catch_log_entry",
-			"number_of_catch_log_books",
-			"fishing_days",
 			"`tabCatch Log Fish Table`.fish_species",
 			"`tabCatch Log Fish Table`.amount",
 			"`tabCatch Log Fish Table`.weight_in_kg",
 		],
 		filters=filters,
-		or_filters=or_filters,
+		or_filters=get_or_filters(),
 	)
 
 	def postprocess(row):
@@ -130,9 +94,56 @@ def get_data(filters):
 	return [postprocess(row) for row in data]
 
 
+def get_or_filters():
+	"""Return a dict of filters that restricts the results to what the user is
+	allowed to see.
+
+	STATE_ROLES		no filters
+	REGIONAL_ROLES	everything related to their water bodys OR to their member
+					organizations
+	LOCAL_ROLES		everything related to their own organization and OR to the
+					water bodys it is supporting
+	"""
+	or_filters = {}
+	user_roles = set(frappe.get_roles())
+
+	if user_roles.intersection(STATE_ROLES):
+		return or_filters
+
+	# User is not a state organization employee
+	member_name, member_organization = frappe.db.get_value(
+		"LANDA Member",
+		filters={"user": frappe.session.user},
+		fieldname=["name", "organization"],
+	)
+	member_organization = member_organization[
+		:7
+	]  # use local Organization instead of Ortsgruppe
+
+	if user_roles.intersection(REGIONAL_ROLES):
+		regional_organization = get_organization_at_level(
+			member_name, 1, member_organization
+		)
+		or_filters["regional_organization"] = regional_organization
+		or_filters["organization"] = ("like", f"{regional_organization}-%")
+	else:
+		# User is not in regional organization management
+		or_filters["water_body"] = (
+			"in",
+			get_supported_water_bodies(member_organization),
+		)
+		or_filters["organization"] = member_organization
+
+	return or_filters
+
+
 def get_supported_water_bodies(organization):
 	"""Return a list of water bodies that are supported by the organization."""
-	return frappe.get_all("Water Body Management Local Organization", filters={"organization": organization}, pluck="water_body")
+	return frappe.get_all(
+		"Water Body Management Local Organization",
+		filters={"organization": organization},
+		pluck="water_body",
+	)
 
 
 def execute(filters=None):
