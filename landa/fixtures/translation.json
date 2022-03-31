@@ -7166,5 +7166,21 @@
   "parenttype": null,
   "source_text": "Please select your own regional Organization.",
   "translated_text": "Bitte w\u00e4hlen Sie Ihren eigenen regionalverband aus!"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-31 19:19:27.687058",
+  "name": "b5fc537e15",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Please select a Water Body from your own regional Organization.",
+  "translated_text": "Bitte w\u00e4hlen Sie ein Gew\u00e4sser, das zu Ihrem eigenen Regionalverband geh\u00f6rt!"
  }
 ]
