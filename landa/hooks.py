@@ -57,6 +57,7 @@ fixtures = [
 	"Workflow",
 ]
 
+boot_session = "landa.startup.boot.boot_session"
 
 # DocTypes to be created once, after installation of this app
 #
