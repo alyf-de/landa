@@ -4,9 +4,8 @@
 import frappe
 from frappe import _
 
-from landa.organization_management.doctype.member_function_category.member_function_category import (
-	get_organization_at_level,
-)
+from landa.utils import get_current_member_data
+from landa.organization_management.doctype.organization.organization import get_supported_water_bodies
 
 
 STATE_ROLES = {"LANDA State Organization Employee", "System Manager", "Administrator"}
@@ -114,51 +113,22 @@ def get_or_filters():
 
 	# User is not a state organization employee
 
-	member_name, member_organization = get_member_name_and_local_organization()
-	if not (member_name and member_organization):
+	member_data = get_current_member_data()
+	if not member_data:
 		frappe.throw(_("You are not a member of any organization."))
 
 	if user_roles.intersection(REGIONAL_ROLES):
-		regional_organization = get_organization_at_level(
-			member_name, 1, member_organization
-		)
-		or_filters["regional_organization"] = regional_organization
-		or_filters["organization"] = ("like", f"{regional_organization}-%")
+		or_filters["regional_organization"] = member_data.regional_organization
+		or_filters["organization"] = ("like", f"{member_data.regional_organization}-%")
 	else:
 		# User is not in regional organization management
 		or_filters["water_body"] = (
 			"in",
-			get_supported_water_bodies(member_organization),
+			get_supported_water_bodies(member_data.local_organization),
 		)
-		or_filters["organization"] = member_organization
+		or_filters["organization"] = member_data.local_organization
 
 	return or_filters
-
-
-def get_member_name_and_local_organization():
-	member_name = None
-	member_organization = None
-
-	data = frappe.db.get_value(
-		"LANDA Member",
-		filters={"user": frappe.session.user},
-		fieldname=["name", "organization"],
-	)
-
-	if data:
-		member_name, member_organization = data
-		member_organization = member_organization[:7]  # use local Organization instead of Ortsgruppe
-
-	return member_name, member_organization
-
-
-def get_supported_water_bodies(organization):
-	"""Return a list of water bodies that are supported by the organization."""
-	return frappe.get_all(
-		"Water Body Management Local Organization",
-		filters={"organization": organization},
-		pluck="water_body",
-	)
 
 
 def execute(filters=None):

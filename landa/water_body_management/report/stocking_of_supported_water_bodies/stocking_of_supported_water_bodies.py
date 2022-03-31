@@ -4,10 +4,8 @@
 
 import frappe
 
-from landa.water_body_management.report.catch_log_statistics.catch_log_statistics import (
-	get_supported_water_bodies,
-	get_member_name_and_local_organization,
-)
+from landa.utils import get_current_member_data
+from landa.organization_management.doctype.organization.organization import get_supported_water_bodies
 
 
 COLUMNS = [
@@ -131,9 +129,9 @@ COLUMNS = [
 def get_data(filters):
 	filters["status"] = "Completed"
 	or_filters = {}
-	local_organization = get_member_name_and_local_organization()[1]
-	if local_organization:
-		or_filters["water_body"] = ("in", get_supported_water_bodies(local_organization))
+	member_data = get_current_member_data()
+	if member_data:
+		or_filters["water_body"] = ("in", get_supported_water_bodies(member_data.local_organization))
 
 	data = frappe.get_all(
 		"Stocking Measure",

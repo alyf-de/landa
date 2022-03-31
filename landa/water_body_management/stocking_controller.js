@@ -6,6 +6,7 @@ landa.StockingController = frappe.ui.form.Controller.extend({
 			return {
 				filters: {
 					parent_organization: "LV",
+					name: frappe.boot.landa.regional_organization,
 				},
 			};
 		});
