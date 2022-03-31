@@ -150,6 +150,15 @@
   },
   {
    "hidden": 0,
+   "is_query_report": 1,
+   "label": "Catch Log Days and Counts",
+   "link_to": "Catch Log Days and Counts",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
    "is_query_report": 0,
    "label": "Imports",
    "link_type": "DocType",
@@ -183,7 +192,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-03-30 21:14:52.204145",
+ "modified": "2022-03-31 12:46:20.301298",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management",
