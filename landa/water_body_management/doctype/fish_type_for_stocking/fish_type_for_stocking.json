@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:title",
  "creation": "2022-03-09 13:55:33.232317",
@@ -32,7 +33,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-10 14:01:25.147695",
+ "modified": "2022-03-31 11:54:51.081877",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Type For Stocking",
@@ -43,6 +44,7 @@
    "delete": 1,
    "email": 1,
    "export": 1,
+   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,
