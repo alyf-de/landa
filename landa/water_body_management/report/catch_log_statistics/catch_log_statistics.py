@@ -91,11 +91,14 @@ def get_data(filters):
 			filters={"user": frappe.session.user},
 			fieldname=["name", "organization"],
 		)
+		member_organization = member_organization[:7] # use local Organization instead of Ortsgruppe
+
 		if user_roles.intersection(REGIONAL_ROLES):
 			regional_organization = get_organization_at_level(
 				member_name, 1, member_organization
 			)
-			filters["regional_organization"] = regional_organization
+			or_filters["regional_organization"] = regional_organization
+			or_filters["organization"] = ("like", f"{regional_organization}-%")
 		else:
 			# User is not in regional organization management
 			or_filters["water_body"] = ("in", get_supported_water_bodies(member_organization))
