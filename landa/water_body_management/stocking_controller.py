@@ -1,11 +1,32 @@
+import frappe
+from frappe import _
 from frappe.model.document import Document
+
+from landa.utils import get_current_member_data
 
 
 class StockingController(Document):
 	def validate(self):
+		self.validate_own_regional_organization()
+		self.validate_own_water_body()
 		self.set_weight_per_size()
 		self.set_quantity_per_size()
 		self.set_total_price()
+
+	def validate_own_regional_organization(self):
+		member_data = get_current_member_data()
+		if member_data and member_data.regional_organization != self.organization:
+			frappe.throw(_("Please select your own regional Organization."))
+
+	def validate_own_water_body(self):
+		if (
+			self.water_body
+			and frappe.db.get_value("Water Body", self.water_body, "organization")
+			!= self.organization
+		):
+			frappe.throw(
+				_("Please select a Water Body from your own regional Organization.")
+			)
 
 	def set_weight_per_size(self):
 		if not (self.weight and self.water_body_size):

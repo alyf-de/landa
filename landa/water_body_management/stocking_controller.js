@@ -17,6 +17,10 @@ landa.StockingController = frappe.ui.form.Controller.extend({
 				},
 			};
 		});
+
+		if (!this.frm.doc.organization && frappe.boot.landa.regional_organization) {
+			this.frm.set_value("organization", frappe.boot.landa.regional_organization);
+		}
 	},
 	water_body() {
 		this.weight();

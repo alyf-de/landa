@@ -261,7 +261,7 @@
    "link_fieldname": "stocking_target"
   }
  ],
- "modified": "2022-03-31 15:23:05.185322",
+ "modified": "2022-03-31 18:40:46.936092",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",
@@ -306,7 +306,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

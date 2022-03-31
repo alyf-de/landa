@@ -17,9 +17,9 @@
   "stocking_target",
   "additional_information",
   "column_break_7",
+  "organization",
   "water_body",
   "water_body_size",
-  "organization",
   "column_break_8",
   "fishing_area",
   "water_body_size_unit",
@@ -109,6 +109,7 @@
   },
   {
    "allow_in_quick_entry": 1,
+   "depends_on": "organization",
    "fieldname": "water_body",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -125,12 +126,11 @@
    "read_only": 1
   },
   {
-   "fetch_from": "water_body.organization",
    "fieldname": "organization",
    "fieldtype": "Link",
-   "label": "Organization",
+   "label": "Regional Organization",
    "options": "Organization",
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "column_break_8",
@@ -266,7 +266,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-31 16:33:33.627069",
+ "modified": "2022-03-31 18:45:41.426076",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Measure",
@@ -316,7 +316,6 @@
    "role": "LANDA Local Water Body Management"
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1
