@@ -261,7 +261,7 @@
    "link_fieldname": "stocking_target"
   }
  ],
- "modified": "2022-03-31 18:40:46.936092",
+ "modified": "2022-03-31 19:01:12.780785",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",
@@ -304,6 +304,11 @@
    "role": "LANDA State Organization Employee",
    "share": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Local Water Body Management"
   }
  ],
  "sort_field": "modified",
