@@ -45,5 +45,5 @@ class StockingController(Document):
 	def set_total_price(self):
 		if not (self.weight and self.price_per_kilogram):
 			self.price_for_total_weight = 0
-
-		self.price_for_total_weight = self.weight * self.price_per_kilogram
+		else:
+			self.price_for_total_weight = self.weight * self.price_per_kilogram
