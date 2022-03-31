@@ -33,10 +33,10 @@
   "supplier",
   "full_name_of_supplier",
   "company_of_supplier",
+  "currency",
   "column_break_25",
   "price_per_kilogram",
-  "price_for_total_weight",
-  "currency"
+  "price_for_total_weight"
  ],
  "fields": [
   {
@@ -263,7 +263,7 @@
    "link_fieldname": "stocking_target"
   }
  ],
- "modified": "2022-03-30 02:08:34.968343",
+ "modified": "2022-03-31 15:06:18.470624",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",
