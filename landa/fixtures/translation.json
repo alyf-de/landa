@@ -7118,5 +7118,21 @@
   "parenttype": null,
   "source_text": "Catch Log Days and Counts",
   "translated_text": "Fangb\u00fccher und Angeltage"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-31 14:02:56.720064",
+  "name": "81d8fda40f",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Please update the existing record: {0}",
+  "translated_text": "Bitte aktualisieren Sie stattdessen den bestehenden Eintrag: {0}"
  }
 ]
