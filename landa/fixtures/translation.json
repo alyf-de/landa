@@ -7150,5 +7150,21 @@
   "parenttype": null,
   "source_text": "Stocking of Supported Water Bodies",
   "translated_text": "Besatzma\u00dfnahmen in betreuten Gew\u00e4ssern"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-03-31 19:08:11.714082",
+  "name": "4b734b8bf4",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Please select your own regional Organization.",
+  "translated_text": "Bitte w\u00e4hlen Sie Ihren eigenen regionalverband aus!"
  }
 ]
