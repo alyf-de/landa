@@ -197,7 +197,6 @@
    "label": "Master Data"
   },
   {
-   "collapsible": 1,
    "fieldname": "section_break_23",
    "fieldtype": "Section Break",
    "label": "Location and Public Contact"
@@ -262,9 +261,14 @@
    "group": "Bestellwesen",
    "link_doctype": "Sales Invoice",
    "link_fieldname": "organization"
+  },
+  {
+   "group": "Gew\u00e4sserverwaltung",
+   "link_doctype": "Water Body Management Local Organization",
+   "link_fieldname": "organization"
   }
  ],
- "modified": "2022-03-17 20:15:42.552666",
+ "modified": "2022-04-05 19:41:56.941009",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
