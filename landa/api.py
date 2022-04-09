@@ -3,7 +3,7 @@ import json
 import frappe
 
 
-@frappe.whitelist()
+@frappe.whitelist(allow_guest=True)
 def organization(id: str = None) -> List[Dict]:
 	filters = []
 	if id:
@@ -54,5 +54,14 @@ def organization(id: str = None) -> List[Dict]:
 		location = organization.pop("location")
 		if location:
 			organization["geojson"] = json.loads(location)
+
+		fishing_area = organization.pop("fishing_area")
+		if fishing_area:
+			organization["fishing_area"] = frappe.db.get_value(
+				"Fishing Area",
+				fishing_area,
+				fieldname=["name as id", "area_name", "organization"],
+				as_dict=True,
+			)
 
 	return organizations

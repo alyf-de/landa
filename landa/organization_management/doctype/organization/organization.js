@@ -90,7 +90,9 @@ frappe.ui.form.on('Organization', {
 
 
 function disable_map_controls(field) {
-    // disable all map controls except "marker"
+    /* disable all map controls except "marker" */
+    if (!field.drawControl) return;
+
     field.map.removeControl(field.drawControl);
     field.drawControl = new L.Control.Draw({
         draw: {

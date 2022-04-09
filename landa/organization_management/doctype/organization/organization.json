@@ -16,7 +16,6 @@
   "section_break_3",
   "organization_details",
   "fishing_area",
-  "website",
   "register_number",
   "is_charitable",
   "charitable_until",
@@ -27,6 +26,7 @@
   "section_break_23",
   "location",
   "column_break_25",
+  "website",
   "public_contact",
   "public_address",
   "html_24",
@@ -99,7 +99,8 @@
   {
    "fieldname": "location",
    "fieldtype": "Geolocation",
-   "label": "Location"
+   "label": "Location",
+   "permlevel": 1
   },
   {
    "depends_on": "eval:doc.parent_organization && doc.parent_organization !== 'LV';",
@@ -268,7 +269,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2022-04-05 19:41:56.941009",
+ "modified": "2022-04-09 19:07:20.636890",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
