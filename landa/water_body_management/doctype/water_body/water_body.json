@@ -190,7 +190,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2022-03-30 20:28:49.204270",
+ "modified": "2022-04-12 11:05:51.248094",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
@@ -227,6 +227,17 @@
    "read": 1,
    "report": 1,
    "role": "LANDA Member"
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Regional Water Body Management",
+   "share": 1,
+   "write": 1
   }
  ],
  "quick_entry": 1,
