@@ -70,6 +70,15 @@ COLUMNS = [
 
 def get_data(filters):
 	filters["workflow_state"] = "Approved"
+	fish_species = filters.pop("fish_species", None)
+
+	filters_list = []
+	for key, value in filters.items():
+		if value:
+			filters_list.append(["Catch Log Entry", key, "=", value])
+
+	if fish_species:
+		filters_list.append(["Catch Log Fish Table", "fish_species", "=", fish_species])
 
 	data = frappe.get_all(
 		"Catch Log Entry",
@@ -84,7 +93,7 @@ def get_data(filters):
 			"`tabCatch Log Fish Table`.amount",
 			"`tabCatch Log Fish Table`.weight_in_kg",
 		],
-		filters=filters,
+		filters=filters_list,
 		or_filters=get_or_filters(),
 	)
 

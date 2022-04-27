@@ -21,6 +21,12 @@ frappe.query_reports["Catch Log Statistics"] = {
 			wildcard_filter: 0,
 		},
 		{
+			fieldname: "fish_species",
+			fieldtype: "Link",
+			label: __("Fish Species"),
+			options: "Fish Species",
+		},
+		{
 			fieldname: "organization",
 			fieldtype: "Link",
 			options: "Organization",
