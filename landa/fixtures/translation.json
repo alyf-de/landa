@@ -6110,5 +6110,21 @@
   "parenttype": null,
   "source_text": "Sales Auditing Voucher",
   "translated_text": "Ung\u00fcltiges Format Gutschrift"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-05-04 23:05:34.765042",
+  "name": "6d0dacd74e",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "ID Yearly Fishing Permit",
+  "translated_text": "Eindeutiges K\u00fcrzel Erlaubnisschein"
  }
 ]
