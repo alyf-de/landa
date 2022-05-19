@@ -82,7 +82,7 @@ class MemberDataImport(Document):
 		if self.address_name:
 			address_doc = frappe.get_doc("Address", self.address_name)
 			self.update_doc(address_doc, self.ADDRESS_FIELDS)
-		elif all([self.address_line1, self.pincode, self.city]):
+		elif all([self.address_line1, self.pincode, self.city, self.member]):
 			create_address(
 				address_line1=self.address_line1,
 				pincode=self.pincode,
