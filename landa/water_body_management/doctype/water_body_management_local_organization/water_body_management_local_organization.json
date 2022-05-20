@@ -1,0 +1,158 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "creation": "2022-02-24 16:37:02.221379",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "water_body",
+  "organization",
+  "column_break_4",
+  "water_body_title",
+  "organization_name",
+  "fishing_area",
+  "regional_organization",
+  "disabled",
+  "members_section",
+  "water_body_local_contact_table"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "water_body",
+   "fieldtype": "Link",
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Water Body",
+   "options": "Water Body",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "regional_organization",
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Organization",
+   "options": "Organization",
+   "reqd": 1
+  },
+  {
+   "depends_on": "organization",
+   "fieldname": "water_body_local_contact_table",
+   "fieldtype": "Table",
+   "label": "Water Body Local Contact Table",
+   "options": "Water Body Local Contact Table"
+  },
+  {
+   "fetch_from": "water_body.title",
+   "fieldname": "water_body_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Water Body Title",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "water_body.fishing_area",
+   "fieldname": "fishing_area",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Fishing Area",
+   "options": "Fishing Area",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "organization.organization_name",
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Organization Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "fishing_area.organization",
+   "fieldname": "regional_organization",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Regional Organization",
+   "options": "Organization",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.docstatus === 0;\n",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "members_section",
+   "fieldtype": "Section Break",
+   "label": "Members"
+  }
+ ],
+ "links": [],
+ "modified": "2022-03-15 18:42:40.839065",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Water Body Management Local Organization",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Regional Water Body Management",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Local Water Body Management"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "water_body_title",
+ "track_changes": 1
+}

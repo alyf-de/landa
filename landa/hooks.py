@@ -39,7 +39,6 @@ fixtures = [
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
 	{"dt": "Organization", "filters": [["name", "in", ["LV", "AVE", "AVS", "AVL"]]]},
 	"Member Function Category",
-	"Fish Species",
 	"Fishing Area",
 	{
 		"dt": "Variant Field",
@@ -53,8 +52,12 @@ fixtures = [
 	"Salutation",
 	"Gender",
 	{"dt": "Note", "filters": {"name": "Datenschutz Hinweise"}},
+	"Workflow State",
+	"Workflow Action Master",
+	"Workflow",
 ]
 
+boot_session = "landa.startup.boot.boot_session"
 
 # DocTypes to be created once, after installation of this app
 #
@@ -293,6 +296,11 @@ scheduler_events = {
 	#		"landa.tasks.all"
 	#	],
 	"daily": ["landa.tasks.daily"],
+	"cron": {
+		"0 0 1 10 *": [	 # every 1st october at 00:00
+			"landa.water_body_management.doctype.stocking_target.stocking_target.copy_to_next_year",
+		],
+	},
 	# "all": ["landa.tasks.all"],
 	#	, "hourly": [
 	#		"landa.tasks.hourly"

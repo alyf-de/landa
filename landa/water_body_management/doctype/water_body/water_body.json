@@ -7,41 +7,50 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "masters_section",
   "title",
   "number",
   "fishing_area",
+  "fishing_area_name",
+  "organization",
+  "organization_name",
+  "status",
+  "is_property_water_body",
+  "is_active",
+  "has_master_key_system",
+  "column_break_5",
+  "general_public_information",
+  "current_public_information",
+  "water_body_size_section",
+  "water_body_size",
+  "column_break_7",
+  "water_body_size_unit",
   "section_break_2",
-  "water_body_organization_table",
-  "section_break_6",
-  "fish_species"
+  "fish_species",
+  "section_break_14",
+  "water_body_special_provisions"
  ],
  "fields": [
   {
    "fieldname": "title",
    "fieldtype": "Data",
    "label": "Title",
-   "permlevel": 1,
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   },
   {
    "fieldname": "number",
    "fieldtype": "Data",
-   "in_global_search": 1,
-   "in_list_view": 1,
    "label": "Number",
    "non_negative": 1,
-   "permlevel": 1,
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "fishing_area",
    "fieldtype": "Link",
-   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Fishing Area",
    "options": "Fishing Area",
-   "permlevel": 1,
    "reqd": 1
   },
   {
@@ -49,27 +58,139 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "section_break_6",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "fish_species",
    "fieldtype": "Table",
    "label": "Main Fish Species",
-   "options": "Fish Species Table",
-   "permlevel": 1
+   "options": "Fish Species Table"
   },
   {
    "allow_in_quick_entry": 1,
-   "fieldname": "water_body_organization_table",
+   "default": "Verbandsvertragsgew\u00e4sser",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Allgemeines Angelgew\u00e4sser\nVerbandsvertragsgew\u00e4sser\nSalmonidenstrecke gelb\nSalmonidenstrecke gr\u00fcn\nJugendgew\u00e4sser",
+   "reqd": 1
+  },
+  {
+   "fieldname": "water_body_size",
+   "fieldtype": "Float",
+   "label": "Water Body Size"
+  },
+  {
+   "fieldname": "water_body_size_unit",
+   "fieldtype": "Select",
+   "label": "Water Body Size Unit",
+   "mandatory_depends_on": "water_body_size",
+   "options": "ha\nkm"
+  },
+  {
+   "fieldname": "masters_section",
+   "fieldtype": "Section Break",
+   "label": "Masters"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "water_body_size_section",
+   "fieldtype": "Section Break",
+   "label": "Water Body Size"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "water_body_special_provisions",
    "fieldtype": "Table",
-   "label": "Organization Table",
-   "options": "Water Body Organization Table"
+   "label": "Water Body Special Provisions",
+   "options": "Water Body Special Provision Table"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "0",
+   "fieldname": "is_property_water_body",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Is Property Water Body"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Is Active"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "0",
+   "fieldname": "has_master_key_system",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Has Master Key System"
+  },
+  {
+   "fieldname": "general_public_information",
+   "fieldtype": "Small Text",
+   "label": "General Public Information"
+  },
+  {
+   "fieldname": "current_public_information",
+   "fieldtype": "Small Text",
+   "label": "Current Public Information"
+  },
+  {
+   "fetch_from": "fishing_area.area_name",
+   "fieldname": "fishing_area_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Fishing Area Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "fishing_area.organization",
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Regional Organization",
+   "options": "Organization",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "fishing_area.organization_name",
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Regional Organization Name",
+   "read_only": 1
   }
  ],
- "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2021-10-04 15:15:53.757433",
+ "links": [
+  {
+   "link_doctype": "Water Body Management Local Organization",
+   "link_fieldname": "water_body"
+  },
+  {
+   "link_doctype": "Lease Contract",
+   "link_fieldname": "water_body"
+  },
+  {
+   "link_doctype": "Catch Log Entry",
+   "link_fieldname": "water_body"
+  }
+ ],
+ "modified": "2022-04-12 11:05:51.248094",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
@@ -89,103 +210,34 @@
    "write": 1
   },
   {
+   "create": 1,
    "delete": 1,
    "email": 1,
    "export": 1,
    "import": 1,
-   "permlevel": 1,
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "System Manager",
+   "role": "LANDA State Organization Employee",
    "share": 1,
    "write": 1
   },
   {
-   "create": 1,
-   "delete": 1,
    "export": 1,
    "read": 1,
    "report": 1,
-   "role": "LANDA State Organization Employee",
-   "write": 1
-  },
-  {
-   "export": 1,
-   "permlevel": 1,
-   "read": 1,
-   "report": 1,
-   "role": "LANDA State Organization Employee",
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "export": 1,
-   "read": 1,
-   "report": 1,
-   "role": "LANDA Regional Water Body Management",
-   "write": 1
-  },
-  {
-   "export": 1,
-   "permlevel": 1,
-   "read": 1,
-   "report": 1,
-   "role": "LANDA Regional Water Body Management",
-   "write": 1
-  },
-  {
-   "export": 1,
-   "read": 1,
-   "report": 1,
-   "role": "LANDA Regional Organization Management",
-   "write": 1
-  },
-  {
-   "export": 1,
-   "read": 1,
-   "report": 1,
-   "role": "LANDA Local Organization Management",
-   "write": 1
-  },
-  {
-   "export": 1,
-   "permlevel": 1,
-   "read": 1,
-   "report": 1,
-   "role": "LANDA Local Organization Management"
-  },
-  {
-   "export": 1,
-   "read": 1,
-   "report": 1,
-   "role": "LANDA Local Water Body Management",
-   "write": 1
-  },
-  {
-   "export": 1,
-   "permlevel": 1,
-   "read": 1,
-   "report": 1,
-   "role": "LANDA Local Water Body Management",
-   "write": 1
-  },
-  {
-   "read": 1,
    "role": "LANDA Member"
   },
   {
-   "permlevel": 1,
-   "read": 1,
-   "role": "LANDA Member"
-  },
-  {
+   "create": 1,
+   "email": 1,
    "export": 1,
-   "permlevel": 1,
+   "print": 1,
    "read": 1,
    "report": 1,
-   "role": "LANDA Regional Organization Management"
+   "role": "LANDA Regional Water Body Management",
+   "share": 1,
+   "write": 1
   }
  ],
  "quick_entry": 1,

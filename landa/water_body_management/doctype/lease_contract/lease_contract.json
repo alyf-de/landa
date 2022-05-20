@@ -1,0 +1,257 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "creation": "2022-02-25 15:12:11.413179",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "info_text_section",
+  "lease_contract_info_text",
+  "contract_data_section",
+  "organization",
+  "water_body",
+  "additional_information",
+  "column_break_6",
+  "organization_name",
+  "water_body_title",
+  "fishing_area",
+  "section_break_10",
+  "start_date",
+  "status",
+  "column_break_13",
+  "end_date",
+  "section_break_15",
+  "rent_per_month",
+  "column_break_18",
+  "currency",
+  "landlord_section",
+  "landlord",
+  "additional_information_about_landlord",
+  "column_break_22",
+  "first_name",
+  "last_name",
+  "institution_or_company_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "info_text_section",
+   "fieldtype": "Section Break",
+   "label": "Info Text"
+  },
+  {
+   "fieldname": "lease_contract_info_text",
+   "fieldtype": "HTML",
+   "label": "Lease Contract Info Text",
+   "options": "<p>Pachtvertr\u00e4ge k\u00f6nnen Gew\u00e4ssern hinzugef\u00fcgt werden. Vereine und Vereinsmitglieder k\u00f6nnen diese nicht einsehen, auch wenn sie das Gew\u00e4sser mit betreuen. F\u00fcr Scans und andere Dokumente zum Pachtvertrag bitte \u00fcber die Seitenleiste die Dateien an dieses Formular  anh\u00e4ngen.</p>"
+  },
+  {
+   "fieldname": "contract_data_section",
+   "fieldtype": "Section Break",
+   "label": "Regional Organization and Water Body"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "organization",
+   "fieldname": "water_body",
+   "fieldtype": "Link",
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Water Body",
+   "options": "Water Body",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "water_body.fishing_area",
+   "fieldname": "fishing_area",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Fishing Area",
+   "options": "Fishing Area",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "Today",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "End Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Planned\nActive\nInactive",
+   "read_only": 1
+  },
+  {
+   "fieldname": "additional_information",
+   "fieldtype": "Small Text",
+   "label": "Additional Information"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "landlord_section",
+   "fieldtype": "Section Break",
+   "label": "Landlord"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "landlord",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Landlord",
+   "options": "External Contact"
+  },
+  {
+   "fetch_from": "landlord.first_name",
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "landlord.last_name",
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "additional_information_about_landlord",
+   "fieldtype": "Small Text",
+   "label": "Additional Information About Landlord"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Regional Organization",
+   "options": "Organization",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "organization.organization_name",
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Regional Organization Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "landlord.external_organization_name",
+   "fieldname": "institution_or_company_name",
+   "fieldtype": "Data",
+   "label": "Institution or Company Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "water_body.title",
+   "fieldname": "water_body_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Water Body Title",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "rent_per_month",
+   "fieldtype": "Currency",
+   "label": "Rent per Month",
+   "options": "currency"
+  },
+  {
+   "default": "EUR",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break",
+   "label": "Status and Duration"
+  },
+  {
+   "fieldname": "column_break_13",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_15",
+   "fieldtype": "Section Break",
+   "label": "Rent"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "links": [],
+ "modified": "2022-03-17 18:04:36.118215",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Lease Contract",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Regional Water Body Management",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "water_body_title",
+ "track_changes": 1
+}

@@ -2,15 +2,22 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "field:short_code",
+ "autoname": "field:title",
  "creation": "2021-02-18 16:46:22.832743",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "short_code",
   "title",
-  "scientific_name"
+  "short_code",
+  "scientific_name",
+  "is_default_fish_species_for_population",
+  "close_season",
+  "minimum_size",
+  "general_fishing_limit",
+  "special_fishing_limit",
+  "traits",
+  "wikipedia_link"
  ],
  "fields": [
   {
@@ -30,16 +37,58 @@
    "label": "Scientific Name"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "short_code",
    "fieldtype": "Data",
-   "label": "Short Code",
-   "reqd": 1,
-   "unique": 1
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Fish Species Short Code"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default_fish_species_for_population",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Is Default Fish Species For Population"
+  },
+  {
+   "fieldname": "close_season",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Close Season"
+  },
+  {
+   "fieldname": "minimum_size",
+   "fieldtype": "Data",
+   "label": "Minimum Size"
+  },
+  {
+   "fieldname": "general_fishing_limit",
+   "fieldtype": "Data",
+   "label": "General Fishing Limit"
+  },
+  {
+   "fieldname": "special_fishing_limit",
+   "fieldtype": "Data",
+   "label": "Special Fishing Limit"
+  },
+  {
+   "fieldname": "traits",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Traits"
+  },
+  {
+   "fieldname": "wikipedia_link",
+   "fieldtype": "Data",
+   "label": "Wikipedia Link"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-04 15:17:36.774455",
+ "modified": "2022-03-07 18:34:08.652428",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Species",
@@ -61,25 +110,20 @@
    "write": 1
   },
   {
+   "export": 1,
    "read": 1,
+   "report": 1,
    "role": "LANDA Member"
   },
   {
    "create": 1,
    "delete": 1,
+   "email": 1,
    "export": 1,
+   "import": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA State Organization Employee",
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "export": 1,
-   "read": 1,
-   "report": 1,
-   "role": "LANDA Regional Water Body Management",
    "write": 1
   }
  ],
