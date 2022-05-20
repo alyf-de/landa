@@ -183,16 +183,6 @@
    "type": "Link"
   },
   {
-   "dependencies": "LANDA Member",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Current Member Data",
-   "link_to": "Current Member Data",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
    "hidden": 0,
    "is_query_report": 0,
    "label": "Imports",
@@ -211,10 +201,10 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Single Member Data Import",
-   "link_to": "Member Data Import",
-   "link_type": "DocType",
+   "is_query_report": 1,
+   "label": "Template for Member Data Import",
+   "link_to": "Current Member Data",
+   "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   },
@@ -224,6 +214,7 @@
    "label": "Setup",
    "link_type": "DocType",
    "onboard": 0,
+   "only_for": "",
    "type": "Card Break"
   },
   {
@@ -245,7 +236,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-03-30 15:17:35.103326",
+ "modified": "2022-05-20 17:31:20.818693",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
