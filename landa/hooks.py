@@ -146,6 +146,15 @@ landa_create_after_install = [
 		],
 		"numeric_values": 0,
 	},
+	{
+		# This needs to exist so that User Permissions on User will work as expected.
+		"doctype": "Custom DocPerm",
+		"parent": "User",
+		"role": "All",
+		"select": 1,
+		"read": 0,
+		"export": 0,
+	},
 ]
 
 # Used in `landa.install.disable_modes_of_payment`
@@ -342,3 +351,33 @@ override_whitelisted_methods = {
 #		"debug_print_var:landa.landa_sales.sales_order.sales_order.debug_print_var"
 #	]
 # }
+
+landa_custom_fields = {
+	"User": [
+		{
+			"fieldname": "landa_member",
+			"fieldtype": "Link",
+			"label": "LANDA Member",
+			"options": "LANDA Member",
+			"insert_after": "username",
+			"translatable": 0,
+		},
+		{
+			"fieldname": "organization",
+			"fieldtype": "Link",
+			"label": "Organization",
+			"options": "Organization",
+			"insert_after": "landa_member",
+			"fetch_from": "landa_member.organization",
+			"read_only": 1,
+			"reqd": 1,
+			"translatable": 0,
+		},
+	],
+}
+
+landa_property_setters = {
+	"User": [
+		("short_bio", "hidden", "1", "Check"),
+	],
+}

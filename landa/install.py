@@ -1,9 +1,13 @@
 import frappe
 from frappe import get_hooks
+from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
+from frappe.custom.doctype.property_setter.property_setter import make_property_setter
 
 
 def after_install():
 	update_system_settings()
+	make_custom_fields()
+	make_property_setters()
 	create_records_from_hooks()
 	disable_modes_of_payment()
 	add_session_defaults()
@@ -85,3 +89,19 @@ def update_system_settings():
 	)
 	settings.save()
 
+
+def make_custom_fields():
+	create_custom_fields(frappe.get_hooks("landa_custom_fields"))
+
+
+def make_property_setters():
+	for doctypes, property_setters in frappe.get_hooks(
+		"landa_property_setters", {}
+	).items():
+		if isinstance(doctypes, str):
+			doctypes = (doctypes,)
+
+		for doctype in doctypes:
+			for property_setter in property_setters:
+				for_doctype = True if not property_setter[0] else False
+				make_property_setter(doctype, *property_setter, for_doctype)

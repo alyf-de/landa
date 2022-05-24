@@ -49,6 +49,8 @@ class LANDAMember(Document):
 					"last_name": self.last_name,
 					"module_profile": "LANDA User",
 					"language": "de",
+					"landa_member": self.name,
+					"organization": self.organization,
 				}
 			).insert(ignore_permissions=True)
 			user.add_roles("LANDA Member")
