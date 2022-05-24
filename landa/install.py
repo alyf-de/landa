@@ -11,7 +11,7 @@ def after_install():
 
 
 def create_records_from_hooks():
-	records = get_hooks('landa_create_after_install', default=[], app_name='landa')
+	records = get_hooks("landa_create_after_install", default=[], app_name="landa")
 	for record in records:
 		try:
 			doc = frappe.get_doc(record)
@@ -21,26 +21,26 @@ def create_records_from_hooks():
 
 
 def disable_modes_of_payment():
-	names = get_hooks('disable_modes_of_payment', default=[], app_name='landa')
+	names = get_hooks("disable_modes_of_payment", default=[], app_name="landa")
 	for name in names:
 		try:
-			frappe.set_value('Mode of Payment', name, 'enabled', False)
+			frappe.set_value("Mode of Payment", name, "enabled", False)
 		except frappe.DoesNotExistError:
 			continue
 
 
 def add_session_defaults():
-	settings = frappe.get_single('Session Default Settings')
-	ref_doctypes = get_hooks('landa_add_to_session_defaults', default=[], app_name='landa')
+	settings = frappe.get_single("Session Default Settings")
+	ref_doctypes = get_hooks(
+		"landa_add_to_session_defaults", default=[], app_name="landa"
+	)
 	existing_ref_doctypes = [row.ref_doctype for row in settings.session_defaults]
 
 	for ref_doctype in ref_doctypes:
 		if ref_doctype in existing_ref_doctypes:
 			continue
 
-		settings.append("session_defaults", {
-			"ref_doctype": ref_doctype
-		})
+		settings.append("session_defaults", {"ref_doctype": ref_doctype})
 
 	settings.save()
 
