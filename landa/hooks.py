@@ -12,7 +12,6 @@ app_email = "office@realexperts.de"
 app_license = "--"
 
 fixtures = [
-	"System Settings",
 	"Navbar Settings",
 	"Website Settings",
 	{

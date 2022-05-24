@@ -3,6 +3,7 @@ from frappe import get_hooks
 
 
 def after_install():
+	update_system_settings()
 	create_records_from_hooks()
 	disable_modes_of_payment()
 	add_session_defaults()
@@ -56,3 +57,31 @@ def setup_uoms():
 	frappe.qb.update(uom_table).set(uom_table.enabled, 0).where(
 		uom_table.uom_name != "Anzahl"
 	).run()
+
+
+def update_system_settings():
+	settings = frappe.get_single("System Settings")
+	settings.update(
+		{
+			"allow_error_traceback": 0,
+			"allow_guests_to_upload_files": 0,
+			"apply_strict_user_permissions": 1,
+			"attach_view_link": 1,
+			"country": "Germany",
+			"date_format": "dd.mm.yyyy",
+			"disable_change_log_notification": 1,
+			"disable_system_update_notification": 1,
+			"email_footer_address": "Bitte antworten Sie nicht auf diese automatische E-Mail. Die Antworten werden nicht gelesen. Bei Fragen wenden Sie sich bitte an Ihren Regionalverband.",
+			"enable_onboarding": 0,
+			"enable_password_policy": 1,
+			"first_day_of_the_week": "Monday",
+			"float_precision": "3",
+			"language": "de",
+			"minimum_password_score": "3",
+			"number_format": "#.###,##",
+			"time_format": "HH:mm",
+			"time_zone": "Europe/Berlin",
+		}
+	)
+	settings.save()
+
