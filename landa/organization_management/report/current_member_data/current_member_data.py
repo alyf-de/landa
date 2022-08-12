@@ -194,7 +194,7 @@ class LANDACurrentMemberData(object):
 			},
 			{
 				"label": "Issue Date of Yearly Fishing Permit",
-				"fieldtype": "Data",
+				"fieldtype": "Date",
 				"fieldname": "date_of_issue",
 			},
 			{

@@ -7246,5 +7246,21 @@
   "parenttype": null,
   "source_text": "Toggle Chart",
   "translated_text": "Diagramm ein-/ausblenden"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-08-12 11:35:09.437489",
+  "name": "ad4dfa6b38",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "ID Yearly Fishing Permit",
+  "translated_text": "Eindeutige Erlaubnisschein Identifikation"
  }
 ]
