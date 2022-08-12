@@ -3,6 +3,7 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
+from typing import List
 import frappe
 from frappe import _
 from frappe.utils import cint
@@ -215,3 +216,12 @@ def add_node():
 	doc = frappe.get_doc(args)
 	doc.check_permission_on_parent("create")
 	doc.insert(ignore_permissions=True)
+
+
+def get_supported_water_bodies(organization: str) -> List[str]:
+	"""Return a list of water bodies that are supported by the organization."""
+	return frappe.get_all(
+		"Water Body Management Local Organization",
+		filters={"organization": organization, "disabled": 0},
+		pluck="water_body",
+	)

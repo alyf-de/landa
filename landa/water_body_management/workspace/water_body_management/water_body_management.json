@@ -26,8 +26,8 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Water Body",
-   "link_to": "Water Body",
+   "label": "Catch Log Entry",
+   "link_to": "Catch Log Entry",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -35,8 +35,26 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Fish Species",
-   "link_to": "Fish Species",
+   "label": "Stocking Measure",
+   "link_to": "Stocking Measure",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Stocking Target",
+   "link_to": "Stocking Target",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Water Body",
+   "link_to": "Water Body",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -53,31 +71,138 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Catch Log Entry",
-   "link_to": "Catch Log Entry",
+   "label": "Fish Species",
+   "link_to": "Fish Species",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   },
   {
-    "hidden": 0,
-    "is_query_report": 0,
-    "label": "Reports",
-    "link_type": "DocType",
-    "onboard": 0,
-    "type": "Card Break"
-   },
-   {
-    "hidden": 0,
-    "is_query_report": 0,
-    "label": "My Reports",
-    "link_to": "Report",
-    "link_type": "DocType",
-    "onboard": 0,
-    "type": "Link"
-   }
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Water Body Special Provision",
+   "link_to": "Water Body Special Provision",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Water Body Management Local Organization",
+   "link_to": "Water Body Management Local Organization",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Lease Contract",
+   "link_to": "Lease Contract",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "External Contact",
+   "link_to": "External Contact",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "External Function",
+   "link_to": "External Function",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Members in Water Body Management",
+   "link_to": "Members in Water Body Management",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Catch Log Statistics",
+   "link_to": "Catch Log Statistics",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Catch Log Days and Counts",
+   "link_to": "Catch Log Days and Counts",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stocking of Supported Water Bodies",
+   "link_to": "Stocking of Supported Water Bodies",
+   "link_type": "Report",
+   "onboard": 0,
+   "only_for": "",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Imports",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Data Import Tool",
+   "link_to": "Data Import",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "My Reports",
+   "link_to": "Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
  ],
- "modified": "2022-03-24 11:42:03.979165",
+ "modified": "2022-03-31 16:14:58.982798",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management",

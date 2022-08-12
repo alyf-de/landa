@@ -12,7 +12,6 @@ app_email = "office@realexperts.de"
 app_license = "--"
 
 fixtures = [
-	"System Settings",
 	"Navbar Settings",
 	"Website Settings",
 	{
@@ -39,7 +38,6 @@ fixtures = [
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
 	{"dt": "Organization", "filters": [["name", "in", ["LV", "AVE", "AVS", "AVL"]]]},
 	"Member Function Category",
-	"Fish Species",
 	"Fishing Area",
 	{
 		"dt": "Variant Field",
@@ -53,8 +51,12 @@ fixtures = [
 	"Salutation",
 	"Gender",
 	{"dt": "Note", "filters": {"name": "Datenschutz Hinweise"}},
+	"Workflow State",
+	"Workflow Action Master",
+	"Workflow",
 ]
 
+boot_session = "landa.startup.boot.boot_session"
 
 # DocTypes to be created once, after installation of this app
 #
@@ -144,6 +146,15 @@ landa_create_after_install = [
 		],
 		"numeric_values": 0,
 	},
+	{
+		# This needs to exist so that User Permissions on User will work as expected.
+		"doctype": "Custom DocPerm",
+		"parent": "User",
+		"role": "All",
+		"select": 1,
+		"read": 0,
+		"export": 0,
+	},
 ]
 
 # Used in `landa.install.disable_modes_of_payment`
@@ -191,7 +202,7 @@ doctype_js = {
 	"Item": "landa_stock/item/item.js",
 	"Payment Entry": "landa_sales/payment_entry/payment_entry.js",
 }
-doctype_list_js = {"Report" : "scripts/report_list.js"}
+doctype_list_js = {"Report": "scripts/report_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -293,6 +304,11 @@ scheduler_events = {
 	#		"landa.tasks.all"
 	#	],
 	"daily": ["landa.tasks.daily"],
+	"cron": {
+		"0 0 1 10 *": [	 # every 1st october at 00:00
+			"landa.water_body_management.doctype.stocking_target.stocking_target.copy_to_next_year",
+		],
+	},
 	# "all": ["landa.tasks.all"],
 	#	, "hourly": [
 	#		"landa.tasks.hourly"
@@ -335,3 +351,33 @@ override_whitelisted_methods = {
 #		"debug_print_var:landa.landa_sales.sales_order.sales_order.debug_print_var"
 #	]
 # }
+
+landa_custom_fields = {
+	"User": [
+		{
+			"fieldname": "landa_member",
+			"fieldtype": "Link",
+			"label": "LANDA Member",
+			"options": "LANDA Member",
+			"insert_after": "username",
+			"translatable": 0,
+		},
+		{
+			"fieldname": "organization",
+			"fieldtype": "Link",
+			"label": "Organization",
+			"options": "Organization",
+			"insert_after": "landa_member",
+			"fetch_from": "landa_member.organization",
+			"read_only": 1,
+			"reqd": 1,
+			"translatable": 0,
+		},
+	],
+}
+
+landa_property_setters = {
+	"User": [
+		("short_bio", "hidden", "1", "Check"),
+	],
+}

@@ -1,5 +1,6 @@
 import frappe
 from frappe import _
+from frappe.utils.nestedset import get_ancestors_of
 
 
 def get_new_name(prefix, company, doctype):
@@ -25,7 +26,7 @@ def welcome_email():
 
 def reset_workspace(workspace: str) -> None:
 	"""Delete all user's custom extensions of `workspace`.
-	
+
 	Used to reset user customizations after the workspace definition has changed."""
 	custom_workspaces = frappe.get_all(
 		"Workspace",
@@ -34,3 +35,37 @@ def reset_workspace(workspace: str) -> None:
 	)
 	for workspace_name in custom_workspaces:
 		frappe.delete_doc("Workspace", workspace_name)
+
+
+def get_current_member_data():
+	from_cache = frappe.cache().hget("landa", frappe.session.user)
+	if from_cache:
+		return from_cache
+
+	result = frappe._dict()
+	data = frappe.db.get_value(
+		"LANDA Member",
+		filters={"user": frappe.session.user},
+		fieldname=["name", "organization"],
+	)
+
+	if not data:
+		frappe.cache().hset("landa", frappe.session.user, result)
+		return result
+
+	member_name, member_organization = data
+	member_organization = member_organization[
+		:7
+	]  # use local Organization instead of Ortsgruppe
+
+	ancestors = get_ancestors_of("Organization", member_organization)
+	ancestors.reverse()	 # root as the first element
+
+	result.member = member_name
+	result.local_organization = member_organization
+	result.regional_organization = ancestors[1]
+	result.state_organization = ancestors[0]
+
+	frappe.cache().hset("landa", frappe.session.user, result)
+
+	return result

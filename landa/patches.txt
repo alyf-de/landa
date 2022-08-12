@@ -9,3 +9,5 @@ execute:from landa.install import setup_uoms; setup_uoms() # 1
 execute:from landa.utils import reset_workspace; reset_workspace("Organization Management")
 execute:frappe.db.sql("UPDATE `tabOrganization` SET location = NULL WHERE TRUE")
 landa.patches.import_ave_locations
+landa.patches.add_names_to_fishing_permit
+landa.patches.link_user_to_member  # 2

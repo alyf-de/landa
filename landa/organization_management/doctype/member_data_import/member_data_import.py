@@ -82,7 +82,7 @@ class MemberDataImport(Document):
 		if self.address_name:
 			address_doc = frappe.get_doc("Address", self.address_name)
 			self.update_doc(address_doc, self.ADDRESS_FIELDS)
-		elif all([self.address_line1, self.pincode, self.city]):
+		elif all([self.address_line1, self.pincode, self.city, self.member]):
 			create_address(
 				address_line1=self.address_line1,
 				pincode=self.pincode,
@@ -164,10 +164,17 @@ def create_address(address_line1: str, pincode: str, city: str, member: str) -> 
 def create_yearly_fishing_permit(
 	member: str, year: int, permit_type: str, number: str, date_of_issue
 ) -> None:
+	data = {
+		"member": member,
+		"year": year,
+		"type": permit_type
+	}
+
+	if frappe.db.exists("Yearly Fishing Permit", data):
+		return
+
 	yfp = frappe.new_doc("Yearly Fishing Permit")
-	yfp.member = member
-	yfp.year = year
-	yfp.type = permit_type
+	yfp.update(data)
 	yfp.number = number
 	yfp.date_of_issue = date_of_issue
 

@@ -1,0 +1,50 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-02-24 16:35:56.548997",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "landa_member",
+  "first_name",
+  "last_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "landa_member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "LANDA Member",
+   "options": "LANDA Member",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "landa_member.first_name",
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "First Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "landa_member.last_name",
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Last Name",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-02-24 16:49:30.344881",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Water Body Local Contact Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
