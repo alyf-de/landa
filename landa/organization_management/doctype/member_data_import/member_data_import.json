@@ -26,6 +26,7 @@
   "pincode",
   "city",
   "section_break_14",
+  "yearly_fishing_permit",
   "year",
   "type",
   "date_of_issue",
@@ -159,11 +160,18 @@
    "fieldname": "landa_member_section",
    "fieldtype": "Section Break",
    "label": "LANDA Member"
+  },
+  {
+   "fieldname": "yearly_fishing_permit",
+   "fieldtype": "Link",
+   "label": "ID Yearly Fishing Permit",
+   "options": "Yearly Fishing Permit",
+   "read_only": 1
   }
  ],
  "is_virtual": 1,
  "links": [],
- "modified": "2022-01-07 02:03:38.122599",
+ "modified": "2022-08-15 17:09:02.100616",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Data Import",

@@ -23,13 +23,15 @@ class MemberDataImport(Document):
 
 	ADDRESS_FIELDS = ["address_line1", "pincode", "city"]
 
+	# PERMIT_FIELDS = ["year", "type", "number", "date_of_issue"]
+
 	def before_insert(self):
 		self.preprocess()
 
 	def db_insert(self):
 		self.create_or_update_member()
 		self.create_or_update_address()
-		self.create_permit()
+		self.create_or_update_permit()
 		return {}
 
 	def load_from_db(self):
@@ -90,25 +92,28 @@ class MemberDataImport(Document):
 				member=self.member,
 			)
 
-	def create_permit(self):
-		if not self.year:
+	def create_or_update_permit(self):
+		if self.yearly_fishing_permit:
 			return
-
-		doctype = "Yearly Fishing Permit Type"
-		default_type = "ALLG"
-		if not self.type or not frappe.db.exists(doctype, self.type):
-			if frappe.db.exists(doctype, default_type):
-				self.type = default_type
-			else:
-				return
-
-		create_yearly_fishing_permit(
-			member=self.member,
-			year=self.year,
-			permit_type=self.type,
-			number=self.number,
-			date_of_issue=self.date_of_issue,
-		)
+			# permit_doc = frappe.get_doc(
+			#	"Yearly Fishing Permit", self.yearly_fishing_permit
+			# )
+			# self.update_doc(permit_doc, self.PERMIT_FIELDS)
+		elif all([self.year, self.number, self.date_of_issue, self.member]):
+			doctype = "Yearly Fishing Permit Type"
+			default_type = "ALLG"
+			if not self.type or not frappe.db.exists(doctype, self.type):
+				if frappe.db.exists(doctype, default_type):
+					self.type = default_type
+				else:
+					return
+			create_yearly_fishing_permit(
+				member=self.member,
+				year=self.year,
+				type=self.type,
+				number=self.number,
+				date_of_issue=self.date_of_issue,
+			)
 
 	def update_doc(self, doc: Document, fields: "list[str]"):
 		"""Update all `fields` of `doc` with the values from `self`."""
@@ -162,13 +167,9 @@ def create_address(address_line1: str, pincode: str, city: str, member: str) -> 
 
 
 def create_yearly_fishing_permit(
-	member: str, year: int, permit_type: str, number: str, date_of_issue
+	member: str, year: int, type: str, number: str, date_of_issue
 ) -> None:
-	data = {
-		"member": member,
-		"year": year,
-		"type": permit_type
-	}
+	data = {"member": member, "year": year, "type": type}
 
 	if frappe.db.exists("Yearly Fishing Permit", data):
 		return
