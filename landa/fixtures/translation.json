@@ -5255,13 +5255,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-10-28 18:23:42.413087",
+  "modified": "2022-08-15 15:46:20.947476",
   "name": "81b19ca0b8",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Address ID",
-  "translated_text": "Eindeutige Address-Identifikation"
+  "translated_text": "Eindeutige Adress-Identifikation"
  },
  {
   "context": null,
