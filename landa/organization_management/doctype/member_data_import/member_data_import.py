@@ -91,28 +91,28 @@ class MemberDataImport(Document):
 			)
 
 	def create_permit(self):
-		# if permit id is given (used only for import) do not create permit
-		if self.yearly_fishing_permit:
+		if self.yearly_fishing_permit or not all([self.year, self.number, self.member]):
+			# permit exists or required fields are missing
 			return
-		# required fields: year, number and member
-		# type and date_of_issue will be set to default
-		elif all([self.year, self.number, self.member]):
-			doctype = "Yearly Fishing Permit Type"
+
+		doctype = "Yearly Fishing Permit Type"
+		if not self.type or not frappe.db.exists(doctype, self.type):
 			default_type = "ALLG"
-			if not self.type or not frappe.db.exists(doctype, self.type):
-				if frappe.db.exists(doctype, default_type):
-					self.type = default_type
-				else:
-					return
-			if not self.date_of_issue:
-				self.date_of_issue = datetime.today().date()
-			create_yearly_fishing_permit(
-				member=self.member,
-				year=self.year,
-				type=self.type,
-				number=self.number,
-				date_of_issue=self.date_of_issue,
-			)
+			if frappe.db.exists(doctype, default_type):
+				self.type = default_type
+			else:
+				return
+
+		if not self.date_of_issue:
+			self.date_of_issue = datetime.now().date()
+
+		create_yearly_fishing_permit(
+			member=self.member,
+			year=self.year,
+			type=self.type,
+			number=self.number,
+			date_of_issue=self.date_of_issue,
+		)
 
 	def update_doc(self, doc: Document, fields: "list[str]"):
 		"""Update all `fields` of `doc` with the values from `self`."""
