@@ -23,6 +23,17 @@ class LANDACurrentMemberData(object):
 			df.set_index("member", inplace=True)
 			return df
 
+		def remove_duplicate_indices(df, index="member", sort_by=None, keep="last"):
+			"""Remove rows in dataframe with duplicate indeces.
+			If sort_by is specified the dataframe is firsted sorted by these columns keeping the entry specified in keep, e.g. 'last'"""
+			if sort_by is not None:
+				df = df.sort_values(sort_by)
+			return (
+				df.reset_index()
+				.drop_duplicates(subset=[index], keep=keep)
+				.set_index(index)
+			)
+
 		def get_link_filters(frappe_tuple):
 			member_ids = [m[0] for m in frappe_tuple]  # list of member names (ID)
 			link_filters = [
@@ -50,9 +61,27 @@ class LANDACurrentMemberData(object):
 		# convert to pandas dataframe
 		member_df = frappe_tuple_to_pandas_df(members, ["member"] + member_fields[1:])
 		# create empty clomuns for yearly fishing permit
-		fishing_permit_columns = ["year", "type", "date_of_issue", "number"]
-		for c in fishing_permit_columns:
-			member_df[c] = np.nan
+		fishing_permit_columns = [
+			"name",
+			"member",
+			"year",
+			"type",
+			"date_of_issue",
+			"number",
+		]
+		fishing_permits = frappe.get_list(
+			"Yearly Fishing Permit", fields=fishing_permit_columns, as_list=True
+		)
+		# convert to pandas dataframe
+		fishing_permits_df = frappe_tuple_to_pandas_df(
+			fishing_permits, fishing_permit_columns
+		)
+		fishing_permits_df.rename(
+			{"name": "yearly_fishing_permit"}, axis=1, inplace=True
+		)
+		fishing_permits_df = remove_duplicate_indices(
+			fishing_permits_df, sort_by=["year", "date_of_issue"]
+		)
 
 		# define the labels of db entries that are supposed to be loaded
 		link_field_label = "`tabDynamic Link`.link_name as member"
@@ -71,7 +100,10 @@ class LANDACurrentMemberData(object):
 		addresses_df.rename({"name": "address_name"}, axis=1, inplace=True)
 
 		# merge members and addresses from different doctypes
-		data = pd.merge(member_df, addresses_df, on="member", how="outer")
+		data = pd.concat([member_df, fishing_permits_df], axis=1).reindex(
+			member_df.index
+		)
+		data = pd.merge(data, addresses_df, on="member", how="outer")
 
 		# sort dataframe like report columns
 		sorted_columns = [c["fieldname"] for c in self.get_columns()][1:]
@@ -144,6 +176,12 @@ class LANDACurrentMemberData(object):
 				"options": "Organization",
 			},
 			{
+				"label": "ID Yearly Fishing Permit",
+				"fieldtype": "Link",
+				"fieldname": "yearly_fishing_permit",
+				"options": "Yearly Fishing Permit",
+			},
+			{
 				"label": "Year of Yearly Fishing Permit",
 				"fieldtype": "Data",
 				"fieldname": "year",
@@ -156,7 +194,7 @@ class LANDACurrentMemberData(object):
 			},
 			{
 				"label": "Issue Date of Yearly Fishing Permit",
-				"fieldtype": "Data",
+				"fieldtype": "Date",
 				"fieldname": "date_of_issue",
 			},
 			{

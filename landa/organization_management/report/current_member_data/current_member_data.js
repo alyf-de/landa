@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 frappe.query_reports["Current Member Data"] = {
-	"filters": [
+    "filters": [
         {
             "fieldname": "organization",
             "fieldtype": "Link",
@@ -14,4 +14,10 @@ frappe.query_reports["Current Member Data"] = {
             "default": frappe.defaults.get_user_default("Organization"),
         },
     ],
+    onload: function (query_report) {
+        const b = cur_page.page.page.wrapper.find(".sub-heading");
+        b.html(`
+            Sehen Sie sich bitte unbedingt vor der ersten Benutzung <a href="/how-to/member-data-import" target=_blank style="color: blue;">dieses Anleitung</a> an.</p>
+        </div>`).toggleClass("hide", false);
+    }
 };

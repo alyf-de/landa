@@ -91,21 +91,25 @@ class MemberDataImport(Document):
 			)
 
 	def create_permit(self):
-		if not self.year:
+		if self.yearly_fishing_permit or not all([self.year, self.number, self.member]):
+			# permit exists or required fields are missing
 			return
 
 		doctype = "Yearly Fishing Permit Type"
-		default_type = "ALLG"
 		if not self.type or not frappe.db.exists(doctype, self.type):
+			default_type = "ALLG"
 			if frappe.db.exists(doctype, default_type):
 				self.type = default_type
 			else:
 				return
 
+		if not self.date_of_issue:
+			self.date_of_issue = datetime.now().date()
+
 		create_yearly_fishing_permit(
 			member=self.member,
 			year=self.year,
-			permit_type=self.type,
+			type=self.type,
 			number=self.number,
 			date_of_issue=self.date_of_issue,
 		)
@@ -162,13 +166,9 @@ def create_address(address_line1: str, pincode: str, city: str, member: str) -> 
 
 
 def create_yearly_fishing_permit(
-	member: str, year: int, permit_type: str, number: str, date_of_issue
+	member: str, year: int, type: str, number: str, date_of_issue
 ) -> None:
-	data = {
-		"member": member,
-		"year": year,
-		"type": permit_type
-	}
+	data = {"member": member, "year": year, "type": type}
 
 	if frappe.db.exists("Yearly Fishing Permit", data):
 		return
