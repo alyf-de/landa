@@ -23,15 +23,13 @@ class MemberDataImport(Document):
 
 	ADDRESS_FIELDS = ["address_line1", "pincode", "city"]
 
-	# PERMIT_FIELDS = ["year", "type", "number", "date_of_issue"]
-
 	def before_insert(self):
 		self.preprocess()
 
 	def db_insert(self):
 		self.create_or_update_member()
 		self.create_or_update_address()
-		self.create_or_update_permit()
+		self.create_permit()
 		return {}
 
 	def load_from_db(self):
@@ -92,14 +90,13 @@ class MemberDataImport(Document):
 				member=self.member,
 			)
 
-	def create_or_update_permit(self):
+	def create_permit(self):
+		# if permit id is given (used only for import) do not create permit
 		if self.yearly_fishing_permit:
 			return
-			# permit_doc = frappe.get_doc(
-			#	"Yearly Fishing Permit", self.yearly_fishing_permit
-			# )
-			# self.update_doc(permit_doc, self.PERMIT_FIELDS)
-		elif all([self.year, self.number, self.date_of_issue, self.member]):
+		# required fields: year, number and member
+		# type and date_of_issue will be set to default
+		elif all([self.year, self.number, self.member]):
 			doctype = "Yearly Fishing Permit Type"
 			default_type = "ALLG"
 			if not self.type or not frappe.db.exists(doctype, self.type):
@@ -107,6 +104,8 @@ class MemberDataImport(Document):
 					self.type = default_type
 				else:
 					return
+			if not self.date_of_issue:
+				self.date_of_issue = datetime.today().date()
 			create_yearly_fishing_permit(
 				member=self.member,
 				year=self.year,
