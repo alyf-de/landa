@@ -15,11 +15,9 @@ frappe.query_reports["Current Member Data"] = {
         },
     ],
     onload: function (query_report) {
-        query_report.page.footer.html(`<div class="my-3">
-            <p>Dieser Bericht gibt einen schnellen Überblick über die Daten, die bei einer Fangbuchausgabe erfasst werden. Dazu gehören vor allem die primär genutzte Adresse sowie der zuletzt ausgegebene Erlaubnisschein.</p>
-            <p>Um alle anderen Daten eines Mitglieds zu sehen (z. B. auch Telefonnummer und Mitgliedsfunktion) nutzen Sie bitte stattdessen <a href="/app/query-report/Members%20with%20Member%20Functions" target=_blank style="color: blue;">diesen vollständigen Bericht</a>!</p>
-            <p>Dieser Bericht dient außerdem als Vorlage für den Mitgliedsdatenimport mit Hilfe des <a href="/app/data-import" target=_blank style="color: blue;">Datenimport Werkzeugs</a>. Sehen Sie sich bitte unbedingt vor der ersten Benutzung <a href="https://youtu.be/CZRcqaMOYso" target=_blank style="color: blue;">dieses Video</a> an.</p>
-            <p>Über den Mitgliedsdatenimport können sowohl Daten geändert als auch Daten hinzugefügt werden. Um eine Adresse zu ändern, ändern Sie die Angaben wie die Adresszeile und Postleitzahl, aber lassen Sie die “Eindeutige Adress-Identifikation” gleich. Wenn Sie die alte Adresse erhalten und eine neue Adresse hinzufügen möchten, lassen sie die “Eindeutige Adress-Identifikation” leer und ändern Sie die Angaben wie die Adresszeile und Postleitzahl! Gleiches gilt für den Erlaubnisschein. Wird beim Import die “Eindeutige Erlaubnisschein Identifikation” leer gelassen und Angaben wie Erlaubnisscheinnummer, Mitglied und Jahr ausgefüllt, erstellt das System beim Import einen neuen Erlaubnisschein. </p>
+        const b = cur_page.page.page.wrapper.find(".sub-heading");
+        b.html(`
+            Sehen Sie sich bitte unbedingt vor der ersten Benutzung <a href="/how-to/member-data-import" target=_blank style="color: blue;">dieses Anleitung</a> an.</p>
         </div>`).toggleClass("hide", false);
     }
 };
