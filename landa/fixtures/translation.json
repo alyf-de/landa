@@ -7246,5 +7246,21 @@
   "parenttype": null,
   "source_text": "Toggle Chart",
   "translated_text": "Diagramm ein-/ausblenden"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-08-16 16:19:55.122005",
+  "name": "3f5be3e9cd",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Date format could not be determined from the values in this column. Defaulting to yyyy-mm-dd.",
+  "translated_text": "Die Datumsspalte wurde komplett leer gelassen oder das Datumsformat nicht korrekt gesetzt. Der Import kann fortgesetzt werden."
  }
 ]
