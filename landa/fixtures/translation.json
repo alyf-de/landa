@@ -7262,5 +7262,21 @@
   "parenttype": null,
   "source_text": "ID Yearly Fishing Permit",
   "translated_text": "Eindeutige Erlaubnisschein Identifikation"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-08-26 20:51:35.056953",
+  "name": "c565092a25",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Local Group",
+  "translated_text": "Ortsgruppe"
  }
 ]
