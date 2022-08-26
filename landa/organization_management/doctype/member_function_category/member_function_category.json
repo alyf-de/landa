@@ -39,7 +39,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Access Level",
-   "options": "State Organization\nRegional Organization\nLocal Organization",
+   "options": "State Organization\nRegional Organization\nLocal Organization\nLocal Group",
    "reqd": 1
   },
   {
@@ -62,7 +62,7 @@
    "link_fieldname": "member_function_category"
   }
  ],
- "modified": "2021-10-04 15:02:44.378821",
+ "modified": "2022-08-26 20:51:12.091523",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function Category",

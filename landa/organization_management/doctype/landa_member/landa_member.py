@@ -15,7 +15,7 @@ from frappe.permissions import add_user_permission
 
 from landa.overrides import get_default_company
 from landa.organization_management.doctype.member_function.member_function import apply_active_member_functions
-from landa.organization_management.doctype.member_function_category.member_function_category import get_organization_at_level
+
 
 class LANDAMember(Document):
 	
@@ -82,12 +82,8 @@ class LANDAMember(Document):
 		"""Restrict LANDA Member to itself and it's Organization."""
 		# LANDAMembers always have access at level 2 (Local Organization)
 		add_user_permission("LANDA Member", self.name, self.user, ignore_permissions=True)
-
-		organization = get_organization_at_level(self.name, 2, self.organization)
-		add_user_permission("Organization", organization, self.user, ignore_permissions=True)
-
-		company = get_default_company(self.organization)
-		add_user_permission("Company", company, self.user, ignore_permissions=True)
+		add_user_permission("Organization", self.organization, self.user, ignore_permissions=True)
+		add_user_permission("Company", get_default_company(self.organization), self.user, ignore_permissions=True)
 
 	def revert_series(self):
 		"""Decrease the naming counter when the newest member gets deleted."""

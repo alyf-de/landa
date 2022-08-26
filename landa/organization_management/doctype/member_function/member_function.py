@@ -42,7 +42,7 @@ class MemberFunction(Document):
 		):
 			return
 
-		if access_level == "Local Organization":
+		if access_level in ("Local Organization", "Local Group"):
 			return
 
 		frappe.throw(
