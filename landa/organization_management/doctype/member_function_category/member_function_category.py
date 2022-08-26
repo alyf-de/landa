@@ -169,7 +169,8 @@ def get_highest_access_level(member_name, disabled_member_function=None):
 	ACCESS_LEVEL_MAP = {
 		'State Organization': 0,
 		'Regional Organization': 1,
-		'Local Organization': 2
+		'Local Organization': 2,
+		'Local Group': 3,
 	}
 	access_levels = get_values_from_categories(member_name, {'access_level': ('is', 'set')}, 'access_level', disabled_member_function)
 
