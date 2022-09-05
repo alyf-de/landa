@@ -23,20 +23,3 @@ def autoname(doc, event):
 	from landa.utils import get_new_name
 
 	doc.name = get_new_name("BEST", doc.company, "Sales Order")
-
-@frappe.whitelist()
-def debug_print_var(var_to_debug):
-
-	print()
-	print(" - - - - - - - - - - - - - - - - - - - - -")
-
-	if isinstance(var_to_debug, SalesInvoice) or isinstance(var_to_debug, DeliveryNote):
-		attrs = vars(var_to_debug)
-		print(', '.join("%s: %s" % item for item in attrs.items()))
-	else:
-		print(" DEBUG: ", var_to_debug)
-	
-	print(" - - - - - - - - - - - - - - - - - - - - -")
-	print()
-
-	return ''
