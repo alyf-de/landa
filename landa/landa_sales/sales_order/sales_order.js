@@ -12,7 +12,16 @@ frappe.ui.form.on("Sales Order",  {
                     cannot_be_ordered: 0,
                     is_sales_item: 1
                 }
-            }
+            };
+        });
+
+        frm.set_query("selling_price_list", function(doc) {
+            return {
+                filters: {
+                    selling: 1,
+                    company: doc.company,
+                }
+            };
         });
     },
     before_save: function (frm) {

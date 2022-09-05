@@ -1,8 +1,5 @@
 frappe.ui.form.on("Delivery Note",  {
-    refresh: function (frm) {
-        frm.trigger("set_item_query");
-    },
-    set_item_query: function(frm) {
+    refresh: function(frm) {
         frm.set_query("item_code", "items", function () {
             const filters = {
                 valid_from_year: ["<=", frm.doc.year_of_settlement],
@@ -18,6 +15,15 @@ frappe.ui.form.on("Delivery Note",  {
             return {
                 query: "erpnext.controllers.queries.item_query",
                 filters: filters
+            };
+        });
+
+        frm.set_query("selling_price_list", function(doc) {
+            return {
+                filters: {
+                    selling: 1,
+                    company: doc.company,
+                }
             };
         });
     },
