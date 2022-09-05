@@ -16,21 +16,10 @@ frappe.ui.form.on("Sales Order",  {
         });
     },
     before_save: function (frm) {
-        frm.doc.items = frm.doc.items.filter(function (value) {
-            return value.qty != 0;
-        });
+        frm.doc.items = landa.selling.remove_zero_qty_items(frm.doc.items);
     },
     year_of_settlement: function (frm) {
-        landa.prefill_items(frm);
+        landa.selling.prefill_items(frm);
         frm.doc.delivery_date = new Date(frm.doc.year_of_settlement, 11, 31); // the month is 0-indexed
     },
-});
-
-frappe.ui.form.on("Sales Order Item", {
-    price_list_rate: function (frm, cdt, cdn) {
-        // `price_list_rate` is set only once, when item details are loaded. We
-        // use this as an indicator to see that all item details are complete.
-        // Then we reset the quantity from 1 to 0.
-        frappe.model.set_value(cdt, cdn, "qty", 0);
-    }
 });

@@ -24,6 +24,9 @@ frappe.ui.form.on("Delivery Note",  {
     year_of_settlement: function (frm) {
         // don't prefill items if the table is already populated
         if (frm.doc.items[0].item_code || frm.doc.items.length > 1) return;
-        landa.prefill_items(frm);
+        landa.selling.prefill_items(frm);
+    },
+    before_save: function (frm) {
+        frm.doc.items = landa.selling.remove_zero_qty_items(frm.doc.items);
     },
 });

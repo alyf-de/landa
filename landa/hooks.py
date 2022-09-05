@@ -181,7 +181,7 @@ welcome_email = "landa.utils.welcome_email"
 # app_include_css = "/assets/landa/css/landa.css"
 app_include_js = [
 	"/assets/landa/js/map_defaults.js",
-	"/assets/landa/js/prefill_items.js"
+	"/assets/landa/js/selling_utils.js"
 ]
 
 # include js, css files in header of web template
