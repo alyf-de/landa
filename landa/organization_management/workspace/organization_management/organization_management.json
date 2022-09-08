@@ -117,7 +117,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Current Member Data",
    "link_to": "Current Member Data",
    "link_type": "Report",
@@ -245,7 +245,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-08-16 13:46:00.215017",
+ "modified": "2022-09-08 12:27:36.088462",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
