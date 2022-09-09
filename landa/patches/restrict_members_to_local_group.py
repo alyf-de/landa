@@ -13,6 +13,7 @@ def execute():
 		.select(table.name, table.user, table.organization)
 		.where(Length(table.organization) > 7)
 		.where(table.user.notnull())
+		.where(table.user != "")
 		.run()
 	):
 		clear_user_permissions_for_doctype("Organization", user)
