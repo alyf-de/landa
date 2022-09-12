@@ -31,6 +31,9 @@ class MemberFunction(Document):
 			"Member Function Category", self.member_function_category, "access_level"
 		)
 
+		if access_level == "Local Group":
+			return
+
 		if access_level == "State Organization" and has_role(
 			"LANDA State Organization Employee"
 		):
@@ -42,7 +45,11 @@ class MemberFunction(Document):
 		):
 			return
 
-		if access_level in ("Local Organization", "Local Group"):
+		if access_level == "Local Organization" and (
+			has_role("LANDA State Organization Employee")
+			or has_role("LANDA Regional Organization Management")
+			or has_role("LANDA Local Organization Management")
+		):
 			return
 
 		frappe.throw(
