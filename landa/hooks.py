@@ -14,24 +14,6 @@ app_license = "--"
 fixtures = [
 	"Navbar Settings",
 	"Website Settings",
-	{
-		"dt": "Web Page",
-		"filters": [
-			[
-				"name",
-				"in",
-				[
-					"über-landa",
-					"impressum",
-					"datenschutzangaben",
-					"nutzungshinweise",
-					"allgemeine-datenschutzinformation",
-					"kurzzusammenfassung-zum-thema-datenschutz-für-mitglieder",
-					"hilfe",
-				],
-			]
-		],
-	},
 	"Contact Us Settings",
 	"About Us Settings",
 	"Module Profile",
