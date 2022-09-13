@@ -12,9 +12,11 @@ def set_user_defaults():
     if not organization:
         return
 
-    frappe.defaults.set_user_default("organization", organization)
+    if not organization.endswith("000"):
+        frappe.defaults.set_user_default("organization", organization)
+
     frappe.defaults.set_user_default("company", get_default_company(organization))
-    frappe.defaults.set_user_default("customer", organization)
+    frappe.defaults.set_user_default("customer", organization[:7])
 
 
 def get_default_company(organization):
