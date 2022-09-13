@@ -409,5 +409,61 @@
   "parentfield": null,
   "parenttype": null,
   "roles": []
+ },
+ {
+  "access_level": "Local Group",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 1,
+  "modified": "2022-09-13 18:00:58.161345",
+  "name": "MV Ortsgruppe",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": [
+   {
+    "parent": "MV Ortsgruppe",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Local Group Management"
+   },
+   {
+    "parent": "MV Ortsgruppe",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Member"
+   },
+   {
+    "parent": "MV Ortsgruppe",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Catch Log User"
+   }
+  ]
+ },
+ {
+  "access_level": "Local Group",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 1,
+  "modified": "2022-09-13 18:38:07.910746",
+  "name": "Fangmengenerfassung Ortsgruppe",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "roles": [
+   {
+    "parent": "Fangmengenerfassung Ortsgruppe",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Catch Log User"
+   },
+   {
+    "parent": "Fangmengenerfassung Ortsgruppe",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "LANDA Member"
+   }
+  ]
  }
 ]

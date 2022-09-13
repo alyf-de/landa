@@ -62,7 +62,7 @@
    "link_fieldname": "member_function_category"
   }
  ],
- "modified": "2022-08-26 20:51:12.091523",
+ "modified": "2022-09-13 13:56:52.518403",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function Category",
@@ -97,6 +97,10 @@
   },
   {
    "role": "LANDA Local Organization Management",
+   "select": 1
+  },
+  {
+   "role": "LANDA Local Group Management",
    "select": 1
   }
  ],

@@ -7278,5 +7278,21 @@
   "parenttype": null,
   "source_text": "Local Group",
   "translated_text": "Ortsgruppe"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-09-13 13:46:44.330004",
+  "name": "a630607697",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "LANDA Local Group Management",
+  "translated_text": "LANDA Mitgliederverwaltung Ortsgruppe"
  }
 ]
