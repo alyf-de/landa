@@ -94,7 +94,7 @@
   }
  ],
  "links": [],
- "modified": "2022-01-07 02:26:08.405402",
+ "modified": "2022-09-13 13:52:00.140568",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Award",
@@ -141,6 +141,12 @@
    "read": 1,
    "report": 1,
    "role": "LANDA Local Organization Management"
+  },
+  {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Local Group Management"
   }
  ],
  "quick_entry": 1,

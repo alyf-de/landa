@@ -280,7 +280,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2022-03-17 19:43:27.213126",
+ "modified": "2022-09-13 13:52:31.578982",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
@@ -330,6 +330,15 @@
    "read": 1,
    "report": 1,
    "role": "LANDA Local Organization Management",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Local Group Management",
    "write": 1
   },
   {

@@ -269,7 +269,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2022-04-09 19:07:20.636890",
+ "modified": "2022-09-13 13:53:29.279177",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
@@ -322,6 +322,13 @@
    "write": 1
   },
   {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Local Group Management",
+   "write": 1
+  },
+  {
    "permlevel": 1,
    "read": 1,
    "role": "LANDA Member"
@@ -330,6 +337,11 @@
    "permlevel": 1,
    "read": 1,
    "role": "LANDA Local Organization Management"
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "LANDA Local Group Management"
   },
   {
    "permlevel": 1,
