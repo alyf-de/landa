@@ -13,9 +13,11 @@ def set_user_defaults():
         return
 
     if not organization.endswith("000"):
+        # Default organization should not be set for members of a regional organization (ending with 000)
         frappe.defaults.set_user_default("organization", organization)
 
     frappe.defaults.set_user_default("company", get_default_company(organization))
+    # Customer is always the local organization (first seven digits of the organization)
     frappe.defaults.set_user_default("customer", organization[:7])
 
 
