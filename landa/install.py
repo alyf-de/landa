@@ -34,17 +34,19 @@ def disable_modes_of_payment():
 
 
 def add_session_defaults():
-	settings = frappe.get_single("Session Default Settings")
 	ref_doctypes = get_hooks(
 		"landa_add_to_session_defaults", default=[], app_name="landa"
 	)
-	existing_ref_doctypes = [row.ref_doctype for row in settings.session_defaults]
-
-	for ref_doctype in ref_doctypes:
-		if ref_doctype in existing_ref_doctypes:
-			continue
-
-		settings.append("session_defaults", {"ref_doctype": ref_doctype})
+	settings = frappe.get_single("Session Default Settings")
+	settings.extend(
+		"session_defaults",
+		[
+			{"ref_doctype": ref_doctype}
+			for ref_doctype in set(ref_doctypes).difference(
+				{row.ref_doctype for row in settings.session_defaults}
+			)
+		],
+	)
 
 	settings.save()
 
