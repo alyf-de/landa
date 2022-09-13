@@ -25,7 +25,7 @@ class MemberFunction(Document):
 		self.validate_member_function_category()
 
 	def get_access_level(self) -> Optional[str]:
-		"""Return the access level of the linked Memeber Function Category."""
+		"""Return the access level of the linked Member Function Category."""
 		return frappe.get_value(
 			"Member Function Category", self.member_function_category, "access_level"
 		)
