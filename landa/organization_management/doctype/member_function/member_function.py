@@ -3,6 +3,7 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
+from typing import Optional
 
 import frappe
 
@@ -23,13 +24,29 @@ class MemberFunction(Document):
 
 		self.validate_member_function_category()
 
-	def validate_member_function_category(self):
-		def has_role(role):
-			return role in frappe.get_roles(frappe.session.user)
-
-		access_level = frappe.get_value(
+	def get_access_level(self) -> Optional[str]:
+		"""Return the access level of the linked Member Function Category."""
+		return frappe.get_value(
 			"Member Function Category", self.member_function_category, "access_level"
 		)
+
+	def validate_member_function_category(self):
+		"""Check if the current user is allowed to set the member function category.
+
+		The current user needs to have certain roles to grant access at a certain level:
+
+		- Access at level "Local Group" can be granted by anyone who can create Member Functions
+		- LANDA State Organization Employee: can grant access on any level
+		- LANDA Regional Organization Management: can grant access at level Regional Organization and below
+		- LANDA Local Organization Management: can grant access at level Local Organization and below
+
+		Raise a permission error for all other cases.
+		"""
+		def has_role(role: str) -> bool:
+			"""Check if the current user has the given role."""
+			return role in frappe.get_roles(frappe.session.user)
+
+		access_level = self.get_access_level()
 
 		if access_level == "Local Group":
 			return
