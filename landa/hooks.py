@@ -148,7 +148,7 @@ disable_modes_of_payment = [
 	"Cheque",
 ]
 
-landa_add_to_session_defaults = ["Organization", "Customer"]
+landa_add_to_session_defaults = ["Organization", "Customer", "Price List"]
 
 on_session_creation = "landa.overrides.set_user_defaults"
 
