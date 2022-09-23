@@ -163,7 +163,7 @@ welcome_email = "landa.utils.welcome_email"
 # app_include_css = "/assets/landa/css/landa.css"
 app_include_js = [
 	"/assets/landa/js/map_defaults.js",
-	"/assets/landa/js/selling_utils.js"
+	"/assets/landa/js/selling_utils.js",
 ]
 
 # include js, css files in header of web template
@@ -186,6 +186,8 @@ doctype_js = {
 	"Sales Order": "landa_sales/sales_order/sales_order.js",
 	"Item": "landa_stock/item/item.js",
 	"Payment Entry": "landa_sales/payment_entry/payment_entry.js",
+	"Address": "address_and_contact.js",
+	"Contact": "address_and_contact.js",
 }
 doctype_list_js = {"Report": "scripts/report_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
