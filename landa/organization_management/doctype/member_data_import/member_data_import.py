@@ -82,16 +82,27 @@ class MemberDataImport(Document):
 		if self.address_name:
 			address_doc = frappe.get_doc("Address", self.address_name)
 			self.update_doc(address_doc, self.ADDRESS_FIELDS)
-		elif all([self.address_line1, self.pincode, self.city, self.member]):
+		elif all(
+			[
+				self.address_line1,
+				self.pincode,
+				self.city,
+				self.member,
+				self.organization,
+			]
+		):
 			create_address(
 				address_line1=self.address_line1,
 				pincode=self.pincode,
 				city=self.city,
 				member=self.member,
+				organization=self.organization,
 			)
 
 	def create_permit(self):
-		if self.yearly_fishing_permit or not all([self.year, self.number, self.member]):
+		if self.yearly_fishing_permit or not all(
+			[self.year, self.number, self.member, self.organization]
+		):
 			# permit exists or required fields are missing
 			return
 
@@ -112,6 +123,7 @@ class MemberDataImport(Document):
 			type=self.type,
 			number=self.number,
 			date_of_issue=self.date_of_issue,
+			organization=self.organization,
 		)
 
 	def update_doc(self, doc: Document, fields: "list[str]"):
@@ -150,7 +162,9 @@ def create_member(organization: str, last_name: str) -> LANDAMember:
 	return member.insert()
 
 
-def create_address(address_line1: str, pincode: str, city: str, member: str) -> None:
+def create_address(
+	address_line1: str, pincode: str, city: str, member: str, organization: str
+) -> None:
 	"""Return a new Address linked to LANDA Member."""
 	address = frappe.new_doc("Address")
 	address.address_type = "Personal"
@@ -161,14 +175,15 @@ def create_address(address_line1: str, pincode: str, city: str, member: str) -> 
 	address.is_primary_address = 1
 	address.is_shipping_address = 1
 	address.append("links", {"link_doctype": "LANDA Member", "link_name": member})
+	address.organization = organization
 
 	address.insert()
 
 
 def create_yearly_fishing_permit(
-	member: str, year: int, type: str, number: str, date_of_issue
+	member: str, year: int, type: str, number: str, date_of_issue, organization: str
 ) -> None:
-	data = {"member": member, "year": year, "type": type}
+	data = {"member": member, "year": year, "type": type, "organization": organization}
 
 	if frappe.db.exists("Yearly Fishing Permit", data):
 		return
