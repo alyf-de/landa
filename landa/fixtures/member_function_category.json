@@ -263,7 +263,7 @@
   "docstatus": 0,
   "doctype": "Member Function Category",
   "member_administration": 1,
-  "modified": "2021-10-05 19:51:41.684664",
+  "modified": "2022-10-11 14:42:04.237869",
   "name": "Schatzmeister Verein",
   "parent": null,
   "parentfield": null,
@@ -286,6 +286,12 @@
     "parentfield": "roles",
     "parenttype": "Member Function Category",
     "role": "LANDA Member"
+   },
+   {
+    "parent": "Schatzmeister Verein",
+    "parentfield": "roles",
+    "parenttype": "Member Function Category",
+    "role": "Sales User"
    }
   ]
  },
