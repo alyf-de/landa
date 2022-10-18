@@ -59,7 +59,7 @@ def get_current_member_data():
 	]  # use local Organization instead of Ortsgruppe
 
 	ancestors = get_ancestors_of("Organization", member_organization)
-	ancestors.reverse()	 # root as the first element
+	ancestors.reverse()  # root as the first element
 
 	result.member = member_name
 	result.local_organization = member_organization
@@ -75,6 +75,12 @@ def db_unset(doctype: str, field: str, value: str) -> None:
 	"""In all records of `doctype` where `field` is equal to `value`, set field to `None`."""
 	table = frappe.qb.DocType(doctype)
 	frappe.qb.update(table).set(table[field], None).where(table[field] == value).run()
+
+
+def db_delete(doctype: str, field: str, value: str) -> None:
+	"""Delete all records of `doctype` where `field` is equal to `value`."""
+	table = frappe.qb.DocType(doctype)
+	frappe.qb.from_(table).delete().where(table[field] == value).run()
 
 
 def remove_from_table(
@@ -104,3 +110,22 @@ def remove_from_table(
 		doc.save(ignore_permissions=True)
 
 
+def delete_contact_and_address(link_doctype: str, link_name: str):
+	for parenttype in ("Contact", "Address"):
+		dl = frappe.qb.DocType("Dynamic Link")
+		for name in (
+			frappe.qb.from_(dl)
+			.select(dl.parent)
+			.where(dl.parenttype == parenttype)
+			.where(dl.link_doctype == link_doctype)
+			.where(dl.link_name == link_name)
+			.run()
+		):
+			doc = frappe.get_doc(parenttype, name)
+			if len(doc.links) == 1:
+				doc.delete()
+			else:
+				for link in doc.links:
+					if link.link_doctype == link_doctype and link.link_name == link_name:
+						doc.remove(link)
+				doc.save()
