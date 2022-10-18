@@ -281,6 +281,9 @@ doc_events = {
 		"validate": "landa.address_and_contact.validate",
 		"after_insert": "landa.organization_management.contact.contact.after_insert",
 	},
+	"User": {
+		"on_trash": "landa.organization_management.user.user.on_trash",
+	}
 }
 
 # Scheduled Tasks

@@ -69,3 +69,38 @@ def get_current_member_data():
 	frappe.cache().hset("landa", frappe.session.user, result)
 
 	return result
+
+
+def db_unset(doctype: str, field: str, value: str) -> None:
+	"""In all records of `doctype` where `field` is equal to `value`, set field to `None`."""
+	table = frappe.qb.DocType(doctype)
+	frappe.qb.update(table).set(table[field], None).where(table[field] == value).run()
+
+
+def remove_from_table(
+	parent_doctype: str, table_field: str, table_filters: "dict[str, str]"
+):
+	"""Remove rows matching `table_filters` from `table_field` of `parent_doctype`.
+
+	For example, we can remove a User from the Seen By table of all Notes like this:
+
+	`remove_from_table("Note", "seen_by", {"user": "mail@example.org"})`
+	"""
+	table_doctype = frappe.get_meta(parent_doctype).get_field(table_field).options
+	table = frappe.qb.DocType(table_doctype)
+	query = frappe.qb.from_(table).select(table.parent, table.idx).distinct()
+
+	if not table_filters:
+		table_filters = {}
+
+	table_filters["parenttype"] = parent_doctype
+
+	for key, value in table_filters.items():
+		query = query.where(table[key] == value)
+
+	for name, idx in query.run():
+		doc = frappe.get_doc(parent_doctype, name)
+		doc.get(table_field).pop(idx - 1)
+		doc.save(ignore_permissions=True)
+
+

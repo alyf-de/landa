@@ -114,3 +114,13 @@ bench --site landa make-demo-accounts AVS-001
     Parameters:
 
     - `id` (optional): return only data of the organization with this ID.
+
+
+### Deleting
+
+What this app does when you're trying to delete ...
+
+#### ... a User
+
+- Removes the link from **Landa Member** to this user.
+- Removes this user from all **Note**'s "Seen by" lists.
