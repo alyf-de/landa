@@ -1,5 +1,6 @@
 import frappe
 from frappe import _
+from frappe.model.document import Document
 from frappe.utils.nestedset import get_ancestors_of
 
 
@@ -113,15 +114,12 @@ def remove_from_table(
 def delete_contact_and_address(link_doctype: str, link_name: str):
 	for parenttype in ("Contact", "Address"):
 		dl = frappe.qb.DocType("Dynamic Link")
-		for name in (
-			frappe.qb.from_(dl)
-			.select(dl.parent)
-			.where(dl.parenttype == parenttype)
-			.where(dl.link_doctype == link_doctype)
-			.where(dl.link_name == link_name)
-			.run()
+		for result in (
+			frappe.qb.from_(dl).select(dl.parent).where(
+				(dl.parenttype == parenttype) & (dl.link_doctype == link_doctype) & (dl.link_name == link_name)
+			).run()
 		):
-			doc = frappe.get_doc(parenttype, name)
+			doc: Document = frappe.get_doc(parenttype, result[0])
 			if len(doc.links) == 1:
 				doc.delete()
 			else:
