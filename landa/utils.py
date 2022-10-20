@@ -84,46 +84,67 @@ def db_delete(doctype: str, field: str, value: str) -> None:
 	frappe.qb.from_(table).delete().where(table[field] == value).run()
 
 
-def remove_from_table(
-	parent_doctype: str, table_field: str, table_filters: "dict[str, str]"
-):
-	"""Remove rows matching `table_filters` from `table_field` of `parent_doctype`.
-
-	For example, we can remove a User from the Seen By table of all Notes like this:
-
-	`remove_from_table("Note", "seen_by", {"user": "mail@example.org"})`
-	"""
-	table_doctype = frappe.get_meta(parent_doctype).get_field(table_field).options
+def remove_from_table(table_doctype: str, link_field: str, value: str):
 	table = frappe.qb.DocType(table_doctype)
-	query = frappe.qb.from_(table).select(table.parent, table.idx).distinct()
+	query = frappe.qb.from_(table).select(
+		table.parenttype, table.parent, table.parentfield, table.idx
+	).where(table[link_field] == value).distinct()
 
-	if not table_filters:
-		table_filters = {}
-
-	table_filters["parenttype"] = parent_doctype
-
-	for key, value in table_filters.items():
-		query = query.where(table[key] == value)
-
-	for name, idx in query.run():
-		doc = frappe.get_doc(parent_doctype, name)
-		doc.get(table_field).pop(idx - 1)
+	for parent_type, parent_name, parent_field, idx in query.run():
+		doc = frappe.get_doc(parent_type, parent_name)
+		doc.get(parent_field).pop(idx - 1)
 		doc.save(ignore_permissions=True)
 
 
-def delete_contact_and_address(link_doctype: str, link_name: str):
-	for parenttype in ("Contact", "Address"):
-		dl = frappe.qb.DocType("Dynamic Link")
-		for result in (
-			frappe.qb.from_(dl).select(dl.parent).where(
-				(dl.parenttype == parenttype) & (dl.link_doctype == link_doctype) & (dl.link_name == link_name)
-			).run()
-		):
-			doc: Document = frappe.get_doc(parenttype, result[0])
-			if len(doc.links) == 1:
-				doc.delete()
-			else:
-				for link in doc.links:
-					if link.link_doctype == link_doctype and link.link_name == link_name:
-						doc.remove(link)
-				doc.save()
+def delete_dynamically_linked(doctype: str, linked_doctype: str, linked_name: str):
+	dl = frappe.qb.DocType("Dynamic Link")
+	for result in (
+		frappe.qb.from_(dl).select(dl.parent).where(
+			(dl.parenttype == doctype) & (dl.link_doctype == linked_doctype) & (dl.link_name == linked_name)
+		).run()
+	):
+		doc: Document = frappe.get_doc(doctype, result[0])
+		if len(doc.links) == 1:
+			frappe.delete_doc(
+				doctype, doc.name, delete_permanently=True, ignore_permissions=True
+			)
+
+
+def get_link_fields(doctype: str, as_dict: int = 1):
+	# TODO: handle fields changed by Property Setter(?)
+	return frappe.db.sql(
+		"""
+		SELECT
+			parent,
+			fieldname,
+			reqd,
+			(SELECT issingle FROM tabDocType dt WHERE dt.name = df.parent) AS issingle,
+			(SELECT istable FROM tabDocType dt WHERE dt.name = df.parent) AS istable
+		FROM tabDocField df
+		WHERE
+			df.options=%(doctype)s AND df.fieldtype='Link'
+
+		UNION DISTINCT
+
+		SELECT
+			dt AS parent,
+			fieldname,
+			reqd,
+			(SELECT issingle FROM tabDocType dt WHERE dt.name = df.dt) AS issingle,
+			(SELECT istable FROM tabDocType dt WHERE dt.name = df.dt) AS istable
+		FROM `tabCustom Field` df
+		WHERE
+			df.options=%(doctype)s AND df.fieldtype='Link'
+		""", {"doctype": doctype}, as_dict=as_dict)
+
+
+def purge_all(doctype: str, name: str) -> None:
+	for link_field in get_link_fields(doctype):
+		if link_field["istable"]:
+			remove_from_table(link_field["parent"], link_field["fieldname"], name)
+		elif link_field["reqd"] == 0:
+			db_unset(link_field["parent"], link_field["fieldname"], name)
+		elif not link_field["issingle"]:
+			db_delete(link_field["parent"], link_field["fieldname"], name)
+		else:  # mandatory link to doctype in single doctype.
+			continue

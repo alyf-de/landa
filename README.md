@@ -118,25 +118,17 @@ bench --site landa make-demo-accounts AVS-001
 
 ### Deleting
 
-What this app does when you're trying to delete ...
+When deleting a **LANDA Member**, this app ...
 
-#### ... a User
-
-- Removes the link from **Landa Member** to this user.
-- Removes this user from all **Note**'s "Seen by" lists.
-
-### ... a LANDA Member
-
-- Tries to delete the linked **User** (see above).
+- Tries to delete the linked **User**.
 
     If the user cannot be deleted, it removes the link to this member and disables the user.
 
-- Tries to delete all **Addresses** and **Contacts** linked to this member.
-
-    If **Address** or **Contact** is linked to more than one record, only the link to this member is removed.
-
-- Deletes all **Member Functions** linked to this member.
-- Deletes all **Awards** linked to this member.
-- Removes the link from **Yearly Fishing Permit** to this member.
-- Removes this member from all **Water Body Local Organizations**'s "Local Contacts" lists.
+- Tries to delete all **Addresses** and **Contacts**, which are linked to this member only.
 - Decrements the counter of the naming series, if this member was just created (has the highest number).
+
+When deleting a **LANDA Member** and/or **User**, this app ...
+
+- Removes rows linking to this user/member from all child tables
+- Unsets all *optional* links to this user/member
+- Deletes all documents containing a *mandatory* link to this user/member

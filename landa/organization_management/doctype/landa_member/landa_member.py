@@ -13,7 +13,7 @@ from frappe.model.naming import make_autoname
 from frappe.model.naming import revert_series_if_last
 from frappe.permissions import add_user_permission
 
-from landa.utils import remove_from_table, delete_contact_and_address, db_unset, db_delete
+from landa.utils import purge_all, delete_dynamically_linked
 from landa.overrides import get_default_company
 from landa.organization_management.doctype.member_function.member_function import apply_active_member_functions
 
@@ -79,15 +79,9 @@ class LANDAMember(Document):
 		if self.user:
 			delete_or_disable_user(self.user)
 
-		delete_contact_and_address(self.doctype, self.name)
-		db_delete("Member Function", "member", self.name)
-		db_delete("Award", "member", self.name)
-		db_unset("Yearly Fishing Permit", "member", self.name)
-		remove_from_table(
-			"Water Body Management Local Organization",
-			"water_body_local_contact_table",
-			{"landa_member": self.name}
-		)
+		delete_dynamically_linked("Address", self.doctype, self.name)
+		delete_dynamically_linked("Contact", self.doctype, self.name)
+		purge_all("LANDA Member", self.name)
 
 		self.revert_series()
 
@@ -108,8 +102,11 @@ class LANDAMember(Document):
 
 def delete_or_disable_user(user: str) -> None:
 	"""Remove user from LANDA Member."""
+	if frappe.session.user == user:
+		frappe.throw(_("You cannot delete yourself."))
+
 	try:
-		frappe.delete_doc("User", user)
+		frappe.delete_doc("User", user, ignore_permissions=True, delete_permanently=True)
 	except frappe.LinkExistsError:
 		user: User = frappe.get_doc("User", user)
 		user.landa_member = None
