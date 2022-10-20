@@ -71,7 +71,9 @@ def add_roles(member_names, roles):
 
 def remove_roles(member_names, roles):
 	"""Remove a list of roles from a list of members."""
-	roles.remove("LANDA Member")  # LANDA Member should never be removed
+	if "LANDA Member" in roles:
+		roles.remove("LANDA Member")  # LANDA Member should never be removed
+
 	for member_name in member_names:
 		remove_roles_from_member(member_name, roles)
 
