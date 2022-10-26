@@ -21,6 +21,10 @@ function address_and_contact_before_save(frm) {
 			frm.doc.organization = link["link_name"];
 		}
 
+		if (link["link_doctype"] === "Company") {
+			frm.doc.organization = link["link_name"];
+		}
+
 		if (link["link_doctype"] === "LANDA Member") {
 			frm.doc.landa_member = link["link_name"];
 			frappe.db
