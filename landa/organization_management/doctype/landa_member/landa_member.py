@@ -38,6 +38,8 @@ class LANDAMember(Document):
 
 		if organization_is_group():
 			frappe.throw(_('Cannot be a member of organization {} because it is a group.').format(self.organization))
+			
+		self.full_name = get_full_name(self.first_name,self.last_name)
 
 	def on_update(self):
 		def create_user():
@@ -73,8 +75,6 @@ class LANDAMember(Document):
 			user = frappe.get_doc("User", self.user)
 			user.enabled = self.user_enabled
 			user.save(ignore_permissions=True)
-	
-		self.full_name = get_full_name(self.first_name,self.last_name)
 
 	def on_trash(self):
 		delete_contact_and_address(self.doctype, self.name)
