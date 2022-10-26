@@ -73,6 +73,8 @@ class LANDAMember(Document):
 			user = frappe.get_doc("User", self.user)
 			user.enabled = self.user_enabled
 			user.save(ignore_permissions=True)
+	
+		self.full_name = get_full_name(self.first_name,self.last_name)
 
 	def on_trash(self):
 		delete_contact_and_address(self.doctype, self.name)
@@ -92,3 +94,6 @@ class LANDAMember(Document):
 		key = self.name[:-number_part_len] + '.' + '#' * number_part_len
 
 		revert_series_if_last(key, self.name)
+
+def get_full_name(first_name,last_name):
+	return (first_name or '') + (' ' if (last_name and first_name) else '') + (last_name or '') 

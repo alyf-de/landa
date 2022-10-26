@@ -15,3 +15,4 @@ execute:from landa.utils import reset_workspace; reset_workspace("Organization M
 landa.patches.restrict_members_to_local_group
 landa.patches.member_organization_in_address #1
 execute:from landa.install import add_session_defaults; add_session_defaults()
+landa.patches.full_name #3‚
