@@ -288,7 +288,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2022-10-26 16:51:05.105798",
+ "modified": "2022-10-26 16:58:01.002874",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
@@ -369,7 +369,7 @@
   }
  ],
  "quick_entry": 1,
- "search_fields": "last_name",
+ "search_fields": "full_name",
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1
