@@ -28,4 +28,7 @@ frappe.ui.form.on('LANDA Member', {
             frappe.contacts.render_address_and_contact(frm);
         }
     },
+    onload: function (frm) {
+        frm.set_value("full_name", frm.doc.first_name+' '+frm.doc.last_name);
+    },
 });
