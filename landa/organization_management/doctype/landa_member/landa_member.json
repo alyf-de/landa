@@ -12,6 +12,7 @@
   "member_heading",
   "first_name",
   "last_name",
+  "full_name",
   "column_break_4",
   "personal_details",
   "date_of_birth",
@@ -52,15 +53,12 @@
    "allow_in_quick_entry": 1,
    "fieldname": "first_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "First Name"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "last_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Last Name"
   },
   {
@@ -95,6 +93,7 @@
    "fieldname": "organization",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Organization",
    "options": "Organization",
    "reqd": 1,
@@ -105,7 +104,6 @@
    "fieldname": "organization_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Organization Name",
    "read_only": 1
   },
@@ -216,6 +214,8 @@
    "default": "0",
    "fieldname": "is_supporting_member",
    "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Is Supporting Member"
   },
   {
@@ -264,6 +264,14 @@
    "fieldtype": "Check",
    "label": "User Enabled",
    "permlevel": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Full Name",
+   "read_only": 1
   }
  ],
  "links": [
@@ -280,7 +288,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2022-09-13 13:52:31.578982",
+ "modified": "2022-10-26 16:58:01.002874",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
@@ -361,7 +369,7 @@
   }
  ],
  "quick_entry": 1,
- "search_fields": "last_name",
+ "search_fields": "full_name",
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1
