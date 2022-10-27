@@ -192,9 +192,7 @@ def create_yearly_fishing_permit(
 	yfp.update(data)
 	yfp.number = number
 	yfp.date_of_issue = date_of_issue
-
 	yfp.insert()
-	yfp.submit()
 
 
 def parse_checkbox_value(value: str) -> int:
