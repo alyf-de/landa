@@ -149,7 +149,7 @@
   },
   {
    "fieldname": "contact_html",
-   "fieldtype": "Data",
+   "fieldtype": "HTML",
    "label": "Contact HTML"
   },
   {
