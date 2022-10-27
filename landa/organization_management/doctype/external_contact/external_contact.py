@@ -26,7 +26,7 @@ class ExternalContact(Document):
 		)
 
 	def validate(self):
-		self.full_name = get_full_name(self.first_name,self.last_name)
+		self.full_name = get_full_name(self.first_name, self.last_name)
 
 	def onload(self):
 		load_address_and_contact(self)
@@ -42,3 +42,4 @@ class ExternalContact(Document):
 		key = self.name[:-number_part_len] + "." + "#" * number_part_len
 
 		revert_series_if_last(key, self.name)
+		
