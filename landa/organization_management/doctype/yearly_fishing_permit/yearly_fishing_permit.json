@@ -32,11 +32,9 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Member",
-   "options": "LANDA Member",
-   "reqd": 1
+   "options": "LANDA Member"
   },
   {
-   "fetch_from": "member.organization",
    "fieldname": "organization",
    "fieldtype": "Link",
    "label": "Organization",
@@ -101,7 +99,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "member.organization_name",
+   "fetch_from": "organization.organization_name",
    "fieldname": "organization_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -132,16 +130,12 @@
    "label": "LANDA Member"
   },
   {
-   "fetch_from": "member.first_name",
-   "fetch_if_empty": 1,
    "fieldname": "first_name",
    "fieldtype": "Data",
    "label": "First Name",
    "read_only": 1
   },
   {
-   "fetch_from": "member.last_name",
-   "fetch_if_empty": 1,
    "fieldname": "last_name",
    "fieldtype": "Data",
    "label": "Last Name",
@@ -151,7 +145,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-09-13 13:58:19.661787",
+ "modified": "2022-10-27 16:09:09.602833",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Yearly Fishing Permit",

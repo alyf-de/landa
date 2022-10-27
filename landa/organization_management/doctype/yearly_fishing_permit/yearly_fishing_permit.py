@@ -3,8 +3,17 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
-# import frappe
+import frappe
 from frappe.model.document import Document
 
+
 class YearlyFishingPermit(Document):
-	pass
+	def before_insert(self):
+		if not self.member:
+			frappe.throw("Please select a LANDA Member")
+
+	def validate(self):
+		if self.member:
+			self.first_name, self.last_name, self.organization = frappe.db.get_value(
+				"LANDA Member", self.member, ["first_name", "last_name", "organization"]
+			)
