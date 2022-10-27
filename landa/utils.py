@@ -86,9 +86,12 @@ def db_delete(doctype: str, field: str, value: str) -> None:
 
 def remove_from_table(table_doctype: str, link_field: str, value: str):
 	table = frappe.qb.DocType(table_doctype)
-	query = frappe.qb.from_(table).select(
-		table.parenttype, table.parent, table.parentfield, table.idx
-	).where(table[link_field] == value).distinct()
+	query = (
+		frappe.qb.from_(table)
+		.select(table.parenttype, table.parent, table.parentfield, table.idx)
+		.where(table[link_field] == value)
+		.distinct()
+	)
 
 	for parent_type, parent_name, parent_field, idx in query.run():
 		doc = frappe.get_doc(parent_type, parent_name)
@@ -99,9 +102,14 @@ def remove_from_table(table_doctype: str, link_field: str, value: str):
 def delete_dynamically_linked(doctype: str, linked_doctype: str, linked_name: str):
 	dl = frappe.qb.DocType("Dynamic Link")
 	for result in (
-		frappe.qb.from_(dl).select(dl.parent).where(
-			(dl.parenttype == doctype) & (dl.link_doctype == linked_doctype) & (dl.link_name == linked_name)
-		).run()
+		frappe.qb.from_(dl)
+		.select(dl.parent)
+		.where(
+			(dl.parenttype == doctype)
+			& (dl.link_doctype == linked_doctype)
+			& (dl.link_name == linked_name)
+		)
+		.run()
 	):
 		doc: Document = frappe.get_doc(doctype, result[0])
 		if len(doc.links) == 1:
@@ -112,6 +120,7 @@ def delete_dynamically_linked(doctype: str, linked_doctype: str, linked_name: st
 
 def get_link_fields(doctype: str, as_dict: int = 1):
 	# TODO: handle fields changed by Property Setter(?)
+	# TODO: handle dynamic links
 	return frappe.db.sql(
 		"""
 		SELECT
@@ -135,7 +144,10 @@ def get_link_fields(doctype: str, as_dict: int = 1):
 		FROM `tabCustom Field` df
 		WHERE
 			df.options=%(doctype)s AND df.fieldtype='Link'
-		""", {"doctype": doctype}, as_dict=as_dict)
+		""",
+		{"doctype": doctype},
+		as_dict=as_dict,
+	)
 
 
 def purge_all(doctype: str, name: str) -> None:
@@ -148,3 +160,48 @@ def purge_all(doctype: str, name: str) -> None:
 			db_delete(link_field["parent"], link_field["fieldname"], name)
 		else:  # mandatory link to doctype in single doctype.
 			continue
+
+
+@frappe.whitelist()
+def preview_delete(doctype: str, name: str) -> "dict[str, list[str]]":
+	frappe.has_permission(doctype, "delete", throw=True)
+	if not isinstance(doctype, str):
+		raise ValueError("doctype must be a string")
+
+	links = get_link_fields(doctype)
+	return frappe.render_template(
+		r"""
+		<p>{{ _("Deleting {0} {1} will delete the following records linked to {1}:").format(_(doctype), name) }}</p>
+		<p>
+			<ul>
+				{% for dt in delete %}
+				<li><b>{{ _(dt) }}</b></li>
+				{% endfor %}
+			</ul>
+		</p>
+
+		<p>{{ _("Deleting {0} {1} will unset links to {1} from the following records:").format(_(doctype), name) }}</p>
+		<p>
+			<ul>
+				{% for dt in unset %}
+				<li><b>{{ _(dt) }}</b></li>
+				{% endfor %}
+			</ul>
+		</p>
+		<p>{{ _("{0} and {1} will be deleted, if they are not linked to any other records.").format(frappe.bold(_("Address")), frappe.bold(_("Contact"))) }}</p>
+		""",
+		{
+			"doctype": doctype,
+			"name": name,
+			"delete": [
+				link["parent"] for link in links if link["reqd"] or link["istable"]
+			],
+			"unset": [
+				link["parent"]
+				for link in links
+				if not link["reqd"]
+				and not link["istable"]
+				and link["parent"] not in ("Address", "Contact")
+			],
+		},
+	)
