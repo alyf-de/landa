@@ -39,6 +39,8 @@ class LANDAMember(Document):
 
 		if organization_is_group():
 			frappe.throw(_('Cannot be a member of organization {} because it is a group.').format(self.organization))
+			
+		self.full_name = get_full_name(self.first_name, self.last_name)
 
 	def on_update(self):
 		def create_user():
@@ -98,6 +100,10 @@ class LANDAMember(Document):
 		number_part_len = len(self.name.split('-')[-1])
 		key = f"{self.name[:-number_part_len]}.{'#' * number_part_len}"
 		revert_series_if_last(key, self.name)
+
+
+def get_full_name(first_name,last_name):
+	return (first_name or "") + (" " if (last_name and first_name) else "") + (last_name or "") 
 
 
 def delete_or_disable_user(user: str) -> None:

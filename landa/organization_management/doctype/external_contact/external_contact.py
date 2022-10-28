@@ -9,7 +9,7 @@ from frappe.contacts.address_and_contact import load_address_and_contact
 from frappe.contacts.address_and_contact import delete_contact_and_address
 from frappe.model.naming import make_autoname
 from frappe.model.naming import revert_series_if_last
-
+from landa.organization_management.doctype.landa_member.landa_member import get_full_name
 
 class ExternalContact(Document):
 	def autoname(self):
@@ -25,6 +25,9 @@ class ExternalContact(Document):
 			"EXT-" + self.organization + "-.####", "External Contact"
 		)
 
+	def validate(self):
+		self.full_name = get_full_name(self.first_name, self.last_name)
+
 	def onload(self):
 		load_address_and_contact(self)
 
@@ -39,3 +42,4 @@ class ExternalContact(Document):
 		key = self.name[:-number_part_len] + "." + "#" * number_part_len
 
 		revert_series_if_last(key, self.name)
+		
