@@ -53,12 +53,16 @@
    "allow_in_quick_entry": 1,
    "fieldname": "first_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "First Name"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "last_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Last Name"
   },
   {
@@ -103,7 +107,6 @@
    "fetch_from": "organization.organization_name",
    "fieldname": "organization_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Organization Name",
    "read_only": 1
   },
@@ -123,7 +126,6 @@
    "default": "1",
    "fieldname": "magazine_recipient",
    "fieldtype": "Check",
-   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Is Magazine Recipient"
   },
@@ -132,7 +134,6 @@
    "default": "0",
    "fieldname": "has_key",
    "fieldtype": "Check",
-   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Has Key"
   },
@@ -165,7 +166,6 @@
    "default": "0",
    "fieldname": "has_fishing_permit",
    "fieldtype": "Check",
-   "in_list_view": 1,
    "label": "Has Fishing Permit"
   },
   {
@@ -192,7 +192,6 @@
    "depends_on": "eval: !doc.create_user_account",
    "fieldname": "user",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "User",
    "options": "User"
   },
@@ -252,6 +251,7 @@
    "label": "Hat Brandenburg Erlaubnisschein"
   },
   {
+   "allow_in_quick_entry": 1,
    "depends_on": "eval:doc.has_fishing_permit==1",
    "fieldname": "fishing_permit_number",
    "fieldtype": "Data",
@@ -268,8 +268,6 @@
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Full Name",
    "read_only": 1
   }
@@ -288,7 +286,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2022-10-26 16:58:01.002874",
+ "modified": "2022-11-01 14:23:40.489147",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
