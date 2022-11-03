@@ -144,6 +144,7 @@ def get_roles_to_remove(member_name, roles, disabled_member_function=None):
 	}, pluck='role')
 
 	active_roles = set(active_roles)
+	active_roles.add("LANDA Member")  # LANDA Member is always active
 	roles = set(roles)
 
 	return list(roles - active_roles)
