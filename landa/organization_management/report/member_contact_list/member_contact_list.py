@@ -10,11 +10,12 @@ class Contact(object):
 	def __init__(self, filters):
 		def add_key_from_filters(key, filterlist):
 			if key in filters:
-				filterlist.append([key,'like','%'+filters[key]+'%']) 
+				filterlist.append([key, "like", "%" + filters[key] + "%"])
+
 		# set filters
 		self.filter_member = []
 
-		for n in ["name","first_name", "last_name","organization"]:
+		for n in ["name", "first_name", "last_name", "organization"]:
 			add_key_from_filters(n, self.filter_member)
 
 	def run(self):
