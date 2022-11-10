@@ -5783,13 +5783,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-09-02 17:07:19.906125",
+  "modified": "2022-11-10 16:17:24.297642",
   "name": "51083bbf20",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Primary Phone",
-  "translated_text": "Prim\u00e4re Telefonnummer"
+  "translated_text": "Prim\u00e4re Festnetznummer"
  },
  {
   "context": null,
