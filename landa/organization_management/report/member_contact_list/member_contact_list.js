@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["Member Contact List"] = {
+frappe.query_reports[ __("Member Contact List")] = {
     "filters": [
         {
             "fieldname": "name",
