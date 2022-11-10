@@ -1,41 +1,5 @@
 {
  "add_total_row": 0,
- "columns": [
-  {
-   "fieldname": "member",
-   "fieldtype": "Link",
-   "label": "Member",
-   "options": "LANDA Member",
-   "width": 0
-  },
-  {
-   "fieldname": "first_name",
-   "fieldtype": "Data",
-   "label": "First Name",
-   "width": 0
-  },
-  {
-   "fieldname": "last_name",
-   "fieldtype": "Data",
-   "label": "Last Name",
-   "width": 0
-  },
-  {
-  "fieldname": "primary_email_address",
-  "fieldtype": "Data",
-  "label": "Primary Email Address"
-  },
-  {
-  "fieldname": "primary_phone",
-  "fieldtype": "Data",
-  "label": "Primary Phone"
-  },
-  {
-  "fieldname": "primary_mobile",
-  "fieldtype": "Data",
-  "label": "Primary Mobile"
-  }
- ],
  "creation": "2022-11-10 15:20:12.678573",
  "disable_prepared_report": 0,
  "disabled": 0,
