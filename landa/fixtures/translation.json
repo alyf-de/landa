@@ -7310,5 +7310,21 @@
   "parenttype": null,
   "source_text": "Full Name",
   "translated_text": "Vollst\u00e4ndiger Name"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-11-10 16:14:00.899584",
+  "name": "e47fbfbc19",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Member Contact List",
+  "translated_text": "Kontaktliste Mitglieder"
  }
 ]
