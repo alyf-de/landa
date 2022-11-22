@@ -27,6 +27,7 @@
   "has_key",
   "has_special_yearly_fishing_permit_1",
   "has_special_yearly_fishing_permit_2",
+  "youth_membership",
   "additional_information",
   "section_address_and_contact",
   "address_html",
@@ -270,6 +271,14 @@
    "fieldtype": "Data",
    "label": "Full Name",
    "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "0",
+   "fieldname": "youth_membership",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Youth Membership"
   }
  ],
  "links": [
@@ -286,7 +295,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2022-11-01 14:23:40.489147",
+ "modified": "2022-11-21 14:28:24.309798",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
