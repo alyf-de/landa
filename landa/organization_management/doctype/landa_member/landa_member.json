@@ -36,12 +36,7 @@
   "has_fishing_permit",
   "fishing_permit_number",
   "permit_is_valid_for_life",
-  "permit_expiration_date",
-  "section_break_22",
-  "create_user_account",
-  "user",
-  "email",
-  "user_enabled"
+  "permit_expiration_date"
  ],
  "fields": [
   {
@@ -184,33 +179,6 @@
    "label": "Permit Expiration Date"
   },
   {
-   "fieldname": "section_break_22",
-   "fieldtype": "Section Break",
-   "label": "LANDA Account"
-  },
-  {
-   "depends_on": "eval: !doc.create_user_account",
-   "fieldname": "user",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "User",
-   "options": "User"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval: !doc.user",
-   "fieldname": "create_user_account",
-   "fieldtype": "Check",
-   "label": "Create User Account"
-  },
-  {
-   "depends_on": "eval: doc.create_user_account",
-   "fieldname": "email",
-   "fieldtype": "Data",
-   "label": "Email",
-   "mandatory_depends_on": "eval: doc.create_user_account"
-  },
-  {
    "default": "0",
    "fieldname": "is_supporting_member",
    "fieldtype": "Check",
@@ -258,14 +226,6 @@
    "label": "Fishing Permit Number"
   },
   {
-   "default": "1",
-   "depends_on": "user",
-   "fieldname": "user_enabled",
-   "fieldtype": "Check",
-   "label": "User Enabled",
-   "permlevel": 1
-  },
-  {
    "fieldname": "full_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -286,9 +246,14 @@
   {
    "link_doctype": "Yearly Fishing Permit",
    "link_fieldname": "member"
+  },
+  {
+   "custom": 1,
+   "link_doctype": "User",
+   "link_fieldname": "landa_member"
   }
  ],
- "modified": "2022-10-26 16:58:01.002874",
+ "modified": "2022-11-22 13:03:33.221418",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
