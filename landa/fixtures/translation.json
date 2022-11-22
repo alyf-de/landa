@@ -7310,5 +7310,21 @@
   "parenttype": null,
   "source_text": "Full Name",
   "translated_text": "Vollst\u00e4ndiger Name"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-11-21 14:29:56.352277",
+  "name": "52c6033632",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Youth Membership",
+  "translated_text": "Jugendmitgliedschaft"
  }
 ]
