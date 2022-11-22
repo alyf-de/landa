@@ -1,5 +1,3 @@
-import frappe
-from frappe import _
 from frappe.permissions import add_user_permission
 
 from landa.overrides import get_default_company
