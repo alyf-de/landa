@@ -27,11 +27,10 @@ def autoname(doc, event):
 
 
 def get_dashboard_data(data):
-	custom_transactions = [
+	data["transactions"] = [
 		{
 			"label": "Sales",
 			"items": ["Delivery Note", "Sales Invoice"],
-		}
+		},
 	]
-	data["transactions"] = custom_transactions
 	return data
