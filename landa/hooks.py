@@ -275,6 +275,7 @@ doc_events = {
 	},
 	"User": {
 		"on_update": "landa.organization_management.user.user.on_update",
+		"validate": "landa.organization_management.user.user.validate",
 	},
 }
 

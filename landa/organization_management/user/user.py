@@ -1,11 +1,12 @@
 from frappe.permissions import add_user_permission
+from frappe.core.doctype.user.user import User, STANDARD_USERS
 
 from landa.overrides import get_default_company
 from landa.organization_management.doctype.member_function.member_function import apply_active_member_functions
 
 
-def on_update(doc, event=None):
-	if (not doc.enabled) or (doc.name in ("Administrator", "Guest")):
+def on_update(doc: User, event=None):
+	if (not doc.enabled) or (doc.name in STANDARD_USERS):
 		return
 
 	if doc.organization and doc.has_value_changed("organization"):
@@ -16,3 +17,10 @@ def on_update(doc, event=None):
 		# Restrict LANDA Member to itself and it's Organization
 		add_user_permission("LANDA Member", doc.landa_member, doc.name, ignore_permissions=True)
 		apply_active_member_functions({"member": doc.landa_member})
+
+
+def validate(doc: User, event=None):
+	if (not doc.enabled) or (doc.name in STANDARD_USERS):
+		return
+
+	doc.append_roles("LANDA Member")
