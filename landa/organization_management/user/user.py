@@ -1,3 +1,5 @@
+import frappe
+from frappe import _
 from frappe.permissions import add_user_permission
 from frappe.core.doctype.user.user import User, STANDARD_USERS
 
@@ -24,3 +26,17 @@ def validate(doc: User, event=None):
 		return
 
 	doc.append_roles("LANDA Member")
+
+	if doc.landa_member:
+		existing_user = frappe.db.exists(
+			"User",
+			{
+				"landa_member": doc.landa_member,
+				"name": ("!=", doc.name),
+				"enabled": 1
+			}
+		)
+		if existing_user:
+			frappe.throw(
+				_("User {0} is already linked to LANDA Member {1}").format(existing_user, doc.landa_member)
+			)

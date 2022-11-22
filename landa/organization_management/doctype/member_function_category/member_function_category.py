@@ -226,7 +226,7 @@ def get_user(member_name: str):
 
 def get_user_name(member_name: str):
 	"""Return the user name that belongs to this member."""
-	return frappe.db.get_value("User", {"landa_member": member_name})
+	return frappe.db.get_value("User", {"landa_member": member_name, "enabled": 1})
 
 
 def clear_user_permissions_for_doctype(doctype, user=None, ignore_permissions=False):
