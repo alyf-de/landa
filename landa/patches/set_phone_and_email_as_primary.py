@@ -5,12 +5,12 @@ def execute():
     def value_not_set(dict, field):
         return len(dict) > 0 and (1 not in [d[field] for d in dict])
 
-    contacts = frappe.get_list("Contact", as_list=True)
+    contacts = frappe.get_list("Contact", pluck="name")
     for contact in contacts:
         # if no email_id is set as primary for a contact, set the first email_id as primary
         contact_emails = frappe.get_list(
             "Contact Email",
-            filters={"parent": contact[0]},
+            filters={"parent": contact},
             fields=["name", "is_primary"],
         )
         if value_not_set(contact_emails, "is_primary"):
