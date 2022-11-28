@@ -19,9 +19,9 @@ def execute():
 			fields=["name", "is_primary"],
 		)
 		if contact_emails and value_not_set(contact_emails, "is_primary"):
-			frappe.db.set_value(
-				"Contact Email", contact_emails[0]["name"], "is_primary", 1
-			)
+			doc=frappe.get_doc("Contact Email", contact_emails[0]["name"])
+			setattr(doc, "is_primary", 1)
+			doc.save()
 
 	def set_primary_phone_if_missing(contact):
 		"""If no phone is set as primary mobile or primary phone for a contact,
