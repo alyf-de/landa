@@ -6,10 +6,7 @@ def execute():
 		return not any(row[fieldname] for row in rows)
 
 	def number_is_mobile(number):
-		def remove_non_digit_characters(number):
-			return "".join(filter(str.isdigit, number))
-		cleared_number = remove_non_digit_characters(number)
-		return cleared_number.startswith(("01","491","00491"))
+		return "".join(filter(str.isdigit, number)).startswith(("01","491","00491"))
 
 	def set_doc_attr(doctype,name,field,value):
 		doc=frappe.get_doc(doctype, name)
