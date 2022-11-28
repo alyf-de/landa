@@ -47,7 +47,14 @@ def execute():
 						"Contact Phone", contact_phone["name"], "is_primary_phone", 1
 					)
 
-	contacts = frappe.get_list("Contact", pluck="name")
-	for contact in contacts:
+	for contact in frappe.get_all(
+		"Contact",
+		or_filters={
+			"phone": ("is", "not set"),
+			"mobile_no": ("is", "not set"),
+			"email_id": ("is", "not set"),
+		},
+		pluck="name",
+	):
 		set_primary_email_if_missing(contact)
 		set_primary_phone_if_missing(contact)
