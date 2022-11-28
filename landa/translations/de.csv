@@ -1,0 +1,459 @@
+{}  Available,{}  Verfügbar
+{} wants to access the following details from your account,{} möchte Zugriff auf die folgenden Angaben von Ihrem Account
+{0} cancelled this document,{0} hat die Buchung dieses Dokuments rückgängig gemacht
+{0} cancelled this document {1},{0} hat die Buchung des Dokuments {1} rückgängig gemacht
+{0} changed {1} to {2},{0} wurde von {1} zu {2} geändert
+{0} changed value of {1},{0} hat den Wert von {1} geändert
+{0} changed values for {1},{0} hat die Werte von {1} geändert
+{0} changed values for {1} {2},{0} hat die Werte von {1} {2} geändert
+{0} created this {1},{0} hat das {1} erstellt
+{0} edited this {1},{0} hat das {1} bearbeitet
+{0} from {1} to {2},{0} von {1} zu/bis {2}
+{0} from {1} to {2} in row #{3},{0} von {1} zu/bis {2} in Zeile #{3}
+{0} is not a field of doctype {1},{0} ist kein Feld in Doctype {1}
+{0} Map,{0} Karte
+{0} submitted this document,{0} hat dieses Dokument eingereicht
+{0} submitted this document {1},{0} hat das Dokument {1} eingereicht
+About,Info
+Access Level,Zugangs Level
+Add a Filter,Filter hinzufügen
+Add a tag ...,Fügen Sie ein Schlagwort hinzu...
+Additional Information,Weitere Informationen
+Additional Information About Landlord,Weitere Informationen zum Verpächter
+Address and Contact,Adresse und Kontakt
+Address and Contacts,Adressen und Kontakte
+Address HTML,HTML Adresse
+Address ID,Eindeutige Adress-Identifikation
+Address Line 1,Adresse Zeile 1 (Straße + Hausnummer)
+Address Line 2,"Adresszusatz (z. B. Hinterhaus, Stockwerk etc.)"
+Address may be listed on a public website,Adresse darf auf einer öffentlichen Webseite erscheinen
+Address not set!,Adresse nicht konfiguriert!
+Address Title,"Adressbezeichnung (nur zur Suche, wird nicht bei Adressierung verwendet)"
+Address Type,"Adresstyp (kann, muss aber nicht geändert werden)"
+Administration,Verwaltung
+Age at Birthday,Geburtstagsalter
+All Item Groups,Alle Artikelarten
+All Organizations,Alle Verbände und Vereine
+Amend,Verbessern
+Apply Filters,Filter anwenden
+Area Code,Kürzel Region
+Area Name,Name der Region
+ascending,aufsteigend
+Attachment Limit Reached,Maximale Größe des Anhangs wurde überschritten
+Award,Auszeichnung
+Award List,Auszeichnung Listenansicht
+Award Management,Auszeichnungsverwaltung
+Award Type,Art der Auszeichnung
+Awards,Auszeichnungen
+Bank name,Name der Bank
+Banking Account and Legal Information,Bankkonto und Rechtliche Angaben
+Basic Info,Eckdaten
+Before Validate,Before Validate
+Belongs to Organization,Gehört zu Verein
+Belongs to Parent Organization,Gehört zu Dachverband
+"By default, emails are only sent for failed backups.",Emails werden standardmäßig nur für fehlgeschlagene Backups versendet
+Can contain suborganizations,Kann untergeordnete Vereine enthalten
+Cannot be a member of organization {} because it is a group.,"Kann kein Mitglied von Verein/Verband {} sein, da nur Vereine bzw. Ortsgruppen Mitglieder haben dürfen, keine Regional- und Landesverbände."
+Cannot be Ordered,Darf nicht bestellt werden
+Cannot be Returned,Kann nicht zurückgegeben werden
+Cannot Fetch Values,Kann Werte nicht beziehen
+Catch Log Days and Counts,Fangbücher und Angeltage
+Catch Log Entries,Fangbucheinträge
+Catch Log Entry,Fangbucheintrag
+Catch Log Entry List,Fangbucheintrag Listenansicht
+Catch Log Fish Table,Fangbucheintrag Fisch Tabelle
+Catch Log Statistics,Fangmengenstatistik
+CEO,Geschäftsführer
+changed value of {0},hat den Wert von {0} geändert
+changed value of {0} {1},hat den Wert von {0} {1} geändert
+changed values for {0},hat den Wert von {0} geändert
+changed values for {0} {1},hat den Wert von {0} {1} geändert
+Charitable until,Gemeinnützig bis
+City,Ort
+Close Season,Schonzeit
+Company,Bestellwesenkonto Regionalverband
+Company Bank Account,Konto Regionalverband
+Company of Supplier,Unternehmen des Lieferanten
+Company Register,Handelsregister
+Connect to {},Verbinden mit {}
+Connected App,Verbundene Anwendung
+Connections,Verknüpfungen
+Consumer,Verbraucher
+Consumers,Verbraucher
+Contact HTML,HTML Kontakt
+Contact Numbers,Telefonnummern
+Contract Data,Vertragsdaten
+Copy to Clipboard,In die Zwischenablage kopieren
+Create User Account,Nutzerkonto erstellen
+Create User Permission,Benutzer Berechtigungen erstellen
+Current Member Data,Aktuelle Mitgliedsdaten
+Current Member Data Report,Bericht Erlaubnisscheinausgabe: Aktuelle Daten
+Current Public Information,Aktuelle Informationen (öffentlich)
+Customer,Bestellwesenkonto Verein
+Customer Name,Vereinsname
+Customizations Discarded,Anpassungen verworfen
+Customize Child Table,Untergeordnete Tabelle (Child Table) anpassen
+Dashboard,Übersichtsseite
+dashboard,Übersichtsseite
+Dashboard View,Übersichtsseitenansicht
+Data Import Tool,Datenimport von (Excel-) Tabellen
+Date of Birth,Geburtsdatum
+Days Until Birthday,Tage Bis Geburtstag
+Decadal Birthday (set filter to 1 for yes),Runder Geburtstag (Filter auf 1 setzen für ja)
+Delivery Note Information text,Informationstext Lieferschein
+Delivery Note List,Lieferungen
+Deny,Ablehnen
+descending,absteigend
+District Court,Amtsgericht
+DN DIN Addressfield,DIN Lieferschein
+DocType,"Formularart (""DocType"")"
+DocType View,"Formularart-Ansicht (""DocType"" Ansicht)"
+Document Settings,Einstellungen zu Dokumenten
+Documentation,Dokumentation
+Domains,Branchen
+Don't have an account?,Sie haben noch kein Nutzerkonto?
+Drag and drop files here or upload from,Dateien hier per Drag and Drop einfügen oder Dateien hochladen von
+Edit Chart,Diagramm bearbeiten
+Edit Filters,Filter bearbeiten
+Edit Shortcut,Schnellzugriff bearbeiten
+Ehrennadel Bronze,Ehrennadel Bronze
+Ehrennadel Gold,Ehrennadel Gold
+Ehrennadel Silber,Ehrennadel Silber
+Email,E-Mail
+Email address may be listed on a public website,Emailadresse darf auf einer öffentlichen Webseite erscheinen
+Email ID,Email Adresse
+Email IDs,Email Adressen
+Extended Information in Footer,Ausführliche Fußzeile
+External Contact,Externer Kontakt
+External Contact Function,Funktion von Externen Kontakten
+External Contact Since,Externer Kontakt seit
+External Contacts Addresses and Contacts,Kontakt- und Adressliste Externe Kontakte
+External Function,Externe Funktion
+External Functions,Externe Funktionen
+Extra Parameters,Zusätzliche Parameter
+File this record,Eintrag einreichen
+Filed,Eingereicht
+Fish Catches,Gefangene Fische
+Fish Species,Fischart
+Fish Species List,Fischart Listenansicht
+Fish Species Short Code,Fischart Abkürzung
+Fish Species Table,Fischart Tabelle
+Fish Type For Stocking,Fischklasse
+Fishing Area,Region
+Fishing Area List,Region Listenansicht
+Fishing Area Name,Name der Region
+Fishing Days,Angeltage
+Fishing Permit,Fischereischein
+Fishing Permit Number,Fischereischein Nummer
+Fördermitglied,Fördermitglied
+Full Name,Vollständiger Name
+Full Name of Supplier,Vollständiger Name des Lieferanten
+"Full name of the organization. For example; ""Landesverband Sächsischer Angler e.V.""","Vollständiger Titel des Vereins/Verbands; z.B. ""Landesverband Sächsischer Angler e.V."""
+Functions,Funktionen
+General Fishing Limit,Fangbegrenzung Allgemein
+General Public Information,Bemerkungen (öffentlich)
+Goldene Äsche,Goldene Äsche
+Grant access to all organizations below this level.,Zugriff auf bestimmte Daten von Vereinen / Verbänden unterhalb dieses Levels geben.
+Has Fishing Permit,Hat Fischereischein
+Has Key,Besitzt Schlüssel
+Has Master Key System,Hat Schließanlage
+Hide Descendants,Untergeordnete Objekte verbergen
+ID Yearly Fishing Permit,Eindeutige Erlaubnisschein Identifikation
+If checked; negative numeric values of Currency; Quantity or Count would be shown as positive,Bei Auswahl werden negative numerische Werte von Währung; Menge oder Anzahl als positiv angezeigt
+If the condition is satisfied user will be rewarded with the points. eg. doc.status == 'Closed'|||,Wenn diese Bedingung erfüllt ist; wird der Benutzer mit Punkten belohnt; z.B. doc.status == 'Erledigt'|||
+Imports,Importe
+Incoming Payment,Eingehende Zahlung
+Info Text,Allgemeine Informationen
+Institution or Company,Unternehmen oder Institution
+Institution or Company Name,Bezeichnung des Unternehmens oder der Institution
+Internal Information,Bemerkungen (intern)
+Invalid Fieldname,Ungültige Bezeichnung für Feld
+Invalid Parameters.,Ungültige Parameter
+Invalid state.,Ungültiger Zustand
+Invoice Information Text,Informationstext Rechnung
+Is Charitable,Ist gemeinnützig
+Is Decadal Birthday,Runder Geburtstag
+Is Decadal Birthday,Ist runder Geburtstag
+Is Default Fish Species For Population,Ist häufig Fischart für Besatz
+Is Group,Ist Gruppe (kann Unterobjekte haben)
+Is Magazine Recipient,Ist Zeitschrift Empfänger
+Is Property Water Body,Ist Eigentumsgewässer
+Is Supporting Member,Ist Fördermitglied
+Issue Date,Ausgabedatum
+Issue Date of Yearly Fishing Permit,Ausgabedatum Erlaubnisschein
+Issuing Organization,Ausgebender Verein/Verband
+Item Tax Template List,Artikelsteuersätze
+LANDA Account,LANDA Nutzerkonto
+LANDA Account,LANDA Account
+LANDA Catch Log User,LANDA Fangmengen Nutzer
+LANDA Deliveries and Payments,Kostenübersicht
+LANDA Local Group Management,LANDA Mitgliederverwaltung Ortsgruppe
+LANDA Local Organization Management,LANDA Mitgliederverwaltung Verein
+LANDA Local Water Body Management,LANDA Gewässerverwaltung Verein
+LANDA Magazine Manager,LANDA Zeitschrift Verwalter
+LANDA Member,Mitglied
+LANDA Member Count,Anzahl Mitglieder
+LANDA Properties,LANDA Einstellungen
+LANDA Regional Organization Management,LANDA Mitgliederverwaltung Regionalverband
+LANDA Regional Water Body Management,LANDA Gewässerverwaltung Regionalverband
+LANDA State Organization Employee,LANDA Mitarbeiter Landesverband
+Landlord,Verpächter
+Lease Contract,Pachtvertrag
+Lease Contract must belong to the same regional Organization as the Water Body.,Der Pachtvertrag muss zum selben Regionalverband gehören wie das im Pachtvertrag eingetragene Gewässer.
+Library,Bibliothek
+Link To,Link zu
+List,Liste
+List View,Listenansicht
+Local Group,Ortsgruppe
+Local Organization,Verein
+Location,Standort
+Location and Public Contact,Standort und öffentliche Kontaktdaten
+Looks like you haven’t received any notifications.,"Sieht aus, als hätten Sie keine Benachrichtigungen erhalten."
+Magazine Address List,Fischer und Angler Adressverwaltung
+Magazine Is Active,Zeitschrift aktiv
+Main Fish Species,Hauptfischarten
+Manage Sales Orders,Bestellungen verwalten
+Managing Director,Geschäftsführer
+Map,Karte
+Mark all as read,Alle als gelesen markieren
+Masters,Stammdaten
+Maximum Attachment Limit of {0} has been reached for {1} {2}.,Die Maximale Anzahl von Anhängen von {0} wurde für {1} {2} erreicht.
+Maximum attachment limit of {0} has been reached.,Die Maximale Anzahl von Anhängen von {0} wurde erreicht.
+Member,Mitglied
+Member Address List,Adressliste Mitglieder
+Member Address List,Adressliste Mitglieder
+Member Administration,Mitgliedsdatenverwaltung
+Member Birthday List,Geburtstagsliste Mitglieder
+Member Birthday List,Geburtstagsliste Mitglieder
+Member Count,Mitgliedszahlen
+Member Data Import,Mitgliedsdatenimport
+Member First Name,Vorname des Mitglieds
+Member Function,Mitgliedsfunktion
+Member Function Categories,Mitgliedsfunktionskategorien
+Member Function Category,Mitgliedsfunktionskategorie
+Member Function List,Mitgliedsfunktion Listenansicht
+Member Function Management,Mitgliedsfunktionsverwaltung
+Member Function Title,Mitgliedsfunktionsname
+Member Functions,Mitgliedsfunktionen
+Member Last Name,Nachname des Mitglieds
+Member List,Mitglied Listenansicht
+Member Since,Mitglied seit
+Member Type,Mitgliedschaftsart
+Members,Mitglieder
+Members in Water Body Management,Mitglieder in der Gewässerbetreuung
+Members with Member Functions,Mitglieder mit Mitgliedsfunktion
+Membership Fee Invoice,Beitragsrechnung
+Message,Hinweis
+Message sent,Nachricht versendet
+MF DIN Addressfield,DIN Beitragsrechnung
+Minimum Size,Mindestmaß
+Module HTML,Modul HTML
+Module Profile,Modul Profil
+Module Profile Name,Modul Profilname
+Modules,Module
+My Device,Mein Gerät
+My Profile,Mein Profil
+My Reports,Meine Berichte
+My Settings,Meine Einstellungen
+Name,Kürzel
+Nationality,Staatsangehörigkeit
+New Award Entry,Neue Auszeichnung anlegen
+New Catch Log Entry,Neuen Fangbucheintrag anlegen
+New Chart,Neues Diagramm
+New Delivery Note,Neue Lieferung anlegen
+New Delivery Note,Neuen Lieferschein anlegen
+New Member Data Import,Neues Mitglied anlegen
+New Member Entry,Neues Mitglied anlegen
+New Member Function Entry,Neue Mitgliedsfunktion anlegen
+New Payment Entry,Neue Zahlung anlegen
+New Sales Order,Neue Bestellung anlegen
+New Shortcut,Neuer Schnellzugriff
+No,Nein
+No Data...,Keine Daten...
+No filters selected,Keine Filter ausgewählt
+No New notifications,Keine neuen Benachrichtigungen
+No Upcoming Events,Keine anstehenden Termine
+No.,Nr.
+Nos,Anzahl
+Not Set,Nicht gesetzt
+Number of Catch Log Books,Anzahl der Fangbücher
+Number of Fish,Anzahl der Fische
+Old Parent,Übergeordnetes Objekt
+Or,Oder
+Order Management,Bestellwesen
+Order Type,"Art der Bestellung (Pflichtfeld, muss nicht bearbeitet werden)"
+Organization,Verein
+Organization Details,Vereinsdetails
+Organization ID,Vereinsnr.
+Organization List,Verein Listenansicht
+Organization Management,Vereinsverwaltung
+Organization may be listed on a public website,Verein darf auf einer öffentlichen Webseite erscheinen
+Organization Name,Vereinsname
+Organization Table,Vereinstabelle
+Organization Title,Vereinsname
+Organizations,Vereine
+Origin of Catch Log Entry,Herkunft des Fangbucheintrags
+Outgoing Payment,Ausgehende Zahlung
+Outstanding Amount,Ausstehender Betrag
+Overview,Übersicht
+Page to show on the website|||,Seite; die auf der Webseite angezeigt wird|||
+Parent Organization,Übergeordneter Verband
+Party,Bestellkonto Verein
+Party Bank Account,Konto Verein
+Party Name,Vereinsname
+Party Type,Art des Zahlenden/Zahlungsempfängers (nicht ändern)
+Password set,Passwort gesetzt
+Permission Query,Berechtigungsanfrage
+Permit Expiration Date,Ablaufdatum des Fischereischeins
+Permit Is Active,Erlaubnisschein aktiv
+Permit Is Valid For Life,Lebenslange Gültigkeit des Fischereischeins
+Personal Details,Angaben zur Person
+Phone number may be listed on a public website,Telefonnummer darf auf einer öffentlichen Webseite erscheinen
+Pincode,Postleitzahl
+Pincode,PLZ
+Pincode,Postleitzahl
+Places,Orte
+Please select a Water Body from your own regional Organization.,"Bitte wählen Sie ein Gewässer, das zu Ihrem eigenen Regionalverband gehört!"
+Please select your own regional Organization.,Bitte wählen Sie Ihren eigenen regionalverband aus!
+Please update the existing record: {0},Bitte aktualisieren Sie stattdessen den bestehenden Eintrag: {0}
+Position Description,Beschreibung der Position / Aufgabengebiet
+Price for Total Weight,Preis Gesamtgewicht
+Price List,Artikelpreisliste
+Price per Kilogram,Preis pro Kilogramm
+Primary Address (Full),Primäre Adresse (vollständig)
+Primary Address (Full),Primäre Adresse (kommagetrennt)
+Primary Email Address,Primäre Emailadresse
+Primary Mobile,Primäre Mobilnummer
+Primary Phone,Primäre Telefonnummer
+Print Heading,Überschrift drucken
+Privacy Information,Datenschutzangaben
+Public Address,Öffentliche Adresse
+Public Contact,Öffentlicher Kontakt
+Quantity per Water Body Size,Menge pro Gewässer Fläche/Länge
+Query Parameters,Abfrage Parameter
+Rate of Stock UOM,Lagerpreis Einheit
+Rebuild Tree,Baumansicht wiederherstellen
+Recipient First Name,Vorname des Empfängers
+Recipient Last Name,Nachname des Empfängers
+Redirect URI,Redirect URI
+Regional Organization,Regionalverband
+Regional Organization and Water Body,Regionalverband und Gewässer
+Regional Organization Name,Name des Regionalverbands
+register,registrieren
+Register,Registrieren
+Register Number,Vereinsregisternummer
+Registration,Registrierung
+registration,Registrierung
+Remove column,Spalte entfernen
+Remove the restriction that limits users to their own member data.,"Beschränkung entfernen, die den Nutzer auf seine eigenen Daten einschränkt."
+Render contact name first in address,Kontaktname zuerst in der Adresse anzeigen
+Rent,Pachtzins
+Rent per Month,Pachtzins pro Monat
+Repeat on Days,An folgenden Tagen wiederholen
+Report an Issue,Ein Problem melden
+Report View,Berichtansicht
+Reports & Masters,Berichte & Stammdaten
+Reset Customizations,Anpassungen Zurücksetzen
+Reset Password,Passwort zuruecksetzen
+Reset sorting,Sortierung zurücksetzen
+Response ,Antwort
+Retoure Information Text,Informationstext Retoure
+Row #{0}: Could not find field {1} in {2} DocType,Zeile #{0}: Feld {1} existiert nicht in DocType {2}
+Sales Auditing Voucher,Ungültiges Format Gutschrift
+Sales Invoice Return,Ungültiges Format Retoure
+Sales Order,Bestellung
+Sales Order,Bestellung
+Sales Order has been submitted successfully.,Bestellung wurde erfolgreich eingereicht.
+Sales Order List,Bestellungen
+Sales Return,Retoure
+Save,Speichern
+Save Customizations,Anpassungen speichern
+Scientific Name,Wissenschaftlicher Name
+Search or type a command (Ctrl + G),Suchen oder Befehl eingeben (Strg + G)
+Select Mandatory,Verpflichtende Auswählen
+Series,Serie / Laufende Nummer
+Session Defaults,Voreinstellungen für diese Sitzung
+Set,Gesetzt
+Set all private,Alles auf privat setzen
+Set all public,Alles auf öffentlich setzen
+Sets the current page as default for all users,Setzt die aktuelle Seite als Standard für alle Nutzer
+"Settings used to render documents such as invoices, delivery notes and returns.","Einstellungen für die Darstellung von Dokumenten wie Rechnungen, Lieferscheinen und Retouren."
+Setup,Einrichtung
+share,Teilen
+Share,Teilen
+Short Code,Abkürzung
+"Short code for regional organizations. For example; ""LVSA""; ""AVL""; etc.","Kürzel für Verbände und Vereine; z.B. ""LVSA""; ""AVL""; etc."
+Show Absolute Values,Absolutwerte anzeigen
+Show Only Current Recipients,Nur aktuelle Zeitschriftenempfänger anzeigen
+Show Organization List,Vereins- und Verbandsliste anzeigen
+Show Organization Tree,Baumansicht Verein anzeigen
+Show Saved,Gespeicherte anzeigen
+Single Member Data Import,Einzelmitglied Datenimport
+SO DIN Addressfield,DIN Rechnung
+Sort Ascending,Aufsteigend sortieren
+Sort Descending,Absteigend sortieren
+Special Fishing Limit,Fangbegrenzung Salmonidengewässer
+State Organization,Landesverband
+Status and Duration,Status und Dauer
+Stocking Measure,Besatzmaßnahme
+Stocking of Supported Water Bodies,Besatzmaßnahmen in betreuten Gewässern
+Stocking Target,Besatzplanung
+Submit on Creation,Nach Erstellung absenden
+Switch To Desk,Zur Anwendung wechseln
+Tag,Schlagwort
+Tags,Schlagworte
+Template for Member Data Import,Vorlage Mitgliedsdatenimport
+There are no upcoming events for you.,Es sind keine Termine für Sie geplant.
+This Doctype does not contain latitude and longitude fields,Dieser Doctype enthält keine geographoschen Koordinaten (Felder latitude und longitude)
+This Doctype does not contain location fields,Dieser Doctype enthält keine Angaben zum Ort
+"This document should be linked to at least one Company, LANDA Member, Organization or Customer","Dieses Dokument muss mindestens mit einem Bestellwesenkonto Regionalverband, einem Mitglied, einem Verein bzw. Verband oder einem Bestellwesenkonto Verein verknüpft sein (s. Referenzen)."
+Today's Events,Heutige Termine
+Toggle Chart,Diagramm ein-/ausblenden
+Toggle Full Width,Ansicht in voller Breite
+Toggle Sidebar,Seitenleiste ein-/ausblenden
+Total (only for regional org.),Summe (nur für RV)
+"Track if your email has been opened by the recipient.||||||Note: If you're sending to multiple recipients; even if 1 recipient reads the email; it'll be considered ""Opened""","Lesebestätigung des Empfänger verfolgen.|||<br>|||Hinweis: Sollten sie an mehr als einen Empfänger versenden; wird die Email als ""geöffnet"" gesetzt; auch wenn nur einer der Empfänger die Email gelesen hat."
+Traits,Merkmale
+Tree,Baumansicht
+Type Name,Art / Typ
+Unit of Quantity per Water Body Size,Einheit Menge pro Gewässer Fläche/Länge
+Unit of Weight per Water Body Size,Einheit Gewicht pro Gewässer Fläche/Länge
+Upcoming Birthday,Nächster Geburtstag
+Use HTML,HTML verwenden
+User Enabled,Nutzer ist aktiviert
+User Forum,Anwenderforum
+User Id,Nutzername
+Valid From Year,Gültig ab Jahr
+Valid To Year,Gültig bis Jahr
+Water Bodies,Gewässer
+Water Body,Gewässer
+Water Body List,Gewässer Listenansicht
+Water Body Local Contact Table,Gewässer Ansprechpartner im Verein
+Water Body Management,Gewässerverwaltung
+Water Body Management Local Organization,Gewässerbetreuung Verein
+Water Body Organization Table,Vereinstabelle des Gewässers
+Water Body Size,Gewässergröße
+Water Body Size Unit,Einheit der Gewässergröße
+Water Body Special Provision,Gewässer Sonderbestimmung
+Water Body Special Provision Table,Tabelle Gewässersonderbestimmungen
+Water Body Special Provisions,Gewässer Sonderbestimmungen
+Water Body Title,Gewässername
+Weight in Kg,Gewicht in Kg
+Weight per Water Body Size,Gewicht pro Gewässer Fläche/Länge
+Welcome to {0},Willkommen bei {0}
+Year of Settlement,Abrechnungsjahr
+Year of Yearly Fishing Permit,Gültigkeitsjahr Erlaubnisschein
+Yearly Fishing Permit,Erlaubnisschein
+Yearly Fishing Permit Number,Erlaubnisscheinnummer
+Yearly Fishing Permit Type,Erlaubnisscheinart
+Yearly Fishing Permits,Erlaubnisscheine
+Yearly Fishing Permits Issued,Vergebene Erlaubnisscheine
+You do not have Read or Select Permissions for {},Sie haben keine Lese- oder Auswahlberechtigung für {}
+You haven't created a {0} yet,Du hast noch keine(n) {0} erstellt.
+You haven't created a {0} yet,Du hast noch kein(en) {0} erstellt.
+You hit the rate limit because of too many requests. Please try after sometime.,Sie haben die maximale Anzahl an Anfragen erreicht. Bitte versuchen Sie es später noch einmal!
+You need {0} permission to fetch values from {1} {2},"Sie brauchen eine {0}-Berechtigung, um die Werte von {1} {2} zu beziehen"
+Your new password has been set successfully.,Ihr Passwort wurde erfolgreich aktualisiert.
+Your Shortcuts,Schnellzugriff
+Youth Membership,Jugendmitgliedschaft
+Zipcode,PLZ

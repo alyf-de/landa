@@ -25,7 +25,6 @@ fixtures = [
 		"dt": "Variant Field",
 		"filters": [["field_name", "in", ["description", "item_tax_template"]]],
 	},
-	"Translation",
 	{
 		"doctype": "Letter Head",
 		"filters": {"name": ["in", "Extended Information in Footer"]},
