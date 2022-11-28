@@ -21,7 +21,7 @@ def execute():
 		contact = frappe.get_doc("Contact", contact_name)
 		set_primary_email_if_missing(contact)
 		set_primary_phone_if_missing(contact)
-		contact.save(ignore_permissions=True)
+		contact.save(ignore_permissions=True, ignore_version=True)
 
 	frappe.db.auto_commit_on_many_writes = False
 
