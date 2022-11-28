@@ -12,7 +12,7 @@ def execute():
 			filters={"parent": contact},
 			fields=["name", "is_primary"],
 		)
-		if value_not_set(contact_emails, "is_primary"):
+		if contact_emails and value_not_set(contact_emails, "is_primary"):
 			frappe.db.set_value(
 				"Contact Email", contact_emails[0]["name"], "is_primary", 1
 			)
@@ -25,7 +25,7 @@ def execute():
 			filters={"parent": contact},
 			fields=["name", "phone", "is_primary_mobile_no", "is_primary_phone"],
 		)
-		if value_not_set(contact_phones, "is_primary_mobile_no") and value_not_set(
+		if contact_phones and value_not_set(contact_phones, "is_primary_mobile_no") and value_not_set(
 			contact_phones, "is_primary_phone"
 		):
 			for contact_phone in contact_phones:
