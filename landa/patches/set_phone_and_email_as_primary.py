@@ -5,9 +5,8 @@ def execute():
 	def value_not_set(rows, fieldname):
 		return not any(row[fieldname] for row in rows)
 
-	contacts = frappe.get_list("Contact", pluck="name")
-	for contact in contacts:
-		# if no email_id is set as primary for a contact, set the first email_id as primary
+	def set_primary_email_if_missing(contact):
+		"""If no email_id is set as primary for a contact, set the first email_id as primary"""
 		contact_emails = frappe.get_list(
 			"Contact Email",
 			filters={"parent": contact},
@@ -17,8 +16,10 @@ def execute():
 			frappe.db.set_value(
 				"Contact Email", contact_emails[0]["name"], "is_primary", 1
 			)
-		# if no phone is set as primary mobile or primary phone for a contact,
-		# set all phones as primary phone or primary phone according to the first digits of the phone number
+
+	def set_primary_phone_if_missing(contact):
+		"""If no phone is set as primary mobile or primary phone for a contact,
+		set all phones as primary phone or primary phone according to the first digits of the phone number"""
 		contact_phones = frappe.get_list(
 			"Contact Phone",
 			filters={"parent": contact},
@@ -44,3 +45,8 @@ def execute():
 					frappe.db.set_value(
 						"Contact Phone", contact_phone["name"], "is_primary_phone", 1
 					)
+
+	contacts = frappe.get_list("Contact", pluck="name")
+	for contact in contacts:
+		set_primary_email_if_missing(contact)
+		set_primary_phone_if_missing(contact)
