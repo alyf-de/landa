@@ -4,12 +4,12 @@ from . import __version__ as app_version
 
 app_name = "landa"
 app_title = "LANDA"
-app_publisher = "Real Experts GmbH"
+app_publisher = "ALYF GmbH"
 app_description = "Datenmanagementsystem des Landesverband Sächsischer Angler e. V."
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
-app_email = "office@realexperts.de"
-app_license = "--"
+app_email = "hallo@alyf.de"
+app_license = "GPLv3"
 
 fixtures = [
 	"Navbar Settings",
@@ -128,15 +128,6 @@ landa_create_after_install = [
 		],
 		"numeric_values": 0,
 	},
-	{
-		# This needs to exist so that User Permissions on User will work as expected.
-		"doctype": "Custom DocPerm",
-		"parent": "User",
-		"role": "All",
-		"select": 1,
-		"read": 0,
-		"export": 0,
-	},
 ]
 
 # Used in `landa.install.disable_modes_of_payment`
@@ -188,6 +179,7 @@ doctype_js = {
 	"Payment Entry": "landa_sales/payment_entry/payment_entry.js",
 	"Address": "address_and_contact.js",
 	"Contact": "address_and_contact.js",
+	"User": "organization_management/user/user.js",
 }
 doctype_list_js = {"Report": "scripts/report_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -283,7 +275,9 @@ doc_events = {
 	},
 	"User": {
 		"on_trash": "landa.organization_management.user.user.on_trash",
-	}
+		"on_update": "landa.organization_management.user.user.on_update",
+		"validate": "landa.organization_management.user.user.validate",
+	},
 }
 
 # Scheduled Tasks
@@ -329,9 +323,9 @@ override_whitelisted_methods = {
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
-# override_doctype_dashboards = {
-#	"Task": "landa.task.get_dashboard_data"
-# }
+override_doctype_dashboards = {
+	"Sales Order": "landa.landa_sales.sales_order.sales_order.get_dashboard_data"
+}
 
 # exempt linked doctypes from being automatically cancelled
 #
@@ -341,31 +335,9 @@ override_whitelisted_methods = {
 # }
 
 landa_custom_fields = {
-	"User": [
-		{
-			"fieldname": "landa_member",
-			"fieldtype": "Link",
-			"label": "LANDA Member",
-			"options": "LANDA Member",
-			"insert_after": "username",
-			"translatable": 0,
-		},
-		{
-			"fieldname": "organization",
-			"fieldtype": "Link",
-			"label": "Organization",
-			"options": "Organization",
-			"insert_after": "landa_member",
-			"fetch_from": "landa_member.organization",
-			"read_only": 1,
-			"reqd": 1,
-			"translatable": 0,
-		},
-	],
+	# "doctype": [ { ... }, ... ],
 }
 
 landa_property_setters = {
-	"User": [
-		("short_bio", "hidden", "1", "Check"),
-	],
+	# "doctype": [ (fieldname, property, value, fieldtype), ... ],
 }

@@ -17,7 +17,7 @@ frappe.query_reports["Current Member Data"] = {
     onload: function (query_report) {
         const b = cur_page.page.page.wrapper.find(".sub-heading");
         b.html(`
-            Sehen Sie sich bitte unbedingt vor der ersten Benutzung <a href="/how-to/member-data-import" target=_blank style="color: blue;">dieses Anleitung</a> an.</p>
+            Sehen Sie sich bitte unbedingt vor der ersten Benutzung <a href="/how-to/Mitgliedsdatenimport" target=_blank style="color: blue;">diese Anleitung</a> an.</p>
         </div>`).toggleClass("hide", false);
     }
 };

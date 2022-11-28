@@ -17,3 +17,7 @@ class YearlyFishingPermit(Document):
 			self.first_name, self.last_name, self.organization = frappe.db.get_value(
 				"LANDA Member", self.member, ["first_name", "last_name", "organization"]
 			)
+
+	def on_update(self):
+		if self.has_permission("submit"):
+			self.submit()
