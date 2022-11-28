@@ -5,6 +5,12 @@ def execute():
 	def value_not_set(rows, fieldname):
 		return not any(row[fieldname] for row in rows)
 
+	def number_is_mobile(number):
+		def remove_non_digit_characters(number):
+			return "".join(filter(str.isdigit, number))
+		cleared_number = remove_non_digit_characters(number)
+		return cleared_number.startswith(("01","491","00491"))
+
 	def set_primary_email_if_missing(contact):
 		"""If no email_id is set as primary for a contact, set the first email_id as primary"""
 		contact_emails = frappe.get_list(
@@ -29,12 +35,7 @@ def execute():
 			contact_phones, "is_primary_phone"
 		):
 			for contact_phone in contact_phones:
-				cleared_number = "".join(filter(str.isdigit, contact_phone["phone"]))
-				if (
-					cleared_number[:2] == "01"
-					or cleared_number[:3] == "491"
-					or cleared_number[:5] == "00491"
-				):
+				if number_is_mobile(contact_phone["phone"]):
 					frappe.db.set_value(
 						"Contact Phone",
 						contact_phone["name"],
