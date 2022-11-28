@@ -21,7 +21,7 @@ def execute():
 		# set all phones as primary phone or primary phone according to the first digits of the phone number
 		contact_phones = frappe.get_list(
 			"Contact Phone",
-			filters={"parent": contact[0]},
+			filters={"parent": contact},
 			fields=["name", "phone", "is_primary_mobile_no", "is_primary_phone"],
 		)
 		if value_not_set(contact_phones, "is_primary_mobile_no") and value_not_set(
