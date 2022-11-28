@@ -11,10 +11,20 @@ def execute():
 	"""
 	frappe.reload_doctype("LANDA Member")
 
-	all_names = frappe.get_all(
-		"LANDA Member", fields=["name", "first_name", "last_name"], as_list=1
-	)
-	for name, first_name, last_name in all_names:
-		frappe.set_value(
-			"LANDA Member", name, "full_name", get_full_name(first_name, last_name)
+	frappe.db.auto_commit_on_many_writes = True
+
+	for name, first_name, last_name in frappe.get_all(
+		"LANDA Member",
+		fields=["name", "first_name", "last_name"],
+		filters={"full_name": ("is", "not set")},
+		as_list=1,
+	):
+		frappe.db.set_value(
+			"LANDA Member",
+			name,
+			"full_name",
+			get_full_name(first_name, last_name),
+			update_modified=False,
 		)
+
+	frappe.db.auto_commit_on_many_writes = False

@@ -20,6 +20,7 @@
   "is_supporting_member",
   "has_special_yearly_fishing_permit_2",
   "has_special_yearly_fishing_permit_1",
+  "youth_membership",
   "section_break_9",
   "address_name",
   "address_line1",
@@ -167,11 +168,18 @@
    "label": "ID Yearly Fishing Permit",
    "options": "Yearly Fishing Permit",
    "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "0",
+   "fieldname": "youth_membership",
+   "fieldtype": "Check",
+   "label": "Youth Membership"
   }
  ],
  "is_virtual": 1,
  "links": [],
- "modified": "2022-09-13 13:55:16.001814",
+ "modified": "2022-11-23 12:26:08.705403",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Data Import",

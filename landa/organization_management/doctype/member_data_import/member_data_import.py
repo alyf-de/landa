@@ -18,6 +18,7 @@ class MemberDataImport(Document):
 		"has_key",
 		"has_special_yearly_fishing_permit_1",
 		"has_special_yearly_fishing_permit_2",
+		"youth_membership",
 		"additional_information",
 	]
 
@@ -192,9 +193,7 @@ def create_yearly_fishing_permit(
 	yfp.update(data)
 	yfp.number = number
 	yfp.date_of_issue = date_of_issue
-
 	yfp.insert()
-	yfp.submit()
 
 
 def parse_checkbox_value(value: str) -> int:
