@@ -4,6 +4,8 @@ from frappe.utils import update_progress_bar
 
 
 def execute():
+	frappe.db.auto_commit_on_many_writes = True
+
 	contacts = frappe.get_all(
 		"Contact",
 		or_filters={
@@ -20,6 +22,8 @@ def execute():
 		set_primary_email_if_missing(contact)
 		set_primary_phone_if_missing(contact)
 		contact.save(ignore_permissions=True)
+
+	frappe.db.auto_commit_on_many_writes = False
 
 
 def value_is_set(rows: list, fieldname: str) -> bool:
