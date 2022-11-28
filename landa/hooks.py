@@ -4,12 +4,12 @@ from . import __version__ as app_version
 
 app_name = "landa"
 app_title = "LANDA"
-app_publisher = "Real Experts GmbH"
+app_publisher = "ALYF GmbH"
 app_description = "Datenmanagementsystem des Landesverband Sächsischer Angler e. V."
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
-app_email = "office@realexperts.de"
-app_license = "--"
+app_email = "hallo@alyf.de"
+app_license = "GPLv3"
 
 fixtures = [
 	"Navbar Settings",
@@ -322,9 +322,9 @@ override_whitelisted_methods = {
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
-# override_doctype_dashboards = {
-#	"Task": "landa.task.get_dashboard_data"
-# }
+override_doctype_dashboards = {
+	"Sales Order": "landa.landa_sales.sales_order.sales_order.get_dashboard_data"
+}
 
 # exempt linked doctypes from being automatically cancelled
 #
