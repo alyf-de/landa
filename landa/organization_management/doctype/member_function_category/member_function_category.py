@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 from frappe.permissions import add_user_permission
+from frappe.realtime import publish_progress
 
 from landa.organization_management.doctype.member_function.member_function import get_active_member_functions
 
@@ -15,8 +16,19 @@ class MemberFunctionCategory(Document):
 	def on_update(self):
 		if self.has_value_changed('roles'):
 			member_names = self.get_member_names()
-			remove_roles(member_names, self.get_removed_roles())
-			add_roles(member_names, self.get_new_roles())
+			total = len(member_names)
+			for i, member_name in enumerate(member_names):
+				publish_progress(
+					percent=i * 100 / total,
+					title='Updating user roles',
+					doctype=self.doctype,
+					docname=self.name
+				)
+				user_name = frappe.db.get_value('User', {'landa_member': member_name})
+				if not user_name:
+					continue
+
+				apply_roles(member_name, user_name, current_mfc=self)
 
 		if self.has_value_changed('member_administration'):
 			update_member_restrictions(self.get_member_names())
@@ -29,26 +41,10 @@ class MemberFunctionCategory(Document):
 		filters = {'member_function_category': self.name}
 		member_names = get_active_member_functions(filters=filters, pluck='member')
 
-		return list(set(member_names))
-
-	def get_removed_roles(self):
-		doc_before_save = self.get_doc_before_save()
-
-		if doc_before_save:
-			return list(set(role.role for role in doc_before_save.roles) - set(role.role for role in self.roles))
-		else:
-			return []
-
-	def get_new_roles(self):
-		doc_before_save = self.get_doc_before_save()
-
-		if doc_before_save:
-			return list(set(role.role for role in self.roles) - set(role.role for role in doc_before_save.roles))
-		else:
-			return self.get_roles()
+		return set(member_names)
 
 	def get_roles(self):
-		return [role.role for role in self.roles]
+		return {role.role for role in self.roles}
 
 	def add_roles_and_permissions(self, member_name):
 		"""Enable the roles of this Member Function Category for a specific Member."""
@@ -61,18 +57,6 @@ class MemberFunctionCategory(Document):
 		remove_roles_from_member(member_name, self.get_roles(), disabled_member_function)
 		update_user_permission_on_member(member_name, disabled_member_function)
 		update_user_permission_on_organization(member_name, disabled_member_function)
-
-
-def add_roles(member_names, roles):
-	"""Add a list of roles to a list of members."""
-	for member_name in member_names:
-		add_roles_to_member(member_name, roles)
-
-
-def remove_roles(member_names, roles):
-	"""Remove a list of roles from a list of members."""
-	for member_name in member_names:
-		remove_roles_from_member(member_name, roles)
 
 
 def update_member_restrictions(member_names):
@@ -224,21 +208,29 @@ def clear_user_permissions_for_doctype(doctype, user=None, ignore_permissions=Fa
 		frappe.delete_doc('User Permission', d.name, ignore_permissions=ignore_permissions)
 
 
-def apply_roles(member: str, user: str) -> None:
+def apply_roles(member: str, user: str, current_mfc: MemberFunctionCategory = None) -> None:
 	"""Apply roles from all active member functions to the member."""
 	mfcs = get_active_member_functions(
 		filters={'member': member},
 		pluck='member_function_category'
 	)
-	roles = frappe.get_all(
+
+	if current_mfc:
+		mfcs.remove(current_mfc.name)
+
+	roles = set(frappe.get_all(
 		'Has Role',
 		filters={'parenttype': 'Member Function Category', 'parent': ('in', mfcs)},
 		pluck='role',
 		distinct=True,
-	)
+	))
+
+	roles.add('LANDA Member')
+	if current_mfc:
+		roles = roles.union(current_mfc.get_roles())
 
 	frappe.db.delete('Has Role', {'parenttype': 'User', 'parent': user})
-	for i, role in enumerate(set(roles + ['LANDA Member'])):
+	for i, role in enumerate(roles):
 		doc = frappe.new_doc('Has Role')
 		doc.role = role
 		doc.parenttype = 'User'
