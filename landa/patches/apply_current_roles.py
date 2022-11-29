@@ -8,12 +8,12 @@ from landa.organization_management.doctype.member_function_category.member_funct
 def execute():
 	frappe.db.auto_commit_on_many_writes = True
 
-	members = frappe.get_all(
-		"User", filters={"landa_member": ("is", "set"), "enabled": 1}, pluck="landa_member"
+	users = frappe.get_all(
+		"User", filters={"landa_member": ("is", "set"), "enabled": 1}, fields=["name", "landa_member"]
 	)
-	total = len(members)
-	for i, member_name in enumerate(members):
+	total = len(users)
+	for i, (user, member) in enumerate(users):
 		update_progress_bar("Applying member functions", i, total)
-		apply_roles(member_name)
+		apply_roles(member, user)
 
 	frappe.db.auto_commit_on_many_writes = False

@@ -224,10 +224,10 @@ def clear_user_permissions_for_doctype(doctype, user=None, ignore_permissions=Fa
 		frappe.delete_doc('User Permission', d.name, ignore_permissions=ignore_permissions)
 
 
-def apply_roles(member_name: str) -> None:
+def apply_roles(member: str, user: str) -> None:
 	"""Apply roles from all active member functions to the member."""
 	mfcs = get_active_member_functions(
-		filters={'member': member_name},
+		filters={'member': member},
 		pluck='member_function_category'
 	)
 	roles = frappe.get_all(
@@ -237,8 +237,12 @@ def apply_roles(member_name: str) -> None:
 		distinct=True,
 	)
 
-	user = get_user(member_name)
-	user.roles = []
-	for role in set(roles + ['LANDA Member']):
-		user.append('roles', {'role': role})
-	user.save(ignore_permissions=True, ignore_version=True)
+	frappe.db.delete('Has Role', {'parenttype': 'User', 'parent': user})
+	for i, role in enumerate(set(roles + ['LANDA Member'])):
+		doc = frappe.new_doc('Has Role')
+		doc.role = role
+		doc.parenttype = 'User'
+		doc.parent = user
+		doc.parentfield = 'roles'
+		doc.idx = i
+		doc.save(ignore_permissions=True)
