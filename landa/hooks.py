@@ -274,8 +274,9 @@ doc_events = {
 		"after_insert": "landa.organization_management.contact.contact.after_insert",
 	},
 	"User": {
-		"on_update": "landa.organization_management.user.user.on_update",
 		"validate": "landa.organization_management.user.user.validate",
+		"after_insert": "landa.organization_management.user.user.after_insert",
+		"on_update": "landa.organization_management.user.user.on_update",
 	},
 }
 
