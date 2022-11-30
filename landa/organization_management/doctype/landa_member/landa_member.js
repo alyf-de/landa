@@ -28,7 +28,7 @@ frappe.ui.form.on('LANDA Member', {
             frappe.contacts.render_address_and_contact(frm);
         }
 
-        if (!frm.is_new() && frappe.perm.has_perm("LANDA Member", 0, "create")) {
+        if (!frm.is_new() && frappe.perm.has_perm("User", 0, "create")) {
             frappe.db.get_value("User", {"landa_member": frm.doc.name}, "name")
                 .then(resp => {
                     if (resp.message.name) return;
