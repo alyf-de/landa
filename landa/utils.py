@@ -117,6 +117,7 @@ def delete_dynamically_linked(
 			# if there are links to records of the same doctype, for example, an
 			# address belonging to multiple members
 			pop_from_table(doctype, name, parent_field, idx)
+			continue
 
 		frappe.delete_doc(
 			doctype, doc.name, delete_permanently=True, ignore_permissions=True
