@@ -104,10 +104,14 @@ def delete_dynamically_linked(doctype: str, linked_doctype: str, linked_name: st
 		).run()
 	):
 		doc: Document = frappe.get_doc(doctype, result[0])
-		if len(doc.links) == 1:
-			frappe.delete_doc(
-				doctype, doc.name, delete_permanently=True, ignore_permissions=True
-			)
+		if any(row for row in doc.links if row.link_doctype == linked_doctype and row.link_name != linked_name):
+			# keep the link if there are other links to records of the same doctype
+			# for example, an address beloging to multiple members
+			continue
+
+		frappe.delete_doc(
+			doctype, doc.name, delete_permanently=True, ignore_permissions=True
+		)
 
 
 def get_link_fields(doctype: str, as_dict: int = 1):
