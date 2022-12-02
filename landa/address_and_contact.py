@@ -53,3 +53,9 @@ def validate(doc, event):
 			doc.organization = frappe.db.get_value(
 				"External Contact", link.link_name, "organization"
 			)
+
+
+def on_trash(doc, event):
+	from landa.utils import purge_all
+
+	purge_all(doc.doctype, doc.name)

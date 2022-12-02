@@ -40,6 +40,10 @@ class LANDAMember(Document):
 		self.full_name = get_full_name(self.first_name, self.last_name)
 
 	def on_trash(self):
+		user = frappe.db.exists("User", {"landa_member": self.name})
+		if user:
+			frappe.delete_doc("User", user, ignore_permissions=True, ignore_missing=True, delete_permanently=True)
+
 		delete_dynamically_linked("Address", self.doctype, self.name)
 		delete_dynamically_linked("Contact", self.doctype, self.name)
 		purge_all("LANDA Member", self.name)

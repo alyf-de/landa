@@ -268,10 +268,12 @@ doc_events = {
 	"Address": {
 		"validate": "landa.address_and_contact.validate",
 		"autoname": "landa.organization_management.address.address.autoname",
+		"on_trash": "landa.address_and_contact.on_trash",
 	},
 	"Contact": {
 		"validate": "landa.address_and_contact.validate",
 		"after_insert": "landa.organization_management.contact.contact.after_insert",
+		"on_trash": "landa.address_and_contact.on_trash",
 	},
 	"User": {
 		"validate": "landa.organization_management.user.user.validate",
