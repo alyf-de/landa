@@ -40,9 +40,6 @@ class LANDAMember(Document):
 		self.full_name = get_full_name(self.first_name, self.last_name)
 
 	def on_trash(self):
-		if self.user:
-			delete_or_disable_user(self.user)
-
 		delete_dynamically_linked("Address", self.doctype, self.name)
 		delete_dynamically_linked("Contact", self.doctype, self.name)
 		purge_all("LANDA Member", self.name)
