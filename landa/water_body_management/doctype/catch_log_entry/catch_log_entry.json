@@ -77,7 +77,8 @@
    "fieldname": "fish_catches",
    "fieldtype": "Table",
    "label": "Fish Catches",
-   "options": "Catch Log Fish Table"
+   "options": "Catch Log Fish Table",
+   "reqd": 1
   },
   {
    "fetch_from": "water_body.fishing_area",
@@ -141,7 +142,7 @@
   }
  ],
  "links": [],
- "modified": "2022-12-05 12:31:48.215145",
+ "modified": "2022-09-13 13:59:10.481810",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
