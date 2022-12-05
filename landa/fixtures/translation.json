@@ -7326,5 +7326,53 @@
   "parenttype": null,
   "source_text": "Youth Membership",
   "translated_text": "Jugendmitgliedschaft"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-12-05 17:57:15.191634",
+  "name": "0260cd68f4",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Over Receipt/Delivery",
+  "translated_text": "Lieferung \u00fcber Bestellung hinaus"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-12-05 17:59:05.275185",
+  "name": "1c52d0da5c",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "{} of {} {} ignored for item {} because you have {} role.",
+  "translated_text": "{} von Artikel mit {} {} und ID {} wurde \u00fcberschrieben/ ignoriert, weil Sie die Rolle {} haben."
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-12-05 18:02:55.061092",
+  "name": "923afd90d8",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "{0} has been submitted successfully",
+  "translated_text": "{0} wurde erfolgreich gebucht"
  }
 ]
