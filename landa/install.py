@@ -107,3 +107,14 @@ def make_property_setters():
 			for property_setter in property_setters:
 				for_doctype = True if not property_setter[0] else False
 				make_property_setter(doctype, *property_setter, for_doctype)
+
+
+def update_stock_settings():
+	frappe.db.set_value(
+		"Stock Settings",
+		None,
+		"role_allowed_to_create_edit_back_dated_transactions",
+		"All",
+		update_modified=True,
+	)
+	frappe.db.commit()
