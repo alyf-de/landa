@@ -8,6 +8,7 @@ from frappe.model.document import Document
 from frappe.permissions import add_user_permission
 
 from landa.organization_management.doctype.member_function.member_function import get_active_member_functions
+from landa.utils import autocommit
 
 
 class MemberFunctionCategory(Document):
@@ -65,24 +66,28 @@ class MemberFunctionCategory(Document):
 
 def add_roles(member_names, roles):
 	"""Add a list of roles to a list of members."""
-	for member_name in member_names:
-		add_roles_to_member(member_name, roles)
+	with autocommit():
+		for member_name in member_names:
+			add_roles_to_member(member_name, roles)
 
 
 def remove_roles(member_names, roles):
 	"""Remove a list of roles from a list of members."""
-	for member_name in member_names:
-		remove_roles_from_member(member_name, roles)
+	with autocommit():
+		for member_name in member_names:
+			remove_roles_from_member(member_name, roles)
 
 
 def update_member_restrictions(member_names):
-	for member_name in member_names:
-		update_user_permission_on_member(member_name)
+	with autocommit():
+		for member_name in member_names:
+			update_user_permission_on_member(member_name)
 
 
 def update_organization_restrictions(member_names):
-	for member_name in member_names:
-		update_user_permission_on_organization(member_name)
+	with autocommit():
+		for member_name in member_names:
+			update_user_permission_on_organization(member_name)
 
 
 def add_roles_to_member(member_name, roles):
