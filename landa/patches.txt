@@ -18,4 +18,4 @@ execute:from landa.install import add_session_defaults; add_session_defaults()
 landa.patches.full_name  # 3
 landa.patches.set_phone_and_email_as_primary # 5
 landa.patches.apply_current_roles
-execute:from landa.install import update_stock_settings; update_stock_settings() #2
+execute:from landa.install import update_stock_settings; update_stock_settings() #3

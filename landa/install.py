@@ -12,6 +12,7 @@ def after_install():
 	disable_modes_of_payment()
 	add_session_defaults()
 	setup_uoms()
+	update_stock_settings()
 
 
 def create_records_from_hooks():
@@ -113,8 +114,8 @@ def update_stock_settings():
 	frappe.db.set_value(
 		"Stock Settings",
 		None,
-		"role_allowed_to_create_edit_back_dated_transactions",
-		"All",
-		update_modified=True,
+		"role_allowed_to_over_deliver_receive",
+		"LANDA Member",
+		update_modified=False,
 	)
 	frappe.db.commit()
