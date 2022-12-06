@@ -8,6 +8,7 @@ from frappe.model.document import Document
 from frappe.permissions import add_user_permission
 
 from landa.organization_management.doctype.member_function.member_function import get_active_member_functions
+from landa.utils import autocommit
 
 
 class MemberFunctionCategory(Document):
@@ -15,8 +16,9 @@ class MemberFunctionCategory(Document):
 	def on_update(self):
 		if self.has_value_changed('roles'):
 			member_names = self.get_member_names()
-			remove_roles(member_names, self.get_removed_roles())
-			add_roles(member_names, self.get_new_roles())
+			for member_name in member_names:
+				user = frappe.db.get_value('User', {'landa_member': member_name})
+				apply_roles(member_name, user)
 
 		if self.has_value_changed('member_administration'):
 			update_member_restrictions(self.get_member_names())
@@ -65,24 +67,28 @@ class MemberFunctionCategory(Document):
 
 def add_roles(member_names, roles):
 	"""Add a list of roles to a list of members."""
-	for member_name in member_names:
-		add_roles_to_member(member_name, roles)
+	with autocommit():
+		for member_name in member_names:
+			add_roles_to_member(member_name, roles)
 
 
 def remove_roles(member_names, roles):
 	"""Remove a list of roles from a list of members."""
-	for member_name in member_names:
-		remove_roles_from_member(member_name, roles)
+	with autocommit():
+		for member_name in member_names:
+			remove_roles_from_member(member_name, roles)
 
 
 def update_member_restrictions(member_names):
-	for member_name in member_names:
-		update_user_permission_on_member(member_name)
+	with autocommit():
+		for member_name in member_names:
+			update_user_permission_on_member(member_name)
 
 
 def update_organization_restrictions(member_names):
-	for member_name in member_names:
-		update_user_permission_on_organization(member_name)
+	with autocommit():
+		for member_name in member_names:
+			update_user_permission_on_organization(member_name)
 
 
 def add_roles_to_member(member_name, roles):
@@ -225,6 +231,9 @@ def clear_user_permissions_for_doctype(doctype, user=None, ignore_permissions=Fa
 
 
 def apply_roles(member: str, user: str) -> None:
+	if not all([user, member]):
+		return
+
 	"""Apply roles from all active member functions to the member."""
 	mfcs = get_active_member_functions(
 		filters={'member': member},
@@ -245,4 +254,4 @@ def apply_roles(member: str, user: str) -> None:
 		doc.parent = user
 		doc.parentfield = 'roles'
 		doc.idx = i
-		doc.save(ignore_permissions=True)
+		doc.save(ignore_permissions=True, ignore_version=True)
