@@ -16,8 +16,9 @@ class MemberFunctionCategory(Document):
 	def on_update(self):
 		if self.has_value_changed('roles'):
 			member_names = self.get_member_names()
-			remove_roles(member_names, self.get_removed_roles())
-			add_roles(member_names, self.get_new_roles())
+			for member_name in member_names:
+				user = frappe.db.get_value('User', {'landa_member': member_name})
+				apply_roles(member_name, user)
 
 		if self.has_value_changed('member_administration'):
 			update_member_restrictions(self.get_member_names())
@@ -230,6 +231,9 @@ def clear_user_permissions_for_doctype(doctype, user=None, ignore_permissions=Fa
 
 
 def apply_roles(member: str, user: str) -> None:
+	if not all([user, member]):
+		return
+
 	"""Apply roles from all active member functions to the member."""
 	mfcs = get_active_member_functions(
 		filters={'member': member},
@@ -250,4 +254,4 @@ def apply_roles(member: str, user: str) -> None:
 		doc.parent = user
 		doc.parentfield = 'roles'
 		doc.idx = i
-		doc.save(ignore_permissions=True)
+		doc.save(ignore_permissions=True, ignore_version=True)
