@@ -23,6 +23,7 @@ def set_primary_email_if_missing(contact: Contact) -> bool:
 		return False
 
 	contact.email_ids[0].is_primary = 1
+	contact.email_id = contact.email_ids[0].email_id
 	return True
 
 
@@ -38,6 +39,7 @@ def set_primary_phone_if_missing(contact: Contact) -> bool:
 		for phone in contact.phone_nos:
 			if is_mobile_number(phone.phone):
 				phone.is_primary_mobile_no = 1
+				contact.mobile_no = phone.phone
 				modified = True
 				break
 
@@ -45,6 +47,7 @@ def set_primary_phone_if_missing(contact: Contact) -> bool:
 		for phone in contact.phone_nos:
 			if not is_mobile_number(phone.phone):
 				phone.is_primary_phone = 1
+				contact.phone = phone.phone
 				modified = True
 				break
 

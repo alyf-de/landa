@@ -2,6 +2,7 @@ import frappe
 from landa.organization_management.doctype.landa_member.landa_member import (
 	get_full_name,
 )
+from landa.utils import autocommit
 
 
 def execute():
@@ -11,20 +12,17 @@ def execute():
 	"""
 	frappe.reload_doctype("LANDA Member")
 
-	frappe.db.auto_commit_on_many_writes = True
-
-	for name, first_name, last_name in frappe.get_all(
-		"LANDA Member",
-		fields=["name", "first_name", "last_name"],
-		filters={"full_name": ("is", "not set")},
-		as_list=1,
-	):
-		frappe.db.set_value(
+	with autocommit():
+		for name, first_name, last_name in frappe.get_all(
 			"LANDA Member",
-			name,
-			"full_name",
-			get_full_name(first_name, last_name),
-			update_modified=False,
-		)
-
-	frappe.db.auto_commit_on_many_writes = False
+			fields=["name", "first_name", "last_name"],
+			filters={"full_name": ("is", "not set")},
+			as_list=1,
+		):
+			frappe.db.set_value(
+				"LANDA Member",
+				name,
+				"full_name",
+				get_full_name(first_name, last_name),
+				update_modified=False,
+			)
