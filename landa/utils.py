@@ -4,6 +4,7 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.model.dynamic_links import get_dynamic_link_map
 from frappe.utils.nestedset import get_ancestors_of
+from contextlib import contextmanager
 
 
 def get_new_name(prefix, company, doctype):
@@ -72,6 +73,14 @@ def get_current_member_data():
 	frappe.cache().hset("landa", frappe.session.user, result)
 
 	return result
+
+
+@contextmanager
+def autocommit():
+	flag_value = frappe.db.auto_commit_on_many_writes
+	frappe.db.auto_commit_on_many_writes = True
+	yield
+	frappe.db.auto_commit_on_many_writes = flag_value
 
 
 def remove_from_table(table_doctype: str, link_field: str, value: str):
