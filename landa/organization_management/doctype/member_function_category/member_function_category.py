@@ -114,27 +114,37 @@ def remove_roles_from_member(member_name, roles, disabled_member_function=None):
 
 def update_user_permission_on_member(member_name, disabled_member_function=None):
 	"""Remove the User Permission restricting member_name's User to it's own Member record."""
-	user = get_user(member_name)
-	if not user:
+	user_name = get_user_name(member_name)
+	if not user_name:
 		return
 
 	if is_member_administration(member_name, disabled_member_function):
-		clear_user_permissions_for_doctype('LANDA Member', user.name, ignore_permissions=True)
+		clear_user_permissions_for_doctype(
+			"LANDA Member", user_name, ignore_permissions=True
+		)
 	else:
-		add_user_permission('LANDA Member', member_name, user.name, ignore_permissions=True)
+		add_user_permission(
+			"LANDA Member", member_name, user_name, ignore_permissions=True
+		)
 
 
 def update_user_permission_on_organization(member_name, disabled_member_function=None):
 	"""Give member_name's User access to Organization at the highest level needed for it's Member Functions."""
-	user = get_user(member_name)
-	if not user:
+	user_name = get_user_name(member_name)
+	if not user_name:
 		return
 
-	highest_access_level = get_highest_access_level(member_name, disabled_member_function)
+	highest_access_level = get_highest_access_level(
+		member_name, disabled_member_function
+	)
 	organization_name = get_organization_at_level(member_name, highest_access_level)
 
-	clear_user_permissions_for_doctype('Organization', user.name, ignore_permissions=True)
-	add_user_permission('Organization', organization_name, user.name, ignore_permissions=True)
+	clear_user_permissions_for_doctype(
+		"Organization", user_name, ignore_permissions=True
+	)
+	add_user_permission(
+		"Organization", organization_name, user_name, ignore_permissions=True
+	)
 
 
 def get_roles_to_remove(member_name, roles, disabled_member_function=None):
@@ -211,13 +221,18 @@ def get_values_from_categories(member_name, filters, fieldname=None, disabled_me
 	}, pluck=fieldname)
 
 
-def get_user(member_name):
+def get_user(member_name: str):
 	"""Return the user object that belongs to this member."""
-	user_name = frappe.get_value('LANDA Member', member_name, 'user')
+	user_name = get_user_name(member_name)
 	if user_name:
-		return frappe.get_doc('User', user_name)
+		return frappe.get_doc("User", user_name)
 	else:
 		return None
+
+
+def get_user_name(member_name: str):
+	"""Return the user name that belongs to this member."""
+	return frappe.db.get_value("User", {"landa_member": member_name, "enabled": 1})
 
 
 def clear_user_permissions_for_doctype(doctype, user=None, ignore_permissions=False):
