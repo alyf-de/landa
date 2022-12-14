@@ -128,15 +128,6 @@ landa_create_after_install = [
 		],
 		"numeric_values": 0,
 	},
-	{
-		# This needs to exist so that User Permissions on User will work as expected.
-		"doctype": "Custom DocPerm",
-		"parent": "User",
-		"role": "All",
-		"select": 1,
-		"read": 0,
-		"export": 0,
-	},
 ]
 
 # Used in `landa.install.disable_modes_of_payment`
@@ -188,6 +179,7 @@ doctype_js = {
 	"Payment Entry": "landa_sales/payment_entry/payment_entry.js",
 	"Address": "address_and_contact.js",
 	"Contact": "address_and_contact.js",
+	"User": "organization_management/user/user.js",
 }
 doctype_list_js = {"Report": "scripts/report_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -284,6 +276,11 @@ doc_events = {
 		],
 		"after_insert": "landa.organization_management.contact.contact.after_insert",
 	},
+	"User": {
+		"validate": "landa.organization_management.user.user.validate",
+		"after_insert": "landa.organization_management.user.user.after_insert",
+		"on_update": "landa.organization_management.user.user.on_update",
+	},
 }
 
 # Scheduled Tasks
@@ -341,31 +338,9 @@ override_doctype_dashboards = {
 # }
 
 landa_custom_fields = {
-	"User": [
-		{
-			"fieldname": "landa_member",
-			"fieldtype": "Link",
-			"label": "LANDA Member",
-			"options": "LANDA Member",
-			"insert_after": "username",
-			"translatable": 0,
-		},
-		{
-			"fieldname": "organization",
-			"fieldtype": "Link",
-			"label": "Organization",
-			"options": "Organization",
-			"insert_after": "landa_member",
-			"fetch_from": "landa_member.organization",
-			"read_only": 1,
-			"reqd": 1,
-			"translatable": 0,
-		},
-	],
+	# "doctype": [ { ... }, ... ],
 }
 
 landa_property_setters = {
-	"User": [
-		("short_bio", "hidden", "1", "Check"),
-	],
+	# "doctype": [ (fieldname, property, value, fieldtype), ... ],
 }
