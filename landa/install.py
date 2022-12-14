@@ -118,4 +118,3 @@ def update_stock_settings():
 		"LANDA Member",
 		update_modified=False,
 	)
-	frappe.db.commit()
