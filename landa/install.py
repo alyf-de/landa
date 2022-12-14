@@ -13,6 +13,7 @@ def after_install():
 	add_session_defaults()
 	setup_uoms()
 	update_stock_settings()
+	update_accounts_settings()
 
 
 def create_records_from_hooks():
@@ -115,6 +116,15 @@ def update_stock_settings():
 		"Stock Settings",
 		None,
 		"role_allowed_to_over_deliver_receive",
+		"LANDA Member",
+		update_modified=False,
+	)
+
+def update_accounts_settings():
+	frappe.db.set_value(
+		"Accounts Settings",
+		None,
+		"role_allowed_to_over_bill",
 		"LANDA Member",
 		update_modified=False,
 	)
