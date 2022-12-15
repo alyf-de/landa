@@ -18,6 +18,12 @@
     {% set contact = frappe.get_doc("Contact", doc.contact_person) %}
 {% endif %}
 
+{% set serial_nos = [] %}
+{% for n in doc.items %}
+    {% if n.serial_no is not none %} {% set temp = serial_nos.append(1) %}{% endif %}
+{% endfor %}
+{% set serial_no_set=serial_nos|length > 0 %}
+
 <!-- HEAD -->
 <div id="header">
     {% if company.company_logo %}
@@ -106,12 +112,16 @@
         <table class="w-100">
             <thead class="black-border">
                 <tr>
-                    <th style="width: 10%">{{ _("Sr") }}</th>
-                    <th style="width: 30%">
-                        {{ _("Description") }}</th>
-                    <th style="width: 10%">{{ _("Unit") }}</th>
-                    <th style="width: 10%">{{ _("Qty") }}</th>
-                    <th style="width: 15%">{{ _("Price") }}</th>
+                    <th style="width: 5%">{{ _("Sr") }}</th>
+                    {% if serial_no_set %}
+                        <th style="width: 40%">{{ _("Description") }}</th>
+                        <th style="width: 10%">{{ _("Ser. No") }}</th>
+                    {% else %}
+                        <th style="width: 50%">{{ _("Description") }}</th>
+                    {%- endif %}
+                    <th style="width: 5%">{{ _("Unit") }}</th>
+                    <th style="width: 5%">{{ _("Qty") }}</th>
+                    <th style="width: 10%">{{ _("Price") }}</th>
                     <th style="width: 15%" class="text-right">{{ _("Amount") }}</th>
                 </tr>
             </thead>
@@ -123,6 +133,7 @@
                         <strong>{{ _(n.item_name) }}</strong>
                         {% if not doc.flags.print_settings.compact_item_print %}<br>{{ n.description }}{% endif %}
                     </td>
+                    {% if serial_no_set %}<td>{{  n.serial_no if  n.serial_no is not none }}</td>{%- endif %}
                     <td>{{ _(n.uom) }}</td>
                     <td>{{ n.qty }}</td>
                     <td>{{ n.get_formatted('rate') }}</td>
