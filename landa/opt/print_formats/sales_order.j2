@@ -119,8 +119,7 @@
                     {% else %}
                         <th style="width: 50%">{{ _("Description") }}</th>
                     {%- endif %}
-                    <th style="width: 5%">{{ _("Unit") }}</th>
-                    <th style="width: 5%">{{ _("Qty") }}</th>
+                    <th style="width: 10%">{{ _("Qty") }}</th>
                     <th style="width: 10%">{{ _("Price") }}</th>
                     <th style="width: 15%" class="text-right">{{ _("Amount") }}</th>
                 </tr>
@@ -134,7 +133,6 @@
                         {% if not doc.flags.print_settings.compact_item_print %}<br>{{ n.description }}{% endif %}
                     </td>
                     {% if serial_no_set %}<td>{{  n.serial_no if  n.serial_no is not none }}</td>{%- endif %}
-                    <td>{{ _(n.uom) }}</td>
                     <td>{{ n.qty }}</td>
                     <td>{{ n.get_formatted('rate') }}</td>
                     <td class="text-right">{{ n.get_formatted('amount') }}</td>
