@@ -179,7 +179,7 @@ def delete_linked_records(doctype: str, name: str) -> None:
 
 		if link_field["is_in_single"]:
 			if not link_field["reqd"] and frappe.db.get_single_value(d_doctype, d_link_field) == name:
-				unset_value(d_doctype, None, d_link_field, None)
+				unset_value(d_doctype, None, d_link_field)
 			continue
 
 		to_delete = frappe.get_all(
