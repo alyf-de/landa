@@ -53,6 +53,7 @@ class LANDACurrentMemberData(object):
 			"has_key",
 			"has_special_yearly_fishing_permit_1",
 			"has_special_yearly_fishing_permit_2",
+			"youth_membership",
 			"additional_information",
 		]
 		members = frappe.db.get_list(
@@ -211,6 +212,11 @@ class LANDACurrentMemberData(object):
 				"label": "Hat Brandenburg Erlaubnisschein",
 				"fieldtype": "Check",
 				"fieldname": "has_special_yearly_fishing_permit_2",
+			},
+			{
+				"label": "Youth Membership",
+				"fieldtype": "Check",
+				"fieldname": "youth_membership",
 			},
 			{
 				"label": "Additional Information",

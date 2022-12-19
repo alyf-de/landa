@@ -8,6 +8,7 @@ from frappe.model.document import Document
 from frappe.permissions import add_user_permission
 
 from landa.organization_management.doctype.member_function.member_function import get_active_member_functions
+from landa.utils import autocommit
 
 
 class MemberFunctionCategory(Document):
@@ -15,8 +16,9 @@ class MemberFunctionCategory(Document):
 	def on_update(self):
 		if self.has_value_changed('roles'):
 			member_names = self.get_member_names()
-			remove_roles(member_names, self.get_removed_roles())
-			add_roles(member_names, self.get_new_roles())
+			for member_name in member_names:
+				user = frappe.db.get_value('User', {'landa_member': member_name})
+				apply_roles(member_name, user)
 
 		if self.has_value_changed('member_administration'):
 			update_member_restrictions(self.get_member_names())
@@ -65,24 +67,28 @@ class MemberFunctionCategory(Document):
 
 def add_roles(member_names, roles):
 	"""Add a list of roles to a list of members."""
-	for member_name in member_names:
-		add_roles_to_member(member_name, roles)
+	with autocommit():
+		for member_name in member_names:
+			add_roles_to_member(member_name, roles)
 
 
 def remove_roles(member_names, roles):
 	"""Remove a list of roles from a list of members."""
-	for member_name in member_names:
-		remove_roles_from_member(member_name, roles)
+	with autocommit():
+		for member_name in member_names:
+			remove_roles_from_member(member_name, roles)
 
 
 def update_member_restrictions(member_names):
-	for member_name in member_names:
-		update_user_permission_on_member(member_name)
+	with autocommit():
+		for member_name in member_names:
+			update_user_permission_on_member(member_name)
 
 
 def update_organization_restrictions(member_names):
-	for member_name in member_names:
-		update_user_permission_on_organization(member_name)
+	with autocommit():
+		for member_name in member_names:
+			update_user_permission_on_organization(member_name)
 
 
 def add_roles_to_member(member_name, roles):
@@ -108,27 +114,37 @@ def remove_roles_from_member(member_name, roles, disabled_member_function=None):
 
 def update_user_permission_on_member(member_name, disabled_member_function=None):
 	"""Remove the User Permission restricting member_name's User to it's own Member record."""
-	user = get_user(member_name)
-	if not user:
+	user_name = get_user_name(member_name)
+	if not user_name:
 		return
 
 	if is_member_administration(member_name, disabled_member_function):
-		clear_user_permissions_for_doctype('LANDA Member', user.name, ignore_permissions=True)
+		clear_user_permissions_for_doctype(
+			"LANDA Member", user_name, ignore_permissions=True
+		)
 	else:
-		add_user_permission('LANDA Member', member_name, user.name, ignore_permissions=True)
+		add_user_permission(
+			"LANDA Member", member_name, user_name, ignore_permissions=True
+		)
 
 
 def update_user_permission_on_organization(member_name, disabled_member_function=None):
 	"""Give member_name's User access to Organization at the highest level needed for it's Member Functions."""
-	user = get_user(member_name)
-	if not user:
+	user_name = get_user_name(member_name)
+	if not user_name:
 		return
 
-	highest_access_level = get_highest_access_level(member_name, disabled_member_function)
+	highest_access_level = get_highest_access_level(
+		member_name, disabled_member_function
+	)
 	organization_name = get_organization_at_level(member_name, highest_access_level)
 
-	clear_user_permissions_for_doctype('Organization', user.name, ignore_permissions=True)
-	add_user_permission('Organization', organization_name, user.name, ignore_permissions=True)
+	clear_user_permissions_for_doctype(
+		"Organization", user_name, ignore_permissions=True
+	)
+	add_user_permission(
+		"Organization", organization_name, user_name, ignore_permissions=True
+	)
 
 
 def get_roles_to_remove(member_name, roles, disabled_member_function=None):
@@ -144,6 +160,7 @@ def get_roles_to_remove(member_name, roles, disabled_member_function=None):
 	}, pluck='role')
 
 	active_roles = set(active_roles)
+	active_roles.add("LANDA Member")  # LANDA Member is always active
 	roles = set(roles)
 
 	return list(roles - active_roles)
@@ -204,13 +221,18 @@ def get_values_from_categories(member_name, filters, fieldname=None, disabled_me
 	}, pluck=fieldname)
 
 
-def get_user(member_name):
+def get_user(member_name: str):
 	"""Return the user object that belongs to this member."""
-	user_name = frappe.get_value('LANDA Member', member_name, 'user')
+	user_name = get_user_name(member_name)
 	if user_name:
-		return frappe.get_doc('User', user_name)
+		return frappe.get_doc("User", user_name)
 	else:
 		return None
+
+
+def get_user_name(member_name: str):
+	"""Return the user name that belongs to this member."""
+	return frappe.db.get_value("User", {"landa_member": member_name, "enabled": 1})
 
 
 def clear_user_permissions_for_doctype(doctype, user=None, ignore_permissions=False):
@@ -221,3 +243,30 @@ def clear_user_permissions_for_doctype(doctype, user=None, ignore_permissions=Fa
 	user_permissions_for_doctype = frappe.db.get_all('User Permission', filters=filters)
 	for d in user_permissions_for_doctype:
 		frappe.delete_doc('User Permission', d.name, ignore_permissions=ignore_permissions)
+
+
+def apply_roles(member: str, user: str) -> None:
+	if not all([user, member]):
+		return
+
+	"""Apply roles from all active member functions to the member."""
+	mfcs = get_active_member_functions(
+		filters={'member': member},
+		pluck='member_function_category'
+	)
+	roles = frappe.get_all(
+		'Has Role',
+		filters={'parenttype': 'Member Function Category', 'parent': ('in', mfcs)},
+		pluck='role',
+		distinct=True,
+	)
+
+	frappe.db.delete('Has Role', {'parenttype': 'User', 'parent': user})
+	for i, role in enumerate(set(roles + ['LANDA Member'])):
+		doc = frappe.new_doc('Has Role')
+		doc.role = role
+		doc.parenttype = 'User'
+		doc.parent = user
+		doc.parentfield = 'roles'
+		doc.idx = i
+		doc.save(ignore_permissions=True, ignore_version=True)
