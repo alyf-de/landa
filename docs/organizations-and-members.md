@@ -67,3 +67,14 @@ The **LANDA Members** belonging to **Organization** AVL-002-01 will be named lik
 - AVL-002-01-0001
 - AVL-002-01-0002
 - ...
+
+### German terms
+
+| German            | English               | Comment      |
+|-------------------|-----------------------|--------------|
+| Landesverband     | State Organization    | Level 0      |
+| Regionalverband   | Regional Organization | Level 1      |
+| Verein            | Local Organization    | Level 2      |
+| Ortsgruppe        | Local Group           | Level 3      |
+| Mitglied          | LANDA Member          | Level 3 or 4 |
+| Mitgliedsfunktion | Member Function       |              |
