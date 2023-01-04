@@ -5,6 +5,7 @@
    "chart_name": "LANDA Member Count"
   }
  ],
+ "charts_label": "",
  "creation": "2021-04-19 18:01:23.947644",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
@@ -138,6 +139,16 @@
    "dependencies": "LANDA Member",
    "hidden": 0,
    "is_query_report": 1,
+   "label": "Member Contact List",
+   "link_to": "Member Contact List",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "LANDA Member",
+   "hidden": 0,
+   "is_query_report": 1,
    "label": "Member Birthday List",
    "link_to": "Member Birthday List",
    "link_type": "Report",
@@ -245,10 +256,11 @@
    "type": "Link"
   }
  ],
- "modified": "2022-09-08 12:27:36.088462",
+ "modified": "2022-11-10 16:20:47.201914",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
+ "onboarding": "",
  "owner": "Administrator",
  "pin_to_bottom": 0,
  "pin_to_top": 1,
@@ -263,6 +275,12 @@
    "doc_view": "",
    "label": "Member Address List",
    "link_to": "Member Address List",
+   "type": "Report"
+  },
+  {
+   "doc_view": "",
+   "label": "Member Contact List",
+   "link_to": "Member Contact List",
    "type": "Report"
   },
   {
