@@ -16,3 +16,4 @@ landa.patches.restrict_members_to_local_group
 landa.patches.member_organization_in_address #1
 execute:from landa.install import add_session_defaults; add_session_defaults()
 landa.patches.full_name  # 3
+landa.patches.set_phone_and_email_as_primary # 5

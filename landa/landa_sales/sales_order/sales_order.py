@@ -18,8 +18,19 @@ def before_validate(sales_order, event):
 	):
 		sales_order.tax_category = "Umsatzsteuer"
 
+
 def autoname(doc, event):
 	"""Create Company-specific Sales Order name."""
 	from landa.utils import get_new_name
 
 	doc.name = get_new_name("BEST", doc.company, "Sales Order")
+
+
+def get_dashboard_data(data):
+	data["transactions"] = [
+		{
+			"label": "Sales",
+			"items": ["Delivery Note", "Sales Invoice"],
+		},
+	]
+	return data
