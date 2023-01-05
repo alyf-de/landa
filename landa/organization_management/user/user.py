@@ -9,7 +9,7 @@ from landa.overrides import get_default_company
 from landa.organization_management.doctype.member_function.member_function import (
 	apply_active_member_functions,
 )
-from landa.utils import purge_all
+from landa.utils import purge_all, remove_from_table
 
 
 def validate(doc: User, event=None):
@@ -66,4 +66,5 @@ def restrict_to_member(member: str, user: str) -> None:
 
 
 def on_trash(user: User, event: str) -> None:
+	remove_from_table("Note Seen By", "user", user.name)
 	purge_all("User", user.name)
