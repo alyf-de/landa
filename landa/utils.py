@@ -43,27 +43,23 @@ def get_current_member_data():
 	if from_cache:
 		return from_cache
 
+	member_name, member_organization = frappe.db.get_value("User", frappe.session.user, fieldname=["landa_member", "organization"])
 	result = frappe._dict()
-	data = frappe.db.get_value(
-		"LANDA Member",
-		filters={"user": frappe.session.user},
-		fieldname=["name", "organization"],
-	)
 
-	if not data:
+	if not member_name:
 		frappe.cache().hset("landa", frappe.session.user, result)
 		return result
 
-	member_name, member_organization = data
-	member_organization = member_organization[
-		:7
-	]  # use local Organization instead of Ortsgruppe
+	if not member_organization:
+		# drop dash and 4 member number digits
+		# "AVL-001-0001" -> "AVL-001
+		member_organization = member_name[:-5]
 
 	ancestors = get_ancestors_of("Organization", member_organization)
 	ancestors.reverse()	 # root as the first element
 
 	result.member = member_name
-	result.local_organization = member_organization
+	result.local_organization = ancestors[2] if len(ancestors) > 2 else member_organization
 	result.regional_organization = ancestors[1]
 	result.state_organization = ancestors[0]
 
