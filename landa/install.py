@@ -107,8 +107,9 @@ def make_property_setters():
 
 		for doctype in doctypes:
 			for property_setter in property_setters:
-				for_doctype = True if not property_setter[0] else False
-				make_property_setter(doctype, *property_setter, for_doctype)
+				make_property_setter(
+					doctype, *property_setter, for_doctype=not property_setter[0]
+				)
 
 
 def update_stock_settings():
