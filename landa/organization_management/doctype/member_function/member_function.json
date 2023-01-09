@@ -30,6 +30,7 @@
   {
    "fieldname": "member",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Member",
    "options": "LANDA Member",
    "reqd": 1,
@@ -41,14 +42,12 @@
    "fieldname": "start_date",
    "fieldtype": "Date",
    "in_preview": 1,
-   "in_standard_filter": 1,
    "label": "Start Date"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "end_date",
    "fieldtype": "Date",
-   "in_standard_filter": 1,
    "label": "End Date"
   },
   {
@@ -64,7 +63,6 @@
    "fieldname": "member_last_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Member Last Name",
    "read_only": 1
   },
@@ -73,6 +71,8 @@
    "fetch_from": "member.organization",
    "fieldname": "organization",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Organization",
    "options": "Organization"
   },
@@ -80,8 +80,6 @@
    "fetch_from": "organization.organization_name",
    "fieldname": "organization_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Organization Name"
   },
   {
@@ -89,6 +87,7 @@
    "fieldtype": "Select",
    "hidden": 1,
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Status",
    "options": "Planned\nActive\nInactive",
    "read_only": 1
@@ -112,7 +111,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-09-13 13:51:12.334667",
+ "modified": "2022-12-16 14:12:44.414788",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function",

@@ -11,9 +11,9 @@ from ..member.member import (
 )
 
 
-class Address(Member):
+class Contact(Member):
 	def __init__(self, filters):
-		super(Address, self).__init__(filters)
+		super(Contact, self).__init__(filters)
 
 	def get_data(self):
 		self.set_members()
@@ -22,37 +22,22 @@ class Address(Member):
 		link_field_label = "`tabDynamic Link`.link_name as member"
 		link_filters = get_link_filters(self.members)
 
-		# load addresses from db
-		address_fields = ["address_line1", "pincode", "city", "is_primary_address"]
-		addresses = frappe.get_list(
-			"Address",
+		# load contacts from db that are linked to the member fucntions loaded before
+		contact_fields = ["email_id", "phone", "mobile_no"]
+		contacts = frappe.get_list(
+			"Contact",
 			filters=link_filters,
-			fields=address_fields + [link_field_label],
+			fields=contact_fields + [link_field_label],
 			as_list=True,
 		)
+
 		# convert to pandas dataframe
-		addresses_df = pd.DataFrame(addresses, columns=address_fields + ["member"])
-		addresses_df.set_index("member", inplace=True)
-
-		# remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
-		addresses_df = remove_duplicate_indices(
-			addresses_df, sort_by="is_primary_address"
-		)
-
-		# merge all columns to one address column and add this as the first column
-		addresses_df["full_address"] = (
-			addresses_df["address_line1"]
-			+ ", "
-			+ addresses_df["pincode"]
-			+ " "
-			+ addresses_df["city"]
-		)
-
-		# remove column 'is_primary_address'
-		addresses_df.drop("is_primary_address", axis=1, inplace=True)
+		contacts_df = pd.DataFrame(contacts, columns=contact_fields + ["member"])
+		contacts_df.set_index("member", inplace=True)
+		contacts_df = remove_duplicate_indices(contacts_df)
 
 		# merge all dataframes from different doctypes
-		data = pd.concat([self.members_df, addresses_df], axis=1).reindex(
+		data = pd.concat([self.members_df, contacts_df], axis=1).reindex(
 			self.members_df.index
 		)
 
@@ -86,19 +71,22 @@ class Address(Member):
 				"label": "Organization Name",
 			},
 			{
-				"fieldname": "address_line1",
+				"fieldname": "primary_email_address",
 				"fieldtype": "Data",
-				"label": "Address Line 1",
+				"label": "Primary Email Address",
 			},
-			{"fieldname": "pincode", "fieldtype": "Data", "label": "Pincode"},
-			{"fieldname": "city", "fieldtype": "Data", "label": "City"},
 			{
-				"fieldname": "full_address",
+				"fieldname": "primary_phone",
 				"fieldtype": "Data",
-				"label": "Primary Address (Full)",
+				"label": "Primary Phone",
+			},
+			{
+				"fieldname": "primary_mobile",
+				"fieldtype": "Data",
+				"label": "Primary Mobile",
 			},
 		]
 
 
 def execute(filters=None):
-	return Address(filters).run()
+	return Contact(filters).run()
