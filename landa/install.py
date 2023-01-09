@@ -93,7 +93,7 @@ def update_system_settings():
 
 
 def make_custom_fields():
-	create_custom_fields(frappe.get_hooks("landa_custom_fields"))
+	create_custom_fields(frappe.get_hooks("landa_custom_fields", {}))
 
 
 def make_property_setters():
