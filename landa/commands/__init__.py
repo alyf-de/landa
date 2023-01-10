@@ -11,7 +11,7 @@ from frappe.utils.password import update_password
 
 
 @click.command('make-demo-accounts')
-@click.argument('organization') #, help='Organization name, e.g. AVL-001')
+@click.argument('organization')
 @click.option('--dry-run', help='Don\'t commit the changes, just test the code.', is_flag=True)
 @pass_context
 def make_demo_accounts(context, organization, dry_run=False):
@@ -24,23 +24,25 @@ def make_demo_accounts(context, organization, dry_run=False):
 		validate_organization(organization)
 		mfc_list = frappe.get_all("Member Function Category", pluck='name')
 
-		new_members = []
+		new_users = []
 		for member_function_category in mfc_list:
-			member = make_member(organization, member_function_category)
-			if member:
-				make_member_function(member.name, member_function_category)
-				new_members.append(member)
+			email = f"{scrub(member_function_category)}@example.org"
+			first_name = f"Demo {member_function_category}"
 
-		for member in new_members:
-			update_password(member.user, password)
+			member_name = create_member(organization, member_function_category)
+			make_member_function(member_name, member_function_category)
+
+			user_name = create_user(email, first_name, member_name, organization)
+			update_password(user_name, password)
+			new_users.append(user_name)
 
 		if not dry_run:
 			frappe.db.commit()
 		
-		if new_members:
+		if new_users:
 			click.echo('The following users have been created:')
-			for member in new_members:
-				click.echo(member.user)
+			for user in new_users:
+				click.echo(user)
 
 
 @click.command("update-organization-series")
@@ -107,21 +109,28 @@ def validate_organization(organization: str):
 		frappe.throw(f"{organization} is not a local organization.")
 
 
-def make_member(organization: str, member_function_category: str):
-	email = f"{scrub(member_function_category)}@example.org"
+def create_member(organization: str, member_function_category: str) -> str:
+	member = frappe.new_doc("LANDA Member")
+	member.organization = organization
+	member.first_name = f"Demo {member_function_category}"
+	member.save()
+
+	return member.name
+
+
+def create_user(email: str, first_name: str, member: str, organization: str) -> str:
 	if frappe.db.exists("User", email):
 		click.echo(f"User {email} already exists.")
 		return
 
-	member = frappe.new_doc("LANDA Member")
-	member.organization = organization
-	member.create_user_account = 1
-	member.first_name = f"Demo {member_function_category}"
-	member.email = f"{scrub(member_function_category)}@example.org"
+	user = frappe.new_doc("User")
+	user.email = email
+	user.first_name = first_name
+	user.landa_member = member
+	user.organization = organization
+	user.save()
 
-	member.save() # raises frappe.exceptions.OutgoingEmailError
-
-	return member
+	return user.name
 
 
 def make_member_function(member: str, member_function_category: str):
