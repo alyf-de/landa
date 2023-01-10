@@ -76,6 +76,6 @@ jobs:
       - name: Run Tests
         working-directory: /home/runner/frappe-bench
         run: |
-          bench --site test_site run-tests --app landa
+          bench --site test_site run-tests --app landa --skip-test-records
         env:
           TYPE: server
