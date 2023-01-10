@@ -18,6 +18,8 @@ def after_install():
 	disable_modes_of_payment()
 	add_session_defaults()
 	setup_uoms()
+	update_stock_settings()
+	update_accounts_settings()
 
 
 def create_records_from_hooks():
@@ -114,6 +116,25 @@ def make_property_setters():
 				make_property_setter(
 					doctype, *property_setter, for_doctype=not property_setter[0]
 				)
+
+
+def update_stock_settings():
+	frappe.db.set_value(
+		"Stock Settings",
+		None,
+		"role_allowed_to_over_deliver_receive",
+		"LANDA Member",
+		update_modified=False,
+	)
+
+def update_accounts_settings():
+	frappe.db.set_value(
+		"Accounts Settings",
+		None,
+		"role_allowed_to_over_bill",
+		"LANDA Member",
+		update_modified=False,
+	)
 
 
 def complete_setup_wizard_for_test():
