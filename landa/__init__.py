@@ -7,7 +7,7 @@ import frappe
 
 
 @frappe.whitelist(allow_guest=True)
-def complete_setup_wizard_for_ci():
+def complete_setup_wizard_for_test():
 	print("Completing Setup Wizard...")
 	from frappe.desk.page.setup_wizard.setup_wizard import setup_complete
 
