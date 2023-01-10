@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - version-13-hotfix
-      - version-13
     paths-ignore:
       - '**.js'
       - '**.md'
@@ -15,7 +14,7 @@ on:
       - '**.md'
 
 concurrency:
-  group: version-13-landa-${{ github.event.number }}
+  group: version-13-hotfix-landa-${{ github.event.number }}
   cancel-in-progress: true
 
 jobs:

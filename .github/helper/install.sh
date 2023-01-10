@@ -31,6 +31,6 @@ bench get-app erpnext --branch version-13-hotfix
 bench get-app landa "${GITHUB_WORKSPACE}"
 
 bench new-site --db-root-password root --admin-password admin test_site --install-app erpnext
-bench execute --args "{'test_site'}" landa.complete_setup_wizard_for_ci
+bench --site test_site execute landa.complete_setup_wizard_for_ci
 bench --site test_site install-app landa
 bench setup requirements --dev
