@@ -1,17 +1,19 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-import frappe
 import pandas as pd
-from landa.organization_management.doctype.member_function_category.member_function_category import get_organization_at_level
+
+import frappe
+
+from landa.utils import get_current_member_data
+
 
 class WaterBodyManagement(object):
 	def __init__(self, filters):
 		self.filters = filters.copy()
-
-		if frappe.session.user and frappe.session.user != "Administrator":
-			member_name, organization = frappe.get_value("LANDA Member", filters={"user": frappe.session.user}, fieldname=["name", "organization"])
-			self.filters["regional_organization"] = get_organization_at_level(member_name, 1, organization)
+		regional_organization = get_current_member_data().regional_organization
+		if regional_organization:
+			self.filters["regional_organization"] = regional_organization
 
 	def run(self):
 		return self.get_columns(), self.get_data()
