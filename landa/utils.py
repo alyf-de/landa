@@ -189,13 +189,17 @@ def delete_linked_records(doctype: str, name: str) -> None:
 		)
 		for d_name in to_delete:
 			if link_field["reqd"]:
-				frappe.delete_doc(
-					d_doctype,
-					d_name,
-					ignore_permissions=True,
-					ignore_missing=True,
-					delete_permanently=True,
-				)
+				try:
+					frappe.delete_doc(
+						d_doctype,
+						d_name,
+						ignore_permissions=True,
+						ignore_missing=True,
+						delete_permanently=True,
+					)
+				except frappe.ValidationError:
+					# doc is submitted
+					unset_value(d_doctype, d_name, d_link_field)
 			else:
 				unset_value(d_doctype, d_name, d_link_field)
 
