@@ -120,8 +120,7 @@ def create_member(organization: str, member_function_category: str) -> str:
 
 def create_user(email: str, first_name: str, member: str, organization: str) -> str:
 	if frappe.db.exists("User", email):
-		click.echo(f"User {email} already exists.")
-		return
+		return email
 
 	user = frappe.new_doc("User")
 	user.email = email
