@@ -181,6 +181,7 @@ doctype_js = {
 	"Address": "address_and_contact.js",
 	"Contact": "address_and_contact.js",
 	"User": "organization_management/user/user.js",
+	"Customer": "landa_sales/customer/customer.js",
 }
 doctype_list_js = {"Report": "scripts/report_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
