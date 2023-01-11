@@ -6,7 +6,6 @@ from __future__ import unicode_literals
 
 import frappe
 from frappe import _
-from frappe.core.doctype.user.user import User
 from frappe.model.document import Document
 from frappe.contacts.address_and_contact import load_address_and_contact
 from frappe.model.naming import make_autoname
