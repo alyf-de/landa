@@ -13,7 +13,7 @@ class TestOrganization(FrappeTestCase):
 		for record in test_records:
 			frappe.get_doc(record).insert()
 
-	def test_naming(self):
+	def test_autoname(self):
 		orgs = frappe.get_all("Organization", pluck="name")
 
 		self.assertIn("ST", orgs)
@@ -21,3 +21,9 @@ class TestOrganization(FrappeTestCase):
 		self.assertIn("REG-001", orgs)
 		self.assertIn("REG-002", orgs)
 		self.assertIn("REG-002-01", orgs)
+
+	def test_company_and_customer_exist(self):
+		self.assertTrue(frappe.db.exists("Company", {"abbr": "ST"}))
+		self.assertTrue(frappe.db.exists("Company", {"abbr": "REG"}))
+		self.assertTrue(frappe.db.exists("Customer", "REG-001"))
+		self.assertTrue(frappe.db.exists("Customer", "REG-002"))
