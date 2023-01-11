@@ -1,0 +1,36 @@
+{
+ "add_total_row": 0,
+ "creation": "2022-11-10 15:20:12.678573",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Extended Information in Footer",
+ "modified": "2022-11-10 15:20:12.678573",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "Member Contact List",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n    member.name,\n    member.first_name,\n    member.last_name,\n    address.address_line1,\n    address.pincode,\n    address.city\nFROM `tabAddress` address\n\nJOIN `tabDynamic Link` dl\nON dl.parent = address.name\nAND dl.parenttype = 'Address'\nAND dl.link_doctype = 'LANDA Member'\n\nJOIN `tabLANDA Member` member\nON member.name = dl.link_name\n",
+ "ref_doctype": "LANDA Member",
+ "report_name": "Member Contact List",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "LANDA Local Organization Management"
+  },
+  {
+   "role": "LANDA Regional Organization Management"
+  },
+  {
+   "role": "LANDA Magazine Manager"
+  }
+ ]
+}
