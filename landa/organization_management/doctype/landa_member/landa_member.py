@@ -60,17 +60,3 @@ class LANDAMember(Document):
 
 def get_full_name(first_name,last_name):
 	return (first_name or "") + (" " if (last_name and first_name) else "") + (last_name or "") 
-
-
-def delete_or_disable_user(user: str) -> None:
-	"""Remove user from LANDA Member."""
-	if frappe.session.user == user:
-		frappe.throw(_("You cannot delete yourself."))
-
-	try:
-		frappe.delete_doc("User", user, ignore_permissions=True, delete_permanently=True)
-	except frappe.LinkExistsError:
-		user: User = frappe.get_doc("User", user)
-		user.landa_member = None
-		user.enabled = 0
-		user.save(ignore_permissions=True)
