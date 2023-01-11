@@ -1,3 +1,13 @@
+## 0. Set up the correct frappe branch
+
+Currently we rely on a [custom frappe branch](https://github.com/alyf-de/frappe/tree/landa-version-13) that adds a couple of fixes to `version-13`:
+
+```
+cd apps/frappe
+git remote add alyf https://github.com/alyf-de/frappe
+git checkout --track alyf/landa-version-13
+```
+
 ## 1. Create a site
 
 ```
@@ -25,7 +35,7 @@ Open the browser and complete the setup wizard, for example with the following v
 > ERPNext must be already installed and the setup wizard completed before installing landa.
 
 ```bash
-bench get-app https://github.com/realexperts/landa.git
+bench get-app https://github.com/alyf-de/landa
 bench --site [site-name] install-app landa
 bench --site [site-name] migrate # currently necessary to get the "Member Count" chart
 ```
