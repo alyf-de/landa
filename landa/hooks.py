@@ -176,6 +176,7 @@ app_include_js = [
 doctype_js = {
 	"Delivery Note": "landa_stock/delivery_note/delivery_note.js",
 	"Sales Order": "landa_sales/sales_order/sales_order.js",
+	"Sales Invoice": "landa_sales/sales_invoice/sales_invoice.js",
 	"Item": "landa_stock/item/item.js",
 	"Payment Entry": "landa_sales/payment_entry/payment_entry.js",
 	"Address": "address_and_contact.js",
@@ -321,7 +322,8 @@ scheduler_events = {
 
 override_whitelisted_methods = {
 	# Use frappe's send message so that the website contact form doesn't create a Lead and Opportunity
-	"erpnext.templates.utils.send_message": "frappe.www.contact.send_message"
+	"erpnext.templates.utils.send_message": "frappe.www.contact.send_message",
+	"erpnext.accounts.party.get_party_details": "landa.landa_sales.party.get_landa_party_details"
 }
 
 #
