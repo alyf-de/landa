@@ -26,32 +26,32 @@ def set_billing_and_shipping_defaults():
 		.run()
 	)
 
-	for addr in addresses:
-		if addr[2]:  # is_primary_address (billing address)
+	for address_name, is_shipping, is_primary, customer in addresses:
+		if is_primary:  # billing address
 			contact = frappe.get_all(
-				"Contact", [["name", "like", addr[0].replace(" ", "%")]], pluck="name"
+				"Contact", [["name", "like", address_name.replace(" ", "%")]], pluck="name"
 			)
 
 			frappe.db.set_value(
 				"Customer",
-				addr[3],
+				customer,
 				{
 					"default_billing_contact": contact[0] if contact else None,
-					"default_billing_address": addr[0],
+					"default_billing_address": address_name,
 				},
 			)
 
-		if addr[1]:  # is_shipping_address
+		if is_shipping:
 			contact = frappe.get_all(
-				"Contact", [["name", "like", addr[0].replace(" ", "%")]], pluck="name"
+				"Contact", [["name", "like", address_name.replace(" ", "%")]], pluck="name"
 			)
 
 			frappe.db.set_value(
 				"Customer",
-				addr[3],
+				customer,
 				{
 					"default_shipping_contact": contact[0] if contact else None,
-					"default_shipping_address": addr[0],
+					"default_shipping_address": address_name,
 				},
 			)
 
