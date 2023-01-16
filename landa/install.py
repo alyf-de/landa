@@ -1,10 +1,16 @@
+import os
+
 import frappe
+import landa
+
 from frappe import get_hooks
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 from frappe.custom.doctype.property_setter.property_setter import make_property_setter
 
 
 def after_install():
+	complete_setup_wizard_for_test()
+
 	update_system_settings()
 	make_custom_fields()
 	make_property_setters()
@@ -12,6 +18,8 @@ def after_install():
 	disable_modes_of_payment()
 	add_session_defaults()
 	setup_uoms()
+	update_stock_settings()
+	update_accounts_settings()
 
 
 def create_records_from_hooks():
@@ -93,7 +101,7 @@ def update_system_settings():
 
 
 def make_custom_fields():
-	create_custom_fields(frappe.get_hooks("landa_custom_fields"))
+	create_custom_fields(frappe.get_hooks("landa_custom_fields", {}))
 
 
 def make_property_setters():
@@ -105,5 +113,35 @@ def make_property_setters():
 
 		for doctype in doctypes:
 			for property_setter in property_setters:
-				for_doctype = True if not property_setter[0] else False
-				make_property_setter(doctype, *property_setter, for_doctype)
+				make_property_setter(
+					doctype, *property_setter, for_doctype=not property_setter[0]
+				)
+
+
+def update_stock_settings():
+	frappe.db.set_value(
+		"Stock Settings",
+		None,
+		"role_allowed_to_over_deliver_receive",
+		"LANDA Member",
+		update_modified=False,
+	)
+
+def update_accounts_settings():
+	frappe.db.set_value(
+		"Accounts Settings",
+		None,
+		"role_allowed_to_over_bill",
+		"LANDA Member",
+		update_modified=False,
+	)
+
+
+def complete_setup_wizard_for_test():
+	"""
+	Complete setup wizard where UI intervention is not carried out (CI, Running tests, etc).
+	"""
+	site = frappe.local.site
+	allow_tests = frappe.get_conf(site).allow_tests
+	if allow_tests or os.environ.get("CI"):
+		landa.complete_setup_wizard_for_test()
