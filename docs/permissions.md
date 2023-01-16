@@ -20,3 +20,18 @@ When there are multiple active **Member Function Categories** for a member/user,
 If a member/user is allowed to view/edit the personal data of other members, the default **User Permission** _Allow **LANDA Member** for value "AVL-001-001"_ will be removed.
 
 If a member/user is allowed access to lower level organizations, the default **User Permission** _Allow **Organization** for value "AVL-001"_ will be adjusted. For example, to _Allow **Organization** for value "AVL"_.
+
+```mermaid
+erDiagram
+    USER ||--|{ USER-PERMISSION : restricted-by
+    ANY-DOCTYPE ||--|| ORGANIZATION : linked-to
+    USER ||--o{ ROLE : has
+    USER-PERMISSION ||--|{ ORGANIZATION : restricts-to
+    USER-PERMISSION |o--o| LANDA-MEMBER : restricts-to
+    USER ||--|| LANDA-MEMBER : belongs-to
+    LANDA-MEMBER ||--|| ORGANIZATION : belongs-to
+    LANDA-MEMBER ||--o{ MEMBER-FUNCTION : has
+    MEMBER-FUNCTION ||--|| MEMBER-FUNCTION-CATEGORY : has-type
+    MEMBER-FUNCTION-CATEGORY ||--o{ ROLE : grants
+    MEMBER-FUNCTION-CATEGORY ||--o{ USER-PERMISSION : removes
+```
