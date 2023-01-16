@@ -5,33 +5,25 @@
 from __future__ import unicode_literals
 
 import frappe
+from frappe.defaults import set_user_default
+
+from landa.utils import get_current_member_data
 
 
 def set_user_defaults():
-    organization = frappe.get_value("LANDA Member", {"user": frappe.session.user}, "organization")
-    if not organization:
-        return
+	current_member_data = get_current_member_data()
+	if not current_member_data:
+		return
 
-    if not organization.endswith("000"):
-        # Default organization should not be set for members of a regional organization (ending with 000)
-        frappe.defaults.set_user_default("organization", organization)
+	if not current_member_data.local_organization.endswith("000"):
+		# Default organization should not be set for members of a regional organization (ending with 000)
+		set_user_default("organization", current_member_data.organization)
 
-    company = get_default_company(organization)
-    frappe.defaults.set_user_default("company", company)
-    frappe.defaults.set_user_default("price_list", frappe.db.get_value("Price List", {"company": company}))
+	set_user_default("company", current_member_data.company)
+	set_user_default(
+		"price_list",
+		frappe.db.get_value("Price List", {"company": current_member_data.company}),
+	)
 
-    # Customer is always the local organization (first seven digits of the organization)
-    frappe.defaults.set_user_default("customer", organization[:7])
-
-
-def get_default_company(organization):
-    doc = frappe.get_doc("Organization", organization)
-    ancestors = doc.get_ancestors()
-
-    if len(ancestors) < 2:
-        return None
-
-    ancestors.reverse()
-    regional_organization = ancestors[1]
-
-    return frappe.get_value("Company", {"abbr": regional_organization})
+	# Customer is always the local organization (first seven digits of the organization)
+	set_user_default("customer", current_member_data.local_organization)
