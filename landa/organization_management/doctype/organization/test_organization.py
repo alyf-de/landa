@@ -8,11 +8,6 @@ from frappe.tests.utils import FrappeTestCase
 
 
 class TestOrganization(FrappeTestCase):
-	def setUp(self) -> None:
-		test_records = frappe.get_test_records("Organization")
-		for record in test_records:
-			frappe.get_doc(record).insert()
-
 	def test_autoname(self):
 		orgs = frappe.get_all("Organization", pluck="name")
 
