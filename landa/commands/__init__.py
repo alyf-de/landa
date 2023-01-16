@@ -15,7 +15,7 @@ from frappe.utils.password import update_password
 @click.option('--dry-run', help='Don\'t commit the changes, just test the code.', is_flag=True)
 @pass_context
 def make_demo_accounts(context, organization, dry_run=False):
-	"""Create Members, Meber Functions and Users for every Member Function Category."""
+	"""Create Members, Member Functions and Users for every Member Function Category."""
 	site = get_site(context)
 	password = getpass(prompt='Password for demo accounts: ')
 
@@ -38,7 +38,7 @@ def make_demo_accounts(context, organization, dry_run=False):
 
 		if not dry_run:
 			frappe.db.commit()
-		
+
 		if new_users:
 			click.echo('The following users have been created:')
 			for user in new_users:
@@ -149,11 +149,11 @@ def scrub(txt):
 		for source, target in umlauts:
 			word = word.replace(source, target)
 			word = word.replace(source.title(), target.title())
-		
+
 		word = ''.join(c for c in word if c.isalnum())
 		word = word.lower()
 		result.append(word)
-	
+
 	return '-'.join(result)
 
 

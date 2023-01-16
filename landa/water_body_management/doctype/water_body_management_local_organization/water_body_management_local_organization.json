@@ -70,7 +70,6 @@
    "fieldname": "organization_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Organization Name",
    "read_only": 1
   },
@@ -79,6 +78,7 @@
    "fieldname": "regional_organization",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
+   "in_standard_filter": 1,
    "label": "Regional Organization",
    "options": "Organization",
    "read_only": 1
@@ -101,7 +101,7 @@
   }
  ],
  "links": [],
- "modified": "2022-03-15 18:42:40.839065",
+ "modified": "2022-12-16 16:41:53.895728",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management Local Organization",
