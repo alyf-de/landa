@@ -28,23 +28,35 @@ frappe.ui.form.on('LANDA Member', {
             frappe.contacts.render_address_and_contact(frm);
         }
 
-        if (!frm.is_new() && frappe.perm.has_perm("User", 0, "create")) {
-            frappe.db.get_value("User", {"landa_member": frm.doc.name}, "name")
-                .then(resp => {
-                    if (resp.message.name) return;
+        if (!frm.is_new()) {
+            frappe.model.with_doctype("User", () => { // model needed for `frappe.perm.has_perm`
+                if (!frappe.perm.has_perm("User", 0, "create")) return;
 
-                    frm.add_custom_button(__("Create User"), function() {
-                        frappe.new_doc(
-                            "User",
-                            {
-                                first_name: frm.doc.first_name,
-                                last_name: frm.doc.last_name,
-                                landa_member: frm.doc.name,
-                                organization: frm.doc.organization,
-                            },
-                        );
+                frappe.db.get_value("User", {"landa_member": frm.doc.name}, "name")
+                    .then(resp => {
+                        if (resp.message.name) return;
+
+                        // prefill the user form when created via dashboard "+" button
+                        frappe.route_options = {
+                            "first_name": frm.doc.first_name,
+                            "last_name": frm.doc.last_name,
+                            "landa_member": frm.doc.name,
+                            "organization": frm.doc.organization,
+                        };
+
+                        frm.add_custom_button(__("Create User"), function() {
+                            frappe.new_doc(
+                                "User",
+                                {
+                                    first_name: frm.doc.first_name,
+                                    last_name: frm.doc.last_name,
+                                    landa_member: frm.doc.name,
+                                    organization: frm.doc.organization,
+                                },
+                            );
+                        });
                     });
-                });
+            });
         }
     },
 });
