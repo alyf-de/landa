@@ -1,26 +1,31 @@
 [
   {
+    "doctype": "Organization",
     "organization_name": "State organization",
     "short_code": "ST",
     "is_group": 1
   },
   {
+    "doctype": "Organization",
     "organization_name": "Regionalverband Organization",
     "short_code": "REG",
     "is_group": 1,
     "parent_organization": "ST"
   },
   {
+    "doctype": "Organization",
     "organization_name": "Local Organization 1",
     "is_group": 0,
     "parent_organization": "REG"
   },
   {
+    "doctype": "Organization",
     "organization_name": "Local Organization 2",
     "is_group": 1,
     "parent_organization": "REG"
   },
   {
+    "doctype": "Organization",
     "organization_name": "Local Group",
     "is_group": 0,
     "parent_organization": "REG-002"
