@@ -5,7 +5,7 @@ from frappe import _
 from frappe.permissions import add_user_permission
 from frappe.core.doctype.user.user import User, STANDARD_USERS
 
-from landa.overrides import get_default_company
+from landa.utils import get_default_company
 from landa.organization_management.doctype.member_function.member_function import (
 	apply_active_member_functions,
 )
