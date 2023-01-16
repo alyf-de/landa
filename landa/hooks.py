@@ -16,6 +16,7 @@ fixtures = [
 	"Website Settings",
 	"Contact Us Settings",
 	"About Us Settings",
+	"Global Search Settings",
 	"Module Profile",
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
 	{"dt": "Organization", "filters": [["name", "in", ["LV", "AVE", "AVS", "AVL"]]]},
@@ -153,6 +154,8 @@ welcome_email = "landa.utils.welcome_email"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/landa/css/landa.css"
 app_include_js = [
+	"/assets/landa/js/queries.js",
+	"/assets/landa/js/utils.js",
 	"/assets/landa/js/map_defaults.js",
 	"/assets/landa/js/selling_utils.js",
 ]

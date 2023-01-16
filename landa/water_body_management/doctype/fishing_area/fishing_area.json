@@ -48,9 +48,7 @@
    "fetch_from": "organization.organization_name",
    "fieldname": "organization_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "in_preview": 1,
-   "in_standard_filter": 1,
    "label": "Regional Organization Name",
    "read_only": 1
   }
@@ -62,7 +60,7 @@
    "link_fieldname": "fishing_area"
   }
  ],
- "modified": "2022-03-07 18:36:05.604698",
+ "modified": "2022-12-16 16:31:14.502794",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fishing Area",
