@@ -22,10 +22,12 @@ def make_demo_accounts(context, organization, dry_run=False):
 	with frappe.init_site(site):
 		frappe.connect()
 		validate_organization(organization)
-		mfc_list = frappe.get_all("Member Function Category", pluck='name')
 
 		new_users = []
-		for member_function_category in mfc_list:
+		for member_function_category in frappe.get_all(
+			"Member Function Category",
+			pluck="name"
+		):
 			email = f"{scrub(member_function_category)}@example.org"
 			first_name = f"Demo {member_function_category}"
 
@@ -40,7 +42,7 @@ def make_demo_accounts(context, organization, dry_run=False):
 			frappe.db.commit()
 
 		if new_users:
-			click.echo('The following users have been created:')
+			click.echo('The following users have been created:\n')
 			for user in new_users:
 				click.echo(user)
 
@@ -127,6 +129,7 @@ def create_user(email: str, first_name: str, member: str, organization: str) -> 
 	user.first_name = first_name
 	user.landa_member = member
 	user.organization = organization
+	user.send_welcome_email = 0
 	user.save()
 
 	return user.name
