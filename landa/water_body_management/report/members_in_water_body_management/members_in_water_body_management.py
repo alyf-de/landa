@@ -170,24 +170,29 @@ def get_data(filters=None):
 
 	# merge all dataframes from different doctypes and load data of all members without member functions only if necessary
 	# sort columns as needed
-	data = pd.concat([wbm_df, contacts_df, addresses_df], axis=1).reindex(
-		[
-			"first_name",
-			"last_name",
-			"organization",
-			"organization_name",
-			"water_body",
-			"water_body_title",
-			"email_id",
-			"phone",
-			"mobile_no",
-			"full_address",
-			"address_line1",
-			"pincode",
-			"city",
-		],
-		axis=1,
-	).fillna("").reset_index()
+	data = (
+		pd.concat([wbm_df, contacts_df, addresses_df], axis=1)
+		.reindex(
+			[
+				"first_name",
+				"last_name",
+				"organization",
+				"organization_name",
+				"water_body",
+				"water_body_title",
+				"email_id",
+				"phone",
+				"mobile_no",
+				"full_address",
+				"address_line1",
+				"pincode",
+				"city",
+			],
+			axis=1,
+		)
+		.fillna("")
+		.reset_index()
+	)
 
 	return tuple(data.itertuples(index=False, name=None))
 
