@@ -14,7 +14,7 @@ def get_age(date_of_birth: date = None, at_date: date = None) -> int:
 	return at_date.year - date_of_birth.year - (not date_has_passed(date_of_birth, at_date))
 
 
-def get_upcoming_birthday(date_of_birth: date = None, at_date: date = None) -> date:
+def get_next_birthday(date_of_birth: date = None, at_date: date = None) -> date:
 	if not date_of_birth:
 		return
 

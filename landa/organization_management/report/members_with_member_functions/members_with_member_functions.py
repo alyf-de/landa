@@ -5,7 +5,7 @@ import frappe
 import pandas as pd
 from landa.organization_management.birthday import (
 	get_age,
-	get_upcoming_birthday,
+	get_next_birthday,
 	next_birthday_is_decadal,
 )
 
@@ -161,7 +161,7 @@ def get_data(filters):
 	)
 	member_df["age"] = member_df["date_of_birth"].apply(get_age)
 	member_df["upcoming_birthday"] = member_df["date_of_birth"].apply(
-		get_upcoming_birthday
+		get_next_birthday
 	)
 	member_df["is_decadal_birthday"] = member_df["age"].apply(next_birthday_is_decadal)
 

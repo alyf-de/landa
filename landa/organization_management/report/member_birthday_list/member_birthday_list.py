@@ -5,7 +5,7 @@ import frappe
 
 from landa.organization_management.birthday import (
 	get_age,
-	get_upcoming_birthday,
+	get_next_birthday,
 	next_birthday_is_decadal,
 )
 
@@ -72,7 +72,7 @@ def get_data(filters: dict):
 
 		result = list(member)
 		result.insert(idx + 1, age)
-		result.insert(idx + 2, get_upcoming_birthday(birthday))
+		result.insert(idx + 2, get_next_birthday(birthday))
 		result.insert(idx + 3, next_birthday_is_decadal(age))
 
 		yield result

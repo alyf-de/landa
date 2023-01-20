@@ -1,7 +1,7 @@
 from unittest import TestCase
 from datetime import date
 
-from .birthday import get_age, get_upcoming_birthday, next_birthday_is_decadal
+from .birthday import get_age, get_next_birthday, next_birthday_is_decadal
 
 BIRTHDAY = date(2000, 2, 29)
 
@@ -17,11 +17,11 @@ class TestBirthday(TestCase):
 		self.assertEqual(get_age(BIRTHDAY, date(2021, 3, 1)), 21)
 		self.assertEqual(get_age(BIRTHDAY, date(2021, 3, 2)), 21)
 
-	def test_get_upcoming_birthday(self):
-		self.assertEqual(get_upcoming_birthday(), None)
-		self.assertEqual(get_upcoming_birthday(BIRTHDAY, date(2019, 1, 1)), date(2019, 3, 1))
-		self.assertEqual(get_upcoming_birthday(BIRTHDAY, date(2020, 1, 1)), date(2020, 2, 29))
-		self.assertEqual(get_upcoming_birthday(BIRTHDAY, date(2021, 1, 1)), date(2021, 3, 1))
+	def test_get_next_birthday(self):
+		self.assertEqual(get_next_birthday(), None)
+		self.assertEqual(get_next_birthday(BIRTHDAY, date(2019, 1, 1)), date(2019, 3, 1))
+		self.assertEqual(get_next_birthday(BIRTHDAY, date(2020, 1, 1)), date(2020, 2, 29))
+		self.assertEqual(get_next_birthday(BIRTHDAY, date(2021, 1, 1)), date(2021, 3, 1))
 
 	def test_next_birthday_is_decadal(self):
 		self.assertFalse(next_birthday_is_decadal())
