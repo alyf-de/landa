@@ -38,6 +38,9 @@ def autoname(item, event):
 		# Normal Items get named like `ART-{company_abbr}-####`
 		# For example, `ART-AVL-0001`
 		from frappe.model.naming import make_autoname
-		company_abbr = frappe.get_value("Company", item.company, "abbr")
-		item.name = make_autoname("A-" + company_abbr + '-.####', "Item")
+		series = "A-"
+		if item.company:
+			series += frappe.get_value("Company", item.company, "abbr") + "-"
+
+		item.name = make_autoname(f"{series}.####", "Item")
 		item.item_code = item.name
