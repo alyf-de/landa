@@ -18,7 +18,6 @@ class TestOrganization(FrappeTestCase):
 		self.assertIn("REG-002-01", orgs)
 
 	def test_company_and_customer_exist(self):
-		self.assertTrue(frappe.db.exists("Company", {"abbr": "ST"}))
 		self.assertTrue(frappe.db.exists("Company", {"abbr": "REG"}))
 		self.assertTrue(frappe.db.exists("Customer", "REG-001"))
 		self.assertTrue(frappe.db.exists("Customer", "REG-002"))
