@@ -200,64 +200,63 @@ def delete_records_linked_to(doctype: str, name: str) -> None:
 
 def delete_linked_records(doctype: str, name: str) -> None:
 	for link_field in get_link_fields(doctype):
-		d_doctype = link_field["parent"]
-		d_link_field = link_field["fieldname"]
+		linked_doctype = link_field["parent"]
+		link_fieldname = link_field["fieldname"]
 		if link_field["is_in_table"]:
-			remove_from_table(d_doctype, d_link_field, name)
+			remove_from_table(linked_doctype, link_fieldname, name)
 			continue
 
 		if link_field["is_in_single"]:
-			if not link_field["reqd"] and frappe.db.get_single_value(d_doctype, d_link_field) == name:
-				unset_value(d_doctype, None, d_link_field)
+			if not link_field["reqd"] and frappe.db.get_single_value(linked_doctype, link_fieldname) == name:
+				unset_value(linked_doctype, None, link_fieldname)
 			continue
 
-		to_delete = frappe.get_all(
-			d_doctype,
-			filters={d_link_field: name},
+		for linked_name in frappe.get_all(
+			linked_doctype,
+			filters={link_fieldname: name},
 			pluck="name",
-		)
-		for d_name in to_delete:
+		):
 			if link_field["reqd"]:
 				try:
 					frappe.delete_doc(
-						d_doctype,
-						d_name,
+						linked_doctype,
+						linked_name,
 						ignore_permissions=True,
 						ignore_missing=True,
 						delete_permanently=True,
 					)
 				except frappe.ValidationError:
 					# doc is submitted
-					unset_value(d_doctype, d_name, d_link_field)
+					unset_value(linked_doctype, linked_name, link_fieldname)
 			else:
-				unset_value(d_doctype, d_name, d_link_field)
+				unset_value(linked_doctype, linked_name, link_fieldname)
 
 
 def delete_dynamically_linked_records(doctype: str, name: str) -> None:
 	for dynamic_link in get_dynamic_link_map().get(doctype, []):
 		# delete all records that are linked to this record via a dynamic link field
-		d_doctype = dynamic_link["parent"]
-		d_link_field = dynamic_link["fieldname"]
+		linked_doctype = dynamic_link["parent"]
+		link_fieldname = dynamic_link["fieldname"]
 
-		link_is_mandatory = frappe.get_meta(d_doctype).get_field(d_link_field).reqd
-		for d_docname in frappe.get_all(
-			d_doctype,
+		link_is_reqd = frappe.get_meta(linked_doctype).get_field(link_fieldname).reqd
+		for linked_name in frappe.get_all(
+			linked_doctype,
 			filters={
-				d_link_field: name,
+				link_fieldname: name,
 				dynamic_link["options"]: doctype,
 			},
 			pluck="name",
 		):
-			if link_is_mandatory:
+			if link_is_reqd:
 				frappe.delete_doc(
-					d_doctype,
-					d_docname,
+					linked_doctype,
+					linked_name,
 					ignore_permissions=True,
 					ignore_missing=True,
 					delete_permanently=True,
 				)
 			else:
-				unset_value(d_doctype, d_docname, d_link_field)
+				unset_value(linked_doctype, linked_name, link_fieldname)
 
 
 def unset_value(doctype: str, name: Optional[str], fieldname: str) -> None:
