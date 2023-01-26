@@ -56,6 +56,6 @@ def validate(doc, event):
 
 
 def on_trash(doc, event):
-	from landa.utils import purge_all
+	from landa.utils import delete_records_linked_to
 
-	purge_all(doc.doctype, doc.name)
+	delete_records_linked_to(doc.doctype, doc.name)

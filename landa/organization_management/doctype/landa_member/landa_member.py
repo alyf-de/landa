@@ -11,7 +11,7 @@ from frappe.contacts.address_and_contact import load_address_and_contact
 from frappe.model.naming import make_autoname
 from frappe.model.naming import revert_series_if_last
 
-from landa.utils import purge_all, delete_dynamically_linked
+from landa.utils import delete_records_linked_to, delete_dynamically_linked
 
 
 class LANDAMember(Document):
@@ -45,7 +45,7 @@ class LANDAMember(Document):
 
 		delete_dynamically_linked("Address", self.doctype, self.name)
 		delete_dynamically_linked("Contact", self.doctype, self.name)
-		purge_all("LANDA Member", self.name)
+		delete_records_linked_to("LANDA Member", self.name)
 
 		self.revert_series()
 

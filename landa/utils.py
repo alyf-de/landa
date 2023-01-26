@@ -188,7 +188,7 @@ def get_link_fields(doctype: str, as_dict: int = 1):
 	)
 
 
-def purge_all(doctype: str, name: str) -> None:
+def delete_records_linked_to(doctype: str, name: str) -> None:
 	delete_linked_records(doctype, name)
 	delete_dynamically_linked_records(doctype, name)
 
