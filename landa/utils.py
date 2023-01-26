@@ -107,12 +107,17 @@ def get_member_and_organization(user: str) -> tuple:
 	return frappe.db.get_value("User", user, fieldname=["landa_member", "organization"])
 
 
-def remove_from_table(table_doctype: str, link_field: str, value: str):
+def remove_from_table(table_doctype: str, fieldname: str, value: str):
+	"""Remove all records of `table_doctype` where `fieldname` contains `value`.
+
+	Only works for records in the Draft state.
+	"""
 	table = frappe.qb.DocType(table_doctype)
 	query = (
 		frappe.qb.from_(table)
 		.select(table.parenttype, table.parent, table.parentfield, table.idx)
-		.where(table[link_field] == value)
+		.where(table[fieldname] == value)
+		.where(table.docstatus == 0)
 		.distinct()
 	)
 
