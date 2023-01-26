@@ -16,5 +16,10 @@ frappe.ui.form.on("User", {
 		} else {
 			frm.set_df_property("landa_member", "read_only", 0);
 		}
+
+		if (!["Administrator", "Guest"].includes(frm.doc.name)) {
+			frm.toggle_reqd("landa_member", 1);
+			frm.toggle_reqd("organization", 1);
+		}
 	},
 });
