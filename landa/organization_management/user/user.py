@@ -66,5 +66,11 @@ def restrict_to_member(member: str, user: str) -> None:
 
 
 def on_trash(user: User, event: str) -> None:
+	if user.name == frappe.session.user:
+		frappe.throw(_("You cannot delete your own user account."))
+
+	if user.name in STANDARD_USERS:
+		frappe.throw(_("You cannot delete standard user."))
+
 	remove_from_table("Note Seen By", "user", user.name)
 	delete_records_linked_to("User", user.name)

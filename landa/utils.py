@@ -104,7 +104,7 @@ def get_company_by_abbr(abbr: str):
 
 def get_member_and_organization(user: str) -> tuple:
 	"""Return the LANDA Member and Organization linked in the user."""
-	return frappe.db.get_value("User", user, fieldname=["landa_member", "organization"])
+	return frappe.db.get_value("User", user, fieldname=["landa_member", "organization"]) or (None, None)
 
 
 def remove_from_table(table_doctype: str, fieldname: str, value: str):
