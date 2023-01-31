@@ -208,8 +208,9 @@
             <br>
         {% endif %}
 
-        {{ company.delivery_note_information_text if company.delivery_note_information_text else _('<i>Please set retoure information text in your company configuration</i>')}}
-        
+        {% if company.delivery_note_information_text %}
+            {{ company.delivery_note_information_text }}
+        {% endif %}
     </div>
 
     {% if doc.timesheets -%}

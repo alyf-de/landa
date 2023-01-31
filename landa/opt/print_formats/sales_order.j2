@@ -216,10 +216,10 @@
             <br>
         {% endif %}
 
-        {% if doc.is_return %}
-            {{ company.retoure_information_text if company.retoure_information_text else _('<i>Please set retoure information text in your company configuration</i>')}}
-        {% else %}
-            {{ company.invoice_information_text if company.invoice_information_text else _('<i>Please set invoice information text in your company configuration</i>')}}
+        {% if doc.is_return and company.retoure_information_text %}
+            {{ company.retoure_information_text }}
+        {% elif not doc.is_return and company.invoice_information_text %}
+            {{ company.invoice_information_text }}
         {% endif %}
     </div>
 
