@@ -7454,5 +7454,21 @@
   "parenttype": null,
   "source_text": "Welcome email sent",
   "translated_text": "Willkommens-E-Mail versendet"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2022-12-15 14:22:14.351033",
+  "name": "05db320c2d",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Ser. No",
+  "translated_text": "Seriennr."
  }
 ]
