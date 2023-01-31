@@ -20,7 +20,7 @@
 
 {% set serial_nos = [] %}
 {% for n in doc.items %}
-    {% if n.serial_no is not none %} {% set temp = serial_nos.append(1) %}{% endif %}
+    {% if n.serial_no is not none %} {% set temp = serial_nos.append(n.serial_no) %}{% endif %}
 {% endfor %}
 {% set serial_no_set=serial_nos|length > 0 %}
 
