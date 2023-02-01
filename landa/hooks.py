@@ -19,7 +19,6 @@ fixtures = [
 	"Global Search Settings",
 	"Module Profile",
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
-	{"dt": "Organization", "filters": [["name", "in", ["LV", "AVE", "AVS", "AVL"]]]},
 	"Member Function Category",
 	"Fishing Area",
 	{
