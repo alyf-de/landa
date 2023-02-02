@@ -1,4 +1,8 @@
+import json
+import os
+
 import frappe
+from frappe.modules.utils import sync_customizations_for_doctype
 from frappe.query_builder import DocType
 
 
@@ -7,7 +11,17 @@ def execute():
 	cleanup_addresses()
 
 
+def customize_customer():
+	folder = frappe.get_app_path("landa", "landa_sales", "custom")
+	fname = "customer.json"
+
+	with open(os.path.join(folder, fname), "r") as f:
+		sync_customizations_for_doctype(json.loads(f.read()), folder)
+
+
 def set_billing_and_shipping_defaults():
+	customize_customer()
+
 	Address = DocType("Address")
 	DynamicLink = DocType("Dynamic Link")
 
@@ -29,7 +43,9 @@ def set_billing_and_shipping_defaults():
 	for address_name, is_shipping, is_primary, customer in addresses:
 		if is_primary:  # billing address
 			contact = frappe.get_all(
-				"Contact", [["name", "like", address_name.replace(" ", "%")]], pluck="name"
+				"Contact",
+				[["name", "like", address_name.replace(" ", "%")]],
+				pluck="name",
 			)
 
 			frappe.db.set_value(
@@ -43,7 +59,9 @@ def set_billing_and_shipping_defaults():
 
 		if is_shipping:
 			contact = frappe.get_all(
-				"Contact", [["name", "like", address_name.replace(" ", "%")]], pluck="name"
+				"Contact",
+				[["name", "like", address_name.replace(" ", "%")]],
+				pluck="name",
 			)
 
 			frappe.db.set_value(
