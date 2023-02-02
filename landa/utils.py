@@ -60,7 +60,7 @@ def get_current_member_data():
 	]  # use local Organization instead of Ortsgruppe
 
 	ancestors = get_ancestors_of("Organization", member_organization)
-	ancestors.reverse()	 # root as the first element
+	ancestors.reverse()  # root as the first element
 
 	result.member = member_name
 	result.local_organization = member_organization
@@ -78,3 +78,64 @@ def autocommit():
 	frappe.db.auto_commit_on_many_writes = True
 	yield
 	frappe.db.auto_commit_on_many_writes = flag_value
+
+
+def update_doc(source_doc, target_doc):
+	FIELD_MAPPINGS = {
+		"Sales Order": {
+			"billing_address": "customer_address",
+			"billing_address_display": "address_display",
+			"billing_contact": "contact_person",
+			"billing_contact_display": "contact_display",
+			"billing_contact_email": "contact_email",
+			"billing_contact_mobile": "contact_mobile",
+			"billing_contact_phone": "contact_phone",
+			"shipping_address": "shipping_address_name",
+			"shipping_address_display": "shipping_address",
+			"shipping_contact": "shipping_contact",
+			"shipping_contact_display": "shipping_contact_display",
+			"shipping_contact_email": "shipping_contact_email",
+			"shipping_contact_mobile": "shipping_contact_mobile",
+			"shipping_contact_phone": "shipping_contact_phone",
+		},
+		"Sales Invoice": {
+			"billing_address": "customer_address",
+			"billing_address_display": "address_display",
+			"billing_contact": "contact_person",
+			"billing_contact_display": "contact_display",
+			"billing_contact_email": "contact_email",
+			"billing_contact_mobile": "contact_mobile",
+			"billing_contact_phone": "contact_phone",
+			"shipping_address": "shipping_address_name",
+			"shipping_address_display": "shipping_address",
+			"shipping_contact": "shipping_contact",
+			"shipping_contact_display": "shipping_contact_display",
+			"shipping_contact_email": "shipping_contact_email",
+			"shipping_contact_mobile": "shipping_contact_mobile",
+			"shipping_contact_phone": "shipping_contact_phone",
+		},
+		"Delivery Note": {
+			"billing_address": "customer_address",
+			"billing_address_display": "address_display",
+			"billing_contact": "billing_contact",
+			"billing_contact_display": "billing_contact_display",
+			"billing_contact_email": "billing_contact_email",
+			"billing_contact_mobile": "billing_contact_mobile",
+			"billing_contact_phone": "billing_contact_phone",
+			"shipping_address": "shipping_address_name",
+			"shipping_address_display": "shipping_address",
+			"shipping_contact": "contact_person",
+			"shipping_contact_display": "contact_display",
+			"shipping_contact_email": "contact_email",
+			"shipping_contact_mobile": "contact_mobile",
+			"shipping_contact_phone": "contact_phone",
+		},
+	}
+
+	fields = {}
+	
+	for key, source_field_name in FIELD_MAPPINGS[source_doc.doctype].items():
+		target_field_name = FIELD_MAPPINGS[target_doc.doctype][key]
+		fields[target_field_name] = getattr(source_doc, source_field_name)
+
+	target_doc.update(fields)

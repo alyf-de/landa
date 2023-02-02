@@ -1,3 +1,8 @@
+import frappe
+from erpnext.selling.doctype.sales_invoice.sales_invoice import make_delivery_note
+from landa.utils import update_doc
+
+
 def before_validate(sales_invoice, event):
 	"""Set Tax Category to 'Umsatzsteuer'"""
 	import frappe
@@ -16,3 +21,13 @@ def autoname(doc, event):
 		doc.name = get_new_name("GUTS", doc.company, "Sales Invoice")
 	else:
 		doc.name = get_new_name("RECH", doc.company, "Sales Invoice")
+
+
+@frappe.whitelist()
+def make_landa_delivery_note(source_name, target_doc=None, skip_item_mapping=False):
+	source_doc = frappe.get_doc("Sales Invoice", source_name)
+	target_doc = make_delivery_note(source_name, target_doc, skip_item_mapping)
+
+	update_doc(source_doc, target_doc)
+
+	return target_doc
