@@ -1,5 +1,5 @@
 import frappe
-from erpnext.selling.doctype.sales_invoice.sales_invoice import make_delivery_note
+from erpnext.accounts.doctype.sales_invoice.sales_invoice import make_delivery_note
 from landa.utils import update_doc
 
 
