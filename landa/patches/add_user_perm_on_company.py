@@ -1,8 +1,8 @@
-
 import frappe
 
-from landa.overrides import get_default_company
+from landa.utils import get_default_company
 from frappe.permissions import add_user_permission
+
 
 def execute():
 	"""Restrict all LANDA Members to their regional organization's company."""
