@@ -14,11 +14,17 @@ frappe.ui.form.on("Catch Log Entry", {
 
 			frm.page.set_primary_action(__("Save and New"), () => {
 				frappe.run_serially([
-				   () => frm.save(),
-				   () => frappe.new_doc("Catch Log Entry"),
-				   () => window.location.reload(),
-			   ]);
-		   })
+					() => frm.save(),
+					() => frm.reload_doc(),
+					() => frappe.new_doc("Catch Log Entry", {
+						organization: frm.doc.organization
+					}),
+				]);
+			});
+
+			frm.page.set_secondary_action(__("Save"), () => {
+				frm.save();
+	   		});
 	   }
    },
 });
