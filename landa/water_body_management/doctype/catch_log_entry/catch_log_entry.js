@@ -8,24 +8,13 @@ frappe.ui.form.on("Catch Log Entry", {
 		}
 	},
 	refresh: (frm) => {
-		if (frm.doc.docstatus < 1 && frm.doc.__unsaved)	{
-			// to avoid primary action refresh on dirty form (setting field value)
-			frm.disable_save();
-
-			frm.page.set_primary_action(__("Save and New"), () => {
-				frappe.run_serially([
-					() => frm.save(),
-					() => frm.reload_doc(),
-					() => frappe.new_doc("Catch Log Entry", {
-						organization: frm.doc.organization
-					}),
-					() => frm.refresh(),
-				]);
+		if (frm.doc.docstatus == 0 && !frm.is_new())	{
+			frm.add_custom_button(__("New Catch Log Entry"), () => {
+				frappe.new_doc(frm.doctype, {
+					organization: frm.doc.organization,
+					year: frm.doc.year,
+				});
 			});
-
-			frm.page.set_secondary_action(__("Save"), () => {
-				frm.save();
-	   		});
 	   }
    },
 });
