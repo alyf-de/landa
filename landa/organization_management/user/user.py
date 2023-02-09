@@ -27,6 +27,9 @@ def validate(doc: User, event=None):
 				)
 			)
 
+	if not doc.module_profile and not frappe.flags.in_test:
+		doc.module_profile = "LANDA User"
+
 
 def after_insert(doc: User, event=None):
 	if (not doc.enabled) or (doc.name in STANDARD_USERS):

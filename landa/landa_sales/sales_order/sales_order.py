@@ -3,10 +3,12 @@
 # For license information, please see license.txt
 
 import frappe
+from erpnext.selling.doctype.sales_order.sales_order import (
+	make_delivery_note,
+	make_sales_invoice,
+)
 from frappe.utils.data import get_year_ending
-import inspect
-from erpnext.accounts.doctype.sales_invoice.sales_invoice import SalesInvoice
-from erpnext.stock.doctype.delivery_note.delivery_note import DeliveryNote
+from landa.utils import update_doc
 
 
 def before_validate(sales_order, event):
@@ -34,3 +36,23 @@ def get_dashboard_data(data):
 		},
 	]
 	return data
+
+
+@frappe.whitelist()
+def make_landa_sales_invoice(source_name, target_doc=None, skip_item_mapping=False):
+	source_doc = frappe.get_doc("Sales Order", source_name)
+	target_doc = make_sales_invoice(source_name, target_doc, skip_item_mapping)
+
+	update_doc(source_doc, target_doc)
+
+	return target_doc
+
+
+@frappe.whitelist()
+def make_landa_delivery_note(source_name, target_doc=None, skip_item_mapping=False):
+	source_doc = frappe.get_doc("Sales Order", source_name)
+	target_doc = make_delivery_note(source_name, target_doc, skip_item_mapping)
+
+	update_doc(source_doc, target_doc)
+
+	return target_doc
