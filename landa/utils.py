@@ -43,9 +43,10 @@ def get_current_member_data() -> frappe._dict:
 	if not frappe.session.user or (frappe.session.user in frappe.STANDARD_USERS):
 		return result
 
-	from_cache = frappe.cache().hget("landa", frappe.session.user)
-	if from_cache:
-		return from_cache
+	# TODO: Something if off with the cache -> loading old data. Figure out reason before reactivating.
+	# from_cache = frappe.cache().hget("landa", frappe.session.user)
+	# if from_cache:
+	#	return from_cache
 
 	member_name, member_organization = get_member_and_organization(frappe.session.user)
 
