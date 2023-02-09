@@ -19,6 +19,7 @@ frappe.ui.form.on("Catch Log Entry", {
 					() => frappe.new_doc("Catch Log Entry", {
 						organization: frm.doc.organization
 					}),
+					() => frm.refresh(),
 				]);
 			});
 
