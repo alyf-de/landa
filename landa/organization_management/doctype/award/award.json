@@ -65,6 +65,8 @@
    "fetch_if_empty": 1,
    "fieldname": "organization",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Issuing Organization",
    "options": "Organization"
   },
@@ -72,8 +74,6 @@
    "fetch_from": "organization.organization_name",
    "fieldname": "organization_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Organization Name"
   },
   {
@@ -94,7 +94,7 @@
   }
  ],
  "links": [],
- "modified": "2022-09-13 13:52:00.140568",
+ "modified": "2022-12-16 14:50:53.483388",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Award",

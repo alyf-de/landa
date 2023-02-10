@@ -90,8 +90,6 @@
    "fieldname": "parent_organization",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
-   "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Parent Organization",
    "options": "Organization",
    "set_only_once": 1
@@ -269,7 +267,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2022-09-13 13:53:29.279177",
+ "modified": "2023-02-09 13:42:39.845597",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",

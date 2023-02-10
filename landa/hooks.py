@@ -16,9 +16,9 @@ fixtures = [
 	"Website Settings",
 	"Contact Us Settings",
 	"About Us Settings",
+	"Global Search Settings",
 	"Module Profile",
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
-	{"dt": "Organization", "filters": [["name", "in", ["LV", "AVE", "AVS", "AVL"]]]},
 	"Member Function Category",
 	"Fishing Area",
 	{
@@ -128,15 +128,6 @@ landa_create_after_install = [
 		],
 		"numeric_values": 0,
 	},
-	{
-		# This needs to exist so that User Permissions on User will work as expected.
-		"doctype": "Custom DocPerm",
-		"parent": "User",
-		"role": "All",
-		"select": 1,
-		"read": 0,
-		"export": 0,
-	},
 ]
 
 # Used in `landa.install.disable_modes_of_payment`
@@ -162,6 +153,8 @@ welcome_email = "landa.utils.welcome_email"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/landa/css/landa.css"
 app_include_js = [
+	"/assets/landa/js/queries.js",
+	"/assets/landa/js/utils.js",
 	"/assets/landa/js/map_defaults.js",
 	"/assets/landa/js/selling_utils.js",
 ]
@@ -184,10 +177,13 @@ app_include_js = [
 doctype_js = {
 	"Delivery Note": "landa_stock/delivery_note/delivery_note.js",
 	"Sales Order": "landa_sales/sales_order/sales_order.js",
+	"Sales Invoice": "landa_sales/sales_invoice/sales_invoice.js",
 	"Item": "landa_stock/item/item.js",
 	"Payment Entry": "landa_sales/payment_entry/payment_entry.js",
 	"Address": "address_and_contact.js",
 	"Contact": "address_and_contact.js",
+	"User": "organization_management/user/user.js",
+	"Customer": "landa_sales/customer/customer.js",
 }
 doctype_list_js = {"Report": "scripts/report_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -284,6 +280,11 @@ doc_events = {
 		],
 		"after_insert": "landa.organization_management.contact.contact.after_insert",
 	},
+	"User": {
+		"validate": "landa.organization_management.user.user.validate",
+		"after_insert": "landa.organization_management.user.user.after_insert",
+		"on_update": "landa.organization_management.user.user.on_update",
+	},
 }
 
 # Scheduled Tasks
@@ -322,7 +323,12 @@ scheduler_events = {
 
 override_whitelisted_methods = {
 	# Use frappe's send message so that the website contact form doesn't create a Lead and Opportunity
-	"erpnext.templates.utils.send_message": "frappe.www.contact.send_message"
+	"erpnext.templates.utils.send_message": "frappe.www.contact.send_message",
+	"erpnext.accounts.party.get_party_details": "landa.landa_sales.party.get_landa_party_details",
+	"erpnext.selling.doctype.sales_order.sales_order.make_delivery_note": "landa.landa_sales.sales_order.sales_order.make_landa_delivery_note",
+	"erpnext.selling.doctype.sales_order.sales_order.make_sales_invoice": "landa.landa_sales.sales_order.sales_order.make_landa_sales_invoice",
+	"erpnext.accounts.doctype.sales_invoice.sales_invoice.make_delivery_note": "landa.landa_sales.sales_invoice.sales_invoice.make_landa_delivery_note",
+	"erpnext.stock.doctype.delivery_note.delivery_note.make_sales_invoice": "landa.landa_stock.delivery_note.delivery_note.make_landa_sales_invoice"	
 }
 
 #
@@ -341,31 +347,9 @@ override_doctype_dashboards = {
 # }
 
 landa_custom_fields = {
-	"User": [
-		{
-			"fieldname": "landa_member",
-			"fieldtype": "Link",
-			"label": "LANDA Member",
-			"options": "LANDA Member",
-			"insert_after": "username",
-			"translatable": 0,
-		},
-		{
-			"fieldname": "organization",
-			"fieldtype": "Link",
-			"label": "Organization",
-			"options": "Organization",
-			"insert_after": "landa_member",
-			"fetch_from": "landa_member.organization",
-			"read_only": 1,
-			"reqd": 1,
-			"translatable": 0,
-		},
-	],
+	# "doctype": [ { ... }, ... ],
 }
 
 landa_property_setters = {
-	"User": [
-		("short_bio", "hidden", "1", "Check"),
-	],
+	# "doctype": [ (fieldname, property, value, fieldtype), ... ],
 }
