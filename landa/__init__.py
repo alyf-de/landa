@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-__version__ = "0.0.4"
-
 import frappe
+
+__version__ = "0.2.0"
 
 
 @frappe.whitelist(allow_guest=True)
@@ -21,7 +21,7 @@ def complete_setup_wizard_for_test():
 				"fy_start_date": "2023-01-01",
 				"fy_end_date": "2023-12-31",
 				"bank_account": "Deutsche Bank",
-				"domains": ['Non Profit'],
+				"domains": ["Non Profit"],
 				"company_name": "Landesverband Sächsischer Angler",
 				"chart_of_accounts": "SKR04 mit Kontonummern",
 				"company_abbr": "LV",

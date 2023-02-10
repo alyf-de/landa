@@ -19,7 +19,6 @@ fixtures = [
 	"Global Search Settings",
 	"Module Profile",
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
-	{"dt": "Organization", "filters": [["name", "in", ["LV", "AVE", "AVS", "AVL"]]]},
 	"Member Function Category",
 	"Fishing Area",
 	{
@@ -178,11 +177,13 @@ app_include_js = [
 doctype_js = {
 	"Delivery Note": "landa_stock/delivery_note/delivery_note.js",
 	"Sales Order": "landa_sales/sales_order/sales_order.js",
+	"Sales Invoice": "landa_sales/sales_invoice/sales_invoice.js",
 	"Item": "landa_stock/item/item.js",
 	"Payment Entry": "landa_sales/payment_entry/payment_entry.js",
 	"Address": "address_and_contact.js",
 	"Contact": "address_and_contact.js",
 	"User": "organization_management/user/user.js",
+	"Customer": "landa_sales/customer/customer.js",
 }
 doctype_list_js = {"Report": "scripts/report_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -325,7 +326,12 @@ scheduler_events = {
 
 override_whitelisted_methods = {
 	# Use frappe's send message so that the website contact form doesn't create a Lead and Opportunity
-	"erpnext.templates.utils.send_message": "frappe.www.contact.send_message"
+	"erpnext.templates.utils.send_message": "frappe.www.contact.send_message",
+	"erpnext.accounts.party.get_party_details": "landa.landa_sales.party.get_landa_party_details",
+	"erpnext.selling.doctype.sales_order.sales_order.make_delivery_note": "landa.landa_sales.sales_order.sales_order.make_landa_delivery_note",
+	"erpnext.selling.doctype.sales_order.sales_order.make_sales_invoice": "landa.landa_sales.sales_order.sales_order.make_landa_sales_invoice",
+	"erpnext.accounts.doctype.sales_invoice.sales_invoice.make_delivery_note": "landa.landa_sales.sales_invoice.sales_invoice.make_landa_delivery_note",
+	"erpnext.stock.doctype.delivery_note.delivery_note.make_sales_invoice": "landa.landa_stock.delivery_note.delivery_note.make_landa_sales_invoice"	
 }
 
 #

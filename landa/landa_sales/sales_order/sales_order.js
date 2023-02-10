@@ -2,6 +2,9 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Sales Order",  {
+    setup: function (frm) {
+		frm.set_query("shipping_contact", erpnext.queries.contact_query);
+	},
     refresh: function (frm) {
         frm.set_query("item_code", "items", function(doc) {
             return {
@@ -31,4 +34,7 @@ frappe.ui.form.on("Sales Order",  {
         landa.selling.prefill_items(frm);
         frm.doc.delivery_date = new Date(frm.doc.year_of_settlement, 11, 31); // the month is 0-indexed
     },
+    shipping_contact: function (frm) {
+        landa.selling.set_contact_details(frm, "shipping");
+    }
 });

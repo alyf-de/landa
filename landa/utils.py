@@ -46,9 +46,10 @@ def get_current_member_data() -> frappe._dict:
 	if not frappe.session.user or (frappe.session.user in frappe.STANDARD_USERS):
 		return result
 
-	from_cache = frappe.cache().hget("landa", frappe.session.user)
-	if from_cache:
-		return from_cache
+	# TODO: Something if off with the cache -> loading old data. Figure out reason before reactivating.
+	# from_cache = frappe.cache().hget("landa", frappe.session.user)
+	# if from_cache:
+	#	return from_cache
 
 	member_name, member_organization = get_member_and_organization(frappe.session.user)
 
@@ -105,6 +106,67 @@ def get_company_by_abbr(abbr: str):
 def get_member_and_organization(user: str) -> tuple:
 	"""Return the LANDA Member and Organization linked in the user."""
 	return frappe.db.get_value("User", user, fieldname=["landa_member", "organization"]) or (None, None)
+
+
+def update_doc(source_doc, target_doc):
+	FIELD_MAPPINGS = {
+		"Sales Order": {
+			"billing_address": "customer_address",
+			"billing_address_display": "address_display",
+			"billing_contact": "contact_person",
+			"billing_contact_display": "contact_display",
+			"billing_contact_email": "contact_email",
+			"billing_contact_mobile": "contact_mobile",
+			"billing_contact_phone": "contact_phone",
+			"shipping_address": "shipping_address_name",
+			"shipping_address_display": "shipping_address",
+			"shipping_contact": "shipping_contact",
+			"shipping_contact_display": "shipping_contact_display",
+			"shipping_contact_email": "shipping_contact_email",
+			"shipping_contact_mobile": "shipping_contact_mobile",
+			"shipping_contact_phone": "shipping_contact_phone",
+		},
+		"Sales Invoice": {
+			"billing_address": "customer_address",
+			"billing_address_display": "address_display",
+			"billing_contact": "contact_person",
+			"billing_contact_display": "contact_display",
+			"billing_contact_email": "contact_email",
+			"billing_contact_mobile": "contact_mobile",
+			"billing_contact_phone": "contact_phone",
+			"shipping_address": "shipping_address_name",
+			"shipping_address_display": "shipping_address",
+			"shipping_contact": "shipping_contact",
+			"shipping_contact_display": "shipping_contact_display",
+			"shipping_contact_email": "shipping_contact_email",
+			"shipping_contact_mobile": "shipping_contact_mobile",
+			"shipping_contact_phone": "shipping_contact_phone",
+		},
+		"Delivery Note": {
+			"billing_address": "customer_address",
+			"billing_address_display": "address_display",
+			"billing_contact": "billing_contact",
+			"billing_contact_display": "billing_contact_display",
+			"billing_contact_email": "billing_contact_email",
+			"billing_contact_mobile": "billing_contact_mobile",
+			"billing_contact_phone": "billing_contact_phone",
+			"shipping_address": "shipping_address_name",
+			"shipping_address_display": "shipping_address",
+			"shipping_contact": "contact_person",
+			"shipping_contact_display": "contact_display",
+			"shipping_contact_email": "contact_email",
+			"shipping_contact_mobile": "contact_mobile",
+			"shipping_contact_phone": "contact_phone",
+		},
+	}
+
+	fields = {}
+	
+	for key, source_field_name in FIELD_MAPPINGS[source_doc.doctype].items():
+		target_field_name = FIELD_MAPPINGS[target_doc.doctype][key]
+		fields[target_field_name] = getattr(source_doc, source_field_name)
+
+	target_doc.update(fields)
 
 
 def remove_from_table(table_doctype: str, fieldname: str, value: str):
