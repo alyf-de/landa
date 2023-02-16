@@ -111,7 +111,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-16 14:12:44.414788",
+ "modified": "2023-02-16 12:02:44.376137",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function",
@@ -175,7 +175,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "title_field": "member_function_category",
