@@ -1,29 +1,37 @@
 // Copyright (c) 2021, Real Experts GmbH and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Member Function', {
-	refresh: function(frm) {
-		frm.trigger('set_member_function_category_query');
+frappe.ui.form.on("Member Function", {
+	refresh: function (frm) {
+		frm.trigger("set_member_function_category_query");
 	},
-	set_member_function_category_query: function(frm) {
-		if (frappe.user.has_role('LANDA State Organization Employee')) {
-			return;
-		} else if (frappe.user.has_role('LANDA Regional Organization Management')) {
-			frm.set_query('member_function_category', () => {
+	set_member_function_category_query: function (frm) {
+		if (frappe.user.has_role("LANDA State Organization Employee")) return;
+
+		if (frappe.user.has_role("LANDA Regional Organization Management")) {
+			frm.set_query("member_function_category", () => {
 				return {
 					filters: {
-						access_level: ['in', ['Regional Organization', 'Local Organization']]
-					}
+						access_level: ["in", ["Regional Organization", "Local Organization"]],
+					},
 				};
 			});
-		} else if (frappe.user.has_role('LANDA Local Organization Management')) {
-			frm.set_query('member_function_category', () => {
+		} else if (frappe.user.has_role("LANDA Local Organization Management")) {
+			frm.set_query("member_function_category", () => {
 				return {
 					filters: {
-						access_level: 'Local Organization'
-					}
+						access_level: ["in", ["Local Organization", "Local Group"]],
+					},
+				};
+			});
+		} else if (frappe.user.has_role("LANDA Local Group Management")) {
+			frm.set_query("member_function_category", () => {
+				return {
+					filters: {
+						access_level: "Local Group",
+					},
 				};
 			});
 		}
-	}
+	},
 });
