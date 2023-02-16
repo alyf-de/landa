@@ -24,6 +24,14 @@ frappe.ui.form.on('Member Function', {
 					}
 				};
 			});
+		} else if (frappe.user.has_role('LANDA Local Group Management')) {
+			frm.set_query('member_function_category', () => {
+				return {
+					filters: {
+						access_level: 'Local Group'
+					}
+				};
+			});
 		}
 	}
 });
