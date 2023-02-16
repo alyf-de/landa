@@ -12,7 +12,7 @@ frappe.ui.form.on("Member Function", {
 			frm.set_query("member_function_category", () => {
 				return {
 					filters: {
-						access_level: ["in", ["Regional Organization", "Local Organization"]],
+						access_level: ["in", ["Regional Organization", "Local Organization", "Local Group"]],
 					},
 				};
 			});
