@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 import frappe
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 
 @frappe.whitelist(allow_guest=True)
