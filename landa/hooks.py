@@ -280,7 +280,6 @@ doc_events = {
 			"landa.organization_management.contact.contact.validate",
 			"landa.address_and_contact.validate"
 		],
-		"after_insert": "landa.organization_management.contact.contact.after_insert",
 	},
 	"User": {
 		"validate": "landa.organization_management.user.user.validate",
