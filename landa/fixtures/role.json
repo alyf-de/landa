@@ -178,7 +178,7 @@
   "home_page": null,
   "is_custom": 0,
   "list_sidebar": 1,
-  "modified": "2023-03-09 15:19:41.924362",
+  "modified": "2023-03-09 15:24:58.988352",
   "name": "LANDA Local Group Management",
   "notifications": 0,
   "parent": null,
@@ -189,7 +189,7 @@
   "search_bar": 1,
   "timeline": 1,
   "two_factor_auth": 0,
-  "view_switcher": 0
+  "view_switcher": 1
  },
  {
   "bulk_actions": 0,
@@ -202,7 +202,7 @@
   "home_page": null,
   "is_custom": 0,
   "list_sidebar": 1,
-  "modified": "2023-02-16 16:00:24.310017",
+  "modified": "2023-03-09 15:25:09.830817",
   "name": "LANDA Local Organization Management",
   "notifications": 0,
   "parent": null,
@@ -213,6 +213,6 @@
   "search_bar": 1,
   "timeline": 1,
   "two_factor_auth": 0,
-  "view_switcher": 0
+  "view_switcher": 1
  }
 ]
