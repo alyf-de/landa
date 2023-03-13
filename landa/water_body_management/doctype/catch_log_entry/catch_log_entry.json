@@ -117,6 +117,7 @@
    "fieldname": "workflow_state",
    "fieldtype": "Link",
    "hidden": 1,
+   "in_standard_filter": 1,
    "label": "Workflow State",
    "no_copy": 1,
    "options": "Workflow State"
@@ -142,7 +143,7 @@
   }
  ],
  "links": [],
- "modified": "2022-12-16 16:25:00.442951",
+ "modified": "2023-03-13 23:43:06.711730",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
