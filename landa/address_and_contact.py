@@ -16,18 +16,24 @@ def validate(doc, event):
 	if doc.belongs_to_organization:
 		# All records need to be linked to an Organization for permission
 		# reasons, but not all should be displayed in the Organization record
+		linked_doc = frappe.get_doc("Organization", doc.organization)
+		linked_doc.check_permission("write")
 		append("Organization", doc.organization)
 	else:
 		# If it doesn't belong to an Organization, then it also should not
 		# belong to a Customer
 		doc.customer = None
 
-	if doc.customer:
-		append("Customer", doc.customer)
-	if doc.landa_member:
-		append("LANDA Member", doc.landa_member)
-	if doc.external_contact:
-		append("External Contact", doc.external_contact)
+	for (link_doctype, link_name) in (
+		("Customer", doc.customer),
+		("LANDA Member", doc.landa_member),
+		("External Contact", doc.external_contact),
+	):
+		if not link_name:
+			continue
+		linked_doc = frappe.get_doc(link_doctype, link_name)
+		linked_doc.check_permission("write")
+		append(link_doctype, link_name)
 
 
 def add_data_from_linked_user(doc):
