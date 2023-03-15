@@ -31,8 +31,9 @@ def validate(doc, event):
 		append("Organization", doc.organization)
 	else:
 		# If it doesn't belong to an Organization, then it also should not
-		# belong to a Customer
+		# belong to a Customer or Company
 		doc.customer = None
+		doc.company = None
 
 	for (link_doctype, link_name) in (
 		("Customer", doc.customer),
