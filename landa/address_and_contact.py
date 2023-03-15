@@ -1,78 +1,35 @@
 import frappe
-from frappe import _
+# from frappe import _
 
 
 def validate(doc, event):
-	"""
-	Set explicit links to Customer, LANDA Member and Organization in the parent
-	doc, if they are found in the child table. This lets us apply user
-	permissions on child table links to the parent doc.
-	"""
+	if doc.flags.ignore_mandatory or frappe.flags.in_test:
+		return
 
-	validate_member_link(doc)
-
-	linked_doctypes = set(link.link_doctype for link in doc.links)
-	mandatory_links = {
-		"Company",
-		"LANDA Member",
-		"Organization",
-		"Customer",
-		"External Contact",
-	}
-	if (
-		not linked_doctypes.intersection(mandatory_links)
-		and not doc.flags.ignore_mandatory
-		and not frappe.flags.in_test  # needed for frappe test_records to pass
-	):
-		frappe.throw(
-			# fmt: off
-			_("This document should be linked to at least one Company, LANDA Member, Organization or Customer")
-			# fmt: on
-		)
-
-	doc.customer = ""
-	doc.landa_member = ""
-	doc.organization = ""
-
-	for link in doc.links:
-		if link.link_doctype == "Customer":
-			doc.customer = link.link_name
-			doc.organization = link.link_name
-
-		if link.link_doctype == "LANDA Member":
-			doc.landa_member = link.link_name
-			doc.organization = frappe.db.get_value(
-				"LANDA Member", link.link_name, "organization"
-			)
-
-		if link.link_doctype == "Organization":
-			doc.organization = link.link_name
-
-		if link.link_doctype == "External Contact":
-			doc.organization = frappe.db.get_value(
-				"External Contact", link.link_name, "organization"
-			)
-
-
-def validate_member_link(doc):
 	if doc.doctype == "Contact" and doc.user:
-		member = frappe.get_value("User", doc.user, "landa_member")
+		add_data_from_linked_user(doc)
 
-		if member and not member_link_exists(doc, member):
-			doc.append("links", {"link_doctype": "LANDA Member", "link_name": member})
+	def append(link_doctype, link_name):
+		doc.append("links", {"link_doctype": link_doctype, "link_name": link_name})
 
-		if not member_link_exists(doc, member):
-			frappe.throw(_("Contacts of users must be linked to a LANDA Member"))
-
-
-def member_link_exists(doc, member):
-	row = [
-		x
-		for x in doc.links
-		if x.link_doctype == "LANDA Member" and x.link_name == member
-	]
-
-	if row:
-		return True
+	doc.links = []
+	if doc.belongs_to_organization:
+		# All records need to be linked to an Organization for permission
+		# reasons, but not all should be displayed in the Organization record
+		append("Organization", doc.organization)
 	else:
-		return False
+		# If it doesn't belong to an Organization, then it also should not
+		# belong to a Customer
+		doc.customer = None
+
+	if doc.customer:
+		append("Customer", doc.customer)
+	if doc.landa_member:
+		append("LANDA Member", doc.landa_member)
+	if doc.external_contact:
+		append("External Contact", doc.external_contact)
+
+
+def add_data_from_linked_user(doc):
+	doc.organization = doc.organization or frappe.db.get_value("User", doc.user, "organization")
+	doc.landa_member = doc.landa_member or frappe.db.get_value("User", doc.user, "landa_member")

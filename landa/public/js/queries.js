@@ -8,4 +8,11 @@ landa.queries = {
 			},
 		};
 	},
+	filter_by_organization: function (doc) {
+		return {
+			filters: {
+				organization: doc.organization,
+			},
+		};
+	},
 };
