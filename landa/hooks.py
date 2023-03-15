@@ -272,6 +272,7 @@ doc_events = {
 		"autoname": "landa.landa_sales.payment_entry.pament_entry.autoname",
 	},
 	"Address": {
+		"before_insert": "landa.organization_management.address.address.set_address_title",
 		"validate": "landa.address_and_contact.validate",
 		"autoname": "landa.organization_management.address.address.autoname",
 	},
