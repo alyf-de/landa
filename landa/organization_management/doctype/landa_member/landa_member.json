@@ -6,8 +6,6 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "section_break_info_text",
-  "landa_member_info_text",
   "section_break_master_data",
   "member_heading",
   "first_name",
@@ -188,17 +186,6 @@
    "label": "Is Supporting Member"
   },
   {
-   "fieldname": "landa_member_info_text",
-   "fieldtype": "HTML",
-   "label": "LANDA Member Info Text",
-   "options": "<p>Mitglieder in LANDA sind Angler:innen, die das Mitglied eines  Vereins oder einer Ortsgruppe sind. Zu den Mitgliedsvereinen und Ortsgruppen geht es <b><a href='\\\"/app/organization\\\"'>hier.</a></b></p>\n\n<p>Pflichtfelder sind mit <span style=\"color: #FF0000;\">*</span> markiert.</p>\n\n<p>Jedes Mitglied kann Auszeichnungen, Mitgliedsfunktionen und Erlaubnisscheine zugewiesen bekommen. Diese sind eigene Formulare und werden im Abschnitt \"Verkn\u00fcpfungen\" zusammengefasst. Bestehende verlinkte Eintr\u00e4ge k\u00f6nnen durch Klicken auf den entsprechenden Begriff eingesehen werden, neue Eintr\u00e4ge k\u00f6nnen durch Klick auf das + Symbol erzeugt werden.</p>\n\n<p>Adressen und Kontakte sind ebenfalls eigenst\u00e4ndige Formulare. Sie k\u00f6nnen \u00fcber die Felder weiter unten in der Eingabemaske hinzugef\u00fcgt werden. Es k\u00f6nnen mehrere Adressen und Kontakte f\u00fcr ein Mitglied bestehen. Um Uneindeutigkeiten zu vermeiden, gibt es die M\u00f6glichkeit im jeweiligen Formular die Adresse bzw. Emailadresse oder Telefonnummer als \"prim\u00e4r\" zu markieren.</p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=\" https://youtu.be/rW8ZvAlETHc\" style=\"color: blue;\"> Vereinsverwaltung #05 Daten eines Mitgliedes bearbeiten</a> und in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML993pHOo16el5DGrKN5kCzh\" style=\"color: blue;\">LANDA Videotutorials - Vereinsverwaltung / Mitgliederverwaltung </a> </p>"
-  },
-  {
-   "fieldname": "section_break_info_text",
-   "fieldtype": "Section Break",
-   "label": "Info Text"
-  },
-  {
    "fieldname": "section_break_master_data",
    "fieldtype": "Section Break",
    "label": "Master Data"
@@ -260,7 +247,7 @@
    "link_fieldname": "landa_member"
   }
  ],
- "modified": "2022-11-30 17:55:33.221418",
+ "modified": "2023-03-13 23:47:59.903480",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
