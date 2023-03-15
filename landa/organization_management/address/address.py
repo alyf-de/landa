@@ -22,12 +22,16 @@ def autoname(address, event):
 		link_name = address.external_contact
 		address.address_title = " ".join(
 			frappe.get_value(
-				"External Contact", address.external_contact, ["first_name", "last_name"]
+				"External Contact",
+				address.external_contact,
+				["first_name", "last_name"],
 			)
 		)
 	elif address.organization:
 		link_name = address.organization
-		address.address_title = frappe.get_value("Organization", address.organization, "organization_name")
+		address.address_title = frappe.get_value(
+			"Organization", address.organization, "organization_name"
+		)
 
 	if address.address_title and link_name:
 		address.name = (
@@ -58,7 +62,7 @@ def rename_addresses(limit: int):
 		doc = frappe.get_doc(doctype, old_name)
 
 		try:
-			autoname(doc, None)	 # changes doc.name to the new name
+			autoname(doc, None)  # changes doc.name to the new name
 		except frappe.exceptions.ValidationError:
 			continue
 
@@ -76,7 +80,7 @@ def rename_addresses(limit: int):
 				old_name,
 				new_name,
 				ignore_permissions=True,  # checking permissions takes too long
-				ignore_if_exists=True,	# don't rename if a record with the same name exists already
+				ignore_if_exists=True,  # don't rename if a record with the same name exists already
 				show_alert=False,  # no need to show a UI alert, we're in the console
 				rebuild_search=False,  # we do that explicitly at the end
 			)
