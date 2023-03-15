@@ -10,54 +10,30 @@ def autoname(address, event):
 	Copy of Address.autoname, but prefers to use LANDA Member or Organization
 	name as Address Title.
 	"""
-	link_name = None
-	if address.links:
-		for link in address.links:
-			if link.link_doctype == "LANDA Member":
-				link.link_title = " ".join(
-					frappe.get_value(
-						"LANDA Member", link.link_name, ["first_name", "last_name"]
-					)
-				)
-
-			if link.link_doctype == "External Contact":
-				link.link_title = " ".join(
-					frappe.get_value(
-						"External Contact", link.link_name, ["first_name", "last_name"]
-					)
-				)
-
-			for dt, field in (
-				("Company", "company_name"),
-				("Organization", "organization_name"),
-				("Customer", "customer_name"),
-			):
-				if dt != link.link_doctype:
-					continue
-
-				link.link_title = frappe.get_value(dt, link.link_name, field)
-
-		# Prefer the member's name as address title otherwise, use any link title as address title
-		for link in address.links:
-			address.address_title = link.link_title
-
-			if link.link_doctype == "Company":
-				link_name = frappe.get_value("Company", link.link_name, "abbr")
-			else:
-				link_name = link.link_name
-
-			if link.link_doctype == "LANDA Member":
-				break
-
-		if not address.address_title:
-			address.address_title = address.links[0].link_title
+	if address.landa_member:
+		link_name = address.landa_member
+		address.address_title = " ".join(
+			frappe.get_value(
+				"LANDA Member", address.landa_member, ["first_name", "last_name"]
+			)
+		)
+	elif address.external_contact:
+		link_name = address.external_contact
+		address.address_title = " ".join(
+			frappe.get_value(
+				"External Contact", address.external_contact, ["first_name", "last_name"]
+			)
+		)
+	elif address.organization:
+		link_name = address.organization
+		address.address_title = frappe.get_value("Organization", address.organization, "organization_name")
 
 	if address.address_title and link_name:
 		address.name = (
-			cstr(address.address_title).strip() + " - " + cstr(link_name).strip()
+			f"{cstr(address.address_title).strip()} - {cstr(link_name).strip()}"
 		)
 		if frappe.db.exists("Address", address.name):
-			address.name = make_autoname(address.name + "-.#")
+			address.name = make_autoname(f"{address.name}-.#")
 	else:
 		frappe.throw(_("Address Title and Links are mandatory."))
 
