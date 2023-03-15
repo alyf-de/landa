@@ -66,13 +66,7 @@ def validate_member_link(doc):
 
 
 def member_link_exists(doc, member):
-	row = [
-		x
-		for x in doc.links
+	return any(
+		x for x in doc.links
 		if x.link_doctype == "LANDA Member" and x.link_name == member
-	]
-
-	if row:
-		return True
-	else:
-		return False
+	)
