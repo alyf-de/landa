@@ -10,6 +10,7 @@ def autoname(address, event):
 	Copy of Address.autoname, but prefers to use LANDA Member or Organization
 	name as Address Title.
 	"""
+	link_name = None
 	if address.landa_member:
 		link_name = address.landa_member
 		address.address_title = " ".join(
