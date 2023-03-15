@@ -13,7 +13,14 @@ def validate(doc, event):
 		frappe.throw(_("{0} should always be linked to an Organization").format(_(doc.doctype)))
 
 	def append(link_doctype, link_name):
-		doc.append("links", {"link_doctype": link_doctype, "link_name": link_name})
+		doc.append(
+			"links",
+			{
+				"link_doctype": link_doctype,
+				"link_name": link_name,
+				"link_title": link_name
+			}
+		)
 
 	doc.links = []
 	if doc.belongs_to_organization:
@@ -29,6 +36,7 @@ def validate(doc, event):
 
 	for (link_doctype, link_name) in (
 		("Customer", doc.customer),
+		("Company", doc.company),
 		("LANDA Member", doc.landa_member),
 		("External Contact", doc.external_contact),
 	):
