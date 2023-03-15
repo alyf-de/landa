@@ -1,5 +1,5 @@
 import frappe
-# from frappe import _
+from frappe import _
 
 
 def validate(doc, event):
@@ -8,6 +8,9 @@ def validate(doc, event):
 
 	if doc.doctype == "Contact" and doc.user:
 		add_data_from_linked_user(doc)
+
+	if not doc.organization:
+		frappe.throw(_("{0} should always be linked to an Organization").format(_(doc.doctype)))
 
 	def append(link_doctype, link_name):
 		doc.append("links", {"link_doctype": link_doctype, "link_name": link_name})

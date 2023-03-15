@@ -11,6 +11,8 @@ frappe.ui.form.on("Contact", {
 });
 
 function set_address_and_contact_queries(frm) {
+	frm.toggle_reqd("organization", 1);
+
 	frm.set_query("landa_member", landa.queries.filter_by_organization);
 	frm.set_query("customer", landa.queries.filter_by_organization);
 	frm.set_query("external_contact", landa.queries.filter_by_organization);
