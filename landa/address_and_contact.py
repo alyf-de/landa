@@ -22,6 +22,10 @@ def validate(doc, event):
 			}
 		)
 
+	def check_write_permission(doctype, name):
+		linked_doc = frappe.get_doc(doctype, name)
+		linked_doc.check_permission("write")
+
 	doc.links = []
 	if doc.belongs_to_organization:
 		# All records need to be linked to an Organization for permission
@@ -35,17 +39,23 @@ def validate(doc, event):
 		doc.customer = None
 		doc.company = None
 
-	for (link_doctype, link_name) in (
-		("Customer", doc.customer),
-		("Company", doc.company),
-		("LANDA Member", doc.landa_member),
-		("External Contact", doc.external_contact),
+	for (link_doctype, link_field) in (
+		("Customer", "customer"),
+		("Company", "company"),
+		("LANDA Member", "landa_member"),
+		("External Contact", "external_contact"),
 	):
-		if not link_name:
-			continue
-		linked_doc = frappe.get_doc(link_doctype, link_name)
-		linked_doc.check_permission("write")
-		append(link_doctype, link_name)
+		doc_before_save = doc.get_doc_before_save()
+		old_value = doc_before_save.get(link_field) if doc_before_save else None
+		new_value = doc.get(link_field)
+		if old_value != new_value:
+			if old_value:
+				check_write_permission(link_doctype, old_value)
+			if new_value:
+				check_write_permission(link_doctype, new_value)
+
+		if new_value:
+			append(link_doctype, new_value)
 
 
 def add_data_from_linked_user(doc):
