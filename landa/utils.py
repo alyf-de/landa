@@ -325,9 +325,7 @@ def delete_dynamically_linked_records(doctype: str, name: str) -> None:
 
 
 def unset_value(doctype: str, name: Optional[str], fieldname: str) -> None:
-	doc = frappe.get_doc(doctype, name)
-	if doc.meta.is_submittable and doc.docstatus > 0:
-		doc.db_set(fieldname, None)
+	if name:
+		frappe.db.set_value(doctype, name, fieldname, None)
 	else:
-		doc.set(fieldname, None)
-		doc.save(ignore_permissions=True, ignore_version=True)
+		frappe.db.set_single_value(doctype, fieldname, None)
