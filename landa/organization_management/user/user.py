@@ -76,4 +76,17 @@ def on_trash(user: User, event: str) -> None:
 		frappe.throw(_("You cannot delete standard user."))
 
 	remove_from_table("Note Seen By", "user", user.name)
+	delete_activity_logs(user.name)
 	delete_records_linked_to("User", user.name)
+
+
+def delete_activity_logs(user: str):
+	for activity_log in frappe.get_all(
+		"Activity Log", filters={"owner": user}, pluck="name"
+	):
+		frappe.delete_doc(
+			"Activity Log",
+			activity_log,
+			ignore_permissions=True,
+			delete_permanently=True
+		)
