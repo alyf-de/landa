@@ -214,12 +214,12 @@ def delete_dynamically_linked(
 		doc: Document = frappe.get_doc(doctype, name)
 		if any(
 			row
-			for row in doc.links
+			for row in doc.get(parent_field)
 			if row.link_doctype == linked_doctype and row.link_name != linked_name
 		):
 			# if there are links to records of the same doctype, for example, an
 			# address belonging to multiple members
-			pop_from_table(doctype, name, parent_field, idx)
+			pop_from_table(doctype, name, parent_field, "link_name", linked_name)
 			continue
 
 		frappe.delete_doc(
