@@ -117,6 +117,7 @@
    "fieldname": "workflow_state",
    "fieldtype": "Link",
    "hidden": 1,
+   "in_standard_filter": 1,
    "label": "Workflow State",
    "no_copy": 1,
    "options": "Workflow State"
@@ -135,14 +136,13 @@
    "fieldname": "regional_organization",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
-   "in_standard_filter": 1,
    "label": "Regional Organization",
    "options": "Organization",
    "read_only": 1
   }
  ],
  "links": [],
- "modified": "2022-12-16 16:25:00.442951",
+ "modified": "2023-03-15 12:44:01.690042",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
