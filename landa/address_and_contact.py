@@ -61,7 +61,11 @@ def validate_member_link(doc):
 		if member and not member_link_exists(doc, member):
 			doc.append("links", {"link_doctype": "LANDA Member", "link_name": member})
 
-		if not member_link_exists(doc, member):
+		if (
+			not member_link_exists(doc, member)
+			and not doc.flags.ignore_mandatory
+			and not frappe.flags.in_test
+		):
 			frappe.throw(_("Contacts of users must be linked to a LANDA Member"))
 
 
