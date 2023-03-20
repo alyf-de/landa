@@ -177,19 +177,22 @@ def remove_from_table(table_doctype: str, fieldname: str, value: str):
 	table = frappe.qb.DocType(table_doctype)
 	query = (
 		frappe.qb.from_(table)
-		.select(table.parenttype, table.parent, table.parentfield, table.idx)
+		.select(table.parenttype, table.parent, table.parentfield)
 		.where(table[fieldname] == value)
 		.where(table.docstatus == 0)
 		.distinct()
 	)
 
-	for parent_type, parent_name, parent_field, idx in query.run():
-		pop_from_table(parent_type, parent_name, parent_field, idx)
+	for parent_type, parent_name, parent_field in query.run():
+		pop_from_table(parent_type, parent_name, parent_field, fieldname, value)
 
 
-def pop_from_table(parent_type, parent_name, parent_field, idx):
+def pop_from_table(parent_type, parent_name, parent_field, fieldname, value):
 	doc = frappe.get_doc(parent_type, parent_name)
-	doc.get(parent_field).pop(idx - 1)
+	for row in doc.get(parent_field):
+		if row.get(fieldname) == value:
+			doc.remove(row)
+
 	doc.save(ignore_permissions=True)
 
 
