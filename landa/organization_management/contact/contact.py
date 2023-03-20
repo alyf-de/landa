@@ -1,17 +1,6 @@
 from frappe.contacts.doctype.contact.contact import Contact
 
 
-def after_insert(contact: Contact, event: str) -> None:
-	"""
-	Delete Contact if it's linked to User.
-
-	Frappe automatically creates a Contact for each User. For data protection
-	reasons we don't want this. Therefore we delete the contact again.
-	"""
-	if contact.user:
-		contact.delete()
-
-
 def validate(contact: Contact, event: str) -> None:
 	set_primary_email_if_missing(contact)
 	set_primary_phone_if_missing(contact)
