@@ -187,7 +187,10 @@ doctype_js = {
 	"User": "organization_management/user/user.js",
 	"Customer": "landa_sales/customer/customer.js",
 }
-doctype_list_js = {"Report": "scripts/report_list.js"}
+doctype_list_js = {
+	"Report": "scripts/report_list.js",
+	"User": "organization_management/user/user_list.js",
+}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -274,17 +277,20 @@ doc_events = {
 	"Address": {
 		"validate": "landa.address_and_contact.validate",
 		"autoname": "landa.organization_management.address.address.autoname",
+		"on_trash": "landa.address_and_contact.on_trash",
 	},
 	"Contact": {
 		"validate": [
 			"landa.organization_management.contact.contact.validate",
 			"landa.address_and_contact.validate"
 		],
+		"on_trash": "landa.address_and_contact.on_trash",
 	},
 	"User": {
 		"validate": "landa.organization_management.user.user.validate",
 		"after_insert": "landa.organization_management.user.user.after_insert",
 		"on_update": "landa.organization_management.user.user.on_update",
+		"on_trash": "landa.organization_management.user.user.on_trash",
 	},
 }
 

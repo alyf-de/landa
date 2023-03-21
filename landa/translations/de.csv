@@ -1,1 +1,6 @@
 User {0} is already linked to LANDA Member {1},Nutzer {0} ist bereits mit Mitglied {1} verknüpft,
+You cannot delete your own member record.,Sie können Ihren eigenen Mitgliedsdatensatz nicht löschen.,
+You cannot delete your own user account.,Sie können Ihr eigenes Benutzerkonto nicht löschen.,
+You cannot delete standard user.,Sie können Standardbenutzer nicht löschen.,
+Deleting {0}...,Lösche {0}...,
+Deleting {0} records...,Lösche {0} Datensätze...,

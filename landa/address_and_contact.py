@@ -74,3 +74,8 @@ def member_link_exists(doc, member):
 		x for x in doc.links
 		if x.link_doctype == "LANDA Member" and x.link_name == member
 	)
+
+def on_trash(doc, event):
+	from landa.utils import delete_records_linked_to
+
+	delete_records_linked_to(doc.doctype, doc.name)

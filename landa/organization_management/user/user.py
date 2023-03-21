@@ -1,3 +1,5 @@
+
+
 import frappe
 from frappe import _
 from frappe.permissions import add_user_permission
@@ -7,6 +9,7 @@ from landa.utils import get_default_company
 from landa.organization_management.doctype.member_function.member_function import (
 	apply_active_member_functions,
 )
+from landa.utils import delete_records_linked_to, remove_from_table
 
 
 def validate(doc: User, event=None):
@@ -63,3 +66,27 @@ def restrict_to_organization(organization: str, user: str) -> None:
 def restrict_to_member(member: str, user: str) -> None:
 	add_user_permission("LANDA Member", member, user, ignore_permissions=True)
 	apply_active_member_functions({"member": member})
+
+
+def on_trash(user: User, event: str) -> None:
+	if user.name == frappe.session.user:
+		frappe.throw(_("You cannot delete your own user account."))
+
+	if user.name in STANDARD_USERS:
+		frappe.throw(_("You cannot delete standard user."))
+
+	remove_from_table("Note Seen By", "user", user.name)
+	delete_activity_logs(user.name)
+	delete_records_linked_to("User", user.name)
+
+
+def delete_activity_logs(user: str):
+	for activity_log in frappe.get_all(
+		"Activity Log", filters={"owner": user}, pluck="name"
+	):
+		frappe.delete_doc(
+			"Activity Log",
+			activity_log,
+			ignore_permissions=True,
+			delete_permanently=True
+		)
