@@ -20,4 +20,5 @@ landa.patches.set_phone_and_email_as_primary # 5
 execute:from landa.install import update_stock_settings; update_stock_settings() #4
 execute:from landa.install import update_accounts_settings; update_accounts_settings() #2
 landa.patches.set_billing_and_shipping_defaults
+landa.patches.delete_old_scheduled_job_logs
 landa.patches.update_system_settings
