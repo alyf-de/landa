@@ -81,6 +81,7 @@ def update_system_settings():
 			"allow_guests_to_upload_files": 0,
 			"apply_strict_user_permissions": 1,
 			"apply_perm_level_on_api_calls": 1,
+			"allow_older_web_view_links": 0,
 			"attach_view_link": 1,
 			"country": "Germany",
 			"date_format": "dd.mm.yyyy",
