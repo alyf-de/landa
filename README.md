@@ -7,6 +7,7 @@ Datenmanagementsystem des Landesverbands Sächsischer Angler.
 - [Permissions](docs/permissions.md)
 - [Data Import](docs/data-import.md)
 - [Create Demo Accounts](docs/demo-accounts.md)
+- [System Updates](docs/system-updates.md)
 
 ### API
 
