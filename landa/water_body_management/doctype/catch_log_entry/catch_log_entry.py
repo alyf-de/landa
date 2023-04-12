@@ -20,3 +20,12 @@ class CatchLogEntry(Document):
 			self.origin_of_catch_log_entry = "Regionalverband"
 		else:
 			self.origin_of_catch_log_entry = "Verein"
+	
+	def validate(self):
+		fish_catches = self.fish_catches
+		for i in range(len(fish_catches)):
+			fish_species = frappe.get_doc('Fish Species', fish_catches[i].fish_species)
+			if fish_catches[i].weight_in_kg < fish_species.typical_weight * 0.6 or fish_catches[i].weight_in_kg > fish_species.typical_weight * 1.4:
+				frappe.msgprint("Das Gewicht des Fisches " + str(fish_catches[i].fish_species) + " in Zeile " + str(i + 1) + "  ist nicht plausibel")
+        
+        
