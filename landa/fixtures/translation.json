@@ -7678,5 +7678,21 @@
   "parenttype": null,
   "source_text": "Email (Shipping Contact)",
   "translated_text": "E-Mail (Versandkontakt)"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2023-04-12 14:20:23.610539",
+  "name": "5eadd6ec20",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Catch Log Days and Counts       ",
+  "translated_text": "Angeltage"
  }
 ]
