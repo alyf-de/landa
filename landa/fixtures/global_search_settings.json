@@ -1,9 +1,448 @@
 [
  {
-  "allowed_in_global_search": [],
+  "allowed_in_global_search": [
+   {
+    "document_type": "Customer",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Supplier",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Item",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Warehouse",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Account",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Employee",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "BOM",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Sales Invoice",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Sales Order",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Quotation",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Work Order",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Purchase Order",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Purchase Receipt",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Purchase Invoice",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Delivery Note",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Stock Entry",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Material Request",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Delivery Trip",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Pick List",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Salary Slip",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Leave Application",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Expense Claim",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Payment Entry",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Lead",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Opportunity",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Item Price",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Purchase Taxes and Charges Template",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Sales Taxes and Charges",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Asset",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Project",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Task",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Timesheet",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Issue",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Serial No",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Batch",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Branch",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Department",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Employee Grade",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Designation",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Job Opening",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Job Applicant",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Job Offer",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Salary Structure Assignment",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Appraisal",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Loan",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Maintenance Schedule",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Maintenance Visit",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Warranty Claim",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Contact",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Certified Consultant",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Certification Application",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Volunteer",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Membership",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Member",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Donor",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Chapter",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Grant Application",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Volunteer Type",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Donor Type",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Membership Type",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Address",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "ToDo",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Note",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Event",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Blog Post",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Dashboard",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Country",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Currency",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Newsletter",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Letter Head",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Workflow",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Web Page",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   },
+   {
+    "document_type": "Web Form",
+    "parent": "Global Search Settings",
+    "parentfield": "allowed_in_global_search",
+    "parenttype": "Global Search Settings"
+   }
+  ],
   "docstatus": 0,
   "doctype": "Global Search Settings",
-  "modified": "2022-12-19 13:11:06.535123",
+  "modified": "2023-04-03 13:28:43.897348",
   "name": "Global Search Settings",
   "parent": null,
   "parentfield": null,

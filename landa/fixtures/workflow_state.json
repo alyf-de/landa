@@ -2,18 +2,6 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "ok-sign",
-  "modified": "2021-10-21 15:22:07.874874",
-  "name": "Approved",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "style": "Success",
-  "workflow_state_name": "Approved"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
   "icon": "",
   "modified": "2022-03-17 12:35:51.842356",
   "name": "In Progress",
@@ -38,8 +26,32 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2022-03-17 13:08:27.499007",
+  "icon": "question-sign",
+  "modified": "2023-04-03 16:52:36.700935",
+  "name": "Pending",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "",
+  "workflow_state_name": "Pending"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "ok-sign",
+  "modified": "2023-04-03 16:52:36.703931",
+  "name": "Approved",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "style": "Success",
+  "workflow_state_name": "Approved"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "remove",
+  "modified": "2023-04-03 16:52:36.706510",
   "name": "Rejected",
   "parent": null,
   "parentfield": null,

@@ -1,23 +1,23 @@
 [
  {
-  "app_logo": "/assets/landa/image/icon.png",
+  "app_logo": null,
   "docstatus": 0,
   "doctype": "Navbar Settings",
   "help_dropdown": [
    {
     "action": null,
-    "hidden": 1,
+    "hidden": 0,
     "is_standard": 1,
     "item_label": "Documentation",
     "item_type": "Route",
     "parent": "Navbar Settings",
     "parentfield": "help_dropdown",
     "parenttype": "Navbar Settings",
-    "route": "https://erpnext.com/docs/user/manual"
+    "route": "https://docs.erpnext.com/docs/v13/user/manual/en/introduction"
    },
    {
     "action": null,
-    "hidden": 1,
+    "hidden": 0,
     "is_standard": 1,
     "item_label": "User Forum",
     "item_type": "Route",
@@ -28,7 +28,7 @@
    },
    {
     "action": null,
-    "hidden": 1,
+    "hidden": 0,
     "is_standard": 1,
     "item_label": "Report an Issue",
     "item_type": "Route",
@@ -39,7 +39,7 @@
    },
    {
     "action": "frappe.ui.toolbar.show_about()",
-    "hidden": 1,
+    "hidden": 0,
     "is_standard": 1,
     "item_label": "About",
     "item_type": "Action",
@@ -47,28 +47,6 @@
     "parentfield": "help_dropdown",
     "parenttype": "Navbar Settings",
     "route": null
-   },
-   {
-    "action": null,
-    "hidden": 0,
-    "is_standard": 0,
-    "item_label": "Contact",
-    "item_type": "Route",
-    "parent": "Navbar Settings",
-    "parentfield": "help_dropdown",
-    "parenttype": "Navbar Settings",
-    "route": "/contact"
-   },
-   {
-    "action": "",
-    "hidden": 0,
-    "is_standard": 0,
-    "item_label": "About",
-    "item_type": "Route",
-    "parent": "Navbar Settings",
-    "parentfield": "help_dropdown",
-    "parenttype": "Navbar Settings",
-    "route": "/about"
    },
    {
     "action": "frappe.ui.toolbar.show_shortcuts(event)",
@@ -83,7 +61,7 @@
    }
   ],
   "logo_width": 0,
-  "modified": "2021-12-22 18:40:53.289269",
+  "modified": "2023-04-03 16:53:48.143444",
   "name": "Navbar Settings",
   "parent": null,
   "parentfield": null,
@@ -156,8 +134,19 @@
     "route": null
    },
    {
+    "action": "new frappe.ui.ThemeSwitcher().show()",
+    "hidden": 0,
+    "is_standard": 1,
+    "item_label": "Toggle Theme",
+    "item_type": "Action",
+    "parent": "Navbar Settings",
+    "parentfield": "settings_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": null
+   },
+   {
     "action": null,
-    "hidden": 1,
+    "hidden": 0,
     "is_standard": 1,
     "item_label": "Background Jobs",
     "item_type": "Route",

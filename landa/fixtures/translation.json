@@ -7694,5 +7694,21 @@
   "parenttype": null,
   "source_text": "Catch Log Days and Counts       ",
   "translated_text": "Angeltage"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2023-04-13 16:48:26.189404",
+  "name": "46d1f00d1d",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "The weight of {0} in row {1} is not plausible",
+  "translated_text": "Das Gewicht von {0} in Reihe {1} ist nicht plausibel."
  }
 ]

@@ -2,8 +2,38 @@
  {
   "docstatus": 0,
   "doctype": "Gender",
+  "gender": "Male",
+  "modified": "2023-04-03 13:28:43.486713",
+  "name": "Male",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Gender",
+  "gender": "Female",
+  "modified": "2023-04-03 13:28:43.524175",
+  "name": "Female",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Gender",
+  "gender": "Other",
+  "modified": "2023-04-03 13:28:43.535148",
+  "name": "Other",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Gender",
   "gender": "Transgender",
-  "modified": "2021-10-21 11:56:43.124760",
+  "modified": "2023-04-03 13:28:43.545517",
   "name": "Transgender",
   "parent": null,
   "parentfield": null,
@@ -13,8 +43,28 @@
   "docstatus": 0,
   "doctype": "Gender",
   "gender": "Genderqueer",
-  "modified": "2021-10-21 11:56:43.129056",
+  "modified": "2023-04-03 13:28:43.556755",
   "name": "Genderqueer",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Gender",
+  "gender": "Non-Conforming",
+  "modified": "2023-04-03 13:28:43.566918",
+  "name": "Non-Conforming",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Gender",
+  "gender": "Prefer not to say",
+  "modified": "2023-04-03 13:28:43.577251",
+  "name": "Prefer not to say",
   "parent": null,
   "parentfield": null,
   "parenttype": null

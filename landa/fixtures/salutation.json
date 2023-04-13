@@ -2,6 +2,96 @@
  {
   "docstatus": 0,
   "doctype": "Salutation",
+  "modified": "2023-04-03 13:28:43.624488",
+  "name": "Mr",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Mr"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
+  "modified": "2023-04-03 13:28:43.649162",
+  "name": "Ms",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Ms"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
+  "modified": "2023-04-03 13:28:43.660389",
+  "name": "Mx",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Mx"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
+  "modified": "2023-04-03 13:28:43.670777",
+  "name": "Dr",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Dr"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
+  "modified": "2023-04-03 13:28:43.681351",
+  "name": "Mrs",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Mrs"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
+  "modified": "2023-04-03 13:28:43.692108",
+  "name": "Madam",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Madam"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
+  "modified": "2023-04-03 13:28:43.702981",
+  "name": "Miss",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Miss"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
+  "modified": "2023-04-03 13:28:43.713315",
+  "name": "Master",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Master"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
+  "modified": "2023-04-03 13:28:43.724600",
+  "name": "Prof",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "salutation": "Prof"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Salutation",
   "modified": "2021-12-03 17:34:34.017813",
   "name": "Herr",
   "parent": null,

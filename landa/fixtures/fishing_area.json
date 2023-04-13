@@ -388,5 +388,18 @@
   "parent": null,
   "parentfield": null,
   "parenttype": null
+ },
+ {
+  "area_code": "ABC",
+  "area_name": "Test",
+  "docstatus": 0,
+  "doctype": "Fishing Area",
+  "modified": "2023-04-11 15:42:50.984380",
+  "name": "ABC",
+  "organization": "62cc724379",
+  "organization_name": "Angler",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null
  }
 ]

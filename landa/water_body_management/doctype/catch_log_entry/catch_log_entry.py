@@ -22,10 +22,15 @@ class CatchLogEntry(Document):
 			self.origin_of_catch_log_entry = "Verein"
 	
 	def validate(self):
-		fish_catches = self.fish_catches
-		for i in range(len(fish_catches)):
-			fish_species = frappe.get_doc('Fish Species', fish_catches[i].fish_species)
-			if fish_catches[i].weight_in_kg < fish_species.typical_weight * 0.6 or fish_catches[i].weight_in_kg > fish_species.typical_weight * 1.4:
-				frappe.msgprint("Das Gewicht des Fisches " + str(fish_catches[i].fish_species) + " in Zeile " + str(i + 1) + "  ist nicht plausibel")
+		tolerance = 0.4
+		for row in self.fish_catches:
+			typical_weight = frappe.db.get_value("Fish Species", row.fish_species, "typical_weight")
+			if (
+				row.weight_in_kg < typical_weight * (1 - tolerance) or
+				row.weight_in_kg > typical_weight * (1 + tolerance)
+				):
+				frappe.msgprint(
+                    frappe._("The weight of {0} in row {1} is not plausible").format(row.fish_species, row.idx)
+                )
         
         
