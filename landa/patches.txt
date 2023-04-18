@@ -22,4 +22,4 @@ execute:from landa.install import update_accounts_settings; update_accounts_sett
 landa.patches.set_billing_and_shipping_defaults
 landa.patches.delete_old_scheduled_job_logs
 landa.patches.update_system_settings
-landa.patches.delete_customized_workspaces
+landa.patches.delete_customized_workspaces  # 2023-04-14
