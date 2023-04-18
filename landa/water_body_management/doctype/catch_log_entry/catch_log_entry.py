@@ -28,7 +28,7 @@ class CatchLogEntry(Document):
 			if (
 				row.weight_in_kg < typical_weight * (1 - tolerance) or
 				row.weight_in_kg > typical_weight * (1 + tolerance)
-				):
+			):
 				frappe.msgprint(
-                    frappe._("The weight of {0} in row {1} is not plausible").format(row.fish_species, row.idx)
-                )
+					frappe._("The weight of {0} in row {1} is not plausible").format(row.fish_species, row.idx)
+				)
