@@ -66,7 +66,7 @@
   {
     "fieldname": "typical_weight",
     "fieldtype": "Data",
-    "label": "Typical Weight"
+    "label": "Typical Weight in Kg"
   },
   {
    "fieldname": "general_fishing_limit",

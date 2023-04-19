@@ -7709,6 +7709,6 @@
   "parentfield": null,
   "parenttype": null,
   "source_text": "The weight of {0} in row {1} is not plausible",
-  "translated_text": "Das Gewicht des Fisches {0} in row {1} ist nicht plausibel"
+  "translated_text": "Das Gewicht des Fisches {0} in Reihe {1} ist nicht plausibel"
  }
 ]
