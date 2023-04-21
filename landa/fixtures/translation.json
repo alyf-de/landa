@@ -7692,8 +7692,8 @@
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "source_text": "Typical Weight",
-  "translated_text": "Typisches Gewicht"
+  "source_text": "Typical Weight in Kg",
+  "translated_text": "Typisches Gewicht in Kg"
  },
  {
   "context": null,
