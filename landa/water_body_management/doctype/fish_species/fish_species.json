@@ -64,7 +64,7 @@
    "label": "Minimum Size"
   },
   {
-    "fieldname": "typical_weight",
+    "fieldname": "typical_weight_in_kg",
     "fieldtype": "Data",
     "label": "Typical Weight in Kg"
   },
