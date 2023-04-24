@@ -7703,12 +7703,12 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2023-04-14 14:55:08.320488",
+  "modified": "2023-04-24 10:55:08.320488",
   "name": "e5ddc15f05",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "The weight of {0} in row {1} is not plausible",
-  "translated_text": "Das Gewicht des Fisches {0} in Reihe {1} ist nicht plausibel"
+  "translated_text": "Das Gewicht von Fischart {0} in Zeile {1} ist nicht plausibel"
  }
 ]
