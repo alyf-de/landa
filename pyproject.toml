@@ -1,3 +1,16 @@
+[project]
+name = "landa"
+authors = [
+    { name = "ALYF GmbH", email = "hallo@alyf.de" },
+]
+description = "Datenmanagementsystem des Landesverband Sächsischer Angler e. V."
+requires-python = ">=3.7"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    "thefuzz",
+]
+
 [tool.black]
 line-length = 99
 
