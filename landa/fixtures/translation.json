@@ -7678,37 +7678,5 @@
   "parenttype": null,
   "source_text": "Email (Shipping Contact)",
   "translated_text": "E-Mail (Versandkontakt)"
- },
- {
-  "context": null,
-  "contributed": 0,
-  "contribution_docname": null,
-  "contribution_status": "",
-  "docstatus": 0,
-  "doctype": "Translation",
-  "language": "de",
-  "modified": "2023-04-14 14:50:07.896235",
-  "name": "e6b5de9840",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "source_text": "Typical Weight in Kg",
-  "translated_text": "Typisches Gewicht in Kg"
- },
- {
-  "context": null,
-  "contributed": 0,
-  "contribution_docname": null,
-  "contribution_status": "",
-  "docstatus": 0,
-  "doctype": "Translation",
-  "language": "de",
-  "modified": "2023-04-24 10:55:08.320488",
-  "name": "e5ddc15f05",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "source_text": "The weight of {0} in row {1} is not plausible",
-  "translated_text": "Das Gewicht von Fischart {0} in Zeile {1} ist nicht plausibel"
  }
 ]
