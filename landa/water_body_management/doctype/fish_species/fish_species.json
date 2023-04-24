@@ -64,6 +64,11 @@
    "label": "Minimum Size"
   },
   {
+    "fieldname": "typical_weight_in_kg",
+    "fieldtype": "Data",
+    "label": "Typical Weight in Kg"
+  },
+  {
    "fieldname": "general_fishing_limit",
    "fieldtype": "Data",
    "label": "General Fishing Limit"
