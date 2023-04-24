@@ -1,4 +1,3 @@
-
 def validate(item_price, event):
 	"""
 	Unset any values that might have been set by accident and will mess up pricing logic.

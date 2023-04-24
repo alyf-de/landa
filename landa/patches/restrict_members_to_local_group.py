@@ -1,6 +1,7 @@
-from pypika.functions import Length
 import frappe
-from frappe.permissions import clear_user_permissions_for_doctype, add_user_permission
+from frappe.permissions import add_user_permission, clear_user_permissions_for_doctype
+from pypika.functions import Length
+
 from landa.organization_management.doctype.member_function.member_function import (
 	apply_active_member_functions,
 )

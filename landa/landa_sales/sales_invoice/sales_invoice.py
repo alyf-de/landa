@@ -1,5 +1,6 @@
 import frappe
 from erpnext.accounts.doctype.sales_invoice.sales_invoice import make_delivery_note
+
 from landa.utils import update_doc
 
 
@@ -7,9 +8,7 @@ def before_validate(sales_invoice, event):
 	"""Set Tax Category to 'Umsatzsteuer'"""
 	import frappe
 
-	if (not sales_invoice.tax_category) and frappe.db.exists(
-		"Tax Category", "Umsatzsteuer"
-	):
+	if (not sales_invoice.tax_category) and frappe.db.exists("Tax Category", "Umsatzsteuer"):
 		sales_invoice.tax_category = "Umsatzsteuer"
 
 

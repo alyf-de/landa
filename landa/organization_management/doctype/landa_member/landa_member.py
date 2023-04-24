@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from __future__ import unicode_literals
 
 import frappe
 from frappe import _
 from frappe.contacts.address_and_contact import load_address_and_contact
 from frappe.model.document import Document
 from frappe.model.naming import make_autoname, revert_series_if_last
+
 from landa.utils import (
 	delete_dynamically_linked,
 	delete_records_linked_to,
@@ -33,9 +32,7 @@ class LANDAMember(Document):
 	def validate(self):
 		if frappe.db.get_value("Organization", self.organization, "is_group"):
 			frappe.throw(
-				_(
-					"Cannot be a member of organization {} because it is a group."
-				).format(self.organization)
+				_("Cannot be a member of organization {} because it is a group.").format(self.organization)
 			)
 
 		self.full_name = get_full_name(self.first_name, self.last_name)
@@ -70,8 +67,4 @@ class LANDAMember(Document):
 
 
 def get_full_name(first_name, last_name):
-	return (
-		(first_name or "")
-		+ (" " if (last_name and first_name) else "")
-		+ (last_name or "")
-	)
+	return (first_name or "") + (" " if (last_name and first_name) else "") + (last_name or "")

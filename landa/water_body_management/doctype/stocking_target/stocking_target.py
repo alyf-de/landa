@@ -11,7 +11,7 @@ from landa.water_body_management.stocking_controller import StockingController
 
 class StockingTarget(StockingController):
 	def validate(self):
-		super(StockingTarget, self).validate()
+		super().validate()
 		self.validate_is_unique()
 
 	def validate_is_unique(self):

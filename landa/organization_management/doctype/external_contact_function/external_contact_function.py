@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 

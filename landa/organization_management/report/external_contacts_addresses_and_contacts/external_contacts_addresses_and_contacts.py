@@ -2,10 +2,9 @@
 # For license information, please see license.txt
 
 from typing import List
-import pandas as pd
 
 import frappe
-
+import pandas as pd
 
 COLUMNS = [
 	{
@@ -66,21 +65,15 @@ def get_data(filters):
 	def to_df(records, columns):
 		"""Convert a list of records to a dataframe."""
 		index = "external_contact"
-		return pd.DataFrame.from_records(
-			records, columns=[index] + columns, index=index
-		)
+		return pd.DataFrame.from_records(records, columns=[index] + columns, index=index)
 
-	def remove_duplicate_indices(
-		df, index="external_contact", sort_by=None, keep="last"
-	):
+	def remove_duplicate_indices(df, index="external_contact", sort_by=None, keep="last"):
 		"""Remove rows in dataframe with duplicate indeces.
 		If sort_by is specified the dataframe is firsted sorted by these columns keeping the entry specified in keep, e.g. 'last'"""
 		if sort_by is not None:
 			df = df.sort_values(sort_by)
 
-		return (
-			df.reset_index().drop_duplicates(subset=[index], keep=keep).set_index(index)
-		)
+		return df.reset_index().drop_duplicates(subset=[index], keep=keep).set_index(index)
 
 	def get_link_filters(link_names: List[str]):
 		return [
@@ -123,11 +116,7 @@ def get_data(filters):
 
 	# merge all columns to one address column and add this as the first column
 	addresses_df["full_address"] = (
-		addresses_df["address_line1"]
-		+ ", "
-		+ addresses_df["pincode"]
-		+ " "
-		+ addresses_df["city"]
+		addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 	)
 
 	# remove column 'is_primary_address'
@@ -160,9 +149,7 @@ def get_data(filters):
 	)
 
 	# merge all dataframes from different doctypes
-	data = pd.concat(
-		[external_contact_df, external_functions_df, addresses_df, contacts_df], axis=1
-	)
+	data = pd.concat([external_contact_df, external_functions_df, addresses_df, contacts_df], axis=1)
 	# replace NaNs with empty strings
 	data.fillna("", inplace=True)
 	# convert data back to tuple

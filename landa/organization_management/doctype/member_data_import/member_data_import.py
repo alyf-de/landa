@@ -1,11 +1,13 @@
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
+from datetime import datetime
+
 import frappe
 from frappe.model.document import Document
 from frappe.utils.dateutils import parse_date
+
 from landa.organization_management.doctype.landa_member.landa_member import LANDAMember
-from datetime import datetime
 
 
 class MemberDataImport(Document):
@@ -131,9 +133,7 @@ class MemberDataImport(Document):
 		"""Update all `fields` of `doc` with the values from `self`."""
 		for fieldname in fields:
 			new_value = self.get(fieldname)
-			if not new_value and not isinstance(
-				new_value, int
-			):	# int == 0 is allowed to disable checkbox
+			if not new_value and not isinstance(new_value, int):  # int == 0 is allowed to disable checkbox
 				continue
 
 			old_value = doc.get(fieldname)

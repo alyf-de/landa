@@ -1,5 +1,6 @@
-from typing import Dict, List
 import json
+from typing import Dict, List
+
 import frappe
 
 

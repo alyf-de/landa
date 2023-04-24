@@ -1,30 +1,26 @@
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from __future__ import unicode_literals
 import frappe
 
-class LANDAMemberCount(object):
 
+class LANDAMemberCount:
 	def __init__(self, filters):
-		if 'organization' in filters and filters['organization'] in ["AVL", "AVS", "AVE"]:
-			filters['company'] = frappe.get_value(
-				'Organization',
-				filters.get('organization'),
-				'organization_name'
+		if "organization" in filters and filters["organization"] in ["AVL", "AVS", "AVE"]:
+			filters["company"] = frappe.get_value(
+				"Organization", filters.get("organization"), "organization_name"
 			)
-			filters['company_abbr'] = filters.pop('organization')
+			filters["company_abbr"] = filters.pop("organization")
 		else:
-			filters['total'] = 0
+			filters["total"] = 0
 
 		self.filters = filters
 
 	def run(self):
-		if 'company' in self.filters or 'organization' in self.filters:
+		if "company" in self.filters or "organization" in self.filters:
 			return self.get_columns(), self.get_data()
 		else:
 			return [], []
-
 
 	def get_data(self):
 		sql_query = """
@@ -48,17 +44,19 @@ class LANDAMemberCount(object):
 			GROUP BY dn.year_of_settlement, CASE WHEN %s = 0 THEN dn.customer ELSE dn.company END
 			ORDER BY dn.customer, dn.year_of_settlement
 			"""
-		
-		return frappe.db.sql(sql_query, (
-			self.filters.get('total', 0),
-			self.filters.get('company_abbr', ''),
-			self.filters.get('total', 0),
-			self.filters.get('year', '%'),
-			self.filters.get('organization', '%'),
-			self.filters.get('company', '%'),
-			self.filters.get('total', 0)
-		))
 
+		return frappe.db.sql(
+			sql_query,
+			(
+				self.filters.get("total", 0),
+				self.filters.get("company_abbr", ""),
+				self.filters.get("total", 0),
+				self.filters.get("year", "%"),
+				self.filters.get("organization", "%"),
+				self.filters.get("company", "%"),
+				self.filters.get("total", 0),
+			),
+		)
 
 	def get_columns(self):
 		return [
@@ -67,45 +65,36 @@ class LANDAMemberCount(object):
 				"fieldtype": "Link",
 				"label": "Organization",
 				"options": "Organization",
-				"width": 150
+				"width": 150,
 			},
 			{
 				"fieldname": "customer_name",
 				"fieldtype": "Data",
 				"label": "Organization Name",
-				"width": 250
+				"width": 250,
 			},
-			{
-				"fieldname": "year",
-				"fieldtype": "Data",
-				"label": "Year",
-				"width": 150
-			},
+			{"fieldname": "year", "fieldtype": "Data", "label": "Year", "width": 150},
 			{
 				"fieldname": "vollzahler",
 				"fieldtype": "Data",
 				"label": "Vollzahler",
-				"width": 150
+				"width": 150,
 			},
-			{
-				"fieldname": "jugend",
-				"fieldtype": "Data",
-				"label": "Jugend",
-				"width": 150
-			},
+			{"fieldname": "jugend", "fieldtype": "Data", "label": "Jugend", "width": 150},
 			{
 				"fieldname": "foerdermitglied",
 				"fieldtype": "Data",
 				"label": "Fördermitglied",
-				"width": 150
+				"width": 150,
 			},
 			{
 				"fieldname": "austauschmarke",
 				"fieldtype": "Data",
 				"label": "Austauschmarke",
-				"width": 150
-			}
+				"width": 150,
+			},
 		]
+
 
 def execute(filters=None):
 	return LANDAMemberCount(filters).run()

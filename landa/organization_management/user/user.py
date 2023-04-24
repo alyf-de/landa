@@ -1,15 +1,12 @@
-
-
 import frappe
 from frappe import _
+from frappe.core.doctype.user.user import STANDARD_USERS, User
 from frappe.permissions import add_user_permission
-from frappe.core.doctype.user.user import User, STANDARD_USERS
 
-from landa.utils import get_default_company
 from landa.organization_management.doctype.member_function.member_function import (
 	apply_active_member_functions,
 )
-from landa.utils import delete_records_linked_to, remove_from_table
+from landa.utils import delete_records_linked_to, get_default_company, remove_from_table
 
 
 def validate(doc: User, event=None):
@@ -25,9 +22,7 @@ def validate(doc: User, event=None):
 		)
 		if existing_user:
 			frappe.throw(
-				_("User {0} is already linked to LANDA Member {1}").format(
-					existing_user, doc.landa_member
-				)
+				_("User {0} is already linked to LANDA Member {1}").format(existing_user, doc.landa_member)
 			)
 
 	if not doc.module_profile and not frappe.flags.in_test:
@@ -58,9 +53,7 @@ def on_update(doc: User, event=None):
 
 def restrict_to_organization(organization: str, user: str) -> None:
 	add_user_permission("Organization", organization, user, ignore_permissions=True)
-	add_user_permission(
-		"Company", get_default_company(organization), user, ignore_permissions=True
-	)
+	add_user_permission("Company", get_default_company(organization), user, ignore_permissions=True)
 
 
 def restrict_to_member(member: str, user: str) -> None:
@@ -81,12 +74,5 @@ def on_trash(user: User, event: str) -> None:
 
 
 def delete_activity_logs(user: str):
-	for activity_log in frappe.get_all(
-		"Activity Log", filters={"owner": user}, pluck="name"
-	):
-		frappe.delete_doc(
-			"Activity Log",
-			activity_log,
-			ignore_permissions=True,
-			delete_permanently=True
-		)
+	for activity_log in frappe.get_all("Activity Log", filters={"owner": user}, pluck="name"):
+		frappe.delete_doc("Activity Log", activity_log, ignore_permissions=True, delete_permanently=True)

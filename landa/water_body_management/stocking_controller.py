@@ -21,12 +21,9 @@ class StockingController(Document):
 	def validate_own_water_body(self):
 		if (
 			self.water_body
-			and frappe.db.get_value("Water Body", self.water_body, "organization")
-			!= self.organization
+			and frappe.db.get_value("Water Body", self.water_body, "organization") != self.organization
 		):
-			frappe.throw(
-				_("Please select a Water Body from your own regional Organization.")
-			)
+			frappe.throw(_("Please select a Water Body from your own regional Organization."))
 
 	def set_weight_per_size(self):
 		if not (self.weight and self.water_body_size):

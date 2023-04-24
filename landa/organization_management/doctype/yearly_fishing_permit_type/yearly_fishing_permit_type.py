@@ -1,12 +1,10 @@
-# -*- coding: utf-8 -*-
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from __future__ import unicode_literals
 import frappe
 from frappe import _
-from frappe.utils.data import get_link_to_form
 from frappe.model.document import Document
+from frappe.utils.data import get_link_to_form
 
 
 class YearlyFishingPermitType(Document):
@@ -32,17 +30,13 @@ def validate_item_attribute(item_attribute_name, attribute_value, abbr):
 	if attribute_value in existing_values:
 		# Attribute value exists, but with a different abbreviation
 		frappe.throw(
-			_('Value "{}" exists already in Item Attribute {}.').format(
-				attribute_value, item_attr_link
-			)
+			_('Value "{}" exists already in Item Attribute {}.').format(attribute_value, item_attr_link)
 		)
 
 	if abbr in existing_abbreviations:
 		# Abbreviation exists, but with a different attribute value
 		frappe.throw(
-			_('Abbreviation "{}" exists already in Item Attribute {}.').format(
-				abbr, item_attr_link
-			)
+			_('Abbreviation "{}" exists already in Item Attribute {}.').format(abbr, item_attr_link)
 		)
 
 
@@ -58,7 +52,5 @@ def add_attribute_value(item_attribute_name, attribute_value, abbr):
 		# Item attribute exists already, as intended
 		return
 
-	item_attr.append(
-		"item_attribute_values", {"attribute_value": attribute_value, "abbr": abbr}
-	)
+	item_attr.append("item_attribute_values", {"attribute_value": attribute_value, "abbr": abbr})
 	item_attr.save()
