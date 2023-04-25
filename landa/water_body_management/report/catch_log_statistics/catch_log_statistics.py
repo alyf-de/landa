@@ -3,7 +3,7 @@
 
 import frappe
 from frappe import _
-from pypika.functions import Sum
+from pypika.functions import Coalesce, Substring, Sum
 
 from landa.organization_management.doctype.organization.organization import (
 	get_supported_water_bodies,
@@ -39,45 +39,90 @@ COLUMNS = [
 		"fieldtype": "Float",
 		"label": "Weight in Kg",
 	},
+	{
+		"fieldname": "by_foreign_regional_org",
+		"fieldtype": "Percent",
+		"label": "By Foreign Regional Organization",
+		"precision": 0,
+	},
 ]
 
 
 def get_data(filters):
-	filters["workflow_state"] = "Approved"
-	fish_species = filters.pop("fish_species", None)
-	from_year = filters.pop("from_year", None)
-	to_year = filters.pop("to_year", None)
-
 	entry = frappe.qb.DocType("Catch Log Entry")
 	child_table = frappe.qb.DocType("Catch Log Fish Table")
+	qb_filters = get_qb_filters(filters, entry, child_table)
+
+	by_all_regional_orgs = (
+		frappe.qb.from_(entry)
+		.join(child_table)
+		.on(entry.name == child_table.parent)
+		.select(entry.water_body, child_table.fish_species, Sum(child_table.amount).as_("total_amount"))
+	)
+	by_all_regional_orgs = add_conditions(by_all_regional_orgs, qb_filters)
+	by_all_regional_orgs = add_or_filters(by_all_regional_orgs, entry)
+	by_all_regional_orgs = by_all_regional_orgs.groupby(entry.water_body, child_table.fish_species)
+
+	by_foreign_regional_orgs = (
+		frappe.qb.from_(entry)
+		.join(child_table)
+		.on(entry.name == child_table.parent)
+		.select(entry.water_body, child_table.fish_species, Sum(child_table.amount).as_("total_amount"))
+		.where(Substring(entry.organization, 1, 3) != entry.regional_organization)  # index starts at 1
+	)
+	by_foreign_regional_orgs = add_conditions(by_foreign_regional_orgs, qb_filters)
+	by_foreign_regional_orgs = add_or_filters(by_foreign_regional_orgs, entry)
+	by_foreign_regional_orgs = by_foreign_regional_orgs.groupby(
+		entry.water_body, child_table.fish_species
+	)
 
 	query = (
 		frappe.qb.from_(entry)
 		.join(child_table)
 		.on(entry.name == child_table.parent)
+		.left_join(by_all_regional_orgs)
+		.on(
+			entry.water_body == by_all_regional_orgs.water_body
+			and child_table.fish_species == by_all_regional_orgs.fish_species
+		)
+		.left_join(by_foreign_regional_orgs)
+		.on(
+			entry.water_body == by_foreign_regional_orgs.water_body
+			and child_table.fish_species == by_foreign_regional_orgs.fish_species
+		)
 		.select(
 			entry.water_body,
 			child_table.fish_species,
-			Sum(child_table.amount).as_("amount"),
-			Sum(child_table.weight_in_kg).as_("weight_in_kg"),
+			Sum(child_table.amount),
+			Sum(child_table.weight_in_kg),
+			(Coalesce(by_foreign_regional_orgs.total_amount, 0) / by_all_regional_orgs.total_amount * 100),
 		)
 	)
 
-	for key, value in filters.items():
-		query = query.where(entry[key] == value)
+	query = add_conditions(query, qb_filters)
+	query = add_or_filters(query, entry)
+	query = query.groupby(entry.water_body, child_table.fish_species)
+	return query.run()
+
+
+def get_qb_filters(filters, entry, child_table):
+	filters["workflow_state"] = "Approved"
+	fish_species = filters.pop("fish_species", None)
+	from_year = filters.pop("from_year", None)
+	to_year = filters.pop("to_year", None)
+
+	qb_filters = [entry[key] == value for key, value in filters.items()]
 
 	if fish_species:
-		query = query.where(child_table.fish_species == fish_species)
+		qb_filters.append(child_table.fish_species == fish_species)
 
 	if from_year:
-		query = query.where(entry.year >= from_year)
+		qb_filters.append(entry.year >= from_year)
 
 	if to_year:
-		query = query.where(entry.year <= to_year)
+		qb_filters.append(entry.year <= to_year)
 
-	query = add_or_filters(query, entry)
-	query = query.groupby(entry.water_body, entry.fishing_area, child_table.fish_species)
-	return query.run()
+	return qb_filters
 
 
 def add_or_filters(query, entry):
@@ -111,6 +156,13 @@ def add_or_filters(query, entry):
 			entry.organization.like(f"{member_data.local_organization}%")
 			| entry.water_body.isin(get_supported_water_bodies(member_data.local_organization))
 		)
+
+
+def add_conditions(query, conditions):
+	for condition in conditions:
+		query = query.where(condition)
+
+	return query
 
 
 def execute(filters=None):
