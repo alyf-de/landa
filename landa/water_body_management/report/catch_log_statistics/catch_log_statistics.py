@@ -3,7 +3,7 @@
 
 import frappe
 from frappe import _
-from pypika.functions import Cast, Sum
+from pypika.functions import Sum
 
 from landa.organization_management.doctype.organization.organization import (
 	get_supported_water_bodies,
@@ -17,11 +17,6 @@ REGIONAL_ROLES = {
 }
 
 COLUMNS = [
-	{
-		"fieldname": "year",
-		"fieldtype": "Data",
-		"label": "Year",
-	},
 	{
 		"fieldname": "water_body",
 		"fieldtype": "Link",
@@ -50,6 +45,8 @@ COLUMNS = [
 def get_data(filters):
 	filters["workflow_state"] = "Approved"
 	fish_species = filters.pop("fish_species", None)
+	from_year = filters.pop("from_year", None)
+	to_year = filters.pop("to_year", None)
 
 	entry = frappe.qb.DocType("Catch Log Entry")
 	child_table = frappe.qb.DocType("Catch Log Fish Table")
@@ -59,7 +56,6 @@ def get_data(filters):
 		.join(child_table)
 		.on(entry.name == child_table.parent)
 		.select(
-			Cast(entry.year, as_type="CHAR"),
 			entry.water_body,
 			child_table.fish_species,
 			Sum(child_table.amount).as_("amount"),
@@ -73,9 +69,14 @@ def get_data(filters):
 	if fish_species:
 		query = query.where(child_table.fish_species == fish_species)
 
-	query = add_or_filters(query, entry)
-	query = query.groupby(entry.year, entry.water_body, entry.fishing_area, child_table.fish_species)
+	if from_year:
+		query = query.where(entry.year >= from_year)
 
+	if to_year:
+		query = query.where(entry.year <= to_year)
+
+	query = add_or_filters(query, entry)
+	query = query.groupby(entry.water_body, entry.fishing_area, child_table.fish_species)
 	return query.run()
 
 
@@ -84,10 +85,8 @@ def add_or_filters(query, entry):
 	allowed to see.
 
 	STATE_ROLES		no filters
-	REGIONAL_ROLES	everything related to their water bodys OR to their member
-	                                organizations
-	LOCAL_ROLES		everything related to their own organization and OR to the
-	                                water bodys it is supporting
+	REGIONAL_ROLES	everything related to their water bodys OR to their member organizations
+	LOCAL_ROLES		everything related to their own organization and OR to the water bodys it is supporting
 	"""
 	user_roles = set(frappe.get_roles())
 
@@ -115,4 +114,4 @@ def add_or_filters(query, entry):
 
 
 def execute(filters=None):
-	return COLUMNS, get_data(filters)
+	return COLUMNS, get_data(filters) or []
