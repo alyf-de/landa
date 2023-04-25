@@ -1,14 +1,13 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-import pandas as pd
-
-import frappe
-
 from datetime import datetime
 
+import frappe
+import pandas as pd
 
-class Address(object):
+
+class Address:
 	def __init__(self, filters):
 		# set filters
 		self.filter_name = {}
@@ -45,11 +44,7 @@ class Address(object):
 			if sort_by is not None:
 				df = df.sort_values(sort_by)
 
-			return (
-				df.reset_index()
-				.drop_duplicates(subset=[index], keep=keep)
-				.set_index(index)
-			)
+			return df.reset_index().drop_duplicates(subset=[index], keep=keep).set_index(index)
 
 		def get_link_filters(frappe_tuple):
 			return [
@@ -94,17 +89,11 @@ class Address(object):
 		# convert to pandas dataframe
 		addresses_df = frappe_tuple_to_pandas_df(addresses, address_fields + ["member"])
 		# remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
-		addresses_df = remove_duplicate_indices(
-			addresses_df, sort_by="is_primary_address"
-		)
+		addresses_df = remove_duplicate_indices(addresses_df, sort_by="is_primary_address")
 
 		# merge all columns to one address column and add this as the first column
 		addresses_df["full_address"] = (
-			addresses_df["address_line1"]
-			+ ", "
-			+ addresses_df["pincode"]
-			+ " "
-			+ addresses_df["city"]
+			addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 		)
 
 		# remove column 'is_primary_address'
@@ -114,9 +103,7 @@ class Address(object):
 		permit_fields = ["year", "member", "docstatus"]
 		permits = frappe.get_list(
 			"Yearly Fishing Permit",
-			filters=[
-				["Yearly Fishing Permit", "member", "in", get_member_filter(members)]
-			],
+			filters=[["Yearly Fishing Permit", "member", "in", get_member_filter(members)]],
 			fields=permit_fields,
 			as_list=True,
 		)
@@ -136,13 +123,9 @@ class Address(object):
 			]
 		# if this month is July to December: members need a permit for this year:
 		else:
-			permits_df["permit_active"] = [
-				int(this_year == int(y)) for y in permits_df["year"].values
-			]
+			permits_df["permit_active"] = [int(this_year == int(y)) for y in permits_df["year"].values]
 		# merge all dataframes from different doctypes
-		data = pd.concat([member_df, permits_df, addresses_df], axis=1).reindex(
-			member_df.index
-		)
+		data = pd.concat([member_df, permits_df, addresses_df], axis=1).reindex(member_df.index)
 		data["magazine_active"] = data["permit_active"] * data["magazine_recipient"]
 		if self.only_active_magazine:
 			data = data[data["magazine_active"] == 1]

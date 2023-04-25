@@ -23,9 +23,9 @@ class CatchLogFishTable(Document):
 			return True
 
 		msgprint(
-			_(
-				"The weight of {0} in row {1} diverges from the typical weight by more than 40 %"
-			).format(self.fish_species, self.idx),
+			_("The weight of {0} in row {1} diverges from the typical weight by more than 40 %").format(
+				self.fish_species, self.idx
+			),
 			indicator="orange",
 			alert=True,
 		)

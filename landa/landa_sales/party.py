@@ -1,8 +1,6 @@
 import frappe
 from erpnext.accounts.party import get_party_details
-from frappe.contacts.doctype.address.address import (
-	get_address_display,
-)
+from frappe.contacts.doctype.address.address import get_address_display
 from frappe.contacts.doctype.contact.contact import get_contact_details
 
 EMPTY_CONTACT = {
@@ -63,9 +61,7 @@ def get_landa_party_details(
 
 def set_billing_address(party_details, customer):
 	party_details["customer_address"] = customer.default_billing_address
-	party_details["address_display"] = get_address_display(
-		customer.default_billing_address
-	)
+	party_details["address_display"] = get_address_display(customer.default_billing_address)
 
 
 def set_billing_contact(party_details, customer, doctype):
@@ -90,9 +86,7 @@ def set_billing_contact(party_details, customer, doctype):
 
 def set_shipping_address(party_details, customer):
 	party_details["shipping_address_name"] = customer.default_shipping_address
-	party_details["shipping_address"] = get_address_display(
-		customer.default_shipping_address
-	)
+	party_details["shipping_address"] = get_address_display(customer.default_shipping_address)
 
 
 def set_shipping_contact(party_details, customer, doctype):

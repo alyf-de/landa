@@ -4,8 +4,8 @@
 # import frappe
 from frappe.model.document import Document
 
+
 class LANDASalesDummy(Document):
-	
 	def db_insert(self):
 		pass
 

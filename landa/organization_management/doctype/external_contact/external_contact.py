@@ -1,15 +1,18 @@
-# -*- coding: utf-8 -*-
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
+
+from frappe.contacts.address_and_contact import (
+	delete_contact_and_address,
+	load_address_and_contact,
+)
 
 # import frappe
 # from frappe import _
 from frappe.model.document import Document
-from frappe.contacts.address_and_contact import load_address_and_contact
-from frappe.contacts.address_and_contact import delete_contact_and_address
-from frappe.model.naming import make_autoname
-from frappe.model.naming import revert_series_if_last
+from frappe.model.naming import make_autoname, revert_series_if_last
+
 from landa.organization_management.doctype.landa_member.landa_member import get_full_name
+
 
 class ExternalContact(Document):
 	def autoname(self):
@@ -21,9 +24,7 @@ class ExternalContact(Document):
 		if self.name:
 			return
 
-		self.name = make_autoname(
-			"EXT-" + self.organization + "-.####", "External Contact"
-		)
+		self.name = make_autoname("EXT-" + self.organization + "-.####", "External Contact")
 
 	def validate(self):
 		self.full_name = get_full_name(self.first_name, self.last_name)
@@ -42,4 +43,3 @@ class ExternalContact(Document):
 		key = self.name[:-number_part_len] + "." + "#" * number_part_len
 
 		revert_series_if_last(key, self.name)
-		

@@ -1,9 +1,10 @@
-from unittest import TestCase
 from datetime import date
+from unittest import TestCase
 
 from .birthday import get_age, get_next_birthday, next_birthday_is_decadal
 
 BIRTHDAY = date(2000, 2, 29)
+
 
 class TestBirthday(TestCase):
 	def test_get_age(self):

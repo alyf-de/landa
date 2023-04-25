@@ -1,18 +1,16 @@
-import requests
-import frappe
-from thefuzz import fuzz
-from thefuzz import process
-from html import unescape
 import json
+from html import unescape
+
+import frappe
+import requests
+from thefuzz import fuzz, process
 
 
 def execute():
 	frappe.reload_doctype("Organization")
 
 	organizations = get_organizations()
-	organization_ids_by_name = {
-		org["organization_name"]: org["name"] for org in organizations
-	}
+	organization_ids_by_name = {org["organization_name"]: org["name"] for org in organizations}
 	data = get_data()
 
 	for record in data:
@@ -97,5 +95,5 @@ def get_geojson(lat, lng):
 				}
 			],
 		},
-		separators=(',', ':')
+		separators=(",", ":"),
 	)

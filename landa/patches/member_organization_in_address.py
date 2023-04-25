@@ -1,5 +1,6 @@
 import frappe
 from frappe.utils import update_progress_bar
+
 from landa.address_and_contact import validate
 
 

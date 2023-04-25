@@ -11,7 +11,7 @@ def validate(doc, event):
 
 	validate_member_link(doc)
 
-	linked_doctypes = set(link.link_doctype for link in doc.links)
+	linked_doctypes = {link.link_doctype for link in doc.links}
 	mandatory_links = {
 		"Company",
 		"LANDA Member",
@@ -41,17 +41,13 @@ def validate(doc, event):
 
 		if link.link_doctype == "LANDA Member":
 			doc.landa_member = link.link_name
-			doc.organization = frappe.db.get_value(
-				"LANDA Member", link.link_name, "organization"
-			)
+			doc.organization = frappe.db.get_value("LANDA Member", link.link_name, "organization")
 
 		if link.link_doctype == "Organization":
 			doc.organization = link.link_name
 
 		if link.link_doctype == "External Contact":
-			doc.organization = frappe.db.get_value(
-				"External Contact", link.link_name, "organization"
-			)
+			doc.organization = frappe.db.get_value("External Contact", link.link_name, "organization")
 
 
 def validate_member_link(doc):
@@ -70,10 +66,8 @@ def validate_member_link(doc):
 
 
 def member_link_exists(doc, member):
-	return any(
-		x for x in doc.links
-		if x.link_doctype == "LANDA Member" and x.link_name == member
-	)
+	return any(x for x in doc.links if x.link_doctype == "LANDA Member" and x.link_name == member)
+
 
 def on_trash(doc, event):
 	from landa.utils import delete_records_linked_to

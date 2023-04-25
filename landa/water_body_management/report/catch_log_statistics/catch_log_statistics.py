@@ -4,9 +4,10 @@
 import frappe
 from frappe import _
 
+from landa.organization_management.doctype.organization.organization import (
+	get_supported_water_bodies,
+)
 from landa.utils import get_current_member_data
-from landa.organization_management.doctype.organization.organization import get_supported_water_bodies
-
 
 STATE_ROLES = {"LANDA State Organization Employee", "System Manager", "Administrator"}
 REGIONAL_ROLES = {
@@ -98,7 +99,7 @@ def get_data(filters):
 	)
 
 	def postprocess(row):
-		row["year"] = str(row.get("year"))	# avoid year getting summed up
+		row["year"] = str(row.get("year"))  # avoid year getting summed up
 		return list(row.values())
 
 	return [postprocess(row) for row in data]
@@ -110,9 +111,9 @@ def get_or_filters():
 
 	STATE_ROLES		no filters
 	REGIONAL_ROLES	everything related to their water bodys OR to their member
-					organizations
+	                                organizations
 	LOCAL_ROLES		everything related to their own organization and OR to the
-					water bodys it is supporting
+	                                water bodys it is supporting
 	"""
 	or_filters = {}
 	user_roles = set(frappe.get_roles())

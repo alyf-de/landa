@@ -2,10 +2,10 @@
 # For license information, please see license.txt
 
 import frappe
+
 from landa.water_body_management.report.catch_log_statistics.catch_log_statistics import (
 	get_or_filters,
 )
-
 
 COLUMNS = [
 	{
@@ -69,7 +69,7 @@ def get_data(filters):
 	)
 
 	def postprocess(row):
-		row["year"] = str(row.get("year"))	# avoid year getting summed up
+		row["year"] = str(row.get("year"))  # avoid year getting summed up
 		return list(row.values())
 
 	return [postprocess(row) for row in data]

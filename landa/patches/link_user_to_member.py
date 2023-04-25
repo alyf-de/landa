@@ -1,4 +1,5 @@
 import frappe
+
 from landa.install import make_custom_fields, make_property_setters, update_system_settings
 
 

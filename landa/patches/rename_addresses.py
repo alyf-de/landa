@@ -16,9 +16,7 @@ def execute():
 	for counter, address in enumerate(all_addresses):
 		start_time = timer()
 		avg_seconds = total_duration / (counter or 1)
-		remaining_hours = round(
-			avg_seconds * (total_addresses - counter) / 60 / 60, 2
-		)
+		remaining_hours = round(avg_seconds * (total_addresses - counter) / 60 / 60, 2)
 		update_progress_bar(
 			f"Renaming Addresses ({round(avg_seconds)}s avg, {remaining_hours}h remaining)",
 			counter,
@@ -27,7 +25,7 @@ def execute():
 		doc = frappe.get_doc(doctype, address.name)
 
 		old_name = address.name
-		autoname(doc, None)	 # changes doc.name to the new name
+		autoname(doc, None)  # changes doc.name to the new name
 		new_name = doc.name
 
 		if new_name[-2:] == "-1":
@@ -42,7 +40,7 @@ def execute():
 				old_name,
 				new_name,
 				ignore_permissions=True,  # checking permissions takes too long
-				ignore_if_exists=True,	# don't rename if a record with the same name exists already
+				ignore_if_exists=True,  # don't rename if a record with the same name exists already
 				show_alert=False,  # no need to show a UI alert, we're in the console
 			)
 		except frappe.exceptions.ValidationError:

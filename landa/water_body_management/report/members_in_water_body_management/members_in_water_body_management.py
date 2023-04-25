@@ -1,9 +1,8 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-import pandas as pd
-
 import frappe
+import pandas as pd
 
 from landa.utils import get_current_member_data
 
@@ -74,9 +73,7 @@ def get_data(filters=None):
 		If sort_by is specified the dataframe is first sorted by these columns, keeping the entry specified in keep, e.g. 'last'"""
 		if sort_by is not None:
 			df = df.sort_values(sort_by)
-		return (
-			df.reset_index().drop_duplicates(subset=[index], keep=keep).set_index(index)
-		)
+		return df.reset_index().drop_duplicates(subset=[index], keep=keep).set_index(index)
 
 	def get_link_filters(frappe_tuple, index="member"):
 		member_ids = [m[index] for m in frappe_tuple]  # list of member names (ID)
@@ -145,11 +142,7 @@ def get_data(filters=None):
 
 	# merge all columns to one address column and add this as the first column
 	addresses_df["full_address"] = (
-		addresses_df["address_line1"]
-		+ ", "
-		+ addresses_df["pincode"]
-		+ " "
-		+ addresses_df["city"]
+		addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 	)
 	address_cols = addresses_df.columns.tolist()
 	addresses_df = addresses_df[address_cols[-1:] + address_cols[:-1]]
