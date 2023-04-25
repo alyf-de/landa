@@ -190,13 +190,7 @@
   },
   {
    "doc_view": "New",
-   "label": "New Delivery Note",
-   "link_to": "Delivery Note",
-   "type": "DocType"
-  },
-  {
-   "doc_view": "New",
-   "label": "New Payment Entry",
+    "label": "New Payment Entry",
    "link_to": "Payment Entry",
    "type": "DocType"
   }

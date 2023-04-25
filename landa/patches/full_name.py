@@ -1,7 +1,6 @@
 import frappe
-from landa.organization_management.doctype.landa_member.landa_member import (
-	get_full_name,
-)
+
+from landa.organization_management.doctype.landa_member.landa_member import get_full_name
 from landa.utils import autocommit
 
 

@@ -1,20 +1,6 @@
-# -*- coding: utf-8 -*-
-from setuptools import setup, find_packages
+# TODO: Remove this file when bench >=v5.11.0 is adopted / v15.0.0 is released
+from setuptools import setup
 
-with open('requirements.txt') as f:
-	install_requires = f.read().strip().split('\n')
+name = "landa"
 
-# get version from __version__ variable in landa/__init__.py
-from landa import __version__ as version
-
-setup(
-	name='landa',
-	version=version,
-	description='Datenmanagementsystem des Landesverband Sächsischer Angler e. V.',
-	author='ALYF GmbH',
-	author_email='hallo@alyf.de',
-	packages=find_packages(),
-	zip_safe=False,
-	include_package_data=True,
-	install_requires=install_requires
-)
+setup()

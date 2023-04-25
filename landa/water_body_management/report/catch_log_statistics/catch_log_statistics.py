@@ -3,9 +3,12 @@
 
 import frappe
 from frappe import _
-from landa.organization_management.doctype.organization.organization import get_supported_water_bodies
-from landa.utils import get_current_member_data
 from pypika.functions import Cast, Sum
+
+from landa.organization_management.doctype.organization.organization import (
+	get_supported_water_bodies,
+)
+from landa.utils import get_current_member_data
 
 STATE_ROLES = {"LANDA State Organization Employee", "System Manager", "Administrator"}
 REGIONAL_ROLES = {
@@ -51,16 +54,17 @@ def get_data(filters):
 	entry = frappe.qb.DocType("Catch Log Entry")
 	child_table = frappe.qb.DocType("Catch Log Fish Table")
 
-	query = frappe.qb.from_(entry).join(
-		child_table
-	).on(
-		entry.name == child_table.parent
-	).select(
-		Cast(entry.year, as_type="CHAR"),
-		entry.water_body,
-		child_table.fish_species,
-		Sum(child_table.amount).as_("amount"),
-		Sum(child_table.weight_in_kg).as_("weight_in_kg"),
+	query = (
+		frappe.qb.from_(entry)
+		.join(child_table)
+		.on(entry.name == child_table.parent)
+		.select(
+			Cast(entry.year, as_type="CHAR"),
+			entry.water_body,
+			child_table.fish_species,
+			Sum(child_table.amount).as_("amount"),
+			Sum(child_table.weight_in_kg).as_("weight_in_kg"),
+		)
 	)
 
 	for key, value in filters.items():
@@ -81,9 +85,9 @@ def add_or_filters(query, entry):
 
 	STATE_ROLES		no filters
 	REGIONAL_ROLES	everything related to their water bodys OR to their member
-					organizations
+	                                organizations
 	LOCAL_ROLES		everything related to their own organization and OR to the
-					water bodys it is supporting
+	                                water bodys it is supporting
 	"""
 	user_roles = set(frappe.get_roles())
 
@@ -98,7 +102,8 @@ def add_or_filters(query, entry):
 
 	if user_roles.intersection(REGIONAL_ROLES):
 		return query.where(
-			entry.regional_organization == member_data.regional_organization
+			entry.regional_organization
+			== member_data.regional_organization
 			| entry.organization.like(f"{member_data.regional_organization}-%")
 		)
 	else:

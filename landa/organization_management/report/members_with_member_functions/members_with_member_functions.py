@@ -3,6 +3,7 @@
 
 import frappe
 import pandas as pd
+
 from landa.organization_management.birthday import (
 	get_age,
 	get_next_birthday,
@@ -92,9 +93,7 @@ def get_data(filters):
 		If sort_by is specified the dataframe is firsted sorted by these columns keeping the entry specified in keep, e.g. 'last'"""
 		if sort_by is not None:
 			df = df.sort_values(sort_by)
-		return (
-			df.reset_index().drop_duplicates(subset=[index], keep=keep).set_index(index)
-		)
+		return df.reset_index().drop_duplicates(subset=[index], keep=keep).set_index(index)
 
 	def aggregate_entries(df, aggregate_field, groupby="member", sort_by=None):
 		if sort_by is not None:
@@ -135,9 +134,7 @@ def get_data(filters):
 	member_functions_df = pd.DataFrame.from_records(
 		member_functions, columns=member_function_fields, index="member"
 	)
-	member_functions_df = aggregate_entries(
-		member_functions_df, "member_function_category"
-	)
+	member_functions_df = aggregate_entries(member_functions_df, "member_function_category")
 
 	reindex_df = member_functions_df
 
@@ -160,9 +157,7 @@ def get_data(filters):
 		members, columns=["member"] + member_fields[1:], index="member"
 	)
 	member_df["age"] = member_df["date_of_birth"].apply(get_age)
-	member_df["upcoming_birthday"] = member_df["date_of_birth"].apply(
-		get_next_birthday
-	)
+	member_df["upcoming_birthday"] = member_df["date_of_birth"].apply(get_next_birthday)
 	member_df["is_decadal_birthday"] = member_df["age"].apply(next_birthday_is_decadal)
 
 	# load awards from db
@@ -176,13 +171,9 @@ def get_data(filters):
 	awards_df = pd.DataFrame.from_records(awards, columns=award_fields, index="member")
 	awards_df["award_list"] = [
 		at + " " + str(ad.year)
-		for at, ad in zip(
-			awards_df["award_type"].values, awards_df["issue_date"].values
-		)
+		for at, ad in zip(awards_df["award_type"].values, awards_df["issue_date"].values)
 	]
-	awards_df = aggregate_entries(
-		awards_df, aggregate_field="award_list", sort_by=["issue_date"]
-	)
+	awards_df = aggregate_entries(awards_df, aggregate_field="award_list", sort_by=["issue_date"])
 	awards_df.drop(award_fields[:-1], axis=1, inplace=True)
 
 	# load addresses from db
@@ -196,11 +187,7 @@ def get_data(filters):
 
 	# merge all columns to one address column and add this as the first column
 	addresses_df["full_address"] = (
-		addresses_df["address_line1"]
-		+ ", "
-		+ addresses_df["pincode"]
-		+ " "
-		+ addresses_df["city"]
+		addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 	)
 	address_cols = addresses_df.columns.tolist()
 	addresses_df = addresses_df[address_cols[-1:] + address_cols[:-1]]

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 from . import __version__ as app_version
 
 app_name = "landa"
@@ -200,7 +198,7 @@ doctype_list_js = {
 
 # website user home page (by Role)
 # role_home_page = {
-#	"Role": "home_page"
+# 	"Role": "home_page"
 # }
 
 # Generators
@@ -231,9 +229,9 @@ permission_query_conditions = {
 }
 
 # has_permission = {
-#	"Contact": "landa.address_and_contact.has_permission",
-#	"Address": "landa.address_and_contact.has_permission"
-#	"Event": "frappe.desk.doctype.event.event.has_permission",
+# 	"Contact": "landa.address_and_contact.has_permission",
+# 	"Address": "landa.address_and_contact.has_permission"
+# 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
 # DocType Class
@@ -241,7 +239,7 @@ permission_query_conditions = {
 # Override standard doctype classes
 
 # override_doctype_class = {
-#	"ToDo": "custom_app.overrides.CustomToDo"
+# 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
 
 # Document Events
@@ -280,7 +278,7 @@ doc_events = {
 	"Contact": {
 		"validate": [
 			"landa.organization_management.contact.contact.validate",
-			"landa.address_and_contact.validate"
+			"landa.address_and_contact.validate",
 		],
 		"on_trash": "landa.address_and_contact.on_trash",
 	},
@@ -296,25 +294,25 @@ doc_events = {
 # ---------------
 
 scheduler_events = {
-	#	"all": [
-	#		"landa.tasks.all"
-	#	],
+	# 	"all": [
+	# 		"landa.tasks.all"
+	# 	],
 	"daily": ["landa.tasks.daily"],
 	"cron": {
-		"0 0 1 10 *": [	 # every 1st october at 00:00
+		"0 0 1 10 *": [  # every 1st october at 00:00
 			"landa.water_body_management.doctype.stocking_target.stocking_target.copy_to_next_year",
 		],
 	},
 	# "all": ["landa.tasks.all"],
-	#	, "hourly": [
-	#		"landa.tasks.hourly"
-	#	],
-	#	"weekly": [
-	#		"landa.tasks.weekly"
-	#	]
-	#	"monthly": [
-	#		"landa.tasks.monthly"
-	#	]
+	# 	, "hourly": [
+	# 		"landa.tasks.hourly"
+	# 	],
+	# 	"weekly": [
+	# 		"landa.tasks.weekly"
+	# 	]
+	# 	"monthly": [
+	# 		"landa.tasks.monthly"
+	# 	]
 }
 
 # Testing
@@ -333,7 +331,7 @@ override_whitelisted_methods = {
 	"erpnext.selling.doctype.sales_order.sales_order.make_delivery_note": "landa.landa_sales.sales_order.sales_order.make_landa_delivery_note",
 	"erpnext.selling.doctype.sales_order.sales_order.make_sales_invoice": "landa.landa_sales.sales_order.sales_order.make_landa_sales_invoice",
 	"erpnext.accounts.doctype.sales_invoice.sales_invoice.make_delivery_note": "landa.landa_sales.sales_invoice.sales_invoice.make_landa_delivery_note",
-	"erpnext.stock.doctype.delivery_note.delivery_note.make_sales_invoice": "landa.landa_stock.delivery_note.delivery_note.make_landa_sales_invoice"	
+	"erpnext.stock.doctype.delivery_note.delivery_note.make_sales_invoice": "landa.landa_stock.delivery_note.delivery_note.make_landa_sales_invoice",
 }
 
 #
@@ -348,7 +346,7 @@ override_doctype_dashboards = {
 #
 # auto_cancel_exempted_doctypes = ["Auto Repeat"]
 # jenv = {
-#	"methods": []
+# 	"methods": []
 # }
 
 landa_custom_fields = {

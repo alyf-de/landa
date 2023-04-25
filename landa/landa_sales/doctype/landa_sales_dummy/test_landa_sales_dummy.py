@@ -4,5 +4,6 @@
 # import frappe
 import unittest
 
+
 class TestLANDASalesDummy(unittest.TestCase):
 	pass

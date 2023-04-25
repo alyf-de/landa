@@ -1,8 +1,7 @@
 import frappe
-
 from frappe import _
-from frappe.utils import cstr
 from frappe.model.naming import make_autoname
+from frappe.utils import cstr
 
 
 def autoname(address, event):
@@ -15,16 +14,12 @@ def autoname(address, event):
 		for link in address.links:
 			if link.link_doctype == "LANDA Member":
 				link.link_title = " ".join(
-					frappe.get_value(
-						"LANDA Member", link.link_name, ["first_name", "last_name"]
-					)
+					frappe.get_value("LANDA Member", link.link_name, ["first_name", "last_name"])
 				)
 
 			if link.link_doctype == "External Contact":
 				link.link_title = " ".join(
-					frappe.get_value(
-						"External Contact", link.link_name, ["first_name", "last_name"]
-					)
+					frappe.get_value("External Contact", link.link_name, ["first_name", "last_name"])
 				)
 
 			for dt, field in (
@@ -53,9 +48,7 @@ def autoname(address, event):
 			address.address_title = address.links[0].link_title
 
 	if address.address_title and link_name:
-		address.name = (
-			cstr(address.address_title).strip() + " - " + cstr(link_name).strip()
-		)
+		address.name = cstr(address.address_title).strip() + " - " + cstr(link_name).strip()
 		if frappe.db.exists("Address", address.name):
 			address.name = make_autoname(address.name + "-.#")
 	else:
@@ -81,7 +74,7 @@ def rename_addresses(limit: int):
 		doc = frappe.get_doc(doctype, old_name)
 
 		try:
-			autoname(doc, None)	 # changes doc.name to the new name
+			autoname(doc, None)  # changes doc.name to the new name
 		except frappe.exceptions.ValidationError:
 			continue
 
@@ -99,7 +92,7 @@ def rename_addresses(limit: int):
 				old_name,
 				new_name,
 				ignore_permissions=True,  # checking permissions takes too long
-				ignore_if_exists=True,	# don't rename if a record with the same name exists already
+				ignore_if_exists=True,  # don't rename if a record with the same name exists already
 				show_alert=False,  # no need to show a UI alert, we're in the console
 				rebuild_search=False,  # we do that explicitly at the end
 			)

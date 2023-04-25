@@ -13,7 +13,7 @@
 {% set company_address_name = frappe.db.get_value("Dynamic Link", filters={"link_doctype": "Company", "link_name": doc.company, "parenttype": "Address"}, fieldname="parent") %}
 {% set company_address = frappe.get_doc("Address", company_address_name) if company_address_name else None %}
 {% set shipping_addr = frappe.get_doc("Address", doc.shipping_address_name) if doc.shipping_address_name else None %}
-  
+
 {% if doc.contact_person %}
     {% set contact = frappe.get_doc("Contact", doc.contact_person) %}
 {% endif %}

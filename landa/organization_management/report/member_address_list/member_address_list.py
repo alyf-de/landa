@@ -4,16 +4,12 @@
 import frappe
 import pandas as pd
 
-from ..member.member import (
-	Member,
-	get_link_filters,
-	remove_duplicate_indices,
-)
+from ..member.member import Member, get_link_filters, remove_duplicate_indices
 
 
 class Address(Member):
 	def __init__(self, filters):
-		super(Address, self).__init__(filters)
+		super().__init__(filters)
 
 	def get_data(self):
 		self.set_members()
@@ -35,26 +31,18 @@ class Address(Member):
 		addresses_df.set_index("member", inplace=True)
 
 		# remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
-		addresses_df = remove_duplicate_indices(
-			addresses_df, sort_by="is_primary_address"
-		)
+		addresses_df = remove_duplicate_indices(addresses_df, sort_by="is_primary_address")
 
 		# merge all columns to one address column and add this as the first column
 		addresses_df["full_address"] = (
-			addresses_df["address_line1"]
-			+ ", "
-			+ addresses_df["pincode"]
-			+ " "
-			+ addresses_df["city"]
+			addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 		)
 
 		# remove column 'is_primary_address'
 		addresses_df.drop("is_primary_address", axis=1, inplace=True)
 
 		# merge all dataframes from different doctypes
-		data = pd.concat([self.members_df, addresses_df], axis=1).reindex(
-			self.members_df.index
-		)
+		data = pd.concat([self.members_df, addresses_df], axis=1).reindex(self.members_df.index)
 
 		data.fillna("", inplace=True)
 

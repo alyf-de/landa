@@ -2,12 +2,11 @@
 # For license information, please see license.txt
 
 import frappe
-
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 
-class LANDACurrentMemberData(object):
+class LANDACurrentMemberData:
 	def __init__(self, filters):
 		# set attribute to load only members and remove it from filters
 		self.filter = filters  # .pop('organization', None)
@@ -28,11 +27,7 @@ class LANDACurrentMemberData(object):
 			If sort_by is specified the dataframe is firsted sorted by these columns keeping the entry specified in keep, e.g. 'last'"""
 			if sort_by is not None:
 				df = df.sort_values(sort_by)
-			return (
-				df.reset_index()
-				.drop_duplicates(subset=[index], keep=keep)
-				.set_index(index)
-			)
+			return df.reset_index().drop_duplicates(subset=[index], keep=keep).set_index(index)
 
 		def get_link_filters(frappe_tuple):
 			member_ids = [m[0] for m in frappe_tuple]  # list of member names (ID)
@@ -74,12 +69,8 @@ class LANDACurrentMemberData(object):
 			"Yearly Fishing Permit", fields=fishing_permit_columns, as_list=True
 		)
 		# convert to pandas dataframe
-		fishing_permits_df = frappe_tuple_to_pandas_df(
-			fishing_permits, fishing_permit_columns
-		)
-		fishing_permits_df.rename(
-			{"name": "yearly_fishing_permit"}, axis=1, inplace=True
-		)
+		fishing_permits_df = frappe_tuple_to_pandas_df(fishing_permits, fishing_permit_columns)
+		fishing_permits_df.rename({"name": "yearly_fishing_permit"}, axis=1, inplace=True)
 		fishing_permits_df = remove_duplicate_indices(
 			fishing_permits_df, sort_by=["year", "date_of_issue"]
 		)
@@ -101,9 +92,7 @@ class LANDACurrentMemberData(object):
 		addresses_df.rename({"name": "address_name"}, axis=1, inplace=True)
 
 		# merge members and addresses from different doctypes
-		data = pd.concat([member_df, fishing_permits_df], axis=1).reindex(
-			member_df.index
-		)
+		data = pd.concat([member_df, fishing_permits_df], axis=1).reindex(member_df.index)
 		data = pd.merge(data, addresses_df, on="member", how="outer")
 
 		# sort dataframe like report columns

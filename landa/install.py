@@ -1,11 +1,11 @@
 import os
 
 import frappe
-import landa
-
 from frappe import get_hooks
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 from frappe.custom.doctype.property_setter.property_setter import make_property_setter
+
+import landa
 
 
 def after_install():
@@ -42,9 +42,7 @@ def disable_modes_of_payment():
 
 
 def add_session_defaults():
-	ref_doctypes = get_hooks(
-		"landa_add_to_session_defaults", default=[], app_name="landa"
-	)
+	ref_doctypes = get_hooks("landa_add_to_session_defaults", default=[], app_name="landa")
 	settings = frappe.get_single("Session Default Settings")
 	settings.extend(
 		"session_defaults",
@@ -68,9 +66,7 @@ def setup_uoms():
 
 	# Disable all other UOMs
 	uom_table = frappe.qb.DocType("UOM")
-	frappe.qb.update(uom_table).set(uom_table.enabled, 0).where(
-		uom_table.uom_name != "Anzahl"
-	).run()
+	frappe.qb.update(uom_table).set(uom_table.enabled, 0).where(uom_table.uom_name != "Anzahl").run()
 
 
 def update_system_settings():
@@ -108,17 +104,13 @@ def make_custom_fields():
 
 
 def make_property_setters():
-	for doctypes, property_setters in frappe.get_hooks(
-		"landa_property_setters", {}
-	).items():
+	for doctypes, property_setters in frappe.get_hooks("landa_property_setters", {}).items():
 		if isinstance(doctypes, str):
 			doctypes = (doctypes,)
 
 		for doctype in doctypes:
 			for property_setter in property_setters:
-				make_property_setter(
-					doctype, *property_setter, for_doctype=not property_setter[0]
-				)
+				make_property_setter(doctype, *property_setter, for_doctype=not property_setter[0])
 
 
 def update_stock_settings():
@@ -129,6 +121,7 @@ def update_stock_settings():
 		"LANDA Member",
 		update_modified=False,
 	)
+
 
 def update_accounts_settings():
 	frappe.db.set_value(

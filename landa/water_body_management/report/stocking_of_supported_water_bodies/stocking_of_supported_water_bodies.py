@@ -4,9 +4,10 @@
 
 import frappe
 
+from landa.organization_management.doctype.organization.organization import (
+	get_supported_water_bodies,
+)
 from landa.utils import get_current_member_data
-from landa.organization_management.doctype.organization.organization import get_supported_water_bodies
-
 
 COLUMNS = [
 	{
@@ -21,10 +22,10 @@ COLUMNS = [
 		"options": "2022\n2023\n2024\n2025\n2026\n2027\n2028\n2029",
 	},
 	# {
-	#	"fieldname": "fishing_area",
-	#	"fieldtype": "Link",
-	#	"label": "Fishing Area",
-	#	"options": "Fishing Area",
+	# 	"fieldname": "fishing_area",
+	# 	"fieldtype": "Link",
+	# 	"label": "Fishing Area",
+	# 	"options": "Fishing Area",
 	# },
 	{
 		"fieldname": "water_body",
@@ -47,29 +48,29 @@ COLUMNS = [
 	{"fieldname": "weight", "fieldtype": "Float", "label": "Weight in Kg", "reqd": 1},
 	{"fieldname": "quantity", "fieldtype": "Float", "label": "Quantity"},
 	# {
-	#	"fieldname": "price_per_kilogram",
-	#	"fieldtype": "Float",
-	#	"label": "Price per Kilogram",
-	#	"options": "currency",
+	# 	"fieldname": "price_per_kilogram",
+	# 	"fieldtype": "Float",
+	# 	"label": "Price per Kilogram",
+	# 	"options": "currency",
 	# },
 	# {
-	#	"fieldname": "price_for_total_weight",
-	#	"fieldtype": "Float",
-	#	"label": "Price for Total Weight",
-	#	"options": "currency",
+	# 	"fieldname": "price_for_total_weight",
+	# 	"fieldtype": "Float",
+	# 	"label": "Price for Total Weight",
+	# 	"options": "currency",
 	# },
 	# {
-	#	"default": "EUR",
-	#	"fieldname": "currency",
-	#	"fieldtype": "Link",
-	#	"label": "Currency",
-	#	"options": "Currency",
+	# 	"default": "EUR",
+	# 	"fieldname": "currency",
+	# 	"fieldtype": "Link",
+	# 	"label": "Currency",
+	# 	"options": "Currency",
 	# },
 	# {
-	#	"fieldname": "organization",
-	#	"fieldtype": "Data",
-	#	"label": "Organization",
-	#	"options": "Organization",
+	# 	"fieldname": "organization",
+	# 	"fieldtype": "Data",
+	# 	"label": "Organization",
+	# 	"options": "Organization",
 	# },
 	{
 		"fieldname": "weight_per_water_body_size",
@@ -102,20 +103,20 @@ COLUMNS = [
 		"label": "Water Body Size Unit",
 	},
 	# {
-	#	"fieldname": "supplier",
-	#	"fieldtype": "Link",
-	#	"label": "Supplier",
-	#	"options": "External Contact",
+	# 	"fieldname": "supplier",
+	# 	"fieldtype": "Link",
+	# 	"label": "Supplier",
+	# 	"options": "External Contact",
 	# },
 	# {
-	#	"fieldname": "full_name_of_supplier",
-	#	"fieldtype": "Data",
-	#	"label": "Full Name of Supplier",
+	# 	"fieldname": "full_name_of_supplier",
+	# 	"fieldtype": "Data",
+	# 	"label": "Full Name of Supplier",
 	# },
 	# {
-	#	"fieldname": "company_of_supplier",
-	#	"fieldtype": "Data",
-	#	"label": "Company of Supplier",
+	# 	"fieldname": "company_of_supplier",
+	# 	"fieldtype": "Data",
+	# 	"label": "Company of Supplier",
 	# },
 	{
 		"fieldname": "stocking_target",
@@ -131,7 +132,10 @@ def get_data(filters):
 	or_filters = {}
 	member_data = get_current_member_data()
 	if member_data:
-		or_filters["water_body"] = ("in", get_supported_water_bodies(member_data.local_organization))
+		or_filters["water_body"] = (
+			"in",
+			get_supported_water_bodies(member_data.local_organization),
+		)
 
 	data = frappe.get_all(
 		"Stocking Measure",

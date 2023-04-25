@@ -1,35 +1,34 @@
-# -*- coding: utf-8 -*-
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 from frappe.permissions import add_user_permission
 
-from landa.organization_management.doctype.member_function.member_function import get_active_member_functions
+from landa.organization_management.doctype.member_function.member_function import (
+	get_active_member_functions,
+)
 from landa.utils import autocommit
 
 
 class MemberFunctionCategory(Document):
-
 	def on_update(self):
-		if self.has_value_changed('roles'):
+		if self.has_value_changed("roles"):
 			member_names = self.get_member_names()
 			for member_name in member_names:
-				user = frappe.db.get_value('User', {'landa_member': member_name})
+				user = frappe.db.get_value("User", {"landa_member": member_name})
 				apply_roles(member_name, user)
 
-		if self.has_value_changed('member_administration'):
+		if self.has_value_changed("member_administration"):
 			update_member_restrictions(self.get_member_names())
 
-		if self.has_value_changed('access_level'):
+		if self.has_value_changed("access_level"):
 			update_organization_restrictions(self.get_member_names())
 
 	def get_member_names(self):
 		"""Return a list of members to whom this Member Function Category applies."""
-		filters = {'member_function_category': self.name}
-		member_names = get_active_member_functions(filters=filters, pluck='member')
+		filters = {"member_function_category": self.name}
+		member_names = get_active_member_functions(filters=filters, pluck="member")
 
 		return list(set(member_names))
 
@@ -37,7 +36,7 @@ class MemberFunctionCategory(Document):
 		doc_before_save = self.get_doc_before_save()
 
 		if doc_before_save:
-			return list(set(role.role for role in doc_before_save.roles) - set(role.role for role in self.roles))
+			return list({role.role for role in doc_before_save.roles} - {role.role for role in self.roles})
 		else:
 			return []
 
@@ -45,7 +44,7 @@ class MemberFunctionCategory(Document):
 		doc_before_save = self.get_doc_before_save()
 
 		if doc_before_save:
-			return list(set(role.role for role in self.roles) - set(role.role for role in doc_before_save.roles))
+			return list({role.role for role in self.roles} - {role.role for role in doc_before_save.roles})
 		else:
 			return self.get_roles()
 
@@ -119,13 +118,9 @@ def update_user_permission_on_member(member_name, disabled_member_function=None)
 		return
 
 	if is_member_administration(member_name, disabled_member_function):
-		clear_user_permissions_for_doctype(
-			"LANDA Member", user_name, ignore_permissions=True
-		)
+		clear_user_permissions_for_doctype("LANDA Member", user_name, ignore_permissions=True)
 	else:
-		add_user_permission(
-			"LANDA Member", member_name, user_name, ignore_permissions=True
-		)
+		add_user_permission("LANDA Member", member_name, user_name, ignore_permissions=True)
 
 
 def update_user_permission_on_organization(member_name, disabled_member_function=None):
@@ -134,30 +129,25 @@ def update_user_permission_on_organization(member_name, disabled_member_function
 	if not user_name:
 		return
 
-	highest_access_level = get_highest_access_level(
-		member_name, disabled_member_function
-	)
+	highest_access_level = get_highest_access_level(member_name, disabled_member_function)
 	organization_name = get_organization_at_level(member_name, highest_access_level)
 
-	clear_user_permissions_for_doctype(
-		"Organization", user_name, ignore_permissions=True
-	)
-	add_user_permission(
-		"Organization", organization_name, user_name, ignore_permissions=True
-	)
+	clear_user_permissions_for_doctype("Organization", user_name, ignore_permissions=True)
+	add_user_permission("Organization", organization_name, user_name, ignore_permissions=True)
 
 
 def get_roles_to_remove(member_name, roles, disabled_member_function=None):
-	filters = {'member': member_name}
+	filters = {"member": member_name}
 
 	if disabled_member_function:
-		filters['name'] = ('!=', disabled_member_function)
+		filters["name"] = ("!=", disabled_member_function)
 
-	active_categories = get_active_member_functions(filters=filters, pluck='member_function_category')
-	active_roles = frappe.get_all('Has Role', {
-		'parenttype': 'Member Function Category',
-		'parent': ('in', active_categories)
-	}, pluck='role')
+	active_categories = get_active_member_functions(filters=filters, pluck="member_function_category")
+	active_roles = frappe.get_all(
+		"Has Role",
+		{"parenttype": "Member Function Category", "parent": ("in", active_categories)},
+		pluck="role",
+	)
 
 	active_roles = set(active_roles)
 	active_roles.add("LANDA Member")  # LANDA Member is always active
@@ -169,11 +159,11 @@ def get_roles_to_remove(member_name, roles, disabled_member_function=None):
 def get_organization_at_level(member_name, access_level, organization_name=None):
 	"""Get the member's organization at a given level in the tree."""
 	if not organization_name:
-		organization_name = frappe.get_value('LANDA Member', member_name, 'organization')
+		organization_name = frappe.get_value("LANDA Member", member_name, "organization")
 
-	organization = frappe.get_doc('Organization', organization_name)
+	organization = frappe.get_doc("Organization", organization_name)
 	ancestors = organization.get_ancestors()
-	ancestors.reverse() # root as the first element
+	ancestors.reverse()  # root as the first element
 
 	if access_level >= len(ancestors):
 		return organization_name
@@ -184,41 +174,48 @@ def get_organization_at_level(member_name, access_level, organization_name=None)
 def get_highest_access_level(member_name, disabled_member_function=None):
 	"""Return the highest access level needed for member's functions."""
 	ACCESS_LEVEL_MAP = {
-		'State Organization': 0,
-		'Regional Organization': 1,
-		'Local Organization': 2,
-		'Local Group': 3,
+		"State Organization": 0,
+		"Regional Organization": 1,
+		"Local Organization": 2,
+		"Local Group": 3,
 	}
-	access_levels = get_values_from_categories(member_name, {'access_level': ('is', 'set')}, 'access_level', disabled_member_function)
+	access_levels = get_values_from_categories(
+		member_name, {"access_level": ("is", "set")}, "access_level", disabled_member_function
+	)
 
 	min_level = max(ACCESS_LEVEL_MAP.values())
 	if access_levels:
-		min_level = min((ACCESS_LEVEL_MAP[level] for level in access_levels))
+		min_level = min(ACCESS_LEVEL_MAP[level] for level in access_levels)
 
 	return min_level
 
 
 def is_member_administration(member_name, disabled_member_function=None):
-	member_administration = get_values_from_categories(member_name, {'member_administration': 1}, 'name', disabled_member_function)
+	member_administration = get_values_from_categories(
+		member_name, {"member_administration": 1}, "name", disabled_member_function
+	)
 
 	return bool(member_administration)
 
 
-def get_values_from_categories(member_name, filters, fieldname=None, disabled_member_function=None):
-	member_function_filters = {
-		'member': member_name
-	}
+def get_values_from_categories(
+	member_name, filters, fieldname=None, disabled_member_function=None
+):
+	member_function_filters = {"member": member_name}
 
 	if disabled_member_function:
-		member_function_filters['name'] = ('!=', disabled_member_function)
+		member_function_filters["name"] = ("!=", disabled_member_function)
 
-	active_categories = get_active_member_functions(member_function_filters, pluck='member_function_category')
-	filters['name'] = ('in', active_categories)
+	active_categories = get_active_member_functions(
+		member_function_filters, pluck="member_function_category"
+	)
+	filters["name"] = ("in", active_categories)
 
-	return frappe.get_all('Member Function Category', {
-		'name': ('in', active_categories),
-		'member_administration': 1
-	}, pluck=fieldname)
+	return frappe.get_all(
+		"Member Function Category",
+		{"name": ("in", active_categories), "member_administration": 1},
+		pluck=fieldname,
+	)
 
 
 def get_user(member_name: str):
@@ -237,12 +234,12 @@ def get_user_name(member_name: str):
 
 def clear_user_permissions_for_doctype(doctype, user=None, ignore_permissions=False):
 	"""Copy of `frappe.permissions` with additional parameter `ignore_permissions`."""
-	filters = {'allow': doctype}
+	filters = {"allow": doctype}
 	if user:
-		filters['user'] = user
-	user_permissions_for_doctype = frappe.db.get_all('User Permission', filters=filters)
+		filters["user"] = user
+	user_permissions_for_doctype = frappe.db.get_all("User Permission", filters=filters)
 	for d in user_permissions_for_doctype:
-		frappe.delete_doc('User Permission', d.name, ignore_permissions=ignore_permissions)
+		frappe.delete_doc("User Permission", d.name, ignore_permissions=ignore_permissions)
 
 
 def apply_roles(member: str, user: str) -> None:
@@ -250,23 +247,20 @@ def apply_roles(member: str, user: str) -> None:
 		return
 
 	"""Apply roles from all active member functions to the member."""
-	mfcs = get_active_member_functions(
-		filters={'member': member},
-		pluck='member_function_category'
-	)
+	mfcs = get_active_member_functions(filters={"member": member}, pluck="member_function_category")
 	roles = frappe.get_all(
-		'Has Role',
-		filters={'parenttype': 'Member Function Category', 'parent': ('in', mfcs)},
-		pluck='role',
+		"Has Role",
+		filters={"parenttype": "Member Function Category", "parent": ("in", mfcs)},
+		pluck="role",
 		distinct=True,
 	)
 
-	frappe.db.delete('Has Role', {'parenttype': 'User', 'parent': user})
-	for i, role in enumerate(set(roles + ['LANDA Member'])):
-		doc = frappe.new_doc('Has Role')
+	frappe.db.delete("Has Role", {"parenttype": "User", "parent": user})
+	for i, role in enumerate(set(roles + ["LANDA Member"])):
+		doc = frappe.new_doc("Has Role")
 		doc.role = role
-		doc.parenttype = 'User'
+		doc.parenttype = "User"
 		doc.parent = user
-		doc.parentfield = 'roles'
+		doc.parentfield = "roles"
 		doc.idx = i
 		doc.save(ignore_permissions=True, ignore_version=True)

@@ -18,7 +18,7 @@ def customize_customer():
 	folder = frappe.get_app_path("landa", "landa_sales", "custom")
 	fname = "customer.json"
 
-	with open(os.path.join(folder, fname), "r") as f:
+	with open(os.path.join(folder, fname)) as f:
 		sync_customizations_for_doctype(json.loads(f.read()), folder)
 
 
@@ -79,12 +79,9 @@ def set_billing_and_shipping_defaults():
 
 def cleanup_addresses():
 	# the two checkboxes are no longer used and are hidden from now on.
-	frappe.db.sql(
-		"""update `tabAddress` set is_shipping_address=0, is_primary_address=0"""
-	)
+	frappe.db.sql("""update `tabAddress` set is_shipping_address=0, is_primary_address=0""")
+
 
 def cleanup_contacts():
 	# the two checkboxes are no longer used and are hidden from now on.
-	frappe.db.sql(
-		"""update `tabContact` set is_billing_contact=0, is_primary_contact=0"""
-	)
+	frappe.db.sql("""update `tabContact` set is_billing_contact=0, is_primary_contact=0""")

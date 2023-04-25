@@ -1,33 +1,30 @@
 # Copyright (c) 2015, Web Notes Technologies Pvt. Ltd. and Contributors
 # MIT License. See license.txt
 
-import click
 from getpass import getpass
 
+import click
 import frappe
-from frappe.commands import pass_context, get_site
+from frappe.commands import get_site, pass_context
 from frappe.utils.data import today
 from frappe.utils.password import update_password
 
 
-@click.command('make-demo-accounts')
-@click.argument('organization')
-@click.option('--dry-run', help='Don\'t commit the changes, just test the code.', is_flag=True)
+@click.command("make-demo-accounts")
+@click.argument("organization")
+@click.option("--dry-run", help="Don't commit the changes, just test the code.", is_flag=True)
 @pass_context
 def make_demo_accounts(context, organization, dry_run=False):
 	"""Create Members, Member Functions and Users for every Member Function Category."""
 	site = get_site(context)
-	password = getpass(prompt='Password for demo accounts: ')
+	password = getpass(prompt="Password for demo accounts: ")
 
 	with frappe.init_site(site):
 		frappe.connect()
 		validate_organization(organization)
 
 		new_users = []
-		for member_function_category in frappe.get_all(
-			"Member Function Category",
-			pluck="name"
-		):
+		for member_function_category in frappe.get_all("Member Function Category", pluck="name"):
 			email = f"{scrub(member_function_category)}@example.org"
 			first_name = f"Demo {member_function_category}"
 
@@ -42,15 +39,13 @@ def make_demo_accounts(context, organization, dry_run=False):
 			frappe.db.commit()
 
 		if new_users:
-			click.echo('The following users have been created:\n')
+			click.echo("The following users have been created:\n")
 			for user in new_users:
 				click.echo(user)
 
 
 @click.command("update-organization-series")
-@click.option(
-	"--dry-run", help="Don't commit the changes, just test the code.", is_flag=True
-)
+@click.option("--dry-run", help="Don't commit the changes, just test the code.", is_flag=True)
 @pass_context
 def update_organization_series(context, dry_run=False):
 	# frappe.local.flags.in_test = True	 # avoid permission check
@@ -59,9 +54,7 @@ def update_organization_series(context, dry_run=False):
 	with frappe.init_site(site):
 		frappe.connect()
 
-		for organization in frappe.get_all(
-			"Organization", filters={"name": ("!=", "LV")}, pluck="name"
-		):
+		for organization in frappe.get_all("Organization", filters={"name": ("!=", "LV")}, pluck="name"):
 			doc = frappe.get_doc("Organization", organization)
 			if doc.is_group:
 				highest_number = frappe.get_all(
@@ -104,7 +97,9 @@ def update_organization_series(context, dry_run=False):
 
 def validate_organization(organization: str):
 	if not frappe.db.exists("Organization", organization):
-		frappe.throw(f"No Organization named {organization}. Please create a new Organization or use an existing one.")
+		frappe.throw(
+			f"No Organization named {organization}. Please create a new Organization or use an existing one."
+		)
 
 	doc = frappe.get_doc("Organization", organization)
 	if len(doc.get_ancestors()) < 2:
@@ -144,7 +139,7 @@ def make_member_function(member: str, member_function_category: str):
 
 
 def scrub(txt):
-	umlauts = (('ä', 'ae'), ('ö', 'oe'), ('ü', 'ue'), ('ß', 'ss'))
+	umlauts = (("ä", "ae"), ("ö", "oe"), ("ü", "ue"), ("ß", "ss"))
 
 	words = txt.split()
 	result = []
@@ -153,11 +148,11 @@ def scrub(txt):
 			word = word.replace(source, target)
 			word = word.replace(source.title(), target.title())
 
-		word = ''.join(c for c in word if c.isalnum())
+		word = "".join(c for c in word if c.isalnum())
 		word = word.lower()
 		result.append(word)
 
-	return '-'.join(result)
+	return "-".join(result)
 
 
 commands = [make_demo_accounts, update_organization_series]
