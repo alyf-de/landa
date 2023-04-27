@@ -46,7 +46,7 @@ COLUMNS = [
 	{
 		"fieldname": "by_foreign_regional_org",
 		"fieldtype": "Percent",
-		"label": "By Foreign Regional Organization",
+		"label": "Number of Fish by Foreign Regional Organization",
 		"precision": 0,
 	},
 ]
