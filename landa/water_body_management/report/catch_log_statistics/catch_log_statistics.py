@@ -88,9 +88,7 @@ def get_data(filters):
 		)
 	)
 
-	query = add_conditions(query, qb_filters)
-	query = add_or_filters(query, entry)
-	query = query.groupby(entry.water_body, child_table.fish_species)
+	query = filter_and_group(query, entry, child_table, qb_filters)
 	return query.run()
 
 
@@ -101,11 +99,15 @@ def get_subquery(entry: Table, child_table: Table, qb_filters: List[Criterion]):
 		.on(entry.name == child_table.parent)
 		.select(entry.water_body, child_table.fish_species, Sum(child_table.amount).as_("total_amount"))
 	)
-	subquery = add_conditions(subquery, qb_filters)
-	subquery = add_or_filters(subquery, entry)
-	subquery = subquery.groupby(entry.water_body, child_table.fish_species)
 
-	return subquery
+	return filter_and_group(subquery, entry, child_table, qb_filters)
+
+
+def filter_and_group(query, entry: Table, child_table: Table, qb_filters: List[Criterion]):
+	query = add_conditions(query, qb_filters)
+	query = add_or_filters(query, entry)
+	query = query.groupby(entry.water_body, child_table.fish_species)
+	return query
 
 
 def get_qb_filters(filters, entry, child_table):
