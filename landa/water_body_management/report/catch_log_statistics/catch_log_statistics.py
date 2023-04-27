@@ -146,8 +146,7 @@ def add_or_filters(query, entry):
 
 	if user_roles.intersection(REGIONAL_ROLES):
 		return query.where(
-			entry.regional_organization
-			== member_data.regional_organization
+			(entry.regional_organization == member_data.regional_organization)
 			| entry.organization.like(f"{member_data.regional_organization}-%")
 		)
 	else:
