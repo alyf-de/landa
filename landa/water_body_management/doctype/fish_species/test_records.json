@@ -1,0 +1,25 @@
+[
+  {
+    "doctype": "Fish Species",
+    "title": "Barsch",
+    "short_code": "B",
+    "scientific_name": "Perca fluviatilis",
+    "is_default_fish_species_for_population": 0,
+    "general_fishing_limit": "10 (maximal 5 Stück über 30 cm)",
+    "traits": "weite, endständige Mundspalte; Kiemendeckel nach\nhinten spitz zulaufend mit starken Dorn\n2 Rückenflossen, schwarzer Fleck am hinteren Ende\nder ersten Rückenflosse\nKörperseiten mit 5 - 9 Querbinden gezeichnet\nmaximal 50 cm lang, über 3 kg schwer",
+    "wikipedia_link": "http://de.wikipedia.org/wiki/Flussbarsch"
+  },
+  {
+    "doctype": "Fish Species",
+    "title": "Bachforelle",
+    "short_code": "Bf",
+    "scientific_name": "Salmo trutta fario",
+    "is_default_fish_species_for_population": 1,
+    "close_season": "01.10-30.04.",
+    "minimum_size": "28 cm",
+    "general_fishing_limit": "2",
+    "special_fishing_limit": "3",
+    "traits": "Fettflosse mit roten Tupfen\nKörper lang gestreckt, seitlich abgeflacht, hoher\nSchwanzstiel\nrote und bräunlich-schwarze Tupfen\nendständiges Maul, Maulspalte reicht bis hinter Auge\nmaximal 90 cm lang, dann über 10 kg schwer",
+    "wikipedia_link": "http://de.wikipedia.org/wiki/Bachforelle"
+  }
+]

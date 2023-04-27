@@ -1,8 +1,13 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
+from typing import List
+
 import frappe
 from frappe import _
+from pypika.functions import Coalesce, Substring, Sum
+from pypika.queries import Table
+from pypika.terms import Criterion
 
 from landa.organization_management.doctype.organization.organization import (
 	get_supported_water_bodies,
@@ -17,38 +22,10 @@ REGIONAL_ROLES = {
 
 COLUMNS = [
 	{
-		"fieldname": "catch_log_entry",
-		"fieldtype": "Link",
-		"label": "Catch Log Entry",
-		"options": "Catch Log Entry",
-	},
-	{
-		"fieldname": "year",
-		"fieldtype": "Data",
-		"label": "Year",
-	},
-	{
 		"fieldname": "water_body",
 		"fieldtype": "Link",
 		"label": "Water Body",
 		"options": "Water Body",
-	},
-	{
-		"fieldname": "fishing_area",
-		"fieldtype": "Link",
-		"label": "Fishing Area",
-		"options": "Fishing Area",
-	},
-	{
-		"fieldname": "organization",
-		"fieldtype": "Data",
-		"label": "Organization",
-		"options": "Organization",
-	},
-	{
-		"fieldname": "origin_of_catch_log_entry",
-		"fieldtype": "Data",
-		"label": "Origin of Catch Log Entry",
 	},
 	{
 		"fieldname": "fish_species",
@@ -66,60 +43,116 @@ COLUMNS = [
 		"fieldtype": "Float",
 		"label": "Weight in Kg",
 	},
+	{
+		"fieldname": "by_foreign_regional_org",
+		"fieldtype": "Percent",
+		"label": "Number of Fish by Foreign Regional Organization",
+		"precision": 0,
+	},
 ]
 
 
 def get_data(filters):
-	filters["workflow_state"] = "Approved"
-	fish_species = filters.pop("fish_species", None)
+	entry = frappe.qb.DocType("Catch Log Entry")
+	child_table = frappe.qb.DocType("Catch Log Fish Table")
+	qb_filters = get_qb_filters(filters, entry, child_table)
 
-	filters_list = []
-	for key, value in filters.items():
-		if value:
-			filters_list.append(["Catch Log Entry", key, "=", value])
-
-	if fish_species:
-		filters_list.append(["Catch Log Fish Table", "fish_species", "=", fish_species])
-
-	data = frappe.get_all(
-		"Catch Log Entry",
-		fields=[
-			"name",
-			"year",
-			"water_body",
-			"fishing_area",
-			"organization",
-			"origin_of_catch_log_entry",
-			"`tabCatch Log Fish Table`.fish_species",
-			"`tabCatch Log Fish Table`.amount",
-			"`tabCatch Log Fish Table`.weight_in_kg",
-		],
-		filters=filters_list,
-		or_filters=get_or_filters(),
+	by_all_regional_orgs = get_subquery(entry, child_table, qb_filters)
+	by_foreign_regional_orgs = get_subquery(
+		entry,
+		child_table,
+		qb_filters
+		+ [Substring(entry.organization, 1, 3) != entry.regional_organization],  # index starts at 1
 	)
 
-	def postprocess(row):
-		row["year"] = str(row.get("year"))  # avoid year getting summed up
-		return list(row.values())
+	proportion_foreign = (
+		frappe.qb.from_(by_all_regional_orgs)
+		.left_join(by_foreign_regional_orgs)
+		.on(
+			(by_all_regional_orgs.water_body == by_foreign_regional_orgs.water_body)
+			& (by_all_regional_orgs.fish_species == by_foreign_regional_orgs.fish_species)
+		)
+		.select(
+			by_all_regional_orgs.water_body,
+			by_all_regional_orgs.fish_species,
+			(
+				Coalesce(by_foreign_regional_orgs.total_amount, 0) / by_all_regional_orgs.total_amount * 100
+			).as_("by_foreign_regional_org"),
+		)
+	)
 
-	return [postprocess(row) for row in data]
+	query = (
+		frappe.qb.from_(entry)
+		.join(child_table)
+		.on(entry.name == child_table.parent)
+		.left_join(proportion_foreign)
+		.on(
+			(entry.water_body == proportion_foreign.water_body)
+			& (child_table.fish_species == proportion_foreign.fish_species)
+		)
+		.select(
+			entry.water_body,
+			child_table.fish_species,
+			Sum(child_table.amount),
+			Sum(child_table.weight_in_kg),
+			proportion_foreign.by_foreign_regional_org,
+		)
+	)
+
+	query = filter_and_group(query, entry, child_table, qb_filters)
+	return query.run()
 
 
-def get_or_filters():
+def get_subquery(entry: Table, child_table: Table, qb_filters: List[Criterion]):
+	subquery = (
+		frappe.qb.from_(entry)
+		.join(child_table)
+		.on(entry.name == child_table.parent)
+		.select(entry.water_body, child_table.fish_species, Sum(child_table.amount).as_("total_amount"))
+	)
+
+	return filter_and_group(subquery, entry, child_table, qb_filters)
+
+
+def filter_and_group(query, entry: Table, child_table: Table, qb_filters: List[Criterion]):
+	query = add_conditions(query, qb_filters)
+	query = add_or_filters(query, entry)
+	query = query.groupby(entry.water_body, child_table.fish_species)
+	return query
+
+
+def get_qb_filters(filters, entry, child_table):
+	filters["workflow_state"] = "Approved"
+	fish_species = filters.pop("fish_species", None)
+	from_year = filters.pop("from_year", None)
+	to_year = filters.pop("to_year", None)
+
+	qb_filters = [entry[key] == value for key, value in filters.items()]
+
+	if fish_species:
+		qb_filters.append(child_table.fish_species == fish_species)
+
+	if from_year:
+		qb_filters.append(entry.year >= from_year)
+
+	if to_year:
+		qb_filters.append(entry.year <= to_year)
+
+	return qb_filters
+
+
+def add_or_filters(query, entry):
 	"""Return a dict of filters that restricts the results to what the user is
 	allowed to see.
 
 	STATE_ROLES		no filters
-	REGIONAL_ROLES	everything related to their water bodys OR to their member
-	                                organizations
-	LOCAL_ROLES		everything related to their own organization and OR to the
-	                                water bodys it is supporting
+	REGIONAL_ROLES	everything related to their water bodys OR to their member organizations
+	LOCAL_ROLES		everything related to their own organization and OR to the water bodys it is supporting
 	"""
-	or_filters = {}
 	user_roles = set(frappe.get_roles())
 
 	if user_roles.intersection(STATE_ROLES):
-		return or_filters
+		return query
 
 	# User is not a state organization employee
 
@@ -128,18 +161,24 @@ def get_or_filters():
 		frappe.throw(_("You are not a member of any organization."))
 
 	if user_roles.intersection(REGIONAL_ROLES):
-		or_filters["regional_organization"] = member_data.regional_organization
-		or_filters["organization"] = ("like", f"{member_data.regional_organization}-%")
+		return query.where(
+			(entry.regional_organization == member_data.regional_organization)
+			| entry.organization.like(f"{member_data.regional_organization}-%")
+		)
 	else:
 		# User is not in regional organization management
-		or_filters["water_body"] = (
-			"in",
-			get_supported_water_bodies(member_data.local_organization),
+		return query.where(
+			entry.organization.like(f"{member_data.local_organization}%")
+			| entry.water_body.isin(get_supported_water_bodies(member_data.local_organization))
 		)
-		or_filters["organization"] = member_data.local_organization
 
-	return or_filters
+
+def add_conditions(query, conditions):
+	for condition in conditions:
+		query = query.where(condition)
+
+	return query
 
 
 def execute(filters=None):
-	return COLUMNS, get_data(filters)
+	return COLUMNS, get_data(filters) or []
