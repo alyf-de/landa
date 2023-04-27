@@ -1,9 +1,13 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
+from typing import List
+
 import frappe
 from frappe import _
 from pypika.functions import Coalesce, Substring, Sum
+from pypika.queries import Table
+from pypika.terms import Criterion
 
 from landa.organization_management.doctype.organization.organization import (
 	get_supported_water_bodies,
@@ -53,27 +57,12 @@ def get_data(filters):
 	child_table = frappe.qb.DocType("Catch Log Fish Table")
 	qb_filters = get_qb_filters(filters, entry, child_table)
 
-	by_all_regional_orgs = (
-		frappe.qb.from_(entry)
-		.join(child_table)
-		.on(entry.name == child_table.parent)
-		.select(entry.water_body, child_table.fish_species, Sum(child_table.amount).as_("total_amount"))
-	)
-	by_all_regional_orgs = add_conditions(by_all_regional_orgs, qb_filters)
-	by_all_regional_orgs = add_or_filters(by_all_regional_orgs, entry)
-	by_all_regional_orgs = by_all_regional_orgs.groupby(entry.water_body, child_table.fish_species)
-
-	by_foreign_regional_orgs = (
-		frappe.qb.from_(entry)
-		.join(child_table)
-		.on(entry.name == child_table.parent)
-		.select(entry.water_body, child_table.fish_species, Sum(child_table.amount).as_("total_amount"))
-		.where(Substring(entry.organization, 1, 3) != entry.regional_organization)  # index starts at 1
-	)
-	by_foreign_regional_orgs = add_conditions(by_foreign_regional_orgs, qb_filters)
-	by_foreign_regional_orgs = add_or_filters(by_foreign_regional_orgs, entry)
-	by_foreign_regional_orgs = by_foreign_regional_orgs.groupby(
-		entry.water_body, child_table.fish_species
+	by_all_regional_orgs = get_subquery(entry, child_table, qb_filters)
+	by_foreign_regional_orgs = get_subquery(
+		entry,
+		child_table,
+		qb_filters
+		+ [Substring(entry.organization, 1, 3) != entry.regional_organization],  # index starts at 1
 	)
 
 	query = (
@@ -103,6 +92,20 @@ def get_data(filters):
 	query = add_or_filters(query, entry)
 	query = query.groupby(entry.water_body, child_table.fish_species)
 	return query.run()
+
+
+def get_subquery(entry: Table, child_table: Table, qb_filters: List[Criterion]):
+	subquery = (
+		frappe.qb.from_(entry)
+		.join(child_table)
+		.on(entry.name == child_table.parent)
+		.select(entry.water_body, child_table.fish_species, Sum(child_table.amount).as_("total_amount"))
+	)
+	subquery = add_conditions(subquery, qb_filters)
+	subquery = add_or_filters(subquery, entry)
+	subquery = subquery.groupby(entry.water_body, child_table.fish_species)
+
+	return subquery
 
 
 def get_qb_filters(filters, entry, child_table):
