@@ -65,26 +65,37 @@ def get_data(filters):
 		+ [Substring(entry.organization, 1, 3) != entry.regional_organization],  # index starts at 1
 	)
 
+	proportion_foreign = (
+		frappe.qb.from_(by_all_regional_orgs)
+		.left_join(by_foreign_regional_orgs)
+		.on(
+			(by_all_regional_orgs.water_body == by_foreign_regional_orgs.water_body)
+			& (by_all_regional_orgs.fish_species == by_foreign_regional_orgs.fish_species)
+		)
+		.select(
+			by_all_regional_orgs.water_body,
+			by_all_regional_orgs.fish_species,
+			(
+				Coalesce(by_foreign_regional_orgs.total_amount, 0) / by_all_regional_orgs.total_amount * 100
+			).as_("by_foreign_regional_org"),
+		)
+	)
+
 	query = (
 		frappe.qb.from_(entry)
 		.join(child_table)
 		.on(entry.name == child_table.parent)
-		.left_join(by_all_regional_orgs)
+		.left_join(proportion_foreign)
 		.on(
-			entry.water_body == by_all_regional_orgs.water_body
-			and child_table.fish_species == by_all_regional_orgs.fish_species
-		)
-		.left_join(by_foreign_regional_orgs)
-		.on(
-			entry.water_body == by_foreign_regional_orgs.water_body
-			and child_table.fish_species == by_foreign_regional_orgs.fish_species
+			(entry.water_body == proportion_foreign.water_body)
+			& (child_table.fish_species == proportion_foreign.fish_species)
 		)
 		.select(
 			entry.water_body,
 			child_table.fish_species,
 			Sum(child_table.amount),
 			Sum(child_table.weight_in_kg),
-			(Coalesce(by_foreign_regional_orgs.total_amount, 0) / by_all_regional_orgs.total_amount * 100),
+			proportion_foreign.by_foreign_regional_org,
 		)
 	)
 
