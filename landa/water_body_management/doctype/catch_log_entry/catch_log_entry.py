@@ -2,7 +2,7 @@
 # For license information, please see license.txt
 
 import frappe
-from frappe import get_doc, get_roles
+from frappe import get_roles
 from frappe.model.document import Document
 
 
@@ -22,7 +22,7 @@ class CatchLogEntry(Document):
 			self.origin_of_catch_log_entry = "Verein"
 
 	def validate(self):
-		water_body = get_doc("Water Body", self.water_body)
-		main_species = [row.fish_species for row in water_body.fish_species]
+		# water_body = get_doc("Water Body", self.water_body)
+		# main_species = [row.fish_species for row in water_body.fish_species]
 		for row in self.fish_catches:
-			row.plausible = int(row.validate_species(main_species) and row.validate_weight())
+			row.plausible = int(row.validate_weight())  # and row.validate_species()

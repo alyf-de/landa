@@ -1,8 +1,6 @@
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from typing import List
-
 import frappe
 from frappe import _, msgprint
 from frappe.model.document import Document
@@ -31,15 +29,16 @@ class CatchLogFishTable(Document):
 		)
 		return False
 
-	def validate_species(self, main_species: List[str]):
-		if self.fish_species in main_species:
-			return True
+	# TODO: switch to blacklist
+	# def validate_species(self, main_species: List[str]):
+	# 	if self.fish_species in main_species:
+	# 		return True
 
-		msgprint(
-			_("The fish species {0} in row {1} is not a main species of the water body").format(
-				self.fish_species, self.idx
-			),
-			indicator="orange",
-			alert=True,
-		)
-		return False
+	# 	msgprint(
+	# 		_("The fish species {0} in row {1} is not a main species of the water body").format(
+	# 			self.fish_species, self.idx
+	# 		),
+	# 		indicator="orange",
+	# 		alert=True,
+	# 	)
+	# 	return False
