@@ -165,12 +165,16 @@ def add_or_filters(query, entry):
 			(entry.regional_organization == member_data.regional_organization)
 			| entry.organization.like(f"{member_data.regional_organization}-%")
 		)
-	else:
-		# User is not in regional organization management
+
+	# User is not in regional organization management
+	supported_water_bodies = get_supported_water_bodies(member_data.local_organization)
+	if supported_water_bodies:
 		return query.where(
 			entry.organization.like(f"{member_data.local_organization}%")
-			| entry.water_body.isin(get_supported_water_bodies(member_data.local_organization))
+			| entry.water_body.isin(supported_water_bodies)
 		)
+
+	return query.where(entry.organization.like(f"{member_data.local_organization}%"))
 
 
 def add_conditions(query, conditions):
