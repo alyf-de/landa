@@ -46,8 +46,7 @@ COLUMNS = [
 	{
 		"fieldname": "by_foreign_regional_org",
 		"fieldtype": "Percent",
-		"label": "Number of Fish by Foreign Regional Organization",
-		"precision": 0,
+		"label": "Share of other Regional Organizations",
 	},
 ]
 
@@ -76,7 +75,9 @@ def get_data(filters):
 			by_all_regional_orgs.water_body,
 			by_all_regional_orgs.fish_species,
 			(
-				Coalesce(by_foreign_regional_orgs.total_amount, 0) / by_all_regional_orgs.total_amount * 100
+				Coalesce(by_foreign_regional_orgs.total_weight_in_kg, 0)
+				/ by_all_regional_orgs.total_weight_in_kg
+				* 100
 			).as_("by_foreign_regional_org"),
 		)
 	)
@@ -108,7 +109,11 @@ def get_subquery(entry: Table, child_table: Table, qb_filters: List[Criterion]):
 		frappe.qb.from_(entry)
 		.join(child_table)
 		.on(entry.name == child_table.parent)
-		.select(entry.water_body, child_table.fish_species, Sum(child_table.amount).as_("total_amount"))
+		.select(
+			entry.water_body,
+			child_table.fish_species,
+			Sum(child_table.weight_in_kg).as_("total_weight_in_kg"),
+		)
 	)
 
 	return filter_and_group(subquery, entry, child_table, qb_filters)
