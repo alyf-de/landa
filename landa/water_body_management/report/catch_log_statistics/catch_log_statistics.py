@@ -43,12 +43,20 @@ COLUMNS = [
 		"fieldtype": "Float",
 		"label": "Weight in Kg",
 	},
-	{
+	{  # displayed only for regional or state employees
 		"fieldname": "by_foreign_regional_org",
 		"fieldtype": "Percent",
 		"label": "Share of other Regional Organizations",
 	},
 ]
+
+
+def get_columns():
+	columns = COLUMNS.copy()
+	if not is_regional_or_state_employee():
+		columns.pop()
+
+	return columns
 
 
 def get_data(filters):
@@ -96,9 +104,11 @@ def get_data(filters):
 			child_table.fish_species,
 			Sum(child_table.amount),
 			Sum(child_table.weight_in_kg),
-			proportion_foreign.by_foreign_regional_org,
 		)
 	)
+
+	if is_regional_or_state_employee():
+		query = query.select(proportion_foreign.by_foreign_regional_org)
 
 	query = filter_and_group(query, entry, child_table, qb_filters)
 	return query.run()
@@ -154,7 +164,7 @@ def add_or_filters(query, entry):
 	REGIONAL_ROLES	everything related to their water bodys OR to their member organizations
 	LOCAL_ROLES		everything related to their own organization and OR to the water bodys it is supporting
 	"""
-	user_roles = set(frappe.get_roles())
+	user_roles = get_user_roles()
 
 	if user_roles.intersection(STATE_ROLES):
 		return query
@@ -189,5 +199,14 @@ def add_conditions(query, conditions):
 	return query
 
 
+def get_user_roles():
+	return set(frappe.get_roles())
+
+
+def is_regional_or_state_employee():
+	user_roles = get_user_roles()
+	return REGIONAL_ROLES.intersection(user_roles) or STATE_ROLES.intersection(user_roles)
+
+
 def execute(filters=None):
-	return COLUMNS, get_data(filters) or []
+	return get_columns(), get_data(filters) or []
