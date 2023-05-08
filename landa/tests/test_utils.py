@@ -1,5 +1,6 @@
 import frappe
 from frappe.tests.utils import FrappeTestCase
+
 from landa.utils import remove_from_table
 
 

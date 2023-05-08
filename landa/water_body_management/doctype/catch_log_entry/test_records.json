@@ -1,0 +1,23 @@
+[
+  {
+    "doctype": "Catch Log Entry",
+    "water_body": "A01-001",
+    "year": 2023,
+    "fishing_days": 8,
+    "organization": "REG-001",
+    "origin_of_catch_log_entry": "Verein",
+    "workflow_state": "In Progress",
+    "fish_catches": [
+      {
+        "fish_species": "Barsch",
+        "amount": 5,
+        "weight_in_kg": 12
+      },
+      {
+        "fish_species": "Bachforelle",
+        "amount": 2,
+        "weight_in_kg": 1.5
+      }
+    ]
+  }
+]

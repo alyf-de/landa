@@ -1,11 +1,12 @@
 {
  "actions": [],
- "autoname": "Prompt",
+ "autoname": "field:title",
  "creation": "2022-02-18 10:31:27.983270",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "title",
   "organization",
   "description"
  ],
@@ -24,10 +25,16 @@
    "label": "Organization",
    "options": "Organization",
    "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "unique": 1
   }
  ],
  "links": [],
- "modified": "2022-03-15 17:09:41.758716",
+ "modified": "2023-04-03 13:44:42.784796",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Function",

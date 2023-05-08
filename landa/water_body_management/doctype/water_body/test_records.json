@@ -1,0 +1,21 @@
+[
+  {
+    "doctype": "Water Body",
+    "title": "Test Water Body",
+    "number": "001",
+    "fishing_area": "A01",
+    "organization": "REG",
+    "status": "Allgemeines Angelgewässer",
+    "is_property_water_body": 0,
+    "is_active": 1,
+    "has_master_key_system": 0,
+    "water_body_size": 15.001,
+    "water_body_size_unit": "km",
+    "fish_species": [
+      {
+        "fish_species": "Barsch",
+        "short_code": "B"
+      }
+    ]
+  }
+]

@@ -1,16 +1,11 @@
-# -*- coding: utf-8 -*-
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from __future__ import unicode_literals
 
 import frappe
-
 from frappe import _
-from frappe.utils.data import today
-from frappe.utils.data import date_diff
 from frappe.model.document import Document
-
+from frappe.utils.data import date_diff, today
 
 
 class LeaseContract(Document):
@@ -23,7 +18,9 @@ class LeaseContract(Document):
 				frappe.throw(_("End Date cannot be before Start Date."))
 
 		if self.organization != frappe.db.get_value("Water Body", self.water_body, "organization"):
-			frappe.throw(_("Lease Contract must belong to the same regional Organization as the Water Body."))
+			frappe.throw(
+				_("Lease Contract must belong to the same regional Organization as the Water Body.")
+			)
 
 	def on_trash(self):
 		self.status = "Inactive"

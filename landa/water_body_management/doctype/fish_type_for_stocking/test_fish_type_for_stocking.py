@@ -4,5 +4,6 @@
 # import frappe
 import unittest
 
+
 class TestFishTypeForStocking(unittest.TestCase):
 	pass

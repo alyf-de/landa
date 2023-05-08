@@ -13,7 +13,7 @@
     "parent": "Navbar Settings",
     "parentfield": "help_dropdown",
     "parenttype": "Navbar Settings",
-    "route": "https://erpnext.com/docs/user/manual"
+    "route": "https://docs.erpnext.com/docs/v13/user/manual/en/introduction"
    },
    {
     "action": null,
@@ -83,7 +83,7 @@
    }
   ],
   "logo_width": 0,
-  "modified": "2021-12-22 18:40:53.289269",
+  "modified": "2023-03-24 19:37:02.443487",
   "name": "Navbar Settings",
   "parent": null,
   "parentfield": null,

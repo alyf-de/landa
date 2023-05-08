@@ -5,12 +5,20 @@
 frappe.query_reports["Catch Log Statistics"] = {
 	filters: [
 		{
-			fieldname: "year",
+			fieldname: "from_year",
 			fieldtype: "Int",
-			label: __("Year"),
+			label: __("From Year"),
 			mandatory: 0,
 			wildcard_filter: 0,
 			default: moment().year() - 1,
+		},
+		{
+			fieldname: "to_year",
+			fieldtype: "Int",
+			label: __("To Year"),
+			mandatory: 0,
+			wildcard_filter: 0,
+			default: moment().year(),
 		},
 		{
 			fieldname: "water_body",
@@ -42,12 +50,6 @@ frappe.query_reports["Catch Log Statistics"] = {
 			label: __("Fishing Area"),
 			mandatory: 0,
 			wildcard_filter: 0,
-		},
-		{
-			fieldname: "origin_of_catch_log_entry",
-			fieldtype: "Select",
-			label: __("Origin of Catch Log Entry"),
-			options: "\nVerein\nRegionalverband",
 		},
 	],
 };

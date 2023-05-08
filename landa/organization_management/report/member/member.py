@@ -36,9 +36,7 @@ class Member:
 		)
 
 		# convert to pandas dataframe
-		self.members_df = pd.DataFrame(
-			self.members, columns=["member"] + MEMBER_FIELDS[1:]
-		)
+		self.members_df = pd.DataFrame(self.members, columns=["member"] + MEMBER_FIELDS[1:])
 		self.members_df.set_index("member", inplace=True)
 
 

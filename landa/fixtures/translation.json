@@ -1671,22 +1671,6 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-06-08 19:04:03.783009",
-  "name": "c581803a6c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "source_text": "Number of Fish",
-  "translated_text": "Anzahl der Fische"
- },
- {
-  "context": null,
-  "contributed": 0,
-  "contribution_docname": null,
-  "contribution_status": "",
-  "docstatus": 0,
-  "doctype": "Translation",
-  "language": "de",
   "modified": "2021-06-08 19:04:03.812061",
   "name": "c010aa77d5",
   "parent": null,
@@ -7111,13 +7095,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2022-03-31 12:47:20.050380",
+  "modified": "2023-04-14 14:38:26.662202",
   "name": "d0bb53bc7d",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Catch Log Days and Counts",
-  "translated_text": "Fangb\u00fccher und Angeltage"
+  "translated_text": "Angeltage"
  },
  {
   "context": null,

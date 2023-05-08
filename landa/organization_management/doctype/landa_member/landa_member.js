@@ -11,6 +11,17 @@ frappe.ui.form.on("LANDA Member", {
 				},
 			};
 		});
+
+		frm.make_methods = {
+			"User": () => {
+				frappe.new_doc("User", {
+					first_name: frm.doc.first_name,
+					last_name: frm.doc.last_name,
+					landa_member: frm.doc.name,
+					organization: frm.doc.organization,
+				});
+			}
+		}
 	},
 	refresh: function (frm) {
 		// Automatically add the backlink to LANDA Member when a new Address or
@@ -37,21 +48,8 @@ frappe.ui.form.on("LANDA Member", {
 					.then((resp) => {
 						if (resp.message.name) return;
 
-						// prefill the user form when created via dashboard "+" button
-						frappe.route_options = {
-							first_name: frm.doc.first_name,
-							last_name: frm.doc.last_name,
-							landa_member: frm.doc.name,
-							organization: frm.doc.organization,
-						};
-
 						frm.add_custom_button(__("Create User"), function () {
-							frappe.new_doc("User", {
-								first_name: frm.doc.first_name,
-								last_name: frm.doc.last_name,
-								landa_member: frm.doc.name,
-								organization: frm.doc.organization,
-							});
+							frm.make_methods["User"]();
 						});
 					});
 			});

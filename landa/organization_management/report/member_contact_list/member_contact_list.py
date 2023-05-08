@@ -4,16 +4,12 @@
 import frappe
 import pandas as pd
 
-from ..member.member import (
-	Member,
-	get_link_filters,
-	remove_duplicate_indices,
-)
+from ..member.member import Member, get_link_filters, remove_duplicate_indices
 
 
 class Contact(Member):
 	def __init__(self, filters):
-		super(Contact, self).__init__(filters)
+		super().__init__(filters)
 
 	def get_data(self):
 		self.set_members()
@@ -37,9 +33,7 @@ class Contact(Member):
 		contacts_df = remove_duplicate_indices(contacts_df)
 
 		# merge all dataframes from different doctypes
-		data = pd.concat([self.members_df, contacts_df], axis=1).reindex(
-			self.members_df.index
-		)
+		data = pd.concat([self.members_df, contacts_df], axis=1).reindex(self.members_df.index)
 
 		data.fillna("", inplace=True)
 

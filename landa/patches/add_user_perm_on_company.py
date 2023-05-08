@@ -1,19 +1,13 @@
 import frappe
+from frappe.permissions import add_user_permission
 
 from landa.utils import get_default_company
-from frappe.permissions import add_user_permission
 
 
 def execute():
 	"""Restrict all LANDA Members to their regional organization's company."""
-	members = frappe.get_all("LANDA Member",
-		fields=[
-			"organization",
-			"user"
-		],
-		filters={
-			"user": ("is", "set")
-		}
+	members = frappe.get_all(
+		"LANDA Member", fields=["organization", "user"], filters={"user": ("is", "set")}
 	)
 
 	for member in members:

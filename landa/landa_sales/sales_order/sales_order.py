@@ -1,13 +1,10 @@
-# -*- coding: utf-8 -*-
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
 import frappe
-from erpnext.selling.doctype.sales_order.sales_order import (
-	make_delivery_note,
-	make_sales_invoice,
-)
+from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, make_sales_invoice
 from frappe.utils.data import get_year_ending
+
 from landa.utils import update_doc
 
 
@@ -15,9 +12,7 @@ def before_validate(sales_order, event):
 	for item in sales_order.items:
 		item.delivery_date = get_year_ending(str(sales_order.year_of_settlement))
 
-	if (not sales_order.tax_category) and frappe.db.exists(
-		"Tax Category", "Umsatzsteuer"
-	):
+	if (not sales_order.tax_category) and frappe.db.exists("Tax Category", "Umsatzsteuer"):
 		sales_order.tax_category = "Umsatzsteuer"
 
 

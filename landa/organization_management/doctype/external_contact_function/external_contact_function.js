@@ -3,7 +3,7 @@
 
 frappe.ui.form.on('External Contact Function', {
 	refresh: function(frm) {
-		
+
 	}
 });
 

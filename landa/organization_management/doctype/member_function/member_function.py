@@ -1,16 +1,12 @@
-# -*- coding: utf-8 -*-
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from __future__ import unicode_literals
 from typing import Optional
 
 import frappe
-
 from frappe import _
-from frappe.utils.data import today
-from frappe.utils.data import date_diff
 from frappe.model.document import Document
+from frappe.utils.data import date_diff, today
 
 
 class MemberFunction(Document):
@@ -42,6 +38,7 @@ class MemberFunction(Document):
 
 		Raise a permission error for all other cases.
 		"""
+
 		def has_role(role: str) -> bool:
 			"""Check if the current user has the given role."""
 			return role in frappe.get_roles(frappe.session.user)
@@ -51,9 +48,7 @@ class MemberFunction(Document):
 		if access_level == "Local Group":
 			return
 
-		if access_level == "State Organization" and has_role(
-			"LANDA State Organization Employee"
-		):
+		if access_level == "State Organization" and has_role("LANDA State Organization Employee"):
 			return
 
 		if access_level == "Regional Organization" and (
@@ -70,9 +65,7 @@ class MemberFunction(Document):
 			return
 
 		frappe.throw(
-			_("No permission to set Member Function Category {0}").format(
-				self.member_function_category
-			),
+			_("No permission to set Member Function Category {0}").format(self.member_function_category),
 			frappe.PermissionError,
 		)
 

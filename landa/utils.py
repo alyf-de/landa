@@ -1,10 +1,11 @@
+from contextlib import contextmanager
 from typing import Optional
+
 import frappe
 from frappe import _
 from frappe.model.document import Document
 from frappe.model.dynamic_links import get_dynamic_link_map
 from frappe.utils.nestedset import get_ancestors_of
-from contextlib import contextmanager
 
 
 def get_new_name(prefix, company, doctype):
@@ -49,7 +50,7 @@ def get_current_member_data() -> frappe._dict:
 	# TODO: Something if off with the cache -> loading old data. Figure out reason before reactivating.
 	# from_cache = frappe.cache().hget("landa", frappe.session.user)
 	# if from_cache:
-	#	return from_cache
+	# 	return from_cache
 
 	member_name, member_organization = get_member_and_organization(frappe.session.user)
 
@@ -105,7 +106,10 @@ def get_company_by_abbr(abbr: str):
 
 def get_member_and_organization(user: str) -> tuple:
 	"""Return the LANDA Member and Organization linked in the user."""
-	return frappe.db.get_value("User", user, fieldname=["landa_member", "organization"]) or (None, None)
+	return frappe.db.get_value("User", user, fieldname=["landa_member", "organization"]) or (
+		None,
+		None,
+	)
 
 
 def update_doc(source_doc, target_doc):
@@ -161,7 +165,7 @@ def update_doc(source_doc, target_doc):
 	}
 
 	fields = {}
-	
+
 	for key, source_field_name in FIELD_MAPPINGS[source_doc.doctype].items():
 		target_field_name = FIELD_MAPPINGS[target_doc.doctype][key]
 		fields[target_field_name] = getattr(source_doc, source_field_name)
@@ -196,18 +200,14 @@ def pop_from_table(parent_type, parent_name, parent_field, fieldname, value):
 	doc.save(ignore_permissions=True)
 
 
-def delete_dynamically_linked(
-	doctype: str, linked_doctype: str, linked_name: str
-) -> None:
+def delete_dynamically_linked(doctype: str, linked_doctype: str, linked_name: str) -> None:
 	"""Delete all records of `doctype` that are linked to `linked_name` of `linked_doctype` via a Dynamic Link table."""
 	dl = frappe.qb.DocType("Dynamic Link")
 	for name, parent_field, idx in (
 		frappe.qb.from_(dl)
 		.select(dl.parent, dl.parentfield, dl.idx)
 		.where(
-			(dl.parenttype == doctype)
-			& (dl.link_doctype == linked_doctype)
-			& (dl.link_name == linked_name)
+			(dl.parenttype == doctype) & (dl.link_doctype == linked_doctype) & (dl.link_name == linked_name)
 		)
 		.run()
 	):
@@ -222,9 +222,7 @@ def delete_dynamically_linked(
 			pop_from_table(doctype, name, parent_field, "link_name", linked_name)
 			continue
 
-		frappe.delete_doc(
-			doctype, doc.name, delete_permanently=True, ignore_permissions=True
-		)
+		frappe.delete_doc(doctype, doc.name, delete_permanently=True, ignore_permissions=True)
 
 
 def get_link_fields(doctype: str, as_dict: int = 1):
@@ -272,7 +270,9 @@ def delete_linked_records(doctype: str, name: str) -> None:
 			continue
 
 		if link_field["is_in_single"]:
-			if not link_field["reqd"] and frappe.db.get_single_value(linked_doctype, link_fieldname) == name:
+			if (
+				not link_field["reqd"] and frappe.db.get_single_value(linked_doctype, link_fieldname) == name
+			):
 				unset_value(linked_doctype, None, link_fieldname)
 			continue
 

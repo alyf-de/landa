@@ -1,19 +1,20 @@
-# -*- coding: utf-8 -*-
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from __future__ import unicode_literals
 from typing import List
+
 import frappe
 from frappe import _
+from frappe.contacts.address_and_contact import (
+	delete_contact_and_address,
+	load_address_and_contact,
+)
+from frappe.desk.treeview import make_tree_args
+from frappe.model.naming import make_autoname, revert_series_if_last
+from frappe.permissions import has_permission
 from frappe.utils import cint
 from frappe.utils.nestedset import NestedSet
-from frappe.permissions import has_permission
-from frappe.desk.treeview import make_tree_args
-from frappe.model.naming import make_autoname
-from frappe.model.naming import revert_series_if_last
-from frappe.contacts.address_and_contact import load_address_and_contact
-from frappe.contacts.address_and_contact import delete_contact_and_address
+
 
 class Organization(NestedSet):
 	nsm_parent_field = "parent_organization"
@@ -61,7 +62,7 @@ class Organization(NestedSet):
 		load_address_and_contact(self)
 
 	def on_update(self):
-		super(Organization, self).on_update()
+		super().on_update()
 
 	def on_trash(self):
 		delete_contact_and_address(self.doctype, self.name)
@@ -69,7 +70,7 @@ class Organization(NestedSet):
 
 		# NestedSet.on_trash should be the last command because it destroys the
 		# funtionality of NestedSet. Some methods will not work properly afterwards.
-		super(Organization, self).on_trash(allow_root_deletion=True)
+		super().on_trash(allow_root_deletion=True)
 
 	@frappe.whitelist()
 	def get_series_current(self):
@@ -85,10 +86,7 @@ class Organization(NestedSet):
 		if frappe.db.get_value("Series", series, "name", order_by="name") == None:
 			frappe.db.sql("insert into tabSeries (name, current) values (%s, 0)", (series))
 
-		frappe.db.sql(
-			"UPDATE `tabSeries` SET current = %s WHERE name = %s",
-			(cint(current), series)
-		)
+		frappe.db.sql("UPDATE `tabSeries` SET current = %s WHERE name = %s", (cint(current), series))
 
 	def revert_series(self):
 		"""Decrease the naming counter when the newest organization gets deleted."""
@@ -124,31 +122,41 @@ class Organization(NestedSet):
 
 	def create_company(self):
 		def create_bank_account(bank_account, account_number, company_name):
-			bank_account_group =  frappe.db.get_value("Account", {
-				"account_type": "Bank",
-				"is_group": 1,
-				"root_type": "Asset",
-				"company": company_name
-			})
-			if bank_account_group:
-				bank_account = frappe.get_doc({
-					"doctype": "Account",
-					"account_name": bank_account,
-					"account_number": account_number,
-					"parent_account": bank_account_group,
-					"is_group":0,
-					"company": company_name,
+			bank_account_group = frappe.db.get_value(
+				"Account",
+				{
 					"account_type": "Bank",
-				})
+					"is_group": 1,
+					"root_type": "Asset",
+					"company": company_name,
+				},
+			)
+			if bank_account_group:
+				bank_account = frappe.get_doc(
+					{
+						"doctype": "Account",
+						"account_name": bank_account,
+						"account_number": account_number,
+						"parent_account": bank_account_group,
+						"is_group": 0,
+						"company": company_name,
+						"account_type": "Bank",
+					}
+				)
 
 				bank_account.insert()
-				frappe.db.set_value("Company", company_name, "default_bank_account", bank_account.name, update_modified=False)
+				frappe.db.set_value(
+					"Company",
+					company_name,
+					"default_bank_account",
+					bank_account.name,
+					update_modified=False,
+				)
 
 		def set_mode_of_payment_account(docname, company, default_account):
-			frappe.get_doc("Mode of Payment", docname).append("accounts", {
-				"company": company,
-				"default_account": default_account
-			}).save()
+			frappe.get_doc("Mode of Payment", docname).append(
+				"accounts", {"company": company, "default_account": default_account}
+			).save()
 
 		if frappe.db.exists("Company", self.organization_name):
 			return
@@ -167,14 +175,14 @@ class Organization(NestedSet):
 		set_mode_of_payment_account(
 			"Banküberweisung",
 			company.name,
-			frappe.get_value("Company", company.name, "default_bank_account"
-		))
+			frappe.get_value("Company", company.name, "default_bank_account"),
+		)
 
 		set_mode_of_payment_account(
 			"Bar",
 			company.name,
-			frappe.get_value("Company", company.name, "default_cash_account"
-		))
+			frappe.get_value("Company", company.name, "default_cash_account"),
+		)
 
 	def check_permission_on_parent(self, ptype):
 		"""Check if current user has `ptype` permission on parent Organization.
