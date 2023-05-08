@@ -4,7 +4,7 @@
   "doctype": "Workflow",
   "document_type": "Catch Log Entry",
   "is_active": 1,
-  "modified": "2023-02-03 15:09:02.085379",
+  "modified": "2023-05-08 12:12:17.546050",
   "name": "Catch Log Entry",
   "override_status": 0,
   "parent": null,
@@ -12,32 +12,6 @@
   "parenttype": null,
   "send_email_alert": 0,
   "states": [
-   {
-    "allow_edit": "LANDA Local Organization Management",
-    "doc_status": "0",
-    "is_optional_state": 0,
-    "message": null,
-    "next_action_email_template": null,
-    "parent": "Catch Log Entry",
-    "parentfield": "states",
-    "parenttype": "Workflow",
-    "state": "In Progress",
-    "update_field": null,
-    "update_value": null
-   },
-   {
-    "allow_edit": "LANDA Regional Organization Management",
-    "doc_status": "0",
-    "is_optional_state": 0,
-    "message": null,
-    "next_action_email_template": null,
-    "parent": "Catch Log Entry",
-    "parentfield": "states",
-    "parenttype": "Workflow",
-    "state": "In Progress",
-    "update_field": null,
-    "update_value": null
-   },
    {
     "allow_edit": "LANDA Catch Log User",
     "doc_status": "0",
@@ -73,47 +47,12 @@
     "parent": "Catch Log Entry",
     "parentfield": "states",
     "parenttype": "Workflow",
-    "state": "Filed",
-    "update_field": null,
-    "update_value": null
-   },
-   {
-    "allow_edit": "LANDA State Organization Employee",
-    "doc_status": "0",
-    "is_optional_state": 0,
-    "message": null,
-    "next_action_email_template": null,
-    "parent": "Catch Log Entry",
-    "parentfield": "states",
-    "parenttype": "Workflow",
     "state": "Approved",
     "update_field": null,
     "update_value": null
    }
   ],
   "transitions": [
-   {
-    "action": "File this record",
-    "allow_self_approval": 1,
-    "allowed": "LANDA Local Organization Management",
-    "condition": null,
-    "next_state": "Filed",
-    "parent": "Catch Log Entry",
-    "parentfield": "transitions",
-    "parenttype": "Workflow",
-    "state": "In Progress"
-   },
-   {
-    "action": "File this record",
-    "allow_self_approval": 1,
-    "allowed": "LANDA Regional Organization Management",
-    "condition": null,
-    "next_state": "Filed",
-    "parent": "Catch Log Entry",
-    "parentfield": "transitions",
-    "parenttype": "Workflow",
-    "state": "In Progress"
-   },
    {
     "action": "File this record",
     "allow_self_approval": 1,
@@ -128,9 +67,20 @@
    {
     "action": "Reject",
     "allow_self_approval": 1,
-    "allowed": "LANDA Local Organization Management",
+    "allowed": "LANDA Regional Organization Management",
     "condition": null,
     "next_state": "In Progress",
+    "parent": "Catch Log Entry",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Filed"
+   },
+   {
+    "action": "Approve",
+    "allow_self_approval": 1,
+    "allowed": "LANDA Regional Organization Management",
+    "condition": null,
+    "next_state": "Approved",
     "parent": "Catch Log Entry",
     "parentfield": "transitions",
     "parenttype": "Workflow",
@@ -139,35 +89,13 @@
    {
     "action": "Reject",
     "allow_self_approval": 1,
-    "allowed": "LANDA Regional Organization Management",
+    "allowed": "LANDA State Organization Employee",
     "condition": null,
     "next_state": "In Progress",
     "parent": "Catch Log Entry",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Filed"
-   },
-   {
-    "action": "Approve",
-    "allow_self_approval": 1,
-    "allowed": "LANDA Regional Organization Management",
-    "condition": null,
-    "next_state": "Approved",
-    "parent": "Catch Log Entry",
-    "parentfield": "transitions",
-    "parenttype": "Workflow",
-    "state": "Filed"
-   },
-   {
-    "action": "Approve",
-    "allow_self_approval": 1,
-    "allowed": "LANDA State Organization Employee",
-    "condition": null,
-    "next_state": "Approved",
-    "parent": "Catch Log Entry",
-    "parentfield": "transitions",
-    "parenttype": "Workflow",
-    "state": "Filed"
+    "state": "Approved"
    }
   ],
   "workflow_name": "Catch Log Entry",
