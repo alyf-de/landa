@@ -39,7 +39,7 @@
   "home_page": "index",
   "indexing_authorization_code": null,
   "indexing_refresh_token": null,
-  "modified": "2022-03-03 10:24:34.020505",
+  "modified": "2022-05-08 10:24:34.020505",
   "name": "Website Settings",
   "navbar_search": 0,
   "navbar_template": null,
@@ -50,6 +50,7 @@
   "robots_txt": null,
   "route_redirects": [],
   "show_language_picker": 0,
+  "splash_image": "/assets/landa/image/icon.png",
   "subdomain": null,
   "title_prefix": null,
   "top_bar_items": [
