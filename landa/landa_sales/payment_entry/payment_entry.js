@@ -1,6 +1,7 @@
 frappe.ui.form.on('Payment Entry', {
     refresh(frm) {
         frm.trigger('set_year_of_settlement');
+        frm.trigger('fetch_organization');
     },
     set_year_of_settlement(frm) {
         // Do nothing if year_of_settlement is already set
@@ -22,7 +23,17 @@ frappe.ui.form.on('Payment Entry', {
                 });
             }
         }
-    }
+    },
+    party_type(frm) {
+        frm.trigger('fetch_organization');
+    },
+    fetch_organization(frm) {
+        if (frm.doc.party_type === 'Customer') {
+            frm.add_fetch('party', 'organization', 'organization', frm.doctype);
+        } else {
+            delete frm.fetch_dict[frm.doctype]['organization'];
+        }
+    },
 });
 
 
