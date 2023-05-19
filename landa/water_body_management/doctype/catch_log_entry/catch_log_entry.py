@@ -2,7 +2,7 @@
 # For license information, please see license.txt
 
 import frappe
-from frappe import get_roles
+from frappe import _, get_roles
 from frappe.model.document import Document
 
 
@@ -24,5 +24,18 @@ class CatchLogEntry(Document):
 	def validate(self):
 		# water_body = get_doc("Water Body", self.water_body)
 		# main_species = [row.fish_species for row in water_body.fish_species]
+		blacklisted_species = frappe.get_all(
+			"Blacklisted Fish Species Table", {"parent": self.water_body}, pluck="fish_species"
+		)
+
 		for row in self.fish_catches:
-			row.plausible = int(row.validate_weight())  # and row.validate_species()
+			row.plausible = int(row.validate_weight())
+
+			if blacklisted_species and (row.fish_species in blacklisted_species):
+				frappe.throw(
+					_("Row {0}: Fish Species {1} cannot occur in {2}").format(
+						row.idx, frappe.bold(row.fish_species), frappe.bold(self.water_body_title)
+					),
+					title=_("Invalid Species")
+				)
+
