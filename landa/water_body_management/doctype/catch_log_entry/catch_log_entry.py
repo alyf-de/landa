@@ -36,6 +36,5 @@ class CatchLogEntry(Document):
 					_("Row {0}: Fish Species {1} cannot occur in {2}").format(
 						row.idx, frappe.bold(row.fish_species), frappe.bold(self.water_body_title)
 					),
-					title=_("Invalid Species")
+					title=_("Invalid Species"),
 				)
-

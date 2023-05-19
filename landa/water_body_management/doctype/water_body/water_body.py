@@ -31,5 +31,5 @@ class WaterBody(Document):
 					_("Blacklisted Fish Species {0} cannot also be a Main Fish Species.").format(
 						frappe.bold(fish_species)
 					),
-					title=_("Invalid Species")
+					title=_("Invalid Species"),
 				)
