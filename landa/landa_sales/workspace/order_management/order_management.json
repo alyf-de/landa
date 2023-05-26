@@ -187,12 +187,6 @@
    "label": "Manage Sales Orders",
    "link_to": "Sales Order",
    "type": "DocType"
-  },
-  {
-   "doc_view": "New",
-   "label": "New Payment Entry",
-   "link_to": "Payment Entry",
-   "type": "DocType"
   }
  ]
 }
