@@ -159,24 +159,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Item-wise Sales History",
-   "link_to": "Item-wise Sales History",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Item-wise Sales Register",
-   "link_to": "Item-wise Sales Register",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Setup",
    "link_type": "DocType",
    "onboard": 0,
@@ -192,7 +174,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-05-26 16:26:41.294828",
+ "modified": "2023-05-05 13:31:59.481703",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "Order Management",
@@ -204,6 +186,12 @@
    "doc_view": "List",
    "label": "Manage Sales Orders",
    "link_to": "Sales Order",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "New",
+   "label": "New Payment Entry",
+   "link_to": "Payment Entry",
    "type": "DocType"
   }
  ]
