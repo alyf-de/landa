@@ -7,7 +7,7 @@ import frappe
 @frappe.whitelist(allow_guest=True)
 def organization(id: str = None) -> List[Dict]:
 	filters = []
-	if id:
+	if id and isinstance(id, str):
 		filters.append(["Organization", "name", "like", id])
 
 	organizations = frappe.get_all(
@@ -66,3 +66,49 @@ def organization(id: str = None) -> List[Dict]:
 			)
 
 	return organizations
+
+
+@frappe.whitelist(allow_guest=True)
+def water_body(id: str = None, fishing_area: str = None) -> List[Dict]:
+	"""Return a list of water bodies with fish species and special provisions."""
+	filters = [["Water Body", "is_active", "=", 1]]
+	if id and isinstance(id, str):
+		filters.append(["Water Body", "name", "=", id])
+
+	if fishing_area and isinstance(fishing_area, str):
+		filters.append(["Water Body", "fishing_area", "=", fishing_area])
+
+	water_bodies = frappe.get_all(
+		"Water Body",
+		filters=filters,
+		fields=[
+			"name as id",
+			"title",
+			"fishing_area",
+			"fishing_area_name",
+			"organization",
+			"organization_name",
+			"has_master_key_system",
+			"general_public_information",
+			"current_public_information",
+			"water_body_size as size",
+			"water_body_size_unit as size_unit",
+		],
+	)
+
+	for water_body in water_bodies:
+		fish_species = frappe.get_all(
+			"Fish Species Table",
+			filters={"parent": water_body["id"]},
+			fields=["fish_species as id", "short_code"],
+		)
+		water_body["fish_species"] = fish_species
+
+		special_provisions = frappe.get_all(
+			"Water Body Special Provision Table",
+			filters={"parent": water_body["id"]},
+			fields=["water_body_special_provision as id", "short_code"],
+		)
+		water_body["special_provisions"] = special_provisions
+
+	return water_bodies
