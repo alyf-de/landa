@@ -4,7 +4,7 @@ from typing import Dict, List
 import frappe
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist(allow_guest=True, methods=["GET"])
 def organization(id: str = None) -> List[Dict]:
 	filters = []
 	if id and isinstance(id, str):
@@ -68,7 +68,7 @@ def organization(id: str = None) -> List[Dict]:
 	return organizations
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist(allow_guest=True, methods=["GET"])
 def water_body(id: str = None, fishing_area: str = None) -> List[Dict]:
 	"""Return a list of water bodies with fish species and special provisions."""
 	filters = [["Water Body", "is_active", "=", 1]]
