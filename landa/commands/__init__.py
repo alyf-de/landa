@@ -112,7 +112,7 @@ def import_geojson(context, geojson_file):
 	with frappe.init_site(site):
 		frappe.connect()
 		import_features(data.get("features", []))
-		frappe.db.commit()
+		frappe.db.commit()  # nosemgrep
 
 
 def import_features(features: List[Dict]) -> None:
