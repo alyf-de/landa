@@ -23,6 +23,7 @@
   "column_break_5",
   "general_public_information",
   "current_public_information",
+  "current_information_expires_on",
   "water_body_size_section",
   "water_body_size",
   "column_break_7",
@@ -199,6 +200,13 @@
    "fieldname": "guest_passes_available",
    "fieldtype": "Check",
    "label": "Guest Passes Available"
+  },
+  {
+   "depends_on": "current_public_information",
+   "description": "Current Public Information will be removed on this date",
+   "fieldname": "current_information_expires_on",
+   "fieldtype": "Date",
+   "label": "Current Information Expires On"
   }
  ],
  "links": [
@@ -215,7 +223,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2023-05-30 18:37:59.397558",
+ "modified": "2023-05-30 18:55:26.771143",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
