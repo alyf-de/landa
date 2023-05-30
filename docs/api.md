@@ -108,7 +108,11 @@ The response is always a list of dictionaries, like this:
             ],
             "special_provisions": [
                 { "id": "Behindertentauglich", "short_code": "H" }
-            ]
+            ],
+            "geojson": {
+                "type": "FeatureCollection",
+                "features": []
+            }
         }
     ]
 }

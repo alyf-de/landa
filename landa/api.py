@@ -93,6 +93,7 @@ def water_body(id: str = None, fishing_area: str = None) -> List[Dict]:
 			"current_public_information",
 			"water_body_size as size",
 			"water_body_size_unit as size_unit",
+			"location",
 		],
 	)
 
@@ -110,5 +111,8 @@ def water_body(id: str = None, fishing_area: str = None) -> List[Dict]:
 			fields=["water_body_special_provision as id", "short_code"],
 		)
 		water_body["special_provisions"] = special_provisions
+
+		if water_body.location:
+			water_body["geojson"] = json.loads(water_body.location)
 
 	return water_bodies
