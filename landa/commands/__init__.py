@@ -1,11 +1,14 @@
 # Copyright (c) 2015, Web Notes Technologies Pvt. Ltd. and Contributors
 # MIT License. See license.txt
 
+import json
 from getpass import getpass
+from typing import Dict, List
 
 import click
 import frappe
 from frappe.commands import get_site, pass_context
+from frappe.utils import update_progress_bar
 from frappe.utils.data import today
 from frappe.utils.password import update_password
 
@@ -95,6 +98,50 @@ def update_organization_series(context, dry_run=False):
 			frappe.db.commit()
 
 
+@click.command("import-geojson")
+@click.argument(
+	"geojson_file", type=click.Path(exists=True, dir_okay=False, resolve_path=True, readable=True)
+)
+@pass_context
+def import_geojson(context, geojson_file):
+	"""Import GeoJSON file into the database."""
+	with open(geojson_file) as f:
+		data = json.load(f)
+
+	site = get_site(context)
+	with frappe.init_site(site):
+		frappe.connect()
+		import_features(data.get("features", []))
+		frappe.db.commit()
+
+
+def import_features(features: List[Dict]) -> None:
+	not_found = []
+	total_feautres = len(features)
+	for i, feature in enumerate(features, start=1):
+		update_progress_bar("Importing GeoJSON", i, total_feautres)
+		water_body_id = feature.get("properties", {}).get("GEW_ID")
+		if not water_body_id:
+			continue
+
+		if not frappe.db.exists("Water Body", water_body_id):
+			not_found.append(water_body_id)
+			continue
+
+		feature["properties"].pop("GEW_ID")
+		feature["properties"].pop("GEW_NA")
+
+		frappe.db.set_value(
+			"Water Body",
+			water_body_id,
+			"location",
+			json.dumps({"type": "FeatureCollection", "features": [feature]}),
+		)
+
+	if not_found:
+		click.echo(f"\nCould not find the following Water Bodies in LANDA: {', '.join(not_found)}")
+
+
 def validate_organization(organization: str):
 	if not frappe.db.exists("Organization", organization):
 		frappe.throw(
@@ -155,4 +202,4 @@ def scrub(txt):
 	return "-".join(result)
 
 
-commands = [make_demo_accounts, update_organization_series]
+commands = [make_demo_accounts, update_organization_series, import_geojson]

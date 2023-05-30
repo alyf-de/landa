@@ -6,7 +6,10 @@ Datenmanagementsystem des Landesverbands Sächsischer Angler.
 - [Organizations and Members](docs/organizations-and-members.md)
 - [Permissions](docs/permissions.md)
 - [Data Import](docs/data-import.md)
-- [Create Demo Accounts](docs/demo-accounts.md)
+- [CLI](docs/cli.md)
+
+   How to create demo accounts or import GeoJSON files using the command line interface.
+
 - [System Updates](docs/system-updates.md)
 - [API](docs/api.md)
 
