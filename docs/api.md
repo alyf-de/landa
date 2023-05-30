@@ -50,7 +50,7 @@ The response is always a list of dictionaries, like this:
 
 ## Water Body
 
-Get a list of water bodies along with their main fish species and special provisions.
+Get a list of water bodies along with their main fish species and special provisions. Water bodies that are inactive or have _Display In Fishing Guide_ disabled, are not included in the response.
 
 - `GET /api/method/landa.api.water_body`
 

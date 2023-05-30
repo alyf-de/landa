@@ -71,7 +71,10 @@ def organization(id: str = None) -> List[Dict]:
 @frappe.whitelist(allow_guest=True, methods=["GET"])
 def water_body(id: str = None, fishing_area: str = None) -> List[Dict]:
 	"""Return a list of water bodies with fish species and special provisions."""
-	filters = [["Water Body", "is_active", "=", 1]]
+	filters = [
+		["Water Body", "is_active", "=", 1],
+		["Water Body", "display_in_fishing_guide", "=", 1],
+	]
 	if id and isinstance(id, str):
 		filters.append(["Water Body", "name", "=", id])
 

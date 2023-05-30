@@ -17,6 +17,7 @@
   "status",
   "is_property_water_body",
   "is_active",
+  "display_in_fishing_guide",
   "has_master_key_system",
   "column_break_5",
   "general_public_information",
@@ -185,6 +186,12 @@
    "fieldname": "location",
    "fieldtype": "Geolocation",
    "label": "Location"
+  },
+  {
+   "default": "1",
+   "fieldname": "display_in_fishing_guide",
+   "fieldtype": "Check",
+   "label": "Display In Fishing Guide"
   }
  ],
  "links": [
@@ -201,7 +208,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2023-05-30 17:13:19.550553",
+ "modified": "2023-05-30 17:25:51.956517",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
