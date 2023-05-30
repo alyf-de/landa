@@ -92,6 +92,7 @@ def water_body(id: str = None, fishing_area: str = None) -> List[Dict]:
 			"organization",
 			"organization_name",
 			"has_master_key_system",
+			"guest_passes_available",
 			"general_public_information",
 			"current_public_information",
 			"water_body_size as size",

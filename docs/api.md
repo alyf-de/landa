@@ -96,6 +96,7 @@ The response is always a list of dictionaries, like this:
             "organization": "AVS",
             "organization_name": "Anglerverband S\u00fcdsachsen Mulde/Elster e. V.",
             "has_master_key_system": 0,
+            "guest_passes_available": 0,
             "general_public_information": "bei Altgeringswalde, Parken nur mit Kopie des Erlaubnisscheines im Kfz",
             "current_public_information": "Das Gew\u00e4sser ist am Samstag den 23.10.2021 von 08:00 - 14:00 Uhr einer Jugendangelveranstaltung vorbehalten.",
             "size": 0.9,
