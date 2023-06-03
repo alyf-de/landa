@@ -17,7 +17,9 @@
   "general_fishing_limit",
   "special_fishing_limit",
   "traits",
-  "wikipedia_link"
+  "wikipedia_link",
+  "typical_weight_in_kg",
+  "image"
  ],
  "fields": [
   {
@@ -64,9 +66,9 @@
    "label": "Minimum Size"
   },
   {
-    "fieldname": "typical_weight_in_kg",
-    "fieldtype": "Data",
-    "label": "Typical Weight in Kg"
+   "fieldname": "typical_weight_in_kg",
+   "fieldtype": "Data",
+   "label": "Typical Weight in Kg"
   },
   {
    "fieldname": "general_fishing_limit",
@@ -89,11 +91,19 @@
    "fieldname": "wikipedia_link",
    "fieldtype": "Data",
    "label": "Wikipedia Link"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image"
   }
  ],
+ "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-07 18:34:08.652428",
+ "make_attachments_public": 1,
+ "modified": "2023-05-30 17:33:28.339187",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Species",
