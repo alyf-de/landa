@@ -28,6 +28,8 @@
   "section_break_2",
   "fish_species",
   "section_break_14",
+  "blacklisted_fish_species",
+  "section_break_95kcp",
   "water_body_special_provisions"
  ],
  "fields": [
@@ -174,6 +176,16 @@
    "fieldtype": "Data",
    "label": "Regional Organization Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_95kcp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "blacklisted_fish_species",
+   "fieldtype": "Table MultiSelect",
+   "label": "Blacklisted Fish Species",
+   "options": "Blacklisted Fish Species Table"
   }
  ],
  "links": [
@@ -190,7 +202,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2022-04-12 11:05:51.248094",
+ "modified": "2023-05-19 10:05:25.664850",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",

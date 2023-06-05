@@ -1,0 +1,32 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-18 17:49:45.381065",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fish_species"
+ ],
+ "fields": [
+  {
+   "fieldname": "fish_species",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fish Species",
+   "options": "Fish Species",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-18 17:49:45.381065",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Blacklisted Fish Species Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
