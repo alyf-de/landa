@@ -3,8 +3,12 @@
 
 {% include "landa/water_body_management/stocking_controller.js" %}
 
+
 frappe.ui.form.on("Stocking Target", {
 	refresh: function (frm) {
+		if (frm.is_new() && !frm.doc.year) {
+			landa.utils.set_default_year(frm);
+		}
 		frm.add_custom_button(__("Create Stocking Measure"), () =>
 			frappe.model.open_mapped_doc({
 				method:
