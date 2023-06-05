@@ -10,11 +10,11 @@ landa.utils = {
 	set_default_year: function set_default_year(frm) {
     // set default year to the current year if it's before november,
     // else to the next year
-    const now = moment();
-    let year = now.year();
-    if (now.month() >= 11) {
-        year += 1;
-    }
-    frm.set_value("year", year);
-}
+    	const now = moment();
+    	let year = now.year();
+    	if (now.month() >= 11) {
+        	year += 1;
+    	}
+    	frm.set_value("year", year);
+	}
 };

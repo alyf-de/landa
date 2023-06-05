@@ -2,7 +2,6 @@
 // For license information, please see license.txt
 
 
-{% include "landa/public/js/utils.js" %}
 
 frappe.ui.form.on("Yearly Fishing Permit", {
 	onload: function (frm) {
