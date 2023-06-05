@@ -2,7 +2,6 @@
 // For license information, please see license.txt
 
 {% include "landa/water_body_management/stocking_controller.js" %}
-{% include "landa/public/js/utils.js" %}
 
 frappe.ui.form.on("Stocking Target", {
     refresh: function (frm) {
