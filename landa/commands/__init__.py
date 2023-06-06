@@ -128,8 +128,8 @@ def import_features(features: List[Dict]) -> None:
 			not_found.append(water_body_id)
 			continue
 
-		feature["properties"].pop("GEW_ID")
-		feature["properties"].pop("GEW_NA")
+		feature["properties"].pop("GEW_ID", None)
+		feature["properties"].pop("GEW_NA", None)
 
 		frappe.db.set_value(
 			"Water Body",
