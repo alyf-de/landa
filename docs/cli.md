@@ -1,6 +1,6 @@
 ### Create Demo Accounts
 
-This app provide a bench command `make-demo-accounts`. This is useful for testing permissions. You can use it to create a **Member**, **Member Function** and **User** for every existing **Member Function Category**, in an existing local organization.
+This app provides a bench command `make-demo-accounts`. This is useful for testing permissions. You can use it to create a **Member**, **Member Function** and **User** for every existing **Member Function Category**, in an existing local organization.
 
 Prerequisites:
 
@@ -15,7 +15,7 @@ bench --site $SITE make-demo-accounts $ORGANIZATION
 
 ### Import water bodies from GeoJSON
 
-This app provide a bench command `import-geojson`. This is useful for importing water body shapes from a GeoJSON file.
+This app provides a bench command `import-geojson`. This is useful for importing water body shapes from a GeoJSON file.
 
 ```bash
 bench --site $SITE import-geojson /path/to/file.geojson
