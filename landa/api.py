@@ -108,12 +108,11 @@ def water_body(id: str = None, fishing_area: str = None) -> List[Dict]:
 			pluck="fish_species",
 		)
 
-		special_provisions = frappe.get_all(
+		water_body["special_provisions"] = frappe.get_all(
 			"Water Body Special Provision Table",
 			filters={"parent": water_body["id"]},
 			fields=["water_body_special_provision as id", "short_code"],
 		)
-		water_body["special_provisions"] = special_provisions
 
 		if water_body.location:
 			water_body["geojson"] = json.loads(water_body.location)
