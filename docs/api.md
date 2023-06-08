@@ -102,10 +102,10 @@ The response is always a list of dictionaries, like this:
             "size": 0.9,
             "size_unit": "ha",
             "fish_species": [
-                { "id": "Hecht", "short_code": "H" },
-                { "id": "Schleie", "short_code": "S" },
-                { "id": "Karpfen", "short_code": "K" },
-                { "id": "Rotauge (Pl\u00f6tze)", "short_code": "Pl" }
+                "Hecht",
+                "Schleie",
+                "Karpfen",
+                "Rotauge (Pl\u00f6tze)",
             ],
             "special_provisions": [
                 { "id": "Behindertentauglich", "short_code": "H" }

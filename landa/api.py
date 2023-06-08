@@ -102,12 +102,11 @@ def water_body(id: str = None, fishing_area: str = None) -> List[Dict]:
 	)
 
 	for water_body in water_bodies:
-		fish_species = frappe.get_all(
+		water_body["fish_species"] = frappe.get_all(
 			"Fish Species Table",
 			filters={"parent": water_body["id"]},
-			fields=["fish_species as id", "short_code"],
+			pluck="fish_species",
 		)
-		water_body["fish_species"] = fish_species
 
 		special_provisions = frappe.get_all(
 			"Water Body Special Provision Table",
