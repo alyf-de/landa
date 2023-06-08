@@ -114,6 +114,12 @@ def water_body(id: str = None, fishing_area: str = None) -> List[Dict]:
 			fields=["water_body_special_provision as id", "short_code"],
 		)
 
+		water_body["organizations"] = frappe.get_all(
+			"Water Body Management Local Organization",
+			filters={"water_body": water_body["id"]},
+			fields=["organization as id", "organization_name"],
+		)
+
 		if water_body.location:
 			water_body["geojson"] = json.loads(water_body.location)
 

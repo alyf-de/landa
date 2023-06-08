@@ -110,6 +110,12 @@ The response is always a list of dictionaries, like this:
             "special_provisions": [
                 { "id": "Behindertentauglich", "short_code": "H" }
             ],
+            "organizations": [
+                {
+                    "id": "AVS-001",
+                    "organization_name": "AV \"Aktive Angler\" e. V."
+                }
+            ],
             "geojson": {
                 "type": "FeatureCollection",
                 "features": []
