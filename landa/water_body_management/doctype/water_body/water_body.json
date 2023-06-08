@@ -199,7 +199,8 @@
   {
    "fieldname": "location",
    "fieldtype": "Geolocation",
-   "label": "Location"
+   "label": "Location",
+   "permlevel": 1
   },
   {
    "default": "1",
@@ -235,7 +236,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2023-06-05 15:55:26.771143",
+ "modified": "2023-06-08 19:43:33.951784",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
@@ -283,6 +284,23 @@
    "role": "LANDA Regional Water Body Management",
    "share": 1,
    "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "LANDA State Organization Employee",
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "LANDA Member"
   }
  ],
  "quick_entry": 1,
