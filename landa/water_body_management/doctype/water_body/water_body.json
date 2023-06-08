@@ -236,7 +236,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2023-06-08 19:43:33.951784",
+ "modified": "2023-06-08 20:18:11.252978",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
@@ -256,6 +256,12 @@
    "write": 1
   },
   {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Member"
+  },
+  {
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -267,12 +273,6 @@
    "role": "LANDA State Organization Employee",
    "share": 1,
    "write": 1
-  },
-  {
-   "export": 1,
-   "read": 1,
-   "report": 1,
-   "role": "LANDA Member"
   },
   {
    "create": 1,
@@ -288,7 +288,12 @@
   {
    "permlevel": 1,
    "read": 1,
-   "role": "System Manager",
+   "role": "LANDA Member"
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "LANDA Regional Water Body Management",
    "write": 1
   },
   {
@@ -296,11 +301,6 @@
    "read": 1,
    "role": "LANDA State Organization Employee",
    "write": 1
-  },
-  {
-   "permlevel": 1,
-   "read": 1,
-   "role": "LANDA Member"
   }
  ],
  "quick_entry": 1,
