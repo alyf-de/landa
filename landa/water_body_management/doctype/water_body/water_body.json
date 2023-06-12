@@ -209,7 +209,7 @@
    "label": "Display In Fishing Guide"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "guest_passes_available",
    "fieldtype": "Check",
    "label": "Guest Passes Available"
@@ -236,7 +236,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2023-06-08 20:18:11.252978",
+ "modified": "2023-06-12 15:40:51.813544",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
