@@ -55,9 +55,10 @@ COLUMNS = [
 	},
 ]
 
-
 def get_data(filters):
 	filters["workflow_state"] = "Approved"
+	from_year = filters.pop("from_year", None)
+	to_year = filters.pop("to_year", None)
 
 	data = frappe.get_all(
 		"Catch Log Entry",
@@ -73,6 +74,12 @@ def get_data(filters):
 		filters=filters,
 		or_filters=get_or_filters(),
 	)
+
+	if from_year:
+		data = [d for d in data if int(d.get("year")) >= int(from_year)]
+
+	if to_year:
+		data = [d for d in data if int(d.get("year")) <= int(to_year)]
 
 	def postprocess(row):
 		row["year"] = str(row.get("year"))  # avoid year getting summed up
@@ -98,7 +105,7 @@ def get_or_filters():
 	if user_roles.intersection(STATE_ROLES):
 		return or_filters
 
-	# User is not a state organization employee
+	# User is nota state organization employee
 	member_data = get_current_member_data()
 	if not member_data:
 		frappe.throw(_("You are not a member of any organization."))
