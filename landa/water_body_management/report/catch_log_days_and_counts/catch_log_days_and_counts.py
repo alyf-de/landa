@@ -3,6 +3,7 @@
 
 import frappe
 from frappe import _
+from itertools import groupby
 
 from landa.organization_management.doctype.organization.organization import (
 	get_supported_water_bodies,
@@ -14,12 +15,6 @@ from landa.water_body_management.report.catch_log_statistics.catch_log_statistic
 )
 
 COLUMNS = [
-	{
-		"fieldname": "catch_log_entry",
-		"fieldtype": "Link",
-		"label": "Catch Log Entry",
-		"options": "Catch Log Entry",
-	},
 	{
 		"fieldname": "year",
 		"fieldtype": "Data",
@@ -38,17 +33,6 @@ COLUMNS = [
 		"options": "Fishing Area",
 	},
 	{
-		"fieldname": "organization",
-		"fieldtype": "Data",
-		"label": "Organization",
-		"options": "Organization",
-	},
-	{
-		"fieldname": "origin_of_catch_log_entry",
-		"fieldtype": "Data",
-		"label": "Origin of Catch Log Entry",
-	},
-	{
 		"fieldname": "fishing_days",
 		"fieldtype": "Int",
 		"label": "Fishing Days",
@@ -60,20 +44,13 @@ def get_data(filters):
 	from_year = filters.pop("from_year", None)
 	to_year = filters.pop("to_year", None)
 
-	data = frappe.get_all(
-		"Catch Log Entry",
-		fields=[
-			"name",
-			"year",
-			"water_body",
-			"fishing_area",
-			"organization",
-			"origin_of_catch_log_entry",
-			"fishing_days",
-		],
-		filters=filters,
-		or_filters=get_or_filters(),
-	)
+	data = frappe.db.sql("""
+	       SELECT year, water_body, fishing_area, SUM(fishing_days) as fishing_days
+	       FROM `tabCatch Log Entry`
+	       WHERE workflow_state = 'Approved'
+	       AND year BETWEEN %s AND %s
+	       GROUP BY water_body, year, fishing_area
+	   """, (from_year, to_year), as_dict=True)
 
 	if from_year:
 		data = [d for d in data if int(d.get("year")) >= int(from_year)]
@@ -84,6 +61,7 @@ def get_data(filters):
 	def postprocess(row):
 		row["year"] = str(row.get("year"))  # avoid year getting summed up
 		return list(row.values())
+
 
 	return [postprocess(row) for row in data]
 
