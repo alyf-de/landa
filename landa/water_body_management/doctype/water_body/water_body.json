@@ -236,7 +236,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2023-06-12 15:40:51.813544",
+ "modified": "2023-06-13 11:55:53.677192",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
@@ -293,13 +293,13 @@
   {
    "permlevel": 1,
    "read": 1,
-   "role": "LANDA Regional Water Body Management",
+   "role": "LANDA State Organization Employee",
    "write": 1
   },
   {
    "permlevel": 1,
    "read": 1,
-   "role": "LANDA State Organization Employee",
+   "role": "LANDA Regional Water Body Management",
    "write": 1
   }
  ],
