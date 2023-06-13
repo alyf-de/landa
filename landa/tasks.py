@@ -5,9 +5,11 @@ def daily():
 	from landa.water_body_management.doctype.lease_contract.lease_contract import (
 		disable_expired_lease_contracts,
 	)
+	from landa.water_body_management.doctype.water_body.water_body import remove_outdated_information
 
 	disable_expired_member_functions()
 	disable_expired_lease_contracts()
+	remove_outdated_information()
 
 
 def all():
