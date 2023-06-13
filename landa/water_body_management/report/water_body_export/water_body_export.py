@@ -36,6 +36,12 @@ COLUMNS = [
 		"width": 100,
 	},
 	{
+		"fieldname": "is_active",
+		"label": "Is Active",
+		"fieldtype": "Check",
+		"width": 50,
+	},
+	{
 		"fieldname": "has_master_key_system",
 		"label": "Has Master Key System",
 		"fieldtype": "Check",
@@ -95,6 +101,7 @@ def get_data():
 				"fishing_area_name",
 				"water_body_size",
 				"water_body_size_unit",
+				"is_active",
 				"has_master_key_system",
 				"guest_passes_available",
 				"general_public_information",
