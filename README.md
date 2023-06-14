@@ -6,19 +6,12 @@ Datenmanagementsystem des Landesverbands Sächsischer Angler.
 - [Organizations and Members](docs/organizations-and-members.md)
 - [Permissions](docs/permissions.md)
 - [Data Import](docs/data-import.md)
-- [Create Demo Accounts](docs/demo-accounts.md)
+- [CLI](docs/cli.md)
+
+   How to create demo accounts or import GeoJSON files using the command line interface.
+
 - [System Updates](docs/system-updates.md)
-
-### API
-
-- `/api/method/landa.api.organization`
-
-    Return a list of organizations with ID, organization name, geojson, address and contact.
-
-    Parameters:
-
-    - `id` (optional): return only data of the organization with this ID.
-
+- [API](docs/api.md)
 
 ### Deleting
 
