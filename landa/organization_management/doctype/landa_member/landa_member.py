@@ -66,5 +66,11 @@ class LANDAMember(Document):
 		revert_series_if_last(key, self.name)
 
 
+
+
 def get_full_name(first_name, last_name):
 	return (first_name or "") + (" " if (last_name and first_name) else "") + (last_name or "")
+
+@frappe.whitelist()
+def link_contact_person():
+	frappe.throw("Ansprechpartner erfolgreich verknüpft.")

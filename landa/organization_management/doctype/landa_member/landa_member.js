@@ -12,6 +12,7 @@ frappe.ui.form.on("LANDA Member", {
 			};
 		});
 
+
 		frm.make_methods = {
 			"User": () => {
 				frappe.new_doc("User", {
@@ -24,6 +25,7 @@ frappe.ui.form.on("LANDA Member", {
 		}
 	},
 	refresh: function (frm) {
+
 		// Automatically add the backlink to LANDA Member when a new Address or
 		// Contact is added.
 		frappe.dynamic_link = { doc: frm.doc, fieldname: "name", doctype: "LANDA Member" };
@@ -54,5 +56,16 @@ frappe.ui.form.on("LANDA Member", {
 					});
 			});
 		}
-	},
+		frm.add_custom_button(__('Linking as Contact Person'), function() {
+			 frappe.call({
+                method: 'landa.organization_management.doctype.landa_member.link_contact_person',
+            });
+        });
+        frm.add_custom_button(__('Remove as Contact Person'), function() {
+        });
+    }
+
 });
+
+
+
