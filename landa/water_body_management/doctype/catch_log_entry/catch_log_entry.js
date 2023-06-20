@@ -20,6 +20,21 @@ frappe.ui.form.on("Catch Log Entry", {
 					year: frm.doc.year,
 				});
 			});
+
 		}
+		var today = new Date();
+        var current_year = today.getFullYear();
+        var current_month = today.getMonth() + 1;
+        var default_year;
+
+        if (current_month < 7) {
+            default_year = current_year - 1;
+        } else {
+            default_year = current_year;
+        }
+
+        if (!frm.doc.year_field) {
+            frm.set_value("year", default_year);
+        }
 	},
 });
