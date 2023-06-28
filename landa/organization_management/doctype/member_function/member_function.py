@@ -104,13 +104,15 @@ class MemberFunction(Document):
 
 
 	def validate_unique_roles(self):
-		unique_roles = ["1. Vorsitzender Verein", "2. Vorsitzender Verein", "Schatzmeister"]
+		unique_roles = frappe.get_value(
+			"Member Function Category", self.member_function_category, "only_one_per_organization"
+		)
 
 		member_function_category_name = frappe.get_value(
 			"Member Function Category", self.member_function_category, "name"
 		)
 
-		if member_function_category_name in unique_roles:
+		if unique_roles == 1:
 			existing_member_functions = frappe.get_all(
 				"Member Function",
 				filters={
@@ -123,7 +125,7 @@ class MemberFunction(Document):
 			if existing_member_functions:
 				frappe.throw(
 					_(
-						"The function category {0} can only be assigned once per member in the same organization."
+						"The function category can only be assigned once per member in the same organization."
 					).format(member_function_category_name)
 				)
 
