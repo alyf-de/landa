@@ -289,7 +289,7 @@ doc_events = {
 		"on_trash": "landa.organization_management.user.user.on_trash",
 	},
 	"Workspace": {
-        "validate": "landa.workspace_hooks.validate_workspace"
+		"validate": "landa.workspace_hooks.validate_workspace",
     },
 }
 
