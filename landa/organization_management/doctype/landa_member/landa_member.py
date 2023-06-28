@@ -44,8 +44,7 @@ class LANDAMember(Document):
         if current_member == self.name:
             frappe.throw(_("You cannot delete your own member record."))
 
-        user = frappe.db.exists("User", {"landa_member": self.name})
-        if user:
+        if user := frappe.db.exists("User", {"landa_member": self.name}):
             frappe.delete_doc(
                 "User",
                 user,
