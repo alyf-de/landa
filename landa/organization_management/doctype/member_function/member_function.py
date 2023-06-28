@@ -19,6 +19,7 @@ class MemberFunction(Document):
 				frappe.throw(_("End Date cannot be before Start Date."))
 
 		self.validate_member_function_category()
+		self.validate_unique_roles()
 
 	def get_access_level(self) -> Optional[str]:
 		"""Return the access level of the linked Member Function Category."""
@@ -102,6 +103,30 @@ class MemberFunction(Document):
 		return self.end_date and date_diff(today(), self.end_date) > 0
 
 
+	def validate_unique_roles(self):
+		unique_roles = ["1. Vorsitzender Verein", "2. Vorsitzender Verein", "Schatzmeister"]
+
+		member_function_category_name = frappe.get_value(
+			"Member Function Category", self.member_function_category, "name"
+		)
+
+		if member_function_category_name in unique_roles:
+			existing_member_functions = frappe.get_all(
+				"Member Function",
+				filters={
+					"organization": self.organization,
+					"member": self.member,
+					"member_function_category": self.member_function_category,
+					"name": ["!=", self.name],  # Exclude this document from the search
+				},
+			)
+			if existing_member_functions:
+				frappe.throw(
+					_(
+						"The function category {0} can only be assigned once per member in the same organization."
+					).format(member_function_category_name)
+				)
+
 def disable_expired_member_functions():
 	for member_function in get_expired_member_functions():
 		doc = frappe.get_doc("Member Function", member_function.name)
@@ -131,3 +156,6 @@ def get_active_member_functions(filters: dict = None, pluck: str = None):
 		or_filters=[["end_date", "is", "not set"], ["end_date", ">=", today()]],
 		pluck=pluck,
 	)
+
+
+
