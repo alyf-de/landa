@@ -290,7 +290,7 @@ doc_events = {
 	},
 	"Workspace": {
 		"validate": "landa.workspace_hooks.validate_workspace",
-    },
+	},
 }
 
 # Scheduled Tasks
