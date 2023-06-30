@@ -75,17 +75,24 @@ def link_contact_person(member_name):
 	member = frappe.get_doc("LANDA Member", member_name)
 	organization = frappe.get_doc("Organization", member.organization)
 	link_member_to_organization(member, organization)
-	member_address = frappe.get_doc("Address", member.address_title)
-	frappe.throw(member_address)
-	frappe.msgprint("Contact person successfully removed.")
+	frappe.msgprint("Contact person successfully added.")
 
 
 def link_member_to_organization(member, organization):
-	# member_contact = frappe.get_doc("Contact", member.contact)
-	member_address = frappe.get_doc("Address", member.address_title)
-
-	# organization.contact = member_contact.name
-	organization.address = member_address.name
+	member_address = frappe.get_doc(
+		"Address", member.first_name + " " + member.last_name + " - " + member.name
+	)
+	member_contact = frappe.get_doc("Contact", member.first_name + "-" + member.name)
+	organization_address = frappe.get_doc(
+		"Address", organization.organization_name + " - " + organization.name
+	)
+	organization_address.address_type = member_address.address_type
+	organization_address.address_line1 = member_address.address_line1
+	organization_address.address_line2 = member_address.address_line2
+	organization_address.city = member_address.city
+	organization_address.state = member_address.state
+	organization_address.pincode = member_address.pincode
+	organization_address.save()
 	organization.save()
 
 
@@ -100,7 +107,7 @@ def unlink_contact_person(member_name):
 
 
 def unlink_member_from_organization(organization):
-
-	organization.contact = None
-	organization.address = None
-	organization.save()
+	organization_address = frappe.get_doc(
+		"Address", organization.organization_name + " - " + organization.name
+	)
+	organization_address.delete()
