@@ -57,14 +57,22 @@ frappe.ui.form.on("LANDA Member", {
 			});
 		}
 		frm.add_custom_button(__('Linking as Contact Person'), function() {
-			 frappe.call({
-                method: 'landa.organization_management.doctype.landa_member.landa_member.link_contact_person',
-            });
-        });
-        frm.add_custom_button(__('Remove as Contact Person'), function() {
-        });
-    }
-
+			frappe.call({
+				method: 'landa.organization_management.doctype.landa_member.landa_member.link_contact_person',
+				args: {
+					member_name: frm.doc.name
+				}
+			});
+		});
+		frm.add_custom_button(__('Remove as Contact Person'), function() {
+			frappe.call({
+				method: 'landa.organization_management.doctype.landa_member.landa_member.unlink_contact_person',
+				args: {
+					member_name: frm.doc.name
+				}
+			});
+		});
+	},
 });
 
 

@@ -9,69 +9,98 @@ from frappe.model.document import Document
 from frappe.model.naming import make_autoname, revert_series_if_last
 
 from landa.utils import (
-    delete_dynamically_linked,
-    delete_records_linked_to,
-    get_member_and_organization,
+	delete_dynamically_linked,
+	delete_records_linked_to,
+	get_member_and_organization,
 )
 
 
 class LANDAMember(Document):
-    def autoname(self):
-        """Generate the unique member number (name field)
+	def autoname(self):
+		"""Generate the unique member number (name field)
 
-        Organization: AVL-001-0001, AVE-001-0001, ...
-        Local group: AVL-001-01-0001, AVL-001-02-0001, ...
-        """
-        if self.name:
-            return
-        self.name = make_autoname(f"{self.organization}-.####", "LANDA Member")
+		Organization: AVL-001-0001, AVE-001-0001, ...
+		Local group: AVL-001-01-0001, AVL-001-02-0001, ...
+		"""
+		if self.name:
+			return
+		self.name = make_autoname(f"{self.organization}-.####", "LANDA Member")
 
-    def onload(self):
-        load_address_and_contact(self)
+	def onload(self):
+		load_address_and_contact(self)
 
-    def validate(self):
-        if frappe.db.get_value("Organization", self.organization, "is_group"):
-            frappe.throw(
-                _("Cannot be a member of organization {} because it is a group.").format(
-                    self.organization
-                )
-            )
+	def validate(self):
+		if frappe.db.get_value("Organization", self.organization, "is_group"):
+			frappe.throw(
+				_("Cannot be a member of organization {} because it is a group.").format(self.organization)
+			)
 
-        self.full_name = get_full_name(self.first_name, self.last_name)
+		self.full_name = get_full_name(self.first_name, self.last_name)
 
-    def on_trash(self):
-        current_member = get_member_and_organization(frappe.session.user)[0]
-        if current_member == self.name:
-            frappe.throw(_("You cannot delete your own member record."))
+	def on_trash(self):
+		current_member = get_member_and_organization(frappe.session.user)[0]
+		if current_member == self.name:
+			frappe.throw(_("You cannot delete your own member record."))
 
-        user = frappe.db.exists("User", {"landa_member": self.name})
-        if user:
-            frappe.delete_doc(
-                "User",
-                user,
-                ignore_permissions=True,
-                ignore_missing=True,
-                delete_permanently=True,
-            )
+		user = frappe.db.exists("User", {"landa_member": self.name})
+		if user:
+			frappe.delete_doc(
+				"User",
+				user,
+				ignore_permissions=True,
+				ignore_missing=True,
+				delete_permanently=True,
+			)
 
-        delete_dynamically_linked("Address", self.doctype, self.name)
-        delete_dynamically_linked("Contact", self.doctype, self.name)
-        delete_records_linked_to("LANDA Member", self.name)
+		delete_dynamically_linked("Address", self.doctype, self.name)
+		delete_dynamically_linked("Contact", self.doctype, self.name)
+		delete_records_linked_to("LANDA Member", self.name)
 
-        self.revert_series()
+		self.revert_series()
 
-    def revert_series(self):
-        """Decrease the naming counter when the newest member gets deleted."""
-        # reconstruct the key used to generate the name
-        number_part_len = len(self.name.split("-")[-1])
-        key = f"{self.name[:-number_part_len]}.{'#' * number_part_len}"
-        revert_series_if_last(key, self.name)
+	def revert_series(self):
+		"""Decrease the naming counter when the newest member gets deleted."""
+		# reconstruct the key used to generate the name
+		number_part_len = len(self.name.split("-")[-1])
+		key = f"{self.name[:-number_part_len]}.{'#' * number_part_len}"
+		revert_series_if_last(key, self.name)
 
 
 def get_full_name(first_name, last_name):
-    return (first_name or "") + (" " if (last_name and first_name) else "") + (last_name or "")
+	return (first_name or "") + (" " if (last_name and first_name) else "") + (last_name or "")
 
 
 @frappe.whitelist()
-def link_contact_person():
-    frappe.throw("Ansprechpartner erfolgreich verknüpft.")
+def link_contact_person(member_name):
+	member = frappe.get_doc("LANDA Member", member_name)
+	organization = frappe.get_doc("Organization", member.organization)
+	link_member_to_organization(member, organization)
+	member_address = frappe.get_doc("Address", member.address_title)
+	frappe.throw(member_address)
+	frappe.msgprint("Contact person successfully removed.")
+
+
+def link_member_to_organization(member, organization):
+	# member_contact = frappe.get_doc("Contact", member.contact)
+	member_address = frappe.get_doc("Address", member.address_title)
+
+	# organization.contact = member_contact.name
+	organization.address = member_address.name
+	organization.save()
+
+
+@frappe.whitelist()
+def unlink_contact_person(member_name):
+	member = frappe.get_doc("LANDA Member", member_name)
+	organization = frappe.get_doc("Organization", member.organization)
+
+	unlink_member_from_organization(organization)
+
+	frappe.msgprint("Contact person successfully removed.")
+
+
+def unlink_member_from_organization(organization):
+
+	organization.contact = None
+	organization.address = None
+	organization.save()
