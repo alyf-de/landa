@@ -13,10 +13,10 @@ from landa.utils import get_current_member_data
 
 class WaterBody(Document):
 	def on_update(self):
-		self.rebuild_water_body_cache()
+		rebuild_water_body_cache(self.fishing_area)
 
 	def on_trash(self):
-		self.rebuild_water_body_cache()
+		rebuild_water_body_cache(self.fishing_area)
 
 	def validate(self):
 		self.validate_edit_access()
@@ -42,14 +42,18 @@ class WaterBody(Document):
 					title=_("Invalid Species"),
 				)
 
-	def rebuild_water_body_cache(self):
-		# Invalidate Cache
-		frappe.cache().hdel("water_body_data", "all")
-		frappe.cache().hdel("water_body_data", self.fishing_area)
 
-		# Build Cache for all water bodies and fishing area wise
-		build_water_body_cache()
-		build_water_body_cache(fishing_area=self.fishing_area)
+def rebuild_water_body_cache(fishing_area: str = None):
+	"""
+	Rebuilds water body cache for all water bodies **AND** fishing area wise.
+	"""
+	# Invalidate Cache
+	frappe.cache().hdel("water_body_data", "all")
+	build_water_body_cache()
+
+	if fishing_area:
+		frappe.cache().hdel("water_body_data", fishing_area)
+		build_water_body_cache(fishing_area=fishing_area)
 
 
 def remove_outdated_information():
