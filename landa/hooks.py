@@ -288,6 +288,9 @@ doc_events = {
 		"on_update": "landa.organization_management.user.user.on_update",
 		"on_trash": "landa.organization_management.user.user.on_trash",
 	},
+	"Workspace": {
+		"validate": "landa.workspace.validate",
+	},
 }
 
 # Scheduled Tasks

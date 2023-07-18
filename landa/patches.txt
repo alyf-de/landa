@@ -24,3 +24,4 @@ landa.patches.delete_old_scheduled_job_logs
 landa.patches.update_system_settings
 landa.patches.delete_customized_workspaces  # 2023-06-06
 landa.patches.build_water_body_cache
+landa.patches.set_hide_custom_in_user_workspaces
