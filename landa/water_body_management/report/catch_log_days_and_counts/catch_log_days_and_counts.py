@@ -167,7 +167,7 @@ def add_or_filters(query, entry):
 
 	member_data = get_current_member_data()
 	if not member_data:
-		frappe.throw(_("You are not a member of any organization."))
+		frappe.throw("You are not a member of any organization.")
 
 	if user_roles.intersection(REGIONAL_ROLES):
 		return query.where(
