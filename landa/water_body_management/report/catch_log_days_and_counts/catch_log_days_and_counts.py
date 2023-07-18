@@ -46,7 +46,7 @@ COLUMNS = [
 	{  # displayed only for regional or state employees
 		"fieldname": "by_foreign_regional_org",
 		"fieldtype": "Percent",
-		"label": "Share of other Regional Organizations",
+		"label": _("Share of other Regional Organizations"),
 	},
 ]
 
