@@ -1,6 +1,7 @@
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 from collections import defaultdict
+from json import loads
 from typing import Dict, List
 
 import frappe
@@ -171,9 +172,10 @@ def consolidate_water_body_data(water_body_data: List[Dict]) -> List[Dict]:
 def init_row(water_body_row: Dict) -> Dict:
 	# Prepare row to have Water Body data (excluding child tables)
 	water_body_copy = water_body_row.copy()
+	location = water_body_copy.pop("location", None)
 
-	if water_body_copy.location:
-		water_body_copy["geojson"] = frappe.parse_json(water_body_copy.location)
+	if location and isinstance(location, str):
+		water_body_copy["geojson"] = loads(location)
 
 	for field in (
 		"fish_species",
