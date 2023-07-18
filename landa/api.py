@@ -3,6 +3,11 @@ from typing import Dict, List
 
 import frappe
 
+from landa.water_body_management.doctype.water_body.water_body import (
+	build_water_body_cache,
+	build_water_body_data,
+)
+
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
 def organization(id: str = None) -> List[Dict]:
@@ -71,56 +76,21 @@ def organization(id: str = None) -> List[Dict]:
 @frappe.whitelist(allow_guest=True, methods=["GET"])
 def water_body(id: str = None, fishing_area: str = None) -> List[Dict]:
 	"""Return a list of water bodies with fish species and special provisions."""
-	filters = [
-		["Water Body", "is_active", "=", 1],
-		["Water Body", "display_in_fishing_guide", "=", 1],
-	]
-	if id and isinstance(id, str):
-		filters.append(["Water Body", "name", "=", id])
+	if id:
+		# We do not cache ID since it's uniqueness makes the API performant
+		return build_water_body_data(id, fishing_area)
 
-	if fishing_area and isinstance(fishing_area, str):
-		filters.append(["Water Body", "fishing_area", "=", fishing_area])
+	key = fishing_area or "all"
+	cache_exists = frappe.cache().hexists("water_body_data", key)
 
-	water_bodies = frappe.get_all(
-		"Water Body",
-		filters=filters,
-		fields=[
-			"name as id",
-			"title",
-			"fishing_area",
-			"fishing_area_name",
-			"organization",
-			"organization_name",
-			"has_master_key_system",
-			"guest_passes_available",
-			"general_public_information",
-			"current_public_information",
-			"water_body_size as size",
-			"water_body_size_unit as size_unit",
-			"location",
-		],
-	)
+	if not cache_exists:
+		# Build the cache (for future calls)
+		build_water_body_cache(fishing_area)
 
-	for water_body in water_bodies:
-		water_body["fish_species"] = frappe.get_all(
-			"Fish Species Table",
-			filters={"parent": water_body["id"]},
-			pluck="fish_species",
-		)
+	# return the cached result
+	return get_water_body_cache(key)
 
-		water_body["special_provisions"] = frappe.get_all(
-			"Water Body Special Provision Table",
-			filters={"parent": water_body["id"]},
-			fields=["water_body_special_provision as id", "short_code"],
-		)
 
-		water_body["organizations"] = frappe.get_all(
-			"Water Body Management Local Organization",
-			filters={"water_body": water_body["id"]},
-			fields=["organization as id", "organization_name"],
-		)
-
-		if water_body.location:
-			water_body["geojson"] = json.loads(water_body.location)
-
-	return water_bodies
+def get_water_body_cache(key: str) -> List[Dict]:
+	"""Return a **CACHED** list of water bodies with fish species and special provisions."""
+	return frappe.cache().hget("water_body_data", key)
