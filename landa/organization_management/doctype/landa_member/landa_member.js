@@ -74,6 +74,3 @@ frappe.ui.form.on("LANDA Member", {
 		});
 	},
 });
-
-
-
