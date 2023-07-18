@@ -7662,5 +7662,53 @@
   "parenttype": null,
   "source_text": "Email (Shipping Contact)",
   "translated_text": "E-Mail (Versandkontakt)"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2023-06-15 14:12:07.868016",
+  "name": "4a090e0d8e",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Group By Year",
+  "translated_text": "Gruppieren nach Jahr"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2023-07-18 10:44:54.129827",
+  "name": "71a4099ce0",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Share of other Regional Organizations",
+  "translated_text": "Anteil anderer regionaler Organisationen"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2023-07-18 12:02:48.226796",
+  "name": "92b45c5c78",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_text": "Contact person successfully added.",
+  "translated_text": "Kontaktperson erfolgreich hinzugef\u00fcgt."
  }
 ]

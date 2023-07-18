@@ -75,7 +75,7 @@ def link_contact_person(member_name):
 	member = frappe.get_doc("LANDA Member", member_name)
 	organization = frappe.get_doc("Organization", member.organization)
 	link_member_to_organization(member, organization)
-	frappe.msgprint("Contact person successfully added.")
+	frappe.msgprint(_("Contact person successfully added."))
 
 
 def link_member_to_organization(member, organization):
@@ -103,7 +103,7 @@ def unlink_contact_person(member_name):
 
 	unlink_member_from_organization(organization)
 
-	frappe.msgprint("Contact person successfully removed.")
+	frappe.msgprint(_("Contact person successfully removed."))
 
 
 def unlink_member_from_organization(organization):
