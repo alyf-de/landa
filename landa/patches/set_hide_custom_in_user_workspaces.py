@@ -1,17 +1,17 @@
 import frappe
 
+from landa.workspace import LANDA_WORKSPACES
+
 
 def execute():
-	workspaces = frappe.get_all(
+	"""Hide custom reports in existing customized landa workspaces."""
+	for workspace in frappe.get_all(
 		"Workspace",
 		filters={
-			"for_user": ["is", "set"],
+			"for_user": ("is", "set"),
 			"hide_custom": 0,
-			"extends": ["in", ["Water Body Management", "Organization Management", "Order Management"]],
+			"extends": ("in", LANDA_WORKSPACES),
 		},
-	)
-
-	for workspace in workspaces:
-		doc = frappe.get_doc("Workspace", workspace.name)
-		doc.hide_custom = 1
-		doc.save()
+		pluck="name",
+	):
+		frappe.db.set_value("Workspace", workspace, "hide_custom", 1)
