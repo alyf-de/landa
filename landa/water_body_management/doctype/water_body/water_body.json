@@ -35,7 +35,8 @@
   "section_break_95kcp",
   "water_body_special_provisions",
   "section_break_msjqv",
-  "location"
+  "location",
+  "icon"
  ],
  "fields": [
   {
@@ -220,6 +221,12 @@
    "fieldname": "current_information_expires_on",
    "fieldtype": "Date",
    "label": "Current Information Expires On"
+  },
+  {
+   "fieldname": "icon",
+   "fieldtype": "Link",
+   "label": "Icon",
+   "options": "Custom Icon"
   }
  ],
  "links": [
@@ -236,7 +243,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2023-06-13 11:55:53.677192",
+ "modified": "2023-07-18 20:51:36.125435",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
