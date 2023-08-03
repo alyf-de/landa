@@ -104,12 +104,10 @@ class MemberFunction(Document):
 
 
 	def validate_unique_roles(self):
-		unique_roles = frappe.get_value(
-			"Member Function Category", self.member_function_category, "only_one_per_organization"
-		)
-
-		member_function_category_name = frappe.get_value(
-			"Member Function Category", self.member_function_category, "name"
+		unique_role, member_function_category_name = frappe.db.get_value(
+			"Member Function Category", 
+			self.member_function_category, 
+			["only_one_per_organization", "name"]
 		)
 
 		if unique_roles == 1:
