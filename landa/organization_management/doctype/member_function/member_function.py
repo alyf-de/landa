@@ -110,16 +110,18 @@ class MemberFunction(Document):
 			["only_one_per_organization", "name"]
 		)
 
-		if unique_roles == 1:
-			existing_member_functions = frappe.get_all(
-				"Member Function",
-				filters={
-					"organization": self.organization,
-					"member": self.member,
-					"member_function_category": self.member_function_category,
-					"name": ["!=", self.name],  # Exclude this document from the search
-				},
-			)
+		if not unique_role:
+			return
+
+		existing_member_functions = frappe.db.exists(
+			"Member Function",
+			{
+				"organization": self.organization,
+				"member": self.member,
+				"member_function_category": self.member_function_category,
+				"name": ["!=", self.name],  # Exclude this document from the search
+			},
+		)
 			if existing_member_functions:
 				frappe.throw(
 					_(
