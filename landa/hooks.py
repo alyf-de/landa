@@ -156,6 +156,8 @@ app_include_js = [
 	"/assets/landa/js/map_defaults.js",
 	"/assets/landa/js/selling_utils.js",
 ]
+app_include_css = "/assets/landa/css/hide_like.css"
+
 
 # include js, css files in header of web template
 # web_include_css = "/assets/landa/css/landa.css"
