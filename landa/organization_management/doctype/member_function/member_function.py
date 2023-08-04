@@ -125,8 +125,8 @@ class MemberFunction(Document):
 			if existing_member_functions:
 				frappe.throw(
 					_(
-						"The function category can only be assigned once per member in the same organization."
-					).format(member_function_category_name)
+						"The {0} Function Category can only be assigned once per member in the same organization."
+					).format(frappe.bold(member_function_category_name))
 				)
 
 def disable_expired_member_functions():
