@@ -65,7 +65,9 @@ class LANDAMember(Document):
 		key = f"{self.name[:-number_part_len]}.{'#' * number_part_len}"
 		revert_series_if_last(key, self.name)
 
-	def on_update(self):
+
+def on_update(self):
+	if self.address:
 		organization = frappe.get_doc("Organization", self.organization)
 		organization.address = self.address
 		organization.save()
