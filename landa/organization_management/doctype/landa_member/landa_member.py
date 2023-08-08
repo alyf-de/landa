@@ -2,8 +2,6 @@
 # For license information, please see license.txt
 
 
-import traceback
-
 import frappe
 from frappe import _
 from frappe.contacts.address_and_contact import load_address_and_contact
@@ -127,14 +125,10 @@ def link_member_contacts_and_addresses_to_organization(member, organization):
 
 @frappe.whitelist()
 def link_contact_person(member_name):
-	try:
-		member = frappe.get_doc("LANDA Member", member_name)
-		organization = frappe.get_doc("Organization", member.organization)
-		link_member_contacts_and_addresses_to_organization(member, organization)
-		frappe.msgprint(_("Contact person successfully added."))
-	except Exception as e:
-		print("An error occurred:")
-		frappe.throw(traceback.format_exc())
+	member = frappe.get_doc("LANDA Member", member_name)
+	organization = frappe.get_doc("Organization", member.organization)
+	link_member_contacts_and_addresses_to_organization(member, organization)
+	frappe.msgprint(_("Contact person successfully added."))
 
 
 def unlink_member_contacts_and_addresses_from_organization(member, organization):
