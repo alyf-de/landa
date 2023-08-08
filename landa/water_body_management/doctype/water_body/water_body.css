@@ -1,0 +1,17 @@
+div[data-fieldname="icon_preview"] {
+    height: 24px;
+    width: 24px;
+    margin: auto !important;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    background: var(--primary);
+}
+
+input[type=range]::-moz-range-thumb {
+    background: var(--primary);
+}
+
+input[type=range]::-ms-thumb {
+    background: var(--primary);
+}
