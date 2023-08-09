@@ -19,6 +19,7 @@ class MemberFunction(Document):
 				frappe.throw(_("End Date cannot be before Start Date."))
 
 		self.validate_member_function_category()
+		self.validate_unique_roles()
 
 	def get_access_level(self) -> Optional[str]:
 		"""Return the access level of the linked Member Function Category."""
@@ -100,6 +101,30 @@ class MemberFunction(Document):
 
 	def is_inactive(self):
 		return self.end_date and date_diff(today(), self.end_date) > 0
+
+	def validate_unique_roles(self):
+		unique_role, member_function_category_name = frappe.db.get_value(
+			"Member Function Category", self.member_function_category, ["only_one_per_organization", "name"]
+		)
+
+		if not unique_role:
+			return
+
+		existing_member_functions = frappe.db.exists(
+			"Member Function",
+			{
+				"organization": self.organization,
+				"member": self.member,
+				"member_function_category": self.member_function_category,
+				"name": ["!=", self.name],  # Exclude this document from the search
+			},
+		)
+		if existing_member_functions:
+			frappe.throw(
+				_(
+					"The {0} Function Category can only be assigned once per member in the same organization."
+				).format(frappe.bold(member_function_category_name))
+			)
 
 
 def disable_expired_member_functions():
