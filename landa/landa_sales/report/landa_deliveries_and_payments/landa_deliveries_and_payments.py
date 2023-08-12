@@ -3,7 +3,6 @@
 
 
 import frappe
-from frappe import _
 
 
 class LandaDeliveriesAndPayments:
@@ -23,12 +22,13 @@ class LandaDeliveriesAndPayments:
 		deliveries = frappe.get_list(
 			"Delivery Note",
 			fields=[
+				"name",
 				"posting_date",
-				'"Delivery Note" as voucher_type',
 				"base_grand_total as grand_total",
 			],
 			filters=delivery_filters,
 		)
+		assign_voucher_type_link(deliveries, "Delivery Note", "Lieferschein")
 
 		return_filters = self.filters.copy()
 		return_filters["is_return"] = 1
@@ -36,12 +36,14 @@ class LandaDeliveriesAndPayments:
 		returns = frappe.get_list(
 			"Delivery Note",
 			fields=[
+				"name",
 				"posting_date",
 				'"Sales Return" as voucher_type',
 				"base_grand_total as grand_total",
 			],
 			filters=return_filters,
 		)
+		assign_voucher_type_link(returns, "Delivery Note", "Retoure")
 
 		payments_received_filters = self.filters.copy()
 		payments_received_filters["payment_type"] = "Receive"
@@ -50,12 +52,14 @@ class LandaDeliveriesAndPayments:
 		payments_received = frappe.get_list(
 			"Payment Entry",
 			fields=[
+				"name",
 				"posting_date",
 				'"Incoming Payment" as voucher_type',
 				"base_paid_amount as grand_total",
 			],
 			filters=payments_received_filters,
 		)
+		assign_voucher_type_link(payments_received, "Payment Entry", "Eingehende Zahlung")
 
 		for payment in payments_received:
 			# received payments reduce the debt
@@ -68,18 +72,16 @@ class LandaDeliveriesAndPayments:
 		payments_sent = frappe.get_list(
 			"Payment Entry",
 			fields=[
+				"name",
 				"posting_date",
 				'"Outgoing Payment" as voucher_type',
 				"base_paid_amount as grand_total",
 			],
 			filters=payments_sent_filters,
 		)
+		assign_voucher_type_link(payments_sent, "Payment Entry", "Ausgehende Zahlung")
 
 		data = deliveries + returns + payments_received + payments_sent
-
-		# translate voucher type
-		for record in data:
-			record["voucher_type"] = _(record["voucher_type"])
 
 		data = sorted(data, key=lambda row: row["posting_date"])
 
@@ -106,6 +108,13 @@ class LandaDeliveriesAndPayments:
 				"width": 200,
 			},
 		]
+
+
+def assign_voucher_type_link(items, doctype, label):
+	for item in items:
+		item[
+			"voucher_type"
+		] = f'<a href="/app/{doctype.replace(" ","-").lower()}/{item["name"]}" data-doctype="{doctype}" data-name="{item["name"]}">{label}</a>'
 
 
 def execute(filters=None):
