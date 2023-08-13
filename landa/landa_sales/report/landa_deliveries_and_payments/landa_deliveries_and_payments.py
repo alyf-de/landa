@@ -3,6 +3,7 @@
 
 
 import frappe
+from frappe import _
 
 
 class LandaDeliveriesAndPayments:
@@ -28,7 +29,7 @@ class LandaDeliveriesAndPayments:
 			],
 			filters=delivery_filters,
 		)
-		assign_voucher_type_link(deliveries, "Delivery Note", "Lieferschein")
+		assign_voucher_type_link(deliveries, "Delivery Note", _("Delivery Note"))
 
 		return_filters = self.filters.copy()
 		return_filters["is_return"] = 1
@@ -38,12 +39,11 @@ class LandaDeliveriesAndPayments:
 			fields=[
 				"name",
 				"posting_date",
-				'"Sales Return" as voucher_type',
 				"base_grand_total as grand_total",
 			],
 			filters=return_filters,
 		)
-		assign_voucher_type_link(returns, "Delivery Note", "Retoure")
+		assign_voucher_type_link(returns, "Delivery Note", _("Sales Return"))
 
 		payments_received_filters = self.filters.copy()
 		payments_received_filters["payment_type"] = "Receive"
@@ -54,12 +54,11 @@ class LandaDeliveriesAndPayments:
 			fields=[
 				"name",
 				"posting_date",
-				'"Incoming Payment" as voucher_type',
 				"base_paid_amount as grand_total",
 			],
 			filters=payments_received_filters,
 		)
-		assign_voucher_type_link(payments_received, "Payment Entry", "Eingehende Zahlung")
+		assign_voucher_type_link(payments_received, "Payment Entry", _("Incoming Payment"))
 
 		for payment in payments_received:
 			# received payments reduce the debt
@@ -74,12 +73,11 @@ class LandaDeliveriesAndPayments:
 			fields=[
 				"name",
 				"posting_date",
-				'"Outgoing Payment" as voucher_type',
 				"base_paid_amount as grand_total",
 			],
 			filters=payments_sent_filters,
 		)
-		assign_voucher_type_link(payments_sent, "Payment Entry", "Ausgehende Zahlung")
+		assign_voucher_type_link(payments_sent, "Payment Entry", _("Outgoing Payment"))
 
 		data = deliveries + returns + payments_received + payments_sent
 
