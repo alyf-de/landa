@@ -4,6 +4,7 @@
 from datetime import datetime
 
 import frappe
+from frappe import _
 
 
 class LandaDeliveriesAndPaymentsSummaries:
@@ -86,20 +87,20 @@ class LandaDeliveriesAndPaymentsSummaries:
 				"fieldname": "organization",
 				"fieldtype": "Link",
 				"options": "Organization",
-				"label": "Organization",
+				"label": _("Organization"),
 				"width": 200,
 			},
 			{
 				"fieldname": "year_of_settlement",
 				"fieldtype": "Data",
-				"label": "Year of Settlement",
+				"label": _("Year of Settlement"),
 				"disable_total": True,
 				"width": 200,
 			},
 			{
 				"fieldname": "outstanding_amount",
 				"fieldtype": "Currency",
-				"label": "Outstanding Amount",
+				"label": _("Outstanding Amount"),
 				"width": 200,
 			},
 		]
