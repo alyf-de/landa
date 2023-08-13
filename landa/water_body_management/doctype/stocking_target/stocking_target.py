@@ -31,6 +31,32 @@ class StockingTarget(StockingController):
 				)
 			)
 
+	def update_status(self):
+		"""Fetch all Stocking Measures with status and weight and update all status fields accordingly."""
+		stocking_measures = frappe.get_all(
+			"Stocking Measure",
+			filters={"stocking_target": self.name},
+			fields=["status", "weight"],
+		)
+
+		weight_in_progress = sum(sm.weight for sm in stocking_measures)
+		weight_completed = sum(sm.weight for sm in stocking_measures if sm.status == "Completed")
+
+		if self.weight != 0:
+			self.percent_in_progress = weight_in_progress / self.weight * 100
+			self.percent_completed = weight_completed / self.weight * 100
+
+		if (
+			self.percent_completed >= 100
+		):  # could be > 100 as the weight in Stocking Measures is not validated against the Stocking Target
+			self.status = "Completed"
+		elif self.percent_in_progress > 0:
+			self.status = "In Progress"
+		else:
+			self.status = "Draft"
+
+		self.save()
+
 
 def copy_to_next_year() -> None:
 	"""Copy all Stocking targets from the current year to the next year.
