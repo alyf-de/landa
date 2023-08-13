@@ -10,6 +10,9 @@ class StockingMeasure(StockingController):
 	def on_change(self):
 		self.update_stocking_target()
 
+	def after_delete(self):
+		self.update_stocking_target()
+
 	def update_stocking_target(self):
 		if not self.stocking_target:
 			return
