@@ -1,6 +1,8 @@
 # Copyright (c) 2023, ALYF GmbH and contributors
 # For license information, please see license.txt
 
+from datetime import datetime
+
 import frappe
 
 
@@ -11,92 +13,72 @@ class LandaDeliveriesAndPaymentsSummaries:
 	def run(self):
 		return self.get_columns(), self.get_data()
 
+	def get_base_filters(self, organization, year_of_settlement):
+		filters = self.filters.copy()
+		filters["docstatus"] = 1
+		filters["organization"] = organization
+		filters["year_of_settlement"] = year_of_settlement
+
+		return filters
+
+	def fetch_and_sum(self, doctype, pluck_field, extra_filters):
+		return sum(frappe.get_list(doctype, pluck=pluck_field, filters=extra_filters.copy()))
+
 	def get_data(self):
 		data = []
 
-		if self.filters.get("year_of_settlement"):
-			years_of_settlement = [self.filters["year_of_settlement"]]
-		else:
-			from datetime import datetime
+		years_of_settlement = (
+			[self.filters["year_of_settlement"]]
+			if self.filters.get("year_of_settlement")
+			else [year for year in range(2021, datetime.now().year + 1)]
+		)
 
-			years_of_settlement = [year for year in range(2021, datetime.now().year + 1)]
-
-		if self.filters.get("organization"):
-			organizations = [self.filters.get("organization")]
-		else:
-			organizations = frappe.get_list(
+		organizations = (
+			[self.filters["organization"]]
+			if self.filters.get("organization")
+			else frappe.get_list(
 				"Organization", pluck="name", filters=[["parent_organization", "in", ["AVS", "AVL", "AVE"]]]
 			)
+		)
 
 		for year_of_settlement in years_of_settlement:
 			for organization in organizations:
-				delivery_filters = self.filters.copy()
+				base_filters = self.get_base_filters(organization, year_of_settlement)
+
+				delivery_filters = base_filters.copy()
 				delivery_filters["is_return"] = 0
-				delivery_filters["docstatus"] = 1
-				delivery_filters["organization"] = organization
-				delivery_filters["year_of_settlement"] = year_of_settlement
-				delivery_totals = frappe.get_list(
-					"Delivery Note",
-					pluck="base_grand_total",
-					filters=delivery_filters,
-				)
+				delivery_totals = self.fetch_and_sum("Delivery Note", "base_grand_total", delivery_filters)
 
-				return_filters = self.filters.copy()
+				return_filters = base_filters.copy()
 				return_filters["is_return"] = 1
-				return_filters["docstatus"] = 1
-				return_filters["organization"] = organization
-				return_filters["year_of_settlement"] = year_of_settlement
-				return_totals = frappe.get_list(
-					"Delivery Note",
-					pluck="base_grand_total",
-					filters=return_filters,
-				)
+				return_totals = self.fetch_and_sum("Delivery Note", "base_grand_total", return_filters)
 
-				payments_received_filters = self.filters.copy()
+				payments_received_filters = base_filters.copy()
 				payments_received_filters["payment_type"] = "Receive"
 				payments_received_filters["party_type"] = "Customer"
-				payments_received_filters["docstatus"] = 1
-				payments_received_filters["organization"] = organization
-				payments_received_filters["year_of_settlement"] = year_of_settlement
-				payments_received_amounts = frappe.get_list(
-					"Payment Entry",
-					pluck="base_paid_amount",
-					filters=payments_received_filters,
+				payments_received_amounts = -self.fetch_and_sum(
+					"Payment Entry", "base_paid_amount", payments_received_filters
 				)
 
-				# received payments reduce the debt
-				payments_received_amounts = [-num for num in payments_received_amounts]
-
-				payments_sent_filters = self.filters.copy()
+				payments_sent_filters = base_filters.copy()
 				payments_sent_filters["payment_type"] = "Pay"
 				payments_sent_filters["party_type"] = "Customer"
-				payments_sent_filters["docstatus"] = 1
-				payments_sent_filters["organization"] = organization
-				payments_sent_filters["year_of_settlement"] = year_of_settlement
-				payments_sent_amounts = frappe.get_list(
-					"Payment Entry",
-					pluck="base_paid_amount",
-					filters=payments_sent_filters,
-				)
-
-				outstanding_amount = (
-					sum(delivery_totals)
-					+ sum(return_totals)
-					+ sum(payments_received_amounts)
-					+ sum(payments_sent_amounts)
+				payments_sent_amounts = self.fetch_and_sum(
+					"Payment Entry", "base_paid_amount", payments_sent_filters
 				)
 
 				data.append(
 					{
 						"organization": organization,
 						"year_of_settlement": year_of_settlement,
-						"outstanding_amount": outstanding_amount,
+						"outstanding_amount": delivery_totals
+						+ return_totals
+						+ payments_received_amounts
+						+ payments_sent_amounts,
 					}
 				)
 
-		data = sorted(data, key=lambda row: row["organization"])
-
-		return data
+		return sorted(data, key=lambda row: row["organization"])
 
 	def get_columns(self):
 		return [
