@@ -109,10 +109,11 @@ class LandaDeliveriesAndPayments:
 
 
 def assign_voucher_type_link(items, doctype, label):
+	dt_route = doctype.replace(" ", "-").lower()
 	for item in items:
 		item[
 			"voucher_type"
-		] = f'<a href="/app/{doctype.replace(" ","-").lower()}/{item["name"]}" data-doctype="{doctype}" data-name="{item["name"]}">{label}</a>'
+		] = f'<a href="/app/{dt_route}/{item["name"]}" data-doctype="{doctype}" data-name="{item["name"]}">{label}</a>'
 
 
 def execute(filters=None):
