@@ -210,7 +210,6 @@
    "fieldtype": "Column Break"
   }
  ],
- "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [
   {
@@ -249,12 +248,17 @@
    "link_fieldname": "organization"
   },
   {
+   "group": "Bestellwesen",
+   "link_doctype": "Customer",
+   "link_fieldname": "organization"
+  },
+  {
    "group": "Gew\u00e4sserverwaltung",
    "link_doctype": "Water Body Management Local Organization",
    "link_fieldname": "organization"
   }
  ],
- "modified": "2023-03-13 23:47:37.901969",
+ "modified": "2023-08-14 23:44:16.066620",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
