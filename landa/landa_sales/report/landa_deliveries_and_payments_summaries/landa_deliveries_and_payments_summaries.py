@@ -23,7 +23,7 @@ class LandaDeliveriesAndPaymentsSummaries:
 		return filters
 
 	def fetch_and_sum(self, doctype, pluck_field, extra_filters):
-		return sum(frappe.get_list(doctype, pluck=pluck_field, filters=extra_filters.copy()))
+		return sum(frappe.get_list(doctype, pluck=pluck_field, filters=extra_filters))
 
 	def get_data(self):
 		data = []
@@ -31,7 +31,7 @@ class LandaDeliveriesAndPaymentsSummaries:
 		years_of_settlement = (
 			[self.filters["year_of_settlement"]]
 			if self.filters.get("year_of_settlement")
-			else [year for year in range(2021, datetime.now().year + 1)]
+			else list(range(2021, datetime.now().year + 1))
 		)
 
 		organizations = (
