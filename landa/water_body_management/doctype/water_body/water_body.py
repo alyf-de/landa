@@ -117,6 +117,7 @@ def query_water_body_data(id: str = None, fishing_area: str = None) -> List[Dict
 			water_body.water_body_size.as_("size"),
 			water_body.water_body_size_unit.as_("size_unit"),
 			water_body.location,
+			water_body.status,
 			fish_species_table.fish_species,
 			wb_provision_table.water_body_special_provision,
 			wb_provision_table.short_code,
@@ -190,6 +191,7 @@ def init_row(water_body_row: Dict) -> Dict:
 		# Re-insert child table fields as lists
 		water_body_copy[field] = []
 
+	water_body_copy["files"] = get_water_body_files(water_body_row.get("id"))
 	return water_body_copy
 
 
@@ -214,3 +216,26 @@ def add_to_map(value, field, water_body, checking_map, result_map):
 		result_map[field].append(
 			{"id": value, "organization_name": water_body.get("local_organization_name")}
 		)
+
+
+def get_water_body_files(water_body_id: str):
+	site_url = frappe.utils.get_url()
+
+	def get_absolute_link(file):
+		# If the file is not a link, prepend the site url to get the absolute link
+		file = file[0]
+		return file if file.startswith(("http://", "https://")) else (site_url + file)
+
+	file = frappe.qb.DocType("File")
+	files = (
+		frappe.qb.from_(file)
+		.select(file.file_url)
+		.where(file.attached_to_doctype == "Water Body")
+		.where(file.attached_to_name == water_body_id)
+		.where(file.is_private == 0)
+	).run()
+
+	if not files:
+		return []
+
+	return list(map(lambda file: get_absolute_link(file), files))
