@@ -11,7 +11,7 @@ class LandaDeliveriesAndPayments:
 		self.filters = filters
 
 	def run(self):
-		if not ("organization" in self.filters):
+		if "organization" not in self.filters:
 			return [], []
 
 		return self.get_columns(), self.get_data()
