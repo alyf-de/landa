@@ -239,3 +239,26 @@ def get_water_body_files(water_body_id: str):
 		return []
 
 	return list(map(lambda file: get_absolute_link(file), files))
+
+
+def rebuild_cache_on_attachment(doc, method):
+	"""Called via hooks.py when a file is attached to/removed from a Water Body."""
+	if not doc.attached_to_doctype == "Water Body":
+		return
+
+	if method == "on_update" and not doc.flags.in_insert:  # update
+		if doc.get_doc_before_save().file_url == doc.file_url:
+			# switching from public to private or vice versa, changes the URL
+			# File URL has not changed, so no need to rebuild cache
+			return
+	elif doc.is_private:
+		# Private files don't impact cache on insert/delete
+		return
+
+	is_active, display, fishing_area = frappe.db.get_value(
+		"Water Body", doc.attached_to_name, ["is_active", "display_in_fishing_guide", "fishing_area"]
+	)
+	if not is_active or not display:
+		return
+
+	rebuild_water_body_cache(fishing_area)
