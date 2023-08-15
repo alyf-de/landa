@@ -103,27 +103,27 @@ class MemberFunction(Document):
 		return self.end_date and date_diff(today(), self.end_date) > 0
 
 	def validate_unique_roles(self):
-		unique_role, member_function_category_name = frappe.db.get_value(
+		only_one, category_name = frappe.db.get_value(
 			"Member Function Category", self.member_function_category, ["only_one_per_organization", "name"]
 		)
 
-		if not unique_role:
+		if not only_one or self.status != "Active":
 			return
 
 		existing_member_functions = frappe.db.exists(
 			"Member Function",
 			{
 				"organization": self.organization,
-				"member": self.member,
 				"member_function_category": self.member_function_category,
 				"name": ["!=", self.name],  # Exclude this document from the search
+				"status": "Active",
 			},
 		)
 		if existing_member_functions:
 			frappe.throw(
-				_(
-					"The {0} Function Category can only be assigned once per member in the same organization."
-				).format(frappe.bold(member_function_category_name))
+				_("The Member Function Category {0} can only be assigned once per organization.").format(
+					frappe.bold(category_name)
+				)
 			)
 
 
