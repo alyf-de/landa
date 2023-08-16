@@ -1687,13 +1687,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-06-08 19:04:03.842482",
+  "modified": "2023-08-16 11:44:43.117836",
   "name": "92173401c5",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Organization",
-  "translated_text": "Verein"
+  "translated_text": "Regionalverband"
  },
  {
   "context": null,
@@ -1703,13 +1703,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-06-08 19:04:03.877965",
+  "modified": "2023-08-16 11:45:03.469828",
   "name": "809bd5c242",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_text": "Organizations",
-  "translated_text": "Vereine"
+  "translated_text": "Regionalverb\u00e4nde"
  },
  {
   "context": null,
