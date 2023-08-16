@@ -1,3 +1,5 @@
-.form-stats-likes {
+.form-stats-likes,
+.list-row-like,
+.ike-icon {
     display: none !important;
 }
