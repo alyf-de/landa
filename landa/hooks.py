@@ -337,6 +337,7 @@ override_whitelisted_methods = {
 	"erpnext.selling.doctype.sales_order.sales_order.make_sales_invoice": "landa.landa_sales.sales_order.sales_order.make_landa_sales_invoice",
 	"erpnext.accounts.doctype.sales_invoice.sales_invoice.make_delivery_note": "landa.landa_sales.sales_invoice.sales_invoice.make_landa_delivery_note",
 	"erpnext.stock.doctype.delivery_note.delivery_note.make_sales_invoice": "landa.landa_stock.delivery_note.delivery_note.make_landa_sales_invoice",
+	"frappe.desk.like.toggle_like": "landa.utils.no_liked_by",
 }
 
 #
