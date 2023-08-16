@@ -9,6 +9,7 @@
   "section_break_2",
   "access_level",
   "member_administration",
+  "only_one_per_organization",
   "section_break_4",
   "roles_html",
   "roles"
@@ -54,6 +55,12 @@
    "fieldname": "section_break_2",
    "fieldtype": "Section Break",
    "label": "User Permissions"
+  },
+  {
+   "default": "0",
+   "fieldname": "only_one_per_organization",
+   "fieldtype": "Check",
+   "label": "Only One per Organization"
   }
  ],
  "links": [
@@ -62,7 +69,7 @@
    "link_fieldname": "member_function_category"
   }
  ],
- "modified": "2022-09-13 13:56:52.518403",
+ "modified": "2023-08-09 08:56:11.925591",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function Category",
