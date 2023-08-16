@@ -48,13 +48,8 @@
             </p>
         </div>
         {% if contact %}
-            {% if company.render_contact_name_first_in_address %}
-                <strong>{{ contact.first_name }}{% if contact.last_name %} {{ contact.last_name }}{% endif %}</strong><br>
-                {{ doc.customer_name }}<br />
-            {% else  %}
-                <strong>{{ doc.customer_name }}</strong><br />
-                {{ contact.first_name }}{% if contact.last_name %} {{ contact.last_name }}{% endif %}<br>
-            {% endif %}
+            <strong>{{ contact.first_name }}{% if contact.last_name %} {{ contact.last_name }}{% endif %}</strong><br>
+            {{ doc.customer_name }}<br />
         {% else %}
             <strong>{{ doc.customer_name }}</strong><br />
         {% endif %}
