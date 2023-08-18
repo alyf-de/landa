@@ -53,6 +53,7 @@ def query_fish_species_data(id: str = None) -> List[Dict]:
 		fish_species.special_fishing_limit,
 		fish_species.traits,
 		fish_species.image,
+		fish_species.thumbnail,
 	)
 
 	if id:
@@ -65,9 +66,9 @@ def query_fish_species_data(id: str = None) -> List[Dict]:
 
 	for row in result:
 		# images must be absolute URLs
-		if not row.image:
-			continue
-
-		row.image = get_absolute_link(row.image)
+		if row.image:
+			row.image = get_absolute_link(row.image)
+		if row.thumbnail:
+			row.thumbnail = get_absolute_link(row.thumbnail)
 
 	return result
