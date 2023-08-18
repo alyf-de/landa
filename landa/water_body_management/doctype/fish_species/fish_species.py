@@ -13,6 +13,9 @@ class FishSpecies(Document):
 	def on_trash(self):
 		build_fish_species_cache()
 
+	def after_rename(self, old, new, merge):
+		build_fish_species_cache()
+
 
 def get_fish_species_data(id: str = None) -> List[Dict]:
 	"""Return fish species from cache."""
