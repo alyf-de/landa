@@ -83,6 +83,8 @@ curl --location "$BASE_URL/api/method/landa.api.water_body?fishing_area=C09"
 
 ### Example Response
 
+> Only public files attached to Water Bodies are returned via the API. They are all absolute links to the resource.
+
 The response is always a list of dictionaries, like this:
 
 ```json
@@ -101,6 +103,7 @@ The response is always a list of dictionaries, like this:
             "current_public_information": "Das Gew\u00e4sser ist am Samstag den 23.10.2021 von 08:00 - 14:00 Uhr einer Jugendangelveranstaltung vorbehalten.",
             "size": 0.9,
             "size_unit": "ha",
+            "status": "Verbandsvertragsgewässer",
             "fish_species": [
                 "Hecht",
                 "Schleie",
@@ -119,7 +122,12 @@ The response is always a list of dictionaries, like this:
             "geojson": {
                 "type": "FeatureCollection",
                 "features": []
-            }
+            },
+            "files": [
+                "https://lvsa-landa.de/files/image-1.jpg",
+                "https://lvsa-landa.de/files/image-2.jpg",
+                "https://lvsa-landa.de/files/doc-1.pdf"
+            ]
         }
     ]
 }
