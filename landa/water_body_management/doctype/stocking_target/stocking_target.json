@@ -42,10 +42,9 @@
   {
    "allow_in_quick_entry": 1,
    "fieldname": "year",
-   "fieldtype": "Select",
+   "fieldtype": "Int",
    "in_standard_filter": 1,
    "label": "Year",
-   "options": "2022\n2023\n2024\n2025\n2026\n2027\n2028\n2029",
    "reqd": 1
   },
   {
@@ -261,7 +260,7 @@
    "link_fieldname": "stocking_target"
   }
  ],
- "modified": "2022-03-31 19:01:12.780785",
+ "modified": "2023-08-18 17:31:53.280039",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",
