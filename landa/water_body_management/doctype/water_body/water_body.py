@@ -44,17 +44,23 @@ class WaterBody(Document):
 				)
 
 
-def rebuild_water_body_cache(fishing_area: str = None):
+def rebuild_water_body_cache(fishing_area: str = None, enqueued: bool = False):
 	"""
 	Rebuilds water body cache for all water bodies **AND** fishing area wise.
 	"""
 	# Invalidate Cache
+	if enqueued:
+		frappe.cache().hset("water_body_data", "in_progress", 1)
+
 	frappe.cache().hdel("water_body_data", "all")
 	build_water_body_cache()
 
 	if fishing_area:
 		frappe.cache().hdel("water_body_data", fishing_area)
 		build_water_body_cache(fishing_area=fishing_area)
+
+	if enqueued:
+		frappe.cache().hset("water_body_data", "in_progress", 0)
 
 
 def remove_outdated_information():
@@ -261,4 +267,13 @@ def rebuild_cache_on_attachment(doc, method):
 	if not is_active or not display:
 		return
 
-	rebuild_water_body_cache(fishing_area)
+	if method == "after_delete":
+		# NOTE:Enqueue gets uncommitted data (new thread). Files appear even if deleted
+		# Still no clue why
+		rebuild_water_body_cache(fishing_area=fishing_area)
+	elif not frappe.cache().hget("water_body_data", "in_progress"):
+		frappe.enqueue(
+			rebuild_water_body_cache,
+			fishing_area=fishing_area,
+			enqueued=True,
+		)
