@@ -7,14 +7,15 @@ landa.utils = {
 				landa.queries.regional_organization_query;
 		}
 	},
-	set_default_year: function set_default_year(frm) {
+	set_default_year: function (frm, fieldname = "year") {
 		// set default year to the current year if it's before november,
 		// else to the next year
-		const now = moment();
-		let year = now.year();
-		if (now.month() >= 11) {
-			year += 1;
+		if (frm.is_new() && !frm.doc[fieldname]) {
+			const today = new Date();
+			const current_year = today.getFullYear();
+			const current_month = today.getMonth();
+
+			frm.set_value(fieldname, current_month < 10 ? current_year : current_year + 1);
 		}
-		frm.set_value("year", year);
 	}
 };
