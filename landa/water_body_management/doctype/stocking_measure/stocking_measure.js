@@ -4,9 +4,9 @@
 {% include "landa/water_body_management/stocking_controller.js" %}
 
 frappe.ui.form.on("Stocking Measure", {
-	// refresh: function(frm) {
-
-	// }
+	onload: function(frm) {
+		landa.utils.set_default_year(frm);
+	}
 });
 
 cur_frm.script_manager.make(landa.StockingController);
