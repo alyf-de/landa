@@ -35,14 +35,14 @@
 
     #sender {
         position: relative;
-        font-size: 75%;
+        font-size: 50%;
         height: 17.7mm;
     }
 
     #sender p {
         position: absolute;
         width: 85mm;
-        bottom: 0;
+        top: 3mm;
     }
 
     #address {

@@ -83,6 +83,8 @@ curl --location "$BASE_URL/api/method/landa.api.water_body?fishing_area=C09"
 
 ### Example Response
 
+> Only public files attached to Water Bodies are returned via the API. They are all absolute links to the resource.
+
 The response is always a list of dictionaries, like this:
 
 ```json
@@ -101,6 +103,7 @@ The response is always a list of dictionaries, like this:
             "current_public_information": "Das Gew\u00e4sser ist am Samstag den 23.10.2021 von 08:00 - 14:00 Uhr einer Jugendangelveranstaltung vorbehalten.",
             "size": 0.9,
             "size_unit": "ha",
+            "status": "Verbandsvertragsgewässer",
             "fish_species": [
                 "Hecht",
                 "Schleie",
@@ -119,8 +122,62 @@ The response is always a list of dictionaries, like this:
             "geojson": {
                 "type": "FeatureCollection",
                 "features": []
-            }
+            },
+            "files": [
+                "https://lvsa-landa.de/files/image-1.jpg",
+                "https://lvsa-landa.de/files/image-2.jpg",
+                "https://lvsa-landa.de/files/doc-1.pdf"
+            ]
         }
     ]
+}
+```
+
+## Fish Species
+
+Get a list of fish species along with their data.
+
+- `GET /api/method/landa.api.fish_species`
+
+    Parameters:
+
+    - `id` (optional): return only data of the Fish Species with this ID.
+
+### Example Requests
+
+> Remember to set the environment variable `BASE_URL` to the URL of your LANDA instance. For example like this: `export BASE_URL=https://lvsa-landa.de`
+
+Get all Fish Species:
+
+```bash
+curl --location "$BASE_URL/api/method/landa.api.fish_species"
+```
+
+Get a specific Fish Species:
+
+```bash
+curl --location "$BASE_URL/api/method/landa.api.fish_species?id=Bachforelle"
+```
+
+### Example Response
+
+The response is always a list of dictionaries, like this:
+
+```json
+{
+  "message": [
+    {
+      "id": "Bachforelle",
+      "short_code": "Bf",
+      "scientific_name": "Salmo trutta fario",
+      "close_season": "01.10-30.04.",
+      "minimum_size": "28 cm",
+      "general_fishing_limit": "2",
+      "special_fishing_limit": "3",
+      "traits": "Fettflosse mit roten Tupfen\nK\u00f6rper lang gestreckt, seitlich abgeflacht, hoher\nSchwanzstiel\nrote und br\u00e4unlich-schwarze Tupfen\nendst\u00e4ndiges Maul, Maulspalte reicht bis hinter Auge\nmaximal 90 cm lang, dann \u00fcber 10 kg schwer",
+      "image": "https://lvsa-landa.de/files/4_big.png",
+      "thumbnail": "https://lvsa-landa.de/files/4_small.png"
+    }
+  ]
 }
 ```

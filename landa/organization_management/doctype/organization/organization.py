@@ -12,8 +12,10 @@ from frappe.contacts.address_and_contact import (
 from frappe.desk.treeview import make_tree_args
 from frappe.model.naming import make_autoname, revert_series_if_last
 from frappe.permissions import has_permission
-from frappe.utils import cint
+from frappe.utils.data import cint, get_link_to_form
 from frappe.utils.nestedset import NestedSet
+
+from landa.organization_management.doctype.landa_member.landa_member import get_address_or_contact
 
 
 class Organization(NestedSet):
@@ -194,6 +196,56 @@ class Organization(NestedSet):
 		parent_organization = frappe.get_doc("Organization", self.parent_organization)
 		if not has_permission("Organization", ptype=ptype, doc=parent_organization):
 			frappe.throw(_("Not permitted"), frappe.PermissionError)
+
+	@frappe.whitelist()
+	def link_contact(
+		self, landa_member: str, is_default_billing: int = 0, is_default_shipping: int = 0
+	):
+		self.has_permission("write")
+
+		contact = get_address_or_contact("Contact", landa_member)
+		if not contact:
+			frappe.throw(
+				_("There is no single contact linked to {0}.").format(
+					get_link_to_form("LANDA Member", landa_member)
+				)
+			)
+
+		address = get_address_or_contact("Address", landa_member)
+		if not address:
+			frappe.throw(
+				_("There is no single address linked to {0}.").format(
+					get_link_to_form("LANDA Member", landa_member)
+				)
+			)
+
+		add_links(contact, self.name)
+		add_links(address, self.name)
+
+		customer = frappe.get_doc("Customer", self.name)
+		if is_default_billing:
+			customer.default_billing_contact = contact.name
+			customer.default_billing_address = address.name
+		if is_default_shipping:
+			customer.default_shipping_contact = contact.name
+			customer.default_shipping_address = address.name
+
+		customer.save()
+
+
+def add_links(address_or_contact, organization: str):
+	existing_links = {(link.link_doctype, link.link_name) for link in address_or_contact.links}
+	for doctype in ("Organization", "Customer"):
+		if (doctype, organization) not in existing_links:
+			address_or_contact.append(
+				"links",
+				{
+					"link_doctype": doctype,
+					"link_name": organization,
+				},
+			)
+
+	address_or_contact.save()
 
 
 @frappe.whitelist()

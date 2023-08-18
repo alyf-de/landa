@@ -7,7 +7,7 @@ from typing import Dict, List
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils.data import today
+from frappe.utils.data import get_url, today
 
 from landa.utils import get_current_member_data
 
@@ -44,17 +44,23 @@ class WaterBody(Document):
 				)
 
 
-def rebuild_water_body_cache(fishing_area: str = None):
+def rebuild_water_body_cache(fishing_area: str = None, enqueued: bool = False):
 	"""
 	Rebuilds water body cache for all water bodies **AND** fishing area wise.
 	"""
 	# Invalidate Cache
+	if enqueued:
+		frappe.cache().hset("water_body_data", "in_progress", 1)
+
 	frappe.cache().hdel("water_body_data", "all")
 	build_water_body_cache()
 
 	if fishing_area:
 		frappe.cache().hdel("water_body_data", fishing_area)
 		build_water_body_cache(fishing_area=fishing_area)
+
+	if enqueued:
+		frappe.cache().hset("water_body_data", "in_progress", 0)
 
 
 def remove_outdated_information():
@@ -117,6 +123,7 @@ def query_water_body_data(id: str = None, fishing_area: str = None) -> List[Dict
 			water_body.water_body_size.as_("size"),
 			water_body.water_body_size_unit.as_("size_unit"),
 			water_body.location,
+			water_body.status,
 			fish_species_table.fish_species,
 			wb_provision_table.water_body_special_provision,
 			wb_provision_table.short_code,
@@ -190,6 +197,7 @@ def init_row(water_body_row: Dict) -> Dict:
 		# Re-insert child table fields as lists
 		water_body_copy[field] = []
 
+	water_body_copy["files"] = get_water_body_files(water_body_row.get("id"))
 	return water_body_copy
 
 
@@ -213,4 +221,49 @@ def add_to_map(value, field, water_body, checking_map, result_map):
 	else:
 		result_map[field].append(
 			{"id": value, "organization_name": water_body.get("local_organization_name")}
+		)
+
+
+def get_water_body_files(water_body_id: str):
+	file = frappe.qb.DocType("File")
+	files = (
+		frappe.qb.from_(file)
+		.select(file.file_url)
+		.where(file.attached_to_doctype == "Water Body")
+		.where(file.attached_to_name == water_body_id)
+		.where(file.is_private == 0)
+	).run()
+
+	return [get_url(file[0]) for file in files] if files else []
+
+
+def rebuild_cache_on_attachment(doc, method):
+	"""Called via hooks.py when a file is attached to/removed from a Water Body."""
+	if not doc.attached_to_doctype == "Water Body":
+		return
+
+	if method == "on_update" and not doc.flags.in_insert:  # update
+		if doc.get_doc_before_save().file_url == doc.file_url:
+			# switching from public to private or vice versa, changes the URL
+			# File URL has not changed, so no need to rebuild cache
+			return
+	elif doc.is_private:
+		# Private files don't impact cache on insert/delete
+		return
+
+	is_active, display, fishing_area = frappe.db.get_value(
+		"Water Body", doc.attached_to_name, ["is_active", "display_in_fishing_guide", "fishing_area"]
+	)
+	if not is_active or not display:
+		return
+
+	if method == "after_delete":
+		# NOTE:Enqueue gets uncommitted data (new thread). Files appear even if deleted
+		# Still no clue why
+		rebuild_water_body_cache(fishing_area=fishing_area)
+	elif not frappe.cache().hget("water_body_data", "in_progress"):
+		frappe.enqueue(
+			rebuild_water_body_cache,
+			fishing_area=fishing_area,
+			enqueued=True,
 		)

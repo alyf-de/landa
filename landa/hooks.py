@@ -293,6 +293,10 @@ doc_events = {
 	"Workspace": {
 		"validate": "landa.workspace.validate",
 	},
+	"File": {
+		"on_update": "landa.water_body_management.doctype.water_body.water_body.rebuild_cache_on_attachment",
+		"after_delete": "landa.water_body_management.doctype.water_body.water_body.rebuild_cache_on_attachment",
+	},
 }
 
 # Scheduled Tasks
