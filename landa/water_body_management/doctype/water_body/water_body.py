@@ -244,7 +244,7 @@ def get_water_body_files(water_body_id: str):
 	if not files:
 		return []
 
-	return list(map(lambda file: get_absolute_link(file), files))
+	return [get_absolute_link(file) for file in files]
 
 
 def rebuild_cache_on_attachment(doc, method):
