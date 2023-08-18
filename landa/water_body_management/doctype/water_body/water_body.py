@@ -7,7 +7,7 @@ from typing import Dict, List
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils.data import today
+from frappe.utils.data import get_url, today
 
 from landa.utils import get_current_member_data
 
@@ -225,13 +225,6 @@ def add_to_map(value, field, water_body, checking_map, result_map):
 
 
 def get_water_body_files(water_body_id: str):
-	site_url = frappe.utils.get_url()
-
-	def get_absolute_link(file):
-		# If the file is not a link, prepend the site url to get the absolute link
-		file = file[0]
-		return file if file.startswith(("http://", "https://")) else (site_url + file)
-
 	file = frappe.qb.DocType("File")
 	files = (
 		frappe.qb.from_(file)
@@ -241,10 +234,7 @@ def get_water_body_files(water_body_id: str):
 		.where(file.is_private == 0)
 	).run()
 
-	if not files:
-		return []
-
-	return [get_absolute_link(file) for file in files]
+	return [get_url(file[0]) for file in files] if files else []
 
 
 def rebuild_cache_on_attachment(doc, method):

@@ -132,3 +132,52 @@ The response is always a list of dictionaries, like this:
     ]
 }
 ```
+
+## Fish Species
+
+Get a list of fish species along with their data.
+
+- `GET /api/method/landa.api.fish_species`
+
+    Parameters:
+
+    - `id` (optional): return only data of the Fish Species with this ID.
+
+### Example Requests
+
+> Remember to set the environment variable `BASE_URL` to the URL of your LANDA instance. For example like this: `export BASE_URL=https://lvsa-landa.de`
+
+Get all Fish Species:
+
+```bash
+curl --location "$BASE_URL/api/method/landa.api.fish_species"
+```
+
+Get a specific Fish Species:
+
+```bash
+curl --location "$BASE_URL/api/method/landa.api.fish_species?id=Bachforelle"
+```
+
+### Example Response
+
+The response is always a list of dictionaries, like this:
+
+```json
+{
+  "message": [
+    {
+      "id": "Bachforelle",
+      "short_code": "Bf",
+      "scientific_name": "Salmo trutta fario",
+      "close_season": "01.10-30.04.",
+      "minimum_size": "28 cm",
+      "general_fishing_limit": "2",
+      "special_fishing_limit": "3",
+      "traits": "Fettflosse mit roten Tupfen\nK\u00f6rper lang gestreckt, seitlich abgeflacht, hoher\nSchwanzstiel\nrote und br\u00e4unlich-schwarze Tupfen\nendst\u00e4ndiges Maul, Maulspalte reicht bis hinter Auge\nmaximal 90 cm lang, dann \u00fcber 10 kg schwer",
+      "image": "https://lvsa-landa.de/files/4_big.png",
+      "thumbnail": "https://lvsa-landa.de/files/4_small.png"
+    }
+  ]
+}
+```
