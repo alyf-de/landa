@@ -241,7 +241,7 @@
   {
    "fieldname": "organization",
    "fieldtype": "Link",
-   "label": "Organization",
+   "label": "Regional Organization",
    "options": "Organization",
    "reqd": 1
   },
@@ -260,7 +260,7 @@
    "link_fieldname": "stocking_target"
   }
  ],
- "modified": "2023-08-18 17:31:53.280039",
+ "modified": "2023-08-18 18:11:25.568360",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",
