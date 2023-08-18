@@ -68,3 +68,24 @@ class LANDAMember(Document):
 
 def get_full_name(first_name, last_name):
 	return (first_name or "") + (" " if (last_name and first_name) else "") + (last_name or "")
+
+
+def get_address_or_contact(doctype: str, landa_member: str):
+	"""Returns a single Address or Contact linked to the given LANDA member.
+
+	If there are no or multiple linked addresses or contacts, None is returned.
+	"""
+	filters = [
+		["Dynamic Link", "link_doctype", "=", "LANDA Member"],
+		["Dynamic Link", "link_name", "=", landa_member],
+	]
+	if doctype == "Address":
+		filters.append(["disabled", "=", 0])
+
+	records = frappe.get_list(
+		doctype,
+		filters=filters,
+		pluck="name",
+		limit=2,
+	)
+	return frappe.get_doc(doctype, records[0]) if len(records) == 1 else None

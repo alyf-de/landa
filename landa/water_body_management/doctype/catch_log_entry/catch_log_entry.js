@@ -13,9 +13,7 @@ frappe.ui.form.on("Catch Log Entry", {
 			const current_year = today.getFullYear();
 			const current_month = today.getMonth();
 
-			if (!frm.doc.year) {
-				frm.set_value("year", current_month < 6 ? current_year - 1 : current_year);
-			}
+			frm.set_value("year", current_month < 6 ? current_year - 1 : current_year);
 		}
 	},
 	refresh: (frm) => {

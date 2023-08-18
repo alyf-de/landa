@@ -21,6 +21,8 @@ landa.StockingController = frappe.ui.form.Controller.extend({
 		if (!this.frm.doc.organization && frappe.boot.landa.regional_organization) {
 			this.frm.set_value("organization", frappe.boot.landa.regional_organization);
 		}
+
+		landa.utils.set_default_year(this.frm);
 	},
 	water_body() {
 		this.weight();
