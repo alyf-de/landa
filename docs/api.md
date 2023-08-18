@@ -124,3 +124,51 @@ The response is always a list of dictionaries, like this:
     ]
 }
 ```
+
+## Fish Species
+
+Get a list of fish species along with their data.
+
+- `GET /api/method/landa.api.fish_species`
+
+    Parameters:
+
+    - `id` (optional): return only data of the Fish Species with this ID.
+
+### Example Requests
+
+> Remember to set the environment variable `BASE_URL` to the URL of your LANDA instance. For example like this: `export BASE_URL=https://lvsa-landa.de`
+
+Get all Fish Species:
+
+```bash
+curl --location "$BASE_URL/api/method/landa.api.fish_species"
+```
+
+Get a specific Fish Species:
+
+```bash
+curl --location "$BASE_URL/api/method/landa.api.fish_species?id=Flounder"
+```
+
+### Example Response
+
+The response is always a list of dictionaries, like this:
+
+```json
+{
+    "message": [
+        {
+            "id": "Flounder",
+            "short_code": "FLNDR",
+            "scientific_name": "Platichthys flesus",
+            "close_season": "Winter",
+            "minimum_size": "20",
+            "general_fishing_limit": "80",
+            "special_fishing_limit": "160",
+            "traits": "Shiny silver fish",
+            "image": "https://lvsa-landa.de/files/fish-flounder.webp"
+        }
+    ]
+}
+```
