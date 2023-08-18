@@ -4,6 +4,7 @@ from typing import Dict, List
 
 import frappe
 from frappe.model.document import Document
+from frappe.utils.data import get_url
 
 
 class FishSpecies(Document):
@@ -36,12 +37,6 @@ def build_fish_species_cache():
 
 
 def query_fish_species_data(id: str = None) -> List[Dict]:
-	site_url = frappe.utils.get_url()
-
-	def get_absolute_link(file):
-		# If the image is not a link, prepend the site url to get the absolute link
-		return file if file.startswith(("http://", "https://")) else (site_url + file)
-
 	fish_species = frappe.qb.DocType("Fish Species")
 	query = frappe.qb.from_(fish_species).select(
 		fish_species.title.as_("id"),
@@ -67,8 +62,8 @@ def query_fish_species_data(id: str = None) -> List[Dict]:
 	for row in result:
 		# images must be absolute URLs
 		if row.image:
-			row.image = get_absolute_link(row.image)
+			row.image = get_url(row.image)
 		if row.thumbnail:
-			row.thumbnail = get_absolute_link(row.thumbnail)
+			row.thumbnail = get_url(row.thumbnail)
 
 	return result
