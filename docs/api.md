@@ -156,7 +156,7 @@ curl --location "$BASE_URL/api/method/landa.api.fish_species"
 Get a specific Fish Species:
 
 ```bash
-curl --location "$BASE_URL/api/method/landa.api.fish_species?id=Flounder"
+curl --location "$BASE_URL/api/method/landa.api.fish_species?id=Bachforelle"
 ```
 
 ### Example Response
@@ -165,18 +165,19 @@ The response is always a list of dictionaries, like this:
 
 ```json
 {
-    "message": [
-        {
-            "id": "Flounder",
-            "short_code": "FLNDR",
-            "scientific_name": "Platichthys flesus",
-            "close_season": "Winter",
-            "minimum_size": "20",
-            "general_fishing_limit": "80",
-            "special_fishing_limit": "160",
-            "traits": "Shiny silver fish",
-            "image": "https://lvsa-landa.de/files/fish-flounder.webp"
-        }
-    ]
+  "message": [
+    {
+      "id": "Bachforelle",
+      "short_code": "Bf",
+      "scientific_name": "Salmo trutta fario",
+      "close_season": "01.10-30.04.",
+      "minimum_size": "28 cm",
+      "general_fishing_limit": "2",
+      "special_fishing_limit": "3",
+      "traits": "Fettflosse mit roten Tupfen\nK\u00f6rper lang gestreckt, seitlich abgeflacht, hoher\nSchwanzstiel\nrote und br\u00e4unlich-schwarze Tupfen\nendst\u00e4ndiges Maul, Maulspalte reicht bis hinter Auge\nmaximal 90 cm lang, dann \u00fcber 10 kg schwer",
+      "image": "https://lvsa-landa.de/files/4_big.png",
+      "thumbnail": "https://lvsa-landa.de/files/4_small.png"
+    }
+  ]
 }
 ```
