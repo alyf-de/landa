@@ -46,7 +46,7 @@ class StockingController(Document):
 		if not (self.quantity and self.water_body_size):
 			return
 
-		self.quantity_per_water_body_size = self.weight / self.water_body_size
+		self.quantity_per_water_body_size = self.quantity / self.water_body_size
 		self.unit_of_quantity_per_water_body_size = f"Stk / {self.water_body_size_unit}"
 
 	def set_total_price(self):
