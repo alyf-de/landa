@@ -12,8 +12,7 @@ frappe.ui.form.on("Yearly Fishing Permit", {
 				},
 			};
 		});
-		if (frm.is_new() && !frm.doc.year) {
-			landa.utils.set_default_year(frm);
-		}
+
+		landa.utils.set_default_year(frm);
 	},
 });

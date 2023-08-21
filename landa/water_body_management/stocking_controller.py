@@ -4,14 +4,22 @@ from frappe.model.document import Document
 
 from landa.utils import get_current_member_data
 
+EARLIEST_YEAR = 2000
+LATEST_YEAR = 2100
+
 
 class StockingController(Document):
 	def validate(self):
+		self.validate_year()
 		self.validate_own_regional_organization()
 		self.validate_own_water_body()
 		self.set_weight_per_size()
 		self.set_quantity_per_size()
 		self.set_total_price()
+
+	def validate_year(self):
+		if not EARLIEST_YEAR < self.year < LATEST_YEAR:
+			frappe.throw(msg=_("Year must be between {0} and {1}.").format(EARLIEST_YEAR, LATEST_YEAR))
 
 	def validate_own_regional_organization(self):
 		member_data = get_current_member_data()
