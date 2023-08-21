@@ -3,30 +3,28 @@
 /* eslint-disable */
 
 frappe.query_reports["LANDA Deliveries and Payments"] = {
-	"filters": [
+	filters: [
 		{
-			"fieldname": "organization",
-			"fieldtype": "Link",
-			"label": "Organization",
-			"mandatory": 1,
-			"options": "Organization",
-			"wildcard_filter": 0,
-			"default": frappe.defaults.get_user_default("Organization"),
-			"get_query": function() {
+			fieldname: "organization",
+			fieldtype: "Link",
+			label: "Organization",
+			mandatory: 1,
+			options: "Organization",
+			wildcard_filter: 0,
+			default: frappe.defaults.get_user_default("Organization"),
+			get_query: function () {
 				return {
-					filters: [
-						["parent_organization", "in", ["AVS", "AVL", "AVE"]]
-					]
-				}
-			}
+					filters: [["parent_organization", "in", ["AVS", "AVL", "AVE"]]],
+				};
+			},
 		},
 		{
-			"fieldname": "year_of_settlement",
-			"fieldtype": "Data",
-			"label": "Year of Settlement",
-			"mandatory": 0,
-			"wildcard_filter": 0,
-			"default": new Date().getFullYear()
-		}
-	]
+			fieldname: "year_of_settlement",
+			fieldtype: "Data",
+			label: "Year of Settlement",
+			mandatory: 0,
+			wildcard_filter: 0,
+			default: new Date().getFullYear(),
+		},
+	],
 };
