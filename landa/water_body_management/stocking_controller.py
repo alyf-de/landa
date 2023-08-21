@@ -10,15 +10,14 @@ LATEST_YEAR = 2100
 
 class StockingController(Document):
 	def before_validate(self):
-		pass
+		self.set_weight_per_size()
+		self.set_quantity_per_size()
+		self.set_total_price()
 
 	def validate(self):
 		self.validate_year()
 		self.validate_own_regional_organization()
 		self.validate_own_water_body()
-		self.set_weight_per_size()
-		self.set_quantity_per_size()
-		self.set_total_price()
 
 	def validate_year(self):
 		if not EARLIEST_YEAR < self.year < LATEST_YEAR:
