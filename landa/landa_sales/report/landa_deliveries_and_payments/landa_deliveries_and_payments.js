@@ -11,10 +11,12 @@ frappe.query_reports["LANDA Deliveries and Payments"] = {
 			mandatory: 1,
 			options: "Organization",
 			wildcard_filter: 0,
-			default: frappe.defaults.get_user_default("Organization"),
+			default: frappe.boot.landa.organization,
 			get_query: function () {
 				return {
-					filters: [["parent_organization", "in", ["AVS", "AVL", "AVE"]]],
+					filters: {
+						parent_organization: frappe.boot.landa.regional_organization,
+					},
 				};
 			},
 		},
