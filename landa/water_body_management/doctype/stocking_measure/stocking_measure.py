@@ -17,4 +17,5 @@ class StockingMeasure(StockingController):
 		if not self.stocking_target:
 			return
 
-		frappe.get_doc("Stocking Target", self.stocking_target).update_status()
+		# saving a Stocking Target triggers validation, including a status update
+		frappe.get_doc("Stocking Target", self.stocking_target).save()

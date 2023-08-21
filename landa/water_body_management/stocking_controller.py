@@ -9,6 +9,9 @@ LATEST_YEAR = 2100
 
 
 class StockingController(Document):
+	def before_validate(self):
+		pass
+
 	def validate(self):
 		self.validate_year()
 		self.validate_own_regional_organization()

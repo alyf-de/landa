@@ -10,6 +10,10 @@ from landa.water_body_management.stocking_controller import StockingController
 
 
 class StockingTarget(StockingController):
+	def before_validate(self):
+		super().before_validate()
+		self.update_status()
+
 	def validate(self):
 		super().validate()
 		self.validate_is_unique()
@@ -42,9 +46,8 @@ class StockingTarget(StockingController):
 		weight_in_progress = sum(sm.weight for sm in stocking_measures)
 		weight_completed = sum(sm.weight for sm in stocking_measures if sm.status == "Completed")
 
-		if self.weight != 0:
-			self.percent_in_progress = weight_in_progress / self.weight * 100
-			self.percent_completed = weight_completed / self.weight * 100
+		self.percent_in_progress = 100 if self.weight <= 0 else weight_in_progress / self.weight * 100
+		self.percent_completed = 100 if self.weight <= 0 else weight_completed / self.weight * 100
 
 		if (
 			self.percent_completed >= 100
@@ -54,8 +57,6 @@ class StockingTarget(StockingController):
 			self.status = "In Progress"
 		else:
 			self.status = "Draft"
-
-		self.save()
 
 
 def copy_to_next_year() -> None:
