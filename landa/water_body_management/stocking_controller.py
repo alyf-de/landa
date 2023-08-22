@@ -9,13 +9,15 @@ LATEST_YEAR = 2100
 
 
 class StockingController(Document):
+	def before_validate(self):
+		self.set_weight_per_size()
+		self.set_quantity_per_size()
+		self.set_total_price()
+
 	def validate(self):
 		self.validate_year()
 		self.validate_own_regional_organization()
 		self.validate_own_water_body()
-		self.set_weight_per_size()
-		self.set_quantity_per_size()
-		self.set_total_price()
 
 	def validate_year(self):
 		if not EARLIEST_YEAR < self.year < LATEST_YEAR:
@@ -44,7 +46,7 @@ class StockingController(Document):
 		if not (self.quantity and self.water_body_size):
 			return
 
-		self.quantity_per_water_body_size = self.weight / self.water_body_size
+		self.quantity_per_water_body_size = self.quantity / self.water_body_size
 		self.unit_of_quantity_per_water_body_size = f"Stk / {self.water_body_size_unit}"
 
 	def set_total_price(self):
