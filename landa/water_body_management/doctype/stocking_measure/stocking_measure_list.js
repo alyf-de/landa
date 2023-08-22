@@ -26,6 +26,7 @@ function showCreateStockingTargetsDialog() {
 				fieldname: "year",
 				fieldtype: "Int",
 				reqd: 1,
+				default: landa.utils.get_default_year(),
 				description: __(
 					"Based on your selection, Stocking Targets are created accordingly for the specified year."
 				),
