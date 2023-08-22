@@ -175,6 +175,7 @@ The response is always a list of dictionaries, like this:
       "general_fishing_limit": "2",
       "special_fishing_limit": "3",
       "traits": "Fettflosse mit roten Tupfen\nK\u00f6rper lang gestreckt, seitlich abgeflacht, hoher\nSchwanzstiel\nrote und br\u00e4unlich-schwarze Tupfen\nendst\u00e4ndiges Maul, Maulspalte reicht bis hinter Auge\nmaximal 90 cm lang, dann \u00fcber 10 kg schwer",
+      "wikipedia_link": "http://de.wikipedia.org/wiki/Bachforelle",
       "image": "https://lvsa-landa.de/files/4_big.png",
       "thumbnail": "https://lvsa-landa.de/files/4_small.png"
     }

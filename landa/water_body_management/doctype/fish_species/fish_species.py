@@ -47,6 +47,7 @@ def query_fish_species_data(id: str = None) -> List[Dict]:
 		fish_species.general_fishing_limit,
 		fish_species.special_fishing_limit,
 		fish_species.traits,
+		fish_species.wikipedia_link,
 		fish_species.image,
 		fish_species.thumbnail,
 	)
