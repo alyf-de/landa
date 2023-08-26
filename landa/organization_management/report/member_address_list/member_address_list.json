@@ -41,7 +41,7 @@
   {
    "fieldname": "full_address",
    "fieldtype": "Data",
-   "label": "Primary Address (Full)",
+   "label": "Full Address",
    "width": 0
   }
  ],

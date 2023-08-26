@@ -19,7 +19,7 @@ class Address(Member):
 		link_filters = get_link_filters(self.members)
 
 		# load addresses from db
-		address_fields = ["address_line1", "pincode", "city", "is_primary_address"]
+		address_fields = ["address_line1", "pincode", "city"]
 		addresses = frappe.get_list(
 			"Address",
 			filters=link_filters,
@@ -30,16 +30,13 @@ class Address(Member):
 		addresses_df = pd.DataFrame(addresses, columns=address_fields + ["member"])
 		addresses_df.set_index("member", inplace=True)
 
-		# remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
-		addresses_df = remove_duplicate_indices(addresses_df, sort_by="is_primary_address")
+		# remove all duplicate addresses by keeping only the last existing address
+		addresses_df = remove_duplicate_indices(addresses_df)
 
 		# merge all columns to one address column and add this as the first column
 		addresses_df["full_address"] = (
 			addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 		)
-
-		# remove column 'is_primary_address'
-		addresses_df.drop("is_primary_address", axis=1, inplace=True)
 
 		# merge all dataframes from different doctypes
 		data = pd.concat([self.members_df, addresses_df], axis=1).reindex(self.members_df.index)
@@ -83,7 +80,7 @@ class Address(Member):
 			{
 				"fieldname": "full_address",
 				"fieldtype": "Data",
-				"label": "Primary Address (Full)",
+				"label": "Full Address",
 			},
 		]
 

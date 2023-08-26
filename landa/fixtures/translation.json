@@ -4519,13 +4519,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-12-03 17:22:26.449471",
+  "modified": "2023-09-26 15:40:26.449471",
   "name": "2418380635",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "source_text": "Primary Address (Full)",
-  "translated_text": "Prim\u00e4re Adresse (vollst\u00e4ndig)"
+  "source_text": "Full Address",
+  "translated_text": "Vollst\u00e4ndige Adresse"
  },
  {
   "context": null,
@@ -5806,22 +5806,6 @@
   "parenttype": null,
   "source_text": "Pincode",
   "translated_text": "Postleitzahl"
- },
- {
-  "context": null,
-  "contributed": 0,
-  "contribution_docname": null,
-  "contribution_status": "",
-  "docstatus": 0,
-  "doctype": "Translation",
-  "language": "de",
-  "modified": "2021-09-02 17:10:49.800353",
-  "name": "6dc383a8a1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "source_text": "Primary Address (Full)",
-  "translated_text": "Prim\u00e4re Adresse (kommagetrennt)"
  },
  {
   "context": null,

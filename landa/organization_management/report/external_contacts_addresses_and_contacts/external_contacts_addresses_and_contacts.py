@@ -41,7 +41,7 @@ COLUMNS = [
 	{
 		"fieldname": "full_address",
 		"fieldtype": "Data",
-		"label": "Primary Address (Full)",
+		"label": "Full Address",
 	},
 	{
 		"fieldname": "primary_email_address",
@@ -103,7 +103,7 @@ def get_data(filters):
 	link_filters = get_link_filters(external_contact_ids)
 
 	# load addresses from db
-	address_fields = ["address_line1", "pincode", "city", "is_primary_address"]
+	address_fields = ["address_line1", "pincode", "city"]
 	addresses = frappe.get_list(
 		"Address",
 		filters=link_filters,
@@ -111,16 +111,13 @@ def get_data(filters):
 	)
 	# convert to pandas dataframe
 	addresses_df = to_df(addresses, address_fields)
-	# remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
-	addresses_df = remove_duplicate_indices(addresses_df, sort_by="is_primary_address")
+	# remove all duplicate addresses by keeping only the last existing address
+	addresses_df = remove_duplicate_indices(addresses_df)
 
 	# merge all columns to one address column and add this as the first column
 	addresses_df["full_address"] = (
 		addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 	)
-
-	# remove column 'is_primary_address'
-	addresses_df.drop("is_primary_address", axis=1, inplace=True)
 
 	# load contacts from db that are linked to the member fucntions loaded before
 	contact_fields = ["email_id", "phone", "mobile_no"]
