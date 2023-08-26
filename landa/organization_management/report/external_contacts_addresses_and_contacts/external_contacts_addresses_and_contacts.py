@@ -5,58 +5,59 @@ from typing import List
 
 import frappe
 import pandas as pd
+from frappe import _
 
 COLUMNS = [
 	{
 		"fieldname": "external_contact",
 		"fieldtype": "Link",
 		"options": "External Contact",
-		"label": "External Contact",
+		"label": _("External Contact"),
 	},
-	{"fieldname": "first_name", "fieldtype": "Data", "label": "First Name"},
-	{"fieldname": "last_name", "fieldtype": "Data", "label": "Last Name"},
+	{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
+	{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
 	{
 		"fieldname": "organization",
 		"fieldtype": "Link",
 		"options": "Organization",
-		"label": "Organization",
+		"label": _("Organization"),
 	},
 	{
 		"fieldname": "is_magazine_recipient",
 		"fieldtype": "Check",
-		"label": "Is Magazine Recipient",
+		"label": _("Is Magazine Recipient"),
 	},
 	{
 		"fieldname": "external_functions",
 		"fieldtype": "Data",
-		"label": "External Functions",
+		"label": _("External Functions"),
 	},
 	{
 		"fieldname": "address_line1",
 		"fieldtype": "Data",
-		"label": "Address Line 1",
+		"label": _("Address Line 1"),
 	},
-	{"fieldname": "pincode", "fieldtype": "Data", "label": "Pincode"},
-	{"fieldname": "city", "fieldtype": "Data", "label": "City"},
+	{"fieldname": "pincode", "fieldtype": "Data", "label": _("Pincode")},
+	{"fieldname": "city", "fieldtype": "Data", "label": _("City")},
 	{
 		"fieldname": "full_address",
 		"fieldtype": "Data",
-		"label": "Full Address",
+		"label": _("Full Address"),
 	},
 	{
 		"fieldname": "primary_email_address",
 		"fieldtype": "Data",
-		"label": "Primary Email Address",
+		"label": _("Primary Email Address"),
 	},
 	{
 		"fieldname": "primary_phone",
 		"fieldtype": "Data",
-		"label": "Primary Phone",
+		"label": _("Primary Phone"),
 	},
 	{
 		"fieldname": "primary_mobile",
 		"fieldtype": "Data",
-		"label": "Primary Mobile",
+		"label": _("Primary Mobile"),
 	},
 ]
 

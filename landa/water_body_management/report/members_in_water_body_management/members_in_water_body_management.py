@@ -3,6 +3,7 @@
 
 import frappe
 import pandas as pd
+from frappe import _
 
 from landa.utils import get_current_member_data
 
@@ -11,59 +12,59 @@ COLUMNS = [
 		"fieldname": "landa_member",
 		"fieldtype": "Link",
 		"options": "LANDA Member",
-		"label": "Member",
+		"label": _("Member"),
 	},
-	{"fieldname": "first_name", "fieldtype": "Data", "label": "First Name"},
-	{"fieldname": "last_name", "fieldtype": "Data", "label": "Last Name"},
+	{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
+	{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
 	{
 		"fieldname": "organization",
 		"fieldtype": "Link",
 		"options": "Organization",
-		"label": "Organization",
+		"label": _("Organization"),
 	},
 	{
 		"fieldname": "organization_name",
 		"fieldtype": "Data",
-		"label": "Organization Name",
+		"label": _("Organization Name"),
 	},
 	{
 		"fieldname": "water_body",
 		"fieldtype": "Link",
-		"label": "Water Body",
+		"label": _("Water Body"),
 		"options": "Water Body",
 	},
 	{
 		"fieldname": "water_body_title",
 		"fieldtype": "Data",
-		"label": "Water Body Title",
+		"label": _("Water Body Title"),
 	},
 	{
 		"fieldname": "primary_email_address",
 		"fieldtype": "Data",
-		"label": "Primary Email Address",
+		"label": _("Primary Email Address"),
 	},
 	{
 		"fieldname": "primary_phone",
 		"fieldtype": "Data",
-		"label": "Primary Phone",
+		"label": _("Primary Phone"),
 	},
 	{
 		"fieldname": "primary_mobile",
 		"fieldtype": "Data",
-		"label": "Primary Mobile",
+		"label": _("Primary Mobile"),
 	},
 	{
 		"fieldname": "full_address",
 		"fieldtype": "Data",
-		"label": "Full Address",
+		"label": _("Full Address"),
 	},
 	{
 		"fieldname": "address_line1",
 		"fieldtype": "Data",
-		"label": "Address Line 1",
+		"label": _("Address Line 1"),
 	},
-	{"fieldname": "pincode", "fieldtype": "Data", "label": "Pincode"},
-	{"fieldname": "city", "fieldtype": "Data", "label": "City"},
+	{"fieldname": "pincode", "fieldtype": "Data", "label": _("Pincode")},
+	{"fieldname": "city", "fieldtype": "Data", "label": _("City")},
 ]
 
 

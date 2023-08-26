@@ -3,6 +3,7 @@
 
 import frappe
 import pandas as pd
+from frappe import _
 
 from landa.organization_management.birthday import (
 	get_age,
@@ -15,69 +16,69 @@ COLUMNS = [
 		"fieldname": "landa_member",
 		"fieldtype": "Link",
 		"options": "LANDA Member",
-		"label": "Member",
+		"label": _("Member"),
 	},
-	{"fieldname": "first_name", "fieldtype": "Data", "label": "First Name"},
-	{"fieldname": "last_name", "fieldtype": "Data", "label": "Last Name"},
+	{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
+	{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
 	{
 		"fieldname": "organization",
 		"fieldtype": "Link",
 		"options": "Organization",
-		"label": "Organization",
+		"label": _("Organization"),
 	},
 	{
 		"fieldname": "organization_name",
 		"fieldtype": "Data",
-		"label": "Organization Name",
+		"label": _("Organization Name"),
 	},
 	{
 		"fieldname": "member_function_category",
 		"fieldtype": "Data",
-		"label": "Member Function Categories",
+		"label": _("Member Function Categories"),
 	},
 	{
 		"fieldname": "primary_email_address",
 		"fieldtype": "Data",
-		"label": "Primary Email Address",
+		"label": _("Primary Email Address"),
 	},
 	{
 		"fieldname": "primary_phone",
 		"fieldtype": "Data",
-		"label": "Primary Phone",
+		"label": _("Primary Phone"),
 	},
 	{
 		"fieldname": "primary_mobile",
 		"fieldtype": "Data",
-		"label": "Primary Mobile",
+		"label": _("Primary Mobile"),
 	},
 	{
 		"fieldname": "full_address",
 		"fieldtype": "Data",
-		"label": "Full Address",
+		"label": _("Full Address"),
 	},
 	{
 		"fieldname": "address_line1",
 		"fieldtype": "Data",
-		"label": "Address Line 1",
+		"label": _("Address Line 1"),
 	},
-	{"fieldname": "pincode", "fieldtype": "Data", "label": "Pincode"},
-	{"fieldname": "city", "fieldtype": "Data", "label": "City"},
-	{"fieldname": "award_list", "fieldtype": "Data", "label": "Award List"},
+	{"fieldname": "pincode", "fieldtype": "Data", "label": _("Pincode")},
+	{"fieldname": "city", "fieldtype": "Data", "label": _("City")},
+	{"fieldname": "award_list", "fieldtype": "Data", "label": _("Award List")},
 	{
 		"fieldname": "date_of_birth",
 		"fieldtype": "Date",
-		"label": "Date of Birth",
+		"label": _("Date of Birth"),
 	},
-	{"fieldname": "member_age", "fieldtype": "Data", "label": "Age"},
+	{"fieldname": "member_age", "fieldtype": "Data", "label": _("Age")},
 	{
 		"fieldname": "upcoming_birthday",
 		"fieldtype": "Date",
-		"label": "Upcoming Birthday",
+		"label": _("Upcoming Birthday"),
 	},
 	{
 		"fieldname": "is_decadal_birthday",
 		"fieldtype": "Check",
-		"label": "Is Decadal Birthday",
+		"label": _("Is Decadal Birthday"),
 	},
 ]
 

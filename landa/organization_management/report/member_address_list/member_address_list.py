@@ -3,6 +3,7 @@
 
 import frappe
 import pandas as pd
+from frappe import _
 
 from ..member.member import Member, get_link_filters, remove_duplicate_indices
 
@@ -55,32 +56,32 @@ class Address(Member):
 				"fieldname": "landa_member",
 				"fieldtype": "Link",
 				"options": "LANDA Member",
-				"label": "Member",
+				"label": _("Member"),
 			},
-			{"fieldname": "first_name", "fieldtype": "Data", "label": "First Name"},
-			{"fieldname": "last_name", "fieldtype": "Data", "label": "Last Name"},
+			{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
+			{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
 			{
 				"fieldname": "organization",
 				"fieldtype": "Link",
 				"options": "Organization",
-				"label": "Organization",
+				"label": _("Organization"),
 			},
 			{
 				"fieldname": "organization_name",
 				"fieldtype": "Data",
-				"label": "Organization Name",
+				"label": _("Organization Name"),
 			},
 			{
 				"fieldname": "address_line1",
 				"fieldtype": "Data",
-				"label": "Address Line 1",
+				"label": _("Address Line 1"),
 			},
-			{"fieldname": "pincode", "fieldtype": "Data", "label": "Pincode"},
-			{"fieldname": "city", "fieldtype": "Data", "label": "City"},
+			{"fieldname": "pincode", "fieldtype": "Data", "label": _("Pincode")},
+			{"fieldname": "city", "fieldtype": "Data", "label": _("City")},
 			{
 				"fieldname": "full_address",
 				"fieldtype": "Data",
-				"label": "Full Address",
+				"label": _("Full Address"),
 			},
 		]
 
