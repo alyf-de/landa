@@ -11,76 +11,78 @@ from landa.organization_management.birthday import (
 	next_birthday_is_decadal,
 )
 
-COLUMNS = [
-	{
-		"fieldname": "landa_member",
-		"fieldtype": "Link",
-		"options": "LANDA Member",
-		"label": _("Member"),
-	},
-	{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
-	{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
-	{
-		"fieldname": "organization",
-		"fieldtype": "Link",
-		"options": "Organization",
-		"label": _("Organization"),
-	},
-	{
-		"fieldname": "organization_name",
-		"fieldtype": "Data",
-		"label": _("Organization Name"),
-	},
-	{
-		"fieldname": "member_function_category",
-		"fieldtype": "Data",
-		"label": _("Member Function Categories"),
-	},
-	{
-		"fieldname": "primary_email_address",
-		"fieldtype": "Data",
-		"label": _("Primary Email Address"),
-	},
-	{
-		"fieldname": "primary_phone",
-		"fieldtype": "Data",
-		"label": _("Primary Phone"),
-	},
-	{
-		"fieldname": "primary_mobile",
-		"fieldtype": "Data",
-		"label": _("Primary Mobile"),
-	},
-	{
-		"fieldname": "full_address",
-		"fieldtype": "Data",
-		"label": _("Full Address"),
-	},
-	{
-		"fieldname": "address_line1",
-		"fieldtype": "Data",
-		"label": _("Address Line 1"),
-	},
-	{"fieldname": "pincode", "fieldtype": "Data", "label": _("Pincode")},
-	{"fieldname": "city", "fieldtype": "Data", "label": _("City")},
-	{"fieldname": "award_list", "fieldtype": "Data", "label": _("Award List")},
-	{
-		"fieldname": "date_of_birth",
-		"fieldtype": "Date",
-		"label": _("Date of Birth"),
-	},
-	{"fieldname": "member_age", "fieldtype": "Data", "label": _("Age")},
-	{
-		"fieldname": "upcoming_birthday",
-		"fieldtype": "Date",
-		"label": _("Upcoming Birthday"),
-	},
-	{
-		"fieldname": "is_decadal_birthday",
-		"fieldtype": "Check",
-		"label": _("Is Decadal Birthday"),
-	},
-]
+
+def get_columns():
+	return [
+		{
+			"fieldname": "landa_member",
+			"fieldtype": "Link",
+			"options": "LANDA Member",
+			"label": _("Member"),
+		},
+		{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
+		{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
+		{
+			"fieldname": "organization",
+			"fieldtype": "Link",
+			"options": "Organization",
+			"label": _("Organization"),
+		},
+		{
+			"fieldname": "organization_name",
+			"fieldtype": "Data",
+			"label": _("Organization Name"),
+		},
+		{
+			"fieldname": "member_function_category",
+			"fieldtype": "Data",
+			"label": _("Member Function Categories"),
+		},
+		{
+			"fieldname": "primary_email_address",
+			"fieldtype": "Data",
+			"label": _("Primary Email Address"),
+		},
+		{
+			"fieldname": "primary_phone",
+			"fieldtype": "Data",
+			"label": _("Primary Phone"),
+		},
+		{
+			"fieldname": "primary_mobile",
+			"fieldtype": "Data",
+			"label": _("Primary Mobile"),
+		},
+		{
+			"fieldname": "full_address",
+			"fieldtype": "Data",
+			"label": _("Full Address"),
+		},
+		{
+			"fieldname": "address_line1",
+			"fieldtype": "Data",
+			"label": _("Address Line 1"),
+		},
+		{"fieldname": "pincode", "fieldtype": "Data", "label": _("Pincode")},
+		{"fieldname": "city", "fieldtype": "Data", "label": _("City")},
+		{"fieldname": "award_list", "fieldtype": "Data", "label": _("Award List")},
+		{
+			"fieldname": "date_of_birth",
+			"fieldtype": "Date",
+			"label": _("Date of Birth"),
+		},
+		{"fieldname": "member_age", "fieldtype": "Data", "label": _("Age")},
+		{
+			"fieldname": "upcoming_birthday",
+			"fieldtype": "Date",
+			"label": _("Upcoming Birthday"),
+		},
+		{
+			"fieldname": "is_decadal_birthday",
+			"fieldtype": "Check",
+			"label": _("Is Decadal Birthday"),
+		},
+	]
 
 
 def get_data(filters):
@@ -239,4 +241,4 @@ def get_data(filters):
 
 
 def execute(filters):
-	return COLUMNS, get_data(filters)
+	return get_columns(), get_data(filters)
