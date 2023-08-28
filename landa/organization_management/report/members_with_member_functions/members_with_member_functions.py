@@ -65,7 +65,7 @@ def get_columns():
 		},
 		{"fieldname": "pincode", "fieldtype": "Data", "label": _("Pincode")},
 		{"fieldname": "city", "fieldtype": "Data", "label": _("City")},
-		{"fieldname": "award_list", "fieldtype": "Data", "label": _("Award List")},
+		{"fieldname": "awards", "fieldtype": "Data", "label": _("Awards")},
 		{
 			"fieldname": "date_of_birth",
 			"fieldtype": "Date",
@@ -172,11 +172,11 @@ def get_data(filters):
 	)
 
 	awards_df = pd.DataFrame.from_records(awards, columns=award_fields, index="member")
-	awards_df["award_list"] = [
+	awards_df["awards"] = [
 		at + " " + str(ad.year)
 		for at, ad in zip(awards_df["award_type"].values, awards_df["issue_date"].values)
 	]
-	awards_df = aggregate_entries(awards_df, aggregate_field="award_list", sort_by=["issue_date"])
+	awards_df = aggregate_entries(awards_df, aggregate_field="awards", sort_by=["issue_date"])
 	awards_df.drop(award_fields[:-1], axis=1, inplace=True)
 
 	address_fields = ["address_line1", "pincode", "city"]
@@ -215,7 +215,7 @@ def get_data(filters):
 			"address_line1",
 			"pincode",
 			"city",
-			"award_list",
+			"awards",
 			"date_of_birth",
 			"age",
 			"upcoming_birthday",
