@@ -17,13 +17,14 @@ class Address(Member):
 
 		# define the labels of db entries that are supposed to be loaded
 		link_field_label = "`tabDynamic Link`.link_name as member"
-		link_filters = get_link_filters(self.members)
+		address_filters = get_link_filters(self.members)
+		address_filters.append(["disabled", "=", 0])
 
 		# load addresses from db
 		address_fields = ["address_line1", "pincode", "city"]
 		addresses = frappe.get_list(
 			"Address",
-			filters=link_filters,
+			filters=address_filters,
 			fields=address_fields + [link_field_label],
 			as_list=True,
 		)

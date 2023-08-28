@@ -106,10 +106,13 @@ def get_data(filters):
 	link_filters = get_link_filters(external_contact_ids)
 
 	# load addresses from db
+	address_filters = link_filters.copy()
+	address_filters.append(["disabled", "=", 0])
+
 	address_fields = ["address_line1", "pincode", "city"]
 	addresses = frappe.get_list(
 		"Address",
-		filters=link_filters,
+		filters=address_filters,
 		fields=[link_field] + address_fields,
 	)
 	# convert to pandas dataframe

@@ -123,9 +123,11 @@ def get_data(filters=None):
 	link_filters = get_link_filters(wbm)
 
 	# load addresses from db
+	address_filters = link_filters.copy()
+	address_filters.append(["disabled", "=", 0])
 	addresses = frappe.get_all(
 		"Address",
-		filters=link_filters,
+		filters=address_filters,
 		fields=[
 			"address_line1",
 			"pincode",
