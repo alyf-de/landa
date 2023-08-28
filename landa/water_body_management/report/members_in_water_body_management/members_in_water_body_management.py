@@ -3,68 +3,71 @@
 
 import frappe
 import pandas as pd
+from frappe import _
 
 from landa.utils import get_current_member_data
 
-COLUMNS = [
-	{
-		"fieldname": "landa_member",
-		"fieldtype": "Link",
-		"options": "LANDA Member",
-		"label": "Member",
-	},
-	{"fieldname": "first_name", "fieldtype": "Data", "label": "First Name"},
-	{"fieldname": "last_name", "fieldtype": "Data", "label": "Last Name"},
-	{
-		"fieldname": "organization",
-		"fieldtype": "Link",
-		"options": "Organization",
-		"label": "Organization",
-	},
-	{
-		"fieldname": "organization_name",
-		"fieldtype": "Data",
-		"label": "Organization Name",
-	},
-	{
-		"fieldname": "water_body",
-		"fieldtype": "Link",
-		"label": "Water Body",
-		"options": "Water Body",
-	},
-	{
-		"fieldname": "water_body_title",
-		"fieldtype": "Data",
-		"label": "Water Body Title",
-	},
-	{
-		"fieldname": "primary_email_address",
-		"fieldtype": "Data",
-		"label": "Primary Email Address",
-	},
-	{
-		"fieldname": "primary_phone",
-		"fieldtype": "Data",
-		"label": "Primary Phone",
-	},
-	{
-		"fieldname": "primary_mobile",
-		"fieldtype": "Data",
-		"label": "Primary Mobile",
-	},
-	{
-		"fieldname": "full_address",
-		"fieldtype": "Data",
-		"label": "Primary Address (Full)",
-	},
-	{
-		"fieldname": "address_line1",
-		"fieldtype": "Data",
-		"label": "Address Line 1",
-	},
-	{"fieldname": "pincode", "fieldtype": "Data", "label": "Pincode"},
-	{"fieldname": "city", "fieldtype": "Data", "label": "City"},
-]
+
+def get_columns():
+	return [
+		{
+			"fieldname": "landa_member",
+			"fieldtype": "Link",
+			"options": "LANDA Member",
+			"label": _("Member"),
+		},
+		{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
+		{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
+		{
+			"fieldname": "organization",
+			"fieldtype": "Link",
+			"options": "Organization",
+			"label": _("Organization"),
+		},
+		{
+			"fieldname": "organization_name",
+			"fieldtype": "Data",
+			"label": _("Organization Name"),
+		},
+		{
+			"fieldname": "water_body",
+			"fieldtype": "Link",
+			"label": _("Water Body"),
+			"options": "Water Body",
+		},
+		{
+			"fieldname": "water_body_title",
+			"fieldtype": "Data",
+			"label": _("Water Body Title"),
+		},
+		{
+			"fieldname": "primary_email_address",
+			"fieldtype": "Data",
+			"label": _("Primary Email Address"),
+		},
+		{
+			"fieldname": "primary_phone",
+			"fieldtype": "Data",
+			"label": _("Primary Phone"),
+		},
+		{
+			"fieldname": "primary_mobile",
+			"fieldtype": "Data",
+			"label": _("Primary Mobile"),
+		},
+		{
+			"fieldname": "full_address",
+			"fieldtype": "Data",
+			"label": _("Full Address"),
+		},
+		{
+			"fieldname": "address_line1",
+			"fieldtype": "Data",
+			"label": _("Address Line 1"),
+		},
+		{"fieldname": "pincode", "fieldtype": "Data", "label": _("Pincode")},
+		{"fieldname": "city", "fieldtype": "Data", "label": _("City")},
+	]
 
 
 def get_data(filters=None):
@@ -115,19 +118,24 @@ def get_data(filters=None):
 		],
 	)
 
+	# Drop rows with empty index (member) column. Otherwise they could not be
+	# concatenated with the other dataframes later.
+	wbm_df = wbm_df[wbm_df.index.notnull()]
+
 	# define the labels of db entries that are supposed to be loaded
 	link_field_label = "`tabDynamic Link`.link_name as member"
 	link_filters = get_link_filters(wbm)
 
 	# load addresses from db
+	address_filters = link_filters.copy()
+	address_filters.append(["disabled", "=", 0])
 	addresses = frappe.get_all(
 		"Address",
-		filters=link_filters,
+		filters=address_filters,
 		fields=[
 			"address_line1",
 			"pincode",
 			"city",
-			"is_primary_address",
 			link_field_label,
 		],
 	)
@@ -135,19 +143,13 @@ def get_data(filters=None):
 	addresses_df = pd.DataFrame.from_records(
 		addresses,
 		index="member",
-		columns=["address_line1", "pincode", "city", "is_primary_address", "member"],
+		columns=["address_line1", "pincode", "city", "member"],
 	)
-	# remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
-	addresses_df = remove_duplicate_indices(addresses_df, sort_by="is_primary_address")
-
-	# merge all columns to one address column and add this as the first column
+	# remove all duplicate addresses by keeping only the last existing address
+	addresses_df = remove_duplicate_indices(addresses_df)
 	addresses_df["full_address"] = (
 		addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 	)
-	address_cols = addresses_df.columns.tolist()
-	addresses_df = addresses_df[address_cols[-1:] + address_cols[:-1]]
-	# remove column 'is_primary_address'
-	addresses_df.drop("is_primary_address", axis=1, inplace=True)
 
 	# load contacts from db that are linked to the member fucntions loaded before
 	contacts = frappe.get_all(
@@ -195,4 +197,4 @@ def execute(filters=None):
 	if regional_organization:
 		filters["regional_organization"] = regional_organization
 
-	return COLUMNS, get_data(filters)
+	return get_columns(), get_data(filters)

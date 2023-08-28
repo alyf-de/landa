@@ -5,6 +5,7 @@ from datetime import datetime
 
 import frappe
 import pandas as pd
+from frappe import _
 
 
 class Address:
@@ -76,28 +77,26 @@ class Address:
 
 		# define the labels of db entries that are supposed to be loaded
 		link_field_label = "`tabDynamic Link`.link_name as member"
-		link_filters = get_link_filters(members)
+		address_filters = get_link_filters(members)
+		address_filters.append(["disabled", "=", 0])
 
 		# load addresses from db
-		address_fields = ["address_line1", "pincode", "city", "is_primary_address"]
+		address_fields = ["address_line1", "pincode", "city"]
 		addresses = frappe.get_list(
 			"Address",
-			filters=link_filters,
+			filters=address_filters,
 			fields=address_fields + [link_field_label],
 			as_list=True,
 		)
 		# convert to pandas dataframe
 		addresses_df = frappe_tuple_to_pandas_df(addresses, address_fields + ["member"])
-		# remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
-		addresses_df = remove_duplicate_indices(addresses_df, sort_by="is_primary_address")
+		# remove all duplicate addresses by keeping only the last existing address
+		addresses_df = remove_duplicate_indices(addresses_df)
 
 		# merge all columns to one address column and add this as the first column
 		addresses_df["full_address"] = (
 			addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 		)
-
-		# remove column 'is_primary_address'
-		addresses_df.drop("is_primary_address", axis=1, inplace=True)
 
 		# load addresses from db
 		permit_fields = ["year", "member", "docstatus"]
@@ -114,8 +113,9 @@ class Address:
 		permits_df.drop("docstatus", axis=1, inplace=True)
 		permits_df = remove_duplicate_indices(permits_df, sort_by="year")
 
-		this_year = int(datetime.today().strftime("%Y"))
-		this_month = int(datetime.today().strftime("%m"))
+		now = datetime.now()
+		this_year = now.year
+		this_month = now.month
 		# if this month is January to June: members need a permit for this year or last year:
 		if this_month < 7:
 			permits_df["permit_active"] = [
@@ -142,52 +142,52 @@ class Address:
 				"fieldname": "landa_member",
 				"fieldtype": "Link",
 				"options": "LANDA Member",
-				"label": "Member",
+				"label": _("Member"),
 			},
-			{"fieldname": "first_name", "fieldtype": "Data", "label": "First Name"},
-			{"fieldname": "last_name", "fieldtype": "Data", "label": "Last Name"},
+			{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
+			{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
 			{
 				"fieldname": "organization",
 				"fieldtype": "Link",
 				"options": "Organization",
-				"label": "Organization",
+				"label": _("Organization"),
 			},
 			{
 				"fieldname": "organization_name",
 				"fieldtype": "Data",
-				"label": "Organization Name",
+				"label": _("Organization Name"),
 			},
 			{
 				"fieldname": "magazine_recipient",
 				"fieldtype": "Check",
-				"label": "Is Magazine Recipient",
+				"label": _("Is Magazine Recipient"),
 			},
 			{
 				"fieldname": "year",
 				"fieldtype": "Int",
-				"label": "Year",
+				"label": _("Year"),
 			},
 			{
 				"fieldname": "permit_active",
 				"fieldtype": "Check",
-				"label": "Permit Is Active",
+				"label": _("Permit Is Active"),
 			},
 			{
 				"fieldname": "address_line1",
 				"fieldtype": "Data",
-				"label": "Address Line 1",
+				"label": _("Address Line 1"),
 			},
-			{"fieldname": "pincode", "fieldtype": "Data", "label": "Pincode"},
-			{"fieldname": "city", "fieldtype": "Data", "label": "City"},
+			{"fieldname": "pincode", "fieldtype": "Data", "label": _("Pincode")},
+			{"fieldname": "city", "fieldtype": "Data", "label": _("City")},
 			{
 				"fieldname": "full_address",
 				"fieldtype": "Data",
-				"label": "Primary Address (Full)",
+				"label": _("Full Address"),
 			},
 			{
 				"fieldname": "magazine_active",
 				"fieldtype": "Check",
-				"label": "Magazine Is Active",
+				"label": _("Magazine Is Active"),
 			},
 		]
 
