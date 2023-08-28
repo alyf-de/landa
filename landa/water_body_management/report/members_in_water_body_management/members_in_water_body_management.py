@@ -118,6 +118,10 @@ def get_data(filters=None):
 		],
 	)
 
+	# Drop rows with empty index (member) column. Otherwise they could not be
+	# concatenated with the other dataframes later.
+	wbm_df = wbm_df[wbm_df.index.notnull()]
+
 	# define the labels of db entries that are supposed to be loaded
 	link_field_label = "`tabDynamic Link`.link_name as member"
 	link_filters = get_link_filters(wbm)
