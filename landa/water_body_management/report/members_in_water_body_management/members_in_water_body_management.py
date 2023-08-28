@@ -147,13 +147,9 @@ def get_data(filters=None):
 	)
 	# remove all duplicate addresses by keeping only the last existing address
 	addresses_df = remove_duplicate_indices(addresses_df)
-
-	# merge all columns to one address column and add this as the first column
 	addresses_df["full_address"] = (
 		addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 	)
-	address_cols = addresses_df.columns.tolist()
-	addresses_df = addresses_df[address_cols[-1:] + address_cols[:-1]]
 
 	# load contacts from db that are linked to the member fucntions loaded before
 	contacts = frappe.get_all(
