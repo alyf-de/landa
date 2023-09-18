@@ -8,10 +8,6 @@ from frappe.query_builder import DocType
 
 def execute():
 	set_billing_and_shipping_defaults()
-	# Cleanup of data not yet now, but in the next release. Ask Samuel why.
-	# TODO: Clean data
-	# cleanup_addresses()
-	# cleanup_contacts()
 
 
 def customize_customer():
@@ -75,13 +71,3 @@ def set_billing_and_shipping_defaults():
 					"default_shipping_address": address_name,
 				},
 			)
-
-
-def cleanup_addresses():
-	# the two checkboxes are no longer used and are hidden from now on.
-	frappe.db.sql("""update `tabAddress` set is_shipping_address=0, is_primary_address=0""")
-
-
-def cleanup_contacts():
-	# the two checkboxes are no longer used and are hidden from now on.
-	frappe.db.sql("""update `tabContact` set is_billing_contact=0, is_primary_contact=0""")

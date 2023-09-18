@@ -173,8 +173,6 @@ def create_address(
 	address.pincode = pincode
 	address.city = city
 	address.country = "Germany"
-	address.is_primary_address = 1
-	address.is_shipping_address = 1
 	address.append("links", {"link_doctype": "LANDA Member", "link_name": member})
 	address.organization = organization
 

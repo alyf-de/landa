@@ -1,14 +1,14 @@
-// Copyright (c) 2016, Real Experts GmbH and contributors
+// Copyright (c) 2023, ALYF GmbH and contributors
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["LANDA Deliveries and Payments"] = {
+frappe.query_reports["LANDA Deliveries and Payments Summaries"] = {
 	filters: [
 		{
 			fieldname: "organization",
 			fieldtype: "Link",
 			label: "Organization",
-			mandatory: 1,
+			mandatory: 0,
 			options: "Organization",
 			wildcard_filter: 0,
 			default: frappe.boot.landa.organization,

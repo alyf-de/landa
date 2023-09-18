@@ -3,6 +3,7 @@
 
 import frappe
 import pandas as pd
+from frappe import _
 
 from landa.organization_management.birthday import (
 	get_age,
@@ -10,76 +11,78 @@ from landa.organization_management.birthday import (
 	next_birthday_is_decadal,
 )
 
-COLUMNS = [
-	{
-		"fieldname": "landa_member",
-		"fieldtype": "Link",
-		"options": "LANDA Member",
-		"label": "Member",
-	},
-	{"fieldname": "first_name", "fieldtype": "Data", "label": "First Name"},
-	{"fieldname": "last_name", "fieldtype": "Data", "label": "Last Name"},
-	{
-		"fieldname": "organization",
-		"fieldtype": "Link",
-		"options": "Organization",
-		"label": "Organization",
-	},
-	{
-		"fieldname": "organization_name",
-		"fieldtype": "Data",
-		"label": "Organization Name",
-	},
-	{
-		"fieldname": "member_function_category",
-		"fieldtype": "Data",
-		"label": "Member Function Categories",
-	},
-	{
-		"fieldname": "primary_email_address",
-		"fieldtype": "Data",
-		"label": "Primary Email Address",
-	},
-	{
-		"fieldname": "primary_phone",
-		"fieldtype": "Data",
-		"label": "Primary Phone",
-	},
-	{
-		"fieldname": "primary_mobile",
-		"fieldtype": "Data",
-		"label": "Primary Mobile",
-	},
-	{
-		"fieldname": "full_address",
-		"fieldtype": "Data",
-		"label": "Primary Address (Full)",
-	},
-	{
-		"fieldname": "address_line1",
-		"fieldtype": "Data",
-		"label": "Address Line 1",
-	},
-	{"fieldname": "pincode", "fieldtype": "Data", "label": "Pincode"},
-	{"fieldname": "city", "fieldtype": "Data", "label": "City"},
-	{"fieldname": "award_list", "fieldtype": "Data", "label": "Award List"},
-	{
-		"fieldname": "date_of_birth",
-		"fieldtype": "Date",
-		"label": "Date of Birth",
-	},
-	{"fieldname": "member_age", "fieldtype": "Data", "label": "Age"},
-	{
-		"fieldname": "upcoming_birthday",
-		"fieldtype": "Date",
-		"label": "Upcoming Birthday",
-	},
-	{
-		"fieldname": "is_decadal_birthday",
-		"fieldtype": "Check",
-		"label": "Is Decadal Birthday",
-	},
-]
+
+def get_columns():
+	return [
+		{
+			"fieldname": "landa_member",
+			"fieldtype": "Link",
+			"options": "LANDA Member",
+			"label": _("Member"),
+		},
+		{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
+		{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
+		{
+			"fieldname": "organization",
+			"fieldtype": "Link",
+			"options": "Organization",
+			"label": _("Organization"),
+		},
+		{
+			"fieldname": "organization_name",
+			"fieldtype": "Data",
+			"label": _("Organization Name"),
+		},
+		{
+			"fieldname": "member_function_category",
+			"fieldtype": "Data",
+			"label": _("Member Function Categories"),
+		},
+		{
+			"fieldname": "primary_email_address",
+			"fieldtype": "Data",
+			"label": _("Primary Email Address"),
+		},
+		{
+			"fieldname": "primary_phone",
+			"fieldtype": "Data",
+			"label": _("Primary Phone"),
+		},
+		{
+			"fieldname": "primary_mobile",
+			"fieldtype": "Data",
+			"label": _("Primary Mobile"),
+		},
+		{
+			"fieldname": "full_address",
+			"fieldtype": "Data",
+			"label": _("Full Address"),
+		},
+		{
+			"fieldname": "address_line1",
+			"fieldtype": "Data",
+			"label": _("Address Line 1"),
+		},
+		{"fieldname": "pincode", "fieldtype": "Data", "label": _("Pincode")},
+		{"fieldname": "city", "fieldtype": "Data", "label": _("City")},
+		{"fieldname": "awards", "fieldtype": "Data", "label": _("Awards")},
+		{
+			"fieldname": "date_of_birth",
+			"fieldtype": "Date",
+			"label": _("Date of Birth"),
+		},
+		{"fieldname": "member_age", "fieldtype": "Data", "label": _("Age")},
+		{
+			"fieldname": "upcoming_birthday",
+			"fieldtype": "Date",
+			"label": _("Upcoming Birthday"),
+		},
+		{
+			"fieldname": "is_decadal_birthday",
+			"fieldtype": "Check",
+			"label": _("Is Decadal Birthday"),
+		},
+	]
 
 
 def get_data(filters):
@@ -169,30 +172,20 @@ def get_data(filters):
 	)
 
 	awards_df = pd.DataFrame.from_records(awards, columns=award_fields, index="member")
-	awards_df["award_list"] = [
+	awards_df["awards"] = [
 		at + " " + str(ad.year)
 		for at, ad in zip(awards_df["award_type"].values, awards_df["issue_date"].values)
 	]
-	awards_df = aggregate_entries(awards_df, aggregate_field="award_list", sort_by=["issue_date"])
+	awards_df = aggregate_entries(awards_df, aggregate_field="awards", sort_by=["issue_date"])
 	awards_df.drop(award_fields[:-1], axis=1, inplace=True)
 
-	# load addresses from db
-	address_fields = ["address_line1", "pincode", "city", "is_primary_address"]
+	address_fields = ["address_line1", "pincode", "city"]
 	addresses = get_contact_details("Address", MEMBERS, address_fields)
-
-	# convert to pandas dataframe
 	addresses_df = frappe_tuple_to_pandas_df(addresses, address_fields + ["member"])
-	# remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
-	addresses_df = remove_duplicate_indices(addresses_df, sort_by="is_primary_address")
-
-	# merge all columns to one address column and add this as the first column
+	addresses_df = remove_duplicate_indices(addresses_df)
 	addresses_df["full_address"] = (
 		addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 	)
-	address_cols = addresses_df.columns.tolist()
-	addresses_df = addresses_df[address_cols[-1:] + address_cols[:-1]]
-	# remove column 'is_primary_address'
-	addresses_df.drop("is_primary_address", axis=1, inplace=True)
 
 	# load contacts from db that are linked to the member fucntions loaded before
 	contact_fields = ["email_id", "phone", "mobile_no"]
@@ -222,7 +215,7 @@ def get_data(filters):
 			"address_line1",
 			"pincode",
 			"city",
-			"award_list",
+			"awards",
 			"date_of_birth",
 			"age",
 			"upcoming_birthday",
@@ -240,4 +233,4 @@ def get_data(filters):
 
 
 def execute(filters):
-	return COLUMNS, get_data(filters)
+	return get_columns(), get_data(filters)

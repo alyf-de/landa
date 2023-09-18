@@ -9,7 +9,11 @@ frappe.ui.form.on("Catch Log Entry", {
 	},
 	onload: (frm) => {
 		if (frm.is_new() && !frm.doc.year) {
-			frm.set_value("year", moment().year() - 1);
+			const today = new Date();
+			const current_year = today.getFullYear();
+			const current_month = today.getMonth();
+
+			frm.set_value("year", current_month < 6 ? current_year - 1 : current_year);
 		}
 	},
 	refresh: (frm) => {
@@ -20,13 +24,6 @@ frappe.ui.form.on("Catch Log Entry", {
 					year: frm.doc.year,
 				});
 			});
-		}
-		const today = new Date();
-		const current_year = today.getFullYear();
-		const current_month = today.getMonth();
-
-		if (!frm.doc.year) {
-			frm.set_value("year", current_month < 6 ? current_year - 1 : current_year);
 		}
 	},
 });

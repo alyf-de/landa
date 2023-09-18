@@ -156,6 +156,8 @@ app_include_js = [
 	"/assets/landa/js/map_defaults.js",
 	"/assets/landa/js/selling_utils.js",
 ]
+app_include_css = "/assets/landa/css/hide_like.css"
+
 
 # include js, css files in header of web template
 # web_include_css = "/assets/landa/css/landa.css"
@@ -291,6 +293,10 @@ doc_events = {
 	"Workspace": {
 		"validate": "landa.workspace.validate",
 	},
+	"File": {
+		"on_update": "landa.water_body_management.doctype.water_body.water_body.rebuild_cache_on_attachment",
+		"after_delete": "landa.water_body_management.doctype.water_body.water_body.rebuild_cache_on_attachment",
+	},
 }
 
 # Scheduled Tasks
@@ -335,6 +341,7 @@ override_whitelisted_methods = {
 	"erpnext.selling.doctype.sales_order.sales_order.make_sales_invoice": "landa.landa_sales.sales_order.sales_order.make_landa_sales_invoice",
 	"erpnext.accounts.doctype.sales_invoice.sales_invoice.make_delivery_note": "landa.landa_sales.sales_invoice.sales_invoice.make_landa_delivery_note",
 	"erpnext.stock.doctype.delivery_note.delivery_note.make_sales_invoice": "landa.landa_stock.delivery_note.delivery_note.make_landa_sales_invoice",
+	"frappe.desk.like.toggle_like": "landa.utils.no_liked_by",
 }
 
 #
