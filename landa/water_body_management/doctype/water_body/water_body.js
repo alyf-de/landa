@@ -21,7 +21,7 @@ frappe.ui.form.on("Water Body", {
 
 function bind_rotation_event(frm) {
 	const icon_rotation = document.getElementById("icon_rotation");
-	const icon_preview = cur_frm.fields_dict.icon_preview.wrapper.getElementsByTagName("img")[0];
+	const icon_preview = frm.fields_dict.icon_preview.wrapper.getElementsByTagName("img")[0];
 	icon_rotation.addEventListener(
 		"input",
 		function (evt) {
