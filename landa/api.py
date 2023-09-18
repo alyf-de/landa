@@ -94,3 +94,19 @@ def water_body(id: str = None, fishing_area: str = None) -> List[Dict]:
 def get_water_body_cache(key: str) -> List[Dict]:
 	"""Return a **CACHED** list of water bodies with fish species and special provisions."""
 	return frappe.cache().hget("water_body_data", key)
+
+
+@frappe.whitelist(allow_guest=True, methods=["GET"])
+def custom_icon(id: str = None) -> str:
+	"""Return the custom icon for the given icon name."""
+	from frappe.utils.data import get_url
+
+	filters = {}
+	if id and isinstance(id, str):
+		filters["name"] = id
+
+	icons = frappe.get_all("Custom Icon", filters=filters, fields=["name as id", "title", "icon"])
+	for icon in icons:
+		icon["url"] = get_url(icon.pop("icon"))
+
+	return icons

@@ -124,3 +124,45 @@ The response is always a list of dictionaries, like this:
     ]
 }
 ```
+
+## Custom Icon
+
+Get a list of custom icons.
+
+- `GET /api/method/landa.api.custom_icon`
+
+    Parameters:
+
+    - `id` (optional): return only data of the custom icon with this ID.
+
+### Example Requests
+
+> Remember set the environment variable `BASE_URL` to the URL of your LANDA instance. For example like this: `export BASE_URL=https://lvsa-landa.de`
+
+Get all custom icons:
+
+```bash
+curl --location "$BASE_URL/api/method/landa.api.custom_icon"
+```
+
+Get a specific custom icon:
+
+```bash
+curl --location "$BASE_URL/api/method/landa.api.custom_icon?id=parken-verboten"
+```
+
+### Example Response
+
+The response is always a list of dictionaries, like this:
+
+```json
+{
+    "message": [
+        {
+            "id": "parken-verboten",
+            "title": "Parken verboten",
+            "url": "$BASE_URL/files/no-parking-gd723fe33f_640.png"
+        }
+    ]
+}
+```
