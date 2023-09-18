@@ -231,14 +231,16 @@
    "fieldname": "icon",
    "fieldtype": "Link",
    "label": "Icon",
-   "options": "Custom Icon"
+   "options": "Custom Icon",
+   "permlevel": 2
   },
   {
    "depends_on": "icon",
    "fieldname": "rotation",
    "fieldtype": "HTML",
    "label": "Rotation",
-   "options": "<label for=\"icon_rotation\">Icon Rotation</label>\n<input class=\"custom-range\" id=\"icon_rotation\" max=\"180\" min=\"-180\" step=\"15\" type=\"range\">"
+   "options": "<label for=\"icon_rotation\">Icon Rotation</label>\n<input class=\"custom-range\" id=\"icon_rotation\" max=\"180\" min=\"-180\" step=\"15\" type=\"range\">",
+   "permlevel": 2
   },
   {
    "fieldname": "column_break_jorfc",
@@ -249,7 +251,8 @@
    "fieldname": "icon_preview",
    "fieldtype": "Image",
    "label": "Icon Preview",
-   "options": "icon_path"
+   "options": "icon_path",
+   "permlevel": 2
   },
   {
    "fetch_from": "icon.icon",
@@ -257,7 +260,8 @@
    "fieldname": "icon_path",
    "fieldtype": "Attach Image",
    "hidden": 1,
-   "label": "Icon Path"
+   "label": "Icon Path",
+   "permlevel": 2
   },
   {
    "fieldname": "custom_marker_section",
@@ -279,7 +283,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2023-08-09 00:27:21.188065",
+ "modified": "2023-09-18 21:40:28.621368",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
@@ -341,6 +345,18 @@
   },
   {
    "permlevel": 1,
+   "read": 1,
+   "role": "LANDA Regional Water Body Management",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "LANDA State Organization Employee",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
    "read": 1,
    "role": "LANDA Regional Water Body Management",
    "write": 1
