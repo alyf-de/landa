@@ -101,3 +101,9 @@ def get_water_body_cache(key: str) -> List[Dict]:
 def fish_species(id: str = None):
 	"""Return a **CACHED** list of fish species. Uncached if ID is passed."""
 	return get_fish_species_data(id)
+
+
+@frappe.whitelist(allow_guest=True, methods=["GET"])
+def water_body_rules():
+	"""Return water body rules in rich text format."""
+	return frappe.db.get_single_value("Water Body Rules", "water_body_rules")

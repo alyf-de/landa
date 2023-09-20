@@ -182,3 +182,31 @@ The response is always a list of dictionaries, like this:
   ]
 }
 ```
+
+## Water Body Rules
+
+Get a the fishing rules applicable to all water bodies.
+
+- `GET /api/method/landa.api.water_body_rules`
+
+### Example Requests
+
+> Remember to set the environment variable `BASE_URL` to the URL of your LANDA instance. For example like this: `export BASE_URL=https://lvsa-landa.de`
+
+Get Water Body Rules:
+
+```bash
+curl --location "$BASE_URL/api/method/landa.api.water_body_rules"
+```
+
+### Example Response
+
+The response is always an HTML string, like this:
+
+```json
+{
+    "message": "<div class=\"ql-editor read-mode\"><h1>Gew\u00e4sserordnung</h1><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p><p><br></p><table class=\"table table-bordered\"><tbody><tr><td data-row=\"row-kiex\"><strong>Bild</strong></td><td data-row=\"row-kiex\"><strong>Fischart</strong></td></tr><tr><td data-row=\"row-z953\"><img src=\"/files/1_big.png\"></td><td data-row=\"row-z953\">Aal</td></tr><tr><td data-row=\"insert-table\"><img src=\"/files/7_big.png\"></td><td data-row=\"insert-table\">Barsch</td></tr></tbody></table></div>"
+}
+```
+
+The legth of the message is limited to around 8000 words.
