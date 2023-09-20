@@ -182,3 +182,31 @@ The response is always a list of dictionaries, like this:
   ]
 }
 ```
+
+## Water Body Rules
+
+Get a the fishing rules applicable to all water bodies.
+
+- `GET /api/method/landa.api.water_body_rules`
+
+### Example Requests
+
+> Remember to set the environment variable `BASE_URL` to the URL of your LANDA instance. For example like this: `export BASE_URL=https://lvsa-landa.de`
+
+Get Water Body Rules:
+
+```bash
+curl --location "$BASE_URL/api/method/landa.api.water_body_rules"
+```
+
+### Example Response
+
+The response is always an HTML string, like this:
+
+```json
+{
+  "message": "\u003Cdiv class=\"ql-editor read-mode\"\u003E\u003Ch1\u003EGew\u00E4sserordnung\u003C/h1\u003E\u003Cp\u003ELorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\u003C/p\u003E\u003Cp\u003E\u003Cbr\u003E\u003C/p\u003E\u003Ctable class=\"table table-bordered\"\u003E\u003Ctbody\u003E\u003Ctr\u003E\u003Ctd data-row=\"row-kiex\"\u003E\u003Cstrong\u003EBild\u003C/strong\u003E\u003C/td\u003E\u003Ctd data-row=\"row-kiex\"\u003E\u003Cstrong\u003EFischart\u003C/strong\u003E\u003C/td\u003E\u003C/tr\u003E\u003Ctr\u003E\u003Ctd data-row=\"row-z953\"\u003E\u003Cimg src=\"/files/1_big.png\"\u003E\u003C/td\u003E\u003Ctd data-row=\"row-z953\"\u003EAal\u003C/td\u003E\u003C/tr\u003E\u003Ctr\u003E\u003Ctd data-row=\"insert-table\"\u003E\u003Cimg src=\"/files/7_big.png\"\u003E\u003C/td\u003E\u003Ctd data-row=\"insert-table\"\u003EBarsch\u003C/td\u003E\u003C/tr\u003E\u003C/tbody\u003E\u003C/table\u003E\u003C/div\u003E"
+}
+```
+
+The legth of the message is limited to around 8000 words.
