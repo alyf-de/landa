@@ -5,18 +5,51 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "water_body_rules"
+  "water_body_rules_section",
+  "water_body_rules",
+  "privacy_policy_section",
+  "privacy_policy",
+  "imprint_section",
+  "imprint"
  ],
  "fields": [
   {
    "fieldname": "water_body_rules",
    "fieldtype": "Text Editor",
    "label": "Water Body Rules"
+  },
+  {
+   "fieldname": "imprint",
+   "fieldtype": "Text Editor",
+   "label": "Imprint"
+  },
+  {
+   "fieldname": "privacy_policy",
+   "fieldtype": "Text Editor",
+   "label": "Privacy Policy"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "water_body_rules_section",
+   "fieldtype": "Section Break",
+   "label": "Water Body Rules"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "privacy_policy_section",
+   "fieldtype": "Section Break",
+   "label": "Privacy Policy"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "imprint_section",
+   "fieldtype": "Section Break",
+   "label": "Imprint"
   }
  ],
  "issingle": 1,
  "links": [],
- "modified": "2023-09-20 15:10:43.913153",
+ "modified": "2023-09-22 14:26:40.377433",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Rules",

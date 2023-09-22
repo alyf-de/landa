@@ -104,6 +104,11 @@ def fish_species(id: str = None):
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
-def water_body_rules():
+def legal():
 	"""Return water body rules in rich text format."""
-	return frappe.db.get_single_value("Water Body Rules", "water_body_rules")
+	rules = frappe.get_single("Water Body Rules")
+	return {
+		"water_body_rules": rules.water_body_rules,
+		"privacy_policy": rules.privacy_policy,
+		"imprint": rules.imprint,
+	}
