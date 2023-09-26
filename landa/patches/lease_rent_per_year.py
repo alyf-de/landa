@@ -9,3 +9,5 @@ def execute():
 			continue
 
 		frappe.db.set_value("Lease Contract", c.name, "rent_per_year", c.rent_per_month * 12)
+
+	frappe.delete_doc_if_exists("Translation", "a635c65acb")
