@@ -2,6 +2,8 @@ import frappe
 
 
 def execute():
+	frappe.reload_doctype("Lease Contract")
+
 	for c in frappe.get_all("Lease Contract", fields=["name", "rent_per_month"]):
 		if not c.rent_per_month:
 			continue
