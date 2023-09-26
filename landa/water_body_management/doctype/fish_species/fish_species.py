@@ -11,7 +11,7 @@ class FishSpecies(Document):
 	def on_update(self):
 		build_fish_species_cache()
 
-	def on_trash(self):
+	def after_delete(self):
 		build_fish_species_cache()
 
 	def after_rename(self, old, new, merge):
