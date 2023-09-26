@@ -16,7 +16,7 @@ class WaterBody(Document):
 	def on_update(self):
 		rebuild_water_body_cache(self.fishing_area)
 
-	def on_trash(self):
+	def after_delete(self):
 		rebuild_water_body_cache(self.fishing_area)
 
 	def validate(self):
@@ -251,19 +251,26 @@ def rebuild_cache_on_attachment(doc, method):
 		# Private files don't impact cache on insert/delete
 		return
 
-	is_active, display, fishing_area = frappe.db.get_value(
-		"Water Body", doc.attached_to_name, ["is_active", "display_in_fishing_guide", "fishing_area"]
+	water_body_data = frappe.db.get_value(
+		"Water Body",
+		doc.attached_to_name,
+		["is_active", "display_in_fishing_guide", "fishing_area"],
+		as_dict=True,
 	)
-	if not is_active or not display:
+	if not water_body_data:
+		# Water Body has been deleted, cache rebuild is handled by water body
+		return
+
+	if not water_body_data.is_active or not water_body_data.display:
 		return
 
 	if method == "after_delete":
 		# NOTE:Enqueue gets uncommitted data (new thread). Files appear even if deleted
 		# Still no clue why
-		rebuild_water_body_cache(fishing_area=fishing_area)
+		rebuild_water_body_cache(fishing_area=water_body_data.fishing_area)
 	elif not frappe.cache().hget("water_body_data", "in_progress"):
 		frappe.enqueue(
 			rebuild_water_body_cache,
-			fishing_area=fishing_area,
+			fishing_area=water_body_data.fishing_area,
 			enqueued=True,
 		)
