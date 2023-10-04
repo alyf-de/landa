@@ -88,7 +88,7 @@ def get_version_log_query(from_datetime: str):
 			file.attached_to_name,
 		)
 		.where(
-			version.creation > from_datetime,
+			version.creation >= from_datetime,
 		)
 		.where(
 			version.ref_doctype.isin(
@@ -119,7 +119,7 @@ def get_deleted_document_query(from_datetime: str):
 			ConstantColumn(None).as_("attached_to_name"),
 		)
 		.where(
-			deleted_document.creation > from_datetime,
+			deleted_document.creation >= from_datetime,
 		)
 		.where(
 			deleted_document.deleted_doctype.isin(
