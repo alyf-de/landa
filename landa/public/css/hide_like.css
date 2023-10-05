@@ -1,0 +1,10 @@
+/* Hide like button and stats in form sidebar */
+.form-sidebar-stats {
+	display: none;
+}
+
+/* Make like button invisible in list view, keeping the layout intact */
+.list-row-like,
+.like-icon {
+	visibility: hidden;
+}

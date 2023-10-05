@@ -329,3 +329,8 @@ def unset_value(doctype: str, name: Optional[str], fieldname: str) -> None:
 		frappe.db.set_value(doctype, name, fieldname, None)
 	else:
 		frappe.db.set_single_value(doctype, fieldname, None)
+
+
+@frappe.whitelist()
+def no_liked_by(*args, **kwargs):
+	pass

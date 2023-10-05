@@ -4519,13 +4519,13 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-12-03 17:22:26.449471",
+  "modified": "2023-09-26 15:40:26.449471",
   "name": "2418380635",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "source_text": "Primary Address (Full)",
-  "translated_text": "Prim\u00e4re Adresse (vollst\u00e4ndig)"
+  "source_text": "Full Address",
+  "translated_text": "Vollst\u00e4ndige Adresse"
  },
  {
   "context": null,
@@ -5815,22 +5815,6 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "de",
-  "modified": "2021-09-02 17:10:49.800353",
-  "name": "6dc383a8a1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "source_text": "Primary Address (Full)",
-  "translated_text": "Prim\u00e4re Adresse (kommagetrennt)"
- },
- {
-  "context": null,
-  "contributed": 0,
-  "contribution_docname": null,
-  "contribution_status": "",
-  "docstatus": 0,
-  "doctype": "Translation",
-  "language": "de",
   "modified": "2022-02-01 12:32:53.206069",
   "name": "afce6f1574",
   "parent": null,
@@ -6462,22 +6446,6 @@
   "parenttype": null,
   "source_text": "Fish Type For Stocking",
   "translated_text": "Fischklasse"
- },
- {
-  "context": null,
-  "contributed": 0,
-  "contribution_docname": null,
-  "contribution_status": "",
-  "docstatus": 0,
-  "doctype": "Translation",
-  "language": "de",
-  "modified": "2022-03-17 18:02:54.798092",
-  "name": "a635c65acb",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "source_text": "Rent per Month",
-  "translated_text": "Pachtzins pro Monat"
  },
  {
   "context": null,

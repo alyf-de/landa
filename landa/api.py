@@ -3,6 +3,7 @@ from typing import Dict, List
 
 import frappe
 
+from landa.water_body_management.doctype.fish_species.fish_species import get_fish_species_data
 from landa.water_body_management.doctype.water_body.water_body import (
 	build_water_body_cache,
 	build_water_body_data,
@@ -94,3 +95,20 @@ def water_body(id: str = None, fishing_area: str = None) -> List[Dict]:
 def get_water_body_cache(key: str) -> List[Dict]:
 	"""Return a **CACHED** list of water bodies with fish species and special provisions."""
 	return frappe.cache().hget("water_body_data", key)
+
+
+@frappe.whitelist(allow_guest=True, methods=["GET"])
+def fish_species(id: str = None):
+	"""Return a **CACHED** list of fish species. Uncached if ID is passed."""
+	return get_fish_species_data(id)
+
+
+@frappe.whitelist(allow_guest=True, methods=["GET"])
+def legal():
+	"""Return water body rules in rich text format."""
+	rules = frappe.get_single("Water Body Rules")
+	return {
+		"water_body_rules": rules.water_body_rules,
+		"privacy_policy": rules.privacy_policy,
+		"imprint": rules.imprint,
+	}

@@ -5,60 +5,63 @@ from typing import List
 
 import frappe
 import pandas as pd
+from frappe import _
 
-COLUMNS = [
-	{
-		"fieldname": "external_contact",
-		"fieldtype": "Link",
-		"options": "External Contact",
-		"label": "External Contact",
-	},
-	{"fieldname": "first_name", "fieldtype": "Data", "label": "First Name"},
-	{"fieldname": "last_name", "fieldtype": "Data", "label": "Last Name"},
-	{
-		"fieldname": "organization",
-		"fieldtype": "Link",
-		"options": "Organization",
-		"label": "Organization",
-	},
-	{
-		"fieldname": "is_magazine_recipient",
-		"fieldtype": "Check",
-		"label": "Is Magazine Recipient",
-	},
-	{
-		"fieldname": "external_functions",
-		"fieldtype": "Data",
-		"label": "External Functions",
-	},
-	{
-		"fieldname": "address_line1",
-		"fieldtype": "Data",
-		"label": "Address Line 1",
-	},
-	{"fieldname": "pincode", "fieldtype": "Data", "label": "Pincode"},
-	{"fieldname": "city", "fieldtype": "Data", "label": "City"},
-	{
-		"fieldname": "full_address",
-		"fieldtype": "Data",
-		"label": "Primary Address (Full)",
-	},
-	{
-		"fieldname": "primary_email_address",
-		"fieldtype": "Data",
-		"label": "Primary Email Address",
-	},
-	{
-		"fieldname": "primary_phone",
-		"fieldtype": "Data",
-		"label": "Primary Phone",
-	},
-	{
-		"fieldname": "primary_mobile",
-		"fieldtype": "Data",
-		"label": "Primary Mobile",
-	},
-]
+
+def get_columns():
+	return [
+		{
+			"fieldname": "external_contact",
+			"fieldtype": "Link",
+			"options": "External Contact",
+			"label": _("External Contact"),
+		},
+		{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
+		{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
+		{
+			"fieldname": "organization",
+			"fieldtype": "Link",
+			"options": "Organization",
+			"label": _("Organization"),
+		},
+		{
+			"fieldname": "is_magazine_recipient",
+			"fieldtype": "Check",
+			"label": _("Is Magazine Recipient"),
+		},
+		{
+			"fieldname": "external_functions",
+			"fieldtype": "Data",
+			"label": _("External Functions"),
+		},
+		{
+			"fieldname": "address_line1",
+			"fieldtype": "Data",
+			"label": _("Address Line 1"),
+		},
+		{"fieldname": "pincode", "fieldtype": "Data", "label": _("Pincode")},
+		{"fieldname": "city", "fieldtype": "Data", "label": _("City")},
+		{
+			"fieldname": "full_address",
+			"fieldtype": "Data",
+			"label": _("Full Address"),
+		},
+		{
+			"fieldname": "primary_email_address",
+			"fieldtype": "Data",
+			"label": _("Primary Email Address"),
+		},
+		{
+			"fieldname": "primary_phone",
+			"fieldtype": "Data",
+			"label": _("Primary Phone"),
+		},
+		{
+			"fieldname": "primary_mobile",
+			"fieldtype": "Data",
+			"label": _("Primary Mobile"),
+		},
+	]
 
 
 def get_data(filters):
@@ -103,24 +106,24 @@ def get_data(filters):
 	link_filters = get_link_filters(external_contact_ids)
 
 	# load addresses from db
-	address_fields = ["address_line1", "pincode", "city", "is_primary_address"]
+	address_filters = link_filters.copy()
+	address_filters.append(["disabled", "=", 0])
+
+	address_fields = ["address_line1", "pincode", "city"]
 	addresses = frappe.get_list(
 		"Address",
-		filters=link_filters,
+		filters=address_filters,
 		fields=[link_field] + address_fields,
 	)
 	# convert to pandas dataframe
 	addresses_df = to_df(addresses, address_fields)
-	# remove all duplicate addresses by keeping only the primary address or last existing address if there is no primary address
-	addresses_df = remove_duplicate_indices(addresses_df, sort_by="is_primary_address")
+	# remove all duplicate addresses by keeping only the last existing address
+	addresses_df = remove_duplicate_indices(addresses_df)
 
 	# merge all columns to one address column and add this as the first column
 	addresses_df["full_address"] = (
 		addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 	)
-
-	# remove column 'is_primary_address'
-	addresses_df.drop("is_primary_address", axis=1, inplace=True)
 
 	# load contacts from db that are linked to the member fucntions loaded before
 	contact_fields = ["email_id", "phone", "mobile_no"]
@@ -157,4 +160,4 @@ def get_data(filters):
 
 
 def execute(filters=None):
-	return COLUMNS, get_data(filters)
+	return get_columns(), get_data(filters)

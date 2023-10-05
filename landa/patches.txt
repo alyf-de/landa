@@ -23,5 +23,7 @@ landa.patches.set_billing_and_shipping_defaults
 landa.patches.delete_old_scheduled_job_logs
 landa.patches.update_system_settings
 landa.patches.delete_customized_workspaces  # 2023-08-14
-landa.patches.build_water_body_cache
+landa.patches.build_water_body_cache  # 2023-08-14
 landa.patches.set_hide_custom_in_user_workspaces
+landa.patches.cleanup_addresses_and_contacts
+landa.patches.lease_rent_per_year
