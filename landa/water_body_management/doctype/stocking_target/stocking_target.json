@@ -19,6 +19,7 @@
   "column_break_7",
   "organization",
   "water_body",
+  "water_body_title",
   "column_break_8",
   "fishing_area",
   "water_body_size",
@@ -274,6 +275,13 @@
    "no_copy": 1,
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fetch_from": "water_body.title",
+   "fieldname": "water_body_title",
+   "fieldtype": "Data",
+   "label": "Water Body Title",
+   "read_only": 1
   }
  ],
  "links": [
@@ -282,7 +290,7 @@
    "link_fieldname": "stocking_target"
   }
  ],
- "modified": "2023-08-18 18:22:45.568360",
+ "modified": "2023-10-18 13:12:48.064391",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",

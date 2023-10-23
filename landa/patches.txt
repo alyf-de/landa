@@ -26,3 +26,5 @@ landa.patches.delete_customized_workspaces  # 2023-08-14
 landa.patches.build_water_body_cache  # 2023-08-14
 landa.patches.set_hide_custom_in_user_workspaces
 landa.patches.cleanup_addresses_and_contacts
+landa.patches.lease_rent_per_year
+landa.patches.add_water_body_title_in_stocking

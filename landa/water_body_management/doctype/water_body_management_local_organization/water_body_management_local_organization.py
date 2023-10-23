@@ -12,5 +12,5 @@ class WaterBodyManagementLocalOrganization(Document):
 	def on_update(self):
 		rebuild_water_body_cache(self.fishing_area)
 
-	def on_trash(self):
+	def after_delete(self):
 		rebuild_water_body_cache(self.fishing_area)
