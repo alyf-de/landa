@@ -2,6 +2,9 @@ import frappe
 
 
 def execute():
+	frappe.reload_doctype("Stocking Target")
+	frappe.reload_doctype("Stocking Measure")
+
 	frappe.db.sql(
 		"""
 		UPDATE `tabStocking Target` AS st
