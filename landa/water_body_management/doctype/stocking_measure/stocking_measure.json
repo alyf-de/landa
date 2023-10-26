@@ -19,9 +19,10 @@
   "column_break_7",
   "organization",
   "water_body",
-  "water_body_size",
+  "water_body_title",
   "column_break_8",
   "fishing_area",
+  "water_body_size",
   "water_body_size_unit",
   "amount_section",
   "weight",
@@ -261,11 +262,18 @@
    "label": "Currency",
    "options": "Currency",
    "read_only": 1
+  },
+  {
+   "fetch_from": "water_body.title",
+   "fieldname": "water_body_title",
+   "fieldtype": "Data",
+   "label": "Water Body Title",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-08-18 17:34:19.816247",
+ "modified": "2023-10-18 13:15:01.141296",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Measure",

@@ -104,6 +104,17 @@ def fish_species(id: str = None):
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+def legal():
+	"""Return water body rules in rich text format."""
+	rules = frappe.get_single("Water Body Rules")
+	return {
+		"water_body_rules": rules.water_body_rules,
+		"privacy_policy": rules.privacy_policy,
+		"imprint": rules.imprint,
+	}
+
+
+@frappe.whitelist(allow_guest=True, methods=["GET"])
 def custom_icon(id: str = None) -> str:
 	"""Return the custom icon for the given icon name."""
 	from frappe.utils.data import get_url
