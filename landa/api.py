@@ -8,6 +8,7 @@ from landa.water_body_management.doctype.water_body.water_body import (
 	build_water_body_cache,
 	build_water_body_data,
 )
+from landa.water_body_management.utils import get_changed_data, get_formatted_changes
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
@@ -112,3 +113,13 @@ def legal():
 		"privacy_policy": rules.privacy_policy,
 		"imprint": rules.imprint,
 	}
+
+
+@frappe.whitelist(allow_guest=True, methods=["GET"])
+def change_log(from_datetime: str):
+	"""Return a list of version logs of documents created/updated/deleted after the given datetime."""
+	if not isinstance(from_datetime, str):
+		raise TypeError("`from_datetime` must be a string")
+
+	result = get_changed_data(from_datetime)
+	return get_formatted_changes(result)
