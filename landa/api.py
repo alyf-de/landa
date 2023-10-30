@@ -116,10 +116,10 @@ def legal():
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
-def change_log(from_datetime: str = None):
+def change_log(from_datetime: str):
 	"""Return a list of version logs of documents created/updated/deleted after the given datetime."""
-	if not from_datetime:
-		return []
+	if not isinstance(from_datetime, str):
+		raise TypeError("`from_datetime` must be a string")
 
 	result = get_changed_data(from_datetime)
 	return get_formatted_changes(result)

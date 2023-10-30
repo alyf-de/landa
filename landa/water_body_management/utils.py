@@ -1,4 +1,5 @@
 import json
+from typing import List
 
 import frappe
 from frappe import _
@@ -33,7 +34,7 @@ def get_changed_data(from_datetime: str):
 	)
 
 
-def get_formatted_changes(changes_list: list):
+def get_formatted_changes(changes_list: List):
 	"""
 	Format changes dict to be displayed in the Change Log API.
 	"""
@@ -44,7 +45,7 @@ def get_formatted_changes(changes_list: list):
 
 		# Modified dependencies (File and WBMLO)
 		if entry.doctype in ["File", "Water Body Management Local Organization"]:
-			change_log = log_dependency_change(entry, changed_data)
+			change_log = build_dependency_change_log(entry, changed_data)
 			if change_log:
 				changes.append(change_log)
 
@@ -63,7 +64,7 @@ def get_formatted_changes(changes_list: list):
 			continue
 
 		# Modified Water Body/Fish Species Log
-		change_log = log_modified_change(entry, changed_data, event)
+		change_log = build_modified_change_log(entry, changed_data, event)
 		if change_log:
 			changes.append(change_log)
 
@@ -76,7 +77,7 @@ def get_version_log_query(from_datetime: str):
 	return (
 		frappe.qb.from_(version)
 		.left_join(file)
-		.on(version.docname == file.name)
+		.on((version.ref_doctype == "File") & (version.docname == file.name))
 		.select(
 			version.name,
 			version.ref_doctype.as_("doctype"),
@@ -139,11 +140,11 @@ def get_event(entry, changed_data):
 	if cint(entry.deleted):
 		return "Deleted"
 
-	return "Modified" if not changed_data.updater_reference else "Created"
+	return "Created" if changed_data.updater_reference else "Modified"
 
 
-def log_modified_change(entry, changed_data, event):
-	"""Change Log for modified Water Body/Fish Species."""
+def build_modified_change_log(entry, changed_data, event):
+	"""Return a pretty dict with changes for modified Water Body/Fish Species."""
 	change_log = {
 		"doctype": entry.doctype,
 		"docname": entry.docname,
@@ -162,12 +163,15 @@ def log_modified_change(entry, changed_data, event):
 		)
 
 	# Other fields changes
-	change_log["changes"].update({row[0]: row[2] for row in changed_data.get("changed")})
+	for row in changed_data.get("changed"):
+		key = "geojson" if row[0] == "location" else row[0]
+		change_log["changes"].update({key: row[2]})
+
 	return change_log
 
 
-def log_dependency_change(entry, changed_data):
-	"""Change Log for changes in dependencies (File and WBMLO)."""
+def build_dependency_change_log(entry, changed_data):
+	"""Return a pretty dict with changes in dependencies (File and WBMLO)."""
 	if (
 		cint(entry.deleted)
 		and entry.doctype == "File"
