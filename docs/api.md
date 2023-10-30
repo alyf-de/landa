@@ -214,3 +214,114 @@ The response is always an object with HTML strings, like this:
 ```
 
 The legth of each text field is limited to around 8000 words.
+
+## Change Log
+
+Get a list of changes to the water bodies and fish species.
+
+Events covered by the change log are:
+
+- Water Body
+    - Create
+    - Update
+    - Delete
+- Fish Species
+    - Create
+    - Update
+    - Delete
+
+
+- `GET /api/method/landa.api.change_log`
+
+    Parameters:
+
+    - `from_datetime` (required)
+
+        Returns only changes that happened after this datetime. Format: `YYYY-MM-DD HH:MM:SS:SSSS`
+
+### Example Request
+
+```bash
+curl --location "$BASE_URL/api/method/landa.api.change_log?from_datetime=2023-01-01 00:00:00:0000"
+
+# the time part is optional
+curl --location "$BASE_URL/api/method/landa.api.change_log?from_datetime=2023-01-01"
+```
+
+### Example Response
+
+```json
+{
+  "message": [
+    {
+      "doctype": "Water Body",
+      "docname": "D08-201",
+      "event": "Deleted",
+      "datetime": "2023-02-02 15:48:07.841290"
+    },
+    {
+      "doctype": "Water Body",
+      "docname": "L09-108",
+      "event": "Modified",
+      "datetime": "2023-02-22 14:43:46.832560",
+      "changes": { "organizations": null }
+    },
+    {
+      "doctype": "Water Body",
+      "docname": "L09-108",
+      "event": "Modified",
+      "datetime": "2023-03-20 13:28:52.630048",
+      "changes": { "organizations": null }
+    },
+    {
+      "doctype": "Water Body",
+      "docname": "L10-230",
+      "datetime": "2023-05-02 11:35:42.709453",
+      "event": "Modified",
+      "changes": { "current_public_information": "Testinfo" }
+    },
+    {
+      "doctype": "Water Body",
+      "docname": null,
+      "event": "Modified",
+      "datetime": "2023-05-10 09:16:29.221310",
+      "changes": { "organizations": null }
+    },
+    {
+      "doctype": "Fish Species",
+      "docname": "\u00c4sche",
+      "datetime": "2023-05-30 19:12:50.820108",
+      "event": "Modified",
+      "changes": { "image": "/files/a\u0308sche.png" }
+    },
+    {
+      "doctype": "Fish Species",
+      "docname": "Aal",
+      "datetime": "2023-05-30 19:12:55.175626",
+      "event": "Modified",
+      "changes": { "image": "/files/aal.png" }
+    },
+    {
+      "doctype": "Water Body",
+      "docname": "D09-205",
+      "datetime": "2023-06-06 15:24:17.019050",
+      "event": "Modified",
+      "changes": { "blacklisted_fish_species": null }
+    },
+    {
+      "doctype": "Water Body",
+      "docname": "L10-236",
+      "datetime": "2023-06-07 12:53:53.712910",
+      "event": "Modified",
+      "changes": { "title": "Elsterbecken" }
+    },
+    {
+      "doctype": "Water Body",
+      "docname": "L09-108",
+      "event": "Modified",
+      "datetime": "2023-08-01 10:43:42.442427",
+      "changes": { "organizations": null }
+    }
+  ]
+}
+```
