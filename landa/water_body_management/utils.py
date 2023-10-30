@@ -9,7 +9,7 @@ from frappe.utils import cint
 
 def create_version_log(doc, event):
 	"""Called via hooks.py to create Version Log of document creation"""
-	if doc.doctype == "File" and doc.attached_to_doctype != "Water Body":
+	if doc.doctype == "File" and (doc.attached_to_doctype != "Water Body" or doc.is_private):
 		return
 
 	doc.flags.updater_reference = {
