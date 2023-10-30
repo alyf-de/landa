@@ -219,6 +219,15 @@ The legth of each text field is limited to around 8000 words.
 
 Get a list of changes to the water bodies and fish species.
 
+- `GET /api/method/landa.api.change_log`
+
+    Parameters:
+
+    - `from_datetime` (required)
+
+        Returns only changes that happened after this datetime. Format: `YYYY-MM-DD HH:MM:SS:SSSS`
+
+
 Events covered by the change log are:
 
 - Water Body
@@ -229,15 +238,6 @@ Events covered by the change log are:
     - Create
     - Update
     - Delete
-
-
-- `GET /api/method/landa.api.change_log`
-
-    Parameters:
-
-    - `from_datetime` (required)
-
-        Returns only changes that happened after this datetime. Format: `YYYY-MM-DD HH:MM:SS:SSSS`
 
 ### Example Request
 
