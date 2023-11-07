@@ -230,14 +230,10 @@ Get a list of changes to the water bodies and fish species.
 
 Events covered by the change log are:
 
-- Water Body
-    - Create
-    - Update
-    - Delete
-- Fish Species
-    - Create
-    - Update
-    - Delete
+- Water Body, Fish Species
+    - Created
+    - Modified
+    - Deleted
 
 ### Example Request
 
