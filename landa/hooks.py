@@ -295,8 +295,18 @@ doc_events = {
 		"validate": "landa.workspace.validate",
 	},
 	"File": {
+		"after_insert": "landa.water_body_management.utils.create_version_log",
 		"on_update": "landa.water_body_management.doctype.water_body.water_body.rebuild_cache_on_attachment",
 		"after_delete": "landa.water_body_management.doctype.water_body.water_body.rebuild_cache_on_attachment",
+	},
+	"Water Body": {
+		"after_insert": "landa.water_body_management.utils.create_version_log",
+	},
+	"Fish Species": {
+		"after_insert": "landa.water_body_management.utils.create_version_log",
+	},
+	"Water Body Management Local Organization": {
+		"after_insert": "landa.water_body_management.utils.create_version_log",
 	},
 }
 
