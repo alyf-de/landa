@@ -353,6 +353,7 @@ override_whitelisted_methods = {
 	"erpnext.accounts.doctype.sales_invoice.sales_invoice.make_delivery_note": "landa.landa_sales.sales_invoice.sales_invoice.make_landa_delivery_note",
 	"erpnext.stock.doctype.delivery_note.delivery_note.make_sales_invoice": "landa.landa_stock.delivery_note.delivery_note.make_landa_sales_invoice",
 	"frappe.desk.like.toggle_like": "landa.utils.no_liked_by",
+	"frappe.contacts.doctype.address.address.get_address_display": "landa.organization_management.address.address.get_address_display",
 }
 
 #

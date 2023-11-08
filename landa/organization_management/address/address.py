@@ -102,3 +102,34 @@ def rename_addresses(limit: int):
 		frappe.db.commit()
 
 	frappe.enqueue("frappe.utils.global_search.rebuild_for_doctype", doctype=doctype)
+
+
+@frappe.whitelist()
+def get_address_display(address_dict):
+	"""Overwrite frappe.contacts.doctype.address.address.get_address_display
+
+	Changes: Siltenly return None if the user does not have permission to view the address.
+	        This is necessary because users don't have permission to access records from their
+	        regional organization, but its address is still fetched in the sales workflow.
+	"""
+	from frappe.contacts.doctype.address.address import render_address
+
+	check_permissions = True
+	if isinstance(address_dict, str):
+		address = frappe.get_cached_doc("Address", address_dict)
+		if belongs_to_regional_org(address):
+			check_permissions = False
+
+	return render_address(address_dict, check_permissions=check_permissions)
+
+
+def belongs_to_regional_org(address):
+	"""Check if an address belongs to a regional organization."""
+	if not address.links:
+		return False
+
+	for link in address.links:
+		if link.link_doctype == "Organization" and link.link_name in ("AVE", "AVL", "AVS"):
+			return True
+
+	return False
