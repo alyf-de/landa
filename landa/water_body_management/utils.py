@@ -55,6 +55,7 @@ def get_formatted_changes(changes_list: List):
 		if event in ["Created", "Deleted"]:
 			changes.append(
 				{
+					"id": entry.name,
 					"doctype": entry.doctype,
 					"docname": entry.docname,
 					"event": event,
@@ -116,8 +117,8 @@ def get_deleted_document_query(from_datetime: str):
 			deleted_document.creation,
 			deleted_document.data,
 			ConstantColumn(1).as_("deleted"),
-			ConstantColumn(None).as_("attached_to_doctype"),
-			ConstantColumn(None).as_("attached_to_name"),
+			ConstantColumn("").as_("attached_to_doctype"),
+			ConstantColumn("").as_("attached_to_name"),
 		)
 		.where(
 			deleted_document.creation >= from_datetime,
@@ -146,6 +147,7 @@ def get_event(entry, changed_data):
 def build_modified_change_log(entry, changed_data, event):
 	"""Return a pretty dict with changes for modified Water Body/Fish Species."""
 	change_log = {
+		"id": entry.name,
 		"doctype": entry.doctype,
 		"docname": entry.docname,
 		"datetime": entry.creation,
@@ -191,6 +193,7 @@ def build_dependency_change_log(entry, changed_data):
 
 	key = "files" if entry.doctype == "File" else "organizations"
 	return {
+		"id": entry.name,
 		"doctype": "Water Body",
 		"docname": ref_water_body,
 		"event": "Modified",
