@@ -239,7 +239,7 @@
    "fieldname": "rotation",
    "fieldtype": "HTML",
    "label": "Rotation",
-   "options": "<label for=\"icon_rotation\">Icon Rotation</label>\n<input class=\"custom-range\" id=\"icon_rotation\" max=\"180\" min=\"-180\" step=\"15\" type=\"range\">",
+   "options": "<label for=\"icon_rotation\">Drehung</label>\n<input class=\"custom-range\" id=\"icon_rotation\" max=\"180\" min=\"-180\" step=\"15\" type=\"range\">",
    "permlevel": 2
   },
   {
@@ -283,7 +283,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2023-09-18 21:40:28.621368",
+ "modified": "2023-11-10 12:45:58.137879",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
