@@ -11,6 +11,16 @@ frappe.ui.form.on("Water Body", {
 			frm.disable_form();
 		}
 		bind_rotation_event(frm);
+		frm.set_query(
+			"icon",
+			function (doc) {
+				return {
+					filters: {
+						icon: ["is", "set"]
+					},
+				};
+			}
+		);
 	},
 	icon: function (frm) {
 		if (frm.doc.icon) {
