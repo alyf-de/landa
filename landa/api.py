@@ -123,3 +123,19 @@ def change_log(from_datetime: str):
 
 	result = get_changed_data(from_datetime)
 	return get_formatted_changes(result)
+
+
+@frappe.whitelist(allow_guest=True, methods=["GET"])
+def custom_icon(id: str = None) -> str:
+	"""Return the custom icon for the given icon name."""
+	from frappe.utils.data import get_url
+
+	filters = {}
+	if id and isinstance(id, str):
+		filters["name"] = id
+
+	icons = frappe.get_all("Custom Icon", filters=filters, fields=["name as id", "title", "icon"])
+	for icon in icons:
+		icon["url"] = get_url(icon.pop("icon"))
+
+	return icons
