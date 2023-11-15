@@ -10,7 +10,10 @@ frappe.ui.form.on("Water Body", {
 		) {
 			frm.disable_form();
 		}
-		bind_rotation_event(frm);
+
+		frm.trigger("bind_rotation");
+		frm.trigger("update_draw");
+
 		frm.set_query(
 			"icon",
 			function (doc) {
@@ -22,21 +25,72 @@ frappe.ui.form.on("Water Body", {
 			}
 		);
 	},
-	icon: function (frm) {
-		if (frm.doc.icon) {
-			bind_rotation_event(frm);
-		}
+	location: function (frm) {
+		frm.trigger("update_draw");
 	},
+	icon: function (frm) {
+		frm.trigger("bind_rotation");
+	},
+	icon_path: function (frm) {
+		frm.trigger("update_draw");
+		frm.refresh_field("icon_preview");
+
+		// reset rotation
+		frm.rotation_angle = 0;
+		get_rotation_element().value = 0;
+		frm.trigger("bind_rotation");
+	},
+	bind_rotation: function (frm) {
+		if (!frm.doc.icon_path) {
+			return;
+		}
+
+		bind_rotation_event(frm);
+	},
+	update_draw: function (frm) {
+		update_draw_control(frm.fields_dict.location.draw_control, frm.doc.icon_path, frm.rotation_angle);
+	}
 });
 
 function bind_rotation_event(frm) {
-	const icon_rotation = document.getElementById("icon_rotation");
-	const icon_preview = frm.fields_dict.icon_preview.wrapper.getElementsByTagName("img")[0];
+	const icon_rotation = get_rotation_element();
+	const icon_preview = get_img_element(frm);
 	icon_rotation.addEventListener(
 		"input",
 		function (evt) {
-			icon_preview.style.transform = `rotate(${evt.target.value}deg)`;
+			apply_rotation(icon_preview, evt.target.value);
 			frm.rotation_angle = evt.target.value;
 		}
 	);
+}
+
+function get_img_element(frm) {
+	return frm.fields_dict.icon_preview.wrapper.getElementsByTagName("img")[0];
+}
+
+function get_rotation_element() {
+	return document.getElementById("icon_rotation");
+}
+
+function apply_rotation(element, rotation_angle) {
+	element.style.transform = `rotate(${rotation_angle}deg)`;
+}
+
+function update_draw_control(draw_control, icon_url) {
+	if (!draw_control) {
+		return;
+	}
+	let marker_config = {};
+
+	if (icon_url) {
+		const CustomIcon = L.Icon.extend({
+			options: {
+				iconSize: new L.Point(24, 24),
+				iconUrl: icon_url,
+			}
+		});
+		marker_config.icon = new CustomIcon();
+	}
+
+	draw_control.setDrawingOptions({marker: marker_config});
 }
