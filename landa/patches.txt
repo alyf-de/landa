@@ -28,3 +28,4 @@ landa.patches.set_hide_custom_in_user_workspaces
 landa.patches.cleanup_addresses_and_contacts
 landa.patches.lease_rent_per_year
 landa.patches.add_water_body_title_in_stocking
+landa.patches.multi_to_polygon
