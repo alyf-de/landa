@@ -43,6 +43,13 @@ class WaterBody(Document):
 					title=_("Invalid Species"),
 				)
 
+	def before_save(self):
+		# Remove any selected icon in order to avoid relinking of the attachment
+		# and not store any unnecessary data.
+		self.icon = None
+		self.icon_path = None
+		self.icon_preview = None
+
 
 def rebuild_water_body_cache(fishing_area: str = None, enqueued: bool = False):
 	"""
