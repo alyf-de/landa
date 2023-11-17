@@ -46,10 +46,15 @@ class LANDACurrentMemberData:
 			"organization",
 			"is_supporting_member",
 			"has_key",
-			"has_special_yearly_fishing_permit_1",
-			"has_special_yearly_fishing_permit_2",
 			"youth_membership",
 			"additional_information",
+			"has_special_yearly_fishing_permit_1",
+			"has_special_yearly_fishing_permit_2",
+			"has_special_yearly_fishing_permit_3",
+			"has_special_yearly_fishing_permit_4",
+			"has_special_yearly_fishing_permit_5",
+			"has_special_yearly_fishing_permit_6",
+			"has_special_yearly_fishing_permit_7",
 		]
 		members = frappe.db.get_list(
 			"LANDA Member", filters=self.filter, fields=member_fields, as_list=True
@@ -160,6 +165,16 @@ class LANDACurrentMemberData:
 				"fieldname": "has_key",
 			},
 			{
+				"label": "Youth Membership",
+				"fieldtype": "Check",
+				"fieldname": "youth_membership",
+			},
+			{
+				"label": "Additional Information",
+				"fieldtype": "Data",
+				"fieldname": "additional_information",
+			},
+			{
 				"label": "Organization",
 				"fieldtype": "Link",
 				"fieldname": "organization",
@@ -193,24 +208,39 @@ class LANDACurrentMemberData:
 				"fieldname": "number",
 			},
 			{
-				"label": "Hat Sachsen-Anhalt Erlaubnisschein",
+				"label": "ES Sachsen-Anhalt",
 				"fieldtype": "Check",
 				"fieldname": "has_special_yearly_fishing_permit_1",
 			},
 			{
-				"label": "Hat Brandenburg Erlaubnisschein",
+				"label": "ES Brandenburg",
 				"fieldtype": "Check",
 				"fieldname": "has_special_yearly_fishing_permit_2",
 			},
 			{
-				"label": "Youth Membership",
+				"label": "ES Berlin",
 				"fieldtype": "Check",
-				"fieldname": "youth_membership",
+				"fieldname": "has_special_yearly_fishing_permit_3",
 			},
 			{
-				"label": "Additional Information",
-				"fieldtype": "Data",
-				"fieldname": "additional_information",
+				"label": "ES Mecklenburg-Vorpommern",
+				"fieldtype": "Check",
+				"fieldname": "has_special_yearly_fishing_permit_4",
+			},
+			{
+				"label": "ES Saalekaskade",
+				"fieldtype": "Check",
+				"fieldname": "has_special_yearly_fishing_permit_5",
+			},
+			{
+				"label": "ES LAVT",
+				"fieldtype": "Check",
+				"fieldname": "has_special_yearly_fishing_permit_6",
+			},
+			{
+				"label": "ES VANT",
+				"fieldtype": "Check",
+				"fieldname": "has_special_yearly_fishing_permit_7",
 			},
 		]
 

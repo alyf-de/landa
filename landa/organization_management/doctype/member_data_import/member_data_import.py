@@ -20,6 +20,11 @@ class MemberDataImport(Document):
 		"has_key",
 		"has_special_yearly_fishing_permit_1",
 		"has_special_yearly_fishing_permit_2",
+		"has_special_yearly_fishing_permit_3",
+		"has_special_yearly_fishing_permit_4",
+		"has_special_yearly_fishing_permit_5",
+		"has_special_yearly_fishing_permit_6",
+		"has_special_yearly_fishing_permit_7",
 		"youth_membership",
 		"additional_information",
 	]
