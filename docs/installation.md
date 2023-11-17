@@ -8,6 +8,20 @@ git remote add alyf https://github.com/alyf-de/frappe
 git checkout --track alyf/landa-version-13
 ```
 
+## Set up CORS
+
+To allow the Angelatlas web-apps to access the API, add the following to `sites/common_site_config.json`:
+
+```json
+{
+    "..." : "...",
+    "allow_cors": [
+        "https://angelatlas.devid.net",
+        "https://www.angelatlas-sachsen.de/"
+    ]
+}
+```
+
 ## 1. Create a site
 
 ```
