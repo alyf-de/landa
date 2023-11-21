@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:award_type",
+ "creation": "2023-11-16 19:01:26.014892",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "award_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "award_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Award Type",
+   "reqd": 1,
+   "unique": 1
+  }
+ ],
+ "links": [],
+ "modified": "2023-11-16 19:07:58.423095",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "Award Type",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee",
+   "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Regional Organization Management"
+  },
+  {
+   "read": 1,
+   "role": "LANDA Member"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

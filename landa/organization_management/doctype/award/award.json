@@ -52,11 +52,11 @@
   {
    "allow_in_quick_entry": 1,
    "fieldname": "award_type",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Award Type",
-   "options": "\nGoldene \u00c4sche\nEhrennadel Bronze\nEhrennadel Silber\nEhrennadel Gold\nEhrennadel VGA Bronze\nEhrennadel VGA Silber\nEhrennadel VGA Gold\nJugendmedaille\nHegemedaille\nEhrenurkunde",
+   "options": "Award Type",
    "reqd": 1
   },
   {
@@ -94,7 +94,7 @@
   }
  ],
  "links": [],
- "modified": "2022-12-16 14:50:53.483388",
+ "modified": "2023-11-16 19:11:54.888522",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Award",
