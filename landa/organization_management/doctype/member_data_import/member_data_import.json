@@ -18,9 +18,16 @@
   "column_break_7",
   "has_key",
   "is_supporting_member",
-  "has_special_yearly_fishing_permit_2",
-  "has_special_yearly_fishing_permit_1",
   "youth_membership",
+  "special_yearly_fishing_permits_section",
+  "has_special_yearly_fishing_permit_1",
+  "has_special_yearly_fishing_permit_2",
+  "has_special_yearly_fishing_permit_3",
+  "has_special_yearly_fishing_permit_4",
+  "column_break_m5jmg",
+  "has_special_yearly_fishing_permit_5",
+  "has_special_yearly_fishing_permit_6",
+  "has_special_yearly_fishing_permit_7",
   "section_break_9",
   "address_name",
   "address_line1",
@@ -175,11 +182,50 @@
    "fieldname": "youth_membership",
    "fieldtype": "Check",
    "label": "Youth Membership"
+  },
+  {
+   "fieldname": "special_yearly_fishing_permits_section",
+   "fieldtype": "Section Break",
+   "label": "Special Yearly Fishing Permits"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_3",
+   "fieldtype": "Check",
+   "label": "Hat Berlin Erlaubnisschein"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_4",
+   "fieldtype": "Check",
+   "label": "Hat Mecklenburg-Vorpommern Erlaubnisschein"
+  },
+  {
+   "fieldname": "column_break_m5jmg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_5",
+   "fieldtype": "Check",
+   "label": "Hat Saalekaskade Erlaubnisschein"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_6",
+   "fieldtype": "Check",
+   "label": "Hat LAVT Erlaubnisschein"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_7",
+   "fieldtype": "Check",
+   "label": "Hat VANT Erlaubnisschein"
   }
  ],
  "is_virtual": 1,
  "links": [],
- "modified": "2022-11-23 12:26:08.705403",
+ "modified": "2023-11-17 10:26:17.637563",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Data Import",

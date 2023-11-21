@@ -22,10 +22,17 @@
   "is_supporting_member",
   "magazine_recipient",
   "has_key",
-  "has_special_yearly_fishing_permit_1",
-  "has_special_yearly_fishing_permit_2",
   "youth_membership",
   "additional_information",
+  "special_yearly_fishing_permits_section",
+  "has_special_yearly_fishing_permit_1",
+  "has_special_yearly_fishing_permit_2",
+  "has_special_yearly_fishing_permit_3",
+  "has_special_yearly_fishing_permit_4",
+  "column_break_qhrfl",
+  "has_special_yearly_fishing_permit_5",
+  "has_special_yearly_fishing_permit_6",
+  "has_special_yearly_fishing_permit_7",
   "section_address_and_contact",
   "address_html",
   "column_break_5",
@@ -33,7 +40,10 @@
   "section_break_9",
   "has_fishing_permit",
   "fishing_permit_number",
+  "issuing_authority",
+  "column_break_hsdce",
   "permit_is_valid_for_life",
+  "permit_issue_date",
   "permit_expiration_date"
  ],
  "fields": [
@@ -195,18 +205,6 @@
    "label": "Additional Information"
   },
   {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_1",
-   "fieldtype": "Check",
-   "label": "Hat Sachsen-Anhalt Erlaubnisschein"
-  },
-  {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_2",
-   "fieldtype": "Check",
-   "label": "Hat Brandenburg Erlaubnisschein"
-  },
-  {
    "allow_in_quick_entry": 1,
    "depends_on": "eval:doc.has_fishing_permit==1",
    "fieldname": "fishing_permit_number",
@@ -226,6 +224,75 @@
    "fieldtype": "Check",
    "in_standard_filter": 1,
    "label": "Youth Membership"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval:doc.has_fishing_permit==1",
+   "fieldname": "issuing_authority",
+   "fieldtype": "Data",
+   "label": "Issuing Authority"
+  },
+  {
+   "depends_on": "eval:doc.has_fishing_permit==1",
+   "fieldname": "permit_issue_date",
+   "fieldtype": "Date",
+   "label": "Permit Issue Date"
+  },
+  {
+   "fieldname": "column_break_hsdce",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "special_yearly_fishing_permits_section",
+   "fieldtype": "Section Break",
+   "label": "Special Yearly Fishing Permits"
+  },
+  {
+   "fieldname": "column_break_qhrfl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_1",
+   "fieldtype": "Check",
+   "label": "Hat Sachsen-Anhalt Erlaubnisschein"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_2",
+   "fieldtype": "Check",
+   "label": "Hat Brandenburg Erlaubnisschein"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_3",
+   "fieldtype": "Check",
+   "label": "Hat Berlin Erlaubnisschein"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_4",
+   "fieldtype": "Check",
+   "label": "Hat Mecklenburg-Vorpommern Erlaubnisschein"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_5",
+   "fieldtype": "Check",
+   "label": "Hat Saalekaskade Erlaubnisschein"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_6",
+   "fieldtype": "Check",
+   "label": "Hat LAVT Erlaubnisschein"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_7",
+   "fieldtype": "Check",
+   "label": "Hat VANT Erlaubnisschein"
   }
  ],
  "links": [
@@ -246,7 +313,7 @@
    "link_fieldname": "landa_member"
   }
  ],
- "modified": "2023-11-10 12:21:56.664104",
+ "modified": "2023-11-16 20:01:31.394908",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",

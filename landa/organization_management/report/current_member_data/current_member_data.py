@@ -4,6 +4,7 @@
 import frappe
 import numpy as np
 import pandas as pd
+from frappe import _
 
 
 class LANDACurrentMemberData:
@@ -46,10 +47,15 @@ class LANDACurrentMemberData:
 			"organization",
 			"is_supporting_member",
 			"has_key",
-			"has_special_yearly_fishing_permit_1",
-			"has_special_yearly_fishing_permit_2",
 			"youth_membership",
 			"additional_information",
+			"has_special_yearly_fishing_permit_1",
+			"has_special_yearly_fishing_permit_2",
+			"has_special_yearly_fishing_permit_3",
+			"has_special_yearly_fishing_permit_4",
+			"has_special_yearly_fishing_permit_5",
+			"has_special_yearly_fishing_permit_6",
+			"has_special_yearly_fishing_permit_7",
 		]
 		members = frappe.db.get_list(
 			"LANDA Member", filters=self.filter, fields=member_fields, as_list=True
@@ -108,109 +114,134 @@ class LANDACurrentMemberData:
 	def get_columns(self):
 		return [
 			{
-				"label": "Member ID",
+				"label": _("Member ID"),
 				"fieldtype": "Link",
 				"fieldname": "name",
 				"options": "LANDA Member",
 			},
 			{
-				"label": "Last Name",
+				"label": _("Last Name"),
 				"fieldtype": "Data",
 				"fieldname": "last_name",
 			},
 			{
-				"label": "First Name",
+				"label": _("First Name"),
 				"fieldtype": "Data",
 				"fieldname": "first_name",
 			},
 			{
-				"label": "Date of Birth",
+				"label": _("Date of Birth"),
 				"fieldtype": "Date",
 				"fieldname": "date_of_birth",
 			},
 			{
-				"label": "Address ID",
+				"label": _("Address ID"),
 				"fieldtype": "Link",
 				"fieldname": "address_name",
 				"options": "Address",
 			},
 			{
-				"label": "Address Line 1",
+				"label": _("Address Line 1"),
 				"fieldtype": "Data",
 				"fieldname": "address_line1",
 			},
 			{
-				"label": "Pincode",
+				"label": _("Pincode"),
 				"fieldtype": "Data",
 				"fieldname": "pincode",
 			},
 			{
-				"label": "City",
+				"label": _("City"),
 				"fieldtype": "Data",
 				"fieldname": "city",
 			},
 			{
-				"label": "Is Supporting Member",
+				"label": _("Is Supporting Member"),
 				"fieldtype": "Check",
 				"fieldname": "is_supporting_member",
 			},
 			{
-				"label": "Has Key",
+				"label": _("Has Key"),
 				"fieldtype": "Check",
 				"fieldname": "has_key",
 			},
 			{
-				"label": "Organization",
+				"label": _("Youth Membership"),
+				"fieldtype": "Check",
+				"fieldname": "youth_membership",
+			},
+			{
+				"label": _("Additional Information"),
+				"fieldtype": "Data",
+				"fieldname": "additional_information",
+			},
+			{
+				"label": _("Organization"),
 				"fieldtype": "Link",
 				"fieldname": "organization",
 				"options": "Organization",
 			},
 			{
-				"label": "ID Yearly Fishing Permit",
+				"label": _("ID Yearly Fishing Permit"),
 				"fieldtype": "Link",
 				"fieldname": "yearly_fishing_permit",
 				"options": "Yearly Fishing Permit",
 			},
 			{
-				"label": "Year of Yearly Fishing Permit",
+				"label": _("Year of Yearly Fishing Permit"),
 				"fieldtype": "Data",
 				"fieldname": "year",
 			},
 			{
-				"label": "Yearly Fishing Permit Type",
+				"label": _("Yearly Fishing Permit Type"),
 				"fieldtype": "Link",
 				"fieldname": "type",
 				"options": "Yearly Fishing Permit Type",
 			},
 			{
-				"label": "Issue Date of Yearly Fishing Permit",
+				"label": _("Issue Date of Yearly Fishing Permit"),
 				"fieldtype": "Date",
 				"fieldname": "date_of_issue",
 			},
 			{
-				"label": "Yearly Fishing Permit Number",
+				"label": _("Yearly Fishing Permit Number"),
 				"fieldtype": "Data",
 				"fieldname": "number",
 			},
 			{
-				"label": "Hat Sachsen-Anhalt Erlaubnisschein",
+				"label": _("ES Sachsen-Anhalt"),
 				"fieldtype": "Check",
 				"fieldname": "has_special_yearly_fishing_permit_1",
 			},
 			{
-				"label": "Hat Brandenburg Erlaubnisschein",
+				"label": _("ES Brandenburg"),
 				"fieldtype": "Check",
 				"fieldname": "has_special_yearly_fishing_permit_2",
 			},
 			{
-				"label": "Youth Membership",
+				"label": _("ES Berlin"),
 				"fieldtype": "Check",
-				"fieldname": "youth_membership",
+				"fieldname": "has_special_yearly_fishing_permit_3",
 			},
 			{
-				"label": "Additional Information",
-				"fieldtype": "Data",
-				"fieldname": "additional_information",
+				"label": _("ES Mecklenburg-Vorpommern"),
+				"fieldtype": "Check",
+				"fieldname": "has_special_yearly_fishing_permit_4",
+			},
+			{
+				"label": _("ES Saalekaskade"),
+				"fieldtype": "Check",
+				"fieldname": "has_special_yearly_fishing_permit_5",
+			},
+			{
+				"label": _("ES LAVT"),
+				"fieldtype": "Check",
+				"fieldname": "has_special_yearly_fishing_permit_6",
+			},
+			{
+				"label": _("ES VANT"),
+				"fieldtype": "Check",
+				"fieldname": "has_special_yearly_fishing_permit_7",
 			},
 		]
 
