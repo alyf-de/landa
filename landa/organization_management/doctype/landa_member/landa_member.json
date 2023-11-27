@@ -243,7 +243,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "collapsible": 1,
    "fieldname": "special_yearly_fishing_permits_section",
    "fieldtype": "Section Break",
    "label": "Special Yearly Fishing Permits"
@@ -313,7 +312,7 @@
    "link_fieldname": "landa_member"
   }
  ],
- "modified": "2023-11-16 20:01:31.394908",
+ "modified": "2023-11-27 19:47:52.543138",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
