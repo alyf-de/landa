@@ -49,7 +49,7 @@
  ],
  "issingle": 1,
  "links": [],
- "modified": "2023-09-22 14:26:40.377433",
+ "modified": "2023-11-27 18:59:08.307363",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Rules",
@@ -80,5 +80,6 @@
   }
  ],
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "track_changes": 1
 }
