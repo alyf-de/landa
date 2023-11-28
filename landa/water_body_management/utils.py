@@ -99,6 +99,7 @@ def get_version_log_query(from_datetime: str):
 					"Fish Species",
 					"File",
 					"Water Body Management Local Organization",
+					"Water Body Rules",
 				]
 			)
 		)
