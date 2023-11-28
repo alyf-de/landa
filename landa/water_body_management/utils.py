@@ -173,7 +173,10 @@ def build_modified_change_log(entry, changed_data, event):
 
 
 def build_dependency_change_log(entry, changed_data):
-	"""Return a pretty dict with changes in dependencies (File and WBMLO)."""
+	"""
+	Return a pretty dict with changes in dependencies (File and WBMLO).
+	`entry` could be creation (Version), modification (Version) or deletion (Deleted Document) events.
+	"""
 	if (
 		cint(entry.deleted)
 		and entry.doctype == "File"
@@ -183,13 +186,16 @@ def build_dependency_change_log(entry, changed_data):
 		return []
 
 	if entry.doctype == "Water Body Management Local Organization":
-		ref_water_body = frappe.db.get_value(
-			"Water Body Management Local Organization",
-			entry.docname,
-			"water_body",
-		)
+		if cint(entry.deleted):
+			ref_water_body = changed_data.get("water_body")  # Deleted WBMLO
+		else:
+			ref_water_body = frappe.db.get_value(  # Created/Modified WBMLO
+				"Water Body Management Local Organization",
+				entry.docname,
+				"water_body",
+			)
 	else:
-		ref_water_body = entry.attached_to_name or changed_data.attached_to_name
+		ref_water_body = changed_data.attached_to_name if cint(entry.deleted) else entry.attached_to_name
 
 	key = "files" if entry.doctype == "File" else "organizations"
 	return {
