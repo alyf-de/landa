@@ -7646,53 +7646,5 @@
   "parenttype": null,
   "source_text": "Full Address",
   "translated_text": "Vollst\u00e4ndige Adresse"
- },
- {
-  "context": null,
-  "contributed": 0,
-  "contribution_docname": null,
-  "contribution_status": "",
-  "docstatus": 0,
-  "doctype": "Translation",
-  "language": "de",
-  "modified": "2023-11-17 10:42:22.601426",
-  "name": "a09ddbebc1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "source_text": "Permit Issue Date",
-  "translated_text": "Ausgabedatum Erlaubnisschein"
- },
- {
-  "context": null,
-  "contributed": 0,
-  "contribution_docname": null,
-  "contribution_status": "",
-  "docstatus": 0,
-  "doctype": "Translation",
-  "language": "de",
-  "modified": "2023-11-17 10:43:00.798179",
-  "name": "bc5faa1ad9",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "source_text": "Issuing Authority",
-  "translated_text": "Ausstellende Beh\u00f6rde"
- },
- {
-  "context": null,
-  "contributed": 0,
-  "contribution_docname": null,
-  "contribution_status": "",
-  "docstatus": 0,
-  "doctype": "Translation",
-  "language": "de",
-  "modified": "2023-11-17 10:45:24.155799",
-  "name": "945cbae46f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "source_text": "Special Yearly Fishing Permits",
-  "translated_text": "Spezielle Erlaubnisscheine"
  }
 ]
