@@ -14,16 +14,13 @@ frappe.ui.form.on("Water Body", {
 		frm.trigger("bind_rotation");
 		frm.trigger("update_draw");
 
-		frm.set_query(
-			"icon",
-			function (doc) {
-				return {
-					filters: {
-						icon: ["is", "set"]
-					},
-				};
-			}
-		);
+		frm.set_query("icon", function (doc) {
+			return {
+				filters: {
+					icon: ["is", "set"],
+				},
+			};
+		});
 	},
 	location: function (frm) {
 		frm.trigger("update_draw");
