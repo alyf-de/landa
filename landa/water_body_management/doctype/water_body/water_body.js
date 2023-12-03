@@ -37,6 +37,12 @@ frappe.ui.form.on("Water Body", {
 		get_rotation_element().value = 0;
 		frm.trigger("bind_rotation");
 	},
+	draw_restricted_area: function (frm) {
+		update_polygon_control(
+			frm.fields_dict.location.draw_control,
+			frm.doc.draw_restricted_area
+		);
+	},
 	bind_rotation: function (frm) {
 		if (!frm.doc.icon_path) {
 			return;
@@ -97,3 +103,21 @@ function update_draw_control(draw_control, icon_url, icon_name, rotation_angle) 
 	draw_control.setDrawingOptions({ marker: marker_config });
 }
 
+
+function update_polygon_control(draw_control, draw_restricted_area) {
+	if (!draw_control) {
+		return;
+	}
+	let polygon_config = {
+		shapeOptions: {
+			color: frappe.ui.color.get("blue"),
+		},
+	};
+
+	if (draw_restricted_area) {
+		polygon_config.shapeOptions.color = "red";
+		polygon_config.shapeOptions.isRestrictedArea = true;
+	}
+
+	draw_control.setDrawingOptions({ polygon: polygon_config });
+}
