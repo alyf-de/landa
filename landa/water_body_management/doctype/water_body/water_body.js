@@ -14,16 +14,13 @@ frappe.ui.form.on("Water Body", {
 		frm.trigger("bind_rotation");
 		frm.trigger("update_draw");
 
-		frm.set_query(
-			"icon",
-			function (doc) {
-				return {
-					filters: {
-						icon: ["is", "set"]
-					},
-				};
-			}
-		);
+		frm.set_query("icon", function (doc) {
+			return {
+				filters: {
+					icon: ["is", "set"],
+				},
+			};
+		});
 	},
 	location: function (frm) {
 		frm.trigger("update_draw");
@@ -40,6 +37,12 @@ frappe.ui.form.on("Water Body", {
 		get_rotation_element().value = 0;
 		frm.trigger("bind_rotation");
 	},
+	draw_restricted_area: function (frm) {
+		update_polygon_control(
+			frm.fields_dict.location.draw_control,
+			frm.doc.draw_restricted_area
+		);
+	},
 	bind_rotation: function (frm) {
 		if (!frm.doc.icon_path) {
 			return;
@@ -48,20 +51,23 @@ frappe.ui.form.on("Water Body", {
 		bind_rotation_event(frm);
 	},
 	update_draw: function (frm) {
-		update_draw_control(frm.fields_dict.location.draw_control, frm.doc.icon_path, frm.rotation_angle);
-	}
+		update_draw_control(
+			frm.fields_dict.location.draw_control,
+			frm.doc.icon_path,
+			frm.doc.icon,
+			frm.rotation_angle,
+		);
+	},
 });
 
 function bind_rotation_event(frm) {
 	const icon_rotation = get_rotation_element();
 	const icon_preview = get_img_element(frm);
-	icon_rotation.addEventListener(
-		"input",
-		function (evt) {
-			apply_rotation(icon_preview, evt.target.value);
-			frm.rotation_angle = evt.target.value;
-		}
-	);
+	icon_rotation.addEventListener("input", function (evt) {
+		apply_rotation(icon_preview, evt.target.value);
+		frm.rotation_angle = evt.target.value;
+		frm.trigger("update_draw");
+	});
 }
 
 function get_img_element(frm) {
@@ -76,7 +82,7 @@ function apply_rotation(element, rotation_angle) {
 	element.style.transform = `rotate(${rotation_angle}deg)`;
 }
 
-function update_draw_control(draw_control, icon_url) {
+function update_draw_control(draw_control, icon_url, icon_name, rotation_angle) {
 	if (!draw_control) {
 		return;
 	}
@@ -87,10 +93,31 @@ function update_draw_control(draw_control, icon_url) {
 			options: {
 				iconSize: new L.Point(24, 24),
 				iconUrl: icon_url,
-			}
+				iconName: icon_name,
+				rotationAngle: rotation_angle,
+			},
 		});
 		marker_config.icon = new CustomIcon();
 	}
 
-	draw_control.setDrawingOptions({marker: marker_config});
+	draw_control.setDrawingOptions({ marker: marker_config });
+}
+
+
+function update_polygon_control(draw_control, draw_restricted_area) {
+	if (!draw_control) {
+		return;
+	}
+	let polygon_config = {
+		shapeOptions: {
+			color: frappe.ui.color.get("blue"),
+		},
+	};
+
+	if (draw_restricted_area) {
+		polygon_config.shapeOptions.color = "red";
+		polygon_config.shapeOptions.isRestrictedArea = true;
+	}
+
+	draw_control.setDrawingOptions({ polygon: polygon_config });
 }
