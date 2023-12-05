@@ -1,0 +1,9 @@
+ignore:
+    - '*.min.js'
+    - node_modules
+
+rule_settings:
+  disable:
+    - use-fstring-for-concatenation
+    - use-object-destructuring
+  python_version: '3.8'
