@@ -165,7 +165,7 @@ def consolidate_water_body_data(water_body_data: List[Dict]) -> List[Dict]:
 
 	for entry in water_body_data:
 		water_body_name = entry.get("id")
-		if not water_body_name in water_body_map:
+		if water_body_name not in water_body_map:
 			# Add entry to map if it does not exist
 			water_body_map[water_body_name] = init_row(water_body_row=entry)
 
@@ -247,7 +247,7 @@ def get_water_body_files(water_body_id: str):
 
 def rebuild_cache_on_attachment(doc, method):
 	"""Called via hooks.py when a file is attached to/removed from a Water Body."""
-	if not doc.attached_to_doctype == "Water Body":
+	if doc.attached_to_doctype != "Water Body":
 		return
 
 	if method == "on_update" and not doc.flags.in_insert:  # update
