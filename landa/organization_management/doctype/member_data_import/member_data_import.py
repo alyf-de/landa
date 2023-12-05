@@ -202,7 +202,4 @@ def create_yearly_fishing_permit(
 def parse_checkbox_value(value: str) -> int:
 	scrubbed = value.strip().lower()
 
-	if scrubbed in ["1", "ja", "j", "yes", "y"]:
-		return 1
-	else:
-		return 0
+	return 1 if scrubbed in {"1", "ja", "j", "yes", "y"} else 0
