@@ -13,9 +13,8 @@ class LeaseContract(Document):
 		self.update_is_active()
 
 	def validate(self):
-		if self.start_date and self.end_date:
-			if date_diff(self.start_date, self.end_date) > 0:
-				frappe.throw(_("End Date cannot be before Start Date."))
+		if self.start_date and self.end_date and date_diff(self.start_date, self.end_date) > 0:
+			frappe.throw(_("End Date cannot be before Start Date."))
 
 		if self.organization != frappe.db.get_value("Water Body", self.water_body, "organization"):
 			frappe.throw(

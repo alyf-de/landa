@@ -25,8 +25,7 @@ def get_new_name(prefix, company, doctype):
 def welcome_email():
 	lang = frappe.db.get_single_value("System Settings", "language")
 	site_name = "LANDA"
-	title = _("Welcome to {0}", lang=lang).format(site_name)
-	return title
+	return _("Welcome to {0}", lang=lang).format(site_name)
 
 
 def reset_workspace(workspace: str) -> None:

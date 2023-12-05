@@ -128,8 +128,7 @@ def belongs_to_regional_org(address):
 	if not address.links:
 		return False
 
-	for link in address.links:
-		if link.link_doctype == "Organization" and link.link_name in ("AVE", "AVL", "AVS"):
-			return True
-
-	return False
+	return any(
+		link.link_doctype == "Organization" and link.link_name in ("AVE", "AVL", "AVS")
+		for link in address.links
+	)

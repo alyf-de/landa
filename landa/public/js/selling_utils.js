@@ -54,7 +54,9 @@ landa.selling = {
         });
     },
     set_contact_details(frm, type) {
-        if (frm.updating_party_details) return;
+        if (frm.updating_party_details) {
+          return;
+        }
         const fields = ["contact", "contact_display", "contact_mobile", "contact_phone", "contact_email"];
         const contact = frm.doc[`${type}_contact`];
         if (contact) {

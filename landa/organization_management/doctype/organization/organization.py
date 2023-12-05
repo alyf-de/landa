@@ -85,7 +85,7 @@ class Organization(NestedSet):
 		series = self.name + "-"
 
 		# insert series if missing
-		if frappe.db.get_value("Series", series, "name", order_by="name") == None:
+		if frappe.db.get_value("Series", series, "name", order_by="name") is None:
 			frappe.db.sql("insert into tabSeries (name, current) values (%s, 0)", (series))
 
 		frappe.db.sql("UPDATE `tabSeries` SET current = %s WHERE name = %s", (cint(current), series))

@@ -1,6 +1,6 @@
 frappe.listview_settings["Stocking Target"] = {
 	get_indicator: function (doc) {
-		var status_color = {
+		const status_color = {
 			Draft: "red",
 			"In Progress": "blue",
 			Completed: "green",

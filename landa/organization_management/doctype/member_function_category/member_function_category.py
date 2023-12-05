@@ -221,10 +221,7 @@ def get_values_from_categories(
 def get_user(member_name: str):
 	"""Return the user object that belongs to this member."""
 	user_name = get_user_name(member_name)
-	if user_name:
-		return frappe.get_doc("User", user_name)
-	else:
-		return None
+	return frappe.get_doc("User", user_name) if user_name else None
 
 
 def get_user_name(member_name: str):

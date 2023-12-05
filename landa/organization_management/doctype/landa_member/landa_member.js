@@ -41,12 +41,16 @@ frappe.ui.form.on("LANDA Member", {
 		if (!frm.is_new()) {
 			frappe.model.with_doctype("User", () => {
 				// model needed for `frappe.perm.has_perm`
-				if (!frappe.perm.has_perm("User", 0, "create")) return;
+				if (!frappe.perm.has_perm("User", 0, "create")) {
+					return;
+				}
 
 				frappe.db
 					.get_value("User", { landa_member: frm.doc.name }, "name")
 					.then((resp) => {
-						if (resp.message.name) return;
+						if (resp.message.name) {
+							return;
+						}
 
 						frm.add_custom_button(__("Create User"), function () {
 							frm.make_methods["User"]();

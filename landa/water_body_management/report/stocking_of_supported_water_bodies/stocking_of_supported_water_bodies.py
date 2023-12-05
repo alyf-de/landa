@@ -137,14 +137,12 @@ def get_data(filters):
 			get_supported_water_bodies(member_data.local_organization),
 		)
 
-	data = frappe.get_all(
+	return frappe.get_all(
 		"Stocking Measure",
 		fields=[column.get("fieldname") for column in COLUMNS],
 		filters=filters,
 		or_filters=or_filters,
 	)
-
-	return data
 
 
 def execute(filters=None):
