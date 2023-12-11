@@ -39,7 +39,7 @@
    },
    {
     "action": "frappe.ui.toolbar.show_about()",
-    "hidden": 1,
+    "hidden": 0,
     "is_standard": 1,
     "item_label": "About",
     "item_type": "Action",
@@ -60,17 +60,6 @@
     "route": "/contact"
    },
    {
-    "action": "",
-    "hidden": 0,
-    "is_standard": 0,
-    "item_label": "About",
-    "item_type": "Route",
-    "parent": "Navbar Settings",
-    "parentfield": "help_dropdown",
-    "parenttype": "Navbar Settings",
-    "route": "/about"
-   },
-   {
     "action": "frappe.ui.toolbar.show_shortcuts(event)",
     "hidden": 0,
     "is_standard": 1,
@@ -80,10 +69,21 @@
     "parentfield": "help_dropdown",
     "parenttype": "Navbar Settings",
     "route": null
+   },
+   {
+    "action": null,
+    "hidden": 0,
+    "is_standard": 0,
+    "item_label": "Anleitungen",
+    "item_type": "Route",
+    "parent": "Navbar Settings",
+    "parentfield": "help_dropdown",
+    "parenttype": "Navbar Settings",
+    "route": "/help-page"
    }
   ],
   "logo_width": 0,
-  "modified": "2023-03-24 19:37:02.443487",
+  "modified": "2023-12-11 20:22:16.733304",
   "name": "Navbar Settings",
   "parent": null,
   "parentfield": null,
@@ -91,7 +91,7 @@
   "settings_dropdown": [
    {
     "action": null,
-    "hidden": 0,
+    "hidden": 1,
     "is_standard": 1,
     "item_label": "My Profile",
     "item_type": "Route",
