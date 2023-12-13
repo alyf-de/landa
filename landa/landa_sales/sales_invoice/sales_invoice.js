@@ -5,4 +5,9 @@ frappe.ui.form.on("Sales Invoice", {
 	shipping_contact: function (frm) {
 		landa.selling.set_contact_details(frm, "shipping");
 	},
+	refresh: function (frm) {
+		if (frm.is_new()) {
+			landa.utils.set_company_and_customer(frm);
+		}
+	},
 });

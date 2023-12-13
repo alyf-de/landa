@@ -3,9 +3,13 @@
 
 frappe.ui.form.on("Sales Order",  {
     setup: function (frm) {
-		frm.set_query("shipping_contact", erpnext.queries.contact_query);
-	},
+        frm.set_query("shipping_contact", erpnext.queries.contact_query);
+    },
     refresh: function (frm) {
+        if (frm.is_new()) {
+            landa.utils.set_company_and_customer(frm);
+        }
+
         frm.set_query("item_code", "items", function(doc) {
             return {
                 query: "erpnext.controllers.queries.item_query",

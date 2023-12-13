@@ -3,6 +3,10 @@ frappe.ui.form.on("Delivery Note", {
         frm.set_query("shipping_contact", erpnext.queries.contact_query);
     },
     refresh: function (frm) {
+        if (frm.is_new()) {
+            landa.utils.set_company_and_customer(frm);
+        }
+
         frm.set_query("item_code", "items", function () {
             const filters = {
                 valid_from_year: ["<=", frm.doc.year_of_settlement],
