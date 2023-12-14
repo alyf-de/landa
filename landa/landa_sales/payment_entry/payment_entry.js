@@ -2,6 +2,10 @@ frappe.ui.form.on('Payment Entry', {
     refresh(frm) {
         frm.trigger('set_year_of_settlement');
         frm.trigger('fetch_organization');
+
+        if (frm.is_new()) {
+            landa.utils.set_company_and_customer(frm, "company", "party");
+        }
     },
     set_year_of_settlement(frm) {
         // Do nothing if year_of_settlement is already set

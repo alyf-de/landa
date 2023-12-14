@@ -26,13 +26,13 @@ landa.utils = {
 
 		return current_month < 10 ? current_year : current_year + 1;
 	},
-	set_company_and_customer: function (frm) {
+	set_company_and_customer: function (frm, company_field, customer_field) {
 		if (!frm.doc.company && frappe.boot.landa.company) {
-			frm.set_value("company", frappe.boot.landa.company);
+			frm.set_value(company_field || "company", frappe.boot.landa.company);
 		}
 
 		if (!frm.doc.customer && frappe.boot.landa.local_organization) {
-			frm.set_value("customer", frappe.boot.landa.local_organization);
+			frm.set_value(customer_field || "customer", frappe.boot.landa.local_organization);
 		}
 	},
 };
