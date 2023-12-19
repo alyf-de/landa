@@ -58,6 +58,9 @@ Get a list of water bodies along with their main fish species and special provis
 
     - `id` (optional): return only data of the water body with this ID.
     - `fishing_area` (optional): return only water bodies in this fishing_area.
+    - `only_id` (optional, 1 or 0, default: 0): return only the IDs of the water bodies.
+
+The parameters `only_id` and `fishing_area` can be combined. The other parameters are mutually exclusive.
 
 ### Example Requests
 
@@ -81,11 +84,18 @@ Get all water bodies in a specific fishing area:
 curl --location "$BASE_URL/api/method/landa.api.water_body?fishing_area=C09"
 ```
 
+Get the IDs of all water bodies:
+
+```bash
+curl --location "$BASE_URL/api/method/landa.api.water_body?only_id=1"
+```
+
 ### Example Response
 
+> [!NOTE]
 > Only public files attached to Water Bodies are returned via the API. They are all absolute links to the resource.
 
-The response is always a list of dictionaries, like this:
+When `only_id` is not enabled, the response is a list of dictionaries, like this:
 
 ```json
 {
@@ -129,6 +139,17 @@ The response is always a list of dictionaries, like this:
                 "https://lvsa-landa.de/files/doc-1.pdf"
             ]
         }
+    ]
+}
+```
+
+When `only_id` is enabled, the response is a list of strings, like this:
+
+```json
+{
+    "message": [
+        "C03-111",
+        "C03-112",
     ]
 }
 ```
