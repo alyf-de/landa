@@ -31,8 +31,13 @@ landa.utils = {
 			frm.set_value(company_field || "company", frappe.boot.landa.company);
 		}
 
-		if (!frm.doc.customer && frappe.boot.landa.local_organization) {
-			frm.set_value(customer_field || "customer", frappe.boot.landa.local_organization);
+		_customer_field = customer_field || "customer";
+		if (
+			!frm.doc[_customer_field] &&
+			frappe.boot.landa.local_organization &&
+			!frappe.boot.landa.local_organization.endsWith("-000")
+		) {
+			frm.set_value(_customer_field, frappe.boot.landa.local_organization);
 		}
 	},
 };
