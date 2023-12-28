@@ -3,12 +3,12 @@ from typing import Dict, List
 
 import frappe
 
+from landa.water_body_management.change_log import ChangeLog
 from landa.water_body_management.doctype.fish_species.fish_species import get_fish_species_data
 from landa.water_body_management.doctype.water_body.water_body import (
 	build_water_body_cache,
 	build_water_body_data,
 )
-from landa.water_body_management.utils import get_changed_data, get_formatted_changes
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
@@ -122,8 +122,7 @@ def change_log(from_datetime: str):
 	if not isinstance(from_datetime, str):
 		raise TypeError("`from_datetime` must be a string")
 
-	result = get_changed_data(from_datetime)
-	return get_formatted_changes(result)
+	return ChangeLog().get_logs(from_datetime=from_datetime)
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
