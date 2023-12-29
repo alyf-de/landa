@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-27 16:27:11.125090",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enable_firebase_notifications",
+  "api_file_path",
+  "column_break_sidox",
+  "project_id",
+  "firebase_topic"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enable_firebase_notifications",
+   "fieldtype": "Check",
+   "label": "Enable Firebase Notifications"
+  },
+  {
+   "depends_on": "enable_firebase_notifications",
+   "description": "Path to Uploaded Firebase API Key File\n<br>\nEg. /private/files/project-1234-firebase-adminsdk-abcd-123456abcde.json",
+   "fieldname": "api_file_path",
+   "fieldtype": "Attach",
+   "label": "API File Path",
+   "mandatory_depends_on": "enable_firebase_notifications"
+  },
+  {
+   "fieldname": "column_break_sidox",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "enable_firebase_notifications",
+   "description": "Firebase Topic to push notifications to\n<br>\nEg. footballfans",
+   "fieldname": "firebase_topic",
+   "fieldtype": "Data",
+   "label": "Firebase Topic",
+   "mandatory_depends_on": "enable_firebase_notifications"
+  },
+  {
+   "depends_on": "enable_firebase_notifications",
+   "fieldname": "project_id",
+   "fieldtype": "Data",
+   "label": "Project ID",
+   "mandatory_depends_on": "enable_firebase_notifications"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-01-05 19:16:51.910307",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Water Body Management Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
