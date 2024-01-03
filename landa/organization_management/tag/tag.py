@@ -10,7 +10,9 @@ def has_permission(doc, user):
 	if not user:
 		user = frappe.session.user
 
-	if "System Manager" in frappe.get_roles(user):
+	user_roles = frappe.get_roles(user)
+
+	if "System Manager" in user_roles or "LANDA State Organization Employee" in user_roles:
 		return True
 
 	allowed_organizations = frappe.get_all(
@@ -27,7 +29,9 @@ def get_permission_query_conditions(user):
 	if not user:
 		user = frappe.session.user
 
-	if "System Manager" in frappe.get_roles(user):
+	user_roles = frappe.get_roles(user)
+
+	if "System Manager" in user_roles or "LANDA State Organization Employee" in user_roles:
 		return None
 
 	return """exists (
