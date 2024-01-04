@@ -2,6 +2,8 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe.core.doctype.user_permission.user_permission import get_permitted_documents
+from frappe.desk.doctype.tag.tag import add_tag as frappe_add_tag
 
 from landa.utils import get_current_member_data
 
@@ -15,11 +17,9 @@ def has_permission(doc, user):
 	if "System Manager" in user_roles or "LANDA State Organization Employee" in user_roles:
 		return True
 
-	allowed_organizations = frappe.get_all(
-		"User Permission", filters={"user": user, "allow": "Organization"}, pluck="for_value"
-	)
-
-	if any(org.organization in allowed_organizations for org in doc.get("organizations")):
+	if any(
+		org.organization in get_permitted_documents("Organization") for org in doc.get("organizations")
+	):
 		return True
 
 	return False
@@ -34,19 +34,14 @@ def get_permission_query_conditions(user):
 	if "System Manager" in user_roles or "LANDA State Organization Employee" in user_roles:
 		return None
 
-	return """exists (
-                select 1 from `tabTag Organization`
-                where
-                    `tabTag Organization`.parent = `tabTag`.name and
-                    `tabTag Organization`.organization in (
-                        select for_value
-                        from `tabUser Permission`
-                        where `allow` = 'Organization'
-                        and `user` = {user}
-                    )
-              )""".format(
-		user=frappe.db.escape(user)
-	)
+	permitted_organizations = ", ".join(f"'{org}'" for org in get_permitted_documents("Organization"))
+
+	return f"""exists (
+				select 1 from `tabTag Organization`
+				where
+					`tabTag Organization`.parent = `tabTag`.name and
+					`tabTag Organization`.organization in ({permitted_organizations})
+			)"""
 
 
 def before_insert(doc, method):
@@ -64,4 +59,4 @@ def add_tag(tag, dt, dn, color=None):
 			tag_doc.append("organizations", {"organization": organization})
 			tag_doc.save(ignore_permissions=True)
 
-	return frappe.desk.doctype.tag.tag.add_tag(tag, dt, dn, color)
+	return frappe_add_tag(tag, dt, dn, color)
