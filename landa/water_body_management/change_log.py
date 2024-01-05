@@ -97,6 +97,8 @@ class ChangeLog:
 		)
 
 	def _get_deleted_document_query(self, from_datetime: str):
+		# Deleted Document DocType is not joined with File DocType
+		# because the file does not exist anymore
 		deleted_document = frappe.qb.DocType("Deleted Document")
 		return (
 			frappe.qb.from_(deleted_document)
@@ -170,7 +172,7 @@ class ChangeLog:
 			and changed_data.attached_to_doctype != "Water Body"
 		):
 			# Filter deleted documents that are not attached to water body
-			return []
+			return None
 
 		if entry.doctype == "Water Body Management Local Organization":
 			if cint(entry.deleted):

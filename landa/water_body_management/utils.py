@@ -1,11 +1,18 @@
 import json
 
-import firebase_admin
 import frappe
-from firebase_admin import credentials, messaging
 from frappe import _
 
+from landa.firebase_connector import FirebaseNotification
 from landa.water_body_management.change_log import ChangeLog
+
+VALID_DOCTYPES = [
+	"Water Body",
+	"Fish Species",
+	"File",
+	"Water Body Management Local Organization",
+	"Water Body Rules",
+]
 
 
 def create_version_log(doc, event):
@@ -24,36 +31,67 @@ def create_version_log(doc, event):
 
 
 def create_firebase_notification(doc, event):
-	"""Enqueue this on hooks.py to send firebase notification on document creation"""
-	enabled, file_path = frappe.get_value(
-		"Water Body Management Settings", None, ["enable_firebase_notifications", "api_file_path"]
-	)
+	"""Enqueue this on hooks.py to send firebase notification on doc event"""
+	if not doc_eligible(doc):
+		return
+
+	enabled, file_path, topic, project_id = get_firebase_settings()
 	if not enabled:
 		return
 
 	# doc must have keys same as `ChangeLog()._get_changed_data` query
-	change_log = ChangeLog().format_change(doc)
+	formatted_doc = format_doc_for_change_log(doc)
+	change_log = ChangeLog().format_change(formatted_doc)
+	if not change_log:
+		return
 
-	cred = credentials.Certificate(file_path)
-	firebase_admin.initialize_app(cred)
+	# Send notification to topic
+	try:
+		fcm = FirebaseNotification(file_path, project_id)
+		response = fcm.send_to_topic(topic, change_log)
+		response.raise_for_status()
+	except Exception:
+		frappe.log_error(message=frappe.get_traceback(), title="Firebase Notification Error")
 
-	# `create_firebase_notification` must be triggered on
-	# Version Doc creation:
-	# 	for: "Water Body", "Fish Species", "File","Water Body Management Local Organization", "Water Body Rules",
-	# 	File if: file's ref docs is Water Body
-	# Deleted Document Doc creation:
-	# 	for: "Water Body", "Fish Species", "File","Water Body Management Local Organization"
-	# Format and send notification
-	message = messaging.Message(
-		notification=messaging.Notification(
-			title="Water Body" + "Created/Updated/Deleted",
-			body=json.dumps(change_log),
-		),
-		token="<TOKEN>",
+
+def doc_eligible(doc):
+	"""
+	Check if document is eligible for firebase notification
+	"""
+	if doc.doctype == "Version":
+		if doc.ref_doctype not in VALID_DOCTYPES:
+			return False
+
+		if doc.ref_doctype == "File":
+			return frappe.db.get_value("File", doc.docname, "attached_to_doctype") == "Water Body"
+
+		return True
+
+	if doc.doctype == "Deleted Document":
+		return doc.deleted_doctype in VALID_DOCTYPES[:-1]
+
+
+def format_doc_for_change_log(doc):
+	"""Format doc for change log"""
+	doc.attached_to_name = None
+
+	if doc.doctype == "Version":
+		if doc.ref_doctype == "File":
+			doc.attached_to_name = frappe.db.get_value("File", doc.docname, "attached_to_name")
+		doc.doctype = doc.ref_doctype
+		doc.deleted = 0
+	elif doc.doctype == "Deleted Document":
+		doc.doctype = doc.deleted_doctype
+		doc.docname = doc.deleted_name
+		doc.deleted = 1
+
+	return doc
+
+
+def get_firebase_settings():
+	"""Get Firebase Settings"""
+	return frappe.get_cached_value(
+		"Water Body Management Settings",
+		None,
+		["enable_firebase_notifications", "api_file_path", "firebase_topic", "project_id"],
 	)
-
-	# Send a message to the device corresponding to the provided
-	# registration token.
-	response = messaging.send(message)
-	# Response is a message ID string.
-	print("Successfully sent message:", response)
