@@ -1,5 +1,4 @@
 import json
-from typing import List
 
 import frappe
 from frappe.query_builder.custom import ConstantColumn
@@ -61,6 +60,8 @@ class ChangeLog:
 		change_log = self._build_modified_change_log(entry, changed_data, event)
 		if change_log:
 			return change_log
+
+		return None
 
 	def _get_version_log_query(self, from_datetime: str):
 		version = frappe.qb.DocType("Version")

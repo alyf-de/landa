@@ -70,6 +70,8 @@ def doc_eligible(doc):
 	if doc.doctype == "Deleted Document":
 		return doc.deleted_doctype in VALID_DOCTYPES[:-1]
 
+	return False
+
 
 def format_doc_for_change_log(doc):
 	"""Format doc for change log"""
