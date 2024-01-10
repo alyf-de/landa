@@ -1,3 +1,5 @@
+import json
+
 import frappe
 from frappe import _
 
@@ -45,6 +47,9 @@ def create_firebase_notification(doc, event):
 	change_log = ChangeLog().format_change(formatted_doc)
 	if not change_log:
 		return
+
+	# firebase doesn't allow nested objects
+	change_log["changes"] = json.dumps(change_log["changes"])
 
 	# Send notification to topic
 	frappe.enqueue(
