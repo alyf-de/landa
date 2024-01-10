@@ -1,5 +1,3 @@
-import json
-
 import frappe
 from frappe import _
 
@@ -46,12 +44,23 @@ def create_firebase_notification(doc, event):
 		return
 
 	# Send notification to topic
+	frappe.enqueue(
+		send_firebase_notification,
+		queue="default",
+		file_path=file_path,
+		project_id=project_id,
+		topic=topic,
+		change_log=change_log,
+	)
+
+
+def send_firebase_notification(file_path, project_id, topic, change_log):
 	try:
 		fcm = FirebaseNotification(file_path, project_id)
 		response = fcm.send_to_topic(topic, change_log)
 		response.raise_for_status()
 	except Exception:
-		frappe.log_error(message=frappe.get_traceback(), title="Firebase Notification Error")
+		frappe.log_error(message=frappe.get_traceback(), title=_("Firebase Notification Error"))
 
 
 def doc_eligible(doc):

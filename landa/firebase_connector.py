@@ -31,7 +31,7 @@ class FirebaseNotification:
 	def headers(self):
 		"""Get headers for authorized requests."""
 		return {
-			"Authorization": "Bearer " + self.token,
+			"Authorization": f"Bearer {self.token}",
 			"Content-Type": "application/json; UTF-8",
 		}
 
