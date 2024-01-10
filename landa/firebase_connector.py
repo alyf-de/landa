@@ -1,5 +1,3 @@
-import json
-
 import google.auth.transport.requests
 import requests
 from google.oauth2 import service_account
@@ -32,7 +30,6 @@ class FirebaseNotification:
 		"""Get headers for authorized requests."""
 		return {
 			"Authorization": f"Bearer {self.token}",
-			"Content-Type": "application/json; UTF-8",
 		}
 
 	def send_to_topic(self, topic: str, data: dict = None) -> requests.Response:
@@ -40,14 +37,12 @@ class FirebaseNotification:
 		return requests.post(
 			self.url,
 			headers=self.headers,
-			data=json.dumps(
-				{
-					"message": {
-						"topic": topic,
-						"data": data,
-					}
+			json={
+				"message": {
+					"topic": topic,
+					"data": data,
 				}
-			),
+			},
 		)
 
 	def send_to_token(self, token: str, data: dict = None) -> requests.Response:
@@ -55,12 +50,10 @@ class FirebaseNotification:
 		return requests.post(
 			self.url,
 			headers=self.headers,
-			data=json.dumps(
-				{
-					"message": {
-						"token": token,
-						"data": data,
-					}
+			json={
+				"message": {
+					"token": token,
+					"data": data,
 				}
-			),
+			},
 		)
