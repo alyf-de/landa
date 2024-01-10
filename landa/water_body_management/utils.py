@@ -30,6 +30,9 @@ def create_version_log(doc, event):
 
 def create_firebase_notification(doc, event):
 	"""Enqueue this on hooks.py to send firebase notification on doc event"""
+	if frappe.flags.in_test or frappe.flags.in_patch or frappe.flags.in_install:
+		return
+
 	if not doc_eligible(doc):
 		return
 
