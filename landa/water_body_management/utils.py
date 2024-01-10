@@ -54,6 +54,7 @@ def create_firebase_notification(doc, event):
 		project_id=project_id,
 		topic=topic,
 		change_log=change_log,
+		now=frappe.conf.developer_mode,
 	)
 
 
