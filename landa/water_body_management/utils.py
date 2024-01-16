@@ -67,10 +67,12 @@ def create_firebase_notification(doc, event):
 def send_firebase_notification(file_path, project_id, topic, change_log):
 	try:
 		fcm = FirebaseNotification(file_path, project_id)
-		response = fcm.send_to_topic(topic, change_log)
-		response.raise_for_status()
+		fcm.send_to_topic(topic, change_log)
 	except Exception:
-		frappe.log_error(message=frappe.get_traceback(), title=_("Firebase Notification Error"))
+		frappe.log_error(
+			message=frappe.get_traceback(),
+			title=_("Firebase Notification Error"),
+		)
 
 
 def doc_eligible(doc):

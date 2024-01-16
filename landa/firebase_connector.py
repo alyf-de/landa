@@ -1,6 +1,7 @@
 import google.auth.transport.requests
 import requests
 from google.oauth2 import service_account
+from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 
 class FirebaseNotification:
@@ -34,26 +35,19 @@ class FirebaseNotification:
 
 	def send_to_topic(self, topic: str, data: dict = None) -> requests.Response:
 		"""Send a message to a topic."""
-		return requests.post(
-			self.url,
-			headers=self.headers,
-			json={
-				"message": {
-					"topic": topic,
-					"data": data,
-				}
-			},
-		)
+		return self.send_request(data={"topic": topic, "data": data})
 
 	def send_to_token(self, token: str, data: dict = None) -> requests.Response:
 		"""Send a message to a token."""
-		return requests.post(
-			self.url,
-			headers=self.headers,
-			json={
-				"message": {
-					"token": token,
-					"data": data,
-				}
-			},
-		)
+		return self.send_request(data={"token": token, "data": data})
+
+	@retry(
+		retry=retry_if_exception_type(requests.RequestException),
+		stop=stop_after_attempt(3),
+		wait=wait_exponential(multiplier=1, min=4, max=10),
+	)
+	def send_request(self, data: dict) -> requests.Response:
+		"""Send a POST request."""
+		response = requests.post(self.url, headers=self.headers, json={"message": data})
+		response.raise_for_status()
+		return response

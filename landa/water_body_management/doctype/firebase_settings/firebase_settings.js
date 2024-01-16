@@ -35,6 +35,7 @@ frappe.ui.form.on("Firebase Settings", {
 						callback: function(r) {
 							if (r.message && !r.exc) {
 								frm.set_value("project_id", r.message.project_id);
+								frm.save();
 							}
 						}
 					});
