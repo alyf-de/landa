@@ -5,5 +5,5 @@
 import unittest
 
 
-class TestWaterBodyManagementSettings(unittest.TestCase):
+class TestFirebaseSettings(unittest.TestCase):
 	pass

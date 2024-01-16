@@ -38,7 +38,8 @@ def create_firebase_notification(doc, event):
 	if not doc_eligible(doc):
 		return
 
-	enabled, file_path, topic, project_id = get_firebase_settings()
+	file_path = frappe.get_site_path("firebase/credentials.json")
+	enabled, topic, project_id = get_firebase_settings()
 	if not enabled:
 		return
 
@@ -110,10 +111,8 @@ def format_doc_for_change_log(doc):
 
 def get_firebase_settings():
 	"""Get Firebase Settings"""
-	enabled, file_path_in_site, topic, project_id = frappe.get_cached_value(
-		"Water Body Management Settings",
+	return frappe.get_cached_value(
+		"Firebase Settings",
 		None,
-		["enable_firebase_notifications", "api_file_path", "firebase_topic", "project_id"],
+		["enable_firebase_notifications", "firebase_topic", "project_id"],
 	)
-	rel_path = frappe.get_site_path(file_path_in_site.lstrip("/"))
-	return enabled, rel_path, topic, project_id
