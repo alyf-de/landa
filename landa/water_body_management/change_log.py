@@ -42,9 +42,7 @@ class ChangeLog:
 
 		# Modified dependencies (File and WBMLO)
 		if entry.doctype in ("File", "Water Body Management Local Organization"):
-			change_log = self._build_dependency_change_log(entry, changed_data)
-			if change_log:
-				return change_log
+			return self._build_dependency_change_log(entry, changed_data)
 
 		# Created/Deleted Water Body/Fish Species
 		if event in ("Created", "Deleted"):
@@ -57,11 +55,7 @@ class ChangeLog:
 			}
 
 		# Modified Water Body/Fish Species Log
-		change_log = self._build_modified_change_log(entry, changed_data, event)
-		if change_log:
-			return change_log
-
-		return None
+		return self._build_modified_change_log(entry, changed_data, event)
 
 	def _get_version_log_query(self, from_datetime: str):
 		version = frappe.qb.DocType("Version")
@@ -157,8 +151,12 @@ class ChangeLog:
 
 		# Other fields changes
 		for row in changed_data.get("changed"):
-			key = "geojson" if row[0] == "location" else row[0]
-			change_log["changes"].update({key: row[2]})
+			key, data = row[0], row[2]
+			if row[0] == "location":
+				key = "geojson"
+				data = json.loads(row[2]) if row[2] else None
+
+			change_log["changes"][key] = data
 
 		return change_log
 
