@@ -229,13 +229,12 @@ after_migrate = "landa.migrate.after_migrate"
 
 permission_query_conditions = {
 	"Report": "landa.permissions.report_query",
+	"Tag": "landa.organization_management.tag.tag.get_permission_query_conditions",
 }
 
-# has_permission = {
-# 	"Contact": "landa.address_and_contact.has_permission",
-# 	"Address": "landa.address_and_contact.has_permission"
-# 	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
+has_permission = {
+	"Tag": "landa.organization_management.tag.tag.has_permission",
+}
 
 # DocType Class
 # ---------------
@@ -308,6 +307,9 @@ doc_events = {
 	"Water Body Management Local Organization": {
 		"after_insert": "landa.water_body_management.utils.create_version_log",
 	},
+	"Tag": {
+		"before_insert": "landa.organization_management.tag.tag.before_insert",
+	},
 	"Version": {
 		"after_insert": "landa.water_body_management.utils.create_firebase_notification",
 	},
@@ -360,6 +362,7 @@ override_whitelisted_methods = {
 	"erpnext.stock.doctype.delivery_note.delivery_note.make_sales_invoice": "landa.landa_stock.delivery_note.delivery_note.make_landa_sales_invoice",
 	"frappe.desk.like.toggle_like": "landa.utils.no_liked_by",
 	"frappe.contacts.doctype.address.address.get_address_display": "landa.organization_management.address.address.get_address_display",
+	"frappe.desk.doctype.tag.tag.add_tag": "landa.organization_management.tag.tag.add_tag",
 }
 
 #

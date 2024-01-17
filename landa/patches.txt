@@ -31,3 +31,4 @@ landa.patches.add_water_body_title_in_stocking
 landa.patches.multi_to_polygon
 landa.patches.add_award_types
 landa.patches.multi_to_line
+landa.patches.add_organization_to_tags
