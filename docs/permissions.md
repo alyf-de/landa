@@ -35,3 +35,14 @@ erDiagram
     MEMBER-FUNCTION-CATEGORY ||--o{ ROLE : grants
     MEMBER-FUNCTION-CATEGORY ||--o{ USER-PERMISSION : removes
 ```
+
+
+### Tag permissions
+
+We want to restrict tags to Organizations. A user is supposed to see only tags created by people in the same **Organization**.
+
+The default way to achieve this would be adding a link field from **Tag** to **Organization**. Then the user permissions would take care of the rest. However, for tags, the ID is also the visible label. This means that two organizations would not be able to use the same tag.
+
+To prevent this, we added a table named **Tag Organization** to the **Tag** doctype. When a new tag is created, the creator's organization is added to this table. We also added a custom permission query which checks if the user's organization is in this table. This way users can only see tags created by people in the same organization.
+
+See https://github.com/alyf-de/landa/pull/254 for details.
