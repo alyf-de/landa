@@ -17,12 +17,8 @@ def has_permission(doc, user):
 	if "System Manager" in user_roles or "LANDA State Organization Employee" in user_roles:
 		return True
 
-	if any(
-		org.organization in get_permitted_documents("Organization") for org in doc.get("organizations")
-	):
-		return True
-
-	return False
+	permitted_documents = get_permitted_documents("Organization")
+	return any(org.organization in permitted_documents for org in doc.get("organizations"))
 
 
 def get_permission_query_conditions(user):
