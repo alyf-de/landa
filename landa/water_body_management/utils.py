@@ -38,9 +38,8 @@ def create_firebase_notification(doc, event):
 	if not doc_eligible(doc):
 		return
 
-	file_path = frappe.get_site_path("firebase/credentials.json")
-	enabled, topic, project_id = get_firebase_settings()
-	if not enabled:
+	firebase_settings = frappe.get_single("Firebase Settings")
+	if not firebase_settings.enable_firebase_notifications or not firebase_settings.has_credentials:
 		return
 
 	# doc must have keys same as `ChangeLog()._get_changed_data` query
@@ -56,9 +55,9 @@ def create_firebase_notification(doc, event):
 	frappe.enqueue(
 		send_firebase_notification,
 		queue="default",
-		file_path=file_path,
-		project_id=project_id,
-		topic=topic,
+		file_path=firebase_settings.credentials_path,
+		project_id=firebase_settings.project_id,
+		topic=firebase_settings.firebase_topic,
 		change_log=change_log,
 		now=frappe.conf.developer_mode,
 	)
@@ -109,12 +108,3 @@ def format_doc_for_change_log(doc):
 		doc.deleted = 1
 
 	return doc
-
-
-def get_firebase_settings():
-	"""Get Firebase Settings"""
-	return frappe.get_cached_value(
-		"Firebase Settings",
-		None,
-		["enable_firebase_notifications", "firebase_topic", "project_id"],
-	)
