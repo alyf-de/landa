@@ -316,6 +316,9 @@ doc_events = {
 	"Deleted Document": {
 		"after_insert": "landa.water_body_management.utils.create_firebase_notification",
 	},
+	"Payment Reconciliation": {
+		"onload": "landa.landa_sales.payment_reconciliation.payment_reconciliation.onload",
+	},
 }
 
 # Scheduled Tasks
