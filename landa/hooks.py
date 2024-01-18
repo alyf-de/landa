@@ -185,6 +185,7 @@ doctype_js = {
 	"User": "organization_management/user/user.js",
 	"Customer": "landa_sales/customer/customer.js",
 	"Water Body Rules": "public/js/beautify_1.14.9.min.js",
+	"Payment Reconciliation": "landa_sales/payment_reconciliation/payment_reconciliation.js",
 }
 doctype_list_js = {
 	"Report": "scripts/report_list.js",
