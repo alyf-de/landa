@@ -13,13 +13,13 @@ class FirebaseSettings(Document):
 	def validate(self):
 		if self.enable_firebase_notifications and not self.project_id:
 			frappe.throw(
-				msg=_("Please upload the Firebase API file."),
+				msg=_("Please upload a Firebase credentials file."),
 				title=_("Missing Project ID"),
 			)
 
 		if self.enable_firebase_notifications and not self.has_credentials:
 			frappe.throw(
-				msg=_("Please upload the Credentials file."),
+				msg=_("Please upload a Firebase credentials file."),
 				title=_("Missing Credentials"),
 			)
 
