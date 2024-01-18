@@ -31,10 +31,6 @@ class FirebaseSettings(Document):
 	def has_credentials(self):
 		return self.credentials_path.exists()
 
-	@frappe.whitelist()
-	def needs_credentials(self):
-		return not self.has_credentials
-
 
 @frappe.whitelist()
 def upload_api_file(*args, **kwargs):

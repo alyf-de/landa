@@ -3,11 +3,7 @@
 
 frappe.ui.form.on("Firebase Settings", {
 	refresh: (frm) => {
-		frm.call("needs_credentials").then(({ message }) => {
-			if (message) {
-				frm.events.add_upload_credentials_button(frm);
-			}
-		});
+		frm.events.add_upload_credentials_button(frm);
 	},
 
 	add_upload_credentials_button: (frm) => {
@@ -27,8 +23,6 @@ frappe.ui.form.on("Firebase Settings", {
 					if (frm.is_dirty()) {
 						// project id might be unchanged
 						frm.save();
-					} else {
-						frm.refresh();
 					}
 				},
 			});
