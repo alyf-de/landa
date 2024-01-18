@@ -310,6 +310,12 @@ doc_events = {
 	"Tag": {
 		"before_insert": "landa.organization_management.tag.tag.before_insert",
 	},
+	"Version": {
+		"after_insert": "landa.water_body_management.utils.create_firebase_notification",
+	},
+	"Deleted Document": {
+		"after_insert": "landa.water_body_management.utils.create_firebase_notification",
+	},
 }
 
 # Scheduled Tasks
