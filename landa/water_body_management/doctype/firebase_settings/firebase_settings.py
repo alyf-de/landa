@@ -20,6 +20,8 @@ class FirebaseSettings(Document):
 
 @frappe.whitelist()
 def upload_api_file(file_url: str, file_id: str):
+	frappe.only_for("System Manager")
+
 	file_data = json.loads(get_file(file_url)[1])
 	project_id = file_data.get("project_id")
 	if not project_id:
