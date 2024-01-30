@@ -47,7 +47,7 @@ frappe.ui.form.on("Organization", {
 			);
 		}
 
-		if (frappe.user.has_role("LANDA Regional Organization Management") && !frm.is_dirty()) {
+		if (!frm.is_dirty() && frm.has_perm("write")) {
 			frm.page.add_menu_item(__("Link Member as Contact"), () => {
 				frappe.prompt(
 					[
