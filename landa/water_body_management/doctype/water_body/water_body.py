@@ -50,6 +50,7 @@ class WaterBody(Document):
 		self.icon_path = None
 		self.icon_preview = None
 		self.draw_restricted_area = 0
+		self.marker_tooltip = None
 
 
 def rebuild_water_body_cache(fishing_area: str = None, enqueued: bool = False):

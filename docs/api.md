@@ -143,6 +143,9 @@ When `only_id` is not enabled, the response is a list of dictionaries, like this
 }
 ```
 
+> [!NOTE]
+> Read more about the `geojson` property [here](geojson.md).
+
 When `only_id` is enabled, the response is a list of strings, like this:
 
 ```json
