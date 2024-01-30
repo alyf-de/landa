@@ -39,6 +39,7 @@
   "custom_marker_section",
   "icon",
   "rotation",
+  "marker_tooltip",
   "draw_restricted_area",
   "column_break_jorfc",
   "icon_path",
@@ -231,7 +232,7 @@
   {
    "fieldname": "icon",
    "fieldtype": "Link",
-   "label": "Icon",
+   "label": "Marker Icon",
    "options": "Custom Icon",
    "permlevel": 2
   },
@@ -239,8 +240,8 @@
    "depends_on": "icon",
    "fieldname": "rotation",
    "fieldtype": "HTML",
-   "label": "Rotation",
-   "options": "<label for=\"icon_rotation\">Drehung</label>\n<input class=\"custom-range\" id=\"icon_rotation\" max=\"180\" min=\"-180\" step=\"15\" type=\"range\">",
+   "label": "Marker Rotation",
+   "options": "<label for=\"icon_rotation\">Marker-Drehung</label>\n<input class=\"custom-range\" id=\"icon_rotation\" max=\"180\" min=\"-180\" step=\"15\" type=\"range\">",
    "permlevel": 2
   },
   {
@@ -274,6 +275,11 @@
    "fieldname": "draw_restricted_area",
    "fieldtype": "Check",
    "label": "Draw Restricted Area"
+  },
+  {
+   "fieldname": "marker_tooltip",
+   "fieldtype": "Data",
+   "label": "Marker Tooltip"
   }
  ],
  "links": [
@@ -290,7 +296,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2023-12-02 23:40:21.167172",
+ "modified": "2024-01-30 19:15:40.621623",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
