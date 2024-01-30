@@ -43,7 +43,9 @@ def create_firebase_notification(doc, event):
 		return
 
 	# doc must have keys same as `ChangeLog()._get_changed_data` query
-	formatted_doc = format_doc_for_change_log(doc)
+	# Important: create a copy of the doc (via as_dict) before modifying, in
+	# order to not update the existing doc.
+	formatted_doc = format_doc_for_change_log(doc.as_dict())
 	change_log = ChangeLog().format_change(formatted_doc)
 	if not change_log:
 		return
