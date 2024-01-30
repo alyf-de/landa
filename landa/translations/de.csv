@@ -77,3 +77,4 @@ This filter will be applied to Journal Entry.,Dieser Filter wird auf Buchungssä
 Unreconciled Entries,Nicht abgeglichene Buchungssätze,
 "If you need to reconcile particular transactions against each other, then please select accordingly. If not, all the transactions will be allocated in FIFO order.","Wenn Sie bestimmte Transaktionen gegeneinander abgleichen möchten, wählen Sie diese bitte aus. Andernfalls werden alle Transaktionen in FIFO-Reihenfolge miteinander verrechnet.",
 No Unreconciled Payments found for this party,Keine nicht abgeglichenen Zahlungen für diese Partei gefunden,
+Issuing statistics,Ausgabestatistik,
