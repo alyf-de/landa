@@ -269,7 +269,7 @@ def rebuild_cache_on_attachment(doc, method):
 		# Water Body has been deleted, cache rebuild is handled by water body
 		return
 
-	if not water_body_data.is_active or not water_body_data.display:
+	if not water_body_data.is_active or not water_body_data.display_in_fishing_guide:
 		return
 
 	if method == "after_delete":
