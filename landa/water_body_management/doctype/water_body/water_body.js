@@ -4,6 +4,7 @@
 frappe.ui.form.on("Water Body", {
 	setup: function (frm) {
 		frm.fields_dict.location.point_to_layer = pointToLayer;
+		frm.fields_dict.location.on_each_feature = onEachFeature;
 	},
 
 	refresh: function (frm) {
@@ -155,5 +156,11 @@ function pointToLayer(geoJsonPoint, latlng) {
 			marker.bindTooltip(geoJsonPoint.properties.tooltip);
 		}
 		return marker;
+	}
+}
+
+function onEachFeature(feature, layer) {
+	if (feature.geometry.type == "Polygon" && feature.properties.is_restricted_area) {
+		layer.setStyle({color: "red"});
 	}
 }
