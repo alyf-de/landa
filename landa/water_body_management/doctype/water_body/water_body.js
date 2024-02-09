@@ -2,6 +2,10 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Water Body", {
+	setup: function (frm) {
+		frm.fields_dict.location.point_to_layer = pointToLayer;
+	},
+
 	refresh: function (frm) {
 		if (
 			!frm.is_new() &&
@@ -120,4 +124,36 @@ function update_polygon_control(draw_control, draw_restricted_area) {
 	}
 
 	draw_control.setDrawingOptions({ polygon: polygon_config });
+}
+
+
+function pointToLayer(geoJsonPoint, latlng) {
+	if (geoJsonPoint.properties.point_type == "circle"){
+		return L.circle(latlng, {radius: geoJsonPoint.properties.radius});
+	} else if (geoJsonPoint.properties.point_type == "circlemarker") {
+		return L.circleMarker(latlng, {radius: geoJsonPoint.properties.radius});
+	} else if (geoJsonPoint.properties.point_type == "custom-icon") {
+		const marker = L.marker(
+			latlng,
+			{
+				icon: L.icon({
+					iconUrl: frappe.boot.icon_map[geoJsonPoint.properties.icon],
+					iconSize: [24, 24],
+				}),
+				title: geoJsonPoint.properties.tooltip,
+				alt: geoJsonPoint.properties.icon,
+			}
+		);
+		marker.options.rotationAngle = geoJsonPoint.properties.rotation_angle;
+		if (geoJsonPoint.properties.tooltip) {
+			marker.bindTooltip(geoJsonPoint.properties.tooltip);
+		}
+		return marker;
+	} else {
+		const marker = L.marker(latlng);
+		if (geoJsonPoint.properties.tooltip) {
+			marker.bindTooltip(geoJsonPoint.properties.tooltip);
+		}
+		return marker;
+	}
 }
