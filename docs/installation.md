@@ -18,6 +18,7 @@ To allow the Angelatlas web-apps to access the API, add the following to `sites/
     "allow_cors": [
         "https://angelatlas.devid.net",
         "https://www.angelatlas-sachsen.de/"
+        "https://angelatlas-sachsen.de/"
     ]
 }
 ```
@@ -30,6 +31,7 @@ Also, for embedding static (uploaded) files and icons, we need to modify the ngi
 map $http_origin $cors_origin {
     default "";
     https://www.angelatlas-sachsen.de $http_origin;
+    https://angelatlas-sachsen.de $http_origin;
     https://angelatlas.devid.net $http_origin;
 }
 
