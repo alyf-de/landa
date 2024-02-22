@@ -9,13 +9,12 @@ frappe.ui.form.on("Member Function", {
 		const query_args = {
 			page_length: 50,
 		};
+
 		if (frappe.user.has_role("LANDA State Organization Employee")) {
 			frm.set_query("member_function_category", () => {
 				return query_args;
 			});
-		}
-
-		if (frappe.user.has_role("LANDA Regional Organization Management")) {
+		} else if (frappe.user.has_role("LANDA Regional Organization Management")) {
 			query_args.filters = {
 				access_level: [
 					"in",
