@@ -5,6 +5,7 @@ frappe.ui.form.on("Water Body", {
 	setup: function (frm) {
 		frm.fields_dict.location.point_to_layer = pointToLayer;
 		frm.fields_dict.location.on_each_feature = onEachFeature;
+		frm.fields_dict.location.customize_draw_controls = customize_draw_controls;
 	},
 
 	refresh: function (frm) {
@@ -163,4 +164,80 @@ function onEachFeature(feature, layer) {
 	if (feature.geometry.type == "Polygon" && feature.properties.is_restricted_area) {
 		layer.setStyle({color: "red"});
 	}
+}
+
+function customize_draw_controls() {
+	const circleToGeoJSON = L.Circle.prototype.toGeoJSON;
+	L.Circle.include({
+		toGeoJSON: function() {
+			const feature = circleToGeoJSON.call(this);
+			feature.properties = {
+				point_type: 'circle',
+				radius: this.getRadius()
+			};
+			return feature;
+		}
+	});
+
+	L.CircleMarker.include({
+		toGeoJSON: function() {
+			const feature = circleToGeoJSON.call(this);
+			feature.properties = {
+				point_type: 'circlemarker',
+				radius: this.getRadius()
+			};
+			return feature;
+		}
+	});
+
+	const markerToGeoJSON = L.Marker.prototype.toGeoJSON;
+	const markerSetPosition = L.Marker.prototype._setPos;
+	L.Marker.include({
+		// Rotation inspired by https://github.com/bbecquet/Leaflet.RotatedMarker/blob/master/leaflet.rotatedMarker.js
+		_setPos: function (pos) {
+			markerSetPosition.call(this, pos);
+			this._applyRotation();
+		},
+
+		_applyRotation: function () {
+			if (this.options.rotationAngle) {
+				this._icon.style[L.DomUtil.TRANSFORM+'Origin'] = 'center';
+
+				const transformStyle = this._icon.style[L.DomUtil.TRANSFORM];
+				if (!transformStyle.includes('rotate')) {
+					this._icon.style[L.DomUtil.TRANSFORM] += ` rotate(${this.options.rotationAngle}deg)`;
+				}
+			}
+		},
+
+		toGeoJSON: function () {
+			const feature = markerToGeoJSON.call(this);
+			if (this.options.icon.options.iconName) {
+				feature.properties = {
+					point_type: 'custom-icon',
+					icon: this.options.icon.options.iconName,
+					rotation_angle: this.options.icon.options.rotationAngle,
+				};
+			}
+			if (this._tooltip && this._tooltip._content) {
+				feature.properties.tooltip = this._tooltip._content;
+			}
+			return feature;
+		},
+	});
+
+	const polygonToGeoJSON = L.Polygon.prototype.toGeoJSON;
+	L.Polygon.include({
+		toGeoJSON: function() {
+			const feature = polygonToGeoJSON.call(this);
+			if (this.options.isRestrictedArea) {
+				feature.properties = {
+					is_restricted_area: true,
+				};
+			}
+			return feature;
+		}
+	});
+
+	L.Icon.Default.imagePath = '/assets/frappe/images/leaflet/';
 }
