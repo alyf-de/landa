@@ -6,6 +6,9 @@ frappe.ui.form.on("Water Body", {
 		frm.fields_dict.location.point_to_layer = pointToLayer;
 		frm.fields_dict.location.on_each_feature = onEachFeature;
 		frm.fields_dict.location.customize_draw_controls = customize_draw_controls;
+		frm.fields_dict.location.bind_leaflet_event_listeners = () => {
+			bind_leaflet_event_listeners(frm.fields_dict.location, () => frm.doc.marker_tooltip);
+		}
 	},
 
 	refresh: function (frm) {
@@ -240,4 +243,21 @@ function customize_draw_controls() {
 	});
 
 	L.Icon.Default.imagePath = '/assets/frappe/images/leaflet/';
+}
+
+
+function bind_leaflet_event_listeners(control, get_tooltip) {
+	control.map.on('draw:created', (e) => {
+		if (e.layerType === 'marker' && get_tooltip()) {
+			e.layer.bindTooltip(get_tooltip());
+		}
+		control.editableLayers.addLayer(e.layer);
+		control.set_value(JSON.stringify(control.editableLayers.toGeoJSON()));
+	});
+
+	control.map.on('draw:deleted draw:edited', (e) => {
+		const {layer} = e;
+		control.editableLayers.removeLayer(layer);
+		control.set_value(JSON.stringify(control.editableLayers.toGeoJSON()));
+	});
 }
