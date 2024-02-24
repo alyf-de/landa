@@ -312,7 +312,7 @@
    "link_fieldname": "landa_member"
   }
  ],
- "modified": "2023-11-27 19:47:52.543138",
+ "modified": "2024-02-24 02:19:29.702795",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
@@ -332,8 +332,7 @@
   },
   {
    "read": 1,
-   "role": "LANDA Member",
-   "write": 1
+   "role": "LANDA Member"
   },
   {
    "create": 1,
@@ -394,5 +393,6 @@
  "search_fields": "full_name",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }
