@@ -2,6 +2,9 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Water Body Rules", {
+	setup: function (frm) {
+		frappe.require("js-beautify.bundle.js");
+	},
 	refresh: function (frm) {
 		frm.add_custom_button(__("Toggle HTML"), function () {
 			frm.trigger("toggle_html");
