@@ -1,11 +1,6 @@
 {
- "charts": [
-  {
-   "chart_name": "LANDA Member Count",
-   "label": "Anzahl Mitglieder"
-  }
- ],
- "content": "[{\"id\":\"P0PdnahuAs\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Anzahl Mitglieder\",\"col\":12}},{\"id\":\"xIaIi09S4t\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"1uTyrJlebP\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Schnellzugriff</span>\",\"col\":12}},{\"id\":\"vSObTmx5FJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Member Data Import\",\"col\":4}},{\"id\":\"kIubCGyGa6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Address List\",\"col\":4}},{\"id\":\"hxillFj4xC\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Contact List\",\"col\":4}},{\"id\":\"TdmgLajXcz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Birthday List\",\"col\":4}},{\"id\":\"pyW2rRoxN5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Award Entry\",\"col\":4}},{\"id\":\"LhkZgoe7J6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Member Function Entry\",\"col\":4}},{\"id\":\"M6BGPcbTdL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Show Organization List\",\"col\":4}},{\"id\":\"4XErd7BVw_\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"RgNOYMq0fd\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Berichte &amp; Stammdaten</span>\",\"col\":12}},{\"id\":\"Vs8PWZl7sT\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"T-qvfB98nf\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"ce1489-Jj0\",\"type\":\"card\",\"data\":{\"card_name\":\"Imports\",\"col\":4}},{\"id\":\"KN8t-FsoLs\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}}]",
+ "charts": [],
+ "content": "[{\"id\":\"1uTyrJlebP\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Schnellzugriff</span>\",\"col\":12}},{\"id\":\"vSObTmx5FJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Member Data Import\",\"col\":4}},{\"id\":\"kIubCGyGa6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Address List\",\"col\":4}},{\"id\":\"hxillFj4xC\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Contact List\",\"col\":4}},{\"id\":\"TdmgLajXcz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Birthday List\",\"col\":4}},{\"id\":\"pyW2rRoxN5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Award Entry\",\"col\":4}},{\"id\":\"LhkZgoe7J6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Member Function Entry\",\"col\":4}},{\"id\":\"M6BGPcbTdL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Show Organization List\",\"col\":4}},{\"id\":\"4XErd7BVw_\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"RgNOYMq0fd\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Berichte &amp; Stammdaten</span>\",\"col\":12}},{\"id\":\"Vs8PWZl7sT\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"T-qvfB98nf\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"ce1489-Jj0\",\"type\":\"card\",\"data\":{\"card_name\":\"Imports\",\"col\":4}},{\"id\":\"KN8t-FsoLs\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}}]",
  "creation": "2021-04-19 18:01:23.947644",
  "custom_blocks": [],
  "docstatus": 0,
@@ -289,7 +284,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-02-24 01:11:41.233183",
+ "modified": "2024-02-24 01:22:59.220711",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
