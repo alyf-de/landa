@@ -11,7 +11,7 @@ execute:frappe.db.sql("UPDATE `tabOrganization` SET location = NULL WHERE TRUE")
 landa.patches.import_ave_locations
 landa.patches.add_names_to_fishing_permit
 landa.patches.link_user_to_member  # 2
-execute:from landa.utils import reset_workspace; reset_workspace("Organization Management")
+execute:from landa.utils import reset_workspace; reset_workspace("Organization Management") # 1
 landa.patches.restrict_members_to_local_group
 landa.patches.member_organization_in_address #1
 execute:from landa.install import add_session_defaults; add_session_defaults()
@@ -32,4 +32,5 @@ landa.patches.multi_to_polygon
 landa.patches.add_award_types
 landa.patches.multi_to_line
 landa.patches.add_organization_to_tags
-execute:from landa.utils import reset_workspace; reset_workspace("Order Management")
+execute:from landa.utils import reset_workspace; reset_workspace("Order Management") # 1
+execute:from landa.utils import reset_workspace; reset_workspace("Water Body Management")
