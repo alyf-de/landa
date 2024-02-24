@@ -37,6 +37,7 @@
    "allow_in_quick_entry": 1,
    "fieldname": "organization",
    "fieldtype": "Link",
+   "ignore_user_permissions": 1,
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
@@ -60,10 +61,11 @@
    "link_fieldname": "fishing_area"
   }
  ],
- "modified": "2022-12-16 16:31:14.502794",
+ "modified": "2024-02-24 01:24:58.682150",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fishing Area",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -101,6 +103,7 @@
  "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "area_name",
  "track_changes": 1
 }
