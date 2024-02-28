@@ -50,8 +50,10 @@ def create_firebase_notification(doc, event):
 	if not change_log:
 		return
 
-	# firebase doesn't allow nested objects
-	change_log["changes"] = json.dumps(change_log["changes"])
+	# for newly created documents, changes don't exist
+	if "changes" in change_log:
+		# firebase doesn't allow nested objects
+		change_log["changes"] = json.dumps(change_log["changes"])
 
 	# Send notification to topic
 	frappe.enqueue(
