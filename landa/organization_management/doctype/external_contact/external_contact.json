@@ -199,7 +199,21 @@
    "read_only": 1
   }
  ],
- "modified": "2024-03-01 16:26:32.968178",
+ "links": [
+  {
+   "link_doctype": "Lease Contract",
+   "link_fieldname": "landlord"
+  },
+  {
+   "link_doctype": "Stocking Measure",
+   "link_fieldname": "supplier"
+  },
+  {
+   "link_doctype": "Stocking Target",
+   "link_fieldname": "supplier"
+  }
+ ],
+ "modified": "2024-03-01 16:28:12.109297",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Contact",
