@@ -64,6 +64,17 @@ server {
 }
 ```
 
+## Increase the file size limit
+
+The default file size limit is 10MB. To allow larger file uploads (e.g. 25MB), add the following to `sites/common_site_config.json`:
+
+```json
+{
+    "..." : "...",
+    "max_file_size": 26214400
+}
+```
+
 ## 1. Create a site
 
 ```
