@@ -17,13 +17,15 @@ frappe.ui.form.on("Catch Log Entry", {
 		}
 	},
 	refresh: (frm) => {
-		if (frm.doc.docstatus == 0 && !frm.is_new()) {
+		if (!frm.is_new() && !frappe.workflow.is_read_only(frm.doc.doctype, frm.doc.name)) {
 			frm.add_custom_button(__("New Catch Log Entry"), () => {
 				frappe.new_doc(frm.doctype, {
 					organization: frm.doc.organization,
 					year: frm.doc.year,
 				});
 			});
+
+			frm.add_custom_button(__("Delete"), () => frm.savetrash());
 		}
 	},
 });
