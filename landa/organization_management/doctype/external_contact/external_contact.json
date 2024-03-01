@@ -68,8 +68,7 @@
    "allow_in_quick_entry": 1,
    "fieldname": "last_name",
    "fieldtype": "Data",
-   "label": "Last Name",
-   "reqd": 1
+   "label": "Last Name"
   },
   {
    "fieldname": "column_break_7",
@@ -166,6 +165,7 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Institution or Company Name",
+   "reqd": 1,
    "search_index": 1
   },
   {
@@ -199,7 +199,7 @@
    "read_only": 1
   }
  ],
- "modified": "2024-03-01 16:22:28.062892",
+ "modified": "2024-03-01 16:26:32.968178",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Contact",
