@@ -1,0 +1,15 @@
+[
+	{
+		"doctype": "External Contact",
+		"external_organization_name": "Test External Organization",
+		"organization": "REG"
+	},
+	{
+		"doctype": "External Contact",
+		"first_name": "Jane",
+		"last_name": "Doe",
+		"date_of_birth": "1990-01-01",
+		"external_organization_name": "Test External Organization 2",
+		"organization": "REG"
+	}
+]
