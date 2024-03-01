@@ -290,7 +290,7 @@
    "link_fieldname": "stocking_target"
   }
  ],
- "modified": "2023-10-18 13:12:48.064391",
+ "modified": "2024-03-01 13:43:53.668755",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",
@@ -335,6 +335,7 @@
    "write": 1
   },
   {
+   "print": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA Local Water Body Management"
