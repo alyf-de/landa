@@ -9,9 +9,9 @@ frappe.ui.form.on('External Contact', {
 
         // Display Address and Contact only after the External Contact has been created,
         // not on the initial form.
-        frm.toggle_display(['section_address_and_contact'], !frm.doc.__islocal);
+        frm.toggle_display(['section_address_and_contact'], !frm.is_new());
 
-        if (frm.doc.__islocal) {
+        if (frm.is_new()) {
             frappe.contacts.clear_address_and_contact(frm);
         }
         else {
