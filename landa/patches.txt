@@ -32,10 +32,6 @@ landa.patches.multi_to_polygon
 landa.patches.add_award_types
 landa.patches.multi_to_line
 landa.patches.add_organization_to_tags
-<<<<<<< HEAD
 execute:from landa.utils import reset_workspace; reset_workspace("Order Management") # 1
-execute:from landa.utils import reset_workspace; reset_workspace("Water Body Management")
-=======
-execute:from landa.utils import reset_workspace; reset_workspace("Order Management")
 landa.patches.link_external_contact_to_regional_organization
->>>>>>> 331c34b4 (feat(External Contact): link to regional organization (LAN-802))
+execute:from landa.utils import reset_workspace; reset_workspace("Water Body Management")
