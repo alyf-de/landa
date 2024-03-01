@@ -33,4 +33,5 @@ landa.patches.add_award_types
 landa.patches.multi_to_line
 landa.patches.add_organization_to_tags
 execute:from landa.utils import reset_workspace; reset_workspace("Order Management") # 1
+landa.patches.link_external_contact_to_regional_organization
 execute:from landa.utils import reset_workspace; reset_workspace("Water Body Management")

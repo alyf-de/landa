@@ -12,6 +12,7 @@ from frappe.model.document import Document
 from frappe.model.naming import make_autoname, revert_series_if_last
 
 from landa.organization_management.doctype.landa_member.landa_member import get_full_name
+from landa.utils import get_current_member_data
 
 
 class ExternalContact(Document):
@@ -26,8 +27,10 @@ class ExternalContact(Document):
 
 		self.name = make_autoname("EXT-" + self.organization + "-.####", "External Contact")
 
-	def validate(self):
+	def before_validate(self):
 		self.full_name = get_full_name(self.first_name, self.last_name)
+		if not self.organization:
+			self.organization = get_current_member_data().regional_organization
 
 	def onload(self):
 		load_address_and_contact(self)
