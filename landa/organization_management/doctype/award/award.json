@@ -94,7 +94,7 @@
   }
  ],
  "links": [],
- "modified": "2023-11-16 19:11:54.888522",
+ "modified": "2024-03-01 12:32:50.313821",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Award",
@@ -114,6 +114,7 @@
    "write": 1
   },
   {
+   "print": 1,
    "read": 1,
    "role": "LANDA Member"
   },
@@ -121,6 +122,7 @@
    "create": 1,
    "delete": 1,
    "export": 1,
+   "print": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA State Organization Employee",
@@ -131,6 +133,7 @@
    "delete": 1,
    "export": 1,
    "import": 1,
+   "print": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA Regional Organization Management",
@@ -138,12 +141,14 @@
   },
   {
    "export": 1,
+   "print": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA Local Organization Management"
   },
   {
    "export": 1,
+   "print": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA Local Group Management"

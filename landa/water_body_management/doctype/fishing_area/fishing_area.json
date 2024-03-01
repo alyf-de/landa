@@ -60,7 +60,7 @@
    "link_fieldname": "fishing_area"
   }
  ],
- "modified": "2022-12-16 16:31:14.502794",
+ "modified": "2024-03-01 13:44:50.635294",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fishing Area",
@@ -80,6 +80,7 @@
   },
   {
    "export": 1,
+   "print": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA Member"

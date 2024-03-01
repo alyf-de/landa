@@ -153,7 +153,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-08 15:46:01.702285",
+ "modified": "2024-03-01 12:36:10.047953",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Yearly Fishing Permit",
@@ -184,6 +184,7 @@
    "delete": 1,
    "export": 1,
    "import": 1,
+   "print": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA Regional Organization Management",
@@ -197,6 +198,7 @@
    "delete": 1,
    "export": 1,
    "import": 1,
+   "print": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA Local Organization Management",
@@ -210,6 +212,7 @@
    "delete": 1,
    "export": 1,
    "import": 1,
+   "print": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA Local Group Management",
@@ -217,11 +220,13 @@
    "write": 1
   },
   {
+   "print": 1,
    "read": 1,
    "role": "LANDA Member"
   },
   {
    "export": 1,
+   "print": 1,
    "read": 1,
    "report": 1,
    "role": "LANDA State Organization Employee"
