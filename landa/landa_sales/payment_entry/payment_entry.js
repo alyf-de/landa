@@ -1,4 +1,19 @@
 frappe.ui.form.on('Payment Entry', {
+    onload(frm) {
+        // If the Payment Entry was created from a Sales Invoice, the party is
+        // already set, but did not trigger the "fetch from". We need to do this
+        // manually.
+        if (!frm.is_new()) {
+            return;
+        }
+
+        frm.trigger('fetch_organization');
+
+        if (frm.doc.party_type === 'Customer' && frm.doc.party && !frm.doc.organization) {
+            // Validating the 'party' link field will trigger it's "fetch from".
+            frm.fields_dict.party.validate(frm.doc.party);
+        }
+    },
     refresh(frm) {
         frm.trigger('set_year_of_settlement');
         frm.trigger('fetch_organization');
