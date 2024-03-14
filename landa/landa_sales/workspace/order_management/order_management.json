@@ -147,6 +147,15 @@
    "type": "Card Break"
   },
   {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Billing History",
+   "link_to": "Billing History",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
    "dependencies": "Delivery Note",
    "hidden": 0,
    "is_query_report": 1,
@@ -210,7 +219,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-01-31 00:26:25.276565",
+ "modified": "2024-03-14 19:30:50.918252",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "Order Management",
