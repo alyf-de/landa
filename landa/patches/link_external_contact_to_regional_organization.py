@@ -1,4 +1,5 @@
 import frappe
+from frappe.model.naming import make_autoname
 from frappe.model.rename_doc import rename_doc
 
 
@@ -23,11 +24,11 @@ def execute():
 			},
 			update_modified=False,
 		)
-		ext_contact.autoname()
+
 		rename_doc(
 			"External Contact",
 			external_contact,
-			external_contact.replace(organization, regional_organization.name),
+			make_autoname(f"EXT-{regional_organization.name}-.####", "External Contact"),
 			force=True,
 			show_alert=False,
 		)
