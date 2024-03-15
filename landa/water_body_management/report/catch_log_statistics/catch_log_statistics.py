@@ -146,14 +146,22 @@ def filter_and_group(query, entry: Table, child_table: Table, qb_filters: List[C
 
 def get_qb_filters(filters, entry, child_table):
 	filters["workflow_state"] = "Approved"
-	fish_species = filters.pop("fish_species", None)
+	fish_species = filters.pop("fish_species", [])
+	water_body = filters.pop("water_body", [])
+	fishing_area = filters.pop("fishing_area", [])
 	from_year = filters.pop("from_year", None)
 	to_year = filters.pop("to_year", None)
 
 	qb_filters = [entry[key] == value for key, value in filters.items()]
 
 	if fish_species:
-		qb_filters.append(child_table.fish_species == fish_species)
+		qb_filters.append(child_table.fish_species.isin(fish_species))
+
+	if water_body:
+		qb_filters.append(entry.water_body.isin(water_body))
+
+	if fishing_area:
+		qb_filters.append(entry.fishing_area.isin(fishing_area))
 
 	if from_year:
 		qb_filters.append(entry.year >= from_year)
