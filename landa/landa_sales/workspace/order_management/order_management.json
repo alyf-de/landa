@@ -147,6 +147,15 @@
    "type": "Card Break"
   },
   {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Billing History",
+   "link_to": "Billing History",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
    "dependencies": "Delivery Note",
    "hidden": 0,
    "is_query_report": 1,
@@ -159,8 +168,8 @@
   {
    "hidden": 0,
    "is_query_report": 1,
-   "label": "LANDA Deliveries and Payments Summaries",
-   "link_to": "LANDA Deliveries and Payments Summaries",
+   "label": "Summarized Billing History",
+   "link_to": "Summarized Billing History",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
@@ -210,7 +219,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-01-31 00:26:25.276565",
+ "modified": "2024-03-15 16:09:15.622558",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "Order Management",

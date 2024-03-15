@@ -18,6 +18,7 @@ To allow the Angelatlas web-apps to access the API, add the following to `sites/
     "allow_cors": [
         "https://angelatlas.devid.net",
         "https://www.angelatlas-sachsen.de/"
+        "https://angelatlas-sachsen.de/"
     ]
 }
 ```
@@ -30,6 +31,7 @@ Also, for embedding static (uploaded) files and icons, we need to modify the ngi
 map $http_origin $cors_origin {
     default "";
     https://www.angelatlas-sachsen.de $http_origin;
+    https://angelatlas-sachsen.de $http_origin;
     https://angelatlas.devid.net $http_origin;
 }
 
@@ -59,6 +61,17 @@ server {
     }
 
     ...
+}
+```
+
+## Increase the file size limit
+
+The default file size limit is 10MB. To allow larger file uploads (e.g. 25MB), add the following to `sites/common_site_config.json`:
+
+```json
+{
+    "..." : "...",
+    "max_file_size": 26214400
 }
 ```
 

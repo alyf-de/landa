@@ -4,6 +4,7 @@
 import frappe
 from frappe import _, get_roles
 from frappe.model.document import Document
+from frappe.model.workflow import get_workflow
 
 
 class CatchLogEntry(Document):
@@ -38,3 +39,22 @@ class CatchLogEntry(Document):
 					),
 					title=_("Invalid Species"),
 				)
+
+	def before_save(self):
+		if self.is_new():
+			return
+
+		self.check_workflow_perms()
+
+	def on_trash(self):
+		self.check_workflow_perms()
+
+	def check_workflow_perms(self):
+		"""Raise a PermissionError if the user is not allowed to edit the document
+		in the current workflow state.
+		"""
+		workflow = get_workflow(self.doctype)
+		workflow_state = self.db_get(workflow.workflow_state_field)
+		frappe.only_for(
+			roles=[row.allow_edit for row in workflow.states if row.state == workflow_state],
+		)

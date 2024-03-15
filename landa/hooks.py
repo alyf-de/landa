@@ -271,6 +271,7 @@ doc_events = {
 	},
 	"Payment Entry": {
 		"before_validate": "landa.landa_sales.payment_entry.pament_entry.before_validate",
+		"validate": "landa.landa_sales.payment_entry.pament_entry.validate",
 		"autoname": "landa.landa_sales.payment_entry.pament_entry.autoname",
 	},
 	"Address": {

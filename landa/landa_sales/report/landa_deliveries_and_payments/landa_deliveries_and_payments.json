@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2021-05-17 19:41:21.986909",
+ "modified": "2024-03-15 15:10:05.127195",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "LANDA Deliveries and Payments",
@@ -21,25 +21,13 @@
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "Accounts User"
-  },
-  {
-   "role": "Accounts Manager"
-  },
-  {
-   "role": "Auditor"
-  },
-  {
-   "role": "Sales User"
-  },
-  {
-   "role": "Sales Manager"
+   "role": "System Manager"
   },
   {
    "role": "LANDA Regional Organization Management"
   },
   {
-   "role": "LANDA Local Organization Management"
+   "role": "LANDA State Organization Employee"
   }
  ]
 }
