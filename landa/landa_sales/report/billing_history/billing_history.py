@@ -31,10 +31,11 @@ def get_columns():
 		{
 			"fieldname": "voucher_type",
 			"label": "Voucher Type",
-			"fieldtype": "Link",
-			"options": "DocType",
+			# Using a Select field here to display the translated value while
+			# also avoiding permission issues that would come with a Link field.
+			# (A link would require read perms on DocType "DocType".)
+			"fieldtype": "Select",
 			"width": 200,
-			"hidden": 1,
 		},
 		{
 			"fieldname": "voucher_no",
@@ -83,11 +84,12 @@ def get_data(organization: Optional[str], year_of_settlement: Optional[int] = No
 			)
 		)
 
-	for posting_date, grand_total, voucher_name, payment_type in frappe.get_list(
+	for posting_date, paid, received, voucher_name, payment_type in frappe.get_list(
 		"Payment Entry",
 		fields=[
 			"posting_date",
 			"base_paid_amount",
+			"base_received_amount",
 			"name",
 			"payment_type",
 		],
@@ -99,7 +101,7 @@ def get_data(organization: Optional[str], year_of_settlement: Optional[int] = No
 				posting_date,
 				"Payment Entry",
 				voucher_name,
-				grand_total * -1 if payment_type == "Receive" else grand_total,
+				received * -1 if payment_type == "Receive" else paid,
 			)
 		)
 
