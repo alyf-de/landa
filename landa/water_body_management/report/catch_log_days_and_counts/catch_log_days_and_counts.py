@@ -32,6 +32,12 @@ COLUMNS = [
 		"options": "Water Body",
 	},
 	{
+		"fieldname": "water_body_title",
+		"fieldtype": "Data",
+		"label": "Water Body Title",
+		"width": 200,
+	},
+	{
 		"fieldname": "fishing_area",
 		"fieldtype": "Link",
 		"label": "Fishing Area",
@@ -74,6 +80,7 @@ def get_data(filters):
 			"name",
 			"year",
 			"water_body",
+			"water_body_title",
 			"fishing_area",
 			"organization",
 			"origin_of_catch_log_entry",
