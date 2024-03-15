@@ -15,12 +15,6 @@ from landa.water_body_management.report.catch_log_statistics.catch_log_statistic
 
 COLUMNS = [
 	{
-		"fieldname": "catch_log_entry",
-		"fieldtype": "Link",
-		"label": "Catch Log Entry",
-		"options": "Catch Log Entry",
-	},
-	{
 		"fieldname": "year",
 		"fieldtype": "Data",
 		"label": "Year",
@@ -36,23 +30,6 @@ COLUMNS = [
 		"fieldtype": "Data",
 		"label": "Water Body Title",
 		"width": 200,
-	},
-	{
-		"fieldname": "fishing_area",
-		"fieldtype": "Link",
-		"label": "Fishing Area",
-		"options": "Fishing Area",
-	},
-	{
-		"fieldname": "organization",
-		"fieldtype": "Data",
-		"label": "Organization",
-		"options": "Organization",
-	},
-	{
-		"fieldname": "origin_of_catch_log_entry",
-		"fieldtype": "Data",
-		"label": "Origin of Catch Log Entry",
 	},
 	{
 		"fieldname": "fishing_days",
@@ -77,17 +54,14 @@ def get_data(filters):
 	data = frappe.get_all(
 		"Catch Log Entry",
 		fields=[
-			"name",
 			"year",
 			"water_body",
 			"water_body_title",
-			"fishing_area",
-			"organization",
-			"origin_of_catch_log_entry",
-			"fishing_days",
+			"SUM(fishing_days)",
 		],
 		filters=filters,
 		or_filters=get_or_filters(),
+		group_by="year,water_body,water_body_title",
 	)
 
 	def postprocess(row):
