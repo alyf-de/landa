@@ -182,9 +182,8 @@
   {
    "hidden": 0,
    "is_query_report": 1,
-   "label": "LANDA Deliveries and Payments Summaries",
-   "link_count": 0,
-   "link_to": "LANDA Deliveries and Payments Summaries",
+   "label": "Summarized Billing History",
+   "link_to": "Summarized Billing History",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
@@ -239,7 +238,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-03-14 19:30:50.918252",
+ "modified": "2024-03-15 16:09:15.622558",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "Order Management",
