@@ -28,10 +28,17 @@ COLUMNS = [
 		"options": "Water Body",
 	},
 	{
+		"fieldname": "water_body_title",
+		"fieldtype": "Data",
+		"label": "Water Body Title",
+		"width": 200,
+	},
+	{
 		"fieldname": "fish_species",
 		"fieldtype": "Link",
 		"label": "Fish Species",
 		"options": "Fish Species",
+		"width": 150,
 	},
 	{
 		"fieldname": "amount",
@@ -101,6 +108,7 @@ def get_data(filters):
 		)
 		.select(
 			entry.water_body,
+			entry.water_body_title,
 			child_table.fish_species,
 			Sum(child_table.amount),
 			Sum(child_table.weight_in_kg),
@@ -132,7 +140,7 @@ def get_subquery(entry: Table, child_table: Table, qb_filters: List[Criterion]):
 def filter_and_group(query, entry: Table, child_table: Table, qb_filters: List[Criterion]):
 	query = add_conditions(query, qb_filters)
 	query = add_or_filters(query, entry)
-	query = query.groupby(entry.water_body, child_table.fish_species)
+	query = query.groupby(entry.water_body, entry.water_body_title, child_table.fish_species)
 	return query
 
 
