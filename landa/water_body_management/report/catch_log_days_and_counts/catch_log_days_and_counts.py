@@ -59,6 +59,15 @@ COLUMNS = [
 def get_data(filters):
 	filters["workflow_state"] = "Approved"
 
+	water_bodies = filters.pop("water_body", [])
+	fishing_areas = filters.pop("fishing_area", [])
+
+	if water_bodies:
+		filters["water_body"] = ("in", water_bodies)
+
+	if fishing_areas:
+		filters["fishing_area"] = ("in", fishing_areas)
+
 	data = frappe.get_all(
 		"Catch Log Entry",
 		fields=[
