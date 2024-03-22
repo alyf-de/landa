@@ -20,53 +20,53 @@ REGIONAL_ROLES = {
 	"LANDA Regional Water Body Management",
 }
 
-COLUMNS = [
-	{
-		"fieldname": "water_body",
-		"fieldtype": "Link",
-		"label": "Water Body",
-		"options": "Water Body",
-	},
-	{
-		"fieldname": "water_body_title",
-		"fieldtype": "Data",
-		"label": "Water Body Title",
-		"width": 200,
-	},
-	{
-		"fieldname": "fish_species",
-		"fieldtype": "Link",
-		"label": "Fish Species",
-		"options": "Fish Species",
-		"width": 150,
-	},
-	{
-		"fieldname": "amount",
-		"fieldtype": "Int",
-		"label": "Number of Fish",
-	},
-	{
-		"fieldname": "weight_in_kg",
-		"fieldtype": "Float",
-		"label": "Weight in Kg",
-	},
-	{  # displayed only for regional or state employees
-		"fieldname": "by_foreign_regional_org",
-		"fieldtype": "Percent",
-		"label": "Share of other Regional Organizations",
-	},
-]
 
+def get_columns(show_by_foreign_regional_org: bool = False):
+	columns = [
+		{
+			"fieldname": "water_body",
+			"fieldtype": "Link",
+			"label": "Water Body",
+			"options": "Water Body",
+		},
+		{
+			"fieldname": "water_body_title",
+			"fieldtype": "Data",
+			"label": "Water Body Title",
+			"width": 200,
+		},
+		{
+			"fieldname": "fish_species",
+			"fieldtype": "Link",
+			"label": "Fish Species",
+			"options": "Fish Species",
+			"width": 150,
+		},
+		{
+			"fieldname": "amount",
+			"fieldtype": "Int",
+			"label": "Number of Fish",
+		},
+		{
+			"fieldname": "weight_in_kg",
+			"fieldtype": "Float",
+			"label": "Weight in Kg",
+		},
+	]
 
-def get_columns():
-	columns = COLUMNS.copy()
-	if not is_regional_or_state_employee():
-		columns.pop()
+	if show_by_foreign_regional_org and is_regional_or_state_employee():
+		columns.append(
+			{
+				"fieldname": "by_foreign_regional_org",
+				"fieldtype": "Percent",
+				"label": "Share of other Regional Organizations",
+			}
+		)
 
 	return columns
 
 
-def get_data(filters):
+def get_data(filters, show_by_foreign_regional_org: bool = False):
 	entry = frappe.qb.DocType("Catch Log Entry")
 	child_table = frappe.qb.DocType("Catch Log Fish Table")
 	qb_filters = get_qb_filters(filters, entry, child_table)
@@ -115,7 +115,7 @@ def get_data(filters):
 		)
 	)
 
-	if is_regional_or_state_employee():
+	if show_by_foreign_regional_org and is_regional_or_state_employee():
 		query = query.select(proportion_foreign.by_foreign_regional_org)
 
 	query = filter_and_group(query, entry, child_table, qb_filters)
@@ -225,4 +225,9 @@ def is_regional_or_state_employee():
 
 
 def execute(filters=None):
-	return get_columns(), get_data(filters) or []
+	show_by_foreign_regional_org = bool(filters.pop("show_by_foreign_regional_org", None))
+
+	return (
+		get_columns(show_by_foreign_regional_org),
+		get_data(filters, show_by_foreign_regional_org) or [],
+	)

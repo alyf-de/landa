@@ -41,5 +41,19 @@ frappe.query_reports["Catch Log Statistics"] = {
 			label: __("Fishing Area"),
 			get_data: (txt) => frappe.db.get_link_options("Fishing Area", txt),
 		},
+		{
+			fieldname: "show_by_foreign_regional_org",
+			fieldtype: "Check",
+			label: "Show Share of other Regional Organizations",
+			hidden: !frappe.user.has_role(
+				[
+					"Administrator",
+					"System Manager",
+					"LANDA State Organization Employee",
+					"LANDA Regional Organization Management",
+					"LANDA Regional Water Body Management",
+				]
+			),
+		},
 	],
 };
