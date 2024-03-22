@@ -21,7 +21,7 @@ REGIONAL_ROLES = {
 }
 
 
-def get_columns(show_by_foreign_regional_org: bool = False):
+def get_columns(show_by_foreign_regional_org: bool = False, show_area_name: bool = False):
 	columns = [
 		{
 			"fieldname": "water_body",
@@ -35,24 +35,38 @@ def get_columns(show_by_foreign_regional_org: bool = False):
 			"label": "Water Body Title",
 			"width": 200,
 		},
-		{
-			"fieldname": "fish_species",
-			"fieldtype": "Link",
-			"label": "Fish Species",
-			"options": "Fish Species",
-			"width": 150,
-		},
-		{
-			"fieldname": "amount",
-			"fieldtype": "Int",
-			"label": "Number of Fish",
-		},
-		{
-			"fieldname": "weight_in_kg",
-			"fieldtype": "Float",
-			"label": "Weight in Kg",
-		},
 	]
+
+	if show_area_name:
+		columns.append(
+			{
+				"fieldname": "area_name",
+				"fieldtype": "Data",
+				"label": "Area Name",
+			}
+		)
+
+	columns.extend(
+		[
+			{
+				"fieldname": "fish_species",
+				"fieldtype": "Link",
+				"label": "Fish Species",
+				"options": "Fish Species",
+				"width": 150,
+			},
+			{
+				"fieldname": "amount",
+				"fieldtype": "Int",
+				"label": "Number of Fish",
+			},
+			{
+				"fieldname": "weight_in_kg",
+				"fieldtype": "Float",
+				"label": "Weight in Kg",
+			},
+		]
+	)
 
 	if show_by_foreign_regional_org and is_regional_or_state_employee():
 		columns.append(
@@ -66,7 +80,7 @@ def get_columns(show_by_foreign_regional_org: bool = False):
 	return columns
 
 
-def get_data(filters, show_by_foreign_regional_org: bool = False):
+def get_data(filters, show_by_foreign_regional_org: bool = False, show_area_name: bool = False):
 	entry = frappe.qb.DocType("Catch Log Entry")
 	child_table = frappe.qb.DocType("Catch Log Fish Table")
 	qb_filters = get_qb_filters(filters, entry, child_table)
@@ -78,10 +92,17 @@ def get_data(filters, show_by_foreign_regional_org: bool = False):
 		.select(
 			entry.water_body,
 			entry.water_body_title,
-			child_table.fish_species,
-			Sum(child_table.amount),
-			Sum(child_table.weight_in_kg),
 		)
+	)
+
+	if show_area_name:
+		area = frappe.qb.DocType("Fishing Area")
+		query = query.left_join(area).on(entry.fishing_area == area.name).select(area.area_name)
+
+	query = query.select(
+		child_table.fish_species,
+		Sum(child_table.amount),
+		Sum(child_table.weight_in_kg),
 	)
 
 	if show_by_foreign_regional_org and is_regional_or_state_employee():
@@ -227,8 +248,9 @@ def is_regional_or_state_employee():
 
 def execute(filters=None):
 	show_by_foreign_regional_org = bool(filters.pop("show_by_foreign_regional_org", None))
+	show_area_name = bool(filters.pop("show_area_name", None))
 
 	return (
-		get_columns(show_by_foreign_regional_org),
-		get_data(filters, show_by_foreign_regional_org) or [],
+		get_columns(show_by_foreign_regional_org, show_area_name),
+		get_data(filters, show_by_foreign_regional_org, show_area_name) or [],
 	)
