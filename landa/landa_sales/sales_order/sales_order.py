@@ -3,6 +3,7 @@
 
 import frappe
 from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, make_sales_invoice
+from frappe import _
 from frappe.utils.data import get_year_ending
 
 from landa.utils import update_doc
@@ -14,6 +15,25 @@ def before_validate(sales_order, event):
 
 	if (not sales_order.tax_category) and frappe.db.exists("Tax Category", "Umsatzsteuer"):
 		sales_order.tax_category = "Umsatzsteuer"
+
+
+def validate(doc, event):
+	if not doc.year_of_settlement:
+		return
+
+	for item in doc.items:
+		from_year, to_year = frappe.db.get_value(
+			"Item", item.item_code, ["valid_from_year", "valid_to_year"]
+		)
+
+		if (from_year and doc.year_of_settlement < from_year) or (
+			to_year and doc.year_of_settlement > to_year
+		):
+			frappe.throw(
+				_("Row {0}: Item {1} is not valid for year of settlement {2}.").format(
+					item.idx, frappe.bold(item.item_name), frappe.bold(doc.year_of_settlement)
+				)
+			)
 
 
 def autoname(doc, event):
