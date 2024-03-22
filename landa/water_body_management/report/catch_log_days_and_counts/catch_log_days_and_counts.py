@@ -4,6 +4,7 @@
 from typing import List, Optional
 
 import frappe
+from frappe import _
 from pypika.functions import Sum
 
 from landa.water_body_management.report.catch_log_statistics.catch_log_statistics import (
@@ -16,18 +17,18 @@ def get_columns(extra_columns: List[str]) -> List[dict]:
 		{
 			"fieldname": "year",
 			"fieldtype": "Data",
-			"label": "Year",
+			"label": _("Year"),
 		},
 		{
 			"fieldname": "water_body",
 			"fieldtype": "Link",
-			"label": "Water Body",
+			"label": _("Water Body"),
 			"options": "Water Body",
 		},
 		{
 			"fieldname": "water_body_title",
 			"fieldtype": "Data",
-			"label": "Water Body Title",
+			"label": _("Water Body Title"),
 			"width": 200,
 		},
 	]
@@ -37,7 +38,7 @@ def get_columns(extra_columns: List[str]) -> List[dict]:
 			{
 				"fieldname": "water_body_status",
 				"fieldtype": "Data",
-				"label": "Status",
+				"label": _("Status"),
 				"width": 150,
 			}
 		)
@@ -47,7 +48,7 @@ def get_columns(extra_columns: List[str]) -> List[dict]:
 			{
 				"fieldname": "area_name",
 				"fieldtype": "Data",
-				"label": "Area Name",
+				"label": _("Area Name"),
 			},
 		)
 
@@ -57,13 +58,13 @@ def get_columns(extra_columns: List[str]) -> List[dict]:
 				{
 					"fieldname": "water_body_size",
 					"fieldtype": "Float",
-					"label": "Water Body Size",
+					"label": _("Water Body Size"),
 					"precision": "2",
 				},
 				{
 					"fieldname": "water_body_size_unit",
 					"fieldtype": "Data",
-					"label": "Unit",
+					"label": _("Unit"),
 					"width": 80,
 				},
 			]
@@ -73,7 +74,7 @@ def get_columns(extra_columns: List[str]) -> List[dict]:
 		{
 			"fieldname": "fishing_days",
 			"fieldtype": "Int",
-			"label": "Fishing Days",
+			"label": _("Fishing Days"),
 		},
 	)
 
