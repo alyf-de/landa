@@ -25,6 +25,7 @@ def get_columns(
 	show_by_foreign_regional_org: bool = False,
 	show_area_name: bool = False,
 	show_water_body_size: bool = False,
+	show_water_body_status: bool = False,
 ):
 	columns = [
 		{
@@ -40,6 +41,16 @@ def get_columns(
 			"width": 200,
 		},
 	]
+
+	if show_water_body_status:
+		columns.append(
+			{
+				"fieldname": "water_body_status",
+				"fieldtype": "Data",
+				"label": "Status",
+				"width": 150,
+			}
+		)
 
 	if show_area_name:
 		columns.append(
@@ -109,6 +120,7 @@ def get_data(
 	show_by_foreign_regional_org: bool = False,
 	show_area_name: bool = False,
 	show_water_body_size: bool = False,
+	show_water_body_status: bool = False,
 ):
 	entry = frappe.qb.DocType("Catch Log Entry")
 	child_table = frappe.qb.DocType("Catch Log Fish Table")
@@ -124,17 +136,19 @@ def get_data(
 		)
 	)
 
+	if show_water_body_status or show_water_body_size:
+		water_body = frappe.qb.DocType("Water Body")
+		query = query.left_join(water_body).on(entry.water_body == water_body.name)
+
+	if show_water_body_status:
+		query = query.select(water_body.status)
+
 	if show_area_name:
 		area = frappe.qb.DocType("Fishing Area")
 		query = query.left_join(area).on(entry.fishing_area == area.name).select(area.area_name)
 
 	if show_water_body_size:
-		water_body = frappe.qb.DocType("Water Body")
-		query = (
-			query.left_join(water_body)
-			.on(entry.water_body == water_body.name)
-			.select(water_body.water_body_size, water_body.water_body_size_unit)
-		)
+		query = query.select(water_body.water_body_size, water_body.water_body_size_unit)
 
 	query = query.select(
 		child_table.fish_species,
@@ -288,8 +302,18 @@ def execute(filters=None):
 	show_by_foreign_regional_org = "by_foreign_regional_org" in extra_columns
 	show_area_name = "area_name" in extra_columns
 	show_water_body_size = "water_body_size" in extra_columns
+	show_water_body_status = "water_body_status" in extra_columns
 
 	return (
-		get_columns(show_by_foreign_regional_org, show_area_name, show_water_body_size),
-		get_data(filters, show_by_foreign_regional_org, show_area_name, show_water_body_size) or [],
+		get_columns(
+			show_by_foreign_regional_org, show_area_name, show_water_body_size, show_water_body_status
+		),
+		get_data(
+			filters,
+			show_by_foreign_regional_org,
+			show_area_name,
+			show_water_body_size,
+			show_water_body_status,
+		)
+		or [],
 	)
