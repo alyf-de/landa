@@ -284,9 +284,10 @@ def is_regional_or_state_employee():
 
 
 def execute(filters=None):
-	show_by_foreign_regional_org = bool(filters.pop("show_by_foreign_regional_org", None))
-	show_area_name = bool(filters.pop("show_area_name", None))
-	show_water_body_size = bool(filters.pop("show_water_body_size", None))
+	extra_columns = filters.pop("extra_columns", [])
+	show_by_foreign_regional_org = "by_foreign_regional_org" in extra_columns
+	show_area_name = "area_name" in extra_columns
+	show_water_body_size = "water_body_size" in extra_columns
 
 	return (
 		get_columns(show_by_foreign_regional_org, show_area_name, show_water_body_size),

@@ -42,28 +42,43 @@ frappe.query_reports["Catch Log Statistics"] = {
 			get_data: (txt) => frappe.db.get_link_options("Fishing Area", txt),
 		},
 		{
-			fieldname: "show_by_foreign_regional_org",
-			fieldtype: "Check",
-			label: "Show Share of other Regional Organizations",
-			hidden: !frappe.user.has_role(
-				[
-					"Administrator",
-					"System Manager",
-					"LANDA State Organization Employee",
-					"LANDA Regional Organization Management",
-					"LANDA Regional Water Body Management",
-				]
-			),
-		},
-		{
-			fieldname: "show_area_name",
-			fieldtype: "Check",
-			label: "Show Area Name",
-		},
-		{
-			fieldname: "show_water_body_size",
-			fieldtype: "Check",
-			label: "Show Water Body Size",
-		},
+			fieldname: "extra_columns",
+			fieldtype: "MultiSelectList",
+			label: __("Extra Columns"),
+			get_data: get_extra_columns,
+		}
 	],
 };
+
+
+function get_extra_columns(txt) {
+	const extra_columns = [
+		{
+			value: "area_name",
+			label: __("Area Name"),
+			description: "",
+		},
+		{
+			value: "water_body_size",
+			label: __("Water Body Size"),
+			description: "",
+		},
+	]
+	if (frappe.user.has_role(
+		[
+			"Administrator",
+			"System Manager",
+			"LANDA State Organization Employee",
+			"LANDA Regional Organization Management",
+			"LANDA Regional Water Body Management",
+		]
+	)) {
+		extra_columns.push({
+			value: "by_foreign_regional_org",
+			label: __("Share of other Regional Organizations"),
+			description: "",
+		})
+	}
+
+	return extra_columns.filter((d) => d.label.toLowerCase().includes(txt.toLowerCase()));
+}
