@@ -7,8 +7,6 @@ frappe.ui.form.on('Payment Entry', {
             return;
         }
 
-        frm.trigger('fetch_organization');
-
         if (frm.doc.party_type === 'Customer' && frm.doc.party && !frm.doc.organization) {
             // Validating the 'party' link field will trigger it's "fetch from".
             frm.fields_dict.party.validate(frm.doc.party);
@@ -16,7 +14,6 @@ frappe.ui.form.on('Payment Entry', {
     },
     refresh(frm) {
         frm.trigger('set_year_of_settlement');
-        frm.trigger('fetch_organization');
 
         if (frm.is_new()) {
             landa.utils.set_company_and_customer(frm, "company", "party");
@@ -41,16 +38,6 @@ frappe.ui.form.on('Payment Entry', {
                     }
                 });
             }
-        }
-    },
-    party_type(frm) {
-        frm.trigger('fetch_organization');
-    },
-    fetch_organization(frm) {
-        if (frm.doc.party_type === 'Customer') {
-            frm.add_fetch('party', 'organization', 'organization', frm.doctype);
-        } else {
-            delete frm.fetch_dict[frm.doctype]['organization'];
         }
     },
 });
