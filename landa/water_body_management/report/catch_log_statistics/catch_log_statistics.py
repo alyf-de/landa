@@ -21,7 +21,11 @@ REGIONAL_ROLES = {
 }
 
 
-def get_columns(show_by_foreign_regional_org: bool = False, show_area_name: bool = False):
+def get_columns(
+	show_by_foreign_regional_org: bool = False,
+	show_area_name: bool = False,
+	show_water_body_size: bool = False,
+):
 	columns = [
 		{
 			"fieldname": "water_body",
@@ -46,6 +50,24 @@ def get_columns(show_by_foreign_regional_org: bool = False, show_area_name: bool
 			}
 		)
 
+	if show_water_body_size:
+		columns.extend(
+			[
+				{
+					"fieldname": "water_body_size",
+					"fieldtype": "Float",
+					"label": "Water Body Size",
+					"precision": "2",
+				},
+				{
+					"fieldname": "water_body_size_unit",
+					"fieldtype": "Data",
+					"label": "Unit",
+					"width": 80,
+				},
+			]
+		)
+
 	columns.extend(
 		[
 			{
@@ -59,11 +81,13 @@ def get_columns(show_by_foreign_regional_org: bool = False, show_area_name: bool
 				"fieldname": "amount",
 				"fieldtype": "Int",
 				"label": "Number of Fish",
+				"width": 150,
 			},
 			{
 				"fieldname": "weight_in_kg",
 				"fieldtype": "Float",
 				"label": "Weight in Kg",
+				"width": 150,
 			},
 		]
 	)
@@ -80,7 +104,12 @@ def get_columns(show_by_foreign_regional_org: bool = False, show_area_name: bool
 	return columns
 
 
-def get_data(filters, show_by_foreign_regional_org: bool = False, show_area_name: bool = False):
+def get_data(
+	filters,
+	show_by_foreign_regional_org: bool = False,
+	show_area_name: bool = False,
+	show_water_body_size: bool = False,
+):
 	entry = frappe.qb.DocType("Catch Log Entry")
 	child_table = frappe.qb.DocType("Catch Log Fish Table")
 	qb_filters = get_qb_filters(filters, entry, child_table)
@@ -98,6 +127,14 @@ def get_data(filters, show_by_foreign_regional_org: bool = False, show_area_name
 	if show_area_name:
 		area = frappe.qb.DocType("Fishing Area")
 		query = query.left_join(area).on(entry.fishing_area == area.name).select(area.area_name)
+
+	if show_water_body_size:
+		water_body = frappe.qb.DocType("Water Body")
+		query = (
+			query.left_join(water_body)
+			.on(entry.water_body == water_body.name)
+			.select(water_body.water_body_size, water_body.water_body_size_unit)
+		)
 
 	query = query.select(
 		child_table.fish_species,
@@ -249,8 +286,9 @@ def is_regional_or_state_employee():
 def execute(filters=None):
 	show_by_foreign_regional_org = bool(filters.pop("show_by_foreign_regional_org", None))
 	show_area_name = bool(filters.pop("show_area_name", None))
+	show_water_body_size = bool(filters.pop("show_water_body_size", None))
 
 	return (
-		get_columns(show_by_foreign_regional_org, show_area_name),
-		get_data(filters, show_by_foreign_regional_org, show_area_name) or [],
+		get_columns(show_by_foreign_regional_org, show_area_name, show_water_body_size),
+		get_data(filters, show_by_foreign_regional_org, show_area_name, show_water_body_size) or [],
 	)

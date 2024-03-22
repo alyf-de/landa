@@ -60,5 +60,10 @@ frappe.query_reports["Catch Log Statistics"] = {
 			fieldtype: "Check",
 			label: "Show Area Name",
 		},
+		{
+			fieldname: "show_water_body_size",
+			fieldtype: "Check",
+			label: "Show Water Body Size",
+		},
 	],
 };
