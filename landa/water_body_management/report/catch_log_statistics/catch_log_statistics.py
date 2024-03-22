@@ -71,41 +71,10 @@ def get_data(filters, show_by_foreign_regional_org: bool = False):
 	child_table = frappe.qb.DocType("Catch Log Fish Table")
 	qb_filters = get_qb_filters(filters, entry, child_table)
 
-	by_all_regional_orgs = get_subquery(entry, child_table, qb_filters)
-	by_foreign_regional_orgs = get_subquery(
-		entry,
-		child_table,
-		qb_filters
-		+ [Substring(entry.organization, 1, 3) != entry.regional_organization],  # index starts at 1
-	)
-
-	proportion_foreign = (
-		frappe.qb.from_(by_all_regional_orgs)
-		.left_join(by_foreign_regional_orgs)
-		.on(
-			(by_all_regional_orgs.water_body == by_foreign_regional_orgs.water_body)
-			& (by_all_regional_orgs.fish_species == by_foreign_regional_orgs.fish_species)
-		)
-		.select(
-			by_all_regional_orgs.water_body,
-			by_all_regional_orgs.fish_species,
-			(
-				Coalesce(by_foreign_regional_orgs.total_weight_in_kg, 0)
-				/ by_all_regional_orgs.total_weight_in_kg
-				* 100
-			).as_("by_foreign_regional_org"),
-		)
-	)
-
 	query = (
 		frappe.qb.from_(entry)
 		.join(child_table)
 		.on(entry.name == child_table.parent)
-		.left_join(proportion_foreign)
-		.on(
-			(entry.water_body == proportion_foreign.water_body)
-			& (child_table.fish_species == proportion_foreign.fish_species)
-		)
 		.select(
 			entry.water_body,
 			entry.water_body_title,
@@ -116,7 +85,39 @@ def get_data(filters, show_by_foreign_regional_org: bool = False):
 	)
 
 	if show_by_foreign_regional_org and is_regional_or_state_employee():
-		query = query.select(proportion_foreign.by_foreign_regional_org)
+		by_all_regional_orgs = get_subquery(entry, child_table, qb_filters)
+		by_foreign_regional_orgs = get_subquery(
+			entry,
+			child_table,
+			qb_filters
+			+ [Substring(entry.organization, 1, 3) != entry.regional_organization],  # index starts at 1
+		)
+
+		proportion_foreign = (
+			frappe.qb.from_(by_all_regional_orgs)
+			.left_join(by_foreign_regional_orgs)
+			.on(
+				(by_all_regional_orgs.water_body == by_foreign_regional_orgs.water_body)
+				& (by_all_regional_orgs.fish_species == by_foreign_regional_orgs.fish_species)
+			)
+			.select(
+				by_all_regional_orgs.water_body,
+				by_all_regional_orgs.fish_species,
+				(
+					Coalesce(by_foreign_regional_orgs.total_weight_in_kg, 0)
+					/ by_all_regional_orgs.total_weight_in_kg
+					* 100
+				).as_("by_foreign_regional_org"),
+			)
+		)
+		query = (
+			query.left_join(proportion_foreign)
+			.on(
+				(entry.water_body == proportion_foreign.water_body)
+				& (child_table.fish_species == proportion_foreign.fish_species)
+			)
+			.select(proportion_foreign.by_foreign_regional_org)
+		)
 
 	query = filter_and_group(query, entry, child_table, qb_filters)
 	return query.run()
