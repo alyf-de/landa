@@ -35,11 +35,7 @@
   "section_break_11",
   "supplier",
   "full_name_of_supplier",
-  "company_of_supplier",
-  "currency",
-  "column_break_25",
-  "price_per_kilogram",
-  "price_for_total_weight"
+  "company_of_supplier"
  ],
  "fields": [
   {
@@ -231,37 +227,10 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_25",
-   "fieldtype": "Column Break"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "fieldname": "price_per_kilogram",
-   "fieldtype": "Float",
-   "label": "Price per Kilogram",
-   "options": "currency"
-  },
-  {
-   "depends_on": "weight",
-   "fieldname": "price_for_total_weight",
-   "fieldtype": "Float",
-   "label": "Price for Total Weight",
-   "options": "currency",
-   "read_only": 1
-  },
-  {
    "fieldname": "stocking_target",
    "fieldtype": "Link",
    "label": "Stocking Target",
    "options": "Stocking Target"
-  },
-  {
-   "default": "EUR",
-   "fieldname": "currency",
-   "fieldtype": "Link",
-   "label": "Currency",
-   "options": "Currency",
-   "read_only": 1
   },
   {
    "fetch_from": "water_body.title",
@@ -273,7 +242,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-01 13:43:36.950827",
+ "modified": "2024-03-22 18:22:52.656686",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Measure",
