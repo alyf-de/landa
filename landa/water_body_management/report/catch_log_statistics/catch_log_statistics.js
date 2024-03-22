@@ -63,6 +63,11 @@ function get_extra_columns(txt) {
 			label: __("Water Body Size"),
 			description: "",
 		},
+		{
+			value: "water_body_status",
+			label: __("Water Body Status"),
+			description: "",
+		},
 	]
 	if (frappe.user.has_role(
 		[
