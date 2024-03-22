@@ -21,7 +21,7 @@ class TestCatchLogStatistics(FrappeTestCase):
 			{
 				"from_year": "2020",
 				"to_year": "2023",
-				"water_body": water_body,
+				"water_body": [water_body],
 			}
 		)
 		row = data[0]
@@ -29,7 +29,6 @@ class TestCatchLogStatistics(FrappeTestCase):
 		self.assertEqual(row[1], fish_species)
 		self.assertEqual(row[2], amount)
 		self.assertEqual(row[3], weight_in_kg)
-		self.assertEqual(row[4], 0)
 
 		create_cle(fish_species, amount, weight_in_kg)
 
@@ -37,16 +36,15 @@ class TestCatchLogStatistics(FrappeTestCase):
 			{
 				"from_year": "2020",
 				"to_year": "2023",
-				"water_body": water_body,
-				"fish_species": fish_species,
+				"water_body": [water_body],
+				"fish_species": [fish_species],
 			}
 		)
 		row = data[0]
 		self.assertEqual(row[0], water_body)
-		self.assertEqual(row[1], fish_species)
-		self.assertEqual(row[2], amount * 2)
-		self.assertEqual(row[3], weight_in_kg * 2)
-		self.assertEqual(row[4], 0)
+		self.assertEqual(row[2], fish_species)
+		self.assertEqual(row[3], amount * 2)
+		self.assertEqual(row[4], weight_in_kg * 2)
 
 
 def create_cle(fish_species, amount, weight_in_kg):
