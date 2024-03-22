@@ -35,11 +35,7 @@
   "section_break_11",
   "supplier",
   "full_name_of_supplier",
-  "company_of_supplier",
-  "currency",
-  "column_break_25",
-  "price_per_kilogram",
-  "price_for_total_weight"
+  "company_of_supplier"
  ],
  "fields": [
   {
@@ -174,22 +170,6 @@
    "read_only": 1
   },
   {
-   "allow_in_quick_entry": 1,
-   "fieldname": "price_per_kilogram",
-   "fieldtype": "Currency",
-   "label": "Price per Kilogram",
-   "options": "currency"
-  },
-  {
-   "depends_on": "weight",
-   "fieldname": "price_for_total_weight",
-   "fieldtype": "Currency",
-   "label": "Price for Total Weight",
-   "no_copy": 1,
-   "options": "currency",
-   "read_only": 1
-  },
-  {
    "fieldname": "additional_information",
    "fieldtype": "Small Text",
    "label": "Additional Information"
@@ -233,10 +213,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "column_break_25",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "master_data",
    "fieldtype": "Section Break",
    "label": "Masters"
@@ -247,14 +223,6 @@
    "label": "Regional Organization",
    "options": "Organization",
    "reqd": 1
-  },
-  {
-   "default": "EUR",
-   "fieldname": "currency",
-   "fieldtype": "Link",
-   "label": "Currency",
-   "options": "Currency",
-   "read_only": 1
   },
   {
    "depends_on": "eval: !doc.is_new",
@@ -290,7 +258,7 @@
    "link_fieldname": "stocking_target"
   }
  ],
- "modified": "2024-03-01 13:43:53.668755",
+ "modified": "2024-03-22 18:22:26.880690",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Target",
