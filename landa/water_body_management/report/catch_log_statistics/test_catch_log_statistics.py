@@ -26,9 +26,9 @@ class TestCatchLogStatistics(FrappeTestCase):
 		)
 		row = data[0]
 		self.assertEqual(row[0], water_body)
-		self.assertEqual(row[1], fish_species)
-		self.assertEqual(row[2], amount)
-		self.assertEqual(row[3], weight_in_kg)
+		self.assertEqual(row[2], fish_species)
+		self.assertEqual(row[3], amount)
+		self.assertEqual(row[4], weight_in_kg)
 
 		create_cle(fish_species, amount, weight_in_kg)
 
