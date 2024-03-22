@@ -31,13 +31,13 @@ def get_columns(
 		{
 			"fieldname": "water_body",
 			"fieldtype": "Link",
-			"label": "Water Body",
+			"label": _("Water Body"),
 			"options": "Water Body",
 		},
 		{
 			"fieldname": "water_body_title",
 			"fieldtype": "Data",
-			"label": "Water Body Title",
+			"label": _("Water Body Title"),
 			"width": 200,
 		},
 	]
@@ -47,7 +47,7 @@ def get_columns(
 			{
 				"fieldname": "water_body_status",
 				"fieldtype": "Data",
-				"label": "Status",
+				"label": _("Status"),
 				"width": 150,
 			}
 		)
@@ -57,7 +57,7 @@ def get_columns(
 			{
 				"fieldname": "area_name",
 				"fieldtype": "Data",
-				"label": "Area Name",
+				"label": _("Area Name"),
 			}
 		)
 
@@ -67,13 +67,13 @@ def get_columns(
 				{
 					"fieldname": "water_body_size",
 					"fieldtype": "Float",
-					"label": "Water Body Size",
+					"label": _("Water Body Size"),
 					"precision": "2",
 				},
 				{
 					"fieldname": "water_body_size_unit",
 					"fieldtype": "Data",
-					"label": "Unit",
+					"label": _("Unit"),
 					"width": 80,
 				},
 			]
@@ -84,20 +84,20 @@ def get_columns(
 			{
 				"fieldname": "fish_species",
 				"fieldtype": "Link",
-				"label": "Fish Species",
+				"label": _("Fish Species"),
 				"options": "Fish Species",
 				"width": 150,
 			},
 			{
 				"fieldname": "amount",
 				"fieldtype": "Int",
-				"label": "Number of Fish",
+				"label": _("Number of Fish"),
 				"width": 150,
 			},
 			{
 				"fieldname": "weight_in_kg",
 				"fieldtype": "Float",
-				"label": "Weight in Kg",
+				"label": _("Weight in Kg"),
 				"width": 150,
 			},
 		]
@@ -108,7 +108,7 @@ def get_columns(
 			{
 				"fieldname": "by_foreign_regional_org",
 				"fieldtype": "Percent",
-				"label": "Share of other Regional Organizations",
+				"label": _("Share of other Regional Organizations"),
 			}
 		)
 
