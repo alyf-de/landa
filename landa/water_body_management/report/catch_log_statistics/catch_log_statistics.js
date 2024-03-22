@@ -55,5 +55,10 @@ frappe.query_reports["Catch Log Statistics"] = {
 				]
 			),
 		},
+		{
+			fieldname: "show_area_name",
+			fieldtype: "Check",
+			label: "Show Area Name",
+		},
 	],
 };
