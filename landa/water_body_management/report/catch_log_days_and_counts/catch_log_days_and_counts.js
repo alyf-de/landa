@@ -35,5 +35,34 @@ frappe.query_reports["Catch Log Days and Counts"] = {
 			label: __("Origin of Catch Log Entry"),
 			options: "\nVerein\nRegionalverband",
 		},
+		{
+			fieldname: "extra_columns",
+			fieldtype: "MultiSelectList",
+			label: __("Extra Columns"),
+			get_data: get_extra_columns,
+		},
 	],
 };
+
+
+function get_extra_columns(txt) {
+	const extra_columns = [
+		{
+			value: "area_name",
+			label: __("Area Name"),
+			description: "",
+		},
+		{
+			value: "water_body_size",
+			label: __("Water Body Size"),
+			description: "",
+		},
+		{
+			value: "water_body_status",
+			label: __("Water Body Status"),
+			description: "",
+		},
+	]
+
+	return extra_columns.filter((d) => d.label.toLowerCase().includes(txt.toLowerCase()));
+}

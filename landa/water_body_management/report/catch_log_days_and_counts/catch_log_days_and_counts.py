@@ -1,7 +1,7 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from typing import Optional
+from typing import List, Optional
 
 import frappe
 from pypika.functions import Sum
@@ -11,8 +11,8 @@ from landa.water_body_management.report.catch_log_statistics.catch_log_statistic
 )
 
 
-def get_columns():
-	return [
+def get_columns(extra_columns: List[str]) -> List[dict]:
+	columns = [
 		{
 			"fieldname": "year",
 			"fieldtype": "Data",
@@ -30,22 +30,66 @@ def get_columns():
 			"label": "Water Body Title",
 			"width": 200,
 		},
+	]
+
+	if "water_body_status" in extra_columns:
+		columns.append(
+			{
+				"fieldname": "water_body_status",
+				"fieldtype": "Data",
+				"label": "Status",
+				"width": 150,
+			}
+		)
+
+	if "area_name" in extra_columns:
+		columns.append(
+			{
+				"fieldname": "area_name",
+				"fieldtype": "Data",
+				"label": "Area Name",
+			},
+		)
+
+	if "water_body_size" in extra_columns:
+		columns.extend(
+			[
+				{
+					"fieldname": "water_body_size",
+					"fieldtype": "Float",
+					"label": "Water Body Size",
+					"precision": "2",
+				},
+				{
+					"fieldname": "water_body_size_unit",
+					"fieldtype": "Data",
+					"label": "Unit",
+					"width": 80,
+				},
+			]
+		)
+
+	columns.append(
 		{
 			"fieldname": "fishing_days",
 			"fieldtype": "Int",
 			"label": "Fishing Days",
 		},
-	]
+	)
+
+	return columns
 
 
 def get_data(
+	extra_columns: List[str],
 	year: Optional[int] = None,
-	water_bodies: Optional[list] = None,
+	water_bodies: Optional[List[str]] = None,
 	organization: Optional[str] = None,
-	fishing_areas: Optional[list] = None,
+	fishing_areas: Optional[List[str]] = None,
 	origin_of_catch_log_entry: Optional[str] = None,
 ):
 	entry = frappe.qb.DocType("Catch Log Entry")
+	water_body = frappe.qb.DocType("Water Body")
 
 	query = (
 		frappe.qb.from_(entry)
@@ -53,7 +97,6 @@ def get_data(
 			entry.year,
 			entry.water_body,
 			entry.water_body_title,
-			Sum(entry.fishing_days),
 		)
 		.where(entry.workflow_state == "Approved")
 		.groupby(
@@ -62,6 +105,21 @@ def get_data(
 			entry.water_body_title,
 		)
 	)
+
+	if "water_body_status" in extra_columns or "water_body_size" in extra_columns:
+		query = query.join(water_body).on(entry.water_body == water_body.name)
+
+	if "water_body_status" in extra_columns:
+		query = query.select(water_body.status)
+
+	if "area_name" in extra_columns:
+		area = frappe.qb.DocType("Fishing Area")
+		query = query.left_join(area).on(entry.fishing_area == area.name).select(area.area_name)
+
+	if "water_body_size" in extra_columns:
+		query = query.select(water_body.water_body_size, water_body.water_body_size_unit)
+
+	query = query.select(Sum(entry.fishing_days))
 
 	if year:
 		query = query.where(entry.year == year)
@@ -89,7 +147,8 @@ def execute(filters=None):
 	organization = filters.pop("organization", None)
 	fishing_areas = filters.pop("fishing_area", [])
 	origin_of_catch_log_entry = filters.pop("origin_of_catch_log_entry", None)
+	extra_columns = filters.pop("extra_columns", [])
 
-	return get_columns(), get_data(
-		year, water_bodies, organization, fishing_areas, origin_of_catch_log_entry
+	return get_columns(extra_columns), get_data(
+		extra_columns, year, water_bodies, organization, fishing_areas, origin_of_catch_log_entry
 	)
