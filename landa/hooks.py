@@ -263,6 +263,7 @@ doc_events = {
 	"Item Price": {"validate": "landa.landa_sales.item_price.item_price.validate"},
 	"Sales Order": {
 		"before_validate": "landa.landa_sales.sales_order.sales_order.before_validate",
+		"validate": "landa.landa_sales.sales_order.sales_order.validate",
 		"autoname": "landa.landa_sales.sales_order.sales_order.autoname",
 	},
 	"Sales Invoice": {
