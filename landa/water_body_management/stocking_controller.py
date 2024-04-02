@@ -12,7 +12,6 @@ class StockingController(Document):
 	def before_validate(self):
 		self.set_weight_per_size()
 		self.set_quantity_per_size()
-		self.set_total_price()
 
 	def validate(self):
 		self.validate_year()
@@ -48,9 +47,3 @@ class StockingController(Document):
 
 		self.quantity_per_water_body_size = self.quantity / self.water_body_size
 		self.unit_of_quantity_per_water_body_size = f"Stk / {self.water_body_size_unit}"
-
-	def set_total_price(self):
-		if not (self.weight and self.price_per_kilogram):
-			self.price_for_total_weight = 0
-		else:
-			self.price_for_total_weight = self.weight * self.price_per_kilogram
