@@ -59,17 +59,17 @@ def rebuild_water_body_cache(fishing_area: str = None, enqueued: bool = False):
 	"""
 	# Invalidate Cache
 	if enqueued:
-		frappe.cache().hset("water_body_data", "in_progress", 1)
+		frappe.cache().hset("water_body_data", "in_progress", 1, shared=True)
 
-	frappe.cache().hdel("water_body_data", "all")
+	frappe.cache().hdel("water_body_data", "all", shared=True)
 	build_water_body_cache()
 
 	if fishing_area:
-		frappe.cache().hdel("water_body_data", fishing_area)
+		frappe.cache().hdel("water_body_data", fishing_area, shared=True)
 		build_water_body_cache(fishing_area=fishing_area)
 
 	if enqueued:
-		frappe.cache().hset("water_body_data", "in_progress", 0)
+		frappe.cache().hset("water_body_data", "in_progress", 0, shared=True)
 
 
 def remove_outdated_information():
@@ -93,7 +93,7 @@ def build_water_body_cache(fishing_area: str = None):
 	"""
 	water_bodies = build_water_body_data(fishing_area=fishing_area)
 	key = fishing_area or "all"
-	frappe.cache().hset("water_body_data", key, water_bodies)
+	frappe.cache().hset("water_body_data", key, water_bodies, shared=True)
 
 
 def build_water_body_data(id: str = None, fishing_area: str = None) -> List[Dict]:
@@ -277,7 +277,7 @@ def rebuild_cache_on_attachment(doc, method):
 		# NOTE:Enqueue gets uncommitted data (new thread). Files appear even if deleted
 		# Still no clue why
 		rebuild_water_body_cache(fishing_area=water_body_data.fishing_area)
-	elif not frappe.cache().hget("water_body_data", "in_progress"):
+	elif not frappe.cache().hget("water_body_data", "in_progress", shared=True):
 		frappe.enqueue(
 			rebuild_water_body_cache,
 			fishing_area=water_body_data.fishing_area,
