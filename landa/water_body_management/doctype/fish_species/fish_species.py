@@ -24,16 +24,16 @@ def get_fish_species_data(id: str = None) -> List[Dict]:
 		# We do not cache ID since it's uniqueness makes the API performant
 		return query_fish_species_data(id)
 
-	cache_exists = frappe.cache().hexists("fish_species_data", "all")
+	cache_exists = frappe.cache().hexists("fish_species_data", "all", shared=True)
 	if not cache_exists:
 		build_fish_species_cache()
 
-	return frappe.cache().hget("fish_species_data", "all")
+	return frappe.cache().hget("fish_species_data", "all", shared=True)
 
 
 def build_fish_species_cache():
 	"""Rebuild entire fish species data and set in cache."""
-	frappe.cache().hset("fish_species_data", "all", query_fish_species_data())
+	frappe.cache().hset("fish_species_data", "all", query_fish_species_data(), shared=True)
 
 
 def query_fish_species_data(id: str = None) -> List[Dict]:
