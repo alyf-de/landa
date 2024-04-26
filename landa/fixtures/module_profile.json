@@ -1,5 +1,13 @@
 [
  {
+  "block_modules": [],
+  "docstatus": 0,
+  "doctype": "Module Profile",
+  "modified": "2024-02-22 10:50:31.758112",
+  "module_profile_name": "Admin",
+  "name": "Admin"
+ },
+ {
   "block_modules": [
    {
     "module": "Core",
