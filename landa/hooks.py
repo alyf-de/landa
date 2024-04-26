@@ -182,6 +182,7 @@ doctype_js = {
 	"User": "organization_management/user/user.js",
 	"Customer": "landa_sales/customer/customer.js",
 	"Payment Reconciliation": "landa_sales/payment_reconciliation/payment_reconciliation.js",
+	"Data Import": "scripts/data_import.js",
 }
 doctype_list_js = {
 	"Report": "scripts/report_list.js",
