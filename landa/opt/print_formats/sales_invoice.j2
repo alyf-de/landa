@@ -88,13 +88,7 @@
 		<strong>{% if doc.is_return %}{{ _("Retoure") }}{% else %}{{ _("Invoice") }}{% endif %} {{ doc.name }}</strong>
     </div>
     <div class="salutation">
-    {% if doc.is_return %}
-        {% if frappe.form_dict.get("_lang", doc.language) == "de" %}
-            <p>Folgende Artikelpositionen nehmen wir hiermit zurück in Bestand unseres Verbandes:</p>
-        {% else %}
-            <p>We hereby take the following items back into inventory of our association:</p>
-        {% endif %}
-    {% else %}
+    {% if not doc.is_return %}
         {% if frappe.form_dict.get("_lang", doc.language) == "de" %}
             <p>Den für Sie ausgeführten Auftrag berechnen wir wie folgt:</p>
         {% else %}
