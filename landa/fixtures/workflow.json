@@ -7,13 +7,11 @@
   "modified": "2023-05-08 12:12:17.546050",
   "name": "Catch Log Entry",
   "override_status": 0,
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "send_email_alert": 0,
   "states": [
    {
     "allow_edit": "LANDA Catch Log User",
+    "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
     "message": null,
@@ -27,6 +25,7 @@
    },
    {
     "allow_edit": "LANDA Regional Organization Management",
+    "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
     "message": null,
@@ -40,6 +39,7 @@
    },
    {
     "allow_edit": "LANDA State Organization Employee",
+    "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
     "message": null,

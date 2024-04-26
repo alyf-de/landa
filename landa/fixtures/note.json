@@ -8,9 +8,6 @@
   "name": "Datenschutz Hinweise",
   "notify_on_every_login": 0,
   "notify_on_login": 1,
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "public": 1,
   "seen_by": [
    {

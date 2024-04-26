@@ -9,9 +9,6 @@
   "language": "de",
   "modified": "2021-10-05 18:41:33.178754",
   "name": "629001162e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Party",
   "translated_text": "Bestellkonto Verein"
  },
@@ -25,9 +22,6 @@
   "language": "de",
   "modified": "2021-10-05 18:41:55.574016",
   "name": "f3653bd714",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Party Name",
   "translated_text": "Vereinsname"
  },
@@ -41,9 +35,6 @@
   "language": "de",
   "modified": "2021-10-05 18:42:54.366982",
   "name": "784f71f5dc",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Company Bank Account",
   "translated_text": "Konto Regionalverband"
  },
@@ -57,9 +48,6 @@
   "language": "de",
   "modified": "2021-10-05 18:43:15.887854",
   "name": "002f5bfbaf",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Party Bank Account",
   "translated_text": "Konto Verein"
  },
@@ -73,9 +61,6 @@
   "language": "de",
   "modified": "2021-10-05 18:45:24.076692",
   "name": "9c0e628094",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Party Type",
   "translated_text": "Art des Zahlenden/Zahlungsempf\u00e4ngers (nicht \u00e4ndern)"
  },
@@ -89,9 +74,6 @@
   "language": "de",
   "modified": "2021-10-07 17:48:42.411524",
   "name": "f42ae17414",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Tree",
   "translated_text": "Baumansicht"
  },
@@ -105,9 +87,6 @@
   "language": "de",
   "modified": "2021-10-07 17:23:23.194584",
   "name": "5b5db4deaf",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Valid From Year",
   "translated_text": "G\u00fcltig ab Jahr"
  },
@@ -121,9 +100,6 @@
   "language": "de",
   "modified": "2021-10-07 17:23:40.257301",
   "name": "9850e42d5d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Valid To Year",
   "translated_text": "G\u00fcltig bis Jahr"
  },
@@ -137,9 +113,6 @@
   "language": "de",
   "modified": "2021-10-07 17:24:18.805822",
   "name": "b833fe8dbf",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Cannot be Ordered",
   "translated_text": "Darf nicht bestellt werden"
  },
@@ -153,9 +126,6 @@
   "language": "de",
   "modified": "2021-07-27 14:04:41.945051",
   "name": "7fa581912b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Customer Name",
   "translated_text": "Vereinsname"
  },
@@ -169,9 +139,6 @@
   "language": "de",
   "modified": "2021-07-27 14:05:04.719166",
   "name": "ecaeea6c45",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Series",
   "translated_text": "Serie / Laufende Nummer"
  },
@@ -185,9 +152,6 @@
   "language": "de",
   "modified": "2021-07-27 14:13:43.975921",
   "name": "d81685d05e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Order Type",
   "translated_text": "Art der Bestellung (Pflichtfeld, muss nicht bearbeitet werden)"
  },
@@ -201,9 +165,6 @@
   "language": "de",
   "modified": "2021-06-23 13:36:34.016604",
   "name": "0edd7f68bc",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Is Supporting Member",
   "translated_text": "Ist F\u00f6rdermitglied"
  },
@@ -217,9 +178,6 @@
   "language": "de",
   "modified": "2021-06-08 19:03:59.140496",
   "name": "5466a26582",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Address HTML",
   "translated_text": "HTML Adresse"
  },
@@ -233,9 +191,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.532606",
   "name": "ee7987c584",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Address and Contact",
   "translated_text": "Adresse und Kontakt"
  },
@@ -249,9 +204,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.579483",
   "name": "2838f334ae",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Address and Contacts",
   "translated_text": "Adressen und Kontakte"
  },
@@ -265,9 +217,6 @@
   "language": "de",
   "modified": "2021-07-26 15:49:51.759342",
   "name": "591752421c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Address Line 1",
   "translated_text": "Adresse Zeile 1 (Stra\u00dfe + Hausnummer)"
  },
@@ -281,9 +230,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.658927",
   "name": "69d329b026",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Age at Birthday",
   "translated_text": "Geburtstagsalter"
  },
@@ -297,9 +243,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.687876",
   "name": "3a665eabd4",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Area Code",
   "translated_text": "K\u00fcrzel Region"
  },
@@ -313,9 +256,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.717318",
   "name": "f41bae3b8a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Area Name",
   "translated_text": "Name der Region"
  },
@@ -329,9 +269,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.749661",
   "name": "491a85e433",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Attachment Limit Reached",
   "translated_text": "Maximale Gr\u00f6\u00dfe des Anhangs wurde \u00fcberschritten"
  },
@@ -345,9 +282,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.792127",
   "name": "9bd0a3eace",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Award",
   "translated_text": "Auszeichnung"
  },
@@ -361,9 +295,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.819741",
   "name": "a3a5e00f53",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Awards",
   "translated_text": "Auszeichnungen"
  },
@@ -377,9 +308,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.850087",
   "name": "da45f17bd5",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Award List",
   "translated_text": "Auszeichnung Listenansicht"
  },
@@ -393,9 +321,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.881661",
   "name": "dd7252b35b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Award Management",
   "translated_text": "Auszeichnungsverwaltung"
  },
@@ -409,9 +334,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.911753",
   "name": "88700e6006",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Award Type",
   "translated_text": "Art der Auszeichnung"
  },
@@ -425,9 +347,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.943858",
   "name": "f97021853f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Before Validate",
   "translated_text": "Before Validate"
  },
@@ -441,9 +360,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:00.973866",
   "name": "e7c9416f26",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Belongs to Organization",
   "translated_text": "Geh\u00f6rt zu Verein"
  },
@@ -457,9 +373,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.001225",
   "name": "f0aa8bb5e6",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Belongs to Parent Organization",
   "translated_text": "Geh\u00f6rt zu Dachverband"
  },
@@ -473,9 +386,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.038251",
   "name": "a2a457db92",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "By default, emails are only sent for failed backups.",
   "translated_text": "Emails werden standardm\u00e4\u00dfig nur f\u00fcr fehlgeschlagene Backups versendet"
  },
@@ -489,9 +399,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.090002",
   "name": "1f2b3d8d1b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Can contain suborganizations",
   "translated_text": "Kann untergeordnete Vereine enthalten"
  },
@@ -505,9 +412,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.123801",
   "name": "d0b84a8d88",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Cannot be a member of organization {} because it is a group.",
   "translated_text": "Kann kein Mitglied von Verein/Verband {} sein, da nur Vereine bzw. Ortsgruppen Mitglieder haben d\u00fcrfen, keine Regional- und Landesverb\u00e4nde."
  },
@@ -521,9 +425,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.158234",
   "name": "3cfbc2a106",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Catch Log Entry",
   "translated_text": "Fangbucheintrag"
  },
@@ -537,9 +438,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.194226",
   "name": "59354ecf40",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Catch Log Entry List",
   "translated_text": "Fangbucheintrag Listenansicht"
  },
@@ -553,9 +451,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.233481",
   "name": "03ff9964b2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Catch Log Fish Table",
   "translated_text": "Fangbucheintrag Fisch Tabelle"
  },
@@ -569,9 +464,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.271530",
   "name": "bc2d114316",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Charitable until",
   "translated_text": "Gemeinn\u00fctzig bis"
  },
@@ -585,9 +477,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.311783",
   "name": "219910435b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "City",
   "translated_text": "Ort"
  },
@@ -601,9 +490,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.358802",
   "name": "6cb932f2b3",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Connect to {}",
   "translated_text": "Verbinden mit {}"
  },
@@ -617,9 +503,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.393475",
   "name": "fda0fd121b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Connected App",
   "translated_text": "Verbundene Anwendung"
  },
@@ -633,9 +516,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.433989",
   "name": "f8ef41d96b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Consumer",
   "translated_text": "Verbraucher"
  },
@@ -649,9 +529,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.475763",
   "name": "92634e4664",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Consumers",
   "translated_text": "Verbraucher"
  },
@@ -665,9 +542,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.507763",
   "name": "7ea14a0731",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Contact HTML",
   "translated_text": "HTML Kontakt"
  },
@@ -681,9 +555,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.539083",
   "name": "ecfadac4ab",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Create User Permission",
   "translated_text": "Benutzer Berechtigungen erstellen"
  },
@@ -697,9 +568,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.582409",
   "name": "ea8aba1b13",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Customize Child Table",
   "translated_text": "Untergeordnete Tabelle (Child Table) anpassen"
  },
@@ -713,9 +581,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.626405",
   "name": "20ccd927bb",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Date of Birth",
   "translated_text": "Geburtsdatum"
  },
@@ -729,9 +594,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.654836",
   "name": "791c57c3da",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Days Until Birthday",
   "translated_text": "Tage Bis Geburtstag"
  },
@@ -745,9 +607,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.691161",
   "name": "d76e95db40",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Deny",
   "translated_text": "Ablehnen"
  },
@@ -761,9 +620,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.738168",
   "name": "a72a9839bb",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Ehrennadel Bronze",
   "translated_text": "Ehrennadel Bronze"
  },
@@ -777,9 +633,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.791692",
   "name": "f11348865e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Ehrennadel Gold",
   "translated_text": "Ehrennadel Gold"
  },
@@ -793,9 +646,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.843765",
   "name": "559226a80e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Ehrennadel Silber",
   "translated_text": "Ehrennadel Silber"
  },
@@ -809,9 +659,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.879254",
   "name": "c25d96d194",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Extra Parameters",
   "translated_text": "Zus\u00e4tzliche Parameter"
  },
@@ -825,9 +672,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.909261",
   "name": "7f33262383",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Fish Catches",
   "translated_text": "Gefangene Fische"
  },
@@ -841,9 +685,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.944060",
   "name": "b5877314ca",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Catch Log Entries",
   "translated_text": "Fangbucheintr\u00e4ge"
  },
@@ -857,9 +698,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:01.974328",
   "name": "c9e0dd72ac",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Fish Species",
   "translated_text": "Fischart"
  },
@@ -873,9 +711,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.007225",
   "name": "dd4c6c28b1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Fish Species List",
   "translated_text": "Fischart Listenansicht"
  },
@@ -889,9 +724,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.036786",
   "name": "a3a96eca62",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Fish Species Table",
   "translated_text": "Fischart Tabelle"
  },
@@ -905,9 +737,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.143653",
   "name": "76617a20aa",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Fishing Days",
   "translated_text": "Angeltage"
  },
@@ -921,9 +750,6 @@
   "language": "de",
   "modified": "2021-07-09 15:47:06.298644",
   "name": "7043fe16f2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Fishing Permit",
   "translated_text": "Fischereischein"
  },
@@ -937,9 +763,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.207482",
   "name": "311bbade85",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Full name of the organization. For example; \"Landesverband S\u00e4chsischer Angler e.V.\"",
   "translated_text": "Vollst\u00e4ndiger Titel des Vereins/Verbands; z.B. \"Landesverband S\u00e4chsischer Angler e.V.\""
  },
@@ -953,9 +776,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.236260",
   "name": "2809bc32f2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "F\u00f6rdermitglied",
   "translated_text": "F\u00f6rdermitglied"
  },
@@ -969,9 +789,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.264828",
   "name": "55097020c4",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Goldene \u00c4sche",
   "translated_text": "Goldene \u00c4sche"
  },
@@ -985,9 +802,6 @@
   "language": "de",
   "modified": "2021-07-09 15:47:22.778270",
   "name": "eed2ca660d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Has Fishing Permit",
   "translated_text": "Hat Fischereischein"
  },
@@ -1001,9 +815,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.332820",
   "name": "75ea9bebbe",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Has Key",
   "translated_text": "Besitzt Schl\u00fcssel"
  },
@@ -1017,9 +828,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.364859",
   "name": "b0542064b0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Hide Descendants",
   "translated_text": "Untergeordnete Objekte verbergen"
  },
@@ -1033,9 +841,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.392681",
   "name": "c50b9cd439",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "If checked; negative numeric values of Currency; Quantity or Count would be shown as positive",
   "translated_text": "Bei Auswahl werden negative numerische Werte von W\u00e4hrung; Menge oder Anzahl als positiv angezeigt"
  },
@@ -1049,9 +854,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.422345",
   "name": "09535aae5d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "If the condition is satisfied user will be rewarded with the points. eg. doc.status == 'Closed'|||",
   "translated_text": "Wenn diese Bedingung erf\u00fcllt ist; wird der Benutzer mit Punkten belohnt; z.B. doc.status == 'Erledigt'|||"
  },
@@ -1065,9 +867,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.455780",
   "name": "4a662a1794",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Invalid Fieldname",
   "translated_text": "Ung\u00fcltige Bezeichnung f\u00fcr Feld"
  },
@@ -1081,9 +880,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.498905",
   "name": "302b2eea6a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Invalid Parameters.",
   "translated_text": "Ung\u00fcltige Parameter"
  },
@@ -1097,9 +893,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.530593",
   "name": "7dd704592a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Invalid state.",
   "translated_text": "Ung\u00fcltiger Zustand"
  },
@@ -1113,9 +906,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.564445",
   "name": "c3f6456740",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Is Charitable",
   "translated_text": "Ist gemeinn\u00fctzig"
  },
@@ -1129,9 +919,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.595027",
   "name": "c3a3637f32",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Is Group",
   "translated_text": "Ist Gruppe (kann Unterobjekte haben)"
  },
@@ -1145,9 +932,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.624275",
   "name": "091e3e0caa",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Is Magazine Recipient",
   "translated_text": "Ist Zeitschrift Empf\u00e4nger"
  },
@@ -1161,9 +945,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.651764",
   "name": "700961319c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Issue Date",
   "translated_text": "Ausgabedatum"
  },
@@ -1177,9 +958,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.683060",
   "name": "4e220f38c1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Issuing Organization",
   "translated_text": "Ausgebender Verein/Verband"
  },
@@ -1193,9 +971,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.726304",
   "name": "dfab3e3021",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA Account",
   "translated_text": "LANDA Account"
  },
@@ -1209,9 +984,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.761185",
   "name": "133dae5762",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA Properties",
   "translated_text": "LANDA Einstellungen"
  },
@@ -1225,9 +997,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.790033",
   "name": "b08738a342",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Main Fish Species",
   "translated_text": "Hauptfischarten"
  },
@@ -1241,9 +1010,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.818352",
   "name": "881f758294",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Map",
   "translated_text": "Karte"
  },
@@ -1257,9 +1023,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.846314",
   "name": "df0ecb7534",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Maximum Attachment Limit of {0} has been reached for {1} {2}.",
   "translated_text": "Die Maximale Anzahl von Anh\u00e4ngen von {0} wurde f\u00fcr {1} {2} erreicht."
  },
@@ -1273,9 +1036,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.875727",
   "name": "4f1e31592f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Maximum attachment limit of {0} has been reached.",
   "translated_text": "Die Maximale Anzahl von Anh\u00e4ngen von {0} wurde erreicht."
  },
@@ -1289,9 +1049,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.905642",
   "name": "542abcb281",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member",
   "translated_text": "Mitglied"
  },
@@ -1305,9 +1062,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.933536",
   "name": "eafc24145e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Members",
   "translated_text": "Mitglieder"
  },
@@ -1321,9 +1075,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.963241",
   "name": "b74ca067b0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Address List",
   "translated_text": "Adressliste Mitglieder"
  },
@@ -1337,9 +1088,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:02.991413",
   "name": "9f8f4febdc",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Birthday List",
   "translated_text": "Geburtstagsliste Mitglieder"
  },
@@ -1353,9 +1101,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.019003",
   "name": "5700193942",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Count",
   "translated_text": "Mitgliedszahlen"
  },
@@ -1369,9 +1114,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.047971",
   "name": "f779a8bf54",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member First Name",
   "translated_text": "Vorname des Mitglieds"
  },
@@ -1385,9 +1127,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.075415",
   "name": "f933d111ce",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Function",
   "translated_text": "Mitgliedsfunktion"
  },
@@ -1401,9 +1140,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.108429",
   "name": "5853255966",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Functions",
   "translated_text": "Mitgliedsfunktionen"
  },
@@ -1417,9 +1153,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.146257",
   "name": "5acf068a15",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Function Category",
   "translated_text": "Mitgliedsfunktionskategorie"
  },
@@ -1433,9 +1166,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.179732",
   "name": "98f2695944",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Function List",
   "translated_text": "Mitgliedsfunktion Listenansicht"
  },
@@ -1449,9 +1179,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.227597",
   "name": "216336838f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Function Management",
   "translated_text": "Mitgliedsfunktionsverwaltung"
  },
@@ -1465,9 +1192,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.288286",
   "name": "41bb0114aa",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Function Title",
   "translated_text": "Mitgliedsfunktionsname"
  },
@@ -1481,9 +1205,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.323272",
   "name": "756c994741",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Last Name",
   "translated_text": "Nachname des Mitglieds"
  },
@@ -1497,9 +1218,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.364535",
   "name": "c17d5090fa",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member List",
   "translated_text": "Mitglied Listenansicht"
  },
@@ -1513,9 +1231,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.396833",
   "name": "bf9659baff",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Since",
   "translated_text": "Mitglied seit"
  },
@@ -1529,9 +1244,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.443824",
   "name": "d38443b199",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Type",
   "translated_text": "Mitgliedschaftsart"
  },
@@ -1545,9 +1257,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.480427",
   "name": "9c2a4e779d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Module HTML",
   "translated_text": "Modul HTML"
  },
@@ -1561,9 +1270,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.537298",
   "name": "6936602e30",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Module Profile",
   "translated_text": "Modul Profil"
  },
@@ -1577,9 +1283,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.584005",
   "name": "2e387f815b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Module Profile Name",
   "translated_text": "Modul Profilname"
  },
@@ -1593,9 +1296,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.615043",
   "name": "9320f5ec8b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Nationality",
   "translated_text": "Staatsangeh\u00f6rigkeit"
  },
@@ -1609,9 +1309,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.659662",
   "name": "fbe758f976",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "New Award Entry",
   "translated_text": "Neue Auszeichnung anlegen"
  },
@@ -1625,9 +1322,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.696635",
   "name": "6e81e6dc4e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "New Catch Log Entry",
   "translated_text": "Neuen Fangbucheintrag anlegen"
  },
@@ -1641,9 +1335,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.725672",
   "name": "3d00a65465",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "New Member Entry",
   "translated_text": "Neues Mitglied anlegen"
  },
@@ -1657,9 +1348,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.754575",
   "name": "4da8bcc708",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "New Member Function Entry",
   "translated_text": "Neue Mitgliedsfunktion anlegen"
  },
@@ -1673,9 +1361,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.812061",
   "name": "c010aa77d5",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Old Parent",
   "translated_text": "\u00dcbergeordnetes Objekt"
  },
@@ -1689,9 +1374,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.842482",
   "name": "92173401c5",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Organization",
   "translated_text": "Verein"
  },
@@ -1705,9 +1387,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.877965",
   "name": "809bd5c242",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Organizations",
   "translated_text": "Vereine"
  },
@@ -1721,9 +1400,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.906498",
   "name": "f2293cf2c8",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Organization Details",
   "translated_text": "Vereinsdetails"
  },
@@ -1737,9 +1413,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:03.936230",
   "name": "eb94f7f4f3",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Organization List",
   "translated_text": "Verein Listenansicht"
  },
@@ -1753,9 +1426,6 @@
   "language": "de",
   "modified": "2021-07-14 20:41:11.004857",
   "name": "6874dc1042",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Organization Management",
   "translated_text": "Vereinsverwaltung"
  },
@@ -1769,9 +1439,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.009577",
   "name": "2957998375",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Organization Name",
   "translated_text": "Vereinsname"
  },
@@ -1785,9 +1452,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.039644",
   "name": "2e5c7a1a01",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Organization Table",
   "translated_text": "Vereinstabelle"
  },
@@ -1801,9 +1465,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.084538",
   "name": "d129971e99",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Organization Title",
   "translated_text": "Vereinsname"
  },
@@ -1817,9 +1478,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.121936",
   "name": "6d01dae3d9",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Page to show on the website|||",
   "translated_text": "Seite; die auf der Webseite angezeigt wird|||"
  },
@@ -1833,9 +1491,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.149433",
   "name": "2c3032b63b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Parent Organization",
   "translated_text": "\u00dcbergeordneter Verband"
  },
@@ -1849,9 +1504,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.181968",
   "name": "f2937b5141",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Permission Query",
   "translated_text": "Berechtigungsanfrage"
  },
@@ -1865,9 +1517,6 @@
   "language": "de",
   "modified": "2021-07-09 16:44:55.460672",
   "name": "184d8b441c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Permit Expiration Date",
   "translated_text": "Ablaufdatum des Fischereischeins"
  },
@@ -1881,9 +1530,6 @@
   "language": "de",
   "modified": "2021-07-09 16:44:39.754982",
   "name": "1c6da39b47",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Permit Is Valid For Life",
   "translated_text": "Lebenslange G\u00fcltigkeit des Fischereischeins"
  },
@@ -1897,9 +1543,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.296360",
   "name": "1055c4b178",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Personal Details",
   "translated_text": "Angaben zur Person"
  },
@@ -1913,9 +1556,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.349213",
   "name": "15102f6e19",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Print Heading",
   "translated_text": "\u00dcberschrift drucken"
  },
@@ -1929,9 +1569,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.380362",
   "name": "c8d8da9dc7",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Query Parameters",
   "translated_text": "Abfrage Parameter"
  },
@@ -1945,9 +1582,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.408657",
   "name": "da8ad314b2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Recipient First Name",
   "translated_text": "Vorname des Empf\u00e4ngers"
  },
@@ -1961,9 +1595,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.434928",
   "name": "7fc5451f27",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Recipient Last Name",
   "translated_text": "Nachname des Empf\u00e4ngers"
  },
@@ -1977,9 +1608,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.464663",
   "name": "3004037808",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Redirect URI",
   "translated_text": "Redirect URI"
  },
@@ -1993,9 +1621,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.495399",
   "name": "5e017647bf",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Register Number",
   "translated_text": "Vereinsregisternummer"
  },
@@ -2009,9 +1634,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.524560",
   "name": "8778f6afe0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Repeat on Days",
   "translated_text": "An folgenden Tagen wiederholen"
  },
@@ -2025,9 +1647,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.554543",
   "name": "de28a82566",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Response ",
   "translated_text": "Antwort"
  },
@@ -2041,9 +1660,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.583567",
   "name": "74deee1ed1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Row #{0}: Could not find field {1} in {2} DocType",
   "translated_text": "Zeile #{0}: Feld {1} existiert nicht in DocType {2}"
  },
@@ -2057,9 +1673,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.615405",
   "name": "6e61eba2d1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Scientific Name",
   "translated_text": "Wissenschaftlicher Name"
  },
@@ -2073,9 +1686,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.649095",
   "name": "d5c2243d65",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Sets the current page as default for all users",
   "translated_text": "Setzt die aktuelle Seite als Standard f\u00fcr alle Nutzer"
  },
@@ -2089,9 +1699,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.715259",
   "name": "f5e843ebe0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Short code for regional organizations. For example; \"LVSA\"; \"AVL\"; etc.",
   "translated_text": "K\u00fcrzel f\u00fcr Verb\u00e4nde und Vereine; z.B. \"LVSA\"; \"AVL\"; etc."
  },
@@ -2105,9 +1712,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.746060",
   "name": "91cf4c879b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Show Absolute Values",
   "translated_text": "Absolutwerte anzeigen"
  },
@@ -2121,9 +1725,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.793272",
   "name": "8ecb5a04b3",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Show Organization Tree",
   "translated_text": "Baumansicht Verein anzeigen"
  },
@@ -2137,9 +1738,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.823641",
   "name": "f5ec4ff935",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Submit on Creation",
   "translated_text": "Nach Erstellung absenden"
  },
@@ -2153,9 +1751,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.875065",
   "name": "f8bab8ea80",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "This Doctype does not contain latitude and longitude fields",
   "translated_text": "Dieser Doctype enth\u00e4lt keine geographoschen Koordinaten (Felder latitude und longitude)"
  },
@@ -2169,9 +1764,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.920571",
   "name": "92cf036cd0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "This Doctype does not contain location fields",
   "translated_text": "Dieser Doctype enth\u00e4lt keine Angaben zum Ort"
  },
@@ -2185,9 +1777,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.952178",
   "name": "878a1e0cc9",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Track if your email has been opened by the recipient.||||||Note: If you're sending to multiple recipients; even if 1 recipient reads the email; it'll be considered \"Opened\"",
   "translated_text": "Lesebest\u00e4tigung des Empf\u00e4nger verfolgen.|||<br>|||Hinweis: Sollten sie an mehr als einen Empf\u00e4nger versenden; wird die Email als \"ge\u00f6ffnet\" gesetzt; auch wenn nur einer der Empf\u00e4nger die Email gelesen hat."
  },
@@ -2201,9 +1790,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:04.994159",
   "name": "01bc5d7520",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Upcoming Birthday",
   "translated_text": "N\u00e4chster Geburtstag"
  },
@@ -2217,9 +1803,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.035036",
   "name": "43c226a879",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Use HTML",
   "translated_text": "HTML verwenden"
  },
@@ -2233,9 +1816,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.063645",
   "name": "6d87340ef8",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Bodies",
   "translated_text": "Gew\u00e4sser"
  },
@@ -2249,9 +1829,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.102172",
   "name": "f662a81927",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Body",
   "translated_text": "Gew\u00e4sser"
  },
@@ -2265,9 +1842,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.132719",
   "name": "c7edc174ba",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Body List",
   "translated_text": "Gew\u00e4sser Listenansicht"
  },
@@ -2281,9 +1855,6 @@
   "language": "de",
   "modified": "2021-07-14 20:41:46.943774",
   "name": "889c1df2fe",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Body Management",
   "translated_text": "Gew\u00e4sserverwaltung"
  },
@@ -2297,9 +1868,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.207853",
   "name": "c663443d10",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Body Organization Table",
   "translated_text": "Vereinstabelle des Gew\u00e4ssers"
  },
@@ -2313,9 +1881,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.236292",
   "name": "84a5fbf774",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Weight in Kg",
   "translated_text": "Gewicht in Kg"
  },
@@ -2329,9 +1894,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.266146",
   "name": "e9f7718d52",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Zipcode",
   "translated_text": "PLZ"
  },
@@ -2345,9 +1907,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.301971",
   "name": "f058e574ca",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} Map",
   "translated_text": "{0} Karte"
  },
@@ -2361,9 +1920,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.374988",
   "name": "df07bd9929",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} changed {1} to {2}",
   "translated_text": "{0} wurde von {1} zu {2} ge\u00e4ndert"
  },
@@ -2377,9 +1933,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.442221",
   "name": "e5b46ad2ce",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} from {1} to {2}",
   "translated_text": "{0} von {1} zu/bis {2}"
  },
@@ -2393,9 +1946,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.501944",
   "name": "b7a35db7b2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} from {1} to {2} in row #{3}",
   "translated_text": "{0} von {1} zu/bis {2} in Zeile #{3}"
  },
@@ -2409,9 +1959,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.571245",
   "name": "e107489cf2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} is not a field of doctype {1}",
   "translated_text": "{0} ist kein Feld in Doctype {1}"
  },
@@ -2425,9 +1972,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.612978",
   "name": "b88976600e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{} wants to access the following details from your account",
   "translated_text": "{} m\u00f6chte Zugriff auf die folgenden Angaben von Ihrem Account"
  },
@@ -2441,9 +1985,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.707141",
   "name": "6d0d824537",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Order Management",
   "translated_text": "Bestellwesen"
  },
@@ -2457,9 +1998,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.754324",
   "name": "1884af52a3",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Sales Order",
   "translated_text": "Bestellung"
  },
@@ -2473,9 +2011,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.790534",
   "name": "934459c993",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "New Sales Order",
   "translated_text": "Neue Bestellung anlegen"
  },
@@ -2489,9 +2024,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.831492",
   "name": "966fcaa6dd",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "New Delivery Note",
   "translated_text": "Neuen Lieferschein anlegen"
  },
@@ -2505,9 +2037,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.873540",
   "name": "711264b2c1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "New Payment Entry",
   "translated_text": "Neue Zahlung anlegen"
  },
@@ -2521,9 +2050,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.914935",
   "name": "7d54efcc1c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Yearly Fishing Permits",
   "translated_text": "Erlaubnisscheine"
  },
@@ -2537,9 +2063,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.958101",
   "name": "2a42828ecd",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Yearly Fishing Permit",
   "translated_text": "Erlaubnisschein"
  },
@@ -2553,9 +2076,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:05.993967",
   "name": "c930dec639",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Yearly Fishing Permit Type",
   "translated_text": "Erlaubnisscheinart"
  },
@@ -2569,9 +2089,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.032756",
   "name": "c35f025045",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Yearly Fishing Permits Issued",
   "translated_text": "Vergebene Erlaubnisscheine"
  },
@@ -2585,9 +2102,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.077603",
   "name": "8fd681acfc",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Cannot be Returned",
   "translated_text": "Kann nicht zur\u00fcckgegeben werden"
  },
@@ -2601,9 +2115,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.122825",
   "name": "53df3680ec",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Year of Settlement",
   "translated_text": "Abrechnungsjahr"
  },
@@ -2617,9 +2128,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.159294",
   "name": "231510bdae",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Incoming Payment",
   "translated_text": "Eingehende Zahlung"
  },
@@ -2633,9 +2141,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.241205",
   "name": "31ce393f2f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Outgoing Payment",
   "translated_text": "Ausgehende Zahlung"
  },
@@ -2649,9 +2154,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.281758",
   "name": "deccf03d9a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Sales Return",
   "translated_text": "Retoure"
  },
@@ -2665,9 +2167,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.323453",
   "name": "614e04360d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Outstanding Amount",
   "translated_text": "Ausstehender Betrag"
  },
@@ -2681,9 +2180,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.361611",
   "name": "b15d633e5b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Reset Customizations",
   "translated_text": "Anpassungen Zur\u00fccksetzen"
  },
@@ -2697,9 +2193,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.399258",
   "name": "448834ba39",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Toggle Sidebar",
   "translated_text": "Seitenleiste ein-/ausblenden"
  },
@@ -2713,9 +2206,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.439290",
   "name": "7979d85eb1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Your Shortcuts",
   "translated_text": "Schnellzugriff"
  },
@@ -2729,9 +2219,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.486060",
   "name": "6f1fbd5503",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Reports & Masters",
   "translated_text": "Berichte & Stammdaten"
  },
@@ -2745,9 +2232,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.527379",
   "name": "ec37392e98",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Masters",
   "translated_text": "Stammdaten"
  },
@@ -2761,9 +2245,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.578975",
   "name": "5b9274d6b5",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Toggle Full Width",
   "translated_text": "Ansicht in voller Breite"
  },
@@ -2777,9 +2258,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.625757",
   "name": "60a56ca8b5",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "My Profile",
   "translated_text": "Mein Profil"
  },
@@ -2793,9 +2271,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.671270",
   "name": "4bdeab893b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "My Settings",
   "translated_text": "Meine Einstellungen"
  },
@@ -2809,9 +2284,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.715930",
   "name": "c51da8260a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Session Defaults",
   "translated_text": "Voreinstellungen f\u00fcr diese Sitzung"
  },
@@ -2825,9 +2297,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.750193",
   "name": "695b733773",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Modules",
   "translated_text": "Module"
  },
@@ -2841,9 +2310,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.789919",
   "name": "f1fb59c0d9",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Domains",
   "translated_text": "Branchen"
  },
@@ -2857,9 +2323,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.826345",
   "name": "a62761938b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Places",
   "translated_text": "Orte"
  },
@@ -2873,9 +2336,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.866648",
   "name": "4fc83ee0bb",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Administration",
   "translated_text": "Verwaltung"
  },
@@ -2889,9 +2349,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.910855",
   "name": "41d6e7085a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Setup",
   "translated_text": "Einrichtung"
  },
@@ -2905,9 +2362,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.938936",
   "name": "05a6eec848",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Add a Filter",
   "translated_text": "Filter hinzuf\u00fcgen"
  },
@@ -2921,9 +2375,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:06.969418",
   "name": "89c32fbab5",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Apply Filters",
   "translated_text": "Filter anwenden"
  },
@@ -2937,9 +2388,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.009850",
   "name": "a200133dfd",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Save",
   "translated_text": "Speichern"
  },
@@ -2953,9 +2401,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.050131",
   "name": "9f8088dd30",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "New Chart",
   "translated_text": "Neues Diagramm"
  },
@@ -2969,9 +2414,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.084714",
   "name": "d067110872",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "New Shortcut",
   "translated_text": "Neuer Schnellzugriff"
  },
@@ -2985,9 +2427,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.122316",
   "name": "b2daabd06e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Edit Chart",
   "translated_text": "Diagramm bearbeiten"
  },
@@ -3001,9 +2440,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.161659",
   "name": "31f709afc5",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Edit Shortcut",
   "translated_text": "Schnellzugriff bearbeiten"
  },
@@ -3017,9 +2453,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.196023",
   "name": "ed9e98ea34",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Save Customizations",
   "translated_text": "Anpassungen speichern"
  },
@@ -3033,9 +2466,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.226121",
   "name": "89116f4dae",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Connections",
   "translated_text": "Verkn\u00fcpfungen"
  },
@@ -3049,9 +2479,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.259839",
   "name": "38653b40a2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Overview",
   "translated_text": "\u00dcbersicht"
  },
@@ -3065,9 +2492,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.291485",
   "name": "cf3dcc573f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{}  Available",
   "translated_text": "{}  Verf\u00fcgbar"
  },
@@ -3081,9 +2505,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.320919",
   "name": "b0eddd3bc2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Search or type a command (Ctrl + G)",
   "translated_text": "Suchen oder Befehl eingeben (Strg + G)"
  },
@@ -3097,9 +2518,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.350791",
   "name": "ae6191f73d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Documentation",
   "translated_text": "Dokumentation"
  },
@@ -3113,9 +2531,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.385111",
   "name": "f28ed4b967",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "User Forum",
   "translated_text": "Anwenderforum"
  },
@@ -3129,9 +2544,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.434931",
   "name": "44d09d36c1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Report an Issue",
   "translated_text": "Ein Problem melden"
  },
@@ -3145,9 +2557,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.498111",
   "name": "22fbb48fac",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "About",
   "translated_text": "Info"
  },
@@ -3161,9 +2570,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.557890",
   "name": "2a87f42cc1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "No New notifications",
   "translated_text": "Keine neuen Benachrichtigungen"
  },
@@ -3177,9 +2583,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.618039",
   "name": "e9b9435a82",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Looks like you haven\u2019t received any notifications.",
   "translated_text": "Sieht aus, als h\u00e4tten Sie keine Benachrichtigungen erhalten."
  },
@@ -3193,9 +2596,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.669929",
   "name": "4f3d4f6c64",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "No Upcoming Events",
   "translated_text": "Keine anstehenden Termine"
  },
@@ -3209,9 +2609,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.719822",
   "name": "86f38c4bf3",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "There are no upcoming events for you.",
   "translated_text": "Es sind keine Termine f\u00fcr Sie geplant."
  },
@@ -3225,9 +2622,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.795179",
   "name": "b5450b3393",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Mark all as read",
   "translated_text": "Alle als gelesen markieren"
  },
@@ -3241,9 +2635,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.845122",
   "name": "75dac97020",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Today's Events",
   "translated_text": "Heutige Termine"
  },
@@ -3257,9 +2648,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.887493",
   "name": "54baeda036",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA Member Count",
   "translated_text": "Anzahl Mitglieder"
  },
@@ -3273,9 +2661,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.926671",
   "name": "d47420774a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Total (only for regional org.)",
   "translated_text": "Summe (nur f\u00fcr RV)"
  },
@@ -3289,9 +2674,6 @@
   "language": "de",
   "modified": "2021-06-08 19:04:07.971803",
   "name": "717ec0ae68",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "No",
   "translated_text": "Nein"
  },
@@ -3305,9 +2687,6 @@
   "language": "de",
   "modified": "2021-07-08 14:03:02.522894",
   "name": "160feb7d7d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "List View",
   "translated_text": "Listenansicht"
  },
@@ -3321,9 +2700,6 @@
   "language": "de",
   "modified": "2021-07-09 11:55:15.593241",
   "name": "12a64bd550",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "List",
   "translated_text": "Liste"
  },
@@ -3337,9 +2713,6 @@
   "language": "de",
   "modified": "2021-07-09 11:56:35.171008",
   "name": "8ef467dc59",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Tags",
   "translated_text": "Schlagworte"
  },
@@ -3353,9 +2726,6 @@
   "language": "de",
   "modified": "2021-07-09 11:57:27.456921",
   "name": "07df6d810b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Tag",
   "translated_text": "Schlagwort"
  },
@@ -3369,9 +2739,6 @@
   "language": "de",
   "modified": "2021-07-09 11:59:03.484055",
   "name": "9f93823427",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Show Saved",
   "translated_text": "Gespeicherte anzeigen"
  },
@@ -3385,9 +2752,6 @@
   "language": "de",
   "modified": "2021-07-09 11:59:34.493188",
   "name": "43f97a9479",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Edit Filters",
   "translated_text": "Filter bearbeiten"
  },
@@ -3401,9 +2765,6 @@
   "language": "de",
   "modified": "2021-07-09 15:15:14.504629",
   "name": "8327df8a84",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} created this {1}",
   "translated_text": "{0} hat das {1} erstellt"
  },
@@ -3417,9 +2778,6 @@
   "language": "de",
   "modified": "2021-07-09 15:16:16.132709",
   "name": "af7a3af0bf",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} edited this {1}",
   "translated_text": "{0} hat das {1} bearbeitet"
  },
@@ -3433,9 +2791,6 @@
   "language": "de",
   "modified": "2021-07-09 15:18:13.719696",
   "name": "fc004135cd",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "descending",
   "translated_text": "absteigend"
  },
@@ -3449,9 +2804,6 @@
   "language": "de",
   "modified": "2021-07-09 15:18:36.360582",
   "name": "63150cb743",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "ascending",
   "translated_text": "aufsteigend"
  },
@@ -3465,9 +2817,6 @@
   "language": "de",
   "modified": "2021-07-09 15:19:13.222902",
   "name": "2da758f732",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Dashboard",
   "translated_text": "\u00dcbersichtsseite"
  },
@@ -3481,9 +2830,6 @@
   "language": "de",
   "modified": "2021-07-09 15:19:34.182398",
   "name": "f7c1dd7e04",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "dashboard",
   "translated_text": "\u00dcbersichtsseite"
  },
@@ -3497,9 +2843,6 @@
   "language": "de",
   "modified": "2021-07-09 15:20:23.365753",
   "name": "dfa7e7493a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Report View",
   "translated_text": "Berichtansicht"
  },
@@ -3513,9 +2856,6 @@
   "language": "de",
   "modified": "2021-07-09 15:21:04.641831",
   "name": "22d1c625d6",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Dashboard View",
   "translated_text": "\u00dcbersichtsseitenansicht"
  },
@@ -3529,9 +2869,6 @@
   "language": "de",
   "modified": "2021-07-09 15:22:29.227992",
   "name": "33549a67c4",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Address List",
   "translated_text": "Adressliste Mitglieder"
  },
@@ -3545,9 +2882,6 @@
   "language": "de",
   "modified": "2021-07-09 15:22:58.403448",
   "name": "82e6264c97",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Birthday List",
   "translated_text": "Geburtstagsliste Mitglieder"
  },
@@ -3561,9 +2895,6 @@
   "language": "de",
   "modified": "2021-07-09 15:24:09.913437",
   "name": "2e71d4868e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Decadal Birthday (set filter to 1 for yes)",
   "translated_text": "Runder Geburtstag (Filter auf 1 setzen f\u00fcr ja)"
  },
@@ -3577,9 +2908,6 @@
   "language": "de",
   "modified": "2021-07-09 15:27:36.562915",
   "name": "e63c2d8e4f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "All Organizations",
   "translated_text": "Alle Verb\u00e4nde und Vereine"
  },
@@ -3593,9 +2921,6 @@
   "language": "de",
   "modified": "2021-07-09 15:28:35.725372",
   "name": "7cd47aa8b9",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Rebuild Tree",
   "translated_text": "Baumansicht wiederherstellen"
  },
@@ -3609,9 +2934,6 @@
   "language": "de",
   "modified": "2021-07-09 15:30:06.395639",
   "name": "a1fd902463",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Copy to Clipboard",
   "translated_text": "In die Zwischenablage kopieren"
  },
@@ -3625,9 +2947,6 @@
   "language": "de",
   "modified": "2021-07-09 15:32:45.500105",
   "name": "067ef9135c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Email IDs",
   "translated_text": "Email Adressen"
  },
@@ -3641,9 +2960,6 @@
   "language": "de",
   "modified": "2021-07-09 15:33:08.262454",
   "name": "2e7ef1627d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Email ID",
   "translated_text": "Email Adresse"
  },
@@ -3657,9 +2973,6 @@
   "language": "de",
   "modified": "2021-07-09 15:33:38.081194",
   "name": "5bc1fb1076",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Contact Numbers",
   "translated_text": "Telefonnummern"
  },
@@ -3673,9 +2986,6 @@
   "language": "de",
   "modified": "2021-07-09 15:35:20.317730",
   "name": "0814690971",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "No.",
   "translated_text": "Nr."
  },
@@ -3689,9 +2999,6 @@
   "language": "de",
   "modified": "2021-07-09 15:37:41.433146",
   "name": "0a350ec9ea",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Add a tag ...",
   "translated_text": "F\u00fcgen Sie ein Schlagwort hinzu..."
  },
@@ -3705,9 +3012,6 @@
   "language": "de",
   "modified": "2021-07-09 15:39:43.149678",
   "name": "761ff5984c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Basic Info",
   "translated_text": "Eckdaten"
  },
@@ -3721,9 +3025,6 @@
   "language": "de",
   "modified": "2021-07-09 16:11:11.730371",
   "name": "3107e11037",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Privacy Information",
   "translated_text": "Datenschutzangaben"
  },
@@ -3737,9 +3038,6 @@
   "language": "de",
   "modified": "2021-07-09 16:11:38.620027",
   "name": "eab3d15592",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Organization may be listed on a public website",
   "translated_text": "Verein darf auf einer \u00f6ffentlichen Webseite erscheinen"
  },
@@ -3753,9 +3051,6 @@
   "language": "de",
   "modified": "2021-07-09 16:12:14.423841",
   "name": "720a99228b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Address may be listed on a public website",
   "translated_text": "Adresse darf auf einer \u00f6ffentlichen Webseite erscheinen"
  },
@@ -3769,9 +3064,6 @@
   "language": "de",
   "modified": "2021-07-09 16:12:37.568317",
   "name": "0a08ab273a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Email address may be listed on a public website",
   "translated_text": "Emailadresse darf auf einer \u00f6ffentlichen Webseite erscheinen"
  },
@@ -3785,9 +3077,6 @@
   "language": "de",
   "modified": "2021-07-09 16:13:07.964958",
   "name": "1b832ae72a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Phone number may be listed on a public website",
   "translated_text": "Telefonnummer darf auf einer \u00f6ffentlichen Webseite erscheinen"
  },
@@ -3801,9 +3090,6 @@
   "language": "de",
   "modified": "2021-10-05 19:34:39.128672",
   "name": "bcb90e1079",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Additional Information",
   "translated_text": "Weitere Informationen"
  },
@@ -3817,9 +3103,6 @@
   "language": "de",
   "modified": "2021-07-27 13:45:03.897820",
   "name": "bc676c9c9c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Manage Sales Orders",
   "translated_text": "Bestellungen verwalten"
  },
@@ -3833,9 +3116,6 @@
   "language": "de",
   "modified": "2021-07-27 13:45:34.877784",
   "name": "12bfeca3d2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "New Delivery Note",
   "translated_text": "Neue Lieferung anlegen"
  },
@@ -3849,9 +3129,6 @@
   "language": "de",
   "modified": "2021-07-27 13:46:01.395909",
   "name": "331a954041",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Sales Order List",
   "translated_text": "Bestellungen"
  },
@@ -3865,9 +3142,6 @@
   "language": "de",
   "modified": "2021-07-27 13:46:19.383152",
   "name": "604c88eeca",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Delivery Note List",
   "translated_text": "Lieferungen"
  },
@@ -3881,9 +3155,6 @@
   "language": "de",
   "modified": "2021-10-13 17:57:17.186343",
   "name": "326eb6d878",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Price List",
   "translated_text": "Artikelpreisliste"
  },
@@ -3897,9 +3168,6 @@
   "language": "de",
   "modified": "2021-07-27 13:47:23.103182",
   "name": "6991d3f03e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Item Tax Template List",
   "translated_text": "Artikelsteuers\u00e4tze"
  },
@@ -3913,9 +3181,6 @@
   "language": "de",
   "modified": "2021-07-27 13:48:00.292911",
   "name": "e1e8b7a59a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Customer",
   "translated_text": "Bestellwesenkonto Verein"
  },
@@ -3929,9 +3194,6 @@
   "language": "de",
   "modified": "2021-07-27 15:06:48.761428",
   "name": "4dd7d9d139",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Company",
   "translated_text": "Bestellwesenkonto Regionalverband"
  },
@@ -3945,9 +3207,6 @@
   "language": "de",
   "modified": "2021-08-02 18:08:14.569886",
   "name": "b8524c6eb6",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Nos",
   "translated_text": "Anzahl"
  },
@@ -3961,9 +3220,6 @@
   "language": "de",
   "modified": "2021-08-02 18:34:11.051819",
   "name": "0914f82dd2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "All Item Groups",
   "translated_text": "Alle Artikelarten"
  },
@@ -3977,9 +3233,6 @@
   "language": "de",
   "modified": "2021-07-26 15:07:12.300341",
   "name": "c7241c8ebc",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Info Text",
   "translated_text": "Allgemeine Informationen"
  },
@@ -3993,9 +3246,6 @@
   "language": "de",
   "modified": "2021-07-26 15:42:09.817087",
   "name": "4f73b7f804",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Name",
   "translated_text": "K\u00fcrzel"
  },
@@ -4009,9 +3259,6 @@
   "language": "de",
   "modified": "2021-10-04 17:06:00.106424",
   "name": "ed74a49a8e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Address Line 2",
   "translated_text": "Adresszusatz (z. B. Hinterhaus, Stockwerk etc.)"
  },
@@ -4025,9 +3272,6 @@
   "language": "de",
   "modified": "2021-10-04 17:10:20.191394",
   "name": "64753eca4d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Address Title",
   "translated_text": "Adressbezeichnung (nur zur Suche, wird nicht bei Adressierung verwendet)"
  },
@@ -4041,9 +3285,6 @@
   "language": "de",
   "modified": "2021-10-04 17:12:09.334016",
   "name": "0ba615ac37",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Address Type",
   "translated_text": "Adresstyp (kann, muss aber nicht ge\u00e4ndert werden)"
  },
@@ -4057,9 +3298,6 @@
   "language": "de",
   "modified": "2021-10-04 18:06:55.717219",
   "name": "fb5bc4b64b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "User Id",
   "translated_text": "Nutzername"
  },
@@ -4073,9 +3311,6 @@
   "language": "de",
   "modified": "2021-10-14 18:23:48.670884",
   "name": "17ee773e84",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "This document should be linked to at least one Company, LANDA Member, Organization or Customer",
   "translated_text": "Dieses Dokument muss mindestens mit einem Bestellwesenkonto Regionalverband, einem Mitglied, einem Verein bzw. Verband oder einem Bestellwesenkonto Verein verkn\u00fcpft sein (s. Referenzen)."
  },
@@ -4089,9 +3324,6 @@
   "language": "de",
   "modified": "2021-10-13 17:41:00.987489",
   "name": "af3edbd504",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Sort Ascending",
   "translated_text": "Aufsteigend sortieren"
  },
@@ -4105,9 +3337,6 @@
   "language": "de",
   "modified": "2021-10-13 17:41:17.431774",
   "name": "9632a37748",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Sort Descending",
   "translated_text": "Absteigend sortieren"
  },
@@ -4121,9 +3350,6 @@
   "language": "de",
   "modified": "2021-10-13 17:41:41.415917",
   "name": "f90fe565e6",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Reset sorting",
   "translated_text": "Sortierung zur\u00fccksetzen"
  },
@@ -4137,9 +3363,6 @@
   "language": "de",
   "modified": "2021-10-13 17:42:21.904632",
   "name": "8b9a51378e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Remove column",
   "translated_text": "Spalte entfernen"
  },
@@ -4153,9 +3376,6 @@
   "language": "de",
   "modified": "2021-10-13 17:42:49.648642",
   "name": "bd91f4d574",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA Account",
   "translated_text": "LANDA Nutzerkonto"
  },
@@ -4169,9 +3389,6 @@
   "language": "de",
   "modified": "2021-10-13 17:43:08.577495",
   "name": "15dc3845d8",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Create User Account",
   "translated_text": "Nutzerkonto erstellen"
  },
@@ -4185,9 +3402,6 @@
   "language": "de",
   "modified": "2021-10-13 17:46:47.449871",
   "name": "9261653e87",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "changed value of {0}",
   "translated_text": "hat den Wert von {0} ge\u00e4ndert"
  },
@@ -4201,9 +3415,6 @@
   "language": "de",
   "modified": "2021-10-13 17:47:46.910853",
   "name": "af884c6cf4",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "changed values for {0}",
   "translated_text": "hat den Wert von {0} ge\u00e4ndert"
  },
@@ -4217,9 +3428,6 @@
   "language": "de",
   "modified": "2021-10-13 17:48:29.564332",
   "name": "908f796dfe",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "changed value of {0} {1}",
   "translated_text": "hat den Wert von {0} {1} ge\u00e4ndert"
  },
@@ -4233,9 +3441,6 @@
   "language": "de",
   "modified": "2021-10-13 17:48:48.535377",
   "name": "61d230d1ca",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "changed values for {0} {1}",
   "translated_text": "hat den Wert von {0} {1} ge\u00e4ndert"
  },
@@ -4249,9 +3454,6 @@
   "language": "de",
   "modified": "2021-10-13 17:49:51.245761",
   "name": "2b9edd072a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Show Organization List",
   "translated_text": "Vereins- und Verbandsliste anzeigen"
  },
@@ -4265,9 +3467,6 @@
   "language": "de",
   "modified": "2021-10-13 17:50:19.014099",
   "name": "b69e6d694d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Message",
   "translated_text": "Hinweis"
  },
@@ -4281,9 +3480,6 @@
   "language": "de",
   "modified": "2021-10-13 17:50:49.962169",
   "name": "da79bf7eff",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Message sent",
   "translated_text": "Nachricht versendet"
  },
@@ -4297,9 +3493,6 @@
   "language": "de",
   "modified": "2021-10-13 17:53:14.065140",
   "name": "2b2035d4b9",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Rate of Stock UOM",
   "translated_text": "Lagerpreis Einheit"
  },
@@ -4313,9 +3506,6 @@
   "language": "de",
   "modified": "2021-10-13 18:06:53.959199",
   "name": "1470078e99",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Type Name",
   "translated_text": "Art / Typ"
  },
@@ -4329,9 +3519,6 @@
   "language": "de",
   "modified": "2021-10-13 18:09:01.309147",
   "name": "c63f6e0c86",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} changed value of {1}",
   "translated_text": "{0} hat den Wert von {1} ge\u00e4ndert"
  },
@@ -4345,9 +3532,6 @@
   "language": "de",
   "modified": "2021-10-18 17:26:53.889308",
   "name": "9b853b73ff",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Switch To Desk",
   "translated_text": "Zur Anwendung wechseln"
  },
@@ -4361,9 +3545,6 @@
   "language": "de",
   "modified": "2021-10-18 17:30:55.201965",
   "name": "a47ce7c09b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Don't have an account?",
   "translated_text": "Sie haben noch kein Nutzerkonto?"
  },
@@ -4377,9 +3558,6 @@
   "language": "de",
   "modified": "2021-10-18 17:31:14.490221",
   "name": "857c4b2733",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "registration",
   "translated_text": "Registrierung"
  },
@@ -4393,9 +3571,6 @@
   "language": "de",
   "modified": "2021-10-18 17:31:37.634976",
   "name": "5ce5339932",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Registration",
   "translated_text": "Registrierung"
  },
@@ -4409,9 +3584,6 @@
   "language": "de",
   "modified": "2021-10-18 17:32:01.510470",
   "name": "680c1a9979",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "register",
   "translated_text": "registrieren"
  },
@@ -4425,9 +3597,6 @@
   "language": "de",
   "modified": "2021-10-18 17:32:17.272372",
   "name": "8a66b15196",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Register",
   "translated_text": "Registrieren"
  },
@@ -4441,9 +3610,6 @@
   "language": "de",
   "modified": "2021-06-23 16:15:01.903583",
   "name": "2d514a447a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA Member",
   "translated_text": "Mitglied"
  },
@@ -4457,9 +3623,6 @@
   "language": "de",
   "modified": "2021-11-15 16:30:03.426477",
   "name": "ec6287a5f9",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Welcome to {0}",
   "translated_text": "Willkommen bei {0}"
  },
@@ -4473,9 +3636,6 @@
   "language": "de",
   "modified": "2021-12-03 17:18:24.425588",
   "name": "0ba74f0c4d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "No Data...",
   "translated_text": "Keine Daten..."
  },
@@ -4489,9 +3649,6 @@
   "language": "de",
   "modified": "2021-12-03 17:21:54.178997",
   "name": "27428ffeea",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Pincode",
   "translated_text": "Postleitzahl"
  },
@@ -4505,9 +3662,6 @@
   "language": "de",
   "modified": "2021-10-25 20:27:53.312747",
   "name": "e1252f3121",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Managing Director",
   "translated_text": "Gesch\u00e4ftsf\u00fchrer"
  },
@@ -4521,9 +3675,6 @@
   "language": "de",
   "modified": "2021-10-25 20:29:46.681219",
   "name": "2412a7afc5",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Email",
   "translated_text": "E-Mail"
  },
@@ -4537,9 +3688,6 @@
   "language": "de",
   "modified": "2021-10-25 20:36:26.003103",
   "name": "afce0f420a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Render contact name first in address",
   "translated_text": "Kontaktname zuerst in der Adresse anzeigen"
  },
@@ -4553,9 +3701,6 @@
   "language": "de",
   "modified": "2021-10-25 20:37:11.336173",
   "name": "a9a76db4d4",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Invoice Information Text",
   "translated_text": "Informationstext Rechnung"
  },
@@ -4569,9 +3714,6 @@
   "language": "de",
   "modified": "2021-10-25 20:37:49.528364",
   "name": "8b03e5a4ca",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Settings used to render documents such as invoices, delivery notes and returns.",
   "translated_text": "Einstellungen f\u00fcr die Darstellung von Dokumenten wie Rechnungen, Lieferscheinen und Retouren."
  },
@@ -4585,9 +3727,6 @@
   "language": "de",
   "modified": "2021-10-25 20:38:23.401279",
   "name": "24f38715c1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Delivery Note Information text",
   "translated_text": "Informationstext Lieferschein"
  },
@@ -4601,9 +3740,6 @@
   "language": "de",
   "modified": "2021-10-25 20:38:53.087376",
   "name": "e13d57e539",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Retoure Information Text",
   "translated_text": "Informationstext Retoure"
  },
@@ -4617,9 +3753,6 @@
   "language": "de",
   "modified": "2021-11-01 09:16:31.386710",
   "name": "7f72fa2487",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Address not set!",
   "translated_text": "Adresse nicht konfiguriert!"
  },
@@ -4633,9 +3766,6 @@
   "language": "de",
   "modified": "2021-10-25 15:10:57.585193",
   "name": "371adce4bf",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Organization ID",
   "translated_text": "Vereinsnr."
  },
@@ -4649,9 +3779,6 @@
   "language": "de",
   "modified": "2021-12-13 15:55:19.366896",
   "name": "7fdd7f9094",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "CEO",
   "translated_text": "Gesch\u00e4ftsf\u00fchrer"
  },
@@ -4665,9 +3792,6 @@
   "language": "de",
   "modified": "2021-12-13 15:55:36.052903",
   "name": "0598365e5c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Company Register",
   "translated_text": "Handelsregister"
  },
@@ -4681,9 +3805,6 @@
   "language": "de",
   "modified": "2021-12-13 15:55:51.377319",
   "name": "9da46bfaa0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "District Court",
   "translated_text": "Amtsgericht"
  },
@@ -4697,9 +3818,6 @@
   "language": "de",
   "modified": "2021-12-13 15:56:20.801084",
   "name": "e38953b8c0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Banking Account and Legal Information",
   "translated_text": "Bankkonto und Rechtliche Angaben"
  },
@@ -4713,9 +3831,6 @@
   "language": "de",
   "modified": "2021-12-13 15:56:39.350134",
   "name": "20ce74d752",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Bank name",
   "translated_text": "Name der Bank"
  },
@@ -4729,9 +3844,6 @@
   "language": "de",
   "modified": "2021-12-13 16:01:35.709019",
   "name": "80a2e1f621",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Document Settings",
   "translated_text": "Einstellungen zu Dokumenten"
  },
@@ -4745,9 +3857,6 @@
   "language": "de",
   "modified": "2021-12-20 18:07:12.263410",
   "name": "4d7163b380",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Is Decadal Birthday",
   "translated_text": "Runder Geburtstag"
  },
@@ -4761,9 +3870,6 @@
   "language": "de",
   "modified": "2021-12-20 18:16:37.669462",
   "name": "83b0b9307f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Link To",
   "translated_text": "Link zu"
  },
@@ -4777,9 +3883,6 @@
   "language": "de",
   "modified": "2021-12-20 18:17:11.726668",
   "name": "ce110d84bf",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "DocType",
   "translated_text": "Formularart (\"DocType\")"
  },
@@ -4793,9 +3896,6 @@
   "language": "de",
   "modified": "2021-12-20 18:18:40.520683",
   "name": "6ac074ede1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "You haven't created a {0} yet",
   "translated_text": "Du hast noch kein(en) {0} erstellt."
  },
@@ -4809,9 +3909,6 @@
   "language": "de",
   "modified": "2021-12-20 18:20:00.213249",
   "name": "2f15c63191",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "DocType View",
   "translated_text": "Formularart-Ansicht (\"DocType\" Ansicht)"
  },
@@ -4825,9 +3922,6 @@
   "language": "de",
   "modified": "2021-12-20 18:20:32.640080",
   "name": "e8ddcc1cc8",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "No filters selected",
   "translated_text": "Keine Filter ausgew\u00e4hlt"
  },
@@ -4841,9 +3935,6 @@
   "language": "de",
   "modified": "2021-12-20 18:20:59.927533",
   "name": "81b1478882",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Customizations Discarded",
   "translated_text": "Anpassungen verworfen"
  },
@@ -4857,9 +3948,6 @@
   "language": "de",
   "modified": "2021-12-20 18:21:33.921055",
   "name": "36238192cf",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Sales Order has been submitted successfully.",
   "translated_text": "Bestellung wurde erfolgreich eingereicht."
  },
@@ -4873,9 +3961,6 @@
   "language": "de",
   "modified": "2021-12-20 18:22:55.300636",
   "name": "a6725aaef6",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} submitted this document {1}",
   "translated_text": "{0} hat das Dokument {1} eingereicht"
  },
@@ -4889,9 +3974,6 @@
   "language": "de",
   "modified": "2021-12-20 18:23:14.650603",
   "name": "ac35bb0f4e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} submitted this document",
   "translated_text": "{0} hat dieses Dokument eingereicht"
  },
@@ -4905,9 +3987,6 @@
   "language": "de",
   "modified": "2021-12-20 18:24:15.428466",
   "name": "be6cd6125c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} cancelled this document {1}",
   "translated_text": "{0} hat die Buchung des Dokuments {1} r\u00fcckg\u00e4ngig gemacht"
  },
@@ -4921,9 +4000,6 @@
   "language": "de",
   "modified": "2021-12-20 18:24:47.216861",
   "name": "ca9a94f60b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} cancelled this document",
   "translated_text": "{0} hat die Buchung dieses Dokuments r\u00fcckg\u00e4ngig gemacht"
  },
@@ -4937,9 +4013,6 @@
   "language": "de",
   "modified": "2021-12-20 18:27:05.138934",
   "name": "e6007c4124",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} changed values for {1} {2}",
   "translated_text": "{0} hat die Werte von {1} {2} ge\u00e4ndert"
  },
@@ -4953,9 +4026,6 @@
   "language": "de",
   "modified": "2021-12-20 18:27:34.708512",
   "name": "70f6ab984d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} changed values for {1}",
   "translated_text": "{0} hat die Werte von {1} ge\u00e4ndert"
  },
@@ -4969,9 +4039,6 @@
   "language": "de",
   "modified": "2021-12-20 18:42:20.135528",
   "name": "47f51e9afd",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Fishing Permit Number",
   "translated_text": "Fischereischein Nummer"
  },
@@ -4985,9 +4052,6 @@
   "language": "de",
   "modified": "2021-12-21 12:27:53.220260",
   "name": "49d6cfb436",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Access Level",
   "translated_text": "Zugangs Level"
  },
@@ -5001,9 +4065,6 @@
   "language": "de",
   "modified": "2021-12-21 12:28:59.018113",
   "name": "9c679547b8",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Grant access to all organizations below this level.",
   "translated_text": "Zugriff auf bestimmte Daten von Vereinen / Verb\u00e4nden unterhalb dieses Levels geben."
  },
@@ -5017,9 +4078,6 @@
   "language": "de",
   "modified": "2021-12-21 12:29:36.879214",
   "name": "1a979860af",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Administration",
   "translated_text": "Mitgliedsdatenverwaltung"
  },
@@ -5033,9 +4091,6 @@
   "language": "de",
   "modified": "2021-12-21 12:31:51.062960",
   "name": "11c4c0716c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Remove the restriction that limits users to their own member data.",
   "translated_text": "Beschr\u00e4nkung entfernen, die den Nutzer auf seine eigenen Daten einschr\u00e4nkt."
  },
@@ -5049,9 +4104,6 @@
   "language": "de",
   "modified": "2021-12-21 12:32:23.760211",
   "name": "6100e67cf8",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Local Organization",
   "translated_text": "Verein"
  },
@@ -5065,9 +4117,6 @@
   "language": "de",
   "modified": "2021-12-21 12:33:00.020096",
   "name": "9cc3001c63",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Regional Organization",
   "translated_text": "Regionalverband"
  },
@@ -5081,9 +4130,6 @@
   "language": "de",
   "modified": "2021-12-21 12:33:16.175129",
   "name": "e1d97b31a7",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "State Organization",
   "translated_text": "Landesverband"
  },
@@ -5097,9 +4143,6 @@
   "language": "de",
   "modified": "2021-12-21 12:34:24.620046",
   "name": "05cc137792",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA Local Water Body Management",
   "translated_text": "LANDA Gew\u00e4sserverwaltung Verein"
  },
@@ -5113,9 +4156,6 @@
   "language": "de",
   "modified": "2021-12-21 12:34:58.737566",
   "name": "6999821d17",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA Regional Organization Management",
   "translated_text": "LANDA Mitgliederverwaltung Regionalverband"
  },
@@ -5129,9 +4169,6 @@
   "language": "de",
   "modified": "2021-12-21 12:35:30.137089",
   "name": "a4d89eda35",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA Catch Log User",
   "translated_text": "LANDA Fangmengen Nutzer"
  },
@@ -5145,9 +4182,6 @@
   "language": "de",
   "modified": "2021-12-21 12:35:49.762022",
   "name": "1a8923871d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA Magazine Manager",
   "translated_text": "LANDA Zeitschrift Verwalter"
  },
@@ -5161,9 +4195,6 @@
   "language": "de",
   "modified": "2021-12-21 12:38:04.814849",
   "name": "725b6013a0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA Regional Water Body Management",
   "translated_text": "LANDA Gew\u00e4sserverwaltung Regionalverband"
  },
@@ -5177,9 +4208,6 @@
   "language": "de",
   "modified": "2021-12-21 12:37:19.054184",
   "name": "7d8c91a799",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA State Organization Employee",
   "translated_text": "LANDA Mitarbeiter Landesverband"
  },
@@ -5193,9 +4221,6 @@
   "language": "de",
   "modified": "2021-10-28 18:28:00.742685",
   "name": "1669191da3",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Current Member Data Report",
   "translated_text": "Bericht Erlaubnisscheinausgabe: Aktuelle Daten"
  },
@@ -5209,9 +4234,6 @@
   "language": "de",
   "modified": "2022-08-15 15:46:20.947476",
   "name": "81b19ca0b8",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Address ID",
   "translated_text": "Eindeutige Adress-Identifikation"
  },
@@ -5225,9 +4247,6 @@
   "language": "de",
   "modified": "2021-10-28 18:24:00.854524",
   "name": "8593770f8e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Pincode",
   "translated_text": "PLZ"
  },
@@ -5241,9 +4260,6 @@
   "language": "de",
   "modified": "2021-10-28 18:24:57.351892",
   "name": "5a085c8664",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Year of Yearly Fishing Permit",
   "translated_text": "G\u00fcltigkeitsjahr Erlaubnisschein"
  },
@@ -5257,9 +4273,6 @@
   "language": "de",
   "modified": "2021-10-28 18:25:28.849555",
   "name": "9161c95824",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Issue Date of Yearly Fishing Permit",
   "translated_text": "Ausgabedatum Erlaubnisschein"
  },
@@ -5273,9 +4286,6 @@
   "language": "de",
   "modified": "2021-10-28 18:25:57.258258",
   "name": "aa10facac5",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Yearly Fishing Permit Number",
   "translated_text": "Erlaubnisscheinnummer"
  },
@@ -5289,9 +4299,6 @@
   "language": "de",
   "modified": "2021-11-05 12:08:42.918061",
   "name": "a468eda0e4",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Current Member Data",
   "translated_text": "Aktuelle Mitgliedsdaten"
  },
@@ -5305,9 +4312,6 @@
   "language": "de",
   "modified": "2021-11-05 12:07:29.348186",
   "name": "e7ae27db6e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Data Import",
   "translated_text": "Mitgliedsdatenimport"
  },
@@ -5321,9 +4325,6 @@
   "language": "de",
   "modified": "2021-11-05 12:11:14.519033",
   "name": "29f994345f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "You haven't created a {0} yet",
   "translated_text": "Du hast noch keine(n) {0} erstellt."
  },
@@ -5337,9 +4338,6 @@
   "language": "de",
   "modified": "2022-05-20 17:27:03.278619",
   "name": "b3b1d7bd0e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "New Member Data Import",
   "translated_text": "Neues Mitglied anlegen"
  },
@@ -5353,9 +4351,6 @@
   "language": "de",
   "modified": "2021-11-05 12:24:34.336762",
   "name": "9018584d2f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Single Member Data Import",
   "translated_text": "Einzelmitglied Datenimport"
  },
@@ -5369,9 +4364,6 @@
   "language": "de",
   "modified": "2021-11-05 12:28:26.533493",
   "name": "252aa83b46",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Data Import Tool",
   "translated_text": "Datenimport von (Excel-) Tabellen"
  },
@@ -5385,9 +4377,6 @@
   "language": "de",
   "modified": "2021-11-08 14:23:03.447814",
   "name": "8de78bffeb",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Imports",
   "translated_text": "Importe"
  },
@@ -5401,9 +4390,6 @@
   "language": "de",
   "modified": "2022-01-03 23:44:53.453015",
   "name": "30c4e93504",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Or",
   "translated_text": "Oder"
  },
@@ -5417,9 +4403,6 @@
   "language": "de",
   "modified": "2022-01-03 23:45:24.240877",
   "name": "6191ee3da5",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Set all private",
   "translated_text": "Alles auf privat setzen"
  },
@@ -5433,9 +4416,6 @@
   "language": "de",
   "modified": "2022-01-03 23:45:46.235912",
   "name": "5942ef80d2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Set all public",
   "translated_text": "Alles auf \u00f6ffentlich setzen"
  },
@@ -5449,9 +4429,6 @@
   "language": "de",
   "modified": "2022-01-03 23:47:23.575820",
   "name": "f68bccc92b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Drag and drop files here or upload from",
   "translated_text": "Dateien hier per Drag and Drop einf\u00fcgen oder Dateien hochladen von"
  },
@@ -5465,9 +4442,6 @@
   "language": "de",
   "modified": "2022-01-03 23:50:06.031423",
   "name": "7a43ba4093",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "My Device",
   "translated_text": "Mein Ger\u00e4t"
  },
@@ -5481,9 +4455,6 @@
   "language": "de",
   "modified": "2022-01-03 23:47:55.707029",
   "name": "54305b6050",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Library",
   "translated_text": "Bibliothek"
  },
@@ -5497,9 +4468,6 @@
   "language": "de",
   "modified": "2022-01-03 23:48:22.500576",
   "name": "f80b197f25",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Select Mandatory",
   "translated_text": "Verpflichtende Ausw\u00e4hlen"
  },
@@ -5513,9 +4481,6 @@
   "language": "de",
   "modified": "2022-01-07 02:45:20.404943",
   "name": "a33e178bca",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Sales Order",
   "translated_text": "Bestellung"
  },
@@ -5529,9 +4494,6 @@
   "language": "de",
   "modified": "2022-01-20 23:54:45.840574",
   "name": "b3d7fb52ec",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Fishing Area",
   "translated_text": "Region"
  },
@@ -5545,9 +4507,6 @@
   "language": "de",
   "modified": "2022-01-20 23:54:37.906174",
   "name": "a667122399",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Fishing Area List",
   "translated_text": "Region Listenansicht"
  },
@@ -5561,9 +4520,6 @@
   "language": "de",
   "modified": "2022-01-27 15:42:53.655935",
   "name": "9a6c19a9b4",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA Local Organization Management",
   "translated_text": "LANDA Mitgliederverwaltung Verein"
  },
@@ -5577,9 +4533,6 @@
   "language": "de",
   "modified": "2022-01-26 22:36:36.851137",
   "name": "29aeb4dbfa",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "You do not have Read or Select Permissions for {}",
   "translated_text": "Sie haben keine Lese- oder Auswahlberechtigung f\u00fcr {}"
  },
@@ -5593,9 +4546,6 @@
   "language": "de",
   "modified": "2022-01-26 22:37:07.009235",
   "name": "36e5936b09",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Cannot Fetch Values",
   "translated_text": "Kann Werte nicht beziehen"
  },
@@ -5609,9 +4559,6 @@
   "language": "de",
   "modified": "2022-01-26 22:38:45.807781",
   "name": "649ae19181",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "You need {0} permission to fetch values from {1} {2}",
   "translated_text": "Sie brauchen eine {0}-Berechtigung, um die Werte von {1} {2} zu beziehen"
  },
@@ -5625,9 +4572,6 @@
   "language": "de",
   "modified": "2022-01-20 23:51:27.306051",
   "name": "9b902d23d7",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Number of Catch Log Books",
   "translated_text": "Anzahl der Fangb\u00fccher"
  },
@@ -5641,9 +4585,6 @@
   "language": "de",
   "modified": "2022-01-27 15:46:08.714490",
   "name": "46d2201c77",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "You hit the rate limit because of too many requests. Please try after sometime.",
   "translated_text": "Sie haben die maximale Anzahl an Anfragen erreicht. Bitte versuchen Sie es sp\u00e4ter noch einmal!"
  },
@@ -5657,9 +4598,6 @@
   "language": "de",
   "modified": "2022-01-27 15:50:04.486531",
   "name": "10506d1cd0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Your new password has been set successfully.",
   "translated_text": "Ihr Passwort wurde erfolgreich aktualisiert."
  },
@@ -5673,9 +4611,6 @@
   "language": "de",
   "modified": "2022-01-27 15:50:24.379773",
   "name": "4d9c3def70",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Password set",
   "translated_text": "Passwort gesetzt"
  },
@@ -5689,9 +4624,6 @@
   "language": "de",
   "modified": "2021-09-02 17:05:15.824942",
   "name": "946490c20f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Function Categories",
   "translated_text": "Mitgliedsfunktionskategorien"
  },
@@ -5705,9 +4637,6 @@
   "language": "de",
   "modified": "2021-09-02 17:06:19.122727",
   "name": "d6df528194",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Is Decadal Birthday",
   "translated_text": "Ist runder Geburtstag"
  },
@@ -5721,9 +4650,6 @@
   "language": "de",
   "modified": "2021-09-02 17:06:54.754805",
   "name": "c553480d9d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Primary Email Address",
   "translated_text": "Prim\u00e4re Emailadresse"
  },
@@ -5737,9 +4663,6 @@
   "language": "de",
   "modified": "2022-11-10 16:17:24.297642",
   "name": "51083bbf20",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Primary Phone",
   "translated_text": "Prim\u00e4re Festnetznummer"
  },
@@ -5753,9 +4676,6 @@
   "language": "de",
   "modified": "2021-09-02 17:07:43.590503",
   "name": "0e4403edd2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Primary Mobile",
   "translated_text": "Prim\u00e4re Mobilnummer"
  },
@@ -5769,9 +4689,6 @@
   "language": "de",
   "modified": "2021-09-02 17:08:06.003207",
   "name": "e8cc4126a6",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Pincode",
   "translated_text": "Postleitzahl"
  },
@@ -5785,9 +4702,6 @@
   "language": "de",
   "modified": "2021-09-02 17:10:49.800353",
   "name": "6dc383a8a1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Primary Address (Full)",
   "translated_text": "Prim\u00e4re Adresse (kommagetrennt)"
  },
@@ -5801,9 +4715,6 @@
   "language": "de",
   "modified": "2022-02-01 12:32:53.206069",
   "name": "afce6f1574",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Members with Member Functions",
   "translated_text": "Mitglieder mit Mitgliedsfunktion"
  },
@@ -5817,9 +4728,6 @@
   "language": "de",
   "modified": "2022-03-29 18:50:12.473347",
   "name": "e63bf3495d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Short Code",
   "translated_text": "Abk\u00fcrzung"
  },
@@ -5833,9 +4741,6 @@
   "language": "de",
   "modified": "2022-02-17 16:14:36.417462",
   "name": "f37596f254",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Fishing Area Name",
   "translated_text": "Name der Region"
  },
@@ -5849,9 +4754,6 @@
   "language": "de",
   "modified": "2022-02-17 16:15:00.290429",
   "name": "d72be98f97",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Is Property Water Body",
   "translated_text": "Ist Eigentumsgew\u00e4sser"
  },
@@ -5865,9 +4767,6 @@
   "language": "de",
   "modified": "2022-03-27 14:38:32.665510",
   "name": "73c2bcc068",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Amend",
   "translated_text": "Verbessern"
  },
@@ -5881,9 +4780,6 @@
   "language": "de",
   "modified": "2022-02-17 16:15:22.445614",
   "name": "695264e19d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Has Master Key System",
   "translated_text": "Hat Schlie\u00dfanlage"
  },
@@ -5897,9 +4793,6 @@
   "language": "de",
   "modified": "2022-03-27 14:38:57.215800",
   "name": "23aacde549",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "share",
   "translated_text": "Teilen"
  },
@@ -5913,9 +4806,6 @@
   "language": "de",
   "modified": "2022-02-17 16:15:46.628825",
   "name": "69e82cd8a2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "General Public Information",
   "translated_text": "Bemerkungen (\u00f6ffentlich)"
  },
@@ -5929,9 +4819,6 @@
   "language": "de",
   "modified": "2022-03-27 14:39:08.127553",
   "name": "45d6fbcde6",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Share",
   "translated_text": "Teilen"
  },
@@ -5945,9 +4832,6 @@
   "language": "de",
   "modified": "2022-02-17 16:16:14.707848",
   "name": "36811a0fbd",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Current Public Information",
   "translated_text": "Aktuelle Informationen (\u00f6ffentlich)"
  },
@@ -5961,9 +4845,6 @@
   "language": "de",
   "modified": "2022-02-17 16:16:35.065670",
   "name": "18b354fbcb",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Internal Information",
   "translated_text": "Bemerkungen (intern)"
  },
@@ -5977,9 +4858,6 @@
   "language": "de",
   "modified": "2022-02-17 16:17:03.840126",
   "name": "b0d112cafc",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Body Size",
   "translated_text": "Gew\u00e4ssergr\u00f6\u00dfe"
  },
@@ -5993,9 +4871,6 @@
   "language": "de",
   "modified": "2022-02-17 16:17:26.887541",
   "name": "b3a55d7ebd",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Body Size Unit",
   "translated_text": "Einheit der Gew\u00e4ssergr\u00f6\u00dfe"
  },
@@ -6009,9 +4884,6 @@
   "language": "de",
   "modified": "2022-02-17 16:17:52.140245",
   "name": "ddc537c89b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Body Special Provisions",
   "translated_text": "Gew\u00e4sser Sonderbestimmungen"
  },
@@ -6025,9 +4897,6 @@
   "language": "de",
   "modified": "2022-02-17 16:18:34.236405",
   "name": "e6b8e56606",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Body Special Provision",
   "translated_text": "Gew\u00e4sser Sonderbestimmung"
  },
@@ -6041,9 +4910,6 @@
   "language": "de",
   "modified": "2022-02-21 15:58:56.662087",
   "name": "7856edcfed",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Institution or Company",
   "translated_text": "Unternehmen oder Institution"
  },
@@ -6057,9 +4923,6 @@
   "language": "de",
   "modified": "2022-02-21 15:59:22.072067",
   "name": "ab0f68e32d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Institution or Company Name",
   "translated_text": "Bezeichnung des Unternehmens oder der Institution"
  },
@@ -6073,9 +4936,6 @@
   "language": "de",
   "modified": "2022-02-21 16:00:00.408888",
   "name": "4117333668",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Position Description",
   "translated_text": "Beschreibung der Position / Aufgabengebiet"
  },
@@ -6089,9 +4949,6 @@
   "language": "de",
   "modified": "2022-02-21 16:00:38.522001",
   "name": "39362d9628",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "External Contact Since",
   "translated_text": "Externer Kontakt seit"
  },
@@ -6105,9 +4962,6 @@
   "language": "de",
   "modified": "2022-02-21 16:06:20.122480",
   "name": "b06e46bcce",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "External Function",
   "translated_text": "Externe Funktion"
  },
@@ -6121,9 +4975,6 @@
   "language": "de",
   "modified": "2022-02-21 16:06:39.822065",
   "name": "c93a1c1b68",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "External Contact",
   "translated_text": "Externer Kontakt"
  },
@@ -6137,9 +4988,6 @@
   "language": "de",
   "modified": "2022-02-22 17:22:17.822235",
   "name": "e946a1b260",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Body Special Provision Table",
   "translated_text": "Tabelle Gew\u00e4ssersonderbestimmungen"
  },
@@ -6153,9 +5001,6 @@
   "language": "de",
   "modified": "2022-02-22 17:30:45.122036",
   "name": "4811e7a559",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Is Default Fish Species For Population",
   "translated_text": "Ist h\u00e4ufig Fischart f\u00fcr Besatz"
  },
@@ -6169,9 +5014,6 @@
   "language": "de",
   "modified": "2022-02-22 17:46:34.714370",
   "name": "5d93d1f15b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Close Season",
   "translated_text": "Schonzeit"
  },
@@ -6185,9 +5027,6 @@
   "language": "de",
   "modified": "2022-02-22 17:46:57.346282",
   "name": "492eecb4a8",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Minimum Size",
   "translated_text": "Mindestma\u00df"
  },
@@ -6201,9 +5040,6 @@
   "language": "de",
   "modified": "2022-02-22 17:47:23.044008",
   "name": "a81f8836c1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "General Fishing Limit",
   "translated_text": "Fangbegrenzung Allgemein"
  },
@@ -6217,9 +5053,6 @@
   "language": "de",
   "modified": "2022-02-22 17:47:42.195326",
   "name": "aa2260c075",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Special Fishing Limit",
   "translated_text": "Fangbegrenzung Salmonidengew\u00e4sser"
  },
@@ -6233,9 +5066,6 @@
   "language": "de",
   "modified": "2022-02-22 17:47:59.123538",
   "name": "0b22ac33d1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Traits",
   "translated_text": "Merkmale"
  },
@@ -6249,9 +5079,6 @@
   "language": "de",
   "modified": "2022-02-22 18:33:49.911861",
   "name": "910511a4eb",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Fish Species Short Code",
   "translated_text": "Fischart Abk\u00fcrzung"
  },
@@ -6265,9 +5092,6 @@
   "language": "de",
   "modified": "2022-02-22 22:10:03.388211",
   "name": "d6b7c8b58c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Regional Organization Name",
   "translated_text": "Name des Regionalverbands"
  },
@@ -6281,9 +5105,6 @@
   "language": "de",
   "modified": "2022-02-24 17:04:21.298251",
   "name": "3e0c55470c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Body Management Local Organization",
   "translated_text": "Gew\u00e4sserbetreuung Verein"
  },
@@ -6297,9 +5118,6 @@
   "language": "de",
   "modified": "2022-02-24 17:05:08.593189",
   "name": "0c80bac63a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Body Local Contact Table",
   "translated_text": "Gew\u00e4sser Ansprechpartner im Verein"
  },
@@ -6313,9 +5131,6 @@
   "language": "de",
   "modified": "2022-02-24 17:27:36.143343",
   "name": "54db3584e7",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Water Body Title",
   "translated_text": "Gew\u00e4ssername"
  },
@@ -6329,9 +5144,6 @@
   "language": "de",
   "modified": "2022-02-25 13:55:37.470288",
   "name": "018f922e4e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Members in Water Body Management",
   "translated_text": "Mitglieder in der Gew\u00e4sserbetreuung"
  },
@@ -6345,9 +5157,6 @@
   "language": "de",
   "modified": "2022-02-25 15:39:55.006863",
   "name": "1527d2c6d0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Lease Contract",
   "translated_text": "Pachtvertrag"
  },
@@ -6361,9 +5170,6 @@
   "language": "de",
   "modified": "2022-02-25 15:40:17.437649",
   "name": "32749b5148",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Rent",
   "translated_text": "Pachtzins"
  },
@@ -6377,9 +5183,6 @@
   "language": "de",
   "modified": "2022-02-25 15:40:32.217264",
   "name": "cc95ed7be0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Landlord",
   "translated_text": "Verp\u00e4chter"
  },
@@ -6393,9 +5196,6 @@
   "language": "de",
   "modified": "2022-02-25 15:41:08.477772",
   "name": "7865e92e7f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Additional Information About Landlord",
   "translated_text": "Weitere Informationen zum Verp\u00e4chter"
  },
@@ -6409,9 +5209,6 @@
   "language": "de",
   "modified": "2022-02-25 15:41:39.368888",
   "name": "c300a1eb71",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Contract Data",
   "translated_text": "Vertragsdaten"
  },
@@ -6425,9 +5222,6 @@
   "language": "de",
   "modified": "2022-03-09 15:27:20.308508",
   "name": "c1469b6d63",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Fish Type For Stocking",
   "translated_text": "Fischklasse"
  },
@@ -6441,9 +5235,6 @@
   "language": "de",
   "modified": "2022-03-17 18:03:13.636126",
   "name": "ad4483d328",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Status and Duration",
   "translated_text": "Status und Dauer"
  },
@@ -6457,9 +5248,6 @@
   "language": "de",
   "modified": "2022-03-17 18:04:49.141340",
   "name": "ec813c9cf9",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Regional Organization and Water Body",
   "translated_text": "Regionalverband und Gew\u00e4sser"
  },
@@ -6473,9 +5261,6 @@
   "language": "de",
   "modified": "2022-03-09 15:28:38.832080",
   "name": "9141b6cc21",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Weight per Water Body Size",
   "translated_text": "Gewicht pro Gew\u00e4sser Fl\u00e4che/L\u00e4nge"
  },
@@ -6489,9 +5274,6 @@
   "language": "de",
   "modified": "2022-03-09 15:29:04.072297",
   "name": "b00a70a478",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Unit of Weight per Water Body Size",
   "translated_text": "Einheit Gewicht pro Gew\u00e4sser Fl\u00e4che/L\u00e4nge"
  },
@@ -6505,9 +5287,6 @@
   "language": "de",
   "modified": "2022-03-09 15:29:26.748824",
   "name": "c60986dfaa",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Unit of Quantity per Water Body Size",
   "translated_text": "Einheit Menge pro Gew\u00e4sser Fl\u00e4che/L\u00e4nge"
  },
@@ -6521,9 +5300,6 @@
   "language": "de",
   "modified": "2022-03-09 15:29:39.866014",
   "name": "2812585f00",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Quantity per Water Body Size",
   "translated_text": "Menge pro Gew\u00e4sser Fl\u00e4che/L\u00e4nge"
  },
@@ -6537,9 +5313,6 @@
   "language": "de",
   "modified": "2022-03-09 15:30:04.686867",
   "name": "14df083dcc",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Full Name of Supplier",
   "translated_text": "Vollst\u00e4ndiger Name des Lieferanten"
  },
@@ -6553,9 +5326,6 @@
   "language": "de",
   "modified": "2022-03-09 15:30:25.680416",
   "name": "aa1f6beef0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Company of Supplier",
   "translated_text": "Unternehmen des Lieferanten"
  },
@@ -6569,9 +5339,6 @@
   "language": "de",
   "modified": "2022-03-09 15:30:45.510033",
   "name": "44b626b6fa",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Price per Kilogram",
   "translated_text": "Preis pro Kilogramm"
  },
@@ -6585,9 +5352,6 @@
   "language": "de",
   "modified": "2022-03-09 15:31:01.300897",
   "name": "17d49dff03",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Price for Total Weight",
   "translated_text": "Preis Gesamtgewicht"
  },
@@ -6601,9 +5365,6 @@
   "language": "de",
   "modified": "2022-03-09 18:10:03.114925",
   "name": "2d77cad04f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Stocking Measure",
   "translated_text": "Besatzma\u00dfnahme"
  },
@@ -6617,9 +5378,6 @@
   "language": "de",
   "modified": "2022-03-09 18:10:14.990575",
   "name": "5bf35c0c85",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Stocking Target",
   "translated_text": "Besatzplanung"
  },
@@ -6633,9 +5391,6 @@
   "language": "de",
   "modified": "2022-03-10 14:56:10.124900",
   "name": "f4261d1128",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Origin of Catch Log Entry",
   "translated_text": "Herkunft des Fangbucheintrags"
  },
@@ -6649,9 +5404,6 @@
   "language": "de",
   "modified": "2022-03-15 15:22:52.999484",
   "name": "3f448734b1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Public Contact",
   "translated_text": "\u00d6ffentlicher Kontakt"
  },
@@ -6665,9 +5417,6 @@
   "language": "de",
   "modified": "2022-03-15 15:23:07.822963",
   "name": "37c35c45c4",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Public Address",
   "translated_text": "\u00d6ffentliche Adresse"
  },
@@ -6681,9 +5430,6 @@
   "language": "de",
   "modified": "2022-03-15 15:24:02.477912",
   "name": "4d418ee782",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Location and Public Contact",
   "translated_text": "Standort und \u00f6ffentliche Kontaktdaten"
  },
@@ -6697,9 +5443,6 @@
   "language": "de",
   "modified": "2022-03-15 15:24:40.649491",
   "name": "37a7319086",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Location",
   "translated_text": "Standort"
  },
@@ -6713,9 +5456,6 @@
   "language": "de",
   "modified": "2022-03-04 16:51:50.184296",
   "name": "fb5fe0e0a8",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "My Reports",
   "translated_text": "Meine Berichte"
  },
@@ -6729,9 +5469,6 @@
   "language": "de",
   "modified": "2022-03-26 16:05:49.915183",
   "name": "d776879aad",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "User Enabled",
   "translated_text": "Nutzer ist aktiviert"
  },
@@ -6745,9 +5482,6 @@
   "language": "de",
   "modified": "2022-03-27 14:15:31.395753",
   "name": "62582894c3",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Membership Fee Invoice",
   "translated_text": "Beitragsrechnung"
  },
@@ -6761,9 +5495,6 @@
   "language": "de",
   "modified": "2022-03-11 16:37:30.746604",
   "name": "f516a2bf21",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Magazine Is Active",
   "translated_text": "Zeitschrift aktiv"
  },
@@ -6777,9 +5508,6 @@
   "language": "de",
   "modified": "2022-03-27 14:16:47.535365",
   "name": "63c52272c7",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Extended Information in Footer",
   "translated_text": "Ausf\u00fchrliche Fu\u00dfzeile"
  },
@@ -6793,9 +5521,6 @@
   "language": "de",
   "modified": "2022-03-11 16:37:53.237435",
   "name": "98b66e421c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Permit Is Active",
   "translated_text": "Erlaubnisschein aktiv"
  },
@@ -6809,9 +5534,6 @@
   "language": "de",
   "modified": "2022-03-27 14:19:14.563127",
   "name": "7d91c9b02b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "SO DIN Addressfield",
   "translated_text": "DIN Rechnung"
  },
@@ -6825,9 +5547,6 @@
   "language": "de",
   "modified": "2022-03-11 17:35:44.473798",
   "name": "1416070c13",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Show Only Current Recipients",
   "translated_text": "Nur aktuelle Zeitschriftenempf\u00e4nger anzeigen"
  },
@@ -6841,9 +5560,6 @@
   "language": "de",
   "modified": "2022-03-27 14:19:41.219347",
   "name": "b825da32e0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "MF DIN Addressfield",
   "translated_text": "DIN Beitragsrechnung"
  },
@@ -6857,9 +5573,6 @@
   "language": "de",
   "modified": "2022-03-29 16:19:48.850086",
   "name": "7bbf67e974",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Magazine Address List",
   "translated_text": "Fischer und Angler Adressverwaltung"
  },
@@ -6873,9 +5586,6 @@
   "language": "de",
   "modified": "2022-03-27 14:20:05.321716",
   "name": "a61c5d0b94",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "DN DIN Addressfield",
   "translated_text": "DIN Lieferschein"
  },
@@ -6889,9 +5599,6 @@
   "language": "de",
   "modified": "2022-03-24 11:44:03.169682",
   "name": "8c53e889d1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Functions",
   "translated_text": "Funktionen"
  },
@@ -6905,9 +5612,6 @@
   "language": "de",
   "modified": "2022-03-27 14:28:02.144232",
   "name": "cc32f74552",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Sales Invoice Return",
   "translated_text": "Ung\u00fcltiges Format Retoure"
  },
@@ -6921,9 +5625,6 @@
   "language": "de",
   "modified": "2022-03-24 11:44:52.113253",
   "name": "289080e19e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "External Contact Function",
   "translated_text": "Funktion von Externen Kontakten"
  },
@@ -6937,9 +5638,6 @@
   "language": "de",
   "modified": "2022-03-29 17:31:10.228511",
   "name": "d9d8bc1079",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "External Contacts Addresses and Contacts",
   "translated_text": "Kontakt- und Adressliste Externe Kontakte"
  },
@@ -6953,9 +5651,6 @@
   "language": "de",
   "modified": "2022-03-27 14:28:49.938958",
   "name": "ee40454880",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Sales Auditing Voucher",
   "translated_text": "Ung\u00fcltiges Format Gutschrift"
  },
@@ -6969,9 +5664,6 @@
   "language": "de",
   "modified": "2022-03-28 13:59:23.402346",
   "name": "e92420a0a0",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Filed",
   "translated_text": "Eingereicht"
  },
@@ -6985,9 +5677,6 @@
   "language": "de",
   "modified": "2022-03-28 13:59:50.186859",
   "name": "dde2610f99",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "File this record",
   "translated_text": "Eintrag einreichen"
  },
@@ -7001,9 +5690,6 @@
   "language": "de",
   "modified": "2022-03-30 17:22:11.906476",
   "name": "fb65aa46d2",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Lease Contract must belong to the same regional Organization as the Water Body.",
   "translated_text": "Der Pachtvertrag muss zum selben Regionalverband geh\u00f6ren wie das im Pachtvertrag eingetragene Gew\u00e4sser."
  },
@@ -7017,9 +5703,6 @@
   "language": "de",
   "modified": "2022-03-30 21:10:51.313820",
   "name": "a6b62c020c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Catch Log Statistics",
   "translated_text": "Fangmengenstatistik"
  },
@@ -7033,9 +5716,6 @@
   "language": "de",
   "modified": "2022-03-30 21:44:47.961996",
   "name": "3aa1357a9e",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "External Functions",
   "translated_text": "Externe Funktionen"
  },
@@ -7049,9 +5729,6 @@
   "language": "de",
   "modified": "2023-04-14 14:38:26.662202",
   "name": "d0bb53bc7d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Catch Log Days and Counts",
   "translated_text": "Angeltage"
  },
@@ -7065,9 +5742,6 @@
   "language": "de",
   "modified": "2022-03-31 14:02:56.720064",
   "name": "81d8fda40f",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Please update the existing record: {0}",
   "translated_text": "Bitte aktualisieren Sie stattdessen den bestehenden Eintrag: {0}"
  },
@@ -7081,9 +5755,6 @@
   "language": "de",
   "modified": "2022-03-31 16:13:40.431062",
   "name": "742b88e8ec",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Stocking of Supported Water Bodies",
   "translated_text": "Besatzma\u00dfnahmen in betreuten Gew\u00e4ssern"
  },
@@ -7097,9 +5768,6 @@
   "language": "de",
   "modified": "2022-03-31 19:08:11.714082",
   "name": "4b734b8bf4",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Please select your own regional Organization.",
   "translated_text": "Bitte w\u00e4hlen Sie Ihren eigenen regionalverband aus!"
  },
@@ -7113,9 +5781,6 @@
   "language": "de",
   "modified": "2022-03-31 19:19:27.687058",
   "name": "b5fc537e15",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Please select a Water Body from your own regional Organization.",
   "translated_text": "Bitte w\u00e4hlen Sie ein Gew\u00e4sser, das zu Ihrem eigenen Regionalverband geh\u00f6rt!"
  },
@@ -7129,9 +5794,6 @@
   "language": "de",
   "modified": "2022-05-20 17:30:13.159992",
   "name": "84130effcc",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Template for Member Data Import",
   "translated_text": "Vorlage Mitgliedsdatenimport"
  },
@@ -7145,9 +5807,6 @@
   "language": "de",
   "modified": "2022-05-20 17:38:17.818534",
   "name": "604f8d5722",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Set",
   "translated_text": "Gesetzt"
  },
@@ -7161,9 +5820,6 @@
   "language": "de",
   "modified": "2022-05-20 17:39:00.222640",
   "name": "194d3cc953",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Not Set",
   "translated_text": "Nicht gesetzt"
  },
@@ -7177,9 +5833,6 @@
   "language": "de",
   "modified": "2022-05-20 17:43:51.317248",
   "name": "077d889450",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Toggle Chart",
   "translated_text": "Diagramm ein-/ausblenden"
  },
@@ -7193,9 +5846,6 @@
   "language": "de",
   "modified": "2022-08-12 11:35:09.437489",
   "name": "ad4dfa6b38",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "ID Yearly Fishing Permit",
   "translated_text": "Eindeutige Erlaubnisschein Identifikation"
  },
@@ -7209,9 +5859,6 @@
   "language": "de",
   "modified": "2022-08-26 20:51:35.056953",
   "name": "c565092a25",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Local Group",
   "translated_text": "Ortsgruppe"
  },
@@ -7225,9 +5872,6 @@
   "language": "de",
   "modified": "2022-09-13 13:46:44.330004",
   "name": "a630607697",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "LANDA Local Group Management",
   "translated_text": "LANDA Mitgliederverwaltung Ortsgruppe"
  },
@@ -7241,9 +5885,6 @@
   "language": "de",
   "modified": "2022-10-26 16:52:08.784703",
   "name": "5b277adc23",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Full Name",
   "translated_text": "Vollst\u00e4ndiger Name"
  },
@@ -7257,9 +5898,6 @@
   "language": "de",
   "modified": "2022-11-21 14:29:56.352277",
   "name": "52c6033632",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Youth Membership",
   "translated_text": "Jugendmitgliedschaft"
  },
@@ -7273,9 +5911,6 @@
   "language": "de",
   "modified": "2022-12-05 17:57:15.191634",
   "name": "0260cd68f4",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Over Receipt/Delivery",
   "translated_text": "Lieferung \u00fcber Bestellung hinaus"
  },
@@ -7289,9 +5924,6 @@
   "language": "de",
   "modified": "2022-12-06 19:08:50.328957",
   "name": "bbda66ceea",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Cheque/Reference No",
   "translated_text": "Verwendungszweck der \u00dcberweisung bzw. Kunden-/ Buchungsreferenz"
  },
@@ -7305,9 +5937,6 @@
   "language": "de",
   "modified": "2022-12-05 18:02:55.061092",
   "name": "923afd90d8",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "{0} has been submitted successfully",
   "translated_text": "{0} wurde erfolgreich gebucht"
  },
@@ -7321,9 +5950,6 @@
   "language": "de",
   "modified": "2022-12-06 19:06:55.768079",
   "name": "4b71d92a95",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Cheque/Reference Date",
   "translated_text": "\u00dcberweisungs-/ Buchungsdatum"
  },
@@ -7337,9 +5963,6 @@
   "language": "de",
   "modified": "2022-11-10 16:14:00.899584",
   "name": "e47fbfbc19",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Member Contact List",
   "translated_text": "Kontaktliste Mitglieder"
  },
@@ -7353,9 +5976,6 @@
   "language": "de",
   "modified": "2022-12-06 17:55:12.482894",
   "name": "3eda7662f9",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Password Email Sent",
   "translated_text": "Passwort E-Mail versendet"
  },
@@ -7369,9 +5989,6 @@
   "language": "de",
   "modified": "2022-12-06 17:56:00.661178",
   "name": "8d91af4b39",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Password reset instructions have been sent to your email",
   "translated_text": "Eine Anleitung zum Zur\u00fccksetzen des Passworts wurde an die angegebene E-Mail-Adresse verschickt"
  },
@@ -7385,9 +6002,6 @@
   "language": "de",
   "modified": "2022-12-06 18:00:33.751490",
   "name": "4da51e3217",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Welcome email sent",
   "translated_text": "Willkommens-E-Mail versendet"
  },
@@ -7401,9 +6015,6 @@
   "language": "de",
   "modified": "2022-12-15 14:22:14.351033",
   "name": "05db320c2d",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Ser. No",
   "translated_text": "Seriennr."
  },
@@ -7417,9 +6028,6 @@
   "language": "de",
   "modified": "2023-01-11 15:08:52.069163",
   "name": "6a996ce1d5",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Billing and Shipping Defaults",
   "translated_text": "Standardeinstellungen f\u00fcr Rechnungsstellung und Versand"
  },
@@ -7433,9 +6041,6 @@
   "language": "de",
   "modified": "2023-01-11 15:13:53.448289",
   "name": "83464a1a3a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Default Billing Contact",
   "translated_text": "Standard-Rechnungskontakt"
  },
@@ -7449,9 +6054,6 @@
   "language": "de",
   "modified": "2023-01-11 15:14:29.108326",
   "name": "979b6f5c1b",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Default Billing Address",
   "translated_text": "Standard-Rechnungsadresse"
  },
@@ -7465,9 +6067,6 @@
   "language": "de",
   "modified": "2023-01-11 15:16:02.979645",
   "name": "4312c45fac",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Default Shipping Contact",
   "translated_text": "Standard-Versandkontakt"
  },
@@ -7481,9 +6080,6 @@
   "language": "de",
   "modified": "2023-01-11 15:18:16.079106",
   "name": "56e272f974",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Default Shipping Address",
   "translated_text": "Standard-Versandadresse"
  },
@@ -7497,9 +6093,6 @@
   "language": "de",
   "modified": "2023-02-10 16:25:15.849031",
   "name": "857cafccf7",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Shipping Contact",
   "translated_text": "Versandkontakt"
  },
@@ -7513,9 +6106,6 @@
   "language": "de",
   "modified": "2023-02-10 16:25:35.607780",
   "name": "34622f2362",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Billing Contact",
   "translated_text": "Rechnungskontakt"
  },
@@ -7529,9 +6119,6 @@
   "language": "de",
   "modified": "2023-02-10 16:28:09.000096",
   "name": "86d47ddee7",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Phone (Billing Contact)",
   "translated_text": "Telefon (Rechnungskontakt)"
  },
@@ -7545,9 +6132,6 @@
   "language": "de",
   "modified": "2023-02-10 16:28:35.371406",
   "name": "0aba5e4a33",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Mobile No (Billing Contact)",
   "translated_text": "Mobilfunknummer (Rechnungskontakt)"
  },
@@ -7561,9 +6145,6 @@
   "language": "de",
   "modified": "2023-02-10 16:28:58.839300",
   "name": "8ba59761eb",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Email (Billing Contact)",
   "translated_text": "E-Mail (Rechnungskontakt)"
  },
@@ -7577,9 +6158,6 @@
   "language": "de",
   "modified": "2023-02-10 16:29:31.745258",
   "name": "cd7478c965",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Phone (Shipping Contact)",
   "translated_text": "Telefon (Versandkontakt)"
  },
@@ -7593,9 +6171,6 @@
   "language": "de",
   "modified": "2023-02-10 16:29:45.517831",
   "name": "e9b21baf46",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Mobile No (Shipping Contact)",
   "translated_text": "Mobilfunknummer (Versandkontakt)"
  },
@@ -7609,9 +6184,6 @@
   "language": "de",
   "modified": "2023-02-10 16:29:54.929349",
   "name": "6064effd84",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Email (Shipping Contact)",
   "translated_text": "E-Mail (Versandkontakt)"
  },
@@ -7625,9 +6197,6 @@
   "language": "de",
   "modified": "2023-09-26 15:40:26.449471",
   "name": "2418380635",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Full Address",
   "translated_text": "Vollst\u00e4ndige Adresse"
  },
@@ -7641,9 +6210,6 @@
   "language": "de",
   "modified": "2024-01-31 00:20:27.279283",
   "name": "2643a0e11a",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Average Rate",
   "translated_text": "Durchschn. Einzelpreis"
  },
@@ -7657,9 +6223,6 @@
   "language": "de",
   "modified": "2024-01-31 00:20:53.259105",
   "name": "aeddea0942",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Delivered Qty",
   "translated_text": "Anzahl geliefert"
  },
@@ -7673,9 +6236,6 @@
   "language": "de",
   "modified": "2024-01-31 00:21:05.812136",
   "name": "73a4fe6a43",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Delivered Amount",
   "translated_text": "Betrag geliefert"
  },
@@ -7689,9 +6249,6 @@
   "language": "de",
   "modified": "2024-01-31 00:21:41.272685",
   "name": "fbf4a68285",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Returned Qty",
   "translated_text": "St\u00fcck retourniert"
  },
@@ -7705,9 +6262,6 @@
   "language": "de",
   "modified": "2024-01-31 00:21:54.729005",
   "name": "fb698bb443",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Returned Amount",
   "translated_text": "Betrag retourniert"
  },
@@ -7721,9 +6275,6 @@
   "language": "de",
   "modified": "2024-01-31 00:22:56.504398",
   "name": "36ac114e78",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Net Delivered Qty",
   "translated_text": "St\u00fcck gesamt"
  },
@@ -7737,9 +6288,6 @@
   "language": "de",
   "modified": "2024-01-31 00:23:11.363930",
   "name": "df7166558c",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "source_text": "Net Delivered Amount",
   "translated_text": "Betrag gesamt"
  }

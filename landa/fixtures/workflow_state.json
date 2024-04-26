@@ -5,9 +5,6 @@
   "icon": "ok-sign",
   "modified": "2021-10-21 15:22:07.874874",
   "name": "Approved",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "style": "Success",
   "workflow_state_name": "Approved"
  },
@@ -17,9 +14,6 @@
   "icon": "",
   "modified": "2022-03-17 12:35:51.842356",
   "name": "In Progress",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "style": "Warning",
   "workflow_state_name": "In Progress"
  },
@@ -29,9 +23,6 @@
   "icon": "",
   "modified": "2022-03-17 13:00:49.162188",
   "name": "Filed",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "style": "",
   "workflow_state_name": "Filed"
  },
@@ -41,9 +32,6 @@
   "icon": "",
   "modified": "2022-03-17 13:08:27.499007",
   "name": "Rejected",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
   "style": "Danger",
   "workflow_state_name": "Rejected"
  }

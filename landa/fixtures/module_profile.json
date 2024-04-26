@@ -270,9 +270,6 @@
   "doctype": "Module Profile",
   "modified": "2021-05-19 00:18:01.238422",
   "module_profile_name": "LANDA User",
-  "name": "LANDA User",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null
+  "name": "LANDA User"
  }
 ]
