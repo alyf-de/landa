@@ -211,53 +211,6 @@
             {{ company.invoice_information_text }}
         {% endif %}
     </div>
-
-    {% if doc.timesheets -%}
-    <div style="page-break-after: always"></div>
-    <div class="timesheets">
-        <h3>Zeiterfassung</h3>
-        <div data-fieldname="timesheets" data-fieldtype="Table">
-            <table class="table table-bordered table-condensed">
-                <thead>
-                    <tr>
-                        <th style="width: 40px" class="table-sr">{{ _("Sr") }}</th>
-                        <th style="width: 150px;" class="" data-fieldname="timesheets" data-fieldtype="Table">
-                            {{_("Date")}}</th>
-                        <th style="width: 300px;" class="" data-fieldname="timesheets" data-fieldtype="Table">
-                            {{_("Note")}}</th>
-                        <th style="width: 80px;" class="text-right" data-fieldname="timesheets" data-fieldtype="Table">
-                            {{_("Hours")}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for ts in doc.timesheets | sort(attribute='start_date') %}
-                    {% set timesheet = frappe.get_doc("Timesheet", ts.time_sheet)%}
-                        {% if timesheet.total_billable_amount > 0 and timesheet.customer_note %}
-                            <tr style="page-break-inside: avoid;">
-                                <td class="table-sr">{{ loop.index }}</td>
-                                <td class="" data-fieldname="timesheets" data-fieldtype="Table">
-                                    <div class="value">
-                                        {{ timesheet.get_formatted('start_date') }}
-                                    </div>
-                                </td>
-                                <td class="" data-fieldname="timesheets" data-fieldtype="Table">
-                                    <div class="value">
-                                        {{ timesheet.note }}
-                                    </div>
-                                </td>
-                                <td class="text-right" data-fieldname="timesheets" data-fieldtype="Table">
-                                    <div class="value">
-                                        {{ "{:.2f}".format(timesheet.total_billable_hours) | replace(".", ",") }}
-                                    </div>
-                                </td>
-                            </tr>
-                        {% endif %}
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-    {%- endif %}
 </div>
 
 <!-- FOOTER -->
