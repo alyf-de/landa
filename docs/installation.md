@@ -14,12 +14,12 @@ To allow the Angelatlas web-apps to access the API, add the following to `sites/
 
 ```json
 {
-    "..." : "...",
-    "allow_cors": [
-        "https://angelatlas.devid.net",
-        "https://www.angelatlas-sachsen.de/"
-        "https://angelatlas-sachsen.de/"
-    ]
+ "..." : "...",
+ "allow_cors": [
+  "https://angelatlas.devid.net",
+  "https://www.angelatlas-sachsen.de",
+  "https://angelatlas-sachsen.de"
+ ]
 }
 ```
 
