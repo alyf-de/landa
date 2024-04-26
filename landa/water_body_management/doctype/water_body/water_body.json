@@ -296,10 +296,11 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2024-03-01 12:31:00.313944",
+ "modified": "2024-04-26 18:18:05.871959",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -337,6 +338,7 @@
   },
   {
    "create": 1,
+   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
@@ -379,6 +381,7 @@
  "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "title",
  "track_changes": 1
 }
