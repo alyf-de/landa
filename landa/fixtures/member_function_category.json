@@ -1,5 +1,35 @@
 [
  {
+  "access_level": "Regional Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-12-21 11:53:28.377799",
+  "name": "VGA Regionalverband",
+  "only_one_per_organization": 0,
+  "roles": []
+ },
+ {
+  "access_level": "Local Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-12-21 11:53:46.380448",
+  "name": "Schriftf\u00fchrer Verein",
+  "only_one_per_organization": 0,
+  "roles": []
+ },
+ {
+  "access_level": "Local Organization",
+  "docstatus": 0,
+  "doctype": "Member Function Category",
+  "member_administration": 0,
+  "modified": "2021-12-21 11:53:58.711055",
+  "name": "Revision Verein",
+  "only_one_per_organization": 0,
+  "roles": []
+ },
+ {
   "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
