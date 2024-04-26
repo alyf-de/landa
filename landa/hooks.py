@@ -19,10 +19,7 @@ fixtures = [
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
 	"Member Function Category",
 	"Fishing Area",
-	{
-		"dt": "Variant Field",
-		"filters": [["field_name", "in", ["description", "item_tax_template"]]],
-	},
+	"Item Variant Settings",
 	"Translation",
 	{
 		"doctype": "Letter Head",

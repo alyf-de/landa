@@ -1,0 +1,408 @@
+[
+ {
+  "allow_rename_attribute_value": 0,
+  "do_not_update_variants": 0,
+  "docstatus": 0,
+  "doctype": "Item Variant Settings",
+  "fields": [
+   {
+    "field_name": "item_tax_template",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "description",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "item_group",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "is_item_from_hub",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "stock_uom",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "disabled",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "allow_alternative_item",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "is_stock_item",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "include_item_in_manufacturing",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "is_fixed_asset",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "auto_create_assets",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "asset_category",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "asset_naming_series",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "over_delivery_receipt_allowance",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "over_billing_allowance",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "brand",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "shelf_life_in_days",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "end_of_life",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "default_material_request_type",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "valuation_method",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "warranty_period",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "weight_per_unit",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "weight_uom",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "reorder_levels",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "uoms",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "create_new_batch",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "batch_number_series",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "has_expiry_date",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "retain_sample",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "sample_quantity",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "serial_no_series",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "variant_based_on",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "item_defaults",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "is_purchase_item",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "purchase_uom",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "min_order_qty",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "safety_stock",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "lead_time_days",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "is_customer_provided_item",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "customer",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "delivered_by_supplier",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "supplier_items",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "country_of_origin",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "customs_tariff_number",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "sales_uom",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "is_sales_item",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "max_discount",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "deferred_revenue_account",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "enable_deferred_revenue",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "no_of_months",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "deferred_expense_account",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "enable_deferred_expense",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "no_of_months_exp",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "customer_items",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "taxes",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "quality_inspection_template",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "inspection_required_before_purchase",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "inspection_required_before_delivery",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "is_sub_contracted_item",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "default_item_manufacturer",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "default_manufacturer_part_no",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "publish_in_hub",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "hub_category_to_publish",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "hub_warehouse",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "synced_with_hub",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   },
+   {
+    "field_name": "total_projected_qty",
+    "parent": "Item Variant Settings",
+    "parentfield": "fields",
+    "parenttype": "Item Variant Settings"
+   }
+  ],
+  "modified": "2024-04-26 17:25:20.455658",
+  "name": "Item Variant Settings"
+ }
+]
