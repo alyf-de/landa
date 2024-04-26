@@ -6290,5 +6290,18 @@
   "name": "df7166558c",
   "source_text": "Net Delivered Amount",
   "translated_text": "Betrag gesamt"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "de",
+  "modified": "2024-04-26 17:08:38.285848",
+  "name": "e8add3b74e",
+  "source_text": "Thank you for reaching out to us. We will get back to you at the earliest.\n\n\nYour query:\n\n{0}",
+  "translated_text": "Vielen Dank, dass Sie uns kontaktiert haben. Wir werden uns so schnell wie m\u00f6glich bei Ihnen melden.\n\n\nIhre Anfrage:\n\n{0}"
  }
 ]
