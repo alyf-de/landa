@@ -1,0 +1,4 @@
+/* Hide the comparison message in the report footer */
+span.comparison-message {
+	display: none;
+}
