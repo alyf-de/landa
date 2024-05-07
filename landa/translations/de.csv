@@ -88,8 +88,5 @@ Unit,Einheit,
 Extra Columns,Zusätzliche Spalten,
 Water Body Status,Gewässerstatus,
 Row {0}: Item {1} is not valid for year of settlement {2}.,Zeile {0}: Artikel {1} ist nicht gültig für das Abrechnungsjahr {2}.,
-<<<<<<< HEAD
-=======
 We've received your query!,Wir haben Ihre Anfrage erhalten!,
 Please link the user to a LANDA Member.,Bitte verknüpfen Sie den Benutzer mit einem Mitglied.,
->>>>>>> c3059ad0 (fix(User): link to member is mandatory (LAN-825))
