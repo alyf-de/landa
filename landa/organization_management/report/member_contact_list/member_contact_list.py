@@ -1,10 +1,10 @@
 # Copyright (c) 2013, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-import pandas as pd
-
 import frappe
+import pandas as pd
 from frappe import _
+
 from ..member.member import Member, get_link_filters, remove_duplicate_indices
 
 
