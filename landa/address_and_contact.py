@@ -30,17 +30,12 @@ def validate(doc, event):
 			# fmt: on
 		)
 
-	doc.customer = ""
-	doc.landa_member = ""
-	doc.organization = ""
-
+	doc.organization = None
 	for link in doc.links:
 		if link.link_doctype == "Customer":
-			doc.customer = link.link_name
 			doc.organization = link.link_name
 
 		if link.link_doctype == "LANDA Member":
-			doc.landa_member = link.link_name
 			doc.organization = frappe.db.get_value("LANDA Member", link.link_name, "organization")
 
 		if link.link_doctype == "Organization":
