@@ -136,7 +136,7 @@ def get_data(filters):
 	contacts_df = to_df(contacts, contact_fields)
 	contacts_df = remove_duplicate_indices(contacts_df)
 
-	external_functions = frappe.get_list(
+	external_functions = frappe.get_all(
 		"External Contact Function",
 		filters={
 			"parenttype": "External Contact",
