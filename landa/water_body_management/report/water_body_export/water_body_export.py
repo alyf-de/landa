@@ -2,92 +2,95 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
 
-COLUMNS = [
-	{
-		"fieldname": "name",
-		"label": "Name",
-		"fieldtype": "Link",
-		"options": "Water Body",
-		"width": 100,
-	},
-	{
-		"fieldname": "title",
-		"label": "Titel",
-		"fieldtype": "Data",
-		"width": 100,
-	},
-	{
-		"fieldname": "fishing_area_name",
-		"label": "Fishing Area Name",
-		"fieldtype": "Data",
-		"width": 100,
-	},
-	{
-		"fieldname": "water_body_size",
-		"label": "Water Body Size",
-		"fieldtype": "Float",
-		"width": 100,
-	},
-	{
-		"fieldname": "water_body_size_unit",
-		"label": "Water Body Size Unit",
-		"fieldtype": "Data",
-		"width": 100,
-	},
-	{
-		"fieldname": "is_active",
-		"label": "Is Active",
-		"fieldtype": "Check",
-		"width": 50,
-	},
-	{
-		"fieldname": "has_master_key_system",
-		"label": "Has Master Key System",
-		"fieldtype": "Check",
-		"width": 50,
-	},
-	{
-		"fieldname": "guest_passes_available",
-		"label": "Guest Passes Available",
-		"fieldtype": "Check",
-		"width": 50,
-	},
-	{
-		"fieldname": "general_public_information",
-		"label": "General Public Information",
-		"fieldtype": "Small Text",
-		"width": 100,
-	},
-	{
-		"fieldname": "status",
-		"label": "Status",
-		"fieldtype": "Data",
-		"width": 100,
-	},
-	{
-		"fieldname": "fish_species_short_codes",
-		"label": "Fish Species Short Codes",
-		"fieldtype": "Small Text",
-		"width": 100,
-	},
-	{
-		"fieldname": "fish_species",
-		"label": "Fish Species",
-		"fieldtype": "Small Text",
-		"width": 100,
-	},
-	{
-		"fieldname": "special_provisions",
-		"label": "Water Body Special Provisions",
-		"fieldtype": "Small Text",
-		"width": 100,
-	},
-]
+
+def get_columns():
+	return [
+		{
+			"fieldname": "name",
+			"label": _("Name"),
+			"fieldtype": "Link",
+			"options": "Water Body",
+			"width": 100,
+		},
+		{
+			"fieldname": "title",
+			"label": _("Titel"),
+			"fieldtype": "Data",
+			"width": 100,
+		},
+		{
+			"fieldname": "fishing_area_name",
+			"label": _("Fishing Area Name"),
+			"fieldtype": "Data",
+			"width": 100,
+		},
+		{
+			"fieldname": "water_body_size",
+			"label": _("Water Body Size"),
+			"fieldtype": "Float",
+			"width": 100,
+		},
+		{
+			"fieldname": "water_body_size_unit",
+			"label": _("Water Body Size Unit"),
+			"fieldtype": "Data",
+			"width": 100,
+		},
+		{
+			"fieldname": "is_active",
+			"label": _("Is Active"),
+			"fieldtype": "Check",
+			"width": 50,
+		},
+		{
+			"fieldname": "has_master_key_system",
+			"label": _("Has Master Key System"),
+			"fieldtype": "Check",
+			"width": 50,
+		},
+		{
+			"fieldname": "guest_passes_available",
+			"label": _("Guest Passes Available"),
+			"fieldtype": "Check",
+			"width": 50,
+		},
+		{
+			"fieldname": "general_public_information",
+			"label": _("General Public Information"),
+			"fieldtype": "Small Text",
+			"width": 100,
+		},
+		{
+			"fieldname": "status",
+			"label": _("Status"),
+			"fieldtype": "Data",
+			"width": 100,
+		},
+		{
+			"fieldname": "fish_species_short_codes",
+			"label": _("Fish Species Short Codes"),
+			"fieldtype": "Small Text",
+			"width": 100,
+		},
+		{
+			"fieldname": "fish_species",
+			"label": _("Fish Species"),
+			"fieldtype": "Small Text",
+			"width": 100,
+		},
+		{
+			"fieldname": "special_provisions",
+			"label": _("Water Body Special Provisions"),
+			"fieldtype": "Small Text",
+			"width": 100,
+		},
+	]
 
 
 def execute(filters=None):
-	return COLUMNS, get_data()
+	return get_columns(), get_data()
 
 
 def get_data():

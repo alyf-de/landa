@@ -1,9 +1,10 @@
 # Copyright (c) 2013, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-import frappe
 import pandas as pd
 
+import frappe
+from frappe import _
 from ..member.member import Member, get_link_filters, remove_duplicate_indices
 
 
@@ -49,35 +50,35 @@ class Contact(Member):
 				"fieldname": "landa_member",
 				"fieldtype": "Link",
 				"options": "LANDA Member",
-				"label": "Member",
+				"label": _("Member"),
 			},
-			{"fieldname": "first_name", "fieldtype": "Data", "label": "First Name"},
-			{"fieldname": "last_name", "fieldtype": "Data", "label": "Last Name"},
+			{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
+			{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
 			{
 				"fieldname": "organization",
 				"fieldtype": "Link",
 				"options": "Organization",
-				"label": "Organization",
+				"label": _("Organization"),
 			},
 			{
 				"fieldname": "organization_name",
 				"fieldtype": "Data",
-				"label": "Organization Name",
+				"label": _("Organization Name"),
 			},
 			{
 				"fieldname": "primary_email_address",
 				"fieldtype": "Data",
-				"label": "Primary Email Address",
+				"label": _("Primary Email Address"),
 			},
 			{
 				"fieldname": "primary_phone",
 				"fieldtype": "Data",
-				"label": "Primary Phone",
+				"label": _("Primary Phone"),
 			},
 			{
 				"fieldname": "primary_mobile",
 				"fieldtype": "Data",
-				"label": "Primary Mobile",
+				"label": _("Primary Mobile"),
 			},
 		]
 

@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
 
 
 class LANDAMemberCount:
@@ -63,34 +64,34 @@ class LANDAMemberCount:
 			{
 				"fieldname": "organization",
 				"fieldtype": "Link",
-				"label": "Organization",
+				"label": _("Organization"),
 				"options": "Organization",
 				"width": 150,
 			},
 			{
 				"fieldname": "customer_name",
 				"fieldtype": "Data",
-				"label": "Organization Name",
+				"label": _("Organization Name"),
 				"width": 250,
 			},
-			{"fieldname": "year", "fieldtype": "Data", "label": "Year", "width": 150},
+			{"fieldname": "year", "fieldtype": "Data", "label": _("Year"), "width": 150},
 			{
 				"fieldname": "vollzahler",
 				"fieldtype": "Data",
-				"label": "Vollzahler",
+				"label": _("Vollzahler"),
 				"width": 150,
 			},
-			{"fieldname": "jugend", "fieldtype": "Data", "label": "Jugend", "width": 150},
+			{"fieldname": "jugend", "fieldtype": "Data", "label": _("Jugend"), "width": 150},
 			{
 				"fieldname": "foerdermitglied",
 				"fieldtype": "Data",
-				"label": "Fördermitglied",
+				"label": _("Fördermitglied"),
 				"width": 150,
 			},
 			{
 				"fieldname": "austauschmarke",
 				"fieldtype": "Data",
-				"label": "Austauschmarke",
+				"label": _("Austauschmarke"),
 				"width": 150,
 			},
 		]

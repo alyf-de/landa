@@ -25,12 +25,12 @@ def get_columns():
 		{
 			"fieldname": "posting_date",
 			"fieldtype": "Date",
-			"label": "Posting Date",
+			"label": _("Posting Date"),
 			"width": 200,
 		},
 		{
 			"fieldname": "voucher_type",
-			"label": "Voucher Type",
+			"label": _("Voucher Type"),
 			# Using a Select field here to display the translated value while
 			# also avoiding permission issues that would come with a Link field.
 			# (A link would require read perms on DocType "DocType".)
@@ -39,7 +39,7 @@ def get_columns():
 		},
 		{
 			"fieldname": "voucher_no",
-			"label": "Voucher No",
+			"label": _("Voucher No"),
 			"fieldtype": "Dynamic Link",
 			"options": "voucher_type",
 			"width": 200,
@@ -47,7 +47,7 @@ def get_columns():
 		{
 			"fieldname": "grand_total",
 			"fieldtype": "Currency",
-			"label": "Grand Total",
+			"label": _("Grand Total"),
 			"width": 200,
 		},
 	]

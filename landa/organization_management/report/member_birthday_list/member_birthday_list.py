@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
 
 from landa.organization_management.birthday import (
 	get_age,
@@ -9,43 +10,45 @@ from landa.organization_management.birthday import (
 	next_birthday_is_decadal,
 )
 
-COLUMNS = [
-	{
-		"fieldname": "landa_member",
-		"fieldtype": "Link",
-		"options": "LANDA Member",
-		"label": "Member",
-	},
-	{"fieldname": "first_name", "fieldtype": "Data", "label": "First Name"},
-	{"fieldname": "last_name", "fieldtype": "Data", "label": "Last Name"},
-	{
-		"fieldname": "date_of_birth",
-		"fieldtype": "Date",
-		"label": "Date of Birth",
-	},
-	{"fieldname": "member_age", "fieldtype": "Data", "label": "Age"},
-	{
-		"fieldname": "upcoming_birthday",
-		"fieldtype": "Date",
-		"label": "Upcoming Birthday",
-	},
-	{
-		"fieldname": "is_decadal_birthday",
-		"fieldtype": "Check",
-		"label": "Is Decadal Birthday",
-	},
-	{
-		"fieldname": "organization",
-		"fieldtype": "Link",
-		"options": "Organization",
-		"label": "Organization",
-	},
-	{
-		"fieldname": "organization_name",
-		"fieldtype": "Data",
-		"label": "Organization Name",
-	},
-]
+
+def get_columns():
+	return [
+		{
+			"fieldname": "landa_member",
+			"fieldtype": "Link",
+			"options": "LANDA Member",
+			"label": _("Member"),
+		},
+		{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
+		{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
+		{
+			"fieldname": "date_of_birth",
+			"fieldtype": "Date",
+			"label": _("Date of Birth"),
+		},
+		{"fieldname": "member_age", "fieldtype": "Data", "label": _("Age")},
+		{
+			"fieldname": "upcoming_birthday",
+			"fieldtype": "Date",
+			"label": _("Upcoming Birthday"),
+		},
+		{
+			"fieldname": "is_decadal_birthday",
+			"fieldtype": "Check",
+			"label": _("Is Decadal Birthday"),
+		},
+		{
+			"fieldname": "organization",
+			"fieldtype": "Link",
+			"options": "Organization",
+			"label": _("Organization"),
+		},
+		{
+			"fieldname": "organization_name",
+			"fieldtype": "Data",
+			"label": _("Organization Name"),
+		},
+	]
 
 
 def get_data(filters: dict):
@@ -79,4 +82,4 @@ def get_data(filters: dict):
 
 
 def execute(filters=None):
-	return COLUMNS, list(get_data(filters))
+	return get_columns(), list(get_data(filters))

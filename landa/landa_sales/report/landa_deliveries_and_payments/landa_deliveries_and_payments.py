@@ -90,19 +90,19 @@ class LandaDeliveriesAndPayments:
 			{
 				"fieldname": "posting_date",
 				"fieldtype": "Date",
-				"label": "Posting Date",
+				"label": _("Posting Date"),
 				"width": 200,
 			},
 			{
 				"fieldname": "voucher_type",
 				"fieldtype": "Data",
-				"label": "Voucher Type",
+				"label": _("Voucher Type"),
 				"width": 200,
 			},
 			{
 				"fieldname": "grand_total",
 				"fieldtype": "Currency",
-				"label": "Grand Total",
+				"label": _("Grand Total"),
 				"width": 200,
 			},
 		]
