@@ -25,7 +25,7 @@ def validate(doc: User, event=None):
 				_("User {0} is already linked to LANDA Member {1}").format(existing_user, doc.landa_member)
 			)
 
-	if not doc.landa_member and not frappe.flags.in_test:
+	if not doc.landa_member and not frappe.flags.in_test and not frappe.flags.in_migrate:
 		frappe.throw(_("Please link the user to a LANDA Member."))
 
 	if not doc.module_profile and not frappe.flags.in_test:
