@@ -17,7 +17,8 @@ frappe.ui.form.on("Sales Order",  {
                     valid_from_year: ["<=", doc.year_of_settlement],
                     valid_to_year: [">=", doc.year_of_settlement],
                     cannot_be_ordered: 0,
-                    is_sales_item: 1
+                    is_sales_item: 1,
+                    company: doc.company,
                 }
             };
         });

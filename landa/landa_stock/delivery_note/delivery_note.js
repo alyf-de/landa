@@ -12,6 +12,7 @@ frappe.ui.form.on("Delivery Note", {
                 valid_from_year: ["<=", frm.doc.year_of_settlement],
                 valid_to_year: [">=", frm.doc.year_of_settlement],
                 is_sales_item: 1,
+                company: frm.doc.company,
             };
 
             if (frm.doc.is_return) {
