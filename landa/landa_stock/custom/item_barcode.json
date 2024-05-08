@@ -2,6 +2,7 @@
  "custom_fields": [],
  "custom_perms": [],
  "doctype": "Item Barcode",
+ "links": [],
  "property_setters": [
   {
    "_assign": null,
@@ -15,8 +16,10 @@
    "doctype_or_field": "DocField",
    "field_name": "barcode",
    "idx": 0,
-   "modified": "2021-06-07 19:41:36.757848",
+   "is_system_generated": 0,
+   "modified": "2024-05-08 11:43:25.306625",
    "modified_by": "Administrator",
+   "module": null,
    "name": "Item Barcode-barcode-hidden",
    "owner": "Administrator",
    "parent": null,
