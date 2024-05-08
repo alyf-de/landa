@@ -31,6 +31,14 @@ frappe.ui.form.on("Sales Order",  {
                 }
             };
         });
+
+        if (!frappe.user.has_role("LANDA Regional Organization Management")) {
+            setTimeout(function() {
+                // Needs some delay because the buttons are not immediately available
+                frm.remove_custom_button(__("Hold"), __("Status"));
+                frm.remove_custom_button(__("Close"), __("Status"));
+            }, 500);
+        }
     },
     before_save: function (frm) {
         frm.doc.items = landa.selling.remove_zero_qty_items(frm.doc.items);
