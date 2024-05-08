@@ -1,13 +1,13 @@
 {
  "charts": [],
- "content": "[{\"type\": \"header\", \"data\": {\"text\": \"Schnellzugriff\", \"level\": 4, \"col\": 12}}, {\"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Manage Sales Orders\", \"col\": 4}}, {\"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"type\": \"header\", \"data\": {\"text\": \"Berichte & Stammdaten\", \"level\": 4, \"col\": 12}}, {\"type\": \"card\", \"data\": {\"card_name\": \"Transactions\", \"col\": 4}}, {\"type\": \"card\", \"data\": {\"card_name\": \"Masters\", \"col\": 4}}, {\"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}, {\"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}]",
- "creation": "2021-05-14 15:59:23.264764",
+ "content": "[{\"id\":\"bbAPLoe17T\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Order Management</span>\",\"col\":12}},{\"id\":\"Ea7qx6oTEe\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Manage Sales Orders\",\"col\":3}},{\"id\":\"NXg5_BiL7X\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ePXn1ZG2fy\",\"type\":\"card\",\"data\":{\"card_name\":\"Transactions\",\"col\":4}},{\"id\":\"n-vlc2GVOX\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"MYKwl82dDO\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"0TidOwZrIM\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}}]",
+ "creation": "2024-05-08 12:47:14.549248",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
  "for_user": "",
- "hide_custom": 1,
- "icon": "milestone",
+ "hide_custom": 0,
+ "icon": "buying",
  "idx": 0,
  "is_hidden": 0,
  "label": "Order Management",
@@ -16,7 +16,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Transactions",
-   "link_count": 0,
+   "link_count": 4,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -65,7 +65,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Masters",
-   "link_count": 0,
+   "link_count": 8,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -115,7 +115,7 @@
    "is_query_report": 0,
    "label": "Price List",
    "link_count": 0,
-   "link_to": "Item Price",
+   "link_to": "Price List",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -123,7 +123,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Item Tax Template List",
+   "label": "Item Tax Template",
    "link_count": 0,
    "link_to": "Item Tax Template",
    "link_type": "DocType",
@@ -154,24 +154,24 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Reports",
-   "link_count": 0,
+   "link_count": 6,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
   },
   {
    "hidden": 0,
-   "is_query_report": 1,
+   "is_query_report": 0,
    "label": "Billing History",
+   "link_count": 0,
    "link_to": "Billing History",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   },
   {
-   "dependencies": "Delivery Note",
    "hidden": 0,
-   "is_query_report": 1,
+   "is_query_report": 0,
    "label": "LANDA Deliveries and Payments",
    "link_count": 0,
    "link_to": "LANDA Deliveries and Payments",
@@ -181,8 +181,9 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 1,
+   "is_query_report": 0,
    "label": "Summarized Billing History",
+   "link_count": 0,
    "link_to": "Summarized Billing History",
    "link_type": "Report",
    "onboard": 0,
@@ -190,7 +191,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 1,
+   "is_query_report": 0,
    "label": "Item-wise Sales History",
    "link_count": 0,
    "link_to": "Item-wise Sales History",
@@ -200,7 +201,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 1,
+   "is_query_report": 0,
    "label": "Item-wise Sales Register",
    "link_count": 0,
    "link_to": "Item-wise Sales Register",
@@ -210,7 +211,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 1,
+   "is_query_report": 0,
    "label": "Issuing statistics",
    "link_count": 0,
    "link_to": "Issuing statistics",
@@ -222,7 +223,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Setup",
-   "link_count": 0,
+   "link_count": 1,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -238,7 +239,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-03-15 16:09:15.622558",
+ "modified": "2024-05-08 12:56:55.437976",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "Order Management",
@@ -248,12 +249,14 @@
  "public": 1,
  "quick_lists": [],
  "roles": [],
- "sequence_id": 1.0,
+ "sequence_id": 4.0,
  "shortcuts": [
   {
+   "color": "Grey",
    "doc_view": "List",
    "label": "Manage Sales Orders",
    "link_to": "Sales Order",
+   "stats_filter": "[]",
    "type": "DocType"
   }
  ],
