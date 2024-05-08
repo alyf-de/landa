@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"bbAPLoe17T\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Order Management</span>\",\"col\":12}},{\"id\":\"Ea7qx6oTEe\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Manage Sales Orders\",\"col\":3}},{\"id\":\"NXg5_BiL7X\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ePXn1ZG2fy\",\"type\":\"card\",\"data\":{\"card_name\":\"Transactions\",\"col\":4}},{\"id\":\"n-vlc2GVOX\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"MYKwl82dDO\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"0TidOwZrIM\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}}]",
+ "content": "[{\"id\":\"bbAPLoe17T\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Order Management</span>\",\"col\":12}},{\"id\":\"Ea7qx6oTEe\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Manage Sales Orders\",\"col\":4}},{\"id\":\"NXg5_BiL7X\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ePXn1ZG2fy\",\"type\":\"card\",\"data\":{\"card_name\":\"Transactions\",\"col\":4}},{\"id\":\"n-vlc2GVOX\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"MYKwl82dDO\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"0TidOwZrIM\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}}]",
  "creation": "2024-05-08 12:47:14.549248",
  "custom_blocks": [],
  "docstatus": 0,
@@ -12,55 +12,6 @@
  "is_hidden": 0,
  "label": "Order Management",
  "links": [
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Transactions",
-   "link_count": 4,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Sales Order List",
-   "link_count": 0,
-   "link_to": "Sales Order",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Delivery Note List",
-   "link_count": 0,
-   "link_to": "Delivery Note",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Sales Invoice",
-   "link_count": 0,
-   "link_to": "Sales Invoice",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Payment Entry",
-   "link_count": 0,
-   "link_to": "Payment Entry",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
   {
    "hidden": 0,
    "is_query_report": 0,
@@ -237,9 +188,58 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Transactions",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sales Order List",
+   "link_count": 0,
+   "link_to": "Sales Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Delivery Note List",
+   "link_count": 0,
+   "link_to": "Delivery Note",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sales Invoice List",
+   "link_count": 0,
+   "link_to": "Sales Invoice",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Payment Entry List",
+   "link_count": 0,
+   "link_to": "Payment Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-05-08 12:56:55.437976",
+ "modified": "2024-05-08 13:07:17.466049",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "Order Management",
