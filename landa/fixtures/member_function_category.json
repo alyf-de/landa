@@ -202,8 +202,8 @@
   "access_level": "Local Organization",
   "docstatus": 0,
   "doctype": "Member Function Category",
-  "member_administration": 1,
-  "modified": "2021-07-13 22:05:20.484521",
+  "member_administration": 0,
+  "modified": "2024-05-08 12:15:20.484521",
   "name": "Fangmengenerfassung Verein",
   "only_one_per_organization": 0,
   "roles": [
@@ -435,8 +435,8 @@
   "access_level": "Local Group",
   "docstatus": 0,
   "doctype": "Member Function Category",
-  "member_administration": 1,
-  "modified": "2022-09-13 18:38:07.910746",
+  "member_administration": 0,
+  "modified": "2024-05-08 12:15:07.910746",
   "name": "Fangmengenerfassung Ortsgruppe",
   "only_one_per_organization": 0,
   "roles": [
