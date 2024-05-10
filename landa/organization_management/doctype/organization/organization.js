@@ -103,6 +103,16 @@ frappe.ui.form.on("Organization", {
 				);
 			});
 		}
+
+		if (!frm.is_new() && frappe.model.can_read("Sales Invoice")) {
+			frm.add_custom_button(__("Billing History"), () => {
+				frappe.set_route(
+					"query-report",
+					"Billing History",
+					{ organization: frm.doc.name },
+				);
+			});
+		}
 	},
 	onload: function (frm) {
 		frm.set_query("public_address", erpnext.queries.address_query);
