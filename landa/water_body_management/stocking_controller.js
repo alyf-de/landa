@@ -1,6 +1,6 @@
 frappe.provide("landa.StockingController");
 
-landa.StockingController = frappe.ui.form.Controller.extend({
+landa.StockingController = class StockingController extends frappe.ui.form.Controller {
 	onload() {
 		this.frm.set_query("organization", function (doc) {
 			return {
@@ -23,11 +23,13 @@ landa.StockingController = frappe.ui.form.Controller.extend({
 		}
 
 		landa.utils.set_default_year(this.frm);
-	},
+	}
+
 	water_body() {
 		this.weight();
 		this.quantity();
-	},
+	}
+
 	weight() {
 		if (!this.frm.doc.weight || !this.frm.doc.water_body_size) {
 			this.frm.set_value("weight_per_water_body_size", 0.0);
@@ -41,7 +43,8 @@ landa.StockingController = frappe.ui.form.Controller.extend({
 				`Kg / ${this.frm.doc.water_body_size_unit}`
 			);
 		}
-	},
+	}
+
 	quantity() {
 		if (!this.frm.doc.quantity || !this.frm.doc.water_body_size) {
 			this.frm.set_value("quantity_per_water_body_size", 0);
@@ -55,5 +58,5 @@ landa.StockingController = frappe.ui.form.Controller.extend({
 				`Stk / ${this.frm.doc.water_body_size_unit}`
 			);
 		}
-	},
-});
+	}
+};
