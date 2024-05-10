@@ -34,6 +34,13 @@ frappe.ui.form.on("Delivery Note", {
                 },
             };
         });
+
+        setTimeout(() => {
+            frm.remove_custom_button(__("Shipment"), __("Create"));
+            frm.remove_custom_button(__("Installation Note"), __("Create"));
+            frm.remove_custom_button(__("Delivery Trip"), __("Create"));
+            frm.remove_custom_button(__("Subscription"), __("Create"));
+        }, 500);
     },
     year_of_settlement: function (frm) {
         // don't prefill items if the table is already populated
