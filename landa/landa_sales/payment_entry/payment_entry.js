@@ -22,11 +22,8 @@ frappe.ui.form.on('Payment Entry', {
             landa.utils.set_company_and_customer(frm, "company", "party");
         }
 
-        frm.remove_custom_button(__("General Ledger"));
-
-        if (!frm.has_perm("write")) {
-            frm.remove_custom_button(__("Unreconcile"), __("Actions"));
-        }
+        frm.remove_custom_button(__("Ledger"));
+        frm.remove_custom_button(__("UnReconcile"), __("Actions"));
     },
     set_year_of_settlement(frm) {
         // Do nothing if year_of_settlement is already set
