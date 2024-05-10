@@ -9,5 +9,10 @@ frappe.ui.form.on("Sales Invoice", {
 		if (frm.is_new()) {
 			landa.utils.set_company_and_customer(frm);
 		}
+
+		setTimeout(() => {
+			frm.remove_custom_button(__("Fetch Timesheet"));
+			frm.remove_custom_button(__("Quotation"), __("Get Items From"));
+		}, 500);
 	},
 });
