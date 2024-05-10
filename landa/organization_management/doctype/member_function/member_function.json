@@ -25,7 +25,8 @@
    "fieldtype": "Link",
    "label": "Member Function Category",
    "options": "Member Function Category",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "member",
@@ -111,7 +112,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-16 12:02:44.376137",
+ "modified": "2024-05-10 18:57:00.458225",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function",
@@ -177,6 +178,7 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "member_function_category",
  "track_changes": 1
 }
