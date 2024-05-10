@@ -162,7 +162,7 @@
    "fieldname": "member_data_import_info",
    "fieldtype": "HTML",
    "label": "Member Data Import Info",
-   "options": "<p>Dieses Formular erlaubt ein besonders schnelles Eintragen von neuen Mitgliedern und das Bearbeiten von verschiedenen verlinkten Formularen wie Adresse und Erlaubnisschein. M\u00f6chtest du mehrere solcher Eintr\u00e4ge oder \u00c4nderungen machen, f\u00fchre am besten einen Import zur Erlaubnisscheinausgabe durch.</p>\n\n<p>L\u00e4sst du in diesem Formular Felder leer, werden die entsprechenden Eintr\u00e4ge nicht neu erstellt bzw. die schon existierende Daten werden nicht \u00fcberschrieben.</p>"
+   "options": "<p>Infos zum Thema Mitgliederverwaltung gibt es in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML993pHOo16el5DGrKN5kCzh\" target=\"_blank\">LANDA Videotutorials - Vereinsverwaltung / Mitgliederverwaltung</a></p>"
   },
   {
    "fieldname": "landa_member_section",
@@ -225,7 +225,7 @@
  ],
  "is_virtual": 1,
  "links": [],
- "modified": "2023-11-17 10:26:17.637563",
+ "modified": "2024-05-10 19:24:54.879846",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Data Import",
@@ -272,5 +272,6 @@
   }
  ],
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "states": []
 }

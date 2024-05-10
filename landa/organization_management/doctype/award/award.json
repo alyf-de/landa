@@ -85,7 +85,7 @@
    "fieldname": "award_info_text",
    "fieldtype": "HTML",
    "label": "Award Info Text",
-   "options": "<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=\" https://youtu.be/Futx9eqC5Ts\" style=\"color: blue;\">#7 Auszeichnungen</a> und in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML993pHOo16el5DGrKN5kCzh\" style=\"color: blue;\">LANDA Videotutorials - Vereinsverwaltung / Mitgliederverwaltung </a> </p>"
+   "options": "<p>Infos zum Thema Mitgliederverwaltung gibt es in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML993pHOo16el5DGrKN5kCzh\" target=\"_blank\">LANDA Videotutorials - Vereinsverwaltung / Mitgliederverwaltung</a></p>"
   },
   {
    "fieldname": "award_section",
@@ -94,7 +94,7 @@
   }
  ],
  "links": [],
- "modified": "2024-03-01 12:32:50.313821",
+ "modified": "2024-05-10 19:25:19.060821",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Award",
@@ -157,6 +157,7 @@
  "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "award_type",
  "track_changes": 1
 }
