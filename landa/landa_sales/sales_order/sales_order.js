@@ -34,11 +34,22 @@ frappe.ui.form.on("Sales Order",  {
 
         if (!frappe.user.has_role("LANDA Regional Organization Management")) {
             setTimeout(function() {
-                // Needs some delay because the buttons are not immediately available
                 frm.remove_custom_button(__("Hold"), __("Status"));
                 frm.remove_custom_button(__("Close"), __("Status"));
             }, 500);
         }
+
+        setTimeout(function() {
+            frm.remove_custom_button(__("Pick List"), __("Create"));
+            frm.remove_custom_button(__("Work Order"), __("Create"));
+            frm.remove_custom_button(__("Material Request"), __("Create"));
+            frm.remove_custom_button(__("Request for Raw Materials"), __("Create"));
+            frm.remove_custom_button(__("Purchase Order"), __("Create"));
+            frm.remove_custom_button(__("Project"), __("Create"));
+            frm.remove_custom_button(__("Subscription"), __("Create"));
+            frm.remove_custom_button(__("Payment Request"), __("Create"));
+            frm.remove_custom_button(__("Payment Request"), __("Create"));
+        }, 500);
     },
     before_save: function (frm) {
         frm.doc.items = landa.selling.remove_zero_qty_items(frm.doc.items);
