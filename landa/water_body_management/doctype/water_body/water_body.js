@@ -98,9 +98,9 @@ function update_draw_control(draw_control, icon_url, icon_name, rotation_angle) 
 	let marker_config = {};
 
 	if (icon_url) {
-		const CustomIcon = L.Icon.extend({
+		const CustomIcon = window.L.Icon.extend({
 			options: {
-				iconSize: new L.Point(24, 24),
+				iconSize: new window.L.Point(24, 24),
 				iconUrl: icon_url,
 				iconName: icon_name,
 				rotationAngle: rotation_angle,
@@ -134,14 +134,14 @@ function update_polygon_control(draw_control, draw_restricted_area) {
 
 function pointToLayer(geoJsonPoint, latlng) {
 	if (geoJsonPoint.properties.point_type == "circle"){
-		return L.circle(latlng, {radius: geoJsonPoint.properties.radius});
+		return window.L.circle(latlng, {radius: geoJsonPoint.properties.radius});
 	} else if (geoJsonPoint.properties.point_type == "circlemarker") {
-		return L.circleMarker(latlng, {radius: geoJsonPoint.properties.radius});
+		return window.L.circleMarker(latlng, {radius: geoJsonPoint.properties.radius});
 	} else if (geoJsonPoint.properties.point_type == "custom-icon") {
-		const marker = L.marker(
+		const marker = window.L.marker(
 			latlng,
 			{
-				icon: L.icon({
+				icon: window.L.icon({
 					iconUrl: frappe.boot.icon_map[geoJsonPoint.properties.icon],
 					iconSize: [24, 24],
 				}),
@@ -155,7 +155,7 @@ function pointToLayer(geoJsonPoint, latlng) {
 		}
 		return marker;
 	} else {
-		const marker = L.marker(latlng);
+		const marker = window.L.marker(latlng);
 		if (geoJsonPoint.properties.tooltip) {
 			marker.bindTooltip(geoJsonPoint.properties.tooltip);
 		}
@@ -170,8 +170,8 @@ function onEachFeature(feature, layer) {
 }
 
 function customize_draw_controls() {
-	const circleToGeoJSON = L.Circle.prototype.toGeoJSON;
-	L.Circle.include({
+	const circleToGeoJSON = window.L.Circle.prototype.toGeoJSON;
+	window.L.Circle.include({
 		toGeoJSON: function() {
 			const feature = circleToGeoJSON.call(this);
 			feature.properties = {
@@ -182,7 +182,7 @@ function customize_draw_controls() {
 		}
 	});
 
-	L.CircleMarker.include({
+	window.L.CircleMarker.include({
 		toGeoJSON: function() {
 			const feature = circleToGeoJSON.call(this);
 			feature.properties = {
@@ -193,9 +193,9 @@ function customize_draw_controls() {
 		}
 	});
 
-	const markerToGeoJSON = L.Marker.prototype.toGeoJSON;
-	const markerSetPosition = L.Marker.prototype._setPos;
-	L.Marker.include({
+	const markerToGeoJSON = window.L.Marker.prototype.toGeoJSON;
+	const markerSetPosition = window.L.Marker.prototype._setPos;
+	window.L.Marker.include({
 		// Rotation inspired by https://github.com/bbecquet/Leaflet.RotatedMarker/blob/master/leaflet.rotatedMarker.js
 		_setPos: function (pos) {
 			markerSetPosition.call(this, pos);
@@ -204,11 +204,11 @@ function customize_draw_controls() {
 
 		_applyRotation: function () {
 			if (this.options.rotationAngle) {
-				this._icon.style[L.DomUtil.TRANSFORM+'Origin'] = 'center';
+				this._icon.style[window.L.DomUtil.TRANSFORM+'Origin'] = 'center';
 
-				const transformStyle = this._icon.style[L.DomUtil.TRANSFORM];
+				const transformStyle = this._icon.style[window.L.DomUtil.TRANSFORM];
 				if (!transformStyle.includes('rotate')) {
-					this._icon.style[L.DomUtil.TRANSFORM] += ` rotate(${this.options.rotationAngle}deg)`;
+					this._icon.style[window.L.DomUtil.TRANSFORM] += ` rotate(${this.options.rotationAngle}deg)`;
 				}
 			}
 		},
@@ -229,8 +229,8 @@ function customize_draw_controls() {
 		},
 	});
 
-	const polygonToGeoJSON = L.Polygon.prototype.toGeoJSON;
-	L.Polygon.include({
+	const polygonToGeoJSON = window.L.Polygon.prototype.toGeoJSON;
+	window.L.Polygon.include({
 		toGeoJSON: function() {
 			const feature = polygonToGeoJSON.call(this);
 			if (this.options.isRestrictedArea) {
@@ -242,7 +242,7 @@ function customize_draw_controls() {
 		}
 	});
 
-	L.Icon.Default.imagePath = '/assets/frappe/images/leaflet/';
+	window.L.Icon.Default.imagePath = '/assets/frappe/images/leaflet/';
 }
 
 
