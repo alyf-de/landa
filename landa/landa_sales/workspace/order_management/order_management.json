@@ -112,7 +112,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Billing History",
    "link_count": 0,
    "link_to": "Billing History",
@@ -122,7 +122,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "LANDA Deliveries and Payments",
    "link_count": 0,
    "link_to": "LANDA Deliveries and Payments",
@@ -132,7 +132,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Summarized Billing History",
    "link_count": 0,
    "link_to": "Summarized Billing History",
@@ -142,7 +142,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Item-wise Sales History",
    "link_count": 0,
    "link_to": "Item-wise Sales History",
@@ -152,7 +152,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Item-wise Sales Register",
    "link_count": 0,
    "link_to": "Item-wise Sales Register",
@@ -162,7 +162,7 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Issuing statistics",
    "link_count": 0,
    "link_to": "Issuing statistics",
@@ -239,7 +239,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-05-08 13:07:17.466049",
+ "modified": "2024-05-15 11:56:06.187453",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "Order Management",
