@@ -4,7 +4,7 @@
   "doctype": "Workflow",
   "document_type": "Catch Log Entry",
   "is_active": 1,
-  "modified": "2024-05-22 19:39:22.451418",
+  "modified": "2024-05-22 21:00:55.650158",
   "name": "Catch Log Entry",
   "override_status": 0,
   "send_email_alert": 0,
@@ -38,7 +38,7 @@
     "update_value": null
    },
    {
-    "allow_edit": "LANDA State Organization Employee",
+    "allow_edit": "LANDA Regional Water Body Management",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
