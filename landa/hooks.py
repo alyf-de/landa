@@ -258,6 +258,7 @@ doc_events = {
 	},
 	"Item": {
 		"before_insert": "landa.landa_stock.item.item.before_insert",
+		"after_insert": "landa.landa_stock.item.item.after_insert",
 		"autoname": "landa.landa_stock.item.item.autoname",
 	},
 	"Item Price": {"validate": "landa.landa_sales.item_price.item_price.validate"},

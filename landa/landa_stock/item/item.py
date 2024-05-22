@@ -7,6 +7,26 @@ def before_insert(item, event):
 		set_tax_template(item)
 
 
+def after_insert(item, event):
+	"""Set Item Price based on Standard Rate entered in quick entry form.
+
+	The original method didn't do anything because Item Groups were not used and
+	therefore could not provide the default Price List.
+	"""
+	if item.standard_rate:
+		price_list = frappe.db.get_value("Price List", {"company": item.company, "selling": 1})
+		frappe.get_doc(
+			{
+				"doctype": "Item Price",
+				"price_list": price_list,
+				"item_code": item.name,
+				"uom": item.stock_uom,
+				"company": item.company,
+				"price_list_rate": item.standard_rate,
+			}
+		).insert()
+
+
 def set_year_of_validity(item):
 	"""Set "Valid From Year" and "Valid To Year" to year_of_validity from Attribute Value."""
 	if item.variant_of and item.attributes:
