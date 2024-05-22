@@ -927,7 +927,7 @@
    "_comments": null,
    "_liked_by": null,
    "_user_tags": null,
-   "creation": "2024-05-22 19:30:47.099650",
+   "creation": "2024-05-22 19:34:39.449252",
    "default_value": null,
    "doc_type": "Sales Order",
    "docstatus": 0,
@@ -935,7 +935,7 @@
    "field_name": "sales_order_info_text",
    "idx": 0,
    "is_system_generated": 0,
-   "modified": "2024-05-22 19:30:47.099650",
+   "modified": "2024-05-22 19:34:39.449252",
    "modified_by": "Administrator",
    "module": null,
    "name": "Sales Order-sales_order_info_text-options",
@@ -946,7 +946,7 @@
    "property": "options",
    "property_type": "Text",
    "row_name": null,
-   "value": "<p>Infos zum Thema Bestellwesen in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML-cMx1lE7DD1gNFmIdE8cZF\" target=\"_blank\">LANDA Videotutorials - Bestellwesen</a></p>\n<p>Eine \u00dcbersicht der Rechnungen finden Sie <b><a href=\"/app/sales-invoice\">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente unter Verkn\u00fcpfungen.</p>"
+   "value": "<p>Infos zum Thema Bestellwesen in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML-cMx1lE7DD1gNFmIdE8cZF\" target=\"_blank\">LANDA Videotutorials - Bestellwesen</a></p>"
   },
   {
    "_assign": null,
