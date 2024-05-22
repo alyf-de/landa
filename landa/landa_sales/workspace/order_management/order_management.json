@@ -237,9 +237,19 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Payment Reconciliation",
+   "link_count": 0,
+   "link_to": "Payment Reconciliation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-05-15 11:56:06.187453",
+ "modified": "2024-05-22 19:16:02.576111",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "Order Management",
