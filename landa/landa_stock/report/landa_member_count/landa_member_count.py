@@ -8,90 +8,94 @@ from pypika.terms import Case, PseudoColumn
 
 
 def get_data(
-	organization: str = None,
+	organization: str,
 	year: str = None,
 	company: str = None,
 	company_abbr: str = None,
 	show_total_for_regional_org: bool = False,
 ):
-	delivery_note_item = frappe.qb.DocType("Delivery Note Item")
-	delivery_note = frappe.qb.DocType("Delivery Note")
-	item = frappe.qb.DocType("Item")
-	item_variant_attribute = frappe.qb.DocType("Item Variant Attribute")
+	DeliveryNoteItem = frappe.qb.DocType("Delivery Note Item")
+	DeliveryNote = frappe.qb.DocType("Delivery Note")
+	Item = frappe.qb.DocType("Item")
+	ItemVariantAttribute = frappe.qb.DocType("Item Variant Attribute")
+	Organization = frappe.qb.DocType("Organization")
 
 	query = (
-		frappe.qb.from_(delivery_note_item)
-		.join(item)
-		.on(item.item_code == delivery_note_item.item_code)
-		.join(item_variant_attribute)
-		.on(item_variant_attribute.parent == delivery_note_item.item_code)
-		.join(delivery_note)
-		.on(delivery_note.name == delivery_note_item.parent)
+		frappe.qb.from_(DeliveryNoteItem)
+		.join(Item)
+		.on(Item.item_code == DeliveryNoteItem.item_code)
+		.join(ItemVariantAttribute)
+		.on(ItemVariantAttribute.parent == DeliveryNoteItem.item_code)
+		.join(DeliveryNote)
+		.on(DeliveryNote.name == DeliveryNoteItem.parent)
+		.join(Organization)
+		.on(Organization.name == DeliveryNote.organization)
 	)
 
 	if show_total_for_regional_org:
 		query = query.select(
 			PseudoColumn(f"'{company_abbr}'"),
-			delivery_note.company,
+			DeliveryNote.company,
 		)
 	else:
 		query = query.select(
-			delivery_note.customer,
-			delivery_note.customer_name,
+			DeliveryNote.customer,
+			DeliveryNote.customer_name,
 		)
 	query = query.select(
-		Cast(delivery_note.year_of_settlement, "CHAR(4)"),
+		Cast(DeliveryNote.year_of_settlement, "CHAR(4)"),
 		Sum(
 			Case()
 			.when(
-				item_variant_attribute.attribute_value == "Vollzahler",
-				delivery_note_item.qty,
+				ItemVariantAttribute.attribute_value == "Vollzahler",
+				DeliveryNoteItem.qty,
 			)
 			.else_(0)
 		),
 		Sum(
 			Case()
 			.when(
-				item_variant_attribute.attribute_value == "Jugend",
-				delivery_note_item.qty,
+				ItemVariantAttribute.attribute_value == "Jugend",
+				DeliveryNoteItem.qty,
 			)
 			.else_(0)
 		),
 		Sum(
 			Case()
 			.when(
-				item_variant_attribute.attribute_value == "Fördermitglied",
-				delivery_note_item.qty,
+				ItemVariantAttribute.attribute_value == "Fördermitglied",
+				DeliveryNoteItem.qty,
 			)
 			.else_(0)
 		),
 		Sum(
 			Case()
 			.when(
-				item_variant_attribute.attribute_value == "Austauschmarke",
-				delivery_note_item.qty,
+				ItemVariantAttribute.attribute_value.isin(["Vollzahler", "Jugend", "Fördermitglied"]),
+				DeliveryNoteItem.qty,
 			)
 			.else_(0)
 		),
-	).where((item_variant_attribute.attribute == "Beitragsart") & (delivery_note.docstatus == 1))
+	).where(
+		(ItemVariantAttribute.attribute == "Beitragsart")
+		& (DeliveryNote.docstatus == 1)
+		& DeliveryNote.organization.like(f"{organization}%")
+	)
 
 	if year:
-		query = query.where(delivery_note.year_of_settlement == year)
-
-	if organization:
-		query = query.where(delivery_note.organization.like(f"{organization}%"))
+		query = query.where(DeliveryNote.year_of_settlement == year)
 
 	if company:
-		query = query.where(delivery_note.company == company)
+		query = query.where(DeliveryNote.company == company)
 
-	query = query.groupby(delivery_note.year_of_settlement)
+	query = query.groupby(DeliveryNote.year_of_settlement)
 
 	if show_total_for_regional_org:
-		query = query.groupby(delivery_note.company)
+		query = query.groupby(DeliveryNote.company)
 	else:
-		query = query.groupby(delivery_note.customer)
+		query = query.groupby(DeliveryNote.customer)
 
-	query = query.orderby(delivery_note.customer, delivery_note.year_of_settlement)
+	query = query.orderby(DeliveryNote.customer, DeliveryNote.year_of_settlement)
 	return query.run()
 
 
@@ -135,9 +139,9 @@ def get_columns():
 			"width": 150,
 		},
 		{
-			"fieldname": "austauschmarke",
+			"fieldname": "gesamt",
 			"fieldtype": "Data",
-			"label": _("Austauschmarke"),
+			"label": _("Gesamt"),
 			"width": 150,
 		},
 	]
