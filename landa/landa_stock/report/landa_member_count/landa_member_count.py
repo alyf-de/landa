@@ -4,7 +4,7 @@
 import frappe
 from frappe import _
 from pypika.functions import Cast, Sum
-from pypika.terms import Case, PseudoColumn
+from pypika.terms import Case, NullValue, PseudoColumn
 
 
 def get_data(
@@ -33,15 +33,14 @@ def get_data(
 	)
 
 	if show_total_for_regional_org:
-		query = query.select(
-			PseudoColumn(f"'{company_abbr}'"),
-			DeliveryNote.company,
-		)
+		query = query.select(PseudoColumn(f"'{company_abbr}'"), DeliveryNote.company, NullValue())
 	else:
 		query = query.select(
 			DeliveryNote.customer,
 			DeliveryNote.customer_name,
+			Organization.fishing_area,
 		)
+
 	query = query.select(
 		Cast(DeliveryNote.year_of_settlement, "CHAR(4)"),
 		Sum(
@@ -106,7 +105,7 @@ def get_columns():
 			"fieldtype": "Link",
 			"label": _("Organization"),
 			"options": "Organization",
-			"width": 150,
+			"width": 110,
 		},
 		{
 			"fieldname": "customer_name",
@@ -115,22 +114,29 @@ def get_columns():
 			"width": 250,
 		},
 		{
+			"fieldname": "fishing_area",
+			"fieldtype": "Link",
+			"label": _("Fishing Area"),
+			"options": "Fishing Area",
+			"width": 110,
+		},
+		{
 			"fieldname": "year",
 			"fieldtype": "Data",
 			"label": _("Year"),
-			"width": 150,
+			"width": 90,
 		},
 		{
 			"fieldname": "vollzahler",
 			"fieldtype": "Data",
 			"label": _("Vollzahler"),
-			"width": 150,
+			"width": 120,
 		},
 		{
 			"fieldname": "jugend",
 			"fieldtype": "Data",
 			"label": _("Jugend"),
-			"width": 150,
+			"width": 120,
 		},
 		{
 			"fieldname": "foerdermitglied",
@@ -142,7 +148,7 @@ def get_columns():
 			"fieldname": "gesamt",
 			"fieldtype": "Data",
 			"label": _("Gesamt"),
-			"width": 150,
+			"width": 120,
 		},
 	]
 
