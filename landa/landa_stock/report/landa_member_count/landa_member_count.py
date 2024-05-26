@@ -13,6 +13,7 @@ def get_data(
 	company: str = None,
 	company_abbr: str = None,
 	show_total_for_regional_org: bool = False,
+	fishing_area: str = None,
 ):
 	DeliveryNoteItem = frappe.qb.DocType("Delivery Note Item")
 	DeliveryNote = frappe.qb.DocType("Delivery Note")
@@ -86,6 +87,9 @@ def get_data(
 
 	if company:
 		query = query.where(DeliveryNote.company == company)
+
+	if fishing_area:
+		query = query.where(Organization.fishing_area == fishing_area)
 
 	query = query.groupby(DeliveryNote.year_of_settlement)
 
@@ -172,6 +176,7 @@ def execute(filters=None):
 			company,
 			company_abbr,
 			total == 1,
+			filters.get("fishing_area"),
 		)
 	else:
 		return [], []

@@ -24,14 +24,25 @@ frappe.query_reports["LANDA Member Count"] = {
 			"fieldname": "year",
 			"fieldtype": "Data",
 			"label": __("Year"),
-			"mandatory": 0,
 			"wildcard_filter": 0,
+		},
+		{
+			"fieldname": "fishing_area",
+			"fieldtype": "Link",
+			"label": __("Fishing Area"),
+			"options": "Fishing Area",
+			"get_query": function() {
+				return {
+					filters: {
+						"organization": frappe.query_report.get_filter_value("organization").substring(0, 3)
+					}
+				}
+			}
 		},
 		{
 			"fieldname": "total",
 			"fieldtype": "Check",
 			"label": __("Total (only for regional org.)"),
-			"mandatory": 0,
 			"wildcard_filter": 0,
 		}
 	]
