@@ -3,99 +3,165 @@
 
 import frappe
 from frappe import _
+from pypika.functions import Cast, Sum
+from pypika.terms import Case, PseudoColumn
 
 
-class LANDAMemberCount:
-	def __init__(self, filters):
-		if "organization" in filters and filters["organization"] in ["AVL", "AVS", "AVE"]:
-			filters["company"] = frappe.get_value(
-				"Organization", filters.get("organization"), "organization_name"
-			)
-			filters["company_abbr"] = filters.pop("organization")
-		else:
-			filters["total"] = 0
+def get_data(
+	organization: str = None,
+	year: str = None,
+	company: str = None,
+	company_abbr: str = None,
+	show_total_for_regional_org: bool = False,
+):
+	delivery_note_item = frappe.qb.DocType("Delivery Note Item")
+	delivery_note = frappe.qb.DocType("Delivery Note")
+	item = frappe.qb.DocType("Item")
+	item_variant_attribute = frappe.qb.DocType("Item Variant Attribute")
 
-		self.filters = filters
+	query = (
+		frappe.qb.from_(delivery_note_item)
+		.join(item)
+		.on(item.item_code == delivery_note_item.item_code)
+		.join(item_variant_attribute)
+		.on(item_variant_attribute.parent == delivery_note_item.item_code)
+		.join(delivery_note)
+		.on(delivery_note.name == delivery_note_item.parent)
+	)
 
-	def run(self):
-		if "company" in self.filters or "organization" in self.filters:
-			return self.get_columns(), self.get_data()
-		else:
-			return [], []
-
-	def get_data(self):
-		sql_query = """
-			SELECT CASE WHEN %s = 0 THEN dn.customer ELSE %s END,
-				CASE WHEN %s = 0 THEN dn.customer_name ELSE dn.company END,
-				-- cast to make it usable on x-axis in a chart
-				CAST(dn.year_of_settlement AS CHAR(4)),
-				SUM(CASE WHEN iva.attribute_value = 'Vollzahler' THEN dni.qty ELSE 0 END),
-				SUM(CASE WHEN iva.attribute_value = 'Jugend' THEN dni.qty ELSE 0 END),
-				SUM(CASE WHEN iva.attribute_value = 'Fördermitglied' THEN dni.qty ELSE 0 END),
-				SUM(CASE WHEN iva.attribute_value = 'Austauschmarke' THEN dni.qty ELSE 0 END)
-			FROM `tabDelivery Note Item` dni
-			JOIN `tabItem` i ON dni.item_code = i.item_code
-			JOIN `tabItem Variant Attribute` iva ON dni.item_code = iva.parent
-			JOIN `tabDelivery Note` dn ON dni.parent = dn.name
-			WHERE iva.attribute = "Beitragsart"
-				AND dn.docstatus = 1
-				AND dn.year_of_settlement LIKE %s
-				AND dn.organization LIKE %s
-				AND dn.company LIKE %s
-			GROUP BY dn.year_of_settlement, CASE WHEN %s = 0 THEN dn.customer ELSE dn.company END
-			ORDER BY dn.customer, dn.year_of_settlement
-			"""
-
-		return frappe.db.sql(
-			sql_query,
-			(
-				self.filters.get("total", 0),
-				self.filters.get("company_abbr", ""),
-				self.filters.get("total", 0),
-				self.filters.get("year", "%"),
-				self.filters.get("organization", "%"),
-				self.filters.get("company", "%"),
-				self.filters.get("total", 0),
-			),
+	if show_total_for_regional_org:
+		query = query.select(
+			PseudoColumn(f"'{company_abbr}'"),
+			delivery_note.company,
 		)
+	else:
+		query = query.select(
+			delivery_note.customer,
+			delivery_note.customer_name,
+		)
+	query = query.select(
+		Cast(delivery_note.year_of_settlement, "CHAR(4)"),
+		Sum(
+			Case()
+			.when(
+				item_variant_attribute.attribute_value == "Vollzahler",
+				delivery_note_item.qty,
+			)
+			.else_(0)
+		),
+		Sum(
+			Case()
+			.when(
+				item_variant_attribute.attribute_value == "Jugend",
+				delivery_note_item.qty,
+			)
+			.else_(0)
+		),
+		Sum(
+			Case()
+			.when(
+				item_variant_attribute.attribute_value == "Fördermitglied",
+				delivery_note_item.qty,
+			)
+			.else_(0)
+		),
+		Sum(
+			Case()
+			.when(
+				item_variant_attribute.attribute_value == "Austauschmarke",
+				delivery_note_item.qty,
+			)
+			.else_(0)
+		),
+	).where((item_variant_attribute.attribute == "Beitragsart") & (delivery_note.docstatus == 1))
 
-	def get_columns(self):
-		return [
-			{
-				"fieldname": "organization",
-				"fieldtype": "Link",
-				"label": _("Organization"),
-				"options": "Organization",
-				"width": 150,
-			},
-			{
-				"fieldname": "customer_name",
-				"fieldtype": "Data",
-				"label": _("Organization Name"),
-				"width": 250,
-			},
-			{"fieldname": "year", "fieldtype": "Data", "label": _("Year"), "width": 150},
-			{
-				"fieldname": "vollzahler",
-				"fieldtype": "Data",
-				"label": _("Vollzahler"),
-				"width": 150,
-			},
-			{"fieldname": "jugend", "fieldtype": "Data", "label": _("Jugend"), "width": 150},
-			{
-				"fieldname": "foerdermitglied",
-				"fieldtype": "Data",
-				"label": _("Fördermitglied"),
-				"width": 150,
-			},
-			{
-				"fieldname": "austauschmarke",
-				"fieldtype": "Data",
-				"label": _("Austauschmarke"),
-				"width": 150,
-			},
-		]
+	if year:
+		query = query.where(delivery_note.year_of_settlement == year)
+
+	if organization:
+		query = query.where(delivery_note.organization.like(f"{organization}%"))
+
+	if company:
+		query = query.where(delivery_note.company == company)
+
+	query = query.groupby(delivery_note.year_of_settlement)
+
+	if show_total_for_regional_org:
+		query = query.groupby(delivery_note.company)
+	else:
+		query = query.groupby(delivery_note.customer)
+
+	query = query.orderby(delivery_note.customer, delivery_note.year_of_settlement)
+	return query.run()
+
+
+def get_columns():
+	return [
+		{
+			"fieldname": "organization",
+			"fieldtype": "Link",
+			"label": _("Organization"),
+			"options": "Organization",
+			"width": 150,
+		},
+		{
+			"fieldname": "customer_name",
+			"fieldtype": "Data",
+			"label": _("Organization Name"),
+			"width": 250,
+		},
+		{
+			"fieldname": "year",
+			"fieldtype": "Data",
+			"label": _("Year"),
+			"width": 150,
+		},
+		{
+			"fieldname": "vollzahler",
+			"fieldtype": "Data",
+			"label": _("Vollzahler"),
+			"width": 150,
+		},
+		{
+			"fieldname": "jugend",
+			"fieldtype": "Data",
+			"label": _("Jugend"),
+			"width": 150,
+		},
+		{
+			"fieldname": "foerdermitglied",
+			"fieldtype": "Data",
+			"label": _("Fördermitglied"),
+			"width": 150,
+		},
+		{
+			"fieldname": "austauschmarke",
+			"fieldtype": "Data",
+			"label": _("Austauschmarke"),
+			"width": 150,
+		},
+	]
 
 
 def execute(filters=None):
-	return LANDAMemberCount(filters).run()
+	organization = filters.pop("organization", None)
+	total = filters.pop("total", 0)
+	company = None
+	company_abbr = None
+
+	if organization and organization in ["AVL", "AVS", "AVE"]:
+		company = frappe.get_value("Organization", organization, "organization_name")
+		company_abbr = organization
+	else:
+		total = 0
+
+	if company or "organization" in filters:
+		return get_columns(), get_data(
+			organization,
+			filters.get("year"),
+			company,
+			company_abbr,
+			total == 1,
+		)
+	else:
+		return [], []
