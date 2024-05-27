@@ -155,7 +155,7 @@ class ChangeLog:
 
 			# Newlines have been converted to <br> in the Version log
 			# Convert them back to newlines for consistency with the other endpoints
-			if frappe.get_meta(entry.doctype).get_field(key).fieldtype in ("Text", "Small Text"):
+			if data and frappe.get_meta(entry.doctype).get_field(key).fieldtype in ("Text", "Small Text"):
 				data = data.replace("<br>", "\n")
 
 			if row[0] == "location":
