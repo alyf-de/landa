@@ -84,7 +84,12 @@ def remove_outdated_information():
 		water_body = frappe.get_doc("Water Body", name)
 		water_body.current_public_information = None
 		water_body.current_information_expires_on = None
-		water_body.save()
+		try:
+			water_body.save()
+		except Exception:
+			frappe.log_error(
+				title=f"Failed to remove outdated information for Water Body {name}",
+			)
 
 
 def build_water_body_cache(fishing_area: str = None):
