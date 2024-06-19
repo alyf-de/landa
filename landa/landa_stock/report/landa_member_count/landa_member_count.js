@@ -32,11 +32,14 @@ frappe.query_reports["LANDA Member Count"] = {
 			label: __("Fishing Area"),
 			options: "Fishing Area",
 			get_query: function () {
+				const selected_org = frappe.query_report.get_filter_value("organization");
+				if (!selected_org) {
+					return {};
+				}
+
 				return {
 					filters: {
-						organization: frappe.query_report
-							.get_filter_value("organization")
-							.substring(0, 3),
+						organization: selected_org.substring(0, 3),
 					},
 				};
 			},
