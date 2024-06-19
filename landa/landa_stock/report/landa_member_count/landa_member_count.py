@@ -157,13 +157,14 @@ def get_columns():
 	]
 
 
-def execute(filters=None):
-	organization = filters.pop("organization", None)
+def execute(filters: dict):
+	organization = filters.get("organization")
 	total = filters.pop("total", 0)
 	company = None
 	company_abbr = None
 
 	if organization and organization in ["AVL", "AVS", "AVE"]:
+		filters.pop("organization")
 		company = frappe.get_value("Organization", organization, "organization_name")
 		company_abbr = organization
 	else:
