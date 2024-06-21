@@ -17,7 +17,6 @@ fixtures = [
 	"Global Search Settings",
 	"Module Profile",
 	{"dt": "Role", "filters": [["name", "like", "%LANDA%"]]},
-	"Member Function Category",
 	"Fishing Area",
 	"Item Variant Settings",
 	"Translation",
