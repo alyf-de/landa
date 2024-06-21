@@ -83,7 +83,7 @@ def water_body(id: str = None, fishing_area: str = None, only_id: int = 0) -> Li
 		return build_water_body_data(id, fishing_area)
 
 	key = fishing_area or "all"
-	cache_exists = frappe.cache().hexists("water_body_data", key, shared=True)
+	cache_exists = frappe.cache().hexists("water_body_data", key)
 
 	if not cache_exists:
 		# Build the cache (for future calls)
@@ -96,7 +96,7 @@ def water_body(id: str = None, fishing_area: str = None, only_id: int = 0) -> Li
 
 def get_water_body_cache(key: str) -> List[Dict]:
 	"""Return a **CACHED** list of water bodies with fish species and special provisions."""
-	return frappe.cache().hget("water_body_data", key, shared=True)
+	return frappe.cache().hget("water_body_data", key)
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
