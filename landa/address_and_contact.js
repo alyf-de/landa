@@ -1,3 +1,15 @@
+for (const dt of ["Contact", "Address"]) {
+	frappe.ui.form.on(dt, {
+		refresh(frm) {
+			if (frm.is_new() && frm.doc.links.length > 0) {
+				// This is required when the table row is added via dynamic link,
+				// instead of manually.
+				frm.trigger("link_name", "Dynamic Link", frm.doc.links[0].name);
+			}
+		}
+	});
+}
+
 frappe.ui.form.on("Dynamic Link", {
 	link_name(frm, cdt, cdn) {
 		const row = locals[cdt][cdn];
