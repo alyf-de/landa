@@ -31,10 +31,10 @@ class MemberDataImport(Document):
 
 	ADDRESS_FIELDS = ["address_line1", "pincode", "city"]
 
-	def before_insert(self):
+	def before_insert(self, *args, **kwargs):
 		self.preprocess()
 
-	def db_insert(self):
+	def db_insert(self, *args, **kwargs):
 		self.create_or_update_member()
 		self.create_or_update_address()
 		self.create_permit()
@@ -43,16 +43,16 @@ class MemberDataImport(Document):
 	def load_from_db(self):
 		pass
 
-	def db_update(self):
+	def db_update(self, *args, **kwargs):
 		pass
 
-	def get_list(self, _args=None) -> list:
+	def get_list(self, *args, **kwargs) -> list:
 		return []
 
-	def get_count(self, _args=None) -> int:
+	def get_count(self, *args, **kwargs) -> int:
 		return 0
 
-	def get_stats(self, _args=None) -> dict:
+	def get_stats(self, *args, **kwargs) -> dict:
 		return {"stats": {}}
 
 	def preprocess(self):
