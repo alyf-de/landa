@@ -285,7 +285,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-05-08 12:47:20.238439",
+ "modified": "2024-07-11 14:59:31.302312",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
@@ -298,7 +298,7 @@
  "sequence_id": 3.0,
  "shortcuts": [
   {
-   "doc_view": "List",
+   "doc_view": "New",
    "label": "Neues Mitglied anlegen",
    "link_to": "Member Data Import",
    "stats_filter": "[]",

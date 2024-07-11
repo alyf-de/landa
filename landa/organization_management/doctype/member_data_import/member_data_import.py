@@ -41,17 +41,20 @@ class MemberDataImport(Document):
 		return {}
 
 	def load_from_db(self):
-		pass
+		super(Document, self).__init__({"name": frappe.generate_hash(length=8)})
 
 	def db_update(self, *args, **kwargs):
 		pass
 
+	@staticmethod
 	def get_list(self, *args, **kwargs) -> list:
 		return []
 
+	@staticmethod
 	def get_count(self, *args, **kwargs) -> int:
 		return 0
 
+	@staticmethod
 	def get_stats(self, *args, **kwargs) -> dict:
 		return {"stats": {}}
 
