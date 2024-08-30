@@ -54,7 +54,7 @@ class StatementofFeesandPayments(Document):
 				"`tabSales Invoice Item`.item_code as item_code",
 				"`tabSales Invoice Item`.item_name as item_name",
 				"`tabSales Invoice Item`.qty as qty",
-				"`tabSales Invoice Item`.base_net_amount as amount",
+				"`tabSales Invoice Item`.base_amount as amount",
 			],
 		)
 
