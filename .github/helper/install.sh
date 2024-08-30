@@ -8,8 +8,7 @@ sudo apt update && sudo apt install redis-server libcups2-dev
 
 pip install frappe-bench
 
-git clone https://github.com/alyf-de/frappe --branch landa-version-13 --depth 1
-bench init --skip-assets --frappe-path ~/frappe --python "$(which python)" frappe-bench
+bench init --skip-assets --frappe-branch version-14 --python "$(which python)" frappe-bench
 
 mysql --host 127.0.0.1 --port 3306 -u root -proot -e "SET GLOBAL character_set_server = 'utf8mb4'"
 mysql --host 127.0.0.1 --port 3306 -u root -proot -e "SET GLOBAL collation_server = 'utf8mb4_unicode_ci'"
@@ -27,7 +26,7 @@ sed -i 's/schedule:/# schedule:/g' Procfile
 sed -i 's/socketio:/# socketio:/g' Procfile
 sed -i 's/redis_socketio:/# redis_socketio:/g' Procfile
 
-bench get-app erpnext --branch version-13
+bench get-app erpnext --branch version-14
 bench get-app landa "${GITHUB_WORKSPACE}"
 
 bench start &> bench_run_logs.txt &
