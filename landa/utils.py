@@ -32,13 +32,16 @@ def reset_workspace(workspace: str) -> None:
 	"""Delete all user's custom extensions of `workspace`.
 
 	Used to reset user customizations after the workspace definition has changed."""
-	custom_workspaces = frappe.get_all(
-		"Workspace",
-		filters={"for_user": ("is", "set"), "extends": workspace},
-		pluck="name",
-	)
-	for workspace_name in custom_workspaces:
-		frappe.delete_doc("Workspace", workspace_name)
+	# TODO: The "extends" property no longer exists. Figure out if a variant of this function is still needed.
+
+	# custom_workspaces = frappe.get_all(
+	# 	"Workspace",
+	# 	filters={"for_user": ("is", "set"), "extends": workspace},
+	# 	pluck="name",
+	# )
+	# for workspace_name in custom_workspaces:
+	# 	frappe.delete_doc("Workspace", workspace_name)
+	pass
 
 
 def get_current_member_data() -> frappe._dict:

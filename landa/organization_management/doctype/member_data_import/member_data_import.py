@@ -8,10 +8,10 @@ from frappe.model.document import Document
 from frappe.utils.dateutils import parse_date
 
 from landa.organization_management.doctype.landa_member.landa_member import LANDAMember
+from landa.utils import get_member_and_organization
 
 
 class MemberDataImport(Document):
-
 	MEMBER_FIELDS = [
 		"first_name",
 		"last_name",
@@ -41,7 +41,13 @@ class MemberDataImport(Document):
 		return {}
 
 	def load_from_db(self):
-		super(Document, self).__init__({"name": frappe.generate_hash(length=8)})
+		__, member_organization = get_member_and_organization(frappe.session.user)
+		super(Document, self).__init__(
+			{
+				"name": frappe.generate_hash(length=8),
+				"organization": member_organization,
+			}
+		)
 
 	def db_update(self, *args, **kwargs):
 		pass

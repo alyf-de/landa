@@ -14,7 +14,14 @@ frappe.query_reports["Catch Log Days and Counts"] = {
 			fieldname: "water_body",
 			fieldtype: "MultiSelectList",
 			label: __("Water Body"),
-			get_data: (txt) => frappe.db.get_link_options("Water Body", txt),
+			get_data: (txt) => {
+				const fishing_areas = frappe.query_report.get_filter_value("fishing_area") || [];
+				const filters = {};
+				if (fishing_areas.length > 0) {
+					filters.fishing_area = ["in", fishing_areas];
+				}
+				return frappe.db.get_link_options("Water Body", txt, filters);
+			},
 		},
 		{
 			fieldname: "organization",
@@ -44,7 +51,6 @@ frappe.query_reports["Catch Log Days and Counts"] = {
 	],
 };
 
-
 function get_extra_columns(txt) {
 	const extra_columns = [
 		{
@@ -62,7 +68,7 @@ function get_extra_columns(txt) {
 			label: __("Water Body Status"),
 			description: "",
 		},
-	]
+	];
 
 	return extra_columns.filter((d) => d.label.toLowerCase().includes(txt.toLowerCase()));
 }
