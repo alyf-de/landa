@@ -7,9 +7,9 @@
  "field_order": [
   "item_code",
   "item_name",
-  "delivered",
-  "returned",
-  "net_delivered",
+  "billed",
+  "credited",
+  "net_billed",
   "rate",
   "amount"
  ],
@@ -29,27 +29,6 @@
   },
   {
    "columns": 1,
-   "fieldname": "delivered",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Delivered"
-  },
-  {
-   "columns": 1,
-   "fieldname": "returned",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Returned"
-  },
-  {
-   "columns": 1,
-   "fieldname": "net_delivered",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Net Delivered"
-  },
-  {
-   "columns": 1,
    "fieldname": "rate",
    "fieldtype": "Currency",
    "in_list_view": 1,
@@ -63,12 +42,33 @@
    "in_list_view": 1,
    "label": "Amount",
    "options": "Company:company:default_currency"
+  },
+  {
+   "columns": 1,
+   "fieldname": "billed",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Billed"
+  },
+  {
+   "columns": 1,
+   "fieldname": "credited",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Credited"
+  },
+  {
+   "columns": 1,
+   "fieldname": "net_billed",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Net Billed"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-11 19:28:48.251747",
+ "modified": "2024-08-30 20:01:57.750315",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "LANDA Item Sales Summary",

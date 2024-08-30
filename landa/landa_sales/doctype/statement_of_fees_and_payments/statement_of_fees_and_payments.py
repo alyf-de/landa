@@ -61,15 +61,18 @@ class StatementofFeesandPayments(Document):
 		if not invoice_rows:
 			return
 
-		invoice_rows = df.from_records(invoice_rows)
-		invoice_rows["delivered"] = invoice_rows["qty"].clip(lower=0)
-		invoice_rows["returned"] = -1 * invoice_rows["qty"].clip(upper=0)
-		invoice_rows["net_delivered"] = invoice_rows["delivered"] - invoice_rows["returned"]
-		invoice_rows["rate"] = invoice_rows["amount"] / invoice_rows["net_delivered"]
-		invoice_rows.drop(columns="qty", inplace=True)
+		rows_df = df.from_records(invoice_rows)
+
+		rows_df["billed"] = rows_df["qty"].clip(lower=0)
+		rows_df["credited"] = -1 * rows_df["qty"].clip(upper=0)
+		rows_df["net_billed"] = rows_df["billed"] - rows_df["credited"]
+		rows_df["rate"] = rows_df["amount"] / rows_df["net_billed"]
+
+		rows_df.drop(columns="qty", inplace=True)
+		rows_df = rows_df.groupby(["item_code", "item_name"]).sum().reset_index()
 
 		self.sales = []
-		self.extend("sales", invoice_rows.to_dict(orient="records"))
+		self.extend("sales", rows_df.to_dict(orient="records"))
 
 	def calculate_totals(self):
 		self.sum_of_payments = sum(p.amount for p in self.payments)
