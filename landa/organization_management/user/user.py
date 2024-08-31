@@ -83,18 +83,29 @@ def delete_activity_logs(user: str):
 
 def delete_or_disable_inactive_users():
 	"""Delete or disable all users that have not been active for 18 months."""
+	from datetime import datetime
+
 	from frappe.permissions import get_roles
 	from frappe.utils.data import add_months, getdate
 
 	cutoff_date = add_months(getdate(), -18)
-	for user in frappe.get_all(
+	users_to_delete = frappe.get_all(
 		"User",
-		filters={
-			"last_active": ("<", cutoff_date),
-			"name": ("not in", STANDARD_USERS),
-		},
+		filters=[
+			["last_active", "is", "set"],
+			["last_active", "<", cutoff_date],
+			["name", "not in", STANDARD_USERS],
+		],
 		pluck="name",
-	):
+	)
+
+	assert getdate(cutoff_date).year <= datetime.now().year - 1
+	assert (
+		len(users_to_delete) / frappe.db.count("User", filters={"name": ("not in", STANDARD_USERS)})
+		< 0.3
+	)
+
+	for user in users_to_delete:
 		if "System Manager" in get_roles(user):
 			continue
 
