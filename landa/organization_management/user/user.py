@@ -99,6 +99,16 @@ def delete_or_disable_inactive_users():
 		pluck="name",
 	)
 
+	users_to_delete += frappe.get_all(
+		"User",
+		filters=[
+			["last_active", "is", "not set"],
+			["creation", "<", cutoff_date],
+			["name", "not in", STANDARD_USERS],
+		],
+		pluck="name",
+	)
+
 	assert getdate(cutoff_date).year <= datetime.now().year - 1
 	assert (
 		len(users_to_delete) / frappe.db.count("User", filters={"name": ("not in", STANDARD_USERS)})
