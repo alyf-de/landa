@@ -24,4 +24,4 @@ def autoname(doc, event):
 	"""Create Company-specific Payment Entry name."""
 	from landa.utils import get_new_name
 
-	doc.name = get_new_name("ZAHL", doc.company, "Payment Entry")
+	doc.name = get_new_name("ZAHL", doc.company, "Payment Entry", doc.year_of_settlement)

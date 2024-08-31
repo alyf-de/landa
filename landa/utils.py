@@ -8,7 +8,7 @@ from frappe.model.dynamic_links import get_dynamic_link_map
 from frappe.utils.nestedset import get_ancestors_of
 
 
-def get_new_name(prefix, company, doctype):
+def get_new_name(prefix: str, company: str, doctype: str, year: str | None = None) -> str:
 	"""
 	Create a document name like prefix-company-year-####.
 
@@ -18,8 +18,11 @@ def get_new_name(prefix, company, doctype):
 	from frappe.utils.data import nowdate
 
 	company_abbr = frappe.get_value("Company", company, "abbr")
-	current_year = nowdate()[:4]  # note: y10k problem
-	return make_autoname(f"{prefix}-{company_abbr}-{current_year}-.####", doctype)
+
+	if not year:
+		year = nowdate()[:4]  # note: y10k problem
+
+	return make_autoname(f"{prefix}-{company_abbr}-{year}-.####", doctype)
 
 
 def welcome_email():

@@ -39,9 +39,9 @@ def autoname(doc, event):
 	from landa.utils import get_new_name
 
 	if doc.is_return:
-		doc.name = get_new_name("RET", doc.company, "Delivery Note")
+		doc.name = get_new_name("RET", doc.company, "Delivery Note", doc.year_of_settlement)
 	else:
-		doc.name = get_new_name("LIEF", doc.company, "Delivery Note")
+		doc.name = get_new_name("LIEF", doc.company, "Delivery Note", doc.year_of_settlement)
 
 
 @frappe.whitelist()

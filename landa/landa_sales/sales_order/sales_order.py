@@ -40,7 +40,7 @@ def autoname(doc, event):
 	"""Create Company-specific Sales Order name."""
 	from landa.utils import get_new_name
 
-	doc.name = get_new_name("BEST", doc.company, "Sales Order")
+	doc.name = get_new_name("BEST", doc.company, "Sales Order", doc.year_of_settlement)
 
 
 def get_dashboard_data(data):
