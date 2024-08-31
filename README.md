@@ -29,3 +29,5 @@ When deleting a **LANDA Member** and/or **User**, this app ...
 - Removes rows linking to this user/member from all child tables
 - Unsets all *optional* links to this user/member
 - Deletes all documents containing a *mandatory* link to this user/member
+
+There's a daily scheduled job that deletes all **Users** that have been inactive for more than 18 months.
