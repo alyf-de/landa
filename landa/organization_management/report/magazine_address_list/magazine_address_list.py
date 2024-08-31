@@ -56,6 +56,11 @@ class Address:
 		def get_member_filter(frappe_tuple):
 			return [m[0] for m in frappe_tuple]
 
+		def append_country_if_exists(row):
+			if row["country"]:
+				return f"{row['full_address']}, {row['country']}"
+			return row["full_address"]
+
 		# define the member master data that are supposed to be loaded
 		member_fields = [
 			"name",
@@ -81,7 +86,7 @@ class Address:
 		address_filters.append(["disabled", "=", 0])
 
 		# load addresses from db
-		address_fields = ["address_line1", "pincode", "city"]
+		address_fields = ["address_line1", "pincode", "city", "country"]
 		addresses = frappe.get_list(
 			"Address",
 			filters=address_filters,
@@ -97,6 +102,8 @@ class Address:
 		addresses_df["full_address"] = (
 			addresses_df["address_line1"] + ", " + addresses_df["pincode"] + " " + addresses_df["city"]
 		)
+		addresses_df["country"] = addresses_df["country"].apply(lambda x: x if x != "Germany" else None)
+		addresses_df["full_address"] = addresses_df.apply(append_country_if_exists, axis=1)
 
 		# load addresses from db
 		permit_fields = ["year", "member", "docstatus"]
@@ -179,6 +186,7 @@ class Address:
 			},
 			{"fieldname": "pincode", "fieldtype": "Data", "label": _("Pincode")},
 			{"fieldname": "city", "fieldtype": "Data", "label": _("City")},
+			{"fieldname": "country", "fieldtype": "Data", "label": _("Country")},
 			{
 				"fieldname": "full_address",
 				"fieldtype": "Data",
