@@ -79,3 +79,34 @@ def on_trash(user: User, event: str) -> None:
 def delete_activity_logs(user: str):
 	for activity_log in frappe.get_all("Activity Log", filters={"owner": user}, pluck="name"):
 		frappe.delete_doc("Activity Log", activity_log, ignore_permissions=True, delete_permanently=True)
+
+
+def delete_or_disable_inactive_users():
+	"""Delete or disable all users that have not been active for 18 months."""
+	from frappe.permissions import get_roles
+	from frappe.utils.data import add_months, getdate
+
+	cutoff_date = add_months(getdate(), -18)
+	for user in frappe.get_all(
+		"User",
+		filters={
+			"last_active": ("<", cutoff_date),
+			"name": ("not in", STANDARD_USERS),
+		},
+		pluck="name",
+	):
+		if "System Manager" in get_roles(user):
+			continue
+
+		frappe.enqueue(delete_or_disable_user, name=user)
+
+
+def delete_or_disable_user(name: str):
+	"""Delete a user, or disable it if it has linked documents."""
+	user = frappe.get_doc("User", name)
+
+	try:
+		user.delete()
+	except frappe.exceptions.LinkExistsError:
+		user.enabled = 0
+		user.save()

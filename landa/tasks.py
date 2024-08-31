@@ -14,6 +14,7 @@ def daily():
 		"landa.water_body_management.doctype.water_body.water_body.remove_outdated_information",
 		queue="long",
 	)
+	enqueue("landa.organization_management.user.user.delete_or_disable_inactive_users")
 
 
 def all():
