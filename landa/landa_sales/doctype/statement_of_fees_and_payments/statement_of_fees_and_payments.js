@@ -3,7 +3,7 @@
 
 frappe.ui.form.on("Statement of Fees and Payments", {
 	setup(frm) {
-		frm.set_query("customer_address", (doc) => {
+		frm.set_query("billing_address", (doc) => {
 			return {
 				filters: [
 					["Dynamic Link", "link_doctype", "=", "Customer"],
@@ -55,8 +55,8 @@ frappe.ui.form.on("Statement of Fees and Payments", {
 		}
 	},
 
-	customer_address(frm) {
-		erpnext.utils.get_address_display(frm, "customer_address", "customer_address_display");
+	billing_address(frm) {
+		erpnext.utils.get_address_display(frm, "billing_address", "billing_address_display");
 	},
 
 	company_address(frm) {
