@@ -39,9 +39,9 @@ class StatementofFeesandPayments(Document):
 			},
 		):
 			frappe.throw(
-				_(
-					"A Statement of Fees and Payments for the same customer and year already exists: {0}"
-				).format(get_link_to_form("Statement of Fees and Payments", existing))
+				_("This Statement of Fees and Payments already exists: {0}").format(
+					get_link_to_form("Statement of Fees and Payments", existing)
+				)
 			)
 
 	def fetch_payments(self):
