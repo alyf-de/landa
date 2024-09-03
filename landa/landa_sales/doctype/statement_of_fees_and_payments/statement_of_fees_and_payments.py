@@ -61,6 +61,7 @@ class StatementofFeesandPayments(Document):
 				"payment_type",
 				"base_paid_amount",
 			],
+			order_by="reference_date ASC",
 		):
 			self.append(
 				"payments",
