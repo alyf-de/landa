@@ -2,8 +2,10 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
 from frappe.model.docstatus import DocStatus
 from frappe.model.document import Document
+from frappe.utils.data import get_link_to_form
 from pandas import DataFrame as df
 
 
@@ -12,6 +14,26 @@ class StatementofFeesandPayments(Document):
 		self.fetch_payments()
 		self.fetch_sales()
 		self.calculate_totals()
+
+	def validate(self):
+		if (
+			existing := frappe.db.exists(
+				"Statement of Fees and Payments",
+				{
+					"customer": self.customer,
+					"company": self.company,
+					"year_of_settlement": self.year_of_settlement,
+					"docstatus": ("!=", DocStatus.cancelled()),
+					"name": ("!=", self.name),
+				},
+			)
+			and self.docstatus != DocStatus.cancelled()
+		):
+			frappe.throw(
+				_(
+					"A Statement of Fees and Payments for the same customer and year already exists: {0}"
+				).format(get_link_to_form("Statement of Fees and Payments", existing))
+			)
 
 	def fetch_payments(self):
 		self.payments = []
