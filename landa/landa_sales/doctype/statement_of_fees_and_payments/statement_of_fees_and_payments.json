@@ -11,6 +11,7 @@
   "customer_name",
   "column_break_ur9om",
   "year_of_settlement",
+  "organization",
   "section_break_ksfci",
   "billing_address",
   "billing_address_display",
@@ -142,11 +143,19 @@
    "fieldtype": "Small Text",
    "label": "Billing Address Display",
    "read_only": 1
+  },
+  {
+   "fetch_from": "customer.organization",
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "Organization",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-03 20:26:47.382849",
+ "modified": "2024-09-03 20:32:40.153494",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "Statement of Fees and Payments",

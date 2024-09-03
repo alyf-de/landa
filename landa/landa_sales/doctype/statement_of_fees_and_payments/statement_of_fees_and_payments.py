@@ -16,18 +16,21 @@ class StatementofFeesandPayments(Document):
 		self.calculate_totals()
 
 	def validate(self):
-		if (
-			existing := frappe.db.exists(
-				"Statement of Fees and Payments",
-				{
-					"customer": self.customer,
-					"company": self.company,
-					"year_of_settlement": self.year_of_settlement,
-					"docstatus": ("!=", DocStatus.cancelled()),
-					"name": ("!=", self.name),
-				},
-			)
-			and self.docstatus != DocStatus.cancelled()
+		if self.docstatus == DocStatus.cancelled():
+			return
+
+		if not self.organization:
+			frappe.throw(_("This Statement of Fees and Payments must be linked to an Organization"))
+
+		if existing := frappe.db.exists(
+			"Statement of Fees and Payments",
+			{
+				"customer": self.customer,
+				"company": self.company,
+				"year_of_settlement": self.year_of_settlement,
+				"docstatus": ("!=", DocStatus.cancelled()),
+				"name": ("!=", self.name),
+			},
 		):
 			frappe.throw(
 				_(
