@@ -164,10 +164,11 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-03 20:58:09.750801",
+ "modified": "2024-09-03 21:01:27.988587",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "Statement of Fees and Payments",
+ "naming_rule": "By script",
  "owner": "Administrator",
  "permissions": [
   {

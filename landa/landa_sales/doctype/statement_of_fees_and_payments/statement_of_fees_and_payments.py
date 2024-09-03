@@ -8,8 +8,13 @@ from frappe.model.document import Document
 from frappe.utils.data import get_link_to_form
 from pandas import DataFrame as df
 
+from landa.utils import get_new_name
+
 
 class StatementofFeesandPayments(Document):
+	def autoname(self):
+		self.name = get_new_name("BA", self.company, self.doctype, self.year_of_settlement)
+
 	def before_save(self):
 		self.fetch_payments()
 		self.fetch_sales()
