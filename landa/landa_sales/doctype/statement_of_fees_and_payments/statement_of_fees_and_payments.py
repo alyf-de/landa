@@ -28,6 +28,7 @@ class StatementofFeesandPayments(Document):
 				"customer": self.customer,
 				"company": self.company,
 				"year_of_settlement": self.year_of_settlement,
+				"posting_date": self.posting_date,
 				"docstatus": ("!=", DocStatus.cancelled()),
 				"name": ("!=", self.name),
 			},
