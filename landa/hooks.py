@@ -189,6 +189,9 @@ doctype_js = {
 doctype_list_js = {
 	"Report": "scripts/report_list.js",
 	"User": "organization_management/user/user_list.js",
+	"Sales Invoice": "landa_sales/sales_invoice/sales_invoice_list.js",
+	"Sales Order": "landa_sales/sales_order/sales_order_list.js",
+	"Delivery Note": "landa_stock/delivery_note/delivery_note_list.js",
 }
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}

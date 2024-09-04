@@ -193,7 +193,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Transaktionen",
-   "link_count": 5,
+   "link_count": 6,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -247,9 +247,19 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Statement of Fees and Payments",
+   "link_count": 0,
+   "link_to": "Statement of Fees and Payments",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-06-21 15:31:34.844664",
+ "modified": "2024-09-03 20:02:04.379455",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "Order Management",

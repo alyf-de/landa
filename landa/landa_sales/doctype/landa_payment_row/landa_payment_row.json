@@ -1,0 +1,56 @@
+{
+ "actions": [],
+ "creation": "2024-07-11 17:31:34.524661",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "payment_entry",
+  "payment_type",
+  "reference_date",
+  "amount"
+ ],
+ "fields": [
+  {
+   "fetch_from": "payment_entry.reference_date",
+   "fieldname": "reference_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Reference Date"
+  },
+  {
+   "fieldname": "payment_entry",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Payment Entry",
+   "options": "Payment Entry"
+  },
+  {
+   "fieldname": "payment_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Payment Type",
+   "options": "Receive\nPay"
+  },
+  {
+   "fetch_from": "payment_entry.base_paid_amount",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "options": "Company:company:default_currency"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-11 17:56:13.983731",
+ "modified_by": "Administrator",
+ "module": "LANDA Sales",
+ "name": "LANDA Payment Row",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
