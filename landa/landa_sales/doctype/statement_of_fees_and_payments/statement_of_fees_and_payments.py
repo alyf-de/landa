@@ -104,6 +104,8 @@ class StatementofFeesandPayments(Document):
 
 		# NOTE: rate must be calculated after summing up the rows
 		rows_df["rate"] = rows_df["amount"] / rows_df["net_billed"]
+		# when net_billed is 0, rate is NaN
+		rows_df["rate"].fillna(0, inplace=True)
 
 		self.sales = []
 		self.extend("sales", rows_df.to_dict(orient="records"))
