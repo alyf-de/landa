@@ -98,6 +98,7 @@ def get_data(filters):
 	df["net_delivered_amount"] = df["base_net_amount"] - df["returned_amount"]
 
 	df["average_rate"] = df["net_delivered_amount"] / df["net_delivered_qty"]
+	df["average_rate"].fillna(0, inplace=True)
 
 	return df.values.tolist()
 
