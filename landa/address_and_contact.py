@@ -32,6 +32,8 @@ def validate(doc, event):
 
 	doc.organization = None
 	for link in doc.links:
+		frappe.has_permission("write", link.link_doctype, link.link_name, throw=True)
+
 		if link.link_doctype == "Customer":
 			doc.organization = link.link_name
 
