@@ -26,21 +26,27 @@ def get_columns(
 	show_area_name: bool = False,
 	show_water_body_size: bool = False,
 	show_water_body_status: bool = False,
+	group_by_fish_species: bool = False,
 ):
-	columns = [
-		{
-			"fieldname": "water_body",
-			"fieldtype": "Link",
-			"label": _("Water Body"),
-			"options": "Water Body",
-		},
-		{
-			"fieldname": "water_body_title",
-			"fieldtype": "Data",
-			"label": _("Water Body Title"),
-			"width": 200,
-		},
-	]
+	columns = []
+
+	if not group_by_fish_species:
+		columns.extend(
+			[
+				{
+					"fieldname": "water_body",
+					"fieldtype": "Link",
+					"label": _("Water Body"),
+					"options": "Water Body",
+				},
+				{
+					"fieldname": "water_body_title",
+					"fieldtype": "Data",
+					"label": _("Water Body Title"),
+					"width": 200,
+				},
+			]
+		)
 
 	if show_water_body_status:
 		columns.append(
@@ -121,20 +127,19 @@ def get_data(
 	show_area_name: bool = False,
 	show_water_body_size: bool = False,
 	show_water_body_status: bool = False,
+	group_by_fish_species: bool = False,
 ):
 	entry = frappe.qb.DocType("Catch Log Entry")
 	child_table = frappe.qb.DocType("Catch Log Fish Table")
 	qb_filters = get_qb_filters(filters, entry, child_table)
 
-	query = (
-		frappe.qb.from_(entry)
-		.join(child_table)
-		.on(entry.name == child_table.parent)
-		.select(
+	query = frappe.qb.from_(entry).join(child_table).on(entry.name == child_table.parent)
+
+	if not group_by_fish_species:
+		query = query.select(
 			entry.water_body,
 			entry.water_body_title,
 		)
-	)
 
 	if show_water_body_status or show_water_body_size:
 		water_body = frappe.qb.DocType("Water Body")
@@ -191,7 +196,7 @@ def get_data(
 			.select(proportion_foreign.by_foreign_regional_org)
 		)
 
-	query = filter_and_group(query, entry, child_table, qb_filters)
+	query = filter_and_group(query, entry, child_table, qb_filters, group_by_fish_species)
 	return query.run()
 
 
@@ -210,10 +215,16 @@ def get_subquery(entry: Table, child_table: Table, qb_filters: List[Criterion]):
 	return filter_and_group(subquery, entry, child_table, qb_filters)
 
 
-def filter_and_group(query, entry: Table, child_table: Table, qb_filters: List[Criterion]):
+def filter_and_group(
+	query, entry: Table, child_table: Table, qb_filters: List[Criterion], group_by_fish_species=False
+):
 	query = add_conditions(query, qb_filters)
 	query = add_or_filters(query, entry)
-	query = query.groupby(entry.water_body, entry.water_body_title, child_table.fish_species)
+	if group_by_fish_species:
+		query = query.groupby(child_table.fish_species)
+	else:
+		query = query.groupby(entry.water_body, entry.water_body_title, child_table.fish_species)
+
 	return query
 
 
@@ -298,15 +309,27 @@ def is_regional_or_state_employee():
 
 
 def execute(filters=None):
+	group_by_fish_species = bool(filters.pop("group_by_fish_species", 0))
 	extra_columns = filters.pop("extra_columns", [])
-	show_by_foreign_regional_org = "by_foreign_regional_org" in extra_columns
-	show_area_name = "area_name" in extra_columns
-	show_water_body_size = "water_body_size" in extra_columns
-	show_water_body_status = "water_body_status" in extra_columns
+
+	if not group_by_fish_species:
+		show_by_foreign_regional_org = "by_foreign_regional_org" in extra_columns
+		show_area_name = "area_name" in extra_columns
+		show_water_body_size = "water_body_size" in extra_columns
+		show_water_body_status = "water_body_status" in extra_columns
+	else:
+		show_by_foreign_regional_org = False
+		show_area_name = False
+		show_water_body_size = False
+		show_water_body_status = False
 
 	return (
 		get_columns(
-			show_by_foreign_regional_org, show_area_name, show_water_body_size, show_water_body_status
+			show_by_foreign_regional_org,
+			show_area_name,
+			show_water_body_size,
+			show_water_body_status,
+			group_by_fish_species,
 		),
 		get_data(
 			filters,
@@ -314,6 +337,7 @@ def execute(filters=None):
 			show_area_name,
 			show_water_body_size,
 			show_water_body_status,
+			group_by_fish_species,
 		)
 		or [],
 	)

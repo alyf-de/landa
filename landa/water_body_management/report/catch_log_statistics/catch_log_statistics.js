@@ -45,7 +45,13 @@ frappe.query_reports["Catch Log Statistics"] = {
 			fieldname: "extra_columns",
 			fieldtype: "MultiSelectList",
 			label: __("Extra Columns"),
+			depends_on: "eval: !doc.group_by_fish_species",
 			get_data: get_extra_columns,
+		},
+		{
+			fieldname: "group_by_fish_species",
+			fieldtype: "Check",
+			label: __("Group By Fish Species"),
 		}
 	],
 };
