@@ -9,11 +9,14 @@ from landa.organization_management.doctype.member_function.member_function impor
 from landa.utils import delete_records_linked_to, get_default_company, remove_from_table
 
 
+def before_validate(doc: User, event=None):
+	if doc.landa_member and doc.enabled and doc.name not in STANDARD_USERS:
+		doc.append_roles("LANDA Member")
+
+
 def validate(doc: User, event=None):
 	if (not doc.enabled) or (doc.name in STANDARD_USERS):
 		return
-
-	doc.append_roles("LANDA Member")
 
 	if doc.landa_member:
 		existing_user = frappe.db.exists(

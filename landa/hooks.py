@@ -291,6 +291,7 @@ doc_events = {
 		"on_trash": "landa.address_and_contact.on_trash",
 	},
 	"User": {
+		"before_validate": "landa.organization_management.user.user.before_validate",
 		"validate": "landa.organization_management.user.user.validate",
 		"after_insert": "landa.organization_management.user.user.after_insert",
 		"on_update": "landa.organization_management.user.user.on_update",
