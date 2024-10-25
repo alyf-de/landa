@@ -1,10 +1,87 @@
 frappe.listview_settings["LANDA Member"] = {
 	onload(list_view) {
 		if (!frappe.user.has_role("System Manager")) {
+			// remove the default delete button
 			list_view.page.actions
 				.find(`[data-label='${encodeURIComponent(__("Delete"))}']`)
 				.closest("li")
-				.addClass("hidden");
+				.remove();
+
+			if (frappe.model.can_delete(doctype) && !frappe.model.has_workflow(doctype)) {
+				// add our own delete button with password prompt
+				list_view.page.add_actions_menu_item(
+					__("Delete", null, "Button in list view actions menu"),
+					() => {
+						const docnames = list_view.get_checked_items(true).map((docname) => docname.toString());
+
+						frappe.prompt(
+							[
+								{
+									fieldname: "password",
+									fieldtype: "Password",
+									label: __("Password"),
+									reqd: 1,
+								},
+							],
+							(values) => {
+								frappe
+									.xcall("landa.auth.check_password", { password: values.password })
+									.then((result) => {
+										if (!result) {
+											frappe.msgprint(__("Incorrect password"));
+											return;
+										}
+
+										list_view.disable_list_update = true;
+										bulk_delete(list_view.doctype, docnames, () => {
+											list_view.disable_list_update = false;
+											list_view.clear_checked_items();
+											list_view.refresh();
+										});
+									});
+							},
+							__("Delete {0} items permanently?", [docnames.length]),
+							__("Delete")
+						);
+					},
+					true
+				);
+			}
 		}
 	},
 };
+
+// copied from frappe/public/js/frappe/list/bulk_operations.js
+function bulk_delete(doctype, docnames, done) {
+	frappe
+		.call({
+			method: "frappe.desk.reportview.delete_items",
+			freeze: true,
+			freeze_message:
+				docnames.length <= 10
+					? __("Deleting {0} records...", [docnames.length])
+					: null,
+			args: {
+				items: docnames,
+				doctype: doctype,
+			},
+		})
+		.then((r) => {
+			let failed = r.message;
+			if (!failed) {
+				failed = [];
+			}
+
+			if (failed.length && !r._server_messages) {
+				frappe.throw(
+					__("Cannot delete {0}", [failed.map((f) => f.bold()).join(", ")])
+				);
+			}
+			if (failed.length < docnames.length) {
+				frappe.utils.play_sound("delete");
+				if (done) {
+					done();
+				}
+			}
+		});
+}
