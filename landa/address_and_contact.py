@@ -32,9 +32,10 @@ def validate(doc, event):
 
 	doc.organization = None
 	for link in doc.links:
-		# Linking an Address or Contact should be treated like writing to the linked doc
-		linked_doc = frappe.get_doc(link.link_doctype, link.link_name)
-		linked_doc.check_permission("write")
+		if not doc.flags.ignore_permissions:
+			# Linking an Address or Contact should be treated like writing to the linked doc
+			linked_doc = frappe.get_doc(link.link_doctype, link.link_name)
+			linked_doc.check_permission("write")
 
 		if link.link_doctype == "Customer":
 			doc.organization = link.link_name
