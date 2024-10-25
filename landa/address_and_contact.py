@@ -10,6 +10,7 @@ def validate(doc, event):
 	"""
 
 	validate_member_link(doc)
+	validate_link_permissions(doc)
 
 	linked_doctypes = {link.link_doctype for link in doc.links}
 	mandatory_links = {
@@ -32,11 +33,6 @@ def validate(doc, event):
 
 	doc.organization = None
 	for link in doc.links:
-		if not doc.flags.ignore_permissions:
-			# Linking an Address or Contact should be treated like writing to the linked doc
-			linked_doc = frappe.get_doc(link.link_doctype, link.link_name)
-			linked_doc.check_permission("write")
-
 		if link.link_doctype == "Customer":
 			doc.organization = link.link_name
 
@@ -48,6 +44,27 @@ def validate(doc, event):
 
 		if link.link_doctype == "External Contact":
 			doc.organization = frappe.db.get_value("External Contact", link.link_name, "organization")
+
+
+def validate_link_permissions(doc):
+	"""Linking an Address or Contact should be treated like writing to the linked doc."""
+	if doc.flags.ignore_permissions:
+		return
+
+	new_links = {(link.link_doctype, link.link_name) for link in doc.links}
+	for dt, name in new_links:
+		linked_doc = frappe.get_doc(dt, name)
+		linked_doc.check_permission("write")
+
+	doc_before_save = doc.get_doc_before_save()
+	if not doc_before_save:
+		return
+
+	old_links = {(link.link_doctype, link.link_name) for link in doc_before_save.links}
+	# Write permission is also necessary on removed links
+	for dt, name in old_links - new_links:
+		linked_doc = frappe.get_doc(dt, name)
+		linked_doc.check_permission("write")
 
 
 def validate_member_link(doc):
