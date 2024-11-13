@@ -13,6 +13,10 @@ frappe.listview_settings["LANDA Member"] = {
 					__("Delete", null, "Button in list view actions menu"),
 					() => {
 						const docnames = list_view.get_checked_items(true).map((docname) => docname.toString());
+						if (docnames.length === 1) {
+							run_bulk_delete(list_view, docnames);
+							return;
+						}
 
 						frappe.prompt(
 							[
@@ -32,12 +36,7 @@ frappe.listview_settings["LANDA Member"] = {
 											return;
 										}
 
-										list_view.disable_list_update = true;
-										bulk_delete(list_view.doctype, docnames, () => {
-											list_view.disable_list_update = false;
-											list_view.clear_checked_items();
-											list_view.refresh();
-										});
+										run_bulk_delete(list_view, docnames);
 									});
 							},
 							__("Delete {0} items permanently?", [docnames.length]),
@@ -50,6 +49,16 @@ frappe.listview_settings["LANDA Member"] = {
 		}
 	},
 };
+
+
+function run_bulk_delete(list_view, docnames) {
+	list_view.disable_list_update = true;
+	bulk_delete(list_view.doctype, docnames, () => {
+		list_view.disable_list_update = false;
+		list_view.clear_checked_items();
+		list_view.refresh();
+	});
+}
 
 // copied from frappe/public/js/frappe/list/bulk_operations.js
 function bulk_delete(doctype, docnames, done) {
