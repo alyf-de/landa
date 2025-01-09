@@ -11,7 +11,7 @@ from frappe.utils.data import date_diff, today
 
 class MemberFunction(Document):
 	def before_validate(self):
-		self.update_is_active()
+		self.status = self.get_status()
 
 	def validate(self):
 		if self.start_date and self.end_date and date_diff(self.start_date, self.end_date) > 0:
@@ -87,13 +87,13 @@ class MemberFunction(Document):
 				self.member, disabled_member_function=self.name
 			)
 
-	def update_is_active(self):
+	def get_status(self):
 		if self.is_planned():
-			self.status = "Planned"
+			return "Planned"
 		elif self.is_inactive():
-			self.status = "Inactive"
+			return "Inactive"
 		else:
-			self.status = "Active"
+			return "Active"
 
 	def is_planned(self):
 		return self.start_date and date_diff(today(), self.start_date) < 0
