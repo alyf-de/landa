@@ -7,7 +7,11 @@ def daily():
 		queue="long",
 	)
 	enqueue(
-		"landa.water_body_management.doctype.lease_contract.lease_contract.disable_expired_lease_contracts",
+		"landa.water_body_management.doctype.lease_contract.lease_contract.deactivate_lease_contracts",
+		queue="long",
+	)
+	enqueue(
+		"landa.water_body_management.doctype.lease_contract.lease_contract.activate_lease_contracts",
 		queue="long",
 	)
 	enqueue(

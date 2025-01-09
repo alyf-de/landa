@@ -10,7 +10,7 @@ from frappe.utils.data import date_diff, today
 
 class LeaseContract(Document):
 	def before_validate(self):
-		self.update_is_active()
+		self.status = self.get_status()
 
 	def validate(self):
 		if self.start_date and self.end_date and date_diff(self.start_date, self.end_date) > 0:
@@ -21,16 +21,13 @@ class LeaseContract(Document):
 				_("Lease Contract must belong to the same regional Organization as the Water Body.")
 			)
 
-	def on_trash(self):
-		self.status = "Inactive"
-
-	def update_is_active(self):
+	def get_status(self):
 		if self.is_planned():
-			self.status = "Planned"
+			return "Planned"
 		elif self.is_inactive():
-			self.status = "Inactive"
+			return "Inactive"
 		else:
-			self.status = "Active"
+			return "Active"
 
 	def is_planned(self):
 		return self.start_date and date_diff(today(), self.start_date) < 0
@@ -39,32 +36,35 @@ class LeaseContract(Document):
 		return self.end_date and date_diff(today(), self.end_date) > 0
 
 
-def disable_expired_lease_contracts():
-	for lease_contract in get_expired_lease_contracts():
-		doc = frappe.get_doc("Lease Contract", lease_contract.name)
-		doc.save()
+def deactivate_lease_contracts():
+	for lease_contract in get_lease_contracts_to_deactivate():
+		frappe.db.set_value("Lease Contract", lease_contract, "status", "Inactive")
 
 
-def apply_active_lease_contracts(filters):
-	for lease_contract in get_active_lease_contracts(filters=filters, pluck="name"):
-		doc = frappe.get_doc("Lease Contract", lease_contract)
-		doc.save()
+def activate_lease_contracts():
+	for lease_contract in get_lease_contracts_to_activate():
+		frappe.db.set_value("Lease Contract", lease_contract, "status", "Active")
 
 
-def get_expired_lease_contracts():
+def get_lease_contracts_to_deactivate():
 	return frappe.get_all(
 		"Lease Contract",
 		filters=[
 			["end_date", "<", today()],
 			["end_date", "is", "set"],
+			["status", "!=", "Inactive"],
 		],
+		pluck="name",
 	)
 
 
-def get_active_lease_contracts(filters: dict = None, pluck: str = None):
+def get_lease_contracts_to_activate():
 	return frappe.get_all(
 		"Lease Contract",
-		filters=filters,
+		filters=[
+			["start_date", "<=", today()],
+			["status", "!=", "Active"],
+		],
 		or_filters=[["end_date", "is", "not set"], ["end_date", ">=", today()]],
-		pluck=pluck,
+		pluck="name",
 	)
