@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
 from frappe.query_builder.functions import Substring
 from pypika.functions import Coalesce
 from pypika.terms import Not
@@ -54,19 +55,19 @@ def get_columns():
 	return [
 		{
 			"fieldname": "user",
-			"label": "User",
+			"label": _("User"),
 			"fieldtype": "Link",
 			"options": "User",
 		},
 		{
 			"fieldname": "member_of",
-			"label": "Member of",
+			"label": _("Member of"),
 			"fieldtype": "Link",
 			"options": "Organization",
 		},
 		{
 			"fieldname": "permissions_for",
-			"label": "Permissions for",
+			"label": _("Permissions for"),
 			"fieldtype": "Data",
 		},
 	]
