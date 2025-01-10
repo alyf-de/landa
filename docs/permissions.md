@@ -46,3 +46,9 @@ The default way to achieve this would be adding a link field from **Tag** to **O
 To prevent this, we added a table named **Tag Organization** to the **Tag** doctype. When a new tag is created, the creator's organization is added to this table. We also added a custom permission query which checks if the user's organization is in this table. This way users can only see tags created by people in the same organization.
 
 See https://github.com/alyf-de/landa/pull/254 for details.
+
+### Monitoring
+
+Usually, most users should be restricted to seeing data of their own organization only. However, some users are allowed to see data of other organizations.
+
+For monitoring users with high permissions, we created a report named **LANDA Power Users**. It shows all users with high permissions, and which organizations they are allowed to see. Excluded are the default users **Administrator** and **Guest**. Also, users who are members of a regional organization (e.g. AVL-000) and have permissions for that regional organization (e.g. AVL) are excluded.
