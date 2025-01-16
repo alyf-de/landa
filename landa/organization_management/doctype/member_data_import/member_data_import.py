@@ -4,6 +4,7 @@
 from datetime import datetime
 
 import frappe
+from frappe import _
 from frappe.model.document import Document
 from frappe.utils.dateutils import parse_date
 
@@ -30,6 +31,21 @@ class MemberDataImport(Document):
 	]
 
 	ADDRESS_FIELDS = ["address_line1", "pincode", "city"]
+
+	def validate(self):
+		if self.address_name and not self.member:
+			frappe.throw(_("Please set the corresponding LANDA Member"))
+
+		if self.address_name and not frappe.db.exists(
+			"Dynamic Link",
+			{
+				"link_doctype": "LANDA Member",
+				"link_name": self.member,
+				"parenttype": "Address",
+				"parent": self.address_name,
+			},
+		):
+			frappe.throw(_("The selected address does not belong to the selected LANDA Member"))
 
 	def before_insert(self, *args, **kwargs):
 		self.preprocess()
