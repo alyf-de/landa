@@ -2,13 +2,14 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
 from frappe.model.document import Document
 
 
 class YearlyFishingPermit(Document):
 	def before_insert(self):
 		if not self.member:
-			frappe.throw("Please select a LANDA Member")
+			frappe.throw(_("Please set the corresponding LANDA Member"))
 
 	def validate(self):
 		if self.member:
