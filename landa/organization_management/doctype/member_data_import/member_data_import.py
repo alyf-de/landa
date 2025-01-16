@@ -4,6 +4,7 @@
 from datetime import datetime
 
 import frappe
+from frappe import _
 from frappe.model.document import Document
 from frappe.utils.dateutils import parse_date
 
@@ -30,6 +31,21 @@ class MemberDataImport(Document):
 	]
 
 	ADDRESS_FIELDS = ["address_line1", "pincode", "city"]
+
+	def validate(self):
+		if self.address_name and not self.member:
+			frappe.throw(_("Please set the corresponding LANDA Member"))
+
+		if self.address_name and not frappe.db.exists(
+			"Dynamic Link",
+			{
+				"link_doctype": "LANDA Member",
+				"link_name": self.member,
+				"parenttype": "Address",
+				"parent": self.address_name,
+			},
+		):
+			frappe.throw(_("The selected address does not belong to the selected LANDA Member"))
 
 	def before_insert(self, *args, **kwargs):
 		self.preprocess()
@@ -145,6 +161,7 @@ class MemberDataImport(Document):
 
 	def update_doc(self, doc: Document, fields: "list[str]"):
 		"""Update all `fields` of `doc` with the values from `self`."""
+		has_changed = False
 		for fieldname in fields:
 			new_value = self.get(fieldname)
 			if not new_value and not isinstance(new_value, int):  # int == 0 is allowed to disable checkbox
@@ -161,11 +178,18 @@ class MemberDataImport(Document):
 
 			elif fieldtype == "Data":
 				old_value = (old_value or "").strip()
+				new_value = (new_value or "").strip()
 
 			if old_value != new_value:
 				doc.set(fieldname, new_value)
+				has_changed = True
 
-		doc.save()
+		if has_changed:
+			# Here we only update specific fields of an Address. This should be
+			# possible, even if the user does not have the permissions to update
+			# the Address record otherwise (e.g because it is linked to a Customer).
+			ignore_permissions = doc.doctype == "Address"
+			doc.save(ignore_permissions=ignore_permissions)
 
 
 def create_member(organization: str, last_name: str) -> LANDAMember:
