@@ -169,7 +169,11 @@ class MemberDataImport(Document):
 				has_changed = True
 
 		if has_changed:
-			doc.save()
+			# Here we only update specific fields of an Address. This should be
+			# possible, even if the user does not have the permissions to update
+			# the Address record otherwise (e.g because it is linked to a Customer).
+			ignore_permissions = doc.doctype == "Address"
+			doc.save(ignore_permissions=ignore_permissions)
 
 
 def create_member(organization: str, last_name: str) -> LANDAMember:
