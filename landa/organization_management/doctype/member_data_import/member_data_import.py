@@ -145,6 +145,7 @@ class MemberDataImport(Document):
 
 	def update_doc(self, doc: Document, fields: "list[str]"):
 		"""Update all `fields` of `doc` with the values from `self`."""
+		has_changed = False
 		for fieldname in fields:
 			new_value = self.get(fieldname)
 			if not new_value and not isinstance(new_value, int):  # int == 0 is allowed to disable checkbox
@@ -161,11 +162,14 @@ class MemberDataImport(Document):
 
 			elif fieldtype == "Data":
 				old_value = (old_value or "").strip()
+				new_value = (new_value or "").strip()
 
 			if old_value != new_value:
 				doc.set(fieldname, new_value)
+				has_changed = True
 
-		doc.save()
+		if has_changed:
+			doc.save()
 
 
 def create_member(organization: str, last_name: str) -> LANDAMember:
