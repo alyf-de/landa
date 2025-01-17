@@ -4,24 +4,18 @@
 frappe.ui.form.on("Sales Order",  {
     setup: function (frm) {
         frm.set_query("shipping_contact", erpnext.queries.contact_query);
+        frm.trigger("set_item_query");
     },
     refresh: function (frm) {
+        frm.trigger("set_item_query");
+
         if (frm.is_new()) {
             landa.utils.set_company_and_customer(frm);
-        }
 
-        frm.set_query("item_code", "items", function(doc) {
-            return {
-                query: "erpnext.controllers.queries.item_query",
-                filters: {
-                    valid_from_year: ["<=", doc.year_of_settlement],
-                    valid_to_year: [">=", doc.year_of_settlement],
-                    cannot_be_ordered: 0,
-                    is_sales_item: 1,
-                    company: doc.company,
-                }
-            };
-        });
+            if (frm.doc.year_of_settlement && frm.doc.items.length <= 1 && !frm.doc.items[0].item_code) {
+                frm.trigger("year_of_settlement");
+            }
+        }
 
         frm.set_query("selling_price_list", function(doc) {
             return {
@@ -50,6 +44,21 @@ frappe.ui.form.on("Sales Order",  {
             frm.remove_custom_button(__("Payment Request"), __("Create"));
             frm.remove_custom_button(__("Payment Request"), __("Create"));
         }, 500);
+    },
+    set_item_query: function (frm) {
+        // CAUTION: needs to run before triggering year_of_settlement!
+        frm.set_query("item_code", "items", function(doc) {
+            return {
+                query: "erpnext.controllers.queries.item_query",
+                filters: {
+                    valid_from_year: ["<=", doc.year_of_settlement],
+                    valid_to_year: [">=", doc.year_of_settlement],
+                    cannot_be_ordered: 0,
+                    is_sales_item: 1,
+                    company: doc.company,
+                }
+            };
+        });
     },
     before_save: function (frm) {
         frm.doc.items = landa.selling.remove_zero_qty_items(frm.doc.items);
