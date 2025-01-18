@@ -105,7 +105,11 @@ def get_data(from_year, to_year):
 			Sum(catch_log_fish_table.amount).as_("catch_quantity"),
 			Sum(catch_log_fish_table.weight_in_kg).as_("catch_weight"),
 		)
-		.where((catch_log.year >= from_year) & (catch_log.year <= to_year))
+		.where(
+			(catch_log.year >= from_year)
+			& (catch_log.year <= to_year)
+			& (catch_log.workflow_state == "Approved")
+		)
 		.groupby(catch_log.water_body, catch_log_fish_table.fish_species)
 	)
 
