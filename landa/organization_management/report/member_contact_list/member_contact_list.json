@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "Extended Information in Footer",
- "modified": "2024-05-16 18:13:19.485562",
+ "modified": "2025-01-18 18:47:39.873442",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Contact List",
@@ -32,6 +32,9 @@
   },
   {
    "role": "LANDA Magazine Manager"
+  },
+  {
+   "role": "LANDA Local Group Management"
   }
  ]
 }
