@@ -48,6 +48,7 @@ def get_columns():
 			"fieldname": "catch_weight",
 			"label": _("Catch Weight"),
 			"fieldtype": "Float",
+			"precision": 2,
 		},
 		{
 			"fieldname": "stocking_quantity",
@@ -58,6 +59,7 @@ def get_columns():
 			"fieldname": "stocking_weight",
 			"label": _("Stocking Weight"),
 			"fieldtype": "Float",
+			"precision": 2,
 		},
 		{
 			"fieldname": "fishing_days",
