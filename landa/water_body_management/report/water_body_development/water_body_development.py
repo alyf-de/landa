@@ -154,8 +154,8 @@ def get_data(
 
 	query = (
 		frappe.qb.from_(water_body)
-		.cross_join(fish_species)
-		.on(water_body.name == water_body.name)
+		.join(fish_species)
+		.cross()
 		.left_join(stocking_measure_query)
 		.on(
 			(water_body.name == stocking_measure_query.water_body)
