@@ -90,7 +90,9 @@ def get_data(from_year, to_year):
 			Sum(stocking_measure.weight).as_("stocking_weight"),
 		)
 		.where(
-			(stocking_measure.date >= f"{from_year}-01-01") & (stocking_measure.date <= f"{to_year}-12-31")
+			(stocking_measure.date >= f"{from_year}-01-01")
+			& (stocking_measure.date <= f"{to_year}-12-31")
+			& (stocking_measure.status == "Completed")
 		)
 		.groupby(stocking_measure.water_body, stocking_measure.fish_species)
 	)
