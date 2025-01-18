@@ -27,12 +27,13 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "Extended Information in Footer",
- "modified": "2022-02-01 12:27:35.328669",
+ "modified": "2025-01-18 18:46:17.403484",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Members with Member Functions",
  "owner": "Administrator",
  "prepared_report": 0,
+ "query": "",
  "ref_doctype": "Member Function",
  "report_name": "Members with Member Functions",
  "report_type": "Script Report",
@@ -54,6 +55,9 @@
   },
   {
    "role": "LANDA Local Organization Management"
+  },
+  {
+   "role": "LANDA Local Group Management"
   }
  ]
 }

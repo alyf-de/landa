@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "",
- "modified": "2024-03-15 16:15:41.559231",
+ "modified": "2025-01-18 18:47:57.460428",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "Summarized Billing History",
@@ -31,6 +31,9 @@
   },
   {
    "role": "LANDA Local Organization Management"
+  },
+  {
+   "role": "LANDA Local Group Management"
   }
  ]
 }

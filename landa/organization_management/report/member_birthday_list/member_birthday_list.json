@@ -65,7 +65,7 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2024-05-16 18:13:24.575099",
+ "modified": "2025-01-18 18:47:30.475928",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Birthday List",
@@ -84,6 +84,9 @@
   },
   {
    "role": "LANDA Local Organization Management"
+  },
+  {
+   "role": "LANDA Local Group Management"
   }
  ]
 }
