@@ -15,7 +15,12 @@ if TYPE_CHECKING:
 
 
 def execute(filters=None):
-	return get_columns(), get_data(filters.get("from_year"), filters.get("to_year"))
+	return get_columns(), get_data(
+		filters.get("from_year"),
+		filters.get("to_year"),
+		filters.get("water_body"),
+		filters.get("fish_species"),
+	)
 
 
 def get_columns():
@@ -69,7 +74,9 @@ def get_columns():
 	]
 
 
-def get_data(from_year, to_year):
+def get_data(
+	from_year: int, to_year: int, selected_water_bodies: list[str], selected_fish_species: list[str]
+):
 	water_body = frappe.qb.DocType("Water Body")
 	fish_species = frappe.qb.DocType("Fish Species")
 	stocking_measure = frappe.qb.DocType("Stocking Measure")
@@ -82,6 +89,18 @@ def get_data(from_year, to_year):
 		.where((catch_log.year >= from_year) & (catch_log.year <= to_year))
 		.groupby(catch_log.water_body)
 	)
+
+	if selected_water_bodies:
+		fishing_days_query = fishing_days_query.where(catch_log.water_body.isin(selected_water_bodies))
+
+	if selected_fish_species:
+		catch_logs_with_fish_species = (
+			frappe.qb.from_(catch_log_fish_table)
+			.select(catch_log_fish_table.parent)
+			.distinct()
+			.where(catch_log_fish_table.fish_species.isin(selected_fish_species))
+		)
+		fishing_days_query = fishing_days_query.where(catch_log.name.isin(catch_logs_with_fish_species))
 
 	stocking_measure_query = (
 		frappe.qb.from_(stocking_measure)
@@ -98,6 +117,16 @@ def get_data(from_year, to_year):
 		)
 		.groupby(stocking_measure.water_body, stocking_measure.fish_species)
 	)
+
+	if selected_water_bodies:
+		stocking_measure_query = stocking_measure_query.where(
+			stocking_measure.water_body.isin(selected_water_bodies)
+		)
+
+	if selected_fish_species:
+		stocking_measure_query = stocking_measure_query.where(
+			stocking_measure.fish_species.isin(selected_fish_species)
+		)
 
 	catch_query = (
 		frappe.qb.from_(catch_log)
@@ -116,6 +145,12 @@ def get_data(from_year, to_year):
 		)
 		.groupby(catch_log.water_body, catch_log_fish_table.fish_species)
 	)
+
+	if selected_water_bodies:
+		catch_query = catch_query.where(catch_log.water_body.isin(selected_water_bodies))
+
+	if selected_fish_species:
+		catch_query = catch_query.where(catch_log_fish_table.fish_species.isin(selected_fish_species))
 
 	query = (
 		frappe.qb.from_(water_body)
@@ -145,6 +180,12 @@ def get_data(from_year, to_year):
 		.where((catch_query.catch_quantity > 0) | (stocking_measure_query.stocking_quantity > 0))
 		.orderby(water_body.name, fish_species.name)
 	)
+
+	if selected_water_bodies:
+		query = query.where(water_body.name.isin(selected_water_bodies))
+
+	if selected_fish_species:
+		query = query.where(fish_species.name.isin(selected_fish_species))
 
 	query = apply_permissions(query, regional_org_field=water_body.organization)
 	results = query.run()
