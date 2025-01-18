@@ -30,12 +30,14 @@ def get_columns():
 			"fieldname": "water_body_name",
 			"label": _("Water Body Name"),
 			"fieldtype": "Data",
+			"width": 200,
 		},
 		{
 			"fieldname": "fish_species",
 			"label": _("Fish Species"),
 			"fieldtype": "Link",
 			"options": "Fish Species",
+			"width": 150,
 		},
 		{
 			"fieldname": "catch_quantity",
