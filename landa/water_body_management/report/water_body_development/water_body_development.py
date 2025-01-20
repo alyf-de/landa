@@ -93,15 +93,6 @@ def get_data(
 	if selected_water_bodies:
 		fishing_days_query = fishing_days_query.where(catch_log.water_body.isin(selected_water_bodies))
 
-	if selected_fish_species:
-		catch_logs_with_fish_species = (
-			frappe.qb.from_(catch_log_fish_table)
-			.select(catch_log_fish_table.parent)
-			.distinct()
-			.where(catch_log_fish_table.fish_species.isin(selected_fish_species))
-		)
-		fishing_days_query = fishing_days_query.where(catch_log.name.isin(catch_logs_with_fish_species))
-
 	stocking_measure_query = (
 		frappe.qb.from_(stocking_measure)
 		.select(
