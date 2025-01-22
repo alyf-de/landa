@@ -30,6 +30,8 @@ frappe.ui.form.on("Sales Order",  {
             setTimeout(function() {
                 frm.remove_custom_button(__("Hold"), __("Status"));
                 frm.remove_custom_button(__("Close"), __("Status"));
+                frm.remove_custom_button(__("Re-open"), __("Status"));
+                frm.remove_custom_button(__("Update Items"));
             }, 500);
         }
 
