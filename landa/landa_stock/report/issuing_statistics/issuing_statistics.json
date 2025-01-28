@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "Extended Information in Footer",
- "modified": "2024-01-30 22:45:14.939117",
+ "modified": "2025-01-18 18:48:12.139960",
  "modified_by": "Administrator",
  "module": "LANDA Stock",
  "name": "Issuing statistics",
@@ -34,6 +34,9 @@
   },
   {
    "role": "LANDA Local Organization Management"
+  },
+  {
+   "role": "LANDA Local Group Management"
   }
  ]
 }

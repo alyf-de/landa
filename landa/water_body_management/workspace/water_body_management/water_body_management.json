@@ -196,66 +196,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Berichte",
-   "link_count": 5,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Mitglieder in der Gew\u00e4sserbetreuung",
-   "link_count": 0,
-   "link_to": "Members in Water Body Management",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Fangmengenstatistik",
-   "link_count": 0,
-   "link_to": "Catch Log Statistics",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Angeltage",
-   "link_count": 0,
-   "link_to": "Catch Log Days and Counts",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Besatzma\u00dfnahmen in betreuten Gew\u00e4ssern",
-   "link_count": 0,
-   "link_to": "Stocking of Supported Water Bodies",
-   "link_type": "Report",
-   "onboard": 0,
-   "only_for": "",
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Meine Berichte",
-   "link_count": 0,
-   "link_to": "Report",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Importe",
    "link_count": 1,
    "link_type": "DocType",
@@ -400,9 +340,79 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Berichte",
+   "link_count": 6,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Members in Water Body Management",
+   "link_count": 0,
+   "link_to": "Members in Water Body Management",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Catch Log Statistics",
+   "link_count": 0,
+   "link_to": "Catch Log Statistics",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Catch Log Days and Counts",
+   "link_count": 0,
+   "link_to": "Catch Log Days and Counts",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stocking of Supported Water Bodies",
+   "link_count": 0,
+   "link_to": "Stocking of Supported Water Bodies",
+   "link_type": "Report",
+   "onboard": 0,
+   "only_for": "",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Water Body Development",
+   "link_count": 0,
+   "link_to": "Water Body Development",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Meine Berichte",
+   "link_count": 0,
+   "link_to": "Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-05-08 12:47:20.100211",
+ "modified": "2025-01-18 14:46:16.209773",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management",
