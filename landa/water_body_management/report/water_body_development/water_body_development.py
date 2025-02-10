@@ -86,7 +86,11 @@ def get_data(
 	fishing_days_query = (
 		frappe.qb.from_(catch_log)
 		.select(catch_log.water_body, Sum(catch_log.fishing_days).as_("fishing_days"))
-		.where((catch_log.year >= from_year) & (catch_log.year <= to_year))
+		.where(
+			(catch_log.year >= from_year)
+			& (catch_log.year <= to_year)
+			& (catch_log.workflow_state == "Approved")
+		)
 		.groupby(catch_log.water_body)
 	)
 
