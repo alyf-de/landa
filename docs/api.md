@@ -129,6 +129,13 @@ When `only_id` is not enabled, the response is a list of dictionaries, like this
                     "organization_name": "AV \"Aktive Angler\" e. V."
                 }
             ],
+            "events": [
+                {
+                    "id": "09oubf0neh",
+                    "description": "Ostern",
+                    "date": "2025-04-20"
+                }
+            ],
             "geojson": {
                 "type": "FeatureCollection",
                 "features": []
