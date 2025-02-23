@@ -7,7 +7,7 @@ from typing import Dict, List
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils.data import get_url, today
+from frappe.utils.data import get_url, getdate
 
 from landa.utils import get_current_member_data
 
@@ -73,17 +73,46 @@ def rebuild_water_body_cache(fishing_area: str = None, enqueued: bool = False):
 
 
 def remove_outdated_information():
+	cutoff_date = getdate()
+	remove_outdated_public_information(cutoff_date)
+	remove_past_events(cutoff_date)
+
+
+def remove_outdated_public_information(cutoff_date):
+	"""Remove expired public information from all Water Bodies."""
 	for name in frappe.get_all(
 		"Water Body",
 		filters=[
 			["current_information_expires_on", "is", "set"],
-			["current_information_expires_on", "<=", today()],
+			["current_information_expires_on", "<=", cutoff_date],
 		],
 		pluck="name",
 	):
 		water_body = frappe.get_doc("Water Body", name)
 		water_body.current_public_information = None
 		water_body.current_information_expires_on = None
+		try:
+			water_body.save()
+		except Exception:
+			frappe.log_error(
+				title=f"Failed to remove outdated information for Water Body {name}",
+			)
+
+
+def remove_past_events(cutoff_date):
+	"""Remove past events from all Water Bodies."""
+	for name in frappe.get_all(
+		"Water Body",
+		filters=[
+			["LANDA Event", "date", "<=", cutoff_date],
+			["LANDA Event", "date", "is", "set"],
+		],
+		pluck="name",
+	):
+		water_body = frappe.get_doc("Water Body", name)
+		for event in water_body.events:
+			if event.date <= cutoff_date:
+				water_body.remove(event)
 		try:
 			water_body.save()
 		except Exception:
