@@ -143,6 +143,7 @@ def query_water_body_data(id: str = None, fishing_area: str = None) -> List[Dict
 	fish_species_table = frappe.qb.DocType("Fish Species Table")
 	wb_provision_table = frappe.qb.DocType("Water Body Special Provision Table")
 	wb_local_org_table = frappe.qb.DocType("Water Body Management Local Organization")
+	wb_events_table = frappe.qb.DocType("LANDA Event")
 
 	query = (
 		frappe.qb.from_(water_body)
@@ -152,6 +153,8 @@ def query_water_body_data(id: str = None, fishing_area: str = None) -> List[Dict
 		.on(wb_provision_table.parent == water_body.name)
 		.left_join(wb_local_org_table)
 		.on(wb_local_org_table.water_body == water_body.name)
+		.left_join(wb_events_table)
+		.on(wb_events_table.parent == water_body.name)
 		.select(
 			water_body.name.as_("id"),
 			water_body.title,
@@ -172,6 +175,9 @@ def query_water_body_data(id: str = None, fishing_area: str = None) -> List[Dict
 			wb_provision_table.short_code,
 			wb_local_org_table.organization.as_("local_organization"),
 			wb_local_org_table.organization_name.as_("local_organization_name"),
+			wb_events_table.name.as_("event_id"),
+			wb_events_table.date.as_("event_date"),
+			wb_events_table.description.as_("event_description"),
 		)
 		.where(water_body.is_active == 1)
 		.where(water_body.display_in_fishing_guide == 1)
@@ -192,7 +198,8 @@ def consolidate_water_body_data(water_body_data: List[Dict]) -> List[Dict]:
 	fish species, special provisions and local organizations.
 	"""
 	water_body_map = {}  # {water_body_name: water_body_data}
-	fish_species_map, provision_map, local_org_map = (
+	fish_species_map, provision_map, local_org_map, event_map = (
+		defaultdict(list),
 		defaultdict(list),
 		defaultdict(list),
 		defaultdict(list),
@@ -216,6 +223,9 @@ def consolidate_water_body_data(water_body_data: List[Dict]) -> List[Dict]:
 		org = entry.get("local_organization")
 		add_to_map(org, "organizations", entry, local_org_map, result_entry)
 
+		event_id = entry.get("event_id")
+		add_to_map(event_id, "events", entry, event_map, result_entry)
+
 	return [water_body_map.get(key) for key in water_body_map]
 
 
@@ -233,10 +243,13 @@ def init_row(water_body_row: Dict) -> Dict:
 		"short_code",
 		"local_organization",
 		"local_organization_name",
+		"event_id",
+		"event_date",
+		"event_description",
 	):
 		water_body_copy.pop(field)  # Remove child table fields
 
-	for field in ("fish_species", "special_provisions", "organizations"):
+	for field in ("fish_species", "special_provisions", "organizations", "events"):
 		# Re-insert child table fields as lists
 		water_body_copy[field] = []
 
@@ -261,9 +274,17 @@ def add_to_map(value, field, water_body, checking_map, result_map):
 		result_map[field].append(value)
 	elif field == "special_provisions":
 		result_map[field].append({"id": value, "short_code": water_body.get("short_code")})
-	else:
+	elif field == "organizations":
 		result_map[field].append(
 			{"id": value, "organization_name": water_body.get("local_organization_name")}
+		)
+	elif field == "events":
+		result_map[field].append(
+			{
+				"id": value,
+				"description": water_body.get("event_description"),
+				"date": water_body.get("event_date"),
+			}
 		)
 
 
