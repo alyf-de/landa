@@ -27,11 +27,16 @@ sed -i 's/socketio:/# socketio:/g' Procfile
 sed -i 's/redis_socketio:/# redis_socketio:/g' Procfile
 
 bench get-app erpnext --branch version-14
+bench get-app https://github.com/alyf-de/eu_einvoice --branch version-14
 bench get-app landa "${GITHUB_WORKSPACE}"
 
 bench start &> bench_run_logs.txt &
-bench new-site --db-root-password root --admin-password admin test_site --install-app erpnext
+bench new-site --db-root-password root --admin-password admin test_site
+
+bench --site test_site install-app erpnext
+bench --site test_site install-app eu_einvoice
+bench --site test_site install-app landa
+
 bench --site test_site set-config allow_tests true
 
-bench --site test_site install-app landa
 bench setup requirements --dev
