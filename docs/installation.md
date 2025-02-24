@@ -1,11 +1,8 @@
-## 0. Set up the correct frappe branch
+## Get required apps
 
-Currently we rely on a [custom frappe branch](https://github.com/alyf-de/frappe/tree/landa-version-13) that adds a couple of fixes to `version-13`:
-
-```
-cd apps/frappe
-git remote add alyf https://github.com/alyf-de/frappe
-git checkout --track alyf/landa-version-13
+```bash
+bench get-app erpnext --branch version-14
+bench get-app https://github.com/alyf-de/eu_einvoice --branch version-14
 ```
 
 ## Set up CORS
@@ -78,7 +75,7 @@ The default file size limit is 10MB. To allow larger file uploads (e.g. 25MB), a
 ## 1. Create a site
 
 ```
-bench new-site [site-name] --install-app erpnext
+bench new-site [site-name] --install-app erpnext --install-app eu_einvoice
 ```
 
 ## 2. Complete the setup wizard
