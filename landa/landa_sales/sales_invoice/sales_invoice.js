@@ -17,6 +17,15 @@ frappe.ui.form.on("Sales Invoice", {
 		}, 500);
 
 		frm.trigger("set_item_query");
+
+		frm.set_query("selling_price_list", function (doc) {
+			return {
+				filters: {
+					selling: 1,
+					company: doc.company,
+				},
+			};
+		});
 	},
 	set_item_query: function (frm) {
 		frm.set_query("item_code", "items", function (doc) {
