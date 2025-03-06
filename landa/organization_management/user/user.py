@@ -40,7 +40,8 @@ def after_insert(doc: User, event=None):
 		return
 
 	if doc.organization:
-		restrict_to_organization(doc.organization, doc.name)
+		include_company = "LANDA State Organization Employee" not in {row.role for row in doc.roles}
+		restrict_to_organization(doc.organization, doc.name, include_company)
 
 	if doc.landa_member:
 		restrict_to_member(doc.landa_member, doc.name)
@@ -51,15 +52,17 @@ def on_update(doc: User, event=None):
 		return
 
 	if doc.organization and doc.has_value_changed("organization"):
-		restrict_to_organization(doc.organization, doc.name)
+		include_company = "LANDA State Organization Employee" not in {row.role for row in doc.roles}
+		restrict_to_organization(doc.organization, doc.name, include_company)
 
 	if doc.landa_member and doc.has_value_changed("landa_member"):
 		restrict_to_member(doc.landa_member, doc.name)
 
 
-def restrict_to_organization(organization: str, user: str) -> None:
+def restrict_to_organization(organization: str, user: str, include_company: bool = True) -> None:
 	add_user_permission("Organization", organization, user, ignore_permissions=True)
-	add_user_permission("Company", get_default_company(organization), user, ignore_permissions=True)
+	if include_company:
+		add_user_permission("Company", get_default_company(organization), user, ignore_permissions=True)
 
 
 def restrict_to_member(member: str, user: str) -> None:
