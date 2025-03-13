@@ -45,9 +45,9 @@ def autoname(doc, event):
 
 
 @frappe.whitelist()
-def make_landa_sales_invoice(source_name, target_doc=None):
+def make_landa_sales_invoice(source_name, target_doc=None, args=None):
 	source_doc = frappe.get_doc("Delivery Note", source_name)
-	target_doc = make_sales_invoice(source_name, target_doc)
+	target_doc = make_sales_invoice(source_name, target_doc, args)
 
 	update_doc(source_doc, target_doc)
 
