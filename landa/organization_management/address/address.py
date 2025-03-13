@@ -26,6 +26,7 @@ def autoname(address, event):
 				("Company", "company_name"),
 				("Organization", "organization_name"),
 				("Customer", "customer_name"),
+				("Supplier", "supplier_name"),
 			):
 				if dt != link.link_doctype:
 					continue

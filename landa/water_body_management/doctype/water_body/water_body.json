@@ -24,6 +24,7 @@
   "general_public_information",
   "current_public_information",
   "current_information_expires_on",
+  "events",
   "water_body_size_section",
   "water_body_size",
   "column_break_7",
@@ -280,6 +281,12 @@
    "fieldname": "marker_tooltip",
    "fieldtype": "Data",
    "label": "Marker Tooltip"
+  },
+  {
+   "fieldname": "events",
+   "fieldtype": "Table",
+   "label": "Events",
+   "options": "LANDA Event"
   }
  ],
  "links": [
@@ -296,7 +303,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2024-04-26 18:18:05.871959",
+ "modified": "2025-02-23 14:39:10.851032",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",

@@ -243,9 +243,9 @@ has_permission = {
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"E Invoice Import": "landa.overrides.eu_einvoice.e_invoice_import.LandaEInvoiceImport"
+}
 
 # Document Events
 # ---------------

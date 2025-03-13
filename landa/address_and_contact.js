@@ -23,6 +23,12 @@ frappe.ui.form.on("Dynamic Link", {
 			});
 		}
 
+		if (row["link_doctype"] === "Supplier") {
+			frappe.db.get_value("Supplier", row["link_name"], "organization").then((r) => {
+				set_organization(frm, r.message.organization);
+			});
+		}
+
 		if (row["link_doctype"] === "LANDA Member") {
 			frappe.db.get_value("LANDA Member", row["link_name"], "organization").then((r) => {
 				set_organization(frm, r.message.organization);

@@ -18,6 +18,7 @@ def validate(doc, event):
 		"LANDA Member",
 		"Organization",
 		"Customer",
+		"Supplier",
 		"External Contact",
 	}
 	if (
@@ -27,14 +28,14 @@ def validate(doc, event):
 	):
 		frappe.throw(
 			# fmt: off
-			_("This document should be linked to at least one Company, LANDA Member, Organization or Customer")
+			_("This document should be linked to at least one Company, LANDA Member, Organization, Customer or Supplier")
 			# fmt: on
 		)
 
 	doc.organization = None
 	for link in doc.links:
 		if link.link_doctype == "Customer":
-			doc.organization = link.link_name
+			doc.organization = frappe.db.get_value("Customer", link.link_name, "organization")
 
 		if link.link_doctype == "LANDA Member":
 			doc.organization = frappe.db.get_value("LANDA Member", link.link_name, "organization")
@@ -44,6 +45,9 @@ def validate(doc, event):
 
 		if link.link_doctype == "External Contact":
 			doc.organization = frappe.db.get_value("External Contact", link.link_name, "organization")
+
+		if link.link_doctype == "Supplier":
+			doc.organization = frappe.db.get_value("Supplier", link.link_name, "organization")
 
 
 def validate_link_permissions(doc):
