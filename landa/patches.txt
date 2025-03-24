@@ -42,3 +42,4 @@ execute:frappe.delete_doc_if_exists("Translation", "604c88eeca")
 landa.patches.create_individual_letter_heads
 execute:frappe.db.set_value("Report", "LANDA Member Count", "add_total_row", 1, update_modified=False)
 landa.patches.remove_company_restriction_for_state
+landa.patches.move_lease_rent_to_table # 2025-03-24
