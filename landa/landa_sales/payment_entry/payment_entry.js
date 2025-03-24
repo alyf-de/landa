@@ -48,6 +48,34 @@ frappe.ui.form.on("Payment Entry", {
 			}
 		}
 	},
+	async custom_get_outstanding_invoices(frm) {
+		frm.clear_table("references");
+
+		const invoices = await frappe.db.get_list("Sales Invoice", {
+			filters: {
+				company: frm.doc.company,
+				customer: frm.doc.party,
+				outstanding_amount: [">", 0.01],
+				year_of_settlement: frm.doc.year_of_settlement,
+			},
+			fields: ["name", "grand_total", "outstanding_amount", "due_date"],
+			order_by: "due_date asc",
+		});
+
+		let allocated_amount = frm.doc.paid_amount;
+		for (const invoice of invoices) {
+			frm.add_child("references", {
+				reference_doctype: "Sales Invoice",
+				reference_name: invoice.name,
+				total_amount: invoice.grand_total,
+				outstanding_amount: invoice.outstanding_amount,
+				allocated_amount: Math.min(invoice.outstanding_amount, allocated_amount > 0 ? allocated_amount : 0),
+				due_date: invoice.due_date,
+			});
+			allocated_amount -= invoice.outstanding_amount;
+		}
+		frm.refresh_field("references");
+	},
 });
 
 frappe.ui.form.on("Payment Entry Reference", {
