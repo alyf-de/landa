@@ -56,19 +56,33 @@ def validate_link_permissions(doc):
 		return
 
 	new_links = {(link.link_doctype, link.link_name) for link in doc.links}
-	for dt, name in new_links:
-		linked_doc = frappe.get_doc(dt, name)
-		linked_doc.check_permission("write")
+	check_link_permissions(new_links)
 
 	doc_before_save = doc.get_doc_before_save()
 	if not doc_before_save:
 		return
 
-	old_links = {(link.link_doctype, link.link_name) for link in doc_before_save.links}
 	# Write permission is also necessary on removed links
-	for dt, name in old_links - new_links:
+	old_links = {(link.link_doctype, link.link_name) for link in doc_before_save.links}
+	check_link_permissions(old_links - new_links)
+
+
+def check_link_permissions(links):
+	for dt, name in links:
 		linked_doc = frappe.get_doc(dt, name)
-		linked_doc.check_permission("write")
+		try:
+			linked_doc.check_permission("write")
+		except frappe.PermissionError:
+			if linked_doc.doctype == "Customer":
+				frappe.clear_messages()
+				# Overly specific error message that was requested because it is
+				# easier to understand than a general permission error.
+				frappe.throw(
+					_("This Address / Contact is linked to a Customer.")
+					+ _(
+						"Please contact someone who can edit the Customer, e.g. an employee of your regional organization."
+					)
+				)
 
 
 def validate_member_link(doc):
