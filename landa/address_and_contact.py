@@ -79,6 +79,7 @@ def check_link_permissions(links):
 				# easier to understand than a general permission error.
 				frappe.throw(
 					_("This Address / Contact is linked to a Customer.")
+					+ "\n"
 					+ _(
 						"Please contact someone who can edit the Customer, e.g. an employee of your regional organization."
 					)
