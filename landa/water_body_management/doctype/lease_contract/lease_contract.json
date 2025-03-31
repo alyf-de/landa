@@ -22,9 +22,8 @@
   "column_break_13",
   "end_date",
   "section_break_15",
-  "rent_per_year",
-  "column_break_18",
   "currency",
+  "lease_contract_rent",
   "landlord_section",
   "landlord",
   "additional_information_about_landlord",
@@ -194,19 +193,14 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "column_break_18",
-   "fieldtype": "Column Break"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "fieldname": "rent_per_year",
-   "fieldtype": "Currency",
-   "label": "Rent per Year",
-   "options": "currency"
+   "fieldname": "lease_contract_rent",
+   "fieldtype": "Table",
+   "label": "Lease Contract Rent",
+   "options": "Lease Contract Rent"
   }
  ],
  "links": [],
- "modified": "2023-09-26 13:13:17.737566",
+ "modified": "2025-03-24 22:34:33.422640",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Lease Contract",
@@ -252,6 +246,7 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "water_body_title",
  "track_changes": 1
 }

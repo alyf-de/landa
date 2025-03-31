@@ -1,0 +1,45 @@
+{
+ "actions": [],
+ "creation": "2025-03-24 22:32:03.284486",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "from_date",
+  "to_date",
+  "rent_per_year"
+ ],
+ "fields": [
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "From Date"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "To Date"
+  },
+  {
+   "fieldname": "rent_per_year",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rent per Year",
+   "options": "currency"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-03-24 22:33:59.683974",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Lease Contract Rent",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
