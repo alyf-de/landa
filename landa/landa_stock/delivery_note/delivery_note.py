@@ -31,7 +31,11 @@ def on_submit(delivery_note, event):
 	# 	sales_invoice = make_sales_invoice(delivery_note.get('name'))
 	# 	sales_invoice.save()
 	# 	sales_invoice.submit()
-	pass
+	if not delivery_note.shipping_address_name:
+		frappe.throw(_("Please set a Shipping Address before submitting the Delivery Note."))
+
+	if not delivery_note.contact_person:
+		frappe.throw(_("Please set a Shipping Contact before submitting the Delivery Note."))
 
 
 def autoname(doc, event):
