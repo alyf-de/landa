@@ -1,5 +1,6 @@
 import frappe
 from erpnext.accounts.doctype.sales_invoice.sales_invoice import make_delivery_note
+from frappe import _
 
 from landa.utils import update_doc
 
@@ -30,3 +31,11 @@ def make_landa_delivery_note(source_name, target_doc=None):
 	update_doc(source_doc, target_doc)
 
 	return target_doc
+
+
+def on_submit(doc, event):
+	if not doc.contact_person:
+		frappe.throw(_("Please set a Billing Contact before submitting the Sales Invoice."))
+
+	if not doc.customer_address:
+		frappe.throw(_("Please set a Billing Address before submitting the Sales Invoice."))
