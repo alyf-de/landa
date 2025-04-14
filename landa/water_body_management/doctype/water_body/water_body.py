@@ -104,7 +104,7 @@ def remove_past_events(cutoff_date):
 	for name in frappe.get_all(
 		"Water Body",
 		filters=[
-			["LANDA Event", "date", "<=", cutoff_date],
+			["LANDA Event", "date", "<", cutoff_date],
 			["LANDA Event", "date", "is", "set"],
 		],
 		pluck="name",
