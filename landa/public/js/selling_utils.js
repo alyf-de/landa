@@ -2,7 +2,7 @@ frappe.provide("landa");
 
 landa.selling = {
     prefill_items(frm) {
-        if (!frm.doc.customer || !frm.doc.year_of_settlement) {
+        if (!frm.doc.customer || !frm.doc.year_of_settlement || !frm.doc.company) {
             frm.clear_table("items");
             frm.refresh_field("items");
             return;
