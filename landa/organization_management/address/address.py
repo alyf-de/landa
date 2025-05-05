@@ -49,9 +49,13 @@ def autoname(address, event):
 			address.address_title = address.links[0].link_title
 
 	if address.address_title and link_name:
-		address.name = cstr(address.address_title).strip() + " - " + cstr(link_name).strip()
+		if address.address_title == link_name:
+			address.name = cstr(address.address_title).strip()
+		else:
+			address.name = f"{cstr(address.address_title).strip()} - {cstr(link_name).strip()}"
+
 		if frappe.db.exists("Address", address.name):
-			address.name = make_autoname(address.name + "-.#")
+			address.name = make_autoname(f"{address.name}-.#")
 	else:
 		frappe.throw(_("Address Title and Links are mandatory."))
 

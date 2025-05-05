@@ -10,3 +10,9 @@ def boot_session(bootinfo):
 
 	bootinfo.landa = get_current_member_data()
 	bootinfo.icon_map = get_icon_map()
+	bootinfo.company_abbr_map = get_company_abbr_map()
+
+
+def get_company_abbr_map():
+	"""Return a map of company name to company abbreviation."""
+	return {d.name: d.abbr for d in frappe.get_list("Company", fields=["name", "abbr"])}

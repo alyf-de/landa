@@ -242,10 +242,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-22 18:22:52.656686",
+ "modified": "2025-05-05 21:26:38.902480",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Measure",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -285,15 +286,10 @@
    "role": "LANDA State Organization Employee",
    "share": 1,
    "write": 1
-  },
-  {
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "LANDA Local Water Body Management"
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }
