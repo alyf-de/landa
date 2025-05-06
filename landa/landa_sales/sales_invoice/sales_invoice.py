@@ -8,7 +8,11 @@ if TYPE_CHECKING:
 from erpnext.accounts.doctype.sales_invoice.sales_invoice import make_delivery_note
 from frappe import _
 
-from landa.landa_sales.utils import validate_company_customer, validate_company_price_list
+from landa.landa_sales.utils import (
+	validate_company_customer,
+	validate_company_price_list,
+	validate_year_of_settlement,
+)
 from landa.utils import update_doc
 
 
@@ -21,6 +25,7 @@ def before_validate(doc: "SalesInvoice", event: str):
 
 
 def validate(doc: "SalesInvoice", event: str):
+	validate_year_of_settlement(doc)
 	validate_company_customer(doc.company, doc.customer)
 	validate_company_price_list(doc.company, doc.selling_price_list)
 
