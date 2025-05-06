@@ -58,13 +58,4 @@ frappe.ui.form.on("Sales Invoice", {
 			});
 		}
 	},
-	year_of_settlement: function (frm) {
-		landa.selling.prefill_items(frm);
-	},
-	customer: function (frm) {
-		landa.selling.prefill_items(frm);
-	},
-	company: function (frm) {
-		landa.selling.prefill_items(frm);
-	},
 });
