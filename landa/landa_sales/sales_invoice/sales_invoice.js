@@ -28,6 +28,9 @@ frappe.ui.form.on("Sales Invoice", {
 			};
 		});
 	},
+	before_save: function (frm) {
+		frm.doc.items = landa.selling.remove_zero_qty_items(frm.doc.items);
+	},
 	company: function (frm) {
 		frm.trigger("set_customer_query");
 	},
