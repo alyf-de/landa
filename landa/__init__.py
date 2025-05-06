@@ -1,6 +1,6 @@
 import frappe
 
-__version__ = "14.10.0"
+__version__ = "14.10.1"
 
 
 @frappe.whitelist(allow_guest=True)
