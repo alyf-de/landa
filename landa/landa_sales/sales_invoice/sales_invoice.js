@@ -62,7 +62,4 @@ frappe.ui.form.on("Sales Invoice", {
 	customer: function (frm) {
 		landa.selling.prefill_items(frm);
 	},
-	company: function (frm) {
-		landa.selling.prefill_items(frm);
-	},
 });
