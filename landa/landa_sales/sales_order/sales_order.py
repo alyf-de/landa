@@ -6,6 +6,7 @@ from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, 
 from frappe import _
 from frappe.utils.data import get_year_ending
 
+from landa.landa_sales.utils import validate_company_customer, validate_company_price_list
 from landa.utils import update_doc
 
 
@@ -34,6 +35,9 @@ def validate(doc, event):
 					item.idx, frappe.bold(item.item_name), frappe.bold(doc.year_of_settlement)
 				)
 			)
+
+	validate_company_customer(doc.company, doc.customer)
+	validate_company_price_list(doc.company, doc.selling_price_list)
 
 
 def autoname(doc, event):

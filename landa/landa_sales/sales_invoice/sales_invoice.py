@@ -8,6 +8,7 @@ if TYPE_CHECKING:
 from erpnext.accounts.doctype.sales_invoice.sales_invoice import make_delivery_note
 from frappe import _
 
+from landa.landa_sales.utils import validate_company_customer, validate_company_price_list
 from landa.utils import update_doc
 
 
@@ -17,6 +18,11 @@ def before_validate(doc: "SalesInvoice", event: str):
 
 	if (not doc.tax_category) and frappe.db.exists("Tax Category", "Umsatzsteuer"):
 		doc.tax_category = "Umsatzsteuer"
+
+
+def validate(doc: "SalesInvoice", event: str):
+	validate_company_customer(doc.company, doc.customer)
+	validate_company_price_list(doc.company, doc.selling_price_list)
 
 
 def autoname(doc: "SalesInvoice", event: str):
