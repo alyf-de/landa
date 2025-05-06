@@ -3,9 +3,13 @@
 
 import frappe
 from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, make_sales_invoice
-from frappe import _
 from frappe.utils.data import get_year_ending
 
+from landa.landa_sales.utils import (
+	validate_company_customer,
+	validate_company_price_list,
+	validate_year_of_settlement,
+)
 from landa.utils import update_doc
 
 
@@ -18,22 +22,9 @@ def before_validate(sales_order, event):
 
 
 def validate(doc, event):
-	if not doc.year_of_settlement:
-		return
-
-	for item in doc.items:
-		from_year, to_year = frappe.db.get_value(
-			"Item", item.item_code, ["valid_from_year", "valid_to_year"]
-		)
-
-		if (from_year and doc.year_of_settlement < from_year) or (
-			to_year and doc.year_of_settlement > to_year
-		):
-			frappe.throw(
-				_("Row {0}: Item {1} is not valid for year of settlement {2}.").format(
-					item.idx, frappe.bold(item.item_name), frappe.bold(doc.year_of_settlement)
-				)
-			)
+	validate_year_of_settlement(doc)
+	validate_company_customer(doc.company, doc.customer)
+	validate_company_price_list(doc.company, doc.selling_price_list)
 
 
 def autoname(doc, event):

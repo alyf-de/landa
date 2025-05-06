@@ -2,6 +2,11 @@ import frappe
 from erpnext.stock.doctype.delivery_note.delivery_note import make_sales_invoice
 from frappe import _
 
+from landa.landa_sales.utils import (
+	validate_company_customer,
+	validate_company_price_list,
+	validate_year_of_settlement,
+)
 from landa.utils import update_doc
 
 
@@ -19,6 +24,10 @@ def validate(delivery_note, event):
 			if frappe.db.get_value("Item", item.item_code, "cannot_be_returned"):
 				frappe.throw(_("Item {} cannot be returned").format(item.item_name))
 				return
+
+	validate_company_customer(delivery_note.company, delivery_note.customer)
+	validate_company_price_list(delivery_note.company, delivery_note.selling_price_list)
+	validate_year_of_settlement(delivery_note)
 
 
 def on_submit(delivery_note, event):

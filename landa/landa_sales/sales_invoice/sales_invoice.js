@@ -30,8 +30,6 @@ frappe.ui.form.on("Sales Invoice", {
 	},
 	company: function (frm) {
 		frm.trigger("set_customer_query");
-		frm.set_value("customer", "");
-		frm.set_value("selling_price_list", "");
 	},
 	set_item_query: function (frm) {
 		frm.set_query("item_code", "items", function (doc) {
@@ -57,5 +55,11 @@ frappe.ui.form.on("Sales Invoice", {
 				};
 			});
 		}
+	},
+	year_of_settlement: function (frm) {
+		landa.selling.prefill_items(frm);
+	},
+	customer: function (frm) {
+		landa.selling.prefill_items(frm);
 	},
 });

@@ -1,19 +1,36 @@
+from typing import TYPE_CHECKING
+
 import frappe
+
+if TYPE_CHECKING:
+	from erpnext.accounts.doctype.sales_invoice.sales_invoice import SalesInvoice
+
 from erpnext.accounts.doctype.sales_invoice.sales_invoice import make_delivery_note
 from frappe import _
 
+from landa.landa_sales.utils import (
+	validate_company_customer,
+	validate_company_price_list,
+	validate_year_of_settlement,
+)
 from landa.utils import update_doc
 
 
-def before_validate(sales_invoice, event):
+def before_validate(doc: "SalesInvoice", event: str):
 	"""Set Tax Category to 'Umsatzsteuer'"""
 	import frappe
 
-	if (not sales_invoice.tax_category) and frappe.db.exists("Tax Category", "Umsatzsteuer"):
-		sales_invoice.tax_category = "Umsatzsteuer"
+	if (not doc.tax_category) and frappe.db.exists("Tax Category", "Umsatzsteuer"):
+		doc.tax_category = "Umsatzsteuer"
 
 
-def autoname(doc, event):
+def validate(doc: "SalesInvoice", event: str):
+	validate_year_of_settlement(doc)
+	validate_company_customer(doc.company, doc.customer)
+	validate_company_price_list(doc.company, doc.selling_price_list)
+
+
+def autoname(doc: "SalesInvoice", event: str):
 	"""Create Company-specific Sales Invoice name."""
 	from landa.utils import get_new_name
 
@@ -33,7 +50,7 @@ def make_landa_delivery_note(source_name, target_doc=None):
 	return target_doc
 
 
-def on_submit(doc, event):
+def on_submit(doc: "SalesInvoice", event: str):
 	if not doc.contact_person:
 		frappe.throw(_("Please set a Billing Contact before submitting the Sales Invoice."))
 
