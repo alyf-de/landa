@@ -59,7 +59,7 @@ frappe.listview_settings["LANDA Member"] = {
 						{
 							fieldname: "permit_type",
 							fieldtype: "Link",
-							label: __("Permit Type"),
+							label: __("Type"),
 							options: "Yearly Fishing Permit Type",
 							reqd: 1,
 						},
@@ -71,7 +71,6 @@ frappe.listview_settings["LANDA Member"] = {
 						},
 					],
 					(values) => {
-						debugger;
 						frappe
 							.xcall(
 								"landa.organization_management.doctype.yearly_fishing_permit.yearly_fishing_permit.bulk_create",
