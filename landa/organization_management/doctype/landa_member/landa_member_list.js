@@ -12,7 +12,9 @@ frappe.listview_settings["LANDA Member"] = {
 				list_view.page.add_actions_menu_item(
 					__("Delete", null, "Button in list view actions menu"),
 					() => {
-						const docnames = list_view.get_checked_items(true).map((docname) => docname.toString());
+						const docnames = list_view
+							.get_checked_items(true)
+							.map((docname) => docname.toString());
 						if (docnames.length === 1) {
 							run_bulk_delete(list_view, docnames);
 							return;
@@ -29,7 +31,9 @@ frappe.listview_settings["LANDA Member"] = {
 							],
 							(values) => {
 								frappe
-									.xcall("landa.auth.check_password", { password: values.password })
+									.xcall("landa.auth.check_password", {
+										password: values.password,
+									})
 									.then((result) => {
 										if (!result) {
 											frappe.msgprint(__("Incorrect password"));
@@ -47,9 +51,52 @@ frappe.listview_settings["LANDA Member"] = {
 				);
 			}
 		}
+
+		if (frappe.model.can_create("Yearly Fishing Permit")) {
+			list_view.page.add_action_item(__("Create Yearly Fishing Permit"), () => {
+				frappe.prompt(
+					[
+						{
+							fieldname: "permit_type",
+							fieldtype: "Link",
+							label: __("Permit Type"),
+							options: "Yearly Fishing Permit Type",
+							reqd: 1,
+						},
+						{
+							fieldname: "year",
+							fieldtype: "Int",
+							label: __("Year"),
+							reqd: 1,
+						},
+					],
+					(values) => {
+						debugger;
+						frappe
+							.xcall(
+								"landa.organization_management.doctype.yearly_fishing_permit.yearly_fishing_permit.bulk_create",
+								{
+									permit_type: values.permit_type,
+									year: values.year,
+									members: list_view.get_checked_items(true),
+								}
+							)
+							.then((total_created) => {
+								frappe.show_alert({
+									message: __(
+										"Yearly Fishing Permits have been created for {0} members.",
+										[total_created]
+									),
+									indicator: "green",
+								});
+								list_view.refresh();
+							});
+					}
+				);
+			});
+		}
 	},
 };
-
 
 function run_bulk_delete(list_view, docnames) {
 	list_view.disable_list_update = true;
@@ -67,9 +114,7 @@ function bulk_delete(doctype, docnames, done) {
 			method: "frappe.desk.reportview.delete_items",
 			freeze: true,
 			freeze_message:
-				docnames.length <= 10
-					? __("Deleting {0} records...", [docnames.length])
-					: null,
+				docnames.length <= 10 ? __("Deleting {0} records...", [docnames.length]) : null,
 			args: {
 				items: docnames,
 				doctype: doctype,
@@ -82,9 +127,7 @@ function bulk_delete(doctype, docnames, done) {
 			}
 
 			if (failed.length && !r._server_messages) {
-				frappe.throw(
-					__("Cannot delete {0}", [failed.map((f) => f.bold()).join(", ")])
-				);
+				frappe.throw(__("Cannot delete {0}", [failed.map((f) => f.bold()).join(", ")]));
 			}
 			if (failed.length < docnames.length) {
 				frappe.utils.play_sound("delete");
