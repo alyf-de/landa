@@ -133,3 +133,4 @@ Customer {0} is not valid for Company {1}.,Bestellwesenkonto Verein {0} ist nich
 Yearly Fishing Permit already exists for member {0} and year {1}. Please cancel the existing permit before creating a new one.,"Erlaubnisschein für Mitglied {0} und Jahr {1} existiert bereits. Bitte stornieren Sie den bestehenden Erlaubnisschein, bevor Sie einen neuen erstellen.",
 Creating Yearly Fishing Permits...,Erlaubnisscheine werden erstellt...,
 Yearly Fishing Permits have been created for {0} members.,Erlaubnisscheine für {0} Mitglieder wurden erstellt.,
+Create Yearly Fishing Permit,Erlaubnisschein erstellen,
