@@ -22,9 +22,15 @@ class YearlyFishingPermit(Document):
 				"LANDA Member", self.member, ["first_name", "last_name", "organization"]
 			)
 
+		duplicate_types = {"SALMO", "ALLG", "KOMBI"}
+		if self.type == "SALMO":
+			duplicate_types.remove("ALLG")
+		elif self.type == "ALLG":
+			duplicate_types.remove("SALMO")
+
 		if frappe.db.exists(
 			"Yearly Fishing Permit",
-			{"member": self.member, "year": self.year, "docstatus": 1},
+			{"member": self.member, "year": self.year, "docstatus": 1, "type": ("in", duplicate_types)},
 		):
 			frappe.throw(
 				_(
