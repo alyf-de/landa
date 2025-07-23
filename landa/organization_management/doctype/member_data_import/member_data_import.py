@@ -133,9 +133,7 @@ class MemberDataImport(Document):
 			)
 
 	def create_permit(self):
-		if self.yearly_fishing_permit or not all(
-			[self.year, self.number, self.member, self.organization]
-		):
+		if self.yearly_fishing_permit or not all([self.year, self.member, self.organization]):
 			# permit exists or required fields are missing
 			return
 
@@ -147,15 +145,10 @@ class MemberDataImport(Document):
 			else:
 				return
 
-		if not self.date_of_issue:
-			self.date_of_issue = datetime.now().date()
-
 		create_yearly_fishing_permit(
 			member=self.member,
 			year=self.year,
 			type=self.type,
-			number=self.number,
-			date_of_issue=self.date_of_issue,
 			organization=self.organization,
 		)
 
@@ -217,9 +210,7 @@ def create_address(
 	address.insert()
 
 
-def create_yearly_fishing_permit(
-	member: str, year: int, type: str, number: str, date_of_issue, organization: str
-) -> None:
+def create_yearly_fishing_permit(member: str, year: int, type: str, organization: str) -> None:
 	data = {"member": member, "year": year, "type": type, "organization": organization}
 
 	if frappe.db.exists("Yearly Fishing Permit", data):
@@ -227,8 +218,6 @@ def create_yearly_fishing_permit(
 
 	yfp = frappe.new_doc("Yearly Fishing Permit")
 	yfp.update(data)
-	yfp.number = number
-	yfp.date_of_issue = date_of_issue
 	yfp.insert()
 
 

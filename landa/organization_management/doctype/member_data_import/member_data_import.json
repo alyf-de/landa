@@ -36,9 +36,7 @@
   "section_break_14",
   "yearly_fishing_permit",
   "year",
-  "type",
-  "date_of_issue",
-  "number"
+  "type"
  ],
  "fields": [
   {
@@ -105,16 +103,6 @@
    "fieldtype": "Link",
    "label": "Yearly Fishing Permit Type",
    "options": "Yearly Fishing Permit Type"
-  },
-  {
-   "fieldname": "date_of_issue",
-   "fieldtype": "Date",
-   "label": "Issue Date of Yearly Fishing Permit"
-  },
-  {
-   "fieldname": "number",
-   "fieldtype": "Data",
-   "label": "Yearly Fishing Permit Number"
   },
   {
    "default": "0",
@@ -225,7 +213,7 @@
  ],
  "is_virtual": 1,
  "links": [],
- "modified": "2024-05-10 19:24:54.879846",
+ "modified": "2025-07-23 16:12:47.069276",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Data Import",
