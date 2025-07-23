@@ -25,7 +25,7 @@
   "currency",
   "lease_contract_rent",
   "landlord_section",
-  "landlord",
+  "external_contact",
   "additional_information_about_landlord",
   "column_break_22",
   "first_name",
@@ -104,22 +104,14 @@
    "label": "Landlord"
   },
   {
-   "allow_in_quick_entry": 1,
-   "fieldname": "landlord",
-   "fieldtype": "Link",
-   "in_standard_filter": 1,
-   "label": "Landlord",
-   "options": "External Contact"
-  },
-  {
-   "fetch_from": "landlord.first_name",
+   "fetch_from": "external_contact.first_name",
    "fieldname": "first_name",
    "fieldtype": "Data",
    "label": "First Name",
    "read_only": 1
   },
   {
-   "fetch_from": "landlord.last_name",
+   "fetch_from": "external_contact.last_name",
    "fieldname": "last_name",
    "fieldtype": "Data",
    "label": "Last Name",
@@ -146,7 +138,7 @@
    "read_only": 1
   },
   {
-   "fetch_from": "landlord.external_organization_name",
+   "fetch_from": "external_contact.external_organization_name",
    "fieldname": "institution_or_company_name",
    "fieldtype": "Data",
    "label": "Institution or Company Name",
@@ -197,10 +189,18 @@
    "fieldtype": "Table",
    "label": "Lease Contract Rent",
    "options": "Lease Contract Rent"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "external_contact",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Landlord",
+   "options": "External Contact"
   }
  ],
  "links": [],
- "modified": "2025-03-24 22:34:33.422640",
+ "modified": "2025-07-24 00:14:09.248284",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Lease Contract",

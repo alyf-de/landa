@@ -44,3 +44,4 @@ execute:frappe.db.set_value("Report", "LANDA Member Count", "add_total_row", 1, 
 landa.patches.remove_company_restriction_for_state
 landa.patches.move_lease_rent_to_table # 2025-03-24
 landa.patches.set_customer_price_list
+landa.patches.rename_landlord_to_external_contact
