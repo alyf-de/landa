@@ -35,7 +35,8 @@ class YearlyFishingPermit(Document):
 			frappe.throw(
 				_(
 					"Yearly Fishing Permit already exists for member {0} and year {1}. Please cancel the existing permit before creating a new one."
-				).format(self.member, self.year)
+				).format(self.member, self.year),
+				exc=frappe.DuplicateEntryError,
 			)
 
 		current_year = datetime.now().year
