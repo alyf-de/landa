@@ -47,6 +47,8 @@ class MemberDataImport(Document):
 		):
 			frappe.throw(_("The selected address does not belong to the selected LANDA Member"))
 
+		self.validate_existing_permit()
+
 	def before_insert(self, *args, **kwargs):
 		self.preprocess()
 
@@ -151,6 +153,33 @@ class MemberDataImport(Document):
 			type=self.type,
 			organization=self.organization,
 		)
+
+	def validate_existing_permit(self):
+		if not self.yearly_fishing_permit:
+			return
+
+		existing_permit = frappe.get_doc("Yearly Fishing Permit", self.yearly_fishing_permit)
+		remove_msg = _(
+			"To create a new Yearly Fishing Permit, please remove the ID of the existing permit from the import."
+		)
+		if self.type != existing_permit.type:
+			frappe.throw(
+				_("You cannot change the type of a Yearly Fishing Permit through Member Data Import.")
+				+ " "
+				+ remove_msg
+			)
+		if self.year != existing_permit.year:
+			frappe.throw(
+				_("You cannot change the year of a Yearly Fishing Permit through Member Data Import.")
+				+ " "
+				+ remove_msg
+			)
+		if self.member != existing_permit.member:
+			frappe.throw(
+				_("You cannot change the member of a Yearly Fishing Permit through Member Data Import.")
+				+ " "
+				+ remove_msg
+			)
 
 	def update_doc(self, doc: Document, fields: "list[str]"):
 		"""Update all `fields` of `doc` with the values from `self`."""
