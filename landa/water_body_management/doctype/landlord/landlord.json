@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2025-07-23 23:53:59.279582",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "landlord_name",
+  "iban",
+  "additional_information",
+  "column_break_shzlm",
+  "regional_organization"
+ ],
+ "fields": [
+  {
+   "fieldname": "landlord_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Landlord Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "iban",
+   "fieldtype": "Data",
+   "label": "IBAN"
+  },
+  {
+   "fieldname": "regional_organization",
+   "fieldtype": "Link",
+   "label": "Regional Organization",
+   "options": "Organization",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_shzlm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "additional_information",
+   "fieldtype": "Text",
+   "label": "Additional Information"
+  }
+ ],
+ "links": [],
+ "modified": "2025-07-24 00:36:14.942064",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Landlord",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Regional Water Body Management",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "landlord_name",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "landlord_name",
+ "track_changes": 1
+}
