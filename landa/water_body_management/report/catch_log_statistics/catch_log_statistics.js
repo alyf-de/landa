@@ -52,10 +52,9 @@ frappe.query_reports["Catch Log Statistics"] = {
 			fieldname: "group_by_fish_species",
 			fieldtype: "Check",
 			label: __("Group By Fish Species"),
-		}
+		},
 	],
 };
-
 
 function get_extra_columns(txt) {
 	const extra_columns = [
@@ -74,21 +73,33 @@ function get_extra_columns(txt) {
 			label: __("Water Body Status"),
 			description: "",
 		},
-	]
-	if (frappe.user.has_role(
-		[
+	];
+	if (
+		frappe.user.has_role([
 			"Administrator",
 			"System Manager",
 			"LANDA State Organization Employee",
 			"LANDA Regional Organization Management",
 			"LANDA Regional Water Body Management",
-		]
-	)) {
-		extra_columns.push({
-			value: "by_foreign_regional_org",
-			label: __("Share of other Regional Organizations"),
-			description: "",
-		})
+		])
+	) {
+		extra_columns.push(
+			{
+				value: "share_of_avl",
+				label: __("Share of AVL"),
+				description: "",
+			},
+			{
+				value: "share_of_avs",
+				label: __("Share of AVS"),
+				description: "",
+			},
+			{
+				value: "share_of_ave",
+				label: __("Share of AVE"),
+				description: "",
+			}
+		);
 	}
 
 	return extra_columns.filter((d) => d.label.toLowerCase().includes(txt.toLowerCase()));

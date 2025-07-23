@@ -22,7 +22,9 @@ REGIONAL_ROLES = {
 
 
 def get_columns(
-	show_by_foreign_regional_org: bool = False,
+	show_share_of_avl: bool = False,
+	show_share_of_avs: bool = False,
+	show_share_of_ave: bool = False,
 	show_area_name: bool = False,
 	show_water_body_size: bool = False,
 	show_water_body_status: bool = False,
@@ -109,21 +111,40 @@ def get_columns(
 		]
 	)
 
-	if show_by_foreign_regional_org and is_regional_or_state_employee():
-		columns.append(
-			{
-				"fieldname": "by_foreign_regional_org",
-				"fieldtype": "Percent",
-				"label": _("Share of other Regional Organizations"),
-			}
-		)
+	if is_regional_or_state_employee():
+		if show_share_of_avl:
+			columns.append(
+				{
+					"fieldname": "share_of_avl",
+					"fieldtype": "Percent",
+					"label": _("Share of AVL"),
+				}
+			)
+		if show_share_of_avs:
+			columns.append(
+				{
+					"fieldname": "share_of_avs",
+					"fieldtype": "Percent",
+					"label": _("Share of AVS"),
+				}
+			)
+		if show_share_of_ave:
+			columns.append(
+				{
+					"fieldname": "share_of_ave",
+					"fieldtype": "Percent",
+					"label": _("Share of AVE"),
+				}
+			)
 
 	return columns
 
 
 def get_data(
 	filters,
-	show_by_foreign_regional_org: bool = False,
+	show_share_of_avl: bool = False,
+	show_share_of_avs: bool = False,
+	show_share_of_ave: bool = False,
 	show_area_name: bool = False,
 	show_water_body_size: bool = False,
 	show_water_body_status: bool = False,
@@ -161,40 +182,47 @@ def get_data(
 		Sum(child_table.weight_in_kg),
 	)
 
-	if show_by_foreign_regional_org and is_regional_or_state_employee():
-		by_all_regional_orgs = get_subquery(entry, child_table, qb_filters)
-		by_foreign_regional_orgs = get_subquery(
-			entry,
-			child_table,
-			qb_filters
-			+ [Substring(entry.organization, 1, 3) != entry.regional_organization],  # index starts at 1
-		)
+	if is_regional_or_state_employee():
+		for show, regional_org, column_name in (
+			(show_share_of_avl, "AVL", "share_of_avl"),
+			(show_share_of_avs, "AVS", "share_of_avs"),
+			(show_share_of_ave, "AVE", "share_of_ave"),
+		):
+			if not show:
+				continue
 
-		proportion_foreign = (
-			frappe.qb.from_(by_all_regional_orgs)
-			.left_join(by_foreign_regional_orgs)
-			.on(
-				(by_all_regional_orgs.water_body == by_foreign_regional_orgs.water_body)
-				& (by_all_regional_orgs.fish_species == by_foreign_regional_orgs.fish_species)
+			by_all_regional_orgs = get_subquery(entry, child_table, qb_filters)
+			by_regional_org = get_subquery(
+				entry,
+				child_table,
+				qb_filters + [Substring(entry.organization, 1, 3) == regional_org],  # index starts at 1
 			)
-			.select(
-				by_all_regional_orgs.water_body,
-				by_all_regional_orgs.fish_species,
-				(
-					Coalesce(by_foreign_regional_orgs.total_weight_in_kg, 0)
-					/ by_all_regional_orgs.total_weight_in_kg
-					* 100
-				).as_("by_foreign_regional_org"),
+
+			proportion_regional = (
+				frappe.qb.from_(by_all_regional_orgs)
+				.left_join(by_regional_org)
+				.on(
+					(by_all_regional_orgs.water_body == by_regional_org.water_body)
+					& (by_all_regional_orgs.fish_species == by_regional_org.fish_species)
+				)
+				.select(
+					by_all_regional_orgs.water_body,
+					by_all_regional_orgs.fish_species,
+					(
+						Coalesce(by_regional_org.total_weight_in_kg, 0)
+						/ by_all_regional_orgs.total_weight_in_kg
+						* 100
+					).as_(column_name),
+				)
 			)
-		)
-		query = (
-			query.left_join(proportion_foreign)
-			.on(
-				(entry.water_body == proportion_foreign.water_body)
-				& (child_table.fish_species == proportion_foreign.fish_species)
+			query = (
+				query.left_join(proportion_regional)
+				.on(
+					(entry.water_body == proportion_regional.water_body)
+					& (child_table.fish_species == proportion_regional.fish_species)
+				)
+				.select(proportion_regional[column_name])
 			)
-			.select(proportion_foreign.by_foreign_regional_org)
-		)
 
 	query = filter_and_group(query, entry, child_table, qb_filters, group_by_fish_species)
 	return query.run()
@@ -313,19 +341,25 @@ def execute(filters=None):
 	extra_columns = filters.pop("extra_columns", [])
 
 	if not group_by_fish_species:
-		show_by_foreign_regional_org = "by_foreign_regional_org" in extra_columns
+		show_share_of_avl = "share_of_avl" in extra_columns
+		show_share_of_avs = "share_of_avs" in extra_columns
+		show_share_of_ave = "share_of_ave" in extra_columns
 		show_area_name = "area_name" in extra_columns
 		show_water_body_size = "water_body_size" in extra_columns
 		show_water_body_status = "water_body_status" in extra_columns
 	else:
-		show_by_foreign_regional_org = False
+		show_share_of_avl = False
+		show_share_of_avs = False
+		show_share_of_ave = False
 		show_area_name = False
 		show_water_body_size = False
 		show_water_body_status = False
 
 	return (
 		get_columns(
-			show_by_foreign_regional_org,
+			show_share_of_avl,
+			show_share_of_avs,
+			show_share_of_ave,
 			show_area_name,
 			show_water_body_size,
 			show_water_body_status,
@@ -333,7 +367,9 @@ def execute(filters=None):
 		),
 		get_data(
 			filters,
-			show_by_foreign_regional_org,
+			show_share_of_avl,
+			show_share_of_avs,
+			show_share_of_ave,
 			show_area_name,
 			show_water_body_size,
 			show_water_body_status,
