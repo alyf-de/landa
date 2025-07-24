@@ -1,0 +1,145 @@
+# Copyright (c) 2025, ALYF GmbH and contributors
+# For license information, please see license.txt
+
+import frappe
+from frappe import _
+from frappe.utils.data import getdate
+
+
+def execute(filters=None):
+	columns = get_columns()
+	data = get_data(
+		filters["year"],
+		filters.get("water_body"),
+		filters.get("fishing_area"),
+		filters.get("lease_object"),
+	)
+	return columns, list(data)
+
+
+def get_columns():
+	return [
+		{
+			"fieldname": "water_body",
+			"label": _("Water Body"),
+			"fieldtype": "Link",
+			"options": "Water Body",
+		},
+		{
+			"fieldname": "water_body_title",
+			"label": _("Water Body Title"),
+			"fieldtype": "Data",
+			"width": "200",
+		},
+		{
+			"fieldname": "fishing_area",
+			"label": _("Fishing Area"),
+			"fieldtype": "Link",
+			"options": "Fishing Area",
+		},
+		{
+			"fieldname": "lease_object",
+			"label": _("Lease Object"),
+			"fieldtype": "Link",
+			"options": "Lease Object",
+			"width": "150",
+		},
+		# TODO: Zahlungsempfänger
+		# TODO: IBAN
+		{
+			"fieldname": "rent",
+			"label": _("Rent"),
+			"fieldtype": "Currency",
+			"options": "currency",
+			"width": "150",
+		},
+		{
+			"fieldname": "currency",
+			"label": _("Currency"),
+			"fieldtype": "Link",
+			"options": "Currency",
+			"hidden": 1,
+		},
+		{
+			"fieldname": "payment_reference",
+			"label": _("Payment Reference"),
+			"fieldtype": "Data",
+		},
+		{
+			"fieldname": "payment_type",
+			"label": _("Payment Type"),
+			"fieldtype": "Data",
+		},
+		{
+			"fieldname": "payment_date",
+			"label": _("Payment Date"),
+			"fieldtype": "Date",
+		},
+		{
+			"fieldname": "lease_contract",
+			"label": _("Lease Contract"),
+			"fieldtype": "Link",
+			"options": "Lease Contract",
+		},
+	]
+
+
+def get_data(
+	year: int, water_body: str | None, fishing_area: str | None, lease_object: str | None
+):
+	year_end = getdate(f"{year}-12-31")
+	year_start = getdate(f"{year}-01-01")
+	filters = [
+		["start_date", "<=", year_end],
+		["end_date", ">=", year_start],
+		["Lease Contract Rent", "from_date", "<=", year_end],
+		["Lease Contract Rent", "to_date", ">=", year_start],
+	]
+	if water_body:
+		filters.append(["water_body", "=", water_body])
+	if fishing_area:
+		filters.append(["fishing_area", "=", fishing_area])
+	if lease_object:
+		filters.append(["lease_object", "=", lease_object])
+
+	for lease_contract in frappe.get_list(
+		"Lease Contract",
+		filters=filters,
+		fields=[
+			"name",
+			"water_body",
+			"water_body_title",
+			"fishing_area",
+			"currency",
+			"lease_object",
+			"payment_reference",
+			"payment_type",
+			"payment_date",
+			"`tabLease Contract Rent`.from_date",
+			"`tabLease Contract Rent`.to_date",
+			"`tabLease Contract Rent`.rent_per_year",
+		],
+	):
+		if lease_contract.from_date > year_start or lease_contract.to_date < year_end:
+			# calculate partial rent
+			rent = round(
+				lease_contract.rent_per_year
+				* (min(year_end, lease_contract.to_date) - max(year_start, lease_contract.from_date)).days
+				/ 365,
+				2,
+			)
+		else:
+			rent = lease_contract.rent_per_year
+
+		yield {
+			"lease_contract": lease_contract.name,
+			"water_body": lease_contract.water_body,
+			"water_body_title": lease_contract.water_body_title,
+			"fishing_area": lease_contract.fishing_area,
+			"lease_object": lease_contract.lease_object,
+			"currency": lease_contract.currency,
+			"rent": rent,
+			"payment_reference": lease_contract.payment_reference,
+			"payment_type": _(lease_contract.payment_type),
+			"payment_date": lease_contract.payment_date,
+		}
