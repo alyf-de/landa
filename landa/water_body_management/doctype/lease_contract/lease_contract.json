@@ -11,6 +11,7 @@
   "contract_data_section",
   "organization",
   "water_body",
+  "lease_object",
   "additional_information",
   "column_break_6",
   "organization_name",
@@ -23,6 +24,9 @@
   "end_date",
   "section_break_15",
   "currency",
+  "payment_reference",
+  "payment_type",
+  "payment_date",
   "lease_contract_rent",
   "landlord_section",
   "external_contact",
@@ -197,10 +201,32 @@
    "in_standard_filter": 1,
    "label": "Landlord",
    "options": "External Contact"
+  },
+  {
+   "fieldname": "lease_object",
+   "fieldtype": "Link",
+   "label": "Lease Object",
+   "options": "Lease Object"
+  },
+  {
+   "fieldname": "payment_reference",
+   "fieldtype": "Data",
+   "label": "Payment Reference"
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date"
+  },
+  {
+   "fieldname": "payment_type",
+   "fieldtype": "Select",
+   "label": "Payment Type",
+   "options": "Credit Transfer\nDirect Debit"
   }
  ],
  "links": [],
- "modified": "2025-07-24 00:14:09.248284",
+ "modified": "2025-07-24 02:02:22.622232",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Lease Contract",
