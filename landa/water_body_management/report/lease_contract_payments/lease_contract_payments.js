@@ -29,6 +29,11 @@ frappe.query_reports["Lease Contract Payments"] = {
 			fieldtype: "Link",
 			options: "Lease Object",
 		},
-		// TODO: Zahlungsempfänger
+		{
+			fieldname: "landlord",
+			label: __("Landlord"),
+			fieldtype: "Link",
+			options: "Landlord",
+		},
 	],
 };

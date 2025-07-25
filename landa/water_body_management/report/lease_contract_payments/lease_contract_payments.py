@@ -13,6 +13,7 @@ def execute(filters=None):
 		filters.get("water_body"),
 		filters.get("fishing_area"),
 		filters.get("lease_object"),
+		filters.get("landlord"),
 	)
 	return columns, list(data)
 
@@ -44,8 +45,18 @@ def get_columns():
 			"options": "Lease Object",
 			"width": "150",
 		},
-		# TODO: Zahlungsempfänger
-		# TODO: IBAN
+		{
+			"fieldname": "payment_recipient",
+			"label": _("Payment Recipient"),
+			"fieldtype": "Data",
+			"width": "200",
+		},
+		{
+			"fieldname": "iban",
+			"label": _("IBAN"),
+			"fieldtype": "Data",
+			"width": "200",
+		},
 		{
 			"fieldname": "rent",
 			"label": _("Rent"),
@@ -85,7 +96,11 @@ def get_columns():
 
 
 def get_data(
-	year: int, water_body: str | None, fishing_area: str | None, lease_object: str | None
+	year: int,
+	water_body: str | None,
+	fishing_area: str | None,
+	lease_object: str | None,
+	landlord: str | None,
 ):
 	year_end = getdate(f"{year}-12-31")
 	year_start = getdate(f"{year}-01-01")
@@ -95,12 +110,18 @@ def get_data(
 		["Lease Contract Rent", "from_date", "<=", year_end],
 		["Lease Contract Rent", "to_date", ">=", year_start],
 	]
+
 	if water_body:
 		filters.append(["water_body", "=", water_body])
+
 	if fishing_area:
 		filters.append(["fishing_area", "=", fishing_area])
+
 	if lease_object:
 		filters.append(["lease_object", "=", lease_object])
+
+	if landlord:
+		filters.append(["landlord_new", "=", landlord])
 
 	for lease_contract in frappe.get_list(
 		"Lease Contract",
@@ -115,6 +136,7 @@ def get_data(
 			"payment_reference",
 			"payment_type",
 			"payment_date",
+			"landlord_new",
 			"`tabLease Contract Rent`.from_date",
 			"`tabLease Contract Rent`.to_date",
 			"`tabLease Contract Rent`.rent_per_year",
@@ -131,14 +153,24 @@ def get_data(
 		else:
 			rent = lease_contract.rent_per_year
 
+		if lease_contract.landlord_new:
+			payment_recipient, iban = frappe.db.get_value(
+				"Landlord", lease_contract.landlord_new, ["landlord_name", "iban"]
+			)
+		else:
+			payment_recipient = ""
+			iban = ""
+
 		yield {
 			"lease_contract": lease_contract.name,
 			"water_body": lease_contract.water_body,
 			"water_body_title": lease_contract.water_body_title,
 			"fishing_area": lease_contract.fishing_area,
 			"lease_object": lease_contract.lease_object,
-			"currency": lease_contract.currency,
+			"payment_recipient": payment_recipient,
+			"iban": iban,
 			"rent": rent,
+			"currency": lease_contract.currency,
 			"payment_reference": lease_contract.payment_reference,
 			"payment_type": _(lease_contract.payment_type),
 			"payment_date": lease_contract.payment_date,
