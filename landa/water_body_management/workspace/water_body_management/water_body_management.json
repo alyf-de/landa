@@ -216,7 +216,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Stammdaten",
-   "link_count": 12,
+   "link_count": 13,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -324,6 +324,16 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Landlord",
+   "link_count": 0,
+   "link_to": "Landlord",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Externer Kontakt",
    "link_count": 0,
    "link_to": "External Contact",
@@ -345,7 +355,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Berichte",
-   "link_count": 6,
+   "link_count": 7,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -403,6 +413,16 @@
   },
   {
    "hidden": 0,
+   "is_query_report": 1,
+   "label": "Lease Contract Payments",
+   "link_count": 0,
+   "link_to": "Lease Contract Payments",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
    "is_query_report": 0,
    "label": "Meine Berichte",
    "link_count": 0,
@@ -412,7 +432,7 @@
    "type": "Link"
   }
  ],
- "modified": "2025-01-18 14:46:16.209773",
+ "modified": "2025-07-25 22:36:00.663705",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management",
