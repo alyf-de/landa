@@ -18,12 +18,15 @@
    "fieldname": "landlord_name",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Landlord Name",
    "reqd": 1
   },
   {
    "fieldname": "iban",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "IBAN"
   },
   {
@@ -40,6 +43,7 @@
   {
    "fieldname": "additional_information",
    "fieldtype": "Text",
+   "in_list_view": 1,
    "label": "Additional Information"
   }
  ],
@@ -49,7 +53,7 @@
    "link_fieldname": "landlord_new"
   }
  ],
- "modified": "2025-07-25 22:10:06.377321",
+ "modified": "2025-07-25 22:37:56.504833",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Landlord",
