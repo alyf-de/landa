@@ -29,12 +29,7 @@
   "payment_date",
   "lease_contract_rent",
   "landlord_section",
-  "external_contact",
-  "additional_information_about_landlord",
-  "column_break_22",
-  "first_name",
-  "last_name",
-  "institution_or_company_name"
+  "landlord_new"
  ],
  "fields": [
   {
@@ -108,25 +103,6 @@
    "label": "Landlord"
   },
   {
-   "fetch_from": "external_contact.first_name",
-   "fieldname": "first_name",
-   "fieldtype": "Data",
-   "label": "First Name",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "external_contact.last_name",
-   "fieldname": "last_name",
-   "fieldtype": "Data",
-   "label": "Last Name",
-   "read_only": 1
-  },
-  {
-   "fieldname": "additional_information_about_landlord",
-   "fieldtype": "Small Text",
-   "label": "Additional Information About Landlord"
-  },
-  {
    "fieldname": "organization",
    "fieldtype": "Link",
    "in_standard_filter": 1,
@@ -139,13 +115,6 @@
    "fieldname": "organization_name",
    "fieldtype": "Data",
    "label": "Regional Organization Name",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "external_contact.external_organization_name",
-   "fieldname": "institution_or_company_name",
-   "fieldtype": "Data",
-   "label": "Institution or Company Name",
    "read_only": 1
   },
   {
@@ -185,22 +154,10 @@
    "label": "Rent"
   },
   {
-   "fieldname": "column_break_22",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "lease_contract_rent",
    "fieldtype": "Table",
    "label": "Lease Contract Rent",
    "options": "Lease Contract Rent"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "fieldname": "external_contact",
-   "fieldtype": "Link",
-   "in_standard_filter": 1,
-   "label": "Landlord",
-   "options": "External Contact"
   },
   {
    "fieldname": "lease_object",
@@ -223,10 +180,16 @@
    "fieldtype": "Select",
    "label": "Payment Type",
    "options": "Credit Transfer\nDirect Debit"
+  },
+  {
+   "fieldname": "landlord_new",
+   "fieldtype": "Link",
+   "label": "Landlord",
+   "options": "Landlord"
   }
  ],
  "links": [],
- "modified": "2025-07-24 02:02:22.622232",
+ "modified": "2025-07-25 22:08:54.697463",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Lease Contract",

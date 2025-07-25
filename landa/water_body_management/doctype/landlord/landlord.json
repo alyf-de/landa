@@ -43,8 +43,13 @@
    "label": "Additional Information"
   }
  ],
- "links": [],
- "modified": "2025-07-24 00:36:14.942064",
+ "links": [
+  {
+   "link_doctype": "Lease Contract",
+   "link_fieldname": "landlord_new"
+  }
+ ],
+ "modified": "2025-07-25 22:10:06.377321",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Landlord",
