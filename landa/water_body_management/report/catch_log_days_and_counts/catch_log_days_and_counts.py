@@ -1,13 +1,16 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from typing import List, Optional
+from typing import List
 
 import frappe
 from frappe import _
 from pypika.functions import Sum
+from pypika.queries import Table
+from pypika.terms import Criterion
 
 from landa.water_body_management.report.catch_log_statistics.catch_log_statistics import (
+	add_conditions,
 	add_or_filters,
 )
 
@@ -86,17 +89,14 @@ def get_columns(
 
 
 def get_data(
-	year: Optional[int] = None,
-	water_bodies: Optional[List[str]] = None,
-	organization: Optional[str] = None,
-	fishing_areas: Optional[List[str]] = None,
-	origin_of_catch_log_entry: Optional[str] = None,
+	filters,
 	show_area_name: bool = False,
 	show_water_body_size: bool = False,
 	show_water_body_status: bool = False,
 ):
 	entry = frappe.qb.DocType("Catch Log Entry")
 	water_body = frappe.qb.DocType("Water Body")
+	qb_filters = get_qb_filters(filters, entry)
 
 	query = (
 		frappe.qb.from_(entry)
@@ -105,7 +105,6 @@ def get_data(
 			entry.water_body,
 			entry.water_body_title,
 		)
-		.where(entry.workflow_state == "Approved")
 		.groupby(
 			entry.year,
 			entry.water_body,
@@ -128,32 +127,48 @@ def get_data(
 
 	query = query.select(Sum(entry.fishing_days))
 
-	if year:
-		query = query.where(entry.year == year)
-
-	if water_bodies:
-		query = query.where(entry.water_body.isin(water_bodies))
-
-	if organization:
-		query = query.where(entry.organization == organization)
-
-	if fishing_areas:
-		query = query.where(entry.fishing_area.isin(fishing_areas))
-
-	if origin_of_catch_log_entry:
-		query = query.where(entry.origin_of_catch_log_entry == origin_of_catch_log_entry)
-
-	query = add_or_filters(query, entry)
+	query = filter_and_group(query, entry, qb_filters)
 
 	return query.run()
 
 
-def execute(filters=None):
+def filter_and_group(query, entry: Table, qb_filters: List[Criterion]):
+	query = add_conditions(query, qb_filters)
+	query = add_or_filters(query, entry)
+	query = query.groupby(entry.year, entry.water_body, entry.water_body_title)
+
+	return query
+
+
+def get_qb_filters(filters, entry):
 	year = filters.pop("year", None)
 	water_bodies = filters.pop("water_body", [])
 	organization = filters.pop("organization", None)
 	fishing_areas = filters.pop("fishing_area", [])
 	origin_of_catch_log_entry = filters.pop("origin_of_catch_log_entry", None)
+	qb_filters = [
+		entry.workflow_state == "Approved",
+	]
+
+	if year:
+		qb_filters.append(entry.year == year)
+
+	if water_bodies:
+		qb_filters.append(entry.water_body.isin(water_bodies))
+
+	if organization:
+		qb_filters.append(entry.organization == organization)
+
+	if fishing_areas:
+		qb_filters.append(entry.fishing_area.isin(fishing_areas))
+
+	if origin_of_catch_log_entry:
+		qb_filters.append(entry.origin_of_catch_log_entry == origin_of_catch_log_entry)
+
+	return qb_filters
+
+
+def execute(filters=None):
 	extra_columns = filters.pop("extra_columns", [])
 	show_area_name = "area_name" in extra_columns
 	show_water_body_size = "water_body_size" in extra_columns
@@ -166,11 +181,7 @@ def execute(filters=None):
 			show_water_body_status,
 		),
 		get_data(
-			year,
-			water_bodies,
-			organization,
-			fishing_areas,
-			origin_of_catch_log_entry,
+			filters,
 			show_area_name=show_area_name,
 			show_water_body_size=show_water_body_size,
 			show_water_body_status=show_water_body_status,
