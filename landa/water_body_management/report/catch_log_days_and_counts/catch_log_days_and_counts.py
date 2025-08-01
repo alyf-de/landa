@@ -1,18 +1,17 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from typing import List
+from typing import TYPE_CHECKING, List
 
 import frappe
 from frappe import _
 from pypika.functions import Sum
-from pypika.queries import Table
-from pypika.terms import Criterion
 
-from landa.water_body_management.report.catch_log_statistics.catch_log_statistics import (
-	add_conditions,
-	add_or_filters,
-)
+from landa.water_body_management.report.utils import add_conditions, add_or_filters
+
+if TYPE_CHECKING:
+	from pypika.queries import Table
+	from pypika.terms import Criterion
 
 
 def get_columns(
@@ -132,7 +131,7 @@ def get_data(
 	return query.run()
 
 
-def filter_and_group(query, entry: Table, qb_filters: List[Criterion]):
+def filter_and_group(query, entry: "Table", qb_filters: "List[Criterion]"):
 	query = add_conditions(query, qb_filters)
 	query = add_or_filters(query, entry)
 	query = query.groupby(entry.year, entry.water_body, entry.water_body_title)
@@ -140,7 +139,7 @@ def filter_and_group(query, entry: Table, qb_filters: List[Criterion]):
 	return query
 
 
-def get_qb_filters(filters, entry):
+def get_qb_filters(filters, entry: "Table"):
 	year = filters.pop("year", None)
 	water_bodies = filters.pop("water_body", [])
 	organization = filters.pop("organization", None)
