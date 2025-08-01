@@ -12,7 +12,11 @@ from landa.water_body_management.report.catch_log_statistics.catch_log_statistic
 )
 
 
-def get_columns(extra_columns: List[str]) -> List[dict]:
+def get_columns(
+	show_area_name: bool = False,
+	show_water_body_size: bool = False,
+	show_water_body_status: bool = False,
+) -> List[dict]:
 	columns = [
 		{
 			"fieldname": "year",
@@ -33,7 +37,7 @@ def get_columns(extra_columns: List[str]) -> List[dict]:
 		},
 	]
 
-	if "water_body_status" in extra_columns:
+	if show_water_body_status:
 		columns.append(
 			{
 				"fieldname": "water_body_status",
@@ -43,7 +47,7 @@ def get_columns(extra_columns: List[str]) -> List[dict]:
 			}
 		)
 
-	if "area_name" in extra_columns:
+	if show_area_name:
 		columns.append(
 			{
 				"fieldname": "area_name",
@@ -52,7 +56,7 @@ def get_columns(extra_columns: List[str]) -> List[dict]:
 			},
 		)
 
-	if "water_body_size" in extra_columns:
+	if show_water_body_size:
 		columns.extend(
 			[
 				{
@@ -82,12 +86,14 @@ def get_columns(extra_columns: List[str]) -> List[dict]:
 
 
 def get_data(
-	extra_columns: List[str],
 	year: Optional[int] = None,
 	water_bodies: Optional[List[str]] = None,
 	organization: Optional[str] = None,
 	fishing_areas: Optional[List[str]] = None,
 	origin_of_catch_log_entry: Optional[str] = None,
+	show_area_name: bool = False,
+	show_water_body_size: bool = False,
+	show_water_body_status: bool = False,
 ):
 	entry = frappe.qb.DocType("Catch Log Entry")
 	water_body = frappe.qb.DocType("Water Body")
@@ -107,17 +113,17 @@ def get_data(
 		)
 	)
 
-	if "water_body_status" in extra_columns or "water_body_size" in extra_columns:
+	if show_water_body_status or show_water_body_size:
 		query = query.join(water_body).on(entry.water_body == water_body.name)
 
-	if "water_body_status" in extra_columns:
+	if show_water_body_status:
 		query = query.select(water_body.status)
 
-	if "area_name" in extra_columns:
+	if show_area_name:
 		area = frappe.qb.DocType("Fishing Area")
 		query = query.left_join(area).on(entry.fishing_area == area.name).select(area.area_name)
 
-	if "water_body_size" in extra_columns:
+	if show_water_body_size:
 		query = query.select(water_body.water_body_size, water_body.water_body_size_unit)
 
 	query = query.select(Sum(entry.fishing_days))
@@ -149,7 +155,24 @@ def execute(filters=None):
 	fishing_areas = filters.pop("fishing_area", [])
 	origin_of_catch_log_entry = filters.pop("origin_of_catch_log_entry", None)
 	extra_columns = filters.pop("extra_columns", [])
+	show_area_name = "area_name" in extra_columns
+	show_water_body_size = "water_body_size" in extra_columns
+	show_water_body_status = "water_body_status" in extra_columns
 
-	return get_columns(extra_columns), get_data(
-		extra_columns, year, water_bodies, organization, fishing_areas, origin_of_catch_log_entry
+	return (
+		get_columns(
+			show_area_name,
+			show_water_body_size,
+			show_water_body_status,
+		),
+		get_data(
+			year,
+			water_bodies,
+			organization,
+			fishing_areas,
+			origin_of_catch_log_entry,
+			show_area_name=show_area_name,
+			show_water_body_size=show_water_body_size,
+			show_water_body_status=show_water_body_status,
+		),
 	)
