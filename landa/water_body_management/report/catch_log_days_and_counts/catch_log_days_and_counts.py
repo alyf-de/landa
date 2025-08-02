@@ -5,9 +5,13 @@ from typing import TYPE_CHECKING, List
 
 import frappe
 from frappe import _
-from pypika.functions import Sum
+from pypika.functions import Coalesce, Substring, Sum
 
-from landa.water_body_management.report.utils import add_conditions, add_or_filters
+from landa.water_body_management.report.utils import (
+	add_conditions,
+	add_or_filters,
+	is_regional_or_state_employee,
+)
 
 if TYPE_CHECKING:
 	from pypika.queries import Table
@@ -18,6 +22,9 @@ def get_columns(
 	show_area_name: bool = False,
 	show_water_body_size: bool = False,
 	show_water_body_status: bool = False,
+	show_share_of_avl: bool = False,
+	show_share_of_avs: bool = False,
+	show_share_of_ave: bool = False,
 ) -> List[dict]:
 	columns = [
 		{
@@ -84,6 +91,32 @@ def get_columns(
 		},
 	)
 
+	if is_regional_or_state_employee():
+		if show_share_of_avl:
+			columns.append(
+				{
+					"fieldname": "share_of_avl",
+					"fieldtype": "Percent",
+					"label": _("Share of AVL"),
+				}
+			)
+		if show_share_of_avs:
+			columns.append(
+				{
+					"fieldname": "share_of_avs",
+					"fieldtype": "Percent",
+					"label": _("Share of AVS"),
+				}
+			)
+		if show_share_of_ave:
+			columns.append(
+				{
+					"fieldname": "share_of_ave",
+					"fieldtype": "Percent",
+					"label": _("Share of AVE"),
+				}
+			)
+
 	return columns
 
 
@@ -92,6 +125,9 @@ def get_data(
 	show_area_name: bool = False,
 	show_water_body_size: bool = False,
 	show_water_body_status: bool = False,
+	show_share_of_avl: bool = False,
+	show_share_of_avs: bool = False,
+	show_share_of_ave: bool = False,
 ):
 	entry = frappe.qb.DocType("Catch Log Entry")
 	water_body = frappe.qb.DocType("Water Body")
@@ -126,9 +162,59 @@ def get_data(
 
 	query = query.select(Sum(entry.fishing_days).as_("total_fishing_days"))
 
+	if is_regional_or_state_employee():
+		for show, regional_org, column_name in (
+			(show_share_of_avl, "AVL", "share_of_avl"),
+			(show_share_of_avs, "AVS", "share_of_avs"),
+			(show_share_of_ave, "AVE", "share_of_ave"),
+		):
+			if not show:
+				continue
+
+			by_all_regional_orgs = get_subquery(entry, qb_filters)
+			by_regional_org = get_subquery(
+				entry,
+				qb_filters + [Substring(entry.organization, 1, 3) == regional_org],  # index starts at 1
+			)
+			proportion_regional = (
+				frappe.qb.from_(by_all_regional_orgs)
+				.left_join(by_regional_org)
+				.on(
+					(by_all_regional_orgs.water_body == by_regional_org.water_body)
+					& (by_all_regional_orgs.year == by_regional_org.year)
+				)
+				.select(
+					by_all_regional_orgs.water_body,
+					by_all_regional_orgs.year,
+					(
+						Coalesce(by_regional_org.total_fishing_days, 0)
+						/ by_all_regional_orgs.total_fishing_days
+						* 100
+					).as_(column_name),
+				)
+			)
+			query = (
+				query.left_join(proportion_regional)
+				.on(
+					(entry.water_body == proportion_regional.water_body)
+					& (entry.year == proportion_regional.year)
+				)
+				.select(proportion_regional[column_name])
+			)
+
 	query = filter_and_group(query, entry, qb_filters)
 
 	return query.run(as_dict=True)
+
+
+def get_subquery(entry: "Table", qb_filters: "List[Criterion]"):
+	subquery = frappe.qb.from_(entry).select(
+		entry.water_body,
+		entry.year,
+		Sum(entry.fishing_days).as_("total_fishing_days"),
+	)
+
+	return filter_and_group(subquery, entry, qb_filters)
 
 
 def filter_and_group(query, entry: "Table", qb_filters: "List[Criterion]"):
@@ -172,17 +258,26 @@ def execute(filters=None):
 	show_area_name = "area_name" in extra_columns
 	show_water_body_size = "water_body_size" in extra_columns
 	show_water_body_status = "water_body_status" in extra_columns
+	show_share_of_avl = "share_of_avl" in extra_columns
+	show_share_of_avs = "share_of_avs" in extra_columns
+	show_share_of_ave = "share_of_ave" in extra_columns
 
 	return (
 		get_columns(
 			show_area_name,
 			show_water_body_size,
 			show_water_body_status,
+			show_share_of_avl,
+			show_share_of_avs,
+			show_share_of_ave,
 		),
 		get_data(
 			filters,
-			show_area_name=show_area_name,
-			show_water_body_size=show_water_body_size,
-			show_water_body_status=show_water_body_status,
+			show_area_name,
+			show_water_body_size,
+			show_water_body_status,
+			show_share_of_avl,
+			show_share_of_avs,
+			show_share_of_ave,
 		),
 	)

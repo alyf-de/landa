@@ -70,5 +70,33 @@ function get_extra_columns(txt) {
 		},
 	];
 
+	if (
+		frappe.user.has_role([
+			"Administrator",
+			"System Manager",
+			"LANDA State Organization Employee",
+			"LANDA Regional Organization Management",
+			"LANDA Regional Water Body Management",
+		])
+	) {
+		extra_columns.push(
+			{
+				value: "share_of_avl",
+				label: __("Share of AVL"),
+				description: "",
+			},
+			{
+				value: "share_of_avs",
+				label: __("Share of AVS"),
+				description: "",
+			},
+			{
+				value: "share_of_ave",
+				label: __("Share of AVE"),
+				description: "",
+			}
+		);
+	}
+
 	return extra_columns.filter((d) => d.label.toLowerCase().includes(txt.toLowerCase()));
 }
