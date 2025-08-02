@@ -164,7 +164,7 @@ def get_data(
 		query = query.left_join(water_body).on(entry.water_body == water_body.name)
 
 	if show_water_body_status:
-		query = query.select(water_body.status)
+		query = query.select(water_body.status.as_("water_body_status"))
 
 	if show_area_name:
 		area = frappe.qb.DocType("Fishing Area")
@@ -175,8 +175,8 @@ def get_data(
 
 	query = query.select(
 		child_table.fish_species,
-		Sum(child_table.amount),
-		Sum(child_table.weight_in_kg),
+		Sum(child_table.amount).as_("amount"),
+		Sum(child_table.weight_in_kg).as_("weight_in_kg"),
 	)
 
 	if is_regional_or_state_employee():
@@ -222,7 +222,7 @@ def get_data(
 			)
 
 	query = filter_and_group(query, entry, child_table, qb_filters, group_by_fish_species)
-	return query.run()
+	return query.run(as_dict=True)
 
 
 def get_subquery(entry: "Table", child_table: "Table", qb_filters: "List[Criterion]"):

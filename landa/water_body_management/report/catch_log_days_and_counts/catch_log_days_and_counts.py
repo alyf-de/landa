@@ -78,7 +78,7 @@ def get_columns(
 
 	columns.append(
 		{
-			"fieldname": "fishing_days",
+			"fieldname": "total_fishing_days",
 			"fieldtype": "Int",
 			"label": _("Fishing Days"),
 		},
@@ -115,7 +115,7 @@ def get_data(
 		query = query.join(water_body).on(entry.water_body == water_body.name)
 
 	if show_water_body_status:
-		query = query.select(water_body.status)
+		query = query.select(water_body.status.as_("water_body_status"))
 
 	if show_area_name:
 		area = frappe.qb.DocType("Fishing Area")
@@ -124,11 +124,11 @@ def get_data(
 	if show_water_body_size:
 		query = query.select(water_body.water_body_size, water_body.water_body_size_unit)
 
-	query = query.select(Sum(entry.fishing_days))
+	query = query.select(Sum(entry.fishing_days).as_("total_fishing_days"))
 
 	query = filter_and_group(query, entry, qb_filters)
 
-	return query.run()
+	return query.run(as_dict=True)
 
 
 def filter_and_group(query, entry: "Table", qb_filters: "List[Criterion]"):
