@@ -1,5 +1,5 @@
 {
- "add_total_row": 0,
+ "add_total_row": 1,
  "columns": [],
  "creation": "2025-01-16 19:20:31.761634",
  "disable_prepared_report": 1,
@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "Extended Information in Footer",
- "modified": "2025-01-16 20:17:31.401184",
+ "modified": "2025-08-03 19:36:37.022422",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Development",
