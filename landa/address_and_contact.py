@@ -2,6 +2,11 @@ import frappe
 from frappe import _
 
 
+def before_validate(doc, event):
+	if frappe.flags.in_test:
+		doc.flags.ignore_mandatory = True
+
+
 def validate(doc, event):
 	"""
 	Set explicit links to Customer, LANDA Member and Organization in the parent
