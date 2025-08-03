@@ -281,11 +281,13 @@ doc_events = {
 		"autoname": "landa.landa_sales.payment_entry.pament_entry.autoname",
 	},
 	"Address": {
+		"before_validate": "landa.address_and_contact.before_validate",
 		"validate": "landa.address_and_contact.validate",
 		"autoname": "landa.organization_management.address.address.autoname",
 		"on_trash": "landa.address_and_contact.on_trash",
 	},
 	"Contact": {
+		"before_validate": "landa.address_and_contact.before_validate",
 		"validate": [
 			"landa.organization_management.contact.contact.validate",
 			"landa.address_and_contact.validate",
