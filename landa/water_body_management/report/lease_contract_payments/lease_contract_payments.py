@@ -173,5 +173,7 @@ def get_data(
 			"currency": lease_contract.currency,
 			"payment_reference": lease_contract.payment_reference,
 			"payment_type": _(lease_contract.payment_type),
-			"payment_date": lease_contract.payment_date,
+			"payment_date": lease_contract.payment_date.replace(year=year)
+			if lease_contract.payment_date
+			else None,
 		}

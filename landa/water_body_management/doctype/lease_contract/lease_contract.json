@@ -172,9 +172,10 @@
    "label": "Payment Reference"
   },
   {
+   "description": "Yearly payment date (the year will be adjusted automatically in the report).",
    "fieldname": "payment_date",
    "fieldtype": "Date",
-   "label": "Payment Date"
+   "label": "(First) Payment Date"
   },
   {
    "fieldname": "payment_type",
@@ -191,7 +192,7 @@
   }
  ],
  "links": [],
- "modified": "2025-08-17 21:06:24.717194",
+ "modified": "2025-08-17 21:15:09.204652",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Lease Contract",
