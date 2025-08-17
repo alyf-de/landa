@@ -2,7 +2,6 @@
 # For license information, please see license.txt
 
 import frappe
-import numpy as np
 import pandas as pd
 from frappe import _
 
@@ -10,7 +9,7 @@ from frappe import _
 class LANDACurrentMemberData:
 	def __init__(self, filters):
 		# set attribute to load only members and remove it from filters
-		self.filter = filters  # .pop('organization', None)
+		self.filter = filters
 
 	def run(self):
 		return self.get_columns(), self.get_data()
