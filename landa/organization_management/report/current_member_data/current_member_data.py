@@ -68,8 +68,6 @@ class LANDACurrentMemberData:
 			"member",
 			"year",
 			"type",
-			"date_of_issue",
-			"number",
 		]
 		fishing_permits = frappe.get_list(
 			"Yearly Fishing Permit", fields=fishing_permit_columns, as_list=True
@@ -77,9 +75,7 @@ class LANDACurrentMemberData:
 		# convert to pandas dataframe
 		fishing_permits_df = frappe_tuple_to_pandas_df(fishing_permits, fishing_permit_columns)
 		fishing_permits_df.rename({"name": "yearly_fishing_permit"}, axis=1, inplace=True)
-		fishing_permits_df = remove_duplicate_indices(
-			fishing_permits_df, sort_by=["year", "date_of_issue"]
-		)
+		fishing_permits_df = remove_duplicate_indices(fishing_permits_df, sort_by=["year"])
 
 		# define the labels of db entries that are supposed to be loaded
 		link_field_label = "`tabDynamic Link`.link_name as member"
@@ -197,16 +193,6 @@ class LANDACurrentMemberData:
 				"fieldtype": "Link",
 				"fieldname": "type",
 				"options": "Yearly Fishing Permit Type",
-			},
-			{
-				"label": _("Issue Date of Yearly Fishing Permit"),
-				"fieldtype": "Date",
-				"fieldname": "date_of_issue",
-			},
-			{
-				"label": _("Yearly Fishing Permit Number"),
-				"fieldtype": "Data",
-				"fieldname": "number",
 			},
 			{
 				"label": _("Hat Sachsen-Anhalt Erlaubnisschein"),
