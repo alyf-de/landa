@@ -162,6 +162,7 @@
   {
    "fieldname": "lease_object",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Lease Object",
    "options": "Lease Object"
   },
@@ -178,6 +179,7 @@
   {
    "fieldname": "payment_type",
    "fieldtype": "Select",
+   "in_standard_filter": 1,
    "label": "Payment Type",
    "options": "Credit Transfer\nDirect Debit"
   },
@@ -189,7 +191,7 @@
   }
  ],
  "links": [],
- "modified": "2025-07-25 22:08:54.697463",
+ "modified": "2025-08-17 21:06:24.717194",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Lease Contract",
