@@ -1,6 +1,7 @@
 from typing import TYPE_CHECKING
 
 import frappe
+from frappe import _
 
 if TYPE_CHECKING:
 	from erpnext.stock.doctype.item.item import Item
@@ -83,3 +84,14 @@ def set_item_defaults(item: "Item"):
 			),
 		},
 	)
+
+
+def get_dashboard_data(data: dict):
+	"""Hide dashboard sections that are not relevant for LANDA."""
+	data["heatmap"] = False
+	for section in (_("Groups"), _("Buy"), _("Manufacture"), _("Traceability")):
+		for row in data["transactions"]:
+			if row["label"] == section:
+				row["items"] = []
+
+	return data
