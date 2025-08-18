@@ -259,8 +259,8 @@ doc_events = {
 		"autoname": "landa.landa_stock.delivery_note.delivery_note.autoname",
 	},
 	"Item": {
+		"before_validate": "landa.landa_stock.item.item.before_validate",
 		"before_insert": "landa.landa_stock.item.item.before_insert",
-		"after_insert": "landa.landa_stock.item.item.after_insert",
 		"autoname": "landa.landa_stock.item.item.autoname",
 	},
 	"Item Price": {"validate": "landa.landa_sales.item_price.item_price.validate"},
@@ -384,7 +384,8 @@ override_whitelisted_methods = {
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 override_doctype_dashboards = {
-	"Sales Order": "landa.landa_sales.sales_order.sales_order.get_dashboard_data"
+	"Sales Order": "landa.landa_sales.sales_order.sales_order.get_dashboard_data",
+	"Item": "landa.landa_stock.item.item.get_dashboard_data",
 }
 
 # exempt linked doctypes from being automatically cancelled
