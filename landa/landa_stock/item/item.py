@@ -6,32 +6,19 @@ if TYPE_CHECKING:
 	from erpnext.stock.doctype.item.item import Item
 
 
+def before_validate(item: "Item", event):
+	if frappe.flags.in_migrate:
+		return
+
+	set_item_defaults(item)
+
+
 def before_insert(item: "Item", event):
 	if frappe.flags.in_migrate:
 		return
 
 	set_year_of_validity(item)
 	set_tax_template(item)
-
-
-def after_insert(item, event):
-	"""Set Item Price based on Standard Rate entered in quick entry form.
-
-	The original method didn't do anything because Item Groups were not used and
-	therefore could not provide the default Price List.
-	"""
-	if item.standard_rate:
-		price_list = frappe.db.get_value("Price List", {"company": item.company, "selling": 1})
-		frappe.get_doc(
-			{
-				"doctype": "Item Price",
-				"price_list": price_list,
-				"item_code": item.name,
-				"uom": item.stock_uom,
-				"company": item.company,
-				"price_list_rate": item.standard_rate,
-			}
-		).insert()
 
 
 def set_year_of_validity(item: "Item"):
@@ -76,3 +63,23 @@ def autoname(item: "Item", event):
 
 		item.name = make_autoname(f"{series}.####", "Item")
 		item.item_code = item.name
+
+
+def set_item_defaults(item: "Item"):
+	"""Set Item Defaults with the company-specific price list."""
+	if not item.company:
+		return
+
+	if len(item.item_defaults) == 1 and item.item_defaults[0].company == item.company:
+		return
+
+	item.item_defaults = []
+	item.append(
+		"item_defaults",
+		{
+			"company": item.company,
+			"default_price_list": frappe.db.get_value(
+				"Price List", {"company": item.company, "selling": 1, "enabled": 1}
+			),
+		},
+	)
