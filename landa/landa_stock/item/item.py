@@ -1,33 +1,28 @@
+from typing import TYPE_CHECKING
+
 import frappe
+from frappe import _
+
+if TYPE_CHECKING:
+	from erpnext.stock.doctype.item.item import Item
 
 
-def before_insert(item, event):
-	if not frappe.flags.in_migrate:
-		set_year_of_validity(item)
-		set_tax_template(item)
+def before_validate(item: "Item", event):
+	if frappe.flags.in_migrate:
+		return
+
+	set_item_defaults(item)
 
 
-def after_insert(item, event):
-	"""Set Item Price based on Standard Rate entered in quick entry form.
+def before_insert(item: "Item", event):
+	if frappe.flags.in_migrate:
+		return
 
-	The original method didn't do anything because Item Groups were not used and
-	therefore could not provide the default Price List.
-	"""
-	if item.standard_rate:
-		price_list = frappe.db.get_value("Price List", {"company": item.company, "selling": 1})
-		frappe.get_doc(
-			{
-				"doctype": "Item Price",
-				"price_list": price_list,
-				"item_code": item.name,
-				"uom": item.stock_uom,
-				"company": item.company,
-				"price_list_rate": item.standard_rate,
-			}
-		).insert()
+	set_year_of_validity(item)
+	set_tax_template(item)
 
 
-def set_year_of_validity(item):
+def set_year_of_validity(item: "Item"):
 	"""Set "Valid From Year" and "Valid To Year" to year_of_validity from Attribute Value."""
 	if item.variant_of and item.attributes:
 		years = [row.attribute_value for row in item.attributes if row.attribute == "Gültigkeitsjahr"]
@@ -37,7 +32,7 @@ def set_year_of_validity(item):
 			item.valid_to_year = year
 
 
-def set_tax_template(item):
+def set_tax_template(item: "Item"):
 	if item.item_tax_template:
 		item.append(
 			"taxes",
@@ -47,7 +42,7 @@ def set_tax_template(item):
 		)
 
 
-def autoname(item, event):
+def autoname(item: "Item", event):
 	"""Create Company-specific Item name."""
 	if item.variant_of:
 		# Variant uses the Company-specific name of the template Item together
@@ -69,3 +64,34 @@ def autoname(item, event):
 
 		item.name = make_autoname(f"{series}.####", "Item")
 		item.item_code = item.name
+
+
+def set_item_defaults(item: "Item"):
+	"""Set Item Defaults with the company-specific price list."""
+	if not item.company:
+		return
+
+	if len(item.item_defaults) == 1 and item.item_defaults[0].company == item.company:
+		return
+
+	item.item_defaults = []
+	item.append(
+		"item_defaults",
+		{
+			"company": item.company,
+			"default_price_list": frappe.db.get_value(
+				"Price List", {"company": item.company, "selling": 1, "enabled": 1}
+			),
+		},
+	)
+
+
+def get_dashboard_data(data: dict):
+	"""Hide dashboard sections that are not relevant for LANDA."""
+	data["heatmap"] = False
+	for section in (_("Groups"), _("Buy"), _("Manufacture"), _("Traceability")):
+		for row in data["transactions"]:
+			if row["label"] == section:
+				row["items"] = []
+
+	return data
