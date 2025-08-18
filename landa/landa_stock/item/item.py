@@ -1,10 +1,17 @@
+from typing import TYPE_CHECKING
+
 import frappe
 
+if TYPE_CHECKING:
+	from erpnext.stock.doctype.item.item import Item
 
-def before_insert(item, event):
-	if not frappe.flags.in_migrate:
-		set_year_of_validity(item)
-		set_tax_template(item)
+
+def before_insert(item: "Item", event):
+	if frappe.flags.in_migrate:
+		return
+
+	set_year_of_validity(item)
+	set_tax_template(item)
 
 
 def after_insert(item, event):
@@ -27,7 +34,7 @@ def after_insert(item, event):
 		).insert()
 
 
-def set_year_of_validity(item):
+def set_year_of_validity(item: "Item"):
 	"""Set "Valid From Year" and "Valid To Year" to year_of_validity from Attribute Value."""
 	if item.variant_of and item.attributes:
 		years = [row.attribute_value for row in item.attributes if row.attribute == "Gültigkeitsjahr"]
@@ -37,7 +44,7 @@ def set_year_of_validity(item):
 			item.valid_to_year = year
 
 
-def set_tax_template(item):
+def set_tax_template(item: "Item"):
 	if item.item_tax_template:
 		item.append(
 			"taxes",
@@ -47,7 +54,7 @@ def set_tax_template(item):
 		)
 
 
-def autoname(item, event):
+def autoname(item: "Item", event):
 	"""Create Company-specific Item name."""
 	if item.variant_of:
 		# Variant uses the Company-specific name of the template Item together
