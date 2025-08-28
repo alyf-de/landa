@@ -57,6 +57,7 @@ frappe.ui.form.on("Payment Entry", {
 				customer: frm.doc.party,
 				outstanding_amount: [">", 0.01],
 				year_of_settlement: frm.doc.year_of_settlement,
+				docstatus: 1,
 			},
 			fields: ["name", "grand_total", "outstanding_amount", "due_date"],
 			order_by: "due_date asc",
