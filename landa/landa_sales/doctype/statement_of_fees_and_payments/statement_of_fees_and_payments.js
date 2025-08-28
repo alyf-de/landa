@@ -12,6 +12,15 @@ frappe.ui.form.on("Statement of Fees and Payments", {
 			};
 		});
 
+		frm.set_query("billing_contact", (doc) => {
+			return {
+				filters: [
+					["Dynamic Link", "link_doctype", "=", "Customer"],
+					["Dynamic Link", "link_name", "=", doc.customer],
+				],
+			};
+		});
+
 		frm.set_query("company_address", (doc) => {
 			return {
 				filters: [
