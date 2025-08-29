@@ -27,25 +27,27 @@ landa.selling = {
                 frm.clear_table("items");
                 frm.refresh_field("items");
 
-                items.map(async function (item) {
-                    const row = frm.add_child("items");
-                    await frappe.model.set_value(
-                        row.doctype,
-                        row.name,
-                        "item_code",
-                        item.name
-                    );
-                    frappe.model.set_value(row.doctype, row.name, "qty", 0);
+                items
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map(async function (item) {
+                        const row = frm.add_child("items");
+                        await frappe.model.set_value(
+                            row.doctype,
+                            row.name,
+                            "item_code",
+                            item.name
+                        );
+                        frappe.model.set_value(row.doctype, row.name, "qty", 0);
 
-                    // `ControlLink.validate()` does not get triggered by `frappe.model.set_value`,
-                    // therefore we have to set the "fetch from"-fields manually.
-                    frappe.model.set_value(
-                        row.doctype,
-                        row.name,
-                        "cannot_be_returned",
-                        item.cannot_be_returned
-                    );
-                });
+                        // `ControlLink.validate()` does not get triggered by `frappe.model.set_value`,
+                        // therefore we have to set the "fetch from"-fields manually.
+                        frappe.model.set_value(
+                            row.doctype,
+                            row.name,
+                            "cannot_be_returned",
+                            item.cannot_be_returned
+                        );
+                    });
             });
     },
     remove_zero_qty_items(items) {
