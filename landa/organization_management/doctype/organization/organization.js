@@ -9,6 +9,7 @@ frappe.ui.form.on("Organization", {
 			"Sales Order": () => frm.trigger("create_sales_order"),
 			"Sales Invoice": () => frm.trigger("create_sales_invoice"),
 			"Delivery Note": () => frm.trigger("create_delivery_note"),
+			"Payment Entry": () => frm.trigger("create_payment_entry"),
 		};
 	},
 	onload: function (frm) {
@@ -168,6 +169,15 @@ frappe.ui.form.on("Organization", {
 	},
 	create_delivery_note: function (frm) {
 		frappe.new_doc("Delivery Note", get_basic_sales_data(frm.doc));
+	},
+	create_payment_entry: function (frm) {
+		frappe.new_doc("Payment Entry", {
+			organization: frm.doc.name,
+			party_type: "Customer",
+			party: frm.doc.name,
+			company: frappe.boot.landa.company,
+			year_of_settlement: (new Date()).getFullYear(),
+		});
 	},
 });
 
