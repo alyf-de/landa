@@ -171,12 +171,9 @@ frappe.ui.form.on("Organization", {
 		frappe.new_doc("Delivery Note", get_basic_sales_data(frm.doc));
 	},
 	create_payment_entry: function (frm) {
-		frappe.new_doc("Payment Entry", {
-			organization: frm.doc.name,
-			party_type: "Customer",
-			party: frm.doc.name,
-			company: frappe.boot.landa.company,
-			year_of_settlement: (new Date()).getFullYear(),
+		frappe.model.open_mapped_doc({
+			method: "landa.organization_management.doctype.organization.organization.make_payment_entry",
+			frm: frm,
 		});
 	},
 });
