@@ -1,6 +1,7 @@
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
+from datetime import datetime
 from typing import List
 
 import frappe
@@ -285,3 +286,36 @@ def get_supported_water_bodies(organization: str) -> List[str]:
 		filters={"organization": organization, "disabled": 0},
 		pluck="water_body",
 	)
+
+
+@frappe.whitelist()
+def make_payment_entry(source_name, target_doc=None):
+	customer = frappe.db.get_value("Customer", {"organization": source_name})
+	if not customer:
+		frappe.throw(_("There is no Customer linked to {0}.").format(source_name))
+
+	company = frappe.db.get_value("Company", {"abbr": source_name[:3]})
+	if not company:
+		frappe.throw(_("No Company found for Organization {0}.").format(source_name))
+
+	current_year = datetime.now().year
+	current_date = datetime.now().date().isoformat()
+
+	paid_from, paid_to = frappe.db.get_value(
+		"Company", company, ["default_receivable_account", "default_bank_account"]
+	)
+
+	pe = frappe.new_doc("Payment Entry")
+	pe.payment_type = "Receive"
+	pe.party_type = "Customer"
+	pe.party = customer
+	pe.party_name = frappe.db.get_value("Customer", customer, "customer_name")
+	pe.year_of_settlement = current_year
+	pe.company = company
+	pe.paid_from = paid_from
+	pe.paid_to = paid_to
+	pe.posting_date = current_date
+	pe.setup_party_account_field()
+	pe.set_missing_values()
+
+	return pe
