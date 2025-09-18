@@ -82,8 +82,8 @@ def get_columns():
 			"fieldtype": "Data",
 		},
 		{
-			"fieldname": "payment_date",
-			"label": _("Payment Date"),
+			"fieldname": "payment_due_date",
+			"label": _("Payment Due Date"),
 			"fieldtype": "Date",
 		},
 		{
@@ -135,7 +135,7 @@ def get_data(
 			"lease_object",
 			"payment_reference",
 			"payment_type",
-			"payment_date",
+			"payment_due_date",
 			"landlord_new",
 			"`tabLease Contract Rent`.from_date",
 			"`tabLease Contract Rent`.to_date",
@@ -173,7 +173,7 @@ def get_data(
 			"currency": lease_contract.currency,
 			"payment_reference": lease_contract.payment_reference,
 			"payment_type": _(lease_contract.payment_type),
-			"payment_date": lease_contract.payment_date.replace(year=year)
-			if lease_contract.payment_date
+			"payment_due_date": lease_contract.payment_due_date.replace(year=year)
+			if lease_contract.payment_due_date
 			else None,
 		}

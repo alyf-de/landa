@@ -26,7 +26,7 @@
   "currency",
   "payment_reference",
   "payment_type",
-  "payment_date",
+  "payment_due_date",
   "lease_contract_rent",
   "landlord_section",
   "landlord_new"
@@ -172,12 +172,6 @@
    "label": "Payment Reference"
   },
   {
-   "description": "Yearly payment date (the year will be adjusted automatically in the report).",
-   "fieldname": "payment_date",
-   "fieldtype": "Date",
-   "label": "(First) Payment Date"
-  },
-  {
    "fieldname": "payment_type",
    "fieldtype": "Select",
    "in_standard_filter": 1,
@@ -189,10 +183,16 @@
    "fieldtype": "Link",
    "label": "Landlord",
    "options": "Landlord"
+  },
+  {
+   "description": "Yearly payment date (the year will be adjusted automatically in the report).",
+   "fieldname": "payment_due_date",
+   "fieldtype": "Date",
+   "label": "Payment Due Date"
   }
  ],
  "links": [],
- "modified": "2025-08-17 21:15:09.204652",
+ "modified": "2025-09-18 13:40:31.141308",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Lease Contract",
