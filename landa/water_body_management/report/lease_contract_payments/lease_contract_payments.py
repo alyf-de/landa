@@ -141,6 +141,7 @@ def get_data(
 			"`tabLease Contract Rent`.to_date",
 			"`tabLease Contract Rent`.rent_per_year",
 		],
+		order_by="payment_due_date ASC",
 	):
 		if lease_contract.from_date > year_start or lease_contract.to_date < year_end:
 			# calculate partial rent
