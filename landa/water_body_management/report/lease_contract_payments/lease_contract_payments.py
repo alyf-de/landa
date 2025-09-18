@@ -1,6 +1,8 @@
 # Copyright (c) 2025, ALYF GmbH and contributors
 # For license information, please see license.txt
 
+from datetime import date
+
 import frappe
 from frappe import _
 from frappe.utils.data import getdate
@@ -180,7 +182,35 @@ def get_data(
 			"currency": lease_contract.currency,
 			"payment_reference": lease_contract.payment_reference,
 			"payment_type": _(lease_contract.payment_type),
-			"payment_due_date": lease_contract.payment_due_date.replace(year=year)
+			"payment_due_date": change_year(lease_contract.payment_due_date, year)
 			if lease_contract.payment_due_date
 			else None,
 		}
+
+
+def change_year(date_to_change: date | None, new_year: int) -> date | None:
+	"""Change the year of a date.
+
+	Args:
+	    date_to_change: The date to change the year of.
+	    new_year: The new year to set.
+
+	Returns:
+	    The date with the new year.
+	"""
+	if date_to_change is None:
+		return None
+
+	try:
+		return date_to_change.replace(year=new_year)
+	except ValueError:
+		# This can happen in two main scenarios:
+		# 1. Leap year issue: Feb 29 in a non-leap year (most common)
+		# 2. Invalid year value (outside 1-9999 range)
+		if date_to_change.month == 2 and date_to_change.day == 29:
+			# Handle leap year case: move Feb 29 to Feb 28 in non-leap years
+			return date_to_change.replace(year=new_year, day=28)
+		else:
+			# For other ValueError cases (like invalid year), re-raise the exception
+			# since we can't safely handle those
+			raise
