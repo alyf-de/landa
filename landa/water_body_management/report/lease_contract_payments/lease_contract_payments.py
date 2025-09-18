@@ -143,12 +143,18 @@ def get_data(
 		],
 		order_by="payment_due_date ASC",
 	):
+		# Check if we need to calculate partial rent
+		# Only calculate partial rent if the contract period doesn't fully cover the year
+		contract_start_in_year = max(year_start, lease_contract.from_date)
+		contract_end_in_year = min(year_end, lease_contract.to_date)
+
 		if lease_contract.from_date > year_start or lease_contract.to_date < year_end:
-			# calculate partial rent
+			# Calculate partial rent using actual days in the year (handles leap years)
+			days_in_contract_period = (contract_end_in_year - contract_start_in_year).days + 1
+			days_in_year = (year_end - year_start).days + 1
+
 			rent = round(
-				lease_contract.rent_per_year
-				* (min(year_end, lease_contract.to_date) - max(year_start, lease_contract.from_date)).days
-				/ 365,
+				lease_contract.rent_per_year * round(days_in_contract_period / days_in_year, 2),
 				2,
 			)
 		else:
