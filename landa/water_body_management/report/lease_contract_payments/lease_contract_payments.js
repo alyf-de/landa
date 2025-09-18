@@ -16,12 +16,34 @@ frappe.query_reports["Lease Contract Payments"] = {
 			label: __("Water Body"),
 			fieldtype: "Link",
 			options: "Water Body",
+			get_query: () => {
+				if (!frappe.boot.landa.regional_organization) {
+					return {};
+				}
+
+				return {
+					filters: {
+						organization: frappe.boot.landa.regional_organization,
+					},
+				};
+			},
 		},
 		{
 			fieldname: "fishing_area",
 			label: __("Fishing Area"),
 			fieldtype: "Link",
 			options: "Fishing Area",
+			get_query: () => {
+				if (!frappe.boot.landa.regional_organization) {
+					return {};
+				}
+
+				return {
+					filters: {
+						organization: frappe.boot.landa.regional_organization,
+					},
+				};
+			},
 		},
 		{
 			fieldname: "lease_object",
