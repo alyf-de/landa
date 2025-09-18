@@ -151,3 +151,5 @@ Yearly payment date (the year will be adjusted automatically in the report).,Jä
 Lease Contract Payments,Pachtzahlungen,
 There is no Customer linked to {0}.,Es ist kein Bestellwesenkonto mit {0} verknüpft.,
 No Company found for Organization {0}.,Kein Bestellwesenkonto RV für Verein {0} gefunden.,
+Landlord Name,Verpächter,
+Payment Recipient,Zahlungsempfänger,
