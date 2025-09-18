@@ -27,8 +27,9 @@ landa.utils = {
 		return current_month < 10 ? current_year : current_year + 1;
 	},
 	set_company_and_customer: function (frm, company_field, customer_field) {
-		if (!frm.doc.company && frappe.boot.landa.company) {
-			frm.set_value(company_field || "company", frappe.boot.landa.company);
+		const _company_field = company_field || "company";
+		if (!frm.doc[_company_field] && frappe.boot.landa.company) {
+			frm.set_value(_company_field, frappe.boot.landa.company);
 		}
 
 		const _customer_field = customer_field || "customer";

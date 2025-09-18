@@ -4,6 +4,13 @@
 frappe.ui.form.on("Organization", {
 	setup: function (frm) {
 		disable_map_controls(frm.fields_dict["location"]);
+
+		frm.make_methods = {
+			"Sales Order": () => frm.trigger("create_sales_order"),
+			"Sales Invoice": () => frm.trigger("create_sales_invoice"),
+			"Delivery Note": () => frm.trigger("create_delivery_note"),
+			"Payment Entry": () => frm.trigger("create_payment_entry"),
+		};
 	},
 	onload: function (frm) {
 		frm.trigger("set_fishing_area_query");
@@ -154,7 +161,36 @@ frappe.ui.form.on("Organization", {
 			d.show();
 		});
 	},
+	create_sales_order: function (frm) {
+		frappe.new_doc("Sales Order", get_basic_sales_data(frm.doc));
+	},
+	create_sales_invoice: function (frm) {
+		frappe.new_doc("Sales Invoice", get_basic_sales_data(frm.doc));
+	},
+	create_delivery_note: function (frm) {
+		frappe.new_doc("Delivery Note", get_basic_sales_data(frm.doc));
+	},
+	create_payment_entry: function (frm) {
+		frappe.model.open_mapped_doc({
+			method: "landa.organization_management.doctype.organization.organization.make_payment_entry",
+			frm: frm,
+		});
+	},
 });
+
+/**
+ * Get the basic data for a sales document
+ * @param {Object} doc - The organization document
+ * @returns {Object} - The basic data for a sales document
+ */
+function get_basic_sales_data(doc) {
+	return {
+		organization: doc.name,
+		customer: doc.name,
+		company: frappe.boot.landa.company,
+		year_of_settlement: (new Date()).getFullYear(),
+	};
+}
 
 function disable_map_controls(field) {
 	/* disable all map controls except "marker" */
