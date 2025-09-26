@@ -14,10 +14,12 @@ from landa.utils import get_current_member_data
 
 class WaterBody(Document):
 	def on_update(self):
-		rebuild_water_body_cache(self.fishing_area)
+		if not self.flags.skip_cache_rebuild:
+			rebuild_water_body_cache(self.fishing_area)
 
 	def after_delete(self):
-		rebuild_water_body_cache(self.fishing_area)
+		if not self.flags.skip_cache_rebuild:
+			rebuild_water_body_cache(self.fishing_area)
 
 	def validate(self):
 		self.validate_edit_access()
@@ -74,8 +76,15 @@ def rebuild_water_body_cache(fishing_area: str = None, enqueued: bool = False):
 
 def remove_outdated_information():
 	cutoff_date = getdate()
+
 	remove_outdated_public_information(cutoff_date)
 	remove_past_events(cutoff_date)
+
+	frappe.enqueue(
+		rebuild_water_body_cache,
+		queue="long",
+		enqueue_after_commit=True,
+	)
 
 
 def remove_outdated_public_information(cutoff_date):
@@ -91,6 +100,7 @@ def remove_outdated_public_information(cutoff_date):
 		water_body = frappe.get_doc("Water Body", name)
 		water_body.current_public_information = None
 		water_body.current_information_expires_on = None
+		water_body.flags.skip_cache_rebuild = True
 		try:
 			water_body.save()
 		except Exception:
@@ -110,6 +120,7 @@ def remove_past_events(cutoff_date):
 		pluck="name",
 	):
 		water_body = frappe.get_doc("Water Body", name)
+		water_body.flags.skip_cache_rebuild = True
 		for event in water_body.events:
 			if event.date <= cutoff_date:
 				water_body.remove(event)
