@@ -16,7 +16,7 @@ frappe.ui.form.on("Organization", {
 		frm.trigger("set_fishing_area_query");
 	},
 	set_fishing_area_query: function (frm) {
-		if (!frm.doc.parent_organization || frm.doc.parent_organization === "LV") {
+		if (!frm.doc.parent_organization || frm.doc.parent_organization === frappe.boot.landa.state_organization) {
 			// If we're in a state or regional Organization, this doesn't make
 			// sense because Fishing Area depends on regional Organization.
 			return;

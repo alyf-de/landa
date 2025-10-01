@@ -6,7 +6,7 @@ frappe.ui.form.on('Lease Contract', {
 		frm.set_query("organization", function (doc) {
 			return {
 				filters: {
-					parent_organization: "LV",
+					parent_organization: frappe.boot.landa.state_organization,
 				},
 			};
 		});
