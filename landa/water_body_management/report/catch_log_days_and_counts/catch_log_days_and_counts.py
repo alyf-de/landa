@@ -136,32 +136,35 @@ def get_data(
 	water_body = frappe.qb.DocType("Water Body")
 	qb_filters = get_qb_filters(filters, entry)
 
-	query = (
-		frappe.qb.from_(entry)
-		.select(
-			entry.year,
-			entry.water_body,
-			entry.water_body_title,
-		)
-		.groupby(
-			entry.year,
-			entry.water_body,
-			entry.water_body_title,
-		)
+	# Build the query without groupby initially
+	query = frappe.qb.from_(entry).select(
+		entry.year,
+		entry.water_body,
+		entry.water_body_title,
 	)
+
+	# Track fields that need to be in GROUP BY
+	group_by_fields = [
+		entry.year,
+		entry.water_body,
+		entry.water_body_title,
+	]
 
 	if show_water_body_status or show_water_body_size:
 		query = query.join(water_body).on(entry.water_body == water_body.name)
 
 	if show_water_body_status:
 		query = query.select(water_body.status.as_("water_body_status"))
+		group_by_fields.append(water_body.status)
 
 	if show_area_name:
 		area = frappe.qb.DocType("Fishing Area")
 		query = query.left_join(area).on(entry.fishing_area == area.name).select(area.area_name)
+		group_by_fields.append(area.area_name)
 
 	if show_water_body_size:
 		query = query.select(water_body.water_body_size, water_body.water_body_size_unit)
+		group_by_fields.extend([water_body.water_body_size, water_body.water_body_size_unit])
 
 	query = query.select(Sum(entry.fishing_days).as_("total_fishing_days"))
 
@@ -204,8 +207,9 @@ def get_data(
 				)
 				.select(proportion_regional[column_name])
 			)
+			# Note: proportion_regional columns don't need to be in GROUP BY as they come from a subquery
 
-	query = filter_and_group(query, entry, qb_filters)
+	query = filter_and_group(query, entry, qb_filters, group_by_fields=group_by_fields)
 
 	return query.run(as_dict=True)
 
@@ -217,13 +221,18 @@ def get_subquery(entry: "Table", qb_filters: "List[Criterion]"):
 		Sum(entry.fishing_days).as_("total_fishing_days"),
 	)
 
-	return filter_and_group(subquery, entry, qb_filters)
+	# Subquery only needs to group by the fields it selects (excluding aggregates)
+	return filter_and_group(
+		subquery, entry, qb_filters, group_by_fields=[entry.year, entry.water_body]
+	)
 
 
-def filter_and_group(query, entry: "Table", qb_filters: "List[Criterion]"):
+def filter_and_group(query, entry: "Table", qb_filters: "List[Criterion]", group_by_fields=None):
 	query = add_conditions(query, qb_filters)
 	query = add_or_filters(query, entry)
-	query = query.groupby(entry.year, entry.water_body, entry.water_body_title)
+
+	if group_by_fields:
+		query = query.groupby(*group_by_fields)
 
 	return query
 
