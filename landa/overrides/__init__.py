@@ -13,7 +13,10 @@ def set_user_defaults():
 	if not current_member_data:
 		return
 
-	if not current_member_data.local_organization.endswith("000"):
+	if (
+		current_member_data.local_organization
+		and not current_member_data.local_organization.endswith("000")
+	):
 		# Default organization should not be set for members of a regional organization (ending with 000)
 		set_user_default("organization", current_member_data.organization)
 
@@ -23,5 +26,6 @@ def set_user_defaults():
 		frappe.db.get_value("Price List", {"company": current_member_data.company}),
 	)
 
-	# Customer is always the local organization (first seven digits of the organization)
-	set_user_default("customer", current_member_data.local_organization)
+	if current_member_data.local_organization:
+		# Customer is always the local organization (first seven digits of the organization)
+		set_user_default("customer", current_member_data.local_organization)

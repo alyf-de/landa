@@ -11,6 +11,7 @@
   "contract_data_section",
   "organization",
   "water_body",
+  "lease_object",
   "additional_information",
   "column_break_6",
   "organization_name",
@@ -23,14 +24,12 @@
   "end_date",
   "section_break_15",
   "currency",
+  "payment_reference",
+  "payment_type",
+  "payment_due_date",
   "lease_contract_rent",
   "landlord_section",
-  "external_contact",
-  "additional_information_about_landlord",
-  "column_break_22",
-  "first_name",
-  "last_name",
-  "institution_or_company_name"
+  "landlord_new"
  ],
  "fields": [
   {
@@ -104,25 +103,6 @@
    "label": "Landlord"
   },
   {
-   "fetch_from": "external_contact.first_name",
-   "fieldname": "first_name",
-   "fieldtype": "Data",
-   "label": "First Name",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "external_contact.last_name",
-   "fieldname": "last_name",
-   "fieldtype": "Data",
-   "label": "Last Name",
-   "read_only": 1
-  },
-  {
-   "fieldname": "additional_information_about_landlord",
-   "fieldtype": "Small Text",
-   "label": "Additional Information About Landlord"
-  },
-  {
    "fieldname": "organization",
    "fieldtype": "Link",
    "in_standard_filter": 1,
@@ -135,13 +115,6 @@
    "fieldname": "organization_name",
    "fieldtype": "Data",
    "label": "Regional Organization Name",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "external_contact.external_organization_name",
-   "fieldname": "institution_or_company_name",
-   "fieldtype": "Data",
-   "label": "Institution or Company Name",
    "read_only": 1
   },
   {
@@ -181,26 +154,45 @@
    "label": "Rent"
   },
   {
-   "fieldname": "column_break_22",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "lease_contract_rent",
    "fieldtype": "Table",
    "label": "Lease Contract Rent",
    "options": "Lease Contract Rent"
   },
   {
-   "allow_in_quick_entry": 1,
-   "fieldname": "external_contact",
+   "fieldname": "lease_object",
    "fieldtype": "Link",
    "in_standard_filter": 1,
+   "label": "Lease Object",
+   "options": "Lease Object"
+  },
+  {
+   "fieldname": "payment_reference",
+   "fieldtype": "Data",
+   "label": "Payment Reference"
+  },
+  {
+   "fieldname": "payment_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Payment Type",
+   "options": "Credit Transfer\nDirect Debit"
+  },
+  {
+   "fieldname": "landlord_new",
+   "fieldtype": "Link",
    "label": "Landlord",
-   "options": "External Contact"
+   "options": "Landlord"
+  },
+  {
+   "description": "Yearly payment date (the year will be adjusted automatically in the report).",
+   "fieldname": "payment_due_date",
+   "fieldtype": "Date",
+   "label": "Payment Due Date"
   }
  ],
  "links": [],
- "modified": "2025-07-24 00:14:09.248284",
+ "modified": "2025-09-18 13:40:31.141308",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Lease Contract",

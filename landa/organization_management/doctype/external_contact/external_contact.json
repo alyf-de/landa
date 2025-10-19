@@ -201,10 +201,6 @@
  ],
  "links": [
   {
-   "link_doctype": "Lease Contract",
-   "link_fieldname": "external_contact"
-  },
-  {
    "link_doctype": "Stocking Measure",
    "link_fieldname": "supplier"
   },
@@ -213,7 +209,7 @@
    "link_fieldname": "supplier"
   }
  ],
- "modified": "2025-07-24 00:14:56.770926",
+ "modified": "2025-07-25 22:09:20.604788",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Contact",

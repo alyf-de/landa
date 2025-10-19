@@ -5,7 +5,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from frappe.model.dynamic_links import get_dynamic_link_map
-from frappe.utils.nestedset import get_ancestors_of
+from frappe.utils.nestedset import get_ancestors_of, get_root_of
 
 
 def get_new_name(prefix: str, company: str, doctype: str, year: str | None = None) -> str:
@@ -48,19 +48,24 @@ def reset_workspace(workspace: str) -> None:
 
 
 def get_current_member_data() -> frappe._dict:
+	"""Get the current member data from the cache."""
+	return frappe.cache().get_value(
+		key="landa-member-data",
+		generator=_get_current_member_data,
+		user=frappe.session.user,
+	)
+
+
+def _get_current_member_data() -> frappe._dict:
 	result = frappe._dict()
 	if not frappe.session.user or (frappe.session.user in frappe.STANDARD_USERS):
+		result.state_organization = get_root_of("Organization")
+		result.company = get_company_by_abbr(result.state_organization)
 		return result
-
-	# TODO: Something if off with the cache -> loading old data. Figure out reason before reactivating.
-	# from_cache = frappe.cache().hget("landa", frappe.session.user)
-	# if from_cache:
-	# 	return from_cache
 
 	member_name, member_organization = get_member_and_organization(frappe.session.user)
 
 	if not member_name:
-		frappe.cache().hset("landa", frappe.session.user, result)
 		return result
 
 	if not member_organization:
@@ -77,8 +82,6 @@ def get_current_member_data() -> frappe._dict:
 	result.regional_organization = ancestors[1]
 	result.company = get_company_by_abbr(ancestors[1])
 	result.state_organization = ancestors[0]
-
-	frappe.cache().hset("landa", frappe.session.user, result)
 
 	return result
 
