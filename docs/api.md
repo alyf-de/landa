@@ -57,10 +57,9 @@ Get a list of water bodies along with their main fish species and special provis
     Parameters:
 
     - `id` (optional): return only data of the water body with this ID.
-    - `fishing_area` (optional): return only water bodies in this fishing_area.
     - `only_id` (optional, 1 or 0, default: 0): return only the IDs of the water bodies.
 
-The parameters `only_id` and `fishing_area` can be combined. The other parameters are mutually exclusive.
+The parameters are mutually exclusive.
 
 ### Example Requests
 
@@ -76,12 +75,6 @@ Get a specific water body:
 
 ```bash
 curl --location "$BASE_URL/api/method/landa.api.water_body?id=C09-110"
-```
-
-Get all water bodies in a specific fishing area:
-
-```bash
-curl --location "$BASE_URL/api/method/landa.api.water_body?fishing_area=C09"
 ```
 
 Get the IDs of all water bodies:

@@ -76,21 +76,20 @@ def organization(id: str = None) -> List[Dict]:
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
-def water_body(id: str = None, fishing_area: str = None, only_id: int = 0) -> List[Dict]:
+def water_body(id: str = None, only_id: int = 0) -> List[Dict]:
 	"""Return a list of water bodies with fish species and special provisions."""
 	if id:
 		# We do not cache ID since it's uniqueness makes the API performant
-		return build_water_body_data(id, fishing_area)
+		return build_water_body_data(id)
 
-	key = fishing_area or "all"
-	cache_exists = frappe.cache().hexists("water_body_data", key)
+	cache_exists = frappe.cache().hexists("water_body_data", "all")
 
 	if not cache_exists:
 		# Build the cache (for future calls)
-		build_water_body_cache(fishing_area)
+		build_water_body_cache()
 
 	# return the cached result
-	data = get_water_body_cache(key)
+	data = get_water_body_cache("all")
 	return [item["id"] for item in data] if only_id else data
 
 
