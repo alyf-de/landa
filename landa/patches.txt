@@ -46,3 +46,4 @@ landa.patches.move_lease_rent_to_table # 2025-03-24
 landa.patches.set_customer_price_list
 landa.patches.rename_landlord_to_external_contact
 execute:frappe.db.set_value("Report", "Water Body Development", "add_total_row", 1, update_modified=False)
+landa.patches.fix_redis_type_mismatch
