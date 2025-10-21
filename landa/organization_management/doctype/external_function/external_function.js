@@ -6,7 +6,7 @@ frappe.ui.form.on("External Function", {
 		frm.set_query("organization", () => {
 			return {
 				filters: {
-					parent_organization: "LV",
+					parent_organization: frappe.boot.landa.state_organization,
 				},
 			};
 		});
