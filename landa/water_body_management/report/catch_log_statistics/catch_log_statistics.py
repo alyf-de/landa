@@ -104,6 +104,7 @@ def get_columns(
 				"fieldtype": "Float",
 				"label": _("Weight in Kg"),
 				"width": 150,
+				"precision": 2,
 			},
 		]
 	)
