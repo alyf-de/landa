@@ -149,6 +149,7 @@ def get_data(
 ):
 	entry = frappe.qb.DocType("Catch Log Entry")
 	child_table = frappe.qb.DocType("Catch Log Fish Table")
+	water_body = frappe.qb.DocType("Water Body")
 	qb_filters = get_qb_filters(filters, entry, child_table)
 
 	query = (
@@ -158,6 +159,8 @@ def get_data(
 			Sum(child_table.amount).as_("amount"),
 			Sum(child_table.weight_in_kg).as_("weight_in_kg"),
 		)
+		.left_join(water_body)
+		.on(entry.water_body == water_body.name)
 		.join(child_table)
 		.on(entry.name == child_table.parent)
 	)
@@ -168,18 +171,14 @@ def get_data(
 	if not group_by_fish_species:
 		query = query.select(
 			entry.water_body,
-			entry.water_body_title,
+			water_body.title.as_("water_body_title"),
 		)
 		group_by_fields.extend(
 			[
 				entry.water_body,
-				entry.water_body_title,
+				water_body.title,
 			]
 		)
-
-	if show_water_body_status or show_water_body_size:
-		water_body = frappe.qb.DocType("Water Body")
-		query = query.left_join(water_body).on(entry.water_body == water_body.name)
 
 	if show_water_body_status:
 		query = query.select(water_body.status.as_("water_body_status"))
