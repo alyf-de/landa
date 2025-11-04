@@ -115,6 +115,7 @@ def get_columns(
 					"fieldname": "share_of_avl",
 					"fieldtype": "Percent",
 					"label": _("Share of AVL"),
+					"precision": 1,
 				}
 			)
 		if show_share_of_avs:
@@ -123,6 +124,7 @@ def get_columns(
 					"fieldname": "share_of_avs",
 					"fieldtype": "Percent",
 					"label": _("Share of AVS"),
+					"precision": 1,
 				}
 			)
 		if show_share_of_ave:
@@ -131,6 +133,7 @@ def get_columns(
 					"fieldname": "share_of_ave",
 					"fieldtype": "Percent",
 					"label": _("Share of AVE"),
+					"precision": 1,
 				}
 			)
 
