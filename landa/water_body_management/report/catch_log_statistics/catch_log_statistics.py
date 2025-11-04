@@ -151,12 +151,30 @@ def get_data(
 	child_table = frappe.qb.DocType("Catch Log Fish Table")
 	qb_filters = get_qb_filters(filters, entry, child_table)
 
-	query = frappe.qb.from_(entry).join(child_table).on(entry.name == child_table.parent)
+	query = (
+		frappe.qb.from_(entry)
+		.select(
+			child_table.fish_species,
+			Sum(child_table.amount).as_("amount"),
+			Sum(child_table.weight_in_kg).as_("weight_in_kg"),
+		)
+		.join(child_table)
+		.on(entry.name == child_table.parent)
+	)
+	group_by_fields = [
+		child_table.fish_species,
+	]
 
 	if not group_by_fish_species:
 		query = query.select(
 			entry.water_body,
 			entry.water_body_title,
+		)
+		group_by_fields.extend(
+			[
+				entry.water_body,
+				entry.water_body_title,
+			]
 		)
 
 	if show_water_body_status or show_water_body_size:
@@ -165,19 +183,21 @@ def get_data(
 
 	if show_water_body_status:
 		query = query.select(water_body.status.as_("water_body_status"))
+		group_by_fields.append(water_body.status)
 
 	if show_area_name:
 		area = frappe.qb.DocType("Fishing Area")
 		query = query.left_join(area).on(entry.fishing_area == area.name).select(area.area_name)
+		group_by_fields.append(area.area_name)
 
 	if show_water_body_size:
 		query = query.select(water_body.water_body_size, water_body.water_body_size_unit)
-
-	query = query.select(
-		child_table.fish_species,
-		Sum(child_table.amount).as_("amount"),
-		Sum(child_table.weight_in_kg).as_("weight_in_kg"),
-	)
+		group_by_fields.extend(
+			[
+				water_body.water_body_size,
+				water_body.water_body_size_unit,
+			]
+		)
 
 	if is_regional_or_state_employee():
 		for show, regional_org, column_name in (
@@ -221,7 +241,7 @@ def get_data(
 				.select(proportion_regional[column_name])
 			)
 
-	query = filter_and_group(query, entry, child_table, qb_filters, group_by_fish_species)
+	query = filter_and_group(query, entry, qb_filters, group_by_fields=group_by_fields)
 	return query.run(as_dict=True)
 
 
@@ -237,22 +257,25 @@ def get_subquery(entry: "Table", child_table: "Table", qb_filters: "List[Criteri
 		)
 	)
 
-	return filter_and_group(subquery, entry, child_table, qb_filters)
+	return filter_and_group(
+		subquery,
+		entry,
+		qb_filters,
+		group_by_fields=[entry.water_body, child_table.fish_species],
+	)
 
 
 def filter_and_group(
 	query,
 	entry: "Table",
-	child_table: "Table",
 	qb_filters: "List[Criterion]",
-	group_by_fish_species=False,
+	group_by_fields=None,
 ):
 	query = add_conditions(query, qb_filters)
 	query = add_or_filters(query, entry)
-	if group_by_fish_species:
-		query = query.groupby(child_table.fish_species)
-	else:
-		query = query.groupby(entry.water_body, entry.water_body_title, child_table.fish_species)
+
+	if group_by_fields:
+		query = query.groupby(*group_by_fields)
 
 	return query
 
