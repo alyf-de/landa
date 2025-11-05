@@ -10,7 +10,7 @@ from landa.water_body_management.doctype.water_body.water_body import rebuild_wa
 
 class WaterBodyManagementLocalOrganization(Document):
 	def on_update(self):
-		rebuild_water_body_cache(self.fishing_area)
+		rebuild_water_body_cache()
 
 	def after_delete(self):
-		rebuild_water_body_cache(self.fishing_area)
+		rebuild_water_body_cache()

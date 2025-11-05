@@ -14,10 +14,12 @@ from landa.utils import get_current_member_data
 
 class WaterBody(Document):
 	def on_update(self):
-		rebuild_water_body_cache(self.fishing_area)
+		if not self.flags.skip_cache_rebuild:
+			rebuild_water_body_cache()
 
 	def after_delete(self):
-		rebuild_water_body_cache(self.fishing_area)
+		if not self.flags.skip_cache_rebuild:
+			rebuild_water_body_cache()
 
 	def validate(self):
 		self.validate_edit_access()
@@ -53,29 +55,29 @@ class WaterBody(Document):
 		self.marker_tooltip = None
 
 
-def rebuild_water_body_cache(fishing_area: str = None, enqueued: bool = False):
-	"""
-	Rebuilds water body cache for all water bodies **AND** fishing area wise.
-	"""
+def rebuild_water_body_cache(enqueued: bool = False):
+	"""Rebuild cache for all Water Bodies."""
 	# Invalidate Cache
 	if enqueued:
-		frappe.cache().hset("water_body_data", "in_progress", 1)
+		frappe.cache().set_value("water_body_data_in_progress", 1)
 
-	frappe.cache().hdel("water_body_data", "all")
-	build_water_body_cache()
-
-	if fishing_area:
-		frappe.cache().hdel("water_body_data", fishing_area)
-		build_water_body_cache(fishing_area=fishing_area)
+	frappe.cache().set_value("water_body_data", build_water_body_data())
 
 	if enqueued:
-		frappe.cache().hset("water_body_data", "in_progress", 0)
+		frappe.cache().set_value("water_body_data_in_progress", 0)
 
 
 def remove_outdated_information():
 	cutoff_date = getdate()
+
 	remove_outdated_public_information(cutoff_date)
 	remove_past_events(cutoff_date)
+
+	frappe.enqueue(
+		rebuild_water_body_cache,
+		queue="long",
+		enqueue_after_commit=True,
+	)
 
 
 def remove_outdated_public_information(cutoff_date):
@@ -91,6 +93,7 @@ def remove_outdated_public_information(cutoff_date):
 		water_body = frappe.get_doc("Water Body", name)
 		water_body.current_public_information = None
 		water_body.current_information_expires_on = None
+		water_body.flags.skip_cache_rebuild = True
 		try:
 			water_body.save()
 		except Exception:
@@ -110,6 +113,7 @@ def remove_past_events(cutoff_date):
 		pluck="name",
 	):
 		water_body = frappe.get_doc("Water Body", name)
+		water_body.flags.skip_cache_rebuild = True
 		for event in water_body.events:
 			if event.date <= cutoff_date:
 				water_body.remove(event)
@@ -121,24 +125,22 @@ def remove_past_events(cutoff_date):
 			)
 
 
-def build_water_body_cache(fishing_area: str = None):
+def build_water_body_cache():
 	"""
 	Build the water body cache for all water bodies **OR** fishing area wise.
 	"""
-	water_bodies = build_water_body_data(fishing_area=fishing_area)
-	key = fishing_area or "all"
-	frappe.cache().hset("water_body_data", key, water_bodies)
+	frappe.cache().set_value("water_body_data", build_water_body_data())
 
 
-def build_water_body_data(id: str = None, fishing_area: str = None) -> List[Dict]:
+def build_water_body_data(id: str = None) -> List[Dict]:
 	"""
 	Return a list of water bodies with fish species and special provisions
 	"""
-	result = query_water_body_data(id=id, fishing_area=fishing_area)
+	result = query_water_body_data(id=id)
 	return consolidate_water_body_data(water_body_data=result)
 
 
-def query_water_body_data(id: str = None, fishing_area: str = None) -> List[Dict]:
+def query_water_body_data(id: str = None) -> List[Dict]:
 	water_body = frappe.qb.DocType("Water Body")
 	fish_species_table = frappe.qb.DocType("Fish Species Table")
 	wb_provision_table = frappe.qb.DocType("Water Body Special Provision Table")
@@ -185,9 +187,6 @@ def query_water_body_data(id: str = None, fishing_area: str = None) -> List[Dict
 
 	if id and isinstance(id, str):
 		query = query.where(water_body.name == id)
-
-	if fishing_area and isinstance(fishing_area, str):
-		query = query.where(water_body.fishing_area == fishing_area)
 
 	return query.run(as_dict=True)
 
@@ -318,7 +317,7 @@ def rebuild_cache_on_attachment(doc, method):
 	water_body_data = frappe.db.get_value(
 		"Water Body",
 		doc.attached_to_name,
-		["is_active", "display_in_fishing_guide", "fishing_area"],
+		["is_active", "display_in_fishing_guide"],
 		as_dict=True,
 	)
 	if not water_body_data:
@@ -331,10 +330,9 @@ def rebuild_cache_on_attachment(doc, method):
 	if method == "after_delete":
 		# NOTE:Enqueue gets uncommitted data (new thread). Files appear even if deleted
 		# Still no clue why
-		rebuild_water_body_cache(fishing_area=water_body_data.fishing_area)
-	elif not frappe.cache().hget("water_body_data", "in_progress"):
+		rebuild_water_body_cache()
+	elif not frappe.cache().get_value("water_body_data_in_progress"):
 		frappe.enqueue(
 			rebuild_water_body_cache,
-			fishing_area=water_body_data.fishing_area,
 			enqueued=True,
 		)

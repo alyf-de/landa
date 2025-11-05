@@ -5,10 +5,7 @@ import frappe
 
 from landa.water_body_management.change_log import ChangeLog
 from landa.water_body_management.doctype.fish_species.fish_species import get_fish_species_data
-from landa.water_body_management.doctype.water_body.water_body import (
-	build_water_body_cache,
-	build_water_body_data,
-)
+from landa.water_body_management.doctype.water_body.water_body import build_water_body_data
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
@@ -76,27 +73,15 @@ def organization(id: str = None) -> List[Dict]:
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
-def water_body(id: str = None, fishing_area: str = None, only_id: int = 0) -> List[Dict]:
+def water_body(id: str = None, only_id: int = 0) -> List[Dict]:
 	"""Return a list of water bodies with fish species and special provisions."""
 	if id:
 		# We do not cache ID since it's uniqueness makes the API performant
-		return build_water_body_data(id, fishing_area)
-
-	key = fishing_area or "all"
-	cache_exists = frappe.cache().hexists("water_body_data", key)
-
-	if not cache_exists:
-		# Build the cache (for future calls)
-		build_water_body_cache(fishing_area)
+		return build_water_body_data(id)
 
 	# return the cached result
-	data = get_water_body_cache(key)
+	data = frappe.cache().get_value("water_body_data", build_water_body_data)
 	return [item["id"] for item in data] if only_id else data
-
-
-def get_water_body_cache(key: str) -> List[Dict]:
-	"""Return a **CACHED** list of water bodies with fish species and special provisions."""
-	return frappe.cache().hget("water_body_data", key)
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])

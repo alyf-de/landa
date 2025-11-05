@@ -137,21 +137,23 @@ def get_data(
 	qb_filters = get_qb_filters(filters, entry)
 
 	# Build the query without groupby initially
-	query = frappe.qb.from_(entry).select(
-		entry.year,
-		entry.water_body,
-		entry.water_body_title,
+	query = (
+		frappe.qb.from_(entry)
+		.left_join(water_body)
+		.on(entry.water_body == water_body.name)
+		.select(
+			entry.year,
+			entry.water_body,
+			water_body.title.as_("water_body_title"),
+		)
 	)
 
 	# Track fields that need to be in GROUP BY
 	group_by_fields = [
 		entry.year,
 		entry.water_body,
-		entry.water_body_title,
+		water_body.title,
 	]
-
-	if show_water_body_status or show_water_body_size:
-		query = query.join(water_body).on(entry.water_body == water_body.name)
 
 	if show_water_body_status:
 		query = query.select(water_body.status.as_("water_body_status"))
