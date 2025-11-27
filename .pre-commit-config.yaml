@@ -42,7 +42,9 @@ repos:
                 .*node_modules.*|
                 .*boilerplate.*|
                 landa/templates/includes/.*|
-                landa/public/js/lib/.*
+                landa/public/js/lib/.*|
+                landa/water_body_management/doctype/stocking_target/stocking_target.js|
+                landa/water_body_management/doctype/stocking_measure/stocking_measure.js
             )$
 
 
@@ -60,7 +62,9 @@ repos:
                 .*node_modules.*|
                 .*boilerplate.*|
                 landa/templates/includes/.*|
-                landa/public/js/lib/.*
+                landa/public/js/lib/.*|
+                landa/water_body_management/doctype/stocking_target/stocking_target.js|
+                landa/water_body_management/doctype/stocking_measure/stocking_measure.js
             )$
 
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
