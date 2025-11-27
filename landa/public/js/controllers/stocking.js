@@ -1,6 +1,8 @@
-frappe.provide("landa.StockingController");
+frappe.provide("landa.water_body_management");
 
-landa.StockingController = class StockingController extends frappe.ui.form.Controller {
+landa.water_body_management.StockingController = class StockingController extends (
+	frappe.ui.form.Controller
+) {
 	onload() {
 		this.frm.set_query("organization", function (doc) {
 			return {

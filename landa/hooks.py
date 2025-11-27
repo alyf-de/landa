@@ -145,17 +145,8 @@ welcome_email = "landa.utils.welcome_email"
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_js = [
-	"/assets/landa/js/queries.js",
-	"/assets/landa/js/utils.js",
-	"/assets/landa/js/map_defaults.js",
-	"/assets/landa/js/selling_utils.js",
-]
-
-app_include_css = [
-	"/assets/landa/css/hide_like.css",
-	"/assets/landa/css/hide_comparison_message.css",
-]
+app_include_js = "landa.bundle.js"
+app_include_css = "landa.bundle.css"
 
 
 # include js, css files in header of web template

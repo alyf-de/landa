@@ -1,12 +1,8 @@
 // Copyright (c) 2022, Real Experts GmbH and contributors
 // For license information, please see license.txt
+frappe.provide("landa.water_body_management");
+landa.water_body_management.StockingMeasure = class StockingMeasure extends (
+	landa.StockingController
+) {};
 
-{% include "landa/water_body_management/stocking_controller.js" %}
-
-frappe.ui.form.on("Stocking Measure", {
-	// refresh: function(frm) {
-
-	// }
-});
-
-cur_frm.script_manager.make(landa.StockingController);
+cur_frm.script_manager.make(landa.water_body_management.StockingMeasure);
