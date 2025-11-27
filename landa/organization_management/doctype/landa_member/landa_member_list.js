@@ -44,10 +44,10 @@ frappe.listview_settings["LANDA Member"] = {
 									});
 							},
 							__("Delete {0} items permanently?", [docnames.length]),
-							__("Delete")
+							__("Delete"),
 						);
 					},
-					true
+					true,
 				);
 			}
 		}
@@ -80,19 +80,19 @@ frappe.listview_settings["LANDA Member"] = {
 									permit_type: values.permit_type,
 									year: values.year,
 									members: list_view.get_checked_items(true),
-								}
+								},
 							)
 							.then((total_created) => {
 								frappe.show_alert({
 									message: __(
 										"Yearly Fishing Permits have been created for {0} members.",
-										[total_created]
+										[total_created],
 									),
 									indicator: "green",
 								});
 								list_view.refresh();
 							});
-					}
+					},
 				);
 			});
 		}

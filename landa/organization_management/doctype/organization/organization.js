@@ -14,9 +14,14 @@ frappe.ui.form.on("Organization", {
 	},
 	onload: function (frm) {
 		frm.trigger("set_fishing_area_query");
+		frm.set_query("public_address", erpnext.queries.address_query);
+		frm.set_query("public_contact", erpnext.queries.contact_query);
 	},
 	set_fishing_area_query: function (frm) {
-		if (!frm.doc.parent_organization || frm.doc.parent_organization === frappe.boot.landa.state_organization) {
+		if (
+			!frm.doc.parent_organization ||
+			frm.doc.parent_organization === frappe.boot.landa.state_organization
+		) {
 			// If we're in a state or regional Organization, this doesn't make
 			// sense because Fishing Area depends on regional Organization.
 			return;
@@ -50,7 +55,7 @@ frappe.ui.form.on("Organization", {
 
 		if (frappe.user.has_role("System Manager") && !frm.is_dirty()) {
 			frm.page.add_menu_item(__("Update Naming Series"), () =>
-				frm.trigger("update_naming_series")
+				frm.trigger("update_naming_series"),
 			);
 		}
 
@@ -99,31 +104,27 @@ frappe.ui.form.on("Organization", {
 							callback: (r) => {
 								if (!r.exc) {
 									frappe.show_alert({
-										message: __("The LANDA Member is now linked as a contact of this Organization and the related Customer"),
+										message: __(
+											"The LANDA Member is now linked as a contact of this Organization and the related Customer",
+										),
 										indicator: "green",
 									});
 									frm.reload_doc();
 								}
 							},
 						});
-					}
+					},
 				);
 			});
 		}
 
 		if (!frm.is_new() && frappe.model.can_read("Sales Invoice")) {
 			frm.add_custom_button(__("Billing History"), () => {
-				frappe.set_route(
-					"query-report",
-					"Billing History",
-					{ organization: frm.doc.name },
-				);
+				frappe.set_route("query-report", "Billing History", {
+					organization: frm.doc.name,
+				});
 			});
 		}
-	},
-	onload: function (frm) {
-		frm.set_query("public_address", erpnext.queries.address_query);
-		frm.set_query("public_contact", erpnext.queries.contact_query);
 	},
 	update_naming_series: function (frm) {
 		frm.call("get_series_current").then((r) => {
@@ -188,7 +189,7 @@ function get_basic_sales_data(doc) {
 		organization: doc.name,
 		customer: doc.name,
 		company: frappe.boot.landa.company,
-		year_of_settlement: (new Date()).getFullYear(),
+		year_of_settlement: new Date().getFullYear(),
 	};
 }
 

@@ -20,6 +20,6 @@ frappe.query_reports["Issuing statistics"] = {
 			label: __("Customer"),
 			fieldtype: "Link",
 			options: "Customer",
-		}
+		},
 	],
 };

@@ -29,7 +29,7 @@ frappe.ui.form.on("Payment Entry", {
 			const references = frm.doc.references.filter(
 				(ref) =>
 					["Sales Invoice", "Sales Order"].includes(ref.reference_doctype) &&
-					ref.reference_name
+					ref.reference_name,
 			);
 			if (references) {
 				// we can only have one year of settlement, therefore we just
@@ -43,7 +43,7 @@ frappe.ui.form.on("Payment Entry", {
 						if (message && message.year_of_settlement) {
 							frm.set_value("year_of_settlement", message.year_of_settlement);
 						}
-					}
+					},
 				);
 			}
 		}
@@ -71,7 +71,10 @@ frappe.ui.form.on("Payment Entry", {
 				reference_name: invoice.name,
 				total_amount: invoice.grand_total,
 				outstanding_amount: invoice.outstanding_amount,
-				allocated_amount: Math.min(invoice.outstanding_amount, allocated_amount > 0 ? allocated_amount : 0),
+				allocated_amount: Math.min(
+					invoice.outstanding_amount,
+					allocated_amount > 0 ? allocated_amount : 0,
+				),
 				due_date: invoice.due_date,
 			});
 			allocated_amount -= invoice.outstanding_amount;

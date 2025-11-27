@@ -19,9 +19,9 @@ frappe.ui.form.on("Customer", {
 			};
 		});
 	},
-    refresh: function(frm) {
-        frm.trigger("render_default_addresses");
-    },
+	refresh: function (frm) {
+		frm.trigger("render_default_addresses");
+	},
 	default_billing_address: function (frm) {
 		frm.trigger("render_default_addresses");
 	},
@@ -35,9 +35,9 @@ frappe.ui.form.on("Customer", {
 					.html(
 						frappe.render_template("address_list", {
 							addr_list: frm.doc.__onload["addr_list"].filter(
-								(addr) => addr.name == frm.doc[address]
+								(addr) => addr.name == frm.doc[address],
 							),
-						})
+						}),
 					)
 					.find(".btn-address")
 					.remove();

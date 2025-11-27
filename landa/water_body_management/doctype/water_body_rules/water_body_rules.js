@@ -20,7 +20,7 @@ frappe.ui.form.on("Water Body Rules", {
 			frm.set_df_property(fieldname, "options", df.read_only ? "" : "HTML");
 			frm.set_df_property(fieldname, "read_only", !df.read_only);
 		}
-	}
+	},
 });
 
 // modifies Code formatter defined in apps/frappe/frappe/public/js/frappe/form/formatters.js

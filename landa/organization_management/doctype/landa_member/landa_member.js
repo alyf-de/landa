@@ -13,15 +13,15 @@ frappe.ui.form.on("LANDA Member", {
 		});
 
 		frm.make_methods = {
-			"User": () => {
+			User: () => {
 				frappe.new_doc("User", {
 					first_name: frm.doc.first_name,
 					last_name: frm.doc.last_name,
 					landa_member: frm.doc.name,
 					organization: frm.doc.organization,
 				});
-			}
-		}
+			},
+		};
 	},
 	refresh: function (frm) {
 		// Automatically add the backlink to LANDA Member when a new Address or

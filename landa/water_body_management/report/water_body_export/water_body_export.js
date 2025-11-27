@@ -3,7 +3,5 @@
 /* eslint-disable */
 
 frappe.query_reports["Water Body Export"] = {
-	"filters": [
-
-	]
+	filters: [],
 };

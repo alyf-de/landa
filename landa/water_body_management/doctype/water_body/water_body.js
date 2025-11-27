@@ -8,7 +8,7 @@ frappe.ui.form.on("Water Body", {
 		frm.fields_dict.location.customize_draw_controls = customize_draw_controls;
 		frm.fields_dict.location.bind_leaflet_event_listeners = () => {
 			bind_leaflet_event_listeners(frm.fields_dict.location, () => frm.doc.marker_tooltip);
-		}
+		};
 	},
 
 	refresh: function (frm) {
@@ -49,7 +49,7 @@ frappe.ui.form.on("Water Body", {
 	draw_restricted_area: function (frm) {
 		update_polygon_control(
 			frm.fields_dict.location.draw_control,
-			frm.doc.draw_restricted_area
+			frm.doc.draw_restricted_area,
 		);
 	},
 	bind_rotation: function (frm) {
@@ -112,7 +112,6 @@ function update_draw_control(draw_control, icon_url, icon_name, rotation_angle) 
 	draw_control.setDrawingOptions({ marker: marker_config });
 }
 
-
 function update_polygon_control(draw_control, draw_restricted_area) {
 	if (!draw_control) {
 		return;
@@ -131,24 +130,20 @@ function update_polygon_control(draw_control, draw_restricted_area) {
 	draw_control.setDrawingOptions({ polygon: polygon_config });
 }
 
-
 function pointToLayer(geoJsonPoint, latlng) {
-	if (geoJsonPoint.properties.point_type == "circle"){
-		return window.L.circle(latlng, {radius: geoJsonPoint.properties.radius});
+	if (geoJsonPoint.properties.point_type == "circle") {
+		return window.L.circle(latlng, { radius: geoJsonPoint.properties.radius });
 	} else if (geoJsonPoint.properties.point_type == "circlemarker") {
-		return window.L.circleMarker(latlng, {radius: geoJsonPoint.properties.radius});
+		return window.L.circleMarker(latlng, { radius: geoJsonPoint.properties.radius });
 	} else if (geoJsonPoint.properties.point_type == "custom-icon") {
-		const marker = window.L.marker(
-			latlng,
-			{
-				icon: window.L.icon({
-					iconUrl: frappe.boot.icon_map[geoJsonPoint.properties.icon],
-					iconSize: [24, 24],
-				}),
-				title: geoJsonPoint.properties.tooltip,
-				alt: geoJsonPoint.properties.icon,
-			}
-		);
+		const marker = window.L.marker(latlng, {
+			icon: window.L.icon({
+				iconUrl: frappe.boot.icon_map[geoJsonPoint.properties.icon],
+				iconSize: [24, 24],
+			}),
+			title: geoJsonPoint.properties.tooltip,
+			alt: geoJsonPoint.properties.icon,
+		});
 		marker.options.rotationAngle = geoJsonPoint.properties.rotation_angle;
 		if (geoJsonPoint.properties.tooltip) {
 			marker.bindTooltip(geoJsonPoint.properties.tooltip);
@@ -165,32 +160,32 @@ function pointToLayer(geoJsonPoint, latlng) {
 
 function onEachFeature(feature, layer) {
 	if (feature.geometry.type == "Polygon" && feature.properties.is_restricted_area) {
-		layer.setStyle({color: "red"});
+		layer.setStyle({ color: "red" });
 	}
 }
 
 function customize_draw_controls() {
 	const circleToGeoJSON = window.L.Circle.prototype.toGeoJSON;
 	window.L.Circle.include({
-		toGeoJSON: function() {
+		toGeoJSON: function () {
 			const feature = circleToGeoJSON.call(this);
 			feature.properties = {
-				point_type: 'circle',
-				radius: this.getRadius()
+				point_type: "circle",
+				radius: this.getRadius(),
 			};
 			return feature;
-		}
+		},
 	});
 
 	window.L.CircleMarker.include({
-		toGeoJSON: function() {
+		toGeoJSON: function () {
 			const feature = circleToGeoJSON.call(this);
 			feature.properties = {
-				point_type: 'circlemarker',
-				radius: this.getRadius()
+				point_type: "circlemarker",
+				radius: this.getRadius(),
 			};
 			return feature;
-		}
+		},
 	});
 
 	const markerToGeoJSON = window.L.Marker.prototype.toGeoJSON;
@@ -204,11 +199,12 @@ function customize_draw_controls() {
 
 		_applyRotation: function () {
 			if (this.options.rotationAngle) {
-				this._icon.style[window.L.DomUtil.TRANSFORM+'Origin'] = 'center';
+				this._icon.style[window.L.DomUtil.TRANSFORM + "Origin"] = "center";
 
 				const transformStyle = this._icon.style[window.L.DomUtil.TRANSFORM];
-				if (!transformStyle.includes('rotate')) {
-					this._icon.style[window.L.DomUtil.TRANSFORM] += ` rotate(${this.options.rotationAngle}deg)`;
+				if (!transformStyle.includes("rotate")) {
+					this._icon.style[window.L.DomUtil.TRANSFORM] +=
+						` rotate(${this.options.rotationAngle}deg)`;
 				}
 			}
 		},
@@ -217,7 +213,7 @@ function customize_draw_controls() {
 			const feature = markerToGeoJSON.call(this);
 			if (this.options.icon.options.iconName) {
 				feature.properties = {
-					point_type: 'custom-icon',
+					point_type: "custom-icon",
 					icon: this.options.icon.options.iconName,
 					rotation_angle: this.options.icon.options.rotationAngle,
 				};
@@ -231,7 +227,7 @@ function customize_draw_controls() {
 
 	const polygonToGeoJSON = window.L.Polygon.prototype.toGeoJSON;
 	window.L.Polygon.include({
-		toGeoJSON: function() {
+		toGeoJSON: function () {
 			const feature = polygonToGeoJSON.call(this);
 			if (this.options.isRestrictedArea) {
 				feature.properties = {
@@ -239,24 +235,23 @@ function customize_draw_controls() {
 				};
 			}
 			return feature;
-		}
+		},
 	});
 
-	window.L.Icon.Default.imagePath = '/assets/frappe/images/leaflet/';
+	window.L.Icon.Default.imagePath = "/assets/frappe/images/leaflet/";
 }
 
-
 function bind_leaflet_event_listeners(control, get_tooltip) {
-	control.map.on('draw:created', (e) => {
-		if (e.layerType === 'marker' && get_tooltip()) {
+	control.map.on("draw:created", (e) => {
+		if (e.layerType === "marker" && get_tooltip()) {
 			e.layer.bindTooltip(get_tooltip());
 		}
 		control.editableLayers.addLayer(e.layer);
 		control.set_value(JSON.stringify(control.editableLayers.toGeoJSON()));
 	});
 
-	control.map.on('draw:deleted draw:edited', (e) => {
-		const {layer} = e;
+	control.map.on("draw:deleted draw:edited", (e) => {
+		const { layer } = e;
 		control.editableLayers.removeLayer(layer);
 		control.set_value(JSON.stringify(control.editableLayers.toGeoJSON()));
 	});

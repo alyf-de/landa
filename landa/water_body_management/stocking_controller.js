@@ -36,11 +36,11 @@ landa.StockingController = class StockingController extends frappe.ui.form.Contr
 		} else {
 			this.frm.set_value(
 				"weight_per_water_body_size",
-				flt(this.frm.doc.weight / this.frm.doc.water_body_size, 3)
+				flt(this.frm.doc.weight / this.frm.doc.water_body_size, 3),
 			);
 			this.frm.set_value(
 				"unit_of_weight_per_water_body_size",
-				`Kg / ${this.frm.doc.water_body_size_unit}`
+				`Kg / ${this.frm.doc.water_body_size_unit}`,
 			);
 		}
 	}
@@ -51,11 +51,11 @@ landa.StockingController = class StockingController extends frappe.ui.form.Contr
 		} else {
 			this.frm.set_value(
 				"quantity_per_water_body_size",
-				flt(this.frm.doc.quantity / this.frm.doc.water_body_size, 3)
+				flt(this.frm.doc.quantity / this.frm.doc.water_body_size, 3),
 			);
 			this.frm.set_value(
 				"unit_of_quantity_per_water_body_size",
-				`Stk / ${this.frm.doc.water_body_size_unit}`
+				`Stk / ${this.frm.doc.water_body_size_unit}`,
 			);
 		}
 	}

@@ -6,7 +6,7 @@ for (const dt of ["Contact", "Address"]) {
 				// instead of manually.
 				frm.trigger("link_name", "Dynamic Link", frm.doc.links[0].name);
 			}
-		}
+		},
 	});
 }
 

@@ -33,4 +33,3 @@ frappe.query_reports["Water Body Development"] = {
 		},
 	],
 };
-

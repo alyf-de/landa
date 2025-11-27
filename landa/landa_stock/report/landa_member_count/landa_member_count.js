@@ -31,7 +31,8 @@ frappe.query_reports["LANDA Member Count"] = {
 			fieldtype: "Link",
 			label: __("Fishing Area"),
 			options: "Fishing Area",
-			depends_on: 'eval: (frappe.query_report.get_filter_value("organization") || "").length === 3', // show ony if regional org is selected
+			depends_on:
+				'eval: (frappe.query_report.get_filter_value("organization") || "").length === 3', // show ony if regional org is selected
 			get_query: function () {
 				const selected_org = frappe.query_report.get_filter_value("organization");
 				if (!selected_org) {

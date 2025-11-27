@@ -98,7 +98,7 @@ function get_extra_columns(txt) {
 				value: "share_of_ave",
 				label: __("Share of AVE"),
 				description: "",
-			}
+			},
 		);
 	}
 

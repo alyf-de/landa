@@ -3,7 +3,5 @@
 /* eslint-disable */
 
 frappe.query_reports["LANDA Power Users"] = {
-	"filters": [
-
-	]
+	filters: [],
 };

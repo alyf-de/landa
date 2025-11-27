@@ -53,7 +53,7 @@ frappe.ui.form.on("Statement of Fees and Payments", {
 		if (frm.doc.company) {
 			const default_address = await frappe.xcall(
 				"erpnext.setup.doctype.company.company.get_default_company_address",
-				{ name: frm.doc.company, existing_address: frm.doc.company_address || "" }
+				{ name: frm.doc.company, existing_address: frm.doc.company_address || "" },
 			);
 
 			if (default_address) {

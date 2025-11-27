@@ -12,7 +12,7 @@ frappe.listview_settings["Stocking Measure"] = {
 		doc.page.add_actions_menu_item(
 			__("Create Stocking Targets"),
 			() => showCreateStockingTargetsDialog(),
-			false
+			false,
 		); // Needs to be in refresh, otherwise it won't work in the Report View
 	},
 };
@@ -28,7 +28,7 @@ function showCreateStockingTargetsDialog() {
 				reqd: 1,
 				default: landa.utils.get_default_year(),
 				description: __(
-					"Based on your selection, Stocking Targets are created accordingly for the specified year."
+					"Based on your selection, Stocking Targets are created accordingly for the specified year.",
 				),
 			},
 		],

@@ -4,7 +4,7 @@
 frappe.ui.form.on("Catch Log Entry", {
 	setup: (frm) => {
 		frm.set_indicator_formatter("fish_species", (row) =>
-			row.plausible === 1 ? "green" : "orange"
+			row.plausible === 1 ? "green" : "orange",
 		);
 	},
 	onload: (frm) => {

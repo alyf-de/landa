@@ -1,58 +1,58 @@
 frappe.ui.form.on("Delivery Note", {
-    setup: function (frm) {
-        frm.set_query("shipping_contact", erpnext.queries.contact_query);
-    },
-    refresh: function (frm) {
-        if (frm.is_new()) {
-            landa.utils.set_company_and_customer(frm);
-        }
+	setup: function (frm) {
+		frm.set_query("shipping_contact", erpnext.queries.contact_query);
+	},
+	refresh: function (frm) {
+		if (frm.is_new()) {
+			landa.utils.set_company_and_customer(frm);
+		}
 
-        frm.set_query("item_code", "items", function () {
-            const filters = {
-                valid_from_year: ["<=", frm.doc.year_of_settlement],
-                valid_to_year: [">=", frm.doc.year_of_settlement],
-                is_sales_item: 1,
-                company: frm.doc.company,
-            };
+		frm.set_query("item_code", "items", function () {
+			const filters = {
+				valid_from_year: ["<=", frm.doc.year_of_settlement],
+				valid_to_year: [">=", frm.doc.year_of_settlement],
+				is_sales_item: 1,
+				company: frm.doc.company,
+			};
 
-            if (frm.doc.is_return) {
-                // some items cannot be returned
-                filters["cannot_be_returned"] = 0;
-            }
+			if (frm.doc.is_return) {
+				// some items cannot be returned
+				filters["cannot_be_returned"] = 0;
+			}
 
-            return {
-                query: "erpnext.controllers.queries.item_query",
-                filters: filters,
-            };
-        });
+			return {
+				query: "erpnext.controllers.queries.item_query",
+				filters: filters,
+			};
+		});
 
-        frm.set_query("selling_price_list", function (doc) {
-            return {
-                filters: {
-                    selling: 1,
-                    company: doc.company,
-                },
-            };
-        });
+		frm.set_query("selling_price_list", function (doc) {
+			return {
+				filters: {
+					selling: 1,
+					company: doc.company,
+				},
+			};
+		});
 
-        setTimeout(() => {
-            frm.remove_custom_button(__("Shipment"), __("Create"));
-            frm.remove_custom_button(__("Installation Note"), __("Create"));
-            frm.remove_custom_button(__("Delivery Trip"), __("Create"));
-            frm.remove_custom_button(__("Subscription"), __("Create"));
-        }, 500);
-    },
-    year_of_settlement: function (frm) {
-        // don't prefill items if the table is already populated
-        if (frm.doc.items.length >= 1 && frm.doc.items[0].item_code) {
-            return;
-        }
-        landa.selling.prefill_items(frm);
-    },
-    before_save: function (frm) {
-        frm.doc.items = landa.selling.remove_zero_qty_items(frm.doc.items);
-    },
-    billing_contact: function (frm) {
-        landa.selling.set_contact_details(frm, "billing");
-    },
+		setTimeout(() => {
+			frm.remove_custom_button(__("Shipment"), __("Create"));
+			frm.remove_custom_button(__("Installation Note"), __("Create"));
+			frm.remove_custom_button(__("Delivery Trip"), __("Create"));
+			frm.remove_custom_button(__("Subscription"), __("Create"));
+		}, 500);
+	},
+	year_of_settlement: function (frm) {
+		// don't prefill items if the table is already populated
+		if (frm.doc.items.length >= 1 && frm.doc.items[0].item_code) {
+			return;
+		}
+		landa.selling.prefill_items(frm);
+	},
+	before_save: function (frm) {
+		frm.doc.items = landa.selling.remove_zero_qty_items(frm.doc.items);
+	},
+	billing_contact: function (frm) {
+		landa.selling.set_contact_details(frm, "billing");
+	},
 });
