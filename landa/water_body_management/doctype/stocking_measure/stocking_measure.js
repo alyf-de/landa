@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 frappe.provide("landa.water_body_management");
 landa.water_body_management.StockingMeasure = class StockingMeasure extends (
-	landa.StockingController
+	landa.water_body_management.StockingController
 ) {};
 
 cur_frm.script_manager.make(landa.water_body_management.StockingMeasure);
