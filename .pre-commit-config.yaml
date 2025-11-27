@@ -1,5 +1,6 @@
 exclude: "node_modules|.git"
 default_stages: [pre-commit]
+default_install_hook_types: [pre-commit, commit-msg]
 fail_fast: false
 default_language_version:
   python: python3.10
@@ -12,8 +13,6 @@ repos:
         files: "landa.*"
         exclude: ".*json$|.*txt$|.*csv|.*md|.*svg"
       - id: check-yaml
-      - id: no-commit-to-branch
-        args: ["--branch", "develop"]
       - id: check-merge-conflict
       - id: check-ast
       - id: check-json
@@ -21,20 +20,57 @@ repos:
       - id: check-yaml
       - id: debug-statements
 
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v2.34.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.6
     hooks:
-      - id: pyupgrade
-        args: ["--py37-plus"]
+      - id: ruff
+        name: "Run ruff linter and apply fixes"
+        args: ["--fix"]
 
-  - repo: https://github.com/adityahase/black
-    rev: 9cb0a69f4d0030cdf687eddf314468b39ed54119
-    hooks:
-      - id: black
-        additional_dependencies: ["click==8.0.4"]
+      - id: ruff-format
+        name: "Format Python code"
 
-  - repo: https://github.com/PyCQA/isort
-    rev: 5.12.0
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.1.0
     hooks:
-      - id: isort
-        exclude: ".*setup.py$"
+      - id: prettier
+        types_or: [javascript, vue, scss]
+        # Ignore any files that might contain jinja / bundles
+        exclude: |
+            (?x)^(
+                landa/public/dist/.*|
+                .*node_modules.*|
+                .*boilerplate.*|
+                landa/templates/includes/.*|
+                landa/public/js/lib/.*
+            )$
+
+
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v9.39.1
+    hooks:
+      - id: eslint
+        types_or: [javascript]
+        args: ['--quiet']
+        # Ignore any files that might contain jinja / bundles
+        exclude: |
+            (?x)^(
+                landa/public/dist/.*|
+                cypress/.*|
+                .*node_modules.*|
+                .*boilerplate.*|
+                landa/templates/includes/.*|
+                landa/public/js/lib/.*
+            )$
+
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: v9.22.0
+    hooks:
+      - id: commitlint
+        stages: [commit-msg]
+        additional_dependencies: ["@commitlint/config-conventional"]
+
+ci:
+    autoupdate_schedule: weekly
+    skip: []
+    submodules: false
