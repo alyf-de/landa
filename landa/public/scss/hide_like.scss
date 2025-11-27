@@ -1,10 +1,26 @@
 /* Hide like button and stats in form sidebar */
-.form-sidebar-stats {
+.form-sidebar .form-sidebar-stats {
 	display: none;
 }
 
 /* Make like button invisible in list view, keeping the layout intact */
-.list-row-like,
-.like-icon {
-	visibility: hidden;
+.frappe-list {
+	.list-row-head {
+		.list-liked-by-me {
+			display: none;
+		}
+		.list-count {
+			margin-right: 0;
+		}
+	}
+
+	.list-row-activity {
+		span.mx-2 {
+			display: none;
+		}
+		.list-row-like,
+		.like-action {
+			display: none;
+		}
+	}
 }
