@@ -75,7 +75,7 @@ def execute():
 		thumbnail = download_image(f"https://www.angelatlas-sachsen.de/img/fish_small/{id}.png")
 		thumbnail_url = save_attachment(name, "thumbnail", f"{id}_small.png", thumbnail)
 
-		frappe.db.update("Fish Species", name, {"image": image_url, "thumbnail": thumbnail_url})
+		frappe.db.set_value("Fish Species", name, {"image": image_url, "thumbnail": thumbnail_url})
 
 
 def download_image(url: str) -> bytes:
