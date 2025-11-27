@@ -114,9 +114,8 @@ def make_property_setters():
 
 
 def update_stock_settings():
-	frappe.db.set_value(
+	frappe.db.set_single_value(
 		"Stock Settings",
-		None,
 		"role_allowed_to_over_deliver_receive",
 		"LANDA Member",
 		update_modified=False,
@@ -124,9 +123,8 @@ def update_stock_settings():
 
 
 def update_accounts_settings():
-	frappe.db.set_value(
+	frappe.db.set_single_value(
 		"Accounts Settings",
-		None,
 		"role_allowed_to_over_bill",
 		"LANDA Member",
 		update_modified=False,
