@@ -8,16 +8,16 @@ frappe.listview_settings["Stocking Measure"] = {
 
 		return [__(doc.status), status_color[doc.status], "status,=," + doc.status];
 	},
-	refresh: function (doc) {
-		doc.page.add_actions_menu_item(
+	refresh: function (listview) {
+		listview.page.add_actions_menu_item(
 			__("Create Stocking Targets"),
-			() => showCreateStockingTargetsDialog(),
+			() => showCreateStockingTargetsDialog(listview),
 			false,
 		); // Needs to be in refresh, otherwise it won't work in the Report View
 	},
 };
 
-function showCreateStockingTargetsDialog() {
+function showCreateStockingTargetsDialog(listview) {
 	const dialog = new frappe.ui.Dialog({
 		title: __("Create Stocking Targets"),
 		fields: [
@@ -35,7 +35,7 @@ function showCreateStockingTargetsDialog() {
 		size: "small",
 		primary_action_label: __("Create"),
 		primary_action(values) {
-			const selected_measures = cur_list.get_checked_items(true);
+			const selected_measures = listview.get_checked_items(true);
 
 			frappe.call({
 				method: "landa.water_body_management.doctype.stocking_measure.stocking_measure.create_stocking_targets",
