@@ -198,17 +198,13 @@ def is_member_administration(member_name, disabled_member_function=None):
 	return bool(member_administration)
 
 
-def get_values_from_categories(
-	member_name, filters, fieldname=None, disabled_member_function=None
-):
+def get_values_from_categories(member_name, filters, fieldname=None, disabled_member_function=None):
 	member_function_filters = {"member": member_name}
 
 	if disabled_member_function:
 		member_function_filters["name"] = ("!=", disabled_member_function)
 
-	active_categories = get_active_member_functions(
-		member_function_filters, pluck="member_function_category"
-	)
+	active_categories = get_active_member_functions(member_function_filters, pluck="member_function_category")
 	filters["name"] = ("in", active_categories)
 
 	return frappe.get_all(

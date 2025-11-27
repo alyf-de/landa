@@ -1,13 +1,12 @@
 from calendar import isleap
 from datetime import date
-from typing import Optional
 
 
 def date_has_passed(date_of_birth: date, at_date: date) -> bool:
 	return (at_date.month, at_date.day) >= (date_of_birth.month, date_of_birth.day)
 
 
-def get_age(date_of_birth: Optional[date] = None, at_date: Optional[date] = None) -> Optional[int]:
+def get_age(date_of_birth: date | None = None, at_date: date | None = None) -> int | None:
 	if not date_of_birth:
 		return None
 
@@ -15,9 +14,7 @@ def get_age(date_of_birth: Optional[date] = None, at_date: Optional[date] = None
 	return at_date.year - date_of_birth.year - (not date_has_passed(date_of_birth, at_date))
 
 
-def get_next_birthday(
-	date_of_birth: Optional[date] = None, at_date: Optional[date] = None
-) -> Optional[date]:
+def get_next_birthday(date_of_birth: date | None = None, at_date: date | None = None) -> date | None:
 	if not date_of_birth:
 		return None
 
@@ -33,6 +30,6 @@ def get_next_birthday(
 	return date(year, date_of_birth.month, date_of_birth.day)
 
 
-def next_birthday_is_decadal(age: Optional[int] = None) -> bool:
+def next_birthday_is_decadal(age: int | None = None) -> bool:
 	age = age or 0
 	return (age + 1) % 10 == 0

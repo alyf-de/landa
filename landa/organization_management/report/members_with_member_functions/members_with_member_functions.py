@@ -108,9 +108,7 @@ def get_data(filters):
 		df = df.groupby(groupby).agg(aggregate_dict)
 		return df
 
-	def get_contact_details(
-		doctype: str, members: "list[str]", extra_fields: "list[str]"
-	) -> "tuple[tuple]":
+	def get_contact_details(doctype: str, members: "list[str]", extra_fields: "list[str]") -> "tuple[tuple]":
 		return frappe.get_list(
 			doctype,
 			filters=[
@@ -156,9 +154,7 @@ def get_data(filters):
 		filters={"name": ("in", MEMBERS)},
 	)
 
-	member_df = pd.DataFrame.from_records(
-		members, columns=["member"] + member_fields[1:], index="member"
-	)
+	member_df = pd.DataFrame.from_records(members, columns=["member"] + member_fields[1:], index="member")
 	member_df["age"] = member_df["date_of_birth"].apply(get_age)
 	member_df["upcoming_birthday"] = member_df["date_of_birth"].apply(get_next_birthday)
 	member_df["is_decadal_birthday"] = member_df["age"].apply(next_birthday_is_decadal)

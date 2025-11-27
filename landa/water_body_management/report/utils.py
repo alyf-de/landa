@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING
 
 import frappe
 from frappe import _
@@ -64,7 +64,7 @@ def add_or_filters(query: "Query", entry: "Table"):
 	return query.where(entry.organization.like(f"{member_data.local_organization}%"))
 
 
-def add_conditions(query: "Query", conditions: "List[Criterion]"):
+def add_conditions(query: "Query", conditions: "list[Criterion]"):
 	for condition in conditions:
 		query = query.where(condition)
 

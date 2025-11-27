@@ -10,9 +10,7 @@ from frappe.utils.data import flt
 class CatchLogFishTable(Document):
 	def validate_weight(self):
 		tolerance = 0.4
-		typical_weight = flt(
-			frappe.db.get_value("Fish Species", self.fish_species, "typical_weight_in_kg")
-		)
+		typical_weight = flt(frappe.db.get_value("Fish Species", self.fish_species, "typical_weight_in_kg"))
 		average_weight = self.weight_in_kg / self.amount
 		if not typical_weight or (
 			average_weight > typical_weight * (1 - tolerance)

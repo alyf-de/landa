@@ -57,9 +57,7 @@ def create_cle(fish_species, amount, weight_in_kg):
 			"organization": "REG-001",
 			"origin_of_catch_log_entry": "Verein",
 			"workflow_state": "In Progress",
-			"fish_catches": [
-				{"fish_species": fish_species, "amount": amount, "weight_in_kg": weight_in_kg}
-			],
+			"fish_catches": [{"fish_species": fish_species, "amount": amount, "weight_in_kg": weight_in_kg}],
 		}
 	)
 	cle.save()

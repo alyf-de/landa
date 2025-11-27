@@ -30,9 +30,7 @@ def validate_year_of_settlement(doc: "SellingController"):
 		return
 
 	for item in doc.items:
-		from_year, to_year = frappe.db.get_value(
-			"Item", item.item_code, ["valid_from_year", "valid_to_year"]
-		)
+		from_year, to_year = frappe.db.get_value("Item", item.item_code, ["valid_from_year", "valid_to_year"])
 
 		if (from_year and doc.year_of_settlement < from_year) or (
 			to_year and doc.year_of_settlement > to_year

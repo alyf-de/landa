@@ -33,7 +33,9 @@ def validate(doc, event):
 	):
 		frappe.throw(
 			# fmt: off
-			_("This document should be linked to at least one Company, LANDA Member, Organization, Customer or Supplier")
+			_(
+				"This document should be linked to at least one Company, LANDA Member, Organization, Customer or Supplier"
+			)
 			# fmt: on
 		)
 

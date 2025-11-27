@@ -3,7 +3,6 @@
 
 import json
 from getpass import getpass
-from typing import Dict, List
 
 import click
 import frappe
@@ -115,7 +114,7 @@ def import_geojson(context, geojson_file):
 		frappe.db.commit()  # nosemgrep
 
 
-def import_features(features: List[Dict]) -> None:
+def import_features(features: list[dict]) -> None:
 	not_found = []
 	total_feautres = len(features)
 	for i, feature in enumerate(features, start=1):

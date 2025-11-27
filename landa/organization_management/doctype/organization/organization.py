@@ -2,7 +2,6 @@
 # For license information, please see license.txt
 
 from datetime import datetime
-from typing import List
 
 import frappe
 from frappe import _
@@ -199,9 +198,7 @@ class Organization(NestedSet):
 			frappe.throw(_("Not permitted"), frappe.PermissionError)
 
 	@frappe.whitelist()
-	def link_contact(
-		self, landa_member: str, is_default_billing: int = 0, is_default_shipping: int = 0
-	):
+	def link_contact(self, landa_member: str, is_default_billing: int = 0, is_default_shipping: int = 0):
 		self.has_permission("write")
 
 		contact = get_address_or_contact("Contact", landa_member)
@@ -279,7 +276,7 @@ def add_node():
 	doc.insert(ignore_permissions=True)
 
 
-def get_supported_water_bodies(organization: str) -> List[str]:
+def get_supported_water_bodies(organization: str) -> list[str]:
 	"""Return a list of water bodies that are supported by the organization."""
 	return frappe.get_all(
 		"Water Body Management Local Organization",

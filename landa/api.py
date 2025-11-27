@@ -1,5 +1,4 @@
 import json
-from typing import Dict, List
 
 import frappe
 
@@ -9,7 +8,7 @@ from landa.water_body_management.doctype.water_body.water_body import build_wate
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
-def organization(id: str = None) -> List[Dict]:
+def organization(id: str = None) -> list[dict]:
 	filters = []
 	if id and isinstance(id, str):
 		filters.append(["Organization", "name", "like", id])
@@ -73,7 +72,7 @@ def organization(id: str = None) -> List[Dict]:
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
-def water_body(id: str = None, only_id: int = 0) -> List[Dict]:
+def water_body(id: str = None, only_id: int = 0) -> list[dict]:
 	"""Return a list of water bodies with fish species and special provisions."""
 	if id:
 		# We do not cache ID since it's uniqueness makes the API performant

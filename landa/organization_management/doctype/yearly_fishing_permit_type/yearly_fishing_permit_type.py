@@ -35,9 +35,7 @@ def validate_item_attribute(item_attribute_name, attribute_value, abbr):
 
 	if abbr in existing_abbreviations:
 		# Abbreviation exists, but with a different attribute value
-		frappe.throw(
-			_('Abbreviation "{}" exists already in Item Attribute {}.').format(abbr, item_attr_link)
-		)
+		frappe.throw(_('Abbreviation "{}" exists already in Item Attribute {}.').format(abbr, item_attr_link))
 
 
 def rows_to_tuples(rows):

@@ -1,7 +1,7 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING
 
 import frappe
 from frappe import _
@@ -248,7 +248,7 @@ def get_data(
 	return query.run(as_dict=True)
 
 
-def get_subquery(entry: "Table", child_table: "Table", qb_filters: "List[Criterion]"):
+def get_subquery(entry: "Table", child_table: "Table", qb_filters: "list[Criterion]"):
 	subquery = (
 		frappe.qb.from_(entry)
 		.join(child_table)
@@ -271,7 +271,7 @@ def get_subquery(entry: "Table", child_table: "Table", qb_filters: "List[Criteri
 def filter_and_group(
 	query,
 	entry: "Table",
-	qb_filters: "List[Criterion]",
+	qb_filters: "list[Criterion]",
 	group_by_fields=None,
 ):
 	query = add_conditions(query, qb_filters)

@@ -157,9 +157,7 @@ def get_data(
 			& (stocking_measure_query.fish_species == fish_species.name)
 		)
 		.left_join(catch_query)
-		.on(
-			(water_body.name == catch_query.water_body) & (catch_query.fish_species == fish_species.name)
-		)
+		.on((water_body.name == catch_query.water_body) & (catch_query.fish_species == fish_species.name))
 		.left_join(fishing_days_query)
 		.on(water_body.name == fishing_days_query.water_body)
 		.select(

@@ -83,9 +83,7 @@ def download_image(url: str) -> bytes:
 	return r.content if r.status_code == 200 else None
 
 
-def save_attachment(
-	fish_species: str, attached_to_field: str, file_name: str, image: bytes
-) -> str:
+def save_attachment(fish_species: str, attached_to_field: str, file_name: str, image: bytes) -> str:
 	f = frappe.new_doc("File")
 	f.file_name = file_name
 	f.is_private = 0

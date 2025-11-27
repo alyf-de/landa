@@ -2,7 +2,6 @@
 # For license information, please see license.txt
 
 from datetime import datetime
-from typing import Optional
 
 import frappe
 from frappe import _
@@ -48,7 +47,7 @@ def get_columns():
 	]
 
 
-def get_data(organization: Optional[str] = None, year_of_settlement: Optional[int] = None):
+def get_data(organization: str | None = None, year_of_settlement: int | None = None):
 	years_of_settlement = (
 		[year_of_settlement] if year_of_settlement else list(range(2021, datetime.now().year + 1))
 	)

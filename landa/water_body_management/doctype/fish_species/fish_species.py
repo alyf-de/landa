@@ -1,6 +1,5 @@
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
-from typing import Dict, List
 
 import frappe
 from frappe.model.document import Document
@@ -18,7 +17,7 @@ class FishSpecies(Document):
 		build_fish_species_cache()
 
 
-def get_fish_species_data(id: str = None) -> List[Dict]:
+def get_fish_species_data(id: str = None) -> list[dict]:
 	"""Return fish species from cache."""
 	if id:
 		# We do not cache ID since it's uniqueness makes the API performant
@@ -32,7 +31,7 @@ def build_fish_species_cache():
 	frappe.cache().set_value("fish_species_data", query_fish_species_data())
 
 
-def query_fish_species_data(id: str = None) -> List[Dict]:
+def query_fish_species_data(id: str = None) -> list[dict]:
 	fish_species = frappe.qb.DocType("Fish Species")
 	query = frappe.qb.from_(fish_species).select(
 		fish_species.title.as_("id"),

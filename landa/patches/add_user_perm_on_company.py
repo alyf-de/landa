@@ -6,9 +6,7 @@ from landa.utils import get_default_company
 
 def execute():
 	"""Restrict all LANDA Members to their regional organization's company."""
-	members = frappe.get_all(
-		"LANDA Member", fields=["organization", "user"], filters={"user": ("is", "set")}
-	)
+	members = frappe.get_all("LANDA Member", fields=["organization", "user"], filters={"user": ("is", "set")})
 
 	for member in members:
 		company = None

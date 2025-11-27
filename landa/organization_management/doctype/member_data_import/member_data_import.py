@@ -223,9 +223,7 @@ def create_member(organization: str, last_name: str) -> LANDAMember:
 	return member.insert()
 
 
-def create_address(
-	address_line1: str, pincode: str, city: str, member: str, organization: str
-) -> None:
+def create_address(address_line1: str, pincode: str, city: str, member: str, organization: str) -> None:
 	"""Return a new Address linked to LANDA Member."""
 	address = frappe.new_doc("Address")
 	address.address_type = "Personal"

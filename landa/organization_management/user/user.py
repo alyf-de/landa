@@ -116,10 +116,7 @@ def delete_or_disable_inactive_users():
 	)
 
 	assert getdate(cutoff_date).year <= datetime.now().year - 1
-	assert (
-		len(users_to_delete) / frappe.db.count("User", filters={"name": ("not in", STANDARD_USERS)})
-		< 0.3
-	)
+	assert len(users_to_delete) / frappe.db.count("User", filters={"name": ("not in", STANDARD_USERS)}) < 0.3
 
 	for user in users_to_delete:
 		if "System Manager" in get_roles(user):

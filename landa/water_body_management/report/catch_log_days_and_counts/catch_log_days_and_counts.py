@@ -1,7 +1,7 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING
 
 import frappe
 from frappe import _
@@ -25,7 +25,7 @@ def get_columns(
 	show_share_of_avl: bool = False,
 	show_share_of_avs: bool = False,
 	show_share_of_ave: bool = False,
-) -> List[dict]:
+) -> list[dict]:
 	columns = [
 		{
 			"fieldname": "year",
@@ -216,7 +216,7 @@ def get_data(
 	return query.run(as_dict=True)
 
 
-def get_subquery(entry: "Table", qb_filters: "List[Criterion]"):
+def get_subquery(entry: "Table", qb_filters: "list[Criterion]"):
 	subquery = frappe.qb.from_(entry).select(
 		entry.water_body,
 		entry.year,
@@ -224,12 +224,10 @@ def get_subquery(entry: "Table", qb_filters: "List[Criterion]"):
 	)
 
 	# Subquery only needs to group by the fields it selects (excluding aggregates)
-	return filter_and_group(
-		subquery, entry, qb_filters, group_by_fields=[entry.year, entry.water_body]
-	)
+	return filter_and_group(subquery, entry, qb_filters, group_by_fields=[entry.year, entry.water_body])
 
 
-def filter_and_group(query, entry: "Table", qb_filters: "List[Criterion]", group_by_fields=None):
+def filter_and_group(query, entry: "Table", qb_filters: "list[Criterion]", group_by_fields=None):
 	query = add_conditions(query, qb_filters)
 	query = add_or_filters(query, entry)
 

@@ -1,5 +1,4 @@
 from contextlib import contextmanager
-from typing import Optional
 
 import frappe
 from frappe import _
@@ -278,9 +277,7 @@ def delete_linked_records(doctype: str, name: str) -> None:
 			continue
 
 		if link_field["is_in_single"]:
-			if (
-				not link_field["reqd"] and frappe.db.get_single_value(linked_doctype, link_fieldname) == name
-			):
+			if not link_field["reqd"] and frappe.db.get_single_value(linked_doctype, link_fieldname) == name:
 				unset_value(linked_doctype, None, link_fieldname)
 			continue
 
@@ -332,7 +329,7 @@ def delete_dynamically_linked_records(doctype: str, name: str) -> None:
 				unset_value(linked_doctype, linked_name, link_fieldname)
 
 
-def unset_value(doctype: str, name: Optional[str], fieldname: str) -> None:
+def unset_value(doctype: str, name: str | None, fieldname: str) -> None:
 	if name:
 		frappe.db.set_value(doctype, name, fieldname, None)
 	else:

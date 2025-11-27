@@ -125,9 +125,7 @@ class Address:
 		this_month = now.month
 		# if this month is January to June: members need a permit for this year or last year:
 		if this_month < 7:
-			permits_df["permit_active"] = [
-				int((this_year - int(y)) <= 1) for y in permits_df["year"].values
-			]
+			permits_df["permit_active"] = [int((this_year - int(y)) <= 1) for y in permits_df["year"].values]
 		# if this month is July to December: members need a permit for this year:
 		else:
 			permits_df["permit_active"] = [int(this_year == int(y)) for y in permits_df["year"].values]

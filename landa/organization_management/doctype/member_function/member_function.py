@@ -1,7 +1,6 @@
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from typing import Optional
 
 import frappe
 from frappe import _
@@ -20,11 +19,9 @@ class MemberFunction(Document):
 		self.validate_member_function_category()
 		self.validate_unique_roles()
 
-	def get_access_level(self) -> Optional[str]:
+	def get_access_level(self) -> str | None:
 		"""Return the access level of the linked Member Function Category."""
-		return frappe.get_value(
-			"Member Function Category", self.member_function_category, "access_level"
-		)
+		return frappe.get_value("Member Function Category", self.member_function_category, "access_level")
 
 	def validate_member_function_category(self):
 		"""Check if the current user is allowed to set the member function category.
@@ -77,9 +74,7 @@ class MemberFunction(Document):
 		self.update_user_roles()
 
 	def update_user_roles(self):
-		member_function_category = frappe.get_doc(
-			"Member Function Category", self.member_function_category
-		)
+		member_function_category = frappe.get_doc("Member Function Category", self.member_function_category)
 		if self.status == "Active":
 			member_function_category.add_roles_and_permissions(self.member)
 		else:

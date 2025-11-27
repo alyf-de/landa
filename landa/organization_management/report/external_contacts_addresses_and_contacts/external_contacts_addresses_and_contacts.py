@@ -1,7 +1,6 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-from typing import List
 
 import frappe
 import pandas as pd
@@ -78,7 +77,7 @@ def get_data(filters):
 
 		return df.reset_index().drop_duplicates(subset=[index], keep=keep).set_index(index)
 
-	def get_link_filters(link_names: List[str]):
+	def get_link_filters(link_names: list[str]):
 		return [
 			["Dynamic Link", "link_doctype", "=", "External Contact"],
 			["Dynamic Link", "link_name", "in", link_names],

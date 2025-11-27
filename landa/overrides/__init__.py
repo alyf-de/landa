@@ -13,10 +13,7 @@ def set_user_defaults():
 	if not current_member_data:
 		return
 
-	if (
-		current_member_data.local_organization
-		and not current_member_data.local_organization.endswith("000")
-	):
+	if current_member_data.local_organization and not current_member_data.local_organization.endswith("000"):
 		# Default organization should not be set for members of a regional organization (ending with 000)
 		set_user_default("organization", current_member_data.organization)
 

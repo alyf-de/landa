@@ -1,7 +1,6 @@
 # Copyright (c) 2024, ALYF GmbH and contributors
 # For license information, please see license.txt
 
-from typing import Optional
 
 import frappe
 from frappe import _
@@ -53,7 +52,7 @@ def get_columns():
 	]
 
 
-def get_data(organization: Optional[str], year_of_settlement: Optional[int] = None):
+def get_data(organization: str | None, year_of_settlement: int | None = None):
 	filters = {
 		"docstatus": 1,
 	}

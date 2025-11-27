@@ -189,9 +189,7 @@ class ChangeLog:
 					"water_body",
 				)
 		else:
-			ref_water_body = (
-				changed_data.attached_to_name if cint(entry.deleted) else entry.attached_to_name
-			)
+			ref_water_body = changed_data.attached_to_name if cint(entry.deleted) else entry.attached_to_name
 
 		key = "files" if entry.doctype == "File" else "organizations"
 		return {

@@ -56,9 +56,7 @@ class LANDACurrentMemberData:
 			"has_special_yearly_fishing_permit_6",
 			"has_special_yearly_fishing_permit_7",
 		]
-		members = frappe.db.get_list(
-			"LANDA Member", filters=self.filter, fields=member_fields, as_list=True
-		)
+		members = frappe.db.get_list("LANDA Member", filters=self.filter, fields=member_fields, as_list=True)
 		# convert to pandas dataframe
 		member_df = frappe_tuple_to_pandas_df(members, ["member"] + member_fields[1:])
 		# create empty clomuns for yearly fishing permit

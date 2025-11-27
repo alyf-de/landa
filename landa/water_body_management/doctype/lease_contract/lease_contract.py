@@ -14,9 +14,7 @@ class LeaseContract(Document):
 
 	def validate(self):
 		if self.organization != frappe.db.get_value("Water Body", self.water_body, "organization"):
-			frappe.throw(
-				_("Lease Contract must belong to the same regional Organization as the Water Body.")
-			)
+			frappe.throw(_("Lease Contract must belong to the same regional Organization as the Water Body."))
 
 		self.validate_rent_dates()
 
@@ -26,9 +24,9 @@ class LeaseContract(Document):
 			row_a.validate_from_to_dates("from_date", "to_date")
 			if row_a.from_date and self.start_date and getdate(row_a.from_date) < getdate(self.start_date):
 				frappe.throw(
-					_("Lease Contract Rent row {0} cannot start before the Lease Contract's start date.").format(
-						row_a.idx
-					)
+					_(
+						"Lease Contract Rent row {0} cannot start before the Lease Contract's start date."
+					).format(row_a.idx)
 				)
 
 			if row_a.to_date and self.end_date and getdate(row_a.to_date) > getdate(self.end_date):

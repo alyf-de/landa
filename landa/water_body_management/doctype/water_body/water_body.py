@@ -2,7 +2,6 @@
 # For license information, please see license.txt
 from collections import defaultdict
 from json import loads
-from typing import Dict, List
 
 import frappe
 from frappe import _
@@ -132,7 +131,7 @@ def build_water_body_cache():
 	frappe.cache().set_value("water_body_data", build_water_body_data())
 
 
-def build_water_body_data(id: str = None) -> List[Dict]:
+def build_water_body_data(id: str = None) -> list[dict]:
 	"""
 	Return a list of water bodies with fish species and special provisions
 	"""
@@ -140,7 +139,7 @@ def build_water_body_data(id: str = None) -> List[Dict]:
 	return consolidate_water_body_data(water_body_data=result)
 
 
-def query_water_body_data(id: str = None) -> List[Dict]:
+def query_water_body_data(id: str = None) -> list[dict]:
 	water_body = frappe.qb.DocType("Water Body")
 	fish_species_table = frappe.qb.DocType("Fish Species Table")
 	wb_provision_table = frappe.qb.DocType("Water Body Special Provision Table")
@@ -191,7 +190,7 @@ def query_water_body_data(id: str = None) -> List[Dict]:
 	return query.run(as_dict=True)
 
 
-def consolidate_water_body_data(water_body_data: List[Dict]) -> List[Dict]:
+def consolidate_water_body_data(water_body_data: list[dict]) -> list[dict]:
 	"""
 	Deduplicate the water body data such that each water body has a list of unique
 	fish species, special provisions and local organizations.
@@ -228,7 +227,7 @@ def consolidate_water_body_data(water_body_data: List[Dict]) -> List[Dict]:
 	return [water_body_map.get(key) for key in water_body_map]
 
 
-def init_row(water_body_row: Dict) -> Dict:
+def init_row(water_body_row: dict) -> dict:
 	# Prepare row to have Water Body data (excluding child tables)
 	water_body_copy = water_body_row.copy()
 	location = water_body_copy.pop("location", None)
