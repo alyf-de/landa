@@ -23,6 +23,9 @@ class StockingController(Document):
 			frappe.throw(msg=_("Year must be between {0} and {1}.").format(EARLIEST_YEAR, LATEST_YEAR))
 
 	def validate_own_regional_organization(self):
+		if frappe.session.user == "Administrator":
+			return
+
 		member_data = get_current_member_data()
 		if member_data and member_data.regional_organization != self.organization:
 			frappe.throw(_("Please select your own regional Organization."))
