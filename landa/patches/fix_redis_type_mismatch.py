@@ -29,7 +29,7 @@ def execute():
 				# Try to delete the key regardless of its type
 				if redis_client.exists(full_key):
 					redis_client.delete(full_key)
-					frappe.log_error(f"Deleted Redis key: {full_key}", "Redis Type Fix")
+					frappe.log_error(title="Redis Type Fix", message=f"Deleted Redis key: {full_key}")
 			except Exception:
 				# Silently continue - key might not exist or already be deleted
 				pass
