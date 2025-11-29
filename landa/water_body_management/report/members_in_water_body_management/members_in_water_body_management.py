@@ -122,6 +122,9 @@ def get_data(filters=None):
 	# concatenated with the other dataframes later.
 	wbm_df = wbm_df[wbm_df.index.notnull()]
 
+	# Remove duplicate member indices to ensure unique index for pd.concat (required in pandas 2.x)
+	wbm_df = remove_duplicate_indices(wbm_df, index="member", keep="first")
+
 	# define the labels of db entries that are supposed to be loaded
 	link_field_label = "`tabDynamic Link`.link_name as member"
 	link_filters = get_link_filters(wbm)
