@@ -9,8 +9,8 @@ readme = "README.md"
 dynamic = ["version"]
 dependencies = [
     "thefuzz~=0.22.1",
-    "pandas~=1.5.3",
-    "numpy==1.26.4", # https://stackoverflow.com/a/78641304
+    "pandas~=2.2.3",
+    "numpy>=1.26.4,<3",
 ]
 
 [build-system]
