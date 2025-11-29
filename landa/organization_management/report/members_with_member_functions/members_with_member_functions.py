@@ -88,7 +88,7 @@ def get_columns():
 def get_data(filters):
 	def frappe_tuple_to_pandas_df(frappe_tuple, fields):
 		df = pd.DataFrame(frappe_tuple, columns=fields)
-		df.set_index("member", inplace=True)
+		df = df.set_index("member")
 		return df
 
 	def remove_duplicate_indices(df, index="member", sort_by=None, keep="last"):
@@ -173,7 +173,7 @@ def get_data(filters):
 		for at, ad in zip(awards_df["award_type"].values, awards_df["issue_date"].values, strict=True)
 	]
 	awards_df = aggregate_entries(awards_df, aggregate_field="awards", sort_by=["issue_date"])
-	awards_df.drop(award_fields[:-1], axis=1, inplace=True)
+	awards_df = awards_df.drop(award_fields[:-1], axis=1)
 
 	address_fields = ["address_line1", "pincode", "city"]
 	addresses = get_contact_details("Address", MEMBERS, address_fields)
@@ -220,10 +220,10 @@ def get_data(filters):
 		axis=1,
 	)
 	# replace NaNs with empty strings
-	data.fillna("", inplace=True)
+	data = data.fillna("")
 
 	# convert data back to tuple
-	data.reset_index(inplace=True)
+	data = data.reset_index()
 	data = tuple(data.itertuples(index=False, name=None))
 	return data
 

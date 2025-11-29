@@ -99,13 +99,13 @@ class StatementofFeesandPayments(Document):
 		rows_df["credited"] = -1 * rows_df["qty"].clip(upper=0)
 		rows_df["net_billed"] = rows_df["billed"] - rows_df["credited"]
 
-		rows_df.drop(columns="qty", inplace=True)
+		rows_df = rows_df.drop(columns="qty")
 		rows_df = rows_df.groupby(["item_code", "item_name"]).sum().reset_index()
 
 		# NOTE: rate must be calculated after summing up the rows
 		rows_df["rate"] = rows_df["amount"] / rows_df["net_billed"]
 		# when net_billed is 0, rate is NaN
-		rows_df["rate"].fillna(0, inplace=True)
+		rows_df["rate"] = rows_df["rate"].fillna(0)
 
 		self.sales = []
 		self.extend("sales", rows_df.to_dict(orient="records"))

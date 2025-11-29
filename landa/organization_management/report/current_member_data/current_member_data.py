@@ -19,7 +19,7 @@ class LANDACurrentMemberData:
 			# convert to pandas dataframe
 			df = pd.DataFrame(frappe_tuple, columns=fields)
 			# set by member ID as dataframe index
-			df.set_index("member", inplace=True)
+			df = df.set_index("member")
 			return df
 
 		def remove_duplicate_indices(df, index="member", sort_by=None, keep="last"):
@@ -71,7 +71,7 @@ class LANDACurrentMemberData:
 		)
 		# convert to pandas dataframe
 		fishing_permits_df = frappe_tuple_to_pandas_df(fishing_permits, fishing_permit_columns)
-		fishing_permits_df.rename({"name": "yearly_fishing_permit"}, axis=1, inplace=True)
+		fishing_permits_df = fishing_permits_df.rename({"name": "yearly_fishing_permit"}, axis=1)
 		fishing_permits_df = remove_duplicate_indices(fishing_permits_df, sort_by=["year"])
 
 		# define the labels of db entries that are supposed to be loaded
@@ -88,7 +88,7 @@ class LANDACurrentMemberData:
 		# convert to pandas dataframe
 		addresses_df = frappe_tuple_to_pandas_df(addresses, address_fields + ["member"])
 		# rename index column
-		addresses_df.rename({"name": "address_name"}, axis=1, inplace=True)
+		addresses_df = addresses_df.rename({"name": "address_name"}, axis=1)
 
 		# merge members and addresses from different doctypes
 		data = pd.concat([member_df, fishing_permits_df], axis=1).reindex(member_df.index)
@@ -98,9 +98,9 @@ class LANDACurrentMemberData:
 		sorted_columns = [c["fieldname"] for c in self.get_columns()][1:]
 		data = data[sorted_columns]
 		# replace NaNs with empty strings
-		data.fillna("", inplace=True)
+		data = data.fillna("")
 		# convert data back to tuple
-		data.reset_index(inplace=True)
+		data = data.reset_index()
 		data = tuple(data.itertuples(index=False, name=None))
 		return data
 

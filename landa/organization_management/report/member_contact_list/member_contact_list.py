@@ -30,16 +30,16 @@ class Contact(Member):
 
 		# convert to pandas dataframe
 		contacts_df = pd.DataFrame(contacts, columns=contact_fields + ["member"])
-		contacts_df.set_index("member", inplace=True)
+		contacts_df = contacts_df.set_index("member")
 		contacts_df = remove_duplicate_indices(contacts_df)
 
 		# merge all dataframes from different doctypes
 		data = pd.concat([self.members_df, contacts_df], axis=1).reindex(self.members_df.index)
 
-		data.fillna("", inplace=True)
+		data = data.fillna("")
 
 		# convert data back to tuple
-		data.reset_index(inplace=True)
+		data = data.reset_index()
 		data = tuple(data.itertuples(index=False, name=None))
 
 		return data

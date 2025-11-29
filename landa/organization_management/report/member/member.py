@@ -37,7 +37,7 @@ class Member:
 
 		# convert to pandas dataframe
 		self.members_df = pd.DataFrame(self.members, columns=["member"] + MEMBER_FIELDS[1:])
-		self.members_df.set_index("member", inplace=True)
+		self.members_df = self.members_df.set_index("member")
 
 
 def remove_duplicate_indices(df, index="member", sort_by=None, keep="last"):

@@ -91,14 +91,14 @@ def get_data(filters):
 	df["qty"] = df["qty"].where(df["is_return"] == 0, 0)
 	df["base_net_amount"] = df["base_net_amount"].where(df["is_return"] == 0, 0)
 
-	df.drop(columns=["is_return"], inplace=True)
+	df = df.drop(columns=["is_return"])
 
 	df = df.groupby(["item_code", "item_name"]).sum().reset_index()
 	df["net_delivered_qty"] = df["qty"] - df["returned_qty"]
 	df["net_delivered_amount"] = df["base_net_amount"] - df["returned_amount"]
 
 	df["average_rate"] = df["net_delivered_amount"] / df["net_delivered_qty"]
-	df["average_rate"].fillna(0, inplace=True)
+	df["average_rate"] = df["average_rate"].fillna(0)
 
 	return df.values.tolist()
 

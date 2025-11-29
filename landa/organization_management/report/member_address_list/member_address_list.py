@@ -30,7 +30,7 @@ class Address(Member):
 		)
 		# convert to pandas dataframe
 		addresses_df = pd.DataFrame(addresses, columns=address_fields + ["member"])
-		addresses_df.set_index("member", inplace=True)
+		addresses_df = addresses_df.set_index("member")
 
 		# remove all duplicate addresses by keeping only the last existing address
 		addresses_df = remove_duplicate_indices(addresses_df)
@@ -43,10 +43,10 @@ class Address(Member):
 		# merge all dataframes from different doctypes
 		data = pd.concat([self.members_df, addresses_df], axis=1).reindex(self.members_df.index)
 
-		data.fillna("", inplace=True)
+		data = data.fillna("")
 
 		# convert data back to tuple
-		data.reset_index(inplace=True)
+		data = data.reset_index()
 		data = tuple(data.itertuples(index=False, name=None))
 
 		return data

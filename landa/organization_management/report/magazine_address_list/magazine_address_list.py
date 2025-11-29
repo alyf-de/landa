@@ -36,7 +36,7 @@ class Address:
 			# convert to pandas dataframe
 			df = pd.DataFrame(frappe_tuple, columns=fields)
 			# set by member ID as dataframe index
-			df.set_index("member", inplace=True)
+			df = df.set_index("member")
 			return df
 
 		def remove_duplicate_indices(df, index="member", sort_by=None, keep="last"):
@@ -117,7 +117,7 @@ class Address:
 		permits_df = frappe_tuple_to_pandas_df(permits, permit_fields)
 		permits_df = permits_df[permits_df["docstatus"] == 1]
 		# remove column 'status'
-		permits_df.drop("docstatus", axis=1, inplace=True)
+		permits_df = permits_df.drop("docstatus", axis=1)
 		permits_df = remove_duplicate_indices(permits_df, sort_by="year")
 
 		now = datetime.now()
@@ -135,9 +135,9 @@ class Address:
 		if self.only_active_magazine:
 			data = data[data["magazine_active"] == 1]
 		# replace NaNs with empty strings
-		data.fillna("", inplace=True)
+		data = data.fillna("")
 		# convert data back to tuple
-		data.reset_index(inplace=True)
+		data = data.reset_index()
 		data = tuple(data.itertuples(index=False, name=None))
 		return data
 
