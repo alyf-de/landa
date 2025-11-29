@@ -170,7 +170,7 @@ def get_data(filters):
 	awards_df = pd.DataFrame.from_records(awards, columns=award_fields, index="member")
 	awards_df["awards"] = [
 		at + " " + str(ad.year)
-		for at, ad in zip(awards_df["award_type"].values, awards_df["issue_date"].values)
+		for at, ad in zip(awards_df["award_type"].values, awards_df["issue_date"].values, strict=True)
 	]
 	awards_df = aggregate_entries(awards_df, aggregate_field="awards", sort_by=["issue_date"])
 	awards_df.drop(award_fields[:-1], axis=1, inplace=True)
