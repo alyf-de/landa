@@ -2,19 +2,13 @@
 name: Server
 
 on:
-  push:
-    branches:
-      - version-14-hotfix
-    paths-ignore:
-      - '**.js'
-      - '**.md'
   pull_request:
     paths-ignore:
       - '**.js'
       - '**.md'
 
 concurrency:
-  group: version-14-hotfix-landa-${{ github.event.number }}
+  group: version-15-hotfix-landa-${{ github.event.number }}
   cancel-in-progress: true
 
 jobs:
@@ -26,7 +20,7 @@ jobs:
 
     services:
       mariadb:
-        image: mariadb:10.5
+        image: mariadb:10.6
         env:
           MYSQL_ROOT_PASSWORD: root
         ports:
@@ -35,24 +29,24 @@ jobs:
 
     steps:
       - name: Clone
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: "3.10"
+          python-version: "3.11"
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 16
+          node-version: 18
           check-latest: true
 
       - name: Cache pip
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/*requirements.txt', '**/pyproject.toml', '**/setup.py', '**/setup.cfg') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/pyproject.toml') }}
           restore-keys: |
             ${{ runner.os }}-pip-
             ${{ runner.os }}-
