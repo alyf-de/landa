@@ -1,8 +1,8 @@
 ## Get required apps
 
 ```bash
-bench get-app erpnext --branch version-14
-bench get-app https://github.com/alyf-de/eu_einvoice --branch version-14
+bench get-app erpnext --branch version-15
+bench get-app https://github.com/alyf-de/eu_einvoice --branch version-15
 ```
 
 ## Set up CORS
@@ -99,7 +99,7 @@ Open the browser and complete the setup wizard, for example with the following v
 > ERPNext must be already installed and the setup wizard completed before installing landa.
 
 ```bash
-bench get-app https://github.com/alyf-de/landa
+bench get-app https://github.com/alyf-de/landa --branch version-15
 bench --site [site-name] install-app landa
 bench --site [site-name] migrate # currently necessary to get the "Member Count" chart
 ```

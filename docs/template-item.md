@@ -3,7 +3,7 @@ Template Items can be used, for example, for
 - fishing permit with attributes "permission type" and "year of validity", or
 - membership fees with attributes "membership type" and "year of validity".
 
-To create a Ttmplate Item,
+To create a Template Item,
 
 1. Open the Item List and click "Add Item"
 2. Click "Edit in Full Page"
