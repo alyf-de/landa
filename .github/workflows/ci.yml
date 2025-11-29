@@ -6,6 +6,16 @@ on:
     paths-ignore:
       - '**.js'
       - '**.md'
+      - '.editorconfig'
+      - '.git-blame-ignore-revs'
+      - '.gitignore'
+      - '.pre-commit-config.yaml'
+      - '.prettierrc.json'
+      - '.releaserc'
+      - '.sourcery.yaml'
+      - 'eslint.config.mjs'
+      - 'license.txt'
+      - 'MANIFEST.in'
 
 concurrency:
   group: version-15-hotfix-landa-${{ github.event.number }}
