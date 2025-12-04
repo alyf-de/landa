@@ -43,17 +43,21 @@
    "read_only": 1
   }
  ],
+ "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-04-24 12:36:52.889403",
+ "modified": "2025-12-04 18:55:22.312758",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Fish Table",
  "owner": "Administrator",
  "permissions": [],
  "quick_entry": 1,
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }

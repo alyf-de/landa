@@ -39,6 +39,7 @@
    "unique": 1
   }
  ],
+ "grid_page_length": 50,
  "is_submittable": 1,
  "links": [
   {
@@ -46,11 +47,12 @@
    "link_fieldname": "type"
   }
  ],
- "modified": "2023-09-22 12:38:33.947189",
+ "modified": "2025-12-04 18:49:58.419444",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Yearly Fishing Permit Type",
  "name_case": "UPPER CASE",
+ "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [
   {
@@ -97,8 +99,11 @@
    "role": "LANDA Member"
   }
  ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "title",
  "track_changes": 1
 }

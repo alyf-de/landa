@@ -14,10 +14,11 @@
    "label": "Dummy"
   }
  ],
+ "grid_page_length": 50,
  "in_create": 1,
  "is_virtual": 1,
  "links": [],
- "modified": "2021-11-24 15:36:45.152980",
+ "modified": "2025-12-04 18:55:53.582379",
  "modified_by": "Administrator",
  "module": "LANDA Sales",
  "name": "LANDA Sales Dummy",
@@ -49,6 +50,9 @@
   }
  ],
  "read_only": 1,
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "states": []
 }

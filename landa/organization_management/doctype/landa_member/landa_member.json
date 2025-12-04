@@ -104,6 +104,7 @@
    "label": "Organization",
    "options": "Organization",
    "reqd": 1,
+   "search_index": 1,
    "set_only_once": 1
   },
   {
@@ -294,6 +295,7 @@
    "label": "Hat VANT Erlaubnisschein"
   }
  ],
+ "grid_page_length": 50,
  "links": [
   {
    "link_doctype": "Award",
@@ -312,7 +314,7 @@
    "link_fieldname": "landa_member"
   }
  ],
- "modified": "2024-03-01 12:32:13.526679",
+ "modified": "2025-12-04 18:47:58.310365",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
@@ -396,6 +398,8 @@
   }
  ],
  "quick_entry": 1,
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "search_fields": "full_name",
  "sort_field": "modified",
  "sort_order": "DESC",

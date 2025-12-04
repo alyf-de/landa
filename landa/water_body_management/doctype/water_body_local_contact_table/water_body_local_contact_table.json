@@ -36,15 +36,19 @@
    "read_only": 1
   }
  ],
+ "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-02-24 16:49:30.344881",
+ "modified": "2025-12-04 18:55:23.193403",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Local Contact Table",
  "owner": "Administrator",
  "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "states": []
 }

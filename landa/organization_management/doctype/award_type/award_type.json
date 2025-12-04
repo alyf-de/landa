@@ -20,11 +20,13 @@
    "unique": 1
   }
  ],
+ "grid_page_length": 50,
  "links": [],
- "modified": "2023-11-16 19:07:58.423095",
+ "modified": "2025-12-04 18:49:40.735382",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Award Type",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -65,6 +67,9 @@
    "role": "LANDA Member"
   }
  ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "states": []
 }

@@ -27,8 +27,9 @@
    "unique": 1
   }
  ],
+ "grid_page_length": 50,
  "links": [],
- "modified": "2022-03-29 18:29:51.664055",
+ "modified": "2025-12-04 18:55:23.022590",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Special Provision",
@@ -67,9 +68,12 @@
   }
  ],
  "quick_entry": 1,
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "search_fields": "title",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "title",
  "track_changes": 1
 }

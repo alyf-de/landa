@@ -149,10 +149,11 @@
    "read_only": 1
   }
  ],
+ "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-06-16 16:38:07.626871",
+ "modified": "2025-12-04 18:47:20.262381",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Yearly Fishing Permit",
@@ -231,6 +232,8 @@
    "role": "LANDA State Organization Employee"
   }
  ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

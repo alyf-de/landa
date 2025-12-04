@@ -24,7 +24,8 @@
    "fieldtype": "Link",
    "label": "Organization",
    "options": "Organization",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "title",
@@ -33,8 +34,9 @@
    "unique": 1
   }
  ],
+ "grid_page_length": 50,
  "links": [],
- "modified": "2023-04-03 13:44:42.784796",
+ "modified": "2025-12-04 18:50:30.157987",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Function",
@@ -89,7 +91,10 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }

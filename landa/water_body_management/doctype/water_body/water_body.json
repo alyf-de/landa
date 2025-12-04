@@ -289,6 +289,7 @@
    "options": "LANDA Event"
   }
  ],
+ "grid_page_length": 50,
  "links": [
   {
    "link_doctype": "Water Body Management Local Organization",
@@ -303,7 +304,7 @@
    "link_fieldname": "water_body"
   }
  ],
- "modified": "2025-02-23 14:39:10.851032",
+ "modified": "2025-12-04 18:55:20.476051",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body",
@@ -386,6 +387,8 @@
   }
  ],
  "quick_entry": 1,
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

@@ -47,9 +47,10 @@
    "label": "Imprint"
   }
  ],
+ "grid_page_length": 50,
  "issingle": 1,
  "links": [],
- "modified": "2023-11-27 18:59:08.307363",
+ "modified": "2025-12-04 18:55:21.962854",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Rules",
@@ -79,7 +80,10 @@
    "role": "LANDA Member"
   }
  ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }

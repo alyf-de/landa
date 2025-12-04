@@ -100,8 +100,9 @@
    "label": "Members"
   }
  ],
+ "grid_page_length": 50,
  "links": [],
- "modified": "2022-12-16 16:41:53.895728",
+ "modified": "2025-12-04 18:55:22.456211",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management Local Organization",
@@ -151,8 +152,11 @@
    "role": "LANDA Local Water Body Management"
   }
  ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "water_body_title",
  "track_changes": 1
 }

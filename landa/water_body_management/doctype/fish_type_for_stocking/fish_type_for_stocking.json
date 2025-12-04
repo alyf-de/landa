@@ -30,8 +30,9 @@
    "label": "Short Code"
   }
  ],
+ "grid_page_length": 50,
  "links": [],
- "modified": "2022-03-31 16:38:29.235715",
+ "modified": "2025-12-04 18:55:22.667822",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fish Type For Stocking",
@@ -78,9 +79,12 @@
   }
  ],
  "quick_entry": 1,
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
  "search_fields": "title",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "title",
  "track_changes": 1
 }
