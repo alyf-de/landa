@@ -12,6 +12,7 @@ Datenmanagementsystem des Landesverbands Sächsischer Angler.
 
 - [System Updates](docs/system-updates.md)
 - [API](docs/api.md)
+- [Translation](docs/translation.md)
 
 ### Deleting
 

@@ -388,6 +388,11 @@ override_doctype_dashboards = {
 
 export_python_type_annotations = True
 
+# Translation
+# ------------
+# List of apps whose translatable strings should be excluded from this app's translations.
+ignore_translatable_strings_from = ["frappe", "erpnext"]
+
 landa_custom_fields = {
 	# "doctype": [ { ... }, ... ],
 }
