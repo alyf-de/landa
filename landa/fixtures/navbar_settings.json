@@ -1,11 +1,13 @@
 [
  {
+  "announcement_widget": null,
   "app_logo": "/assets/landa/image/icon.png",
   "docstatus": 0,
   "doctype": "Navbar Settings",
   "help_dropdown": [
    {
     "action": null,
+    "condition": null,
     "hidden": 1,
     "is_standard": 1,
     "item_label": "Documentation",
@@ -17,6 +19,7 @@
    },
    {
     "action": null,
+    "condition": null,
     "hidden": 1,
     "is_standard": 1,
     "item_label": "User Forum",
@@ -28,6 +31,7 @@
    },
    {
     "action": null,
+    "condition": null,
     "hidden": 1,
     "is_standard": 1,
     "item_label": "Report an Issue",
@@ -39,6 +43,7 @@
    },
    {
     "action": "frappe.ui.toolbar.show_about()",
+    "condition": null,
     "hidden": 0,
     "is_standard": 1,
     "item_label": "About",
@@ -50,6 +55,7 @@
    },
    {
     "action": null,
+    "condition": null,
     "hidden": 0,
     "is_standard": 0,
     "item_label": "Contact",
@@ -61,6 +67,7 @@
    },
    {
     "action": "frappe.ui.toolbar.show_shortcuts(event)",
+    "condition": null,
     "hidden": 0,
     "is_standard": 1,
     "item_label": "Keyboard Shortcuts",
@@ -72,6 +79,7 @@
    },
    {
     "action": null,
+    "condition": null,
     "hidden": 0,
     "is_standard": 0,
     "item_label": "Anleitungen",
@@ -82,12 +90,12 @@
     "route": "/help-page"
    }
   ],
-  "logo_width": 0,
   "modified": "2023-12-11 20:22:16.733304",
   "name": "Navbar Settings",
   "settings_dropdown": [
    {
     "action": null,
+    "condition": null,
     "hidden": 1,
     "is_standard": 1,
     "item_label": "My Profile",
@@ -99,6 +107,7 @@
    },
    {
     "action": "frappe.ui.toolbar.route_to_user()",
+    "condition": null,
     "hidden": 0,
     "is_standard": 1,
     "item_label": "My Settings",
@@ -110,6 +119,7 @@
    },
    {
     "action": "frappe.ui.toolbar.setup_session_defaults()",
+    "condition": null,
     "hidden": 0,
     "is_standard": 1,
     "item_label": "Session Defaults",
@@ -121,6 +131,7 @@
    },
    {
     "action": "frappe.ui.toolbar.clear_cache()",
+    "condition": null,
     "hidden": 0,
     "is_standard": 1,
     "item_label": "Reload",
@@ -132,6 +143,7 @@
    },
    {
     "action": "frappe.ui.toolbar.view_website()",
+    "condition": null,
     "hidden": 0,
     "is_standard": 1,
     "item_label": "View Website",
@@ -143,6 +155,7 @@
    },
    {
     "action": "frappe.ui.toolbar.toggle_full_width()",
+    "condition": null,
     "hidden": 0,
     "is_standard": 1,
     "item_label": "Toggle Full Width",
@@ -154,6 +167,7 @@
    },
    {
     "action": null,
+    "condition": null,
     "hidden": 1,
     "is_standard": 1,
     "item_label": "Background Jobs",
@@ -165,6 +179,7 @@
    },
    {
     "action": null,
+    "condition": null,
     "hidden": 0,
     "is_standard": 1,
     "item_label": null,
@@ -176,6 +191,7 @@
    },
    {
     "action": "frappe.app.logout()",
+    "condition": null,
     "hidden": 0,
     "is_standard": 1,
     "item_label": "Logout",

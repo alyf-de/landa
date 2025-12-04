@@ -23,9 +23,9 @@
  {
   "docstatus": 0,
   "doctype": "Gender",
-  "gender": "M\u00e4nnlich",
+  "gender": "Männlich",
   "modified": "2021-12-03 17:36:45.769123",
-  "name": "M\u00e4nnlich"
+  "name": "Männlich"
  },
  {
   "docstatus": 0,
@@ -37,8 +37,8 @@
  {
   "docstatus": 0,
   "doctype": "Gender",
-  "gender": "Nicht-bin\u00e4r",
+  "gender": "Nicht-binär",
   "modified": "2021-12-03 17:37:42.890160",
-  "name": "Nicht-bin\u00e4r"
+  "name": "Nicht-binär"
  }
 ]

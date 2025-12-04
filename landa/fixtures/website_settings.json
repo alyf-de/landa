@@ -1,6 +1,6 @@
 [
  {
-  "address": "<div class=\"ql-editor read-mode\"><p><span style=\"color: rgb(187, 187, 187);\">Rennersdorfer Stra\u00dfe 1 </span></p><p><span style=\"color: rgb(187, 187, 187);\">01157 Dresden</span></p></div>",
+  "address": "<div class=\"ql-editor read-mode\"><p><span style=\"color: rgb(187, 187, 187);\">Rennersdorfer Straße 1 </span></p><p><span style=\"color: rgb(187, 187, 187);\">01157 Dresden</span></p></div>",
   "app_logo": "/assets/landa/image/icon.png",
   "app_name": "LANDA",
   "auto_account_deletion": 0,
@@ -9,7 +9,7 @@
   "brand_html": "<img src='/assets/landa/image/icon.png'>",
   "call_to_action": null,
   "call_to_action_url": null,
-  "copyright": "Landesverband S\u00e4chsischer Angler e. V.",
+  "copyright": "Landesverband Sächsischer Angler e. V.",
   "disable_signup": 1,
   "docstatus": 0,
   "doctype": "Website Settings",
@@ -18,7 +18,6 @@
   "favicon": "/assets/landa/image/favicon.ico",
   "footer_items": [
    {
-    "icon": null,
     "label": "Impressum",
     "open_in_new_tab": 0,
     "parent": "Website Settings",
@@ -49,13 +48,13 @@
   "robots_txt": null,
   "route_redirects": [],
   "show_account_deletion_link": 0,
+  "show_footer_on_login": 0,
   "show_language_picker": 0,
   "splash_image": "/assets/landa/image/icon.png",
   "subdomain": null,
   "title_prefix": null,
   "top_bar_items": [
    {
-    "icon": null,
     "label": "Kontakt",
     "open_in_new_tab": 0,
     "parent": "Website Settings",
@@ -66,8 +65,7 @@
     "url": "/contact"
    },
    {
-    "icon": null,
-    "label": "\u00dcber LANDA",
+    "label": "Über LANDA",
     "open_in_new_tab": 0,
     "parent": "Website Settings",
     "parent_label": null,
@@ -77,7 +75,6 @@
     "url": "/about"
    },
    {
-    "icon": null,
     "label": "Datenschutz",
     "open_in_new_tab": 0,
     "parent": "Website Settings",
@@ -88,7 +85,6 @@
     "url": "/privacy"
    },
    {
-    "icon": null,
     "label": "Hilfebereich",
     "open_in_new_tab": 0,
     "parent": "Website Settings",

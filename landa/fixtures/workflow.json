@@ -19,9 +19,11 @@
     "parent": "Catch Log Entry",
     "parentfield": "states",
     "parenttype": "Workflow",
+    "send_email": 0,
     "state": "In Progress",
     "update_field": null,
-    "update_value": null
+    "update_value": null,
+    "workflow_builder_id": null
    },
    {
     "allow_edit": "LANDA Regional Organization Management",
@@ -33,9 +35,11 @@
     "parent": "Catch Log Entry",
     "parentfield": "states",
     "parenttype": "Workflow",
+    "send_email": 0,
     "state": "Filed",
     "update_field": null,
-    "update_value": null
+    "update_value": null,
+    "workflow_builder_id": null
    },
    {
     "allow_edit": "LANDA Regional Water Body Management",
@@ -47,9 +51,11 @@
     "parent": "Catch Log Entry",
     "parentfield": "states",
     "parenttype": "Workflow",
+    "send_email": 0,
     "state": "Approved",
     "update_field": null,
-    "update_value": null
+    "update_value": null,
+    "workflow_builder_id": null
    }
   ],
   "transitions": [
@@ -62,7 +68,9 @@
     "parent": "Catch Log Entry",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "In Progress"
+    "send_email_to_creator": 0,
+    "state": "In Progress",
+    "workflow_builder_id": null
    },
    {
     "action": "Reject",
@@ -73,7 +81,9 @@
     "parent": "Catch Log Entry",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Filed"
+    "send_email_to_creator": 0,
+    "state": "Filed",
+    "workflow_builder_id": null
    },
    {
     "action": "Approve",
@@ -84,7 +94,9 @@
     "parent": "Catch Log Entry",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Filed"
+    "send_email_to_creator": 0,
+    "state": "Filed",
+    "workflow_builder_id": null
    },
    {
     "action": "Reject",
@@ -95,9 +107,12 @@
     "parent": "Catch Log Entry",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Approved"
+    "send_email_to_creator": 0,
+    "state": "Approved",
+    "workflow_builder_id": null
    }
   ],
+  "workflow_data": null,
   "workflow_name": "Catch Log Entry",
   "workflow_state_field": "workflow_state"
  }

@@ -1,7 +1,7 @@
 [
  {
   "area_code": "L01",
-  "area_name": "D\u00f6beln",
+  "area_name": "Döbeln",
   "docstatus": 0,
   "doctype": "Fishing Area",
   "modified": "2022-02-22 22:00:51.657948",
@@ -151,7 +151,7 @@
  },
  {
   "area_code": "D04",
-  "area_name": "Mei\u00dfen",
+  "area_name": "Meißen",
   "docstatus": 0,
   "doctype": "Fishing Area",
   "modified": "2022-02-22 22:00:52.544558",
@@ -161,7 +161,7 @@
  },
  {
   "area_code": "D06",
-  "area_name": "G\u00f6rlitz-Niesky",
+  "area_name": "Görlitz-Niesky",
   "docstatus": 0,
   "doctype": "Fishing Area",
   "modified": "2022-02-22 22:00:52.596130",
@@ -181,7 +181,7 @@
  },
  {
   "area_code": "D08",
-  "area_name": "Riesa-Gro\u00dfenhain",
+  "area_name": "Riesa-Großenhain",
   "docstatus": 0,
   "doctype": "Fishing Area",
   "modified": "2022-02-22 22:00:52.697031",
@@ -191,7 +191,7 @@
  },
  {
   "area_code": "D09",
-  "area_name": "L\u00f6bau-Zittau",
+  "area_name": "Löbau-Zittau",
   "docstatus": 0,
   "doctype": "Fishing Area",
   "modified": "2022-02-22 22:00:52.744548",
@@ -201,7 +201,7 @@
  },
  {
   "area_code": "D10",
-  "area_name": "S\u00e4chsische Schweiz",
+  "area_name": "Sächsische Schweiz",
   "docstatus": 0,
   "doctype": "Fishing Area",
   "modified": "2022-02-22 22:00:52.786587",
@@ -217,7 +217,7 @@
   "modified": "2022-02-22 22:00:52.851659",
   "name": "C01",
   "organization": "AVS",
-  "organization_name": "Anglerverband S\u00fcdsachsen Mulde/Elster e. V."
+  "organization_name": "Anglerverband Südsachsen Mulde/Elster e. V."
  },
  {
   "area_code": "C02",
@@ -227,7 +227,7 @@
   "modified": "2022-02-22 22:00:52.888901",
   "name": "C02",
   "organization": "AVS",
-  "organization_name": "Anglerverband S\u00fcdsachsen Mulde/Elster e. V."
+  "organization_name": "Anglerverband Südsachsen Mulde/Elster e. V."
  },
  {
   "area_code": "C03",
@@ -237,7 +237,7 @@
   "modified": "2022-02-22 22:00:52.925068",
   "name": "C03",
   "organization": "AVS",
-  "organization_name": "Anglerverband S\u00fcdsachsen Mulde/Elster e. V."
+  "organization_name": "Anglerverband Südsachsen Mulde/Elster e. V."
  },
  {
   "area_code": "C04",
@@ -247,7 +247,7 @@
   "modified": "2022-02-22 22:00:52.962788",
   "name": "C04",
   "organization": "AVS",
-  "organization_name": "Anglerverband S\u00fcdsachsen Mulde/Elster e. V."
+  "organization_name": "Anglerverband Südsachsen Mulde/Elster e. V."
  },
  {
   "area_code": "C05",
@@ -257,7 +257,7 @@
   "modified": "2022-02-22 22:00:53.007039",
   "name": "C05",
   "organization": "AVS",
-  "organization_name": "Anglerverband S\u00fcdsachsen Mulde/Elster e. V."
+  "organization_name": "Anglerverband Südsachsen Mulde/Elster e. V."
  },
  {
   "area_code": "C06",
@@ -267,7 +267,7 @@
   "modified": "2022-02-22 22:00:53.053361",
   "name": "C06",
   "organization": "AVS",
-  "organization_name": "Anglerverband S\u00fcdsachsen Mulde/Elster e. V."
+  "organization_name": "Anglerverband Südsachsen Mulde/Elster e. V."
  },
  {
   "area_code": "C07",
@@ -277,7 +277,7 @@
   "modified": "2022-02-22 22:00:53.086537",
   "name": "C07",
   "organization": "AVS",
-  "organization_name": "Anglerverband S\u00fcdsachsen Mulde/Elster e. V."
+  "organization_name": "Anglerverband Südsachsen Mulde/Elster e. V."
  },
  {
   "area_code": "C08",
@@ -287,7 +287,7 @@
   "modified": "2022-02-22 22:00:53.134825",
   "name": "C08",
   "organization": "AVS",
-  "organization_name": "Anglerverband S\u00fcdsachsen Mulde/Elster e. V."
+  "organization_name": "Anglerverband Südsachsen Mulde/Elster e. V."
  },
  {
   "area_code": "C09",
@@ -297,6 +297,6 @@
   "modified": "2022-02-22 22:00:53.183736",
   "name": "C09",
   "organization": "AVS",
-  "organization_name": "Anglerverband S\u00fcdsachsen Mulde/Elster e. V."
+  "organization_name": "Anglerverband Südsachsen Mulde/Elster e. V."
  }
 ]
