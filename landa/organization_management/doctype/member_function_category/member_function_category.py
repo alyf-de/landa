@@ -12,6 +12,23 @@ from landa.utils import autocommit
 
 
 class MemberFunctionCategory(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.core.doctype.has_role.has_role import HasRole
+		from frappe.types import DF
+
+		access_level: DF.Literal[
+			"State Organization", "Regional Organization", "Local Organization", "Local Group"
+		]
+		member_administration: DF.Check
+		only_one_per_organization: DF.Check
+		roles: DF.Table[HasRole]
+
+	# end: auto-generated types
 	def on_update(self):
 		if self.has_value_changed("roles"):
 			member_names = self.get_member_names()

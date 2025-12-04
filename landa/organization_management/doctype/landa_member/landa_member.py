@@ -16,6 +16,42 @@ from landa.utils import (
 
 
 class LANDAMember(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		additional_information: DF.Data | None
+		date_of_birth: DF.Date | None
+		first_name: DF.Data | None
+		fishing_permit_number: DF.Data | None
+		full_name: DF.Data | None
+		has_fishing_permit: DF.Check
+		has_key: DF.Check
+		has_special_yearly_fishing_permit_1: DF.Check
+		has_special_yearly_fishing_permit_2: DF.Check
+		has_special_yearly_fishing_permit_3: DF.Check
+		has_special_yearly_fishing_permit_4: DF.Check
+		has_special_yearly_fishing_permit_5: DF.Check
+		has_special_yearly_fishing_permit_6: DF.Check
+		has_special_yearly_fishing_permit_7: DF.Check
+		is_supporting_member: DF.Check
+		issuing_authority: DF.Data | None
+		last_name: DF.Data | None
+		magazine_recipient: DF.Check
+		member_since: DF.Date | None
+		nationality: DF.Data | None
+		organization: DF.Link
+		organization_name: DF.Data | None
+		permit_expiration_date: DF.Date | None
+		permit_is_valid_for_life: DF.Check
+		permit_issue_date: DF.Date | None
+		youth_membership: DF.Check
+
+	# end: auto-generated types
 	def autoname(self):
 		"""Generate the unique member number (name field)
 

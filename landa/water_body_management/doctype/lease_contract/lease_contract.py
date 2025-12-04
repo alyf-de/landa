@@ -9,6 +9,36 @@ from frappe.utils.data import date_diff, getdate, today
 
 
 class LeaseContract(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		from landa.water_body_management.doctype.lease_contract_rent.lease_contract_rent import (
+			LeaseContractRent,
+		)
+
+		additional_information: DF.SmallText | None
+		currency: DF.Link | None
+		end_date: DF.Date | None
+		fishing_area: DF.Link | None
+		landlord_new: DF.Link | None
+		lease_contract_rent: DF.Table[LeaseContractRent]
+		lease_object: DF.Link | None
+		organization: DF.Link
+		organization_name: DF.Data | None
+		payment_due_date: DF.Date | None
+		payment_reference: DF.Data | None
+		payment_type: DF.Literal["Credit Transfer", "Direct Debit"]
+		start_date: DF.Date | None
+		status: DF.Literal["Planned", "Active", "Inactive"]
+		water_body: DF.Link
+		water_body_title: DF.Data | None
+
+	# end: auto-generated types
 	def before_validate(self):
 		self.status = self.get_status()
 

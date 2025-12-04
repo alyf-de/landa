@@ -6,4 +6,23 @@ from frappe.model.document import Document
 
 
 class LANDAItemSalesSummary(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		amount: DF.Currency
+		billed: DF.Float
+		credited: DF.Float
+		item_code: DF.Link | None
+		item_name: DF.Data | None
+		net_billed: DF.Float
+		parent: DF.Data
+		parentfield: DF.Data
+		parenttype: DF.Data
+		rate: DF.Currency
+	# end: auto-generated types
 	pass

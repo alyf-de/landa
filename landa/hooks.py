@@ -386,6 +386,8 @@ override_doctype_dashboards = {
 # 	"methods": []
 # }
 
+export_python_type_annotations = True
+
 landa_custom_fields = {
 	# "doctype": [ { ... }, ... ],
 }

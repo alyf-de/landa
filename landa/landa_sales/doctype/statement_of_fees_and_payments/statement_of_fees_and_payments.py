@@ -12,6 +12,37 @@ from landa.utils import get_new_name
 
 
 class StatementofFeesandPayments(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		from landa.landa_sales.doctype.landa_item_sales_summary.landa_item_sales_summary import (
+			LANDAItemSalesSummary,
+		)
+		from landa.landa_sales.doctype.landa_payment_row.landa_payment_row import LANDAPaymentRow
+
+		amended_from: DF.Link | None
+		billing_address: DF.Link | None
+		billing_address_display: DF.SmallText | None
+		billing_contact: DF.Link | None
+		company: DF.Link
+		company_address: DF.Link | None
+		company_address_display: DF.SmallText | None
+		customer: DF.Link
+		customer_name: DF.Data | None
+		organization: DF.Link | None
+		payments: DF.Table[LANDAPaymentRow]
+		posting_date: DF.Date
+		sales: DF.Table[LANDAItemSalesSummary]
+		sum_of_payments: DF.Currency
+		sum_of_sales: DF.Currency
+		year_of_settlement: DF.Int
+
+	# end: auto-generated types
 	def autoname(self):
 		self.name = get_new_name("BA", self.company, self.doctype, self.year_of_settlement)
 

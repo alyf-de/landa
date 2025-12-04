@@ -13,6 +13,38 @@ from landa.utils import get_member_and_organization
 
 
 class MemberDataImport(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		additional_information: DF.Data | None
+		address_line1: DF.Data | None
+		address_name: DF.Data | None
+		city: DF.Data | None
+		date_of_birth: DF.Date | None
+		first_name: DF.Data | None
+		has_key: DF.Check
+		has_special_yearly_fishing_permit_1: DF.Check
+		has_special_yearly_fishing_permit_2: DF.Check
+		has_special_yearly_fishing_permit_3: DF.Check
+		has_special_yearly_fishing_permit_4: DF.Check
+		has_special_yearly_fishing_permit_5: DF.Check
+		has_special_yearly_fishing_permit_6: DF.Check
+		has_special_yearly_fishing_permit_7: DF.Check
+		is_supporting_member: DF.Check
+		last_name: DF.Data | None
+		member: DF.Data | None
+		organization: DF.Link | None
+		pincode: DF.Data | None
+		type: DF.Link | None
+		year: DF.Int
+		yearly_fishing_permit: DF.Link | None
+		youth_membership: DF.Check
+	# end: auto-generated types
 	MEMBER_FIELDS = [
 		"first_name",
 		"last_name",
@@ -81,6 +113,9 @@ class MemberDataImport(Document):
 	@staticmethod
 	def get_stats(self, *args, **kwargs) -> dict:
 		return {"stats": {}}
+
+	def delete(self):
+		raise NotImplementedError
 
 	def preprocess(self):
 		"""Remove whitespaces, parse checkbox values and dates."""

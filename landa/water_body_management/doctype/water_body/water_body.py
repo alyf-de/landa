@@ -12,6 +12,56 @@ from landa.utils import get_current_member_data
 
 
 class WaterBody(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		from landa.water_body_management.doctype.blacklisted_fish_species_table.blacklisted_fish_species_table import (
+			BlacklistedFishSpeciesTable,
+		)
+		from landa.water_body_management.doctype.fish_species_table.fish_species_table import FishSpeciesTable
+		from landa.water_body_management.doctype.landa_event.landa_event import LANDAEvent
+		from landa.water_body_management.doctype.water_body_special_provision_table.water_body_special_provision_table import (
+			WaterBodySpecialProvisionTable,
+		)
+
+		blacklisted_fish_species: DF.TableMultiSelect[BlacklistedFishSpeciesTable]
+		current_information_expires_on: DF.Date | None
+		current_public_information: DF.SmallText | None
+		display_in_fishing_guide: DF.Check
+		draw_restricted_area: DF.Check
+		events: DF.Table[LANDAEvent]
+		fish_species: DF.Table[FishSpeciesTable]
+		fishing_area: DF.Link
+		fishing_area_name: DF.Data | None
+		general_public_information: DF.SmallText | None
+		guest_passes_available: DF.Check
+		has_master_key_system: DF.Check
+		icon: DF.Link | None
+		icon_path: DF.AttachImage | None
+		is_active: DF.Check
+		is_property_water_body: DF.Check
+		marker_tooltip: DF.Data | None
+		number: DF.Data
+		organization: DF.Link | None
+		organization_name: DF.Data | None
+		status: DF.Literal[
+			"Allgemeines Angelgew\u00e4sser",
+			"Verbandsvertragsgew\u00e4sser",
+			"Salmonidenstrecke gelb",
+			"Salmonidenstrecke gr\u00fcn",
+			"Jugendgew\u00e4sser",
+		]
+		title: DF.Data
+		water_body_size: DF.Float
+		water_body_size_unit: DF.Literal["ha", "km"]
+		water_body_special_provisions: DF.Table[WaterBodySpecialProvisionTable]
+
+	# end: auto-generated types
 	def on_update(self):
 		if not self.flags.skip_cache_rebuild:
 			rebuild_water_body_cache()

@@ -16,6 +16,34 @@ from landa.utils import get_current_member_data
 
 
 class ExternalContact(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		from landa.organization_management.doctype.external_contact_function.external_contact_function import (
+			ExternalContactFunction,
+		)
+
+		additional_information: DF.SmallText | None
+		date_of_birth: DF.Date | None
+		disabled: DF.Check
+		external_contact_since: DF.Date | None
+		external_organization_name: DF.Data
+		first_name: DF.Data | None
+		full_name: DF.Data | None
+		functions: DF.TableMultiSelect[ExternalContactFunction]
+		is_magazine_recipient: DF.Check
+		last_name: DF.Data | None
+		nationality: DF.Data | None
+		organization: DF.Link
+		organization_name: DF.Data | None
+		position_description: DF.Data | None
+
+	# end: auto-generated types
 	def autoname(self):
 		"""Generate the unique external contact number (name field)
 

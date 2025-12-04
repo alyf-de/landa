@@ -10,6 +10,38 @@ from landa.water_body_management.stocking_controller import StockingController
 
 
 class StockingTarget(StockingController):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		additional_information: DF.SmallText | None
+		company_of_supplier: DF.Data | None
+		fish_species: DF.Link
+		fish_type_for_stocking: DF.Link
+		fishing_area: DF.Link | None
+		full_name_of_supplier: DF.Data | None
+		organization: DF.Link
+		percent_completed: DF.Percent
+		percent_in_progress: DF.Percent
+		quantity: DF.Float
+		quantity_per_water_body_size: DF.Float
+		status: DF.Literal["Draft", "In Progress", "Completed"]
+		supplier: DF.Link | None
+		unit_of_quantity_per_water_body_size: DF.Data | None
+		unit_of_weight_per_water_body_size: DF.Data | None
+		water_body: DF.Link
+		water_body_size: DF.Float
+		water_body_size_unit: DF.Data | None
+		water_body_title: DF.Data | None
+		weight: DF.Float
+		weight_per_water_body_size: DF.Float
+		year: DF.Int
+
+	# end: auto-generated types
 	def before_validate(self):
 		super().before_validate()
 		self.update_status()

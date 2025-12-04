@@ -10,6 +10,27 @@ from frappe.model.document import Document
 
 
 class YearlyFishingPermit(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		amended_from: DF.Link | None
+		date_of_issue: DF.Date | None
+		first_name: DF.Data | None
+		last_name: DF.Data | None
+		member: DF.Link | None
+		number: DF.Data | None
+		organization: DF.Link | None
+		organization_name: DF.Data | None
+		type: DF.Link | None
+		type_name: DF.Data | None
+		year: DF.Int
+
+	# end: auto-generated types
 	def before_insert(self):
 		if not self.member:
 			frappe.throw(_("Please set the corresponding LANDA Member"))

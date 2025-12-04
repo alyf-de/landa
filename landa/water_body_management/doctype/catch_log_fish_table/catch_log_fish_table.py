@@ -8,6 +8,23 @@ from frappe.utils.data import flt
 
 
 class CatchLogFishTable(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		amount: DF.Int
+		fish_species: DF.Link
+		parent: DF.Data
+		parentfield: DF.Data
+		parenttype: DF.Data
+		plausible: DF.Check
+		weight_in_kg: DF.Float
+
+	# end: auto-generated types
 	def validate_weight(self):
 		tolerance = 0.4
 		typical_weight = flt(frappe.db.get_value("Fish Species", self.fish_species, "typical_weight_in_kg"))

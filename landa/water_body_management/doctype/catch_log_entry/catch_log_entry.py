@@ -8,6 +8,33 @@ from frappe.model.workflow import get_workflow
 
 
 class CatchLogEntry(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		from landa.water_body_management.doctype.catch_log_fish_table.catch_log_fish_table import (
+			CatchLogFishTable,
+		)
+
+		amended_from: DF.Link | None
+		fish_catches: DF.Table[CatchLogFishTable]
+		fishing_area: DF.Link | None
+		fishing_days: DF.Int
+		note: DF.SmallText | None
+		organization: DF.Link
+		organization_name: DF.Data | None
+		origin_of_catch_log_entry: DF.Literal["", "Verein", "Regionalverband"]
+		regional_organization: DF.Link | None
+		water_body: DF.Link
+		water_body_title: DF.Data | None
+		workflow_state: DF.Link | None
+		year: DF.Int
+
+	# end: auto-generated types
 	def before_insert(self):
 		user_roles = set(get_roles(frappe.session.user))
 		regional_origin = {

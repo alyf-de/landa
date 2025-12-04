@@ -9,6 +9,25 @@ from frappe.utils.data import date_diff, today
 
 
 class MemberFunction(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		end_date: DF.Date | None
+		member: DF.Link
+		member_first_name: DF.Data | None
+		member_function_category: DF.Link
+		member_last_name: DF.Data | None
+		organization: DF.Link | None
+		organization_name: DF.Data | None
+		start_date: DF.Date | None
+		status: DF.Literal["Planned", "Active", "Inactive"]
+
+	# end: auto-generated types
 	def before_validate(self):
 		self.status = self.get_status()
 
