@@ -9,9 +9,9 @@ from landa.water_body_management.doctype.water_body.water_body import build_wate
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
 def organization(id: str = None) -> list[dict]:
-	filters = []
+	filters = [["disabled", "=", 0]]
 	if id and isinstance(id, str):
-		filters.append(["Organization", "name", "like", id])
+		filters.append(["name", "=", id])
 
 	organizations = frappe.get_all(
 		"Organization",
