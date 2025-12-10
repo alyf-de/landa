@@ -20,6 +20,33 @@ from landa.organization_management.doctype.landa_member.landa_member import get_
 
 
 class Organization(NestedSet):
+<<<<<<< HEAD
+=======
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		charitable_until: DF.Date | None
+		disabled: DF.Check
+		fishing_area: DF.Link | None
+		is_charitable: DF.Check
+		is_group: DF.Check
+		lft: DF.Int
+		old_parent: DF.Link | None
+		organization_name: DF.Data
+		parent_organization: DF.Link | None
+		public_address: DF.Link | None
+		public_contact: DF.Link | None
+		register_number: DF.Data | None
+		rgt: DF.Int
+		short_code: DF.Data | None
+		website: DF.Data | None
+	# end: auto-generated types
+>>>>>>> 4403a7d (feat(Organization): can be disabled, hide in API)
 	nsm_parent_field = "parent_organization"
 
 	def autoname(self):
