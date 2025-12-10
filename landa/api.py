@@ -5,7 +5,7 @@ import frappe
 from frappe.utils.caching import redis_cache
 
 from landa.water_body_management.change_log import ChangeLog
-from landa.water_body_management.doctype.fish_species.fish_species import get_fish_species_data
+from landa.water_body_management.doctype.fish_species.fish_species import query_fish_species_data
 from landa.water_body_management.doctype.water_body.water_body import build_water_body_data
 
 
@@ -95,9 +95,10 @@ def water_body(id: str = None, only_id: int = 0) -> List[Dict]:
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@redis_cache()
 def fish_species(id: str = None):
 	"""Return a **CACHED** list of fish species. Uncached if ID is passed."""
-	return get_fish_species_data(id)
+	return query_fish_species_data(id)
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
