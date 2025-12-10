@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2025-12-04 19:09+0053\n"
+"POT-Creation-Date: 2025-12-10 21:28+0053\n"
 "PO-Revision-Date: 2025-11-29 18:55+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
@@ -216,7 +216,7 @@ msgstr "Kann untergeordnete Vereine enthalten"
 msgid "Cannot be a member of organization {} because it is a group."
 msgstr "Kann kein Mitglied von Verein/Verband {} sein, da nur Vereine bzw. Ortsgruppen Mitglieder haben dürfen, keine Regional- und Landesverbände."
 
-#: landa/organization_management/doctype/organization/organization.py:69
+#: landa/organization_management/doctype/organization/organization.py:70
 msgid "Cannot set Parent Organization to a local group."
 msgstr ""
 
@@ -1435,7 +1435,7 @@ msgstr "Neuen Fangbucheintrag anlegen"
 msgid "New Member Function Entry"
 msgstr "Neue Mitgliedsfunktion anlegen"
 
-#: landa/organization_management/doctype/organization/organization.py:319
+#: landa/organization_management/doctype/organization/organization.py:320
 msgid "No Company found for Organization {0}."
 msgstr "Kein Bestellwesenkonto RV für Verein {0} gefunden."
 
@@ -1548,7 +1548,7 @@ msgstr "Bitte tragen Sie vor dem Buchen der Rechnung eine Rechnungsadresse ein."
 msgid "Please set a Billing Contact before submitting the Sales Invoice."
 msgstr "Bitte tragen Sie vor dem Buchen der Rechnung einen Rechnungskontakt ein."
 
-#: landa/organization_management/doctype/organization/organization.py:61
+#: landa/organization_management/doctype/organization/organization.py:62
 msgid "Please set a Parent Organization."
 msgstr "Bitte tragen Sie einen übergeordneten Verein ein."
 
@@ -1886,6 +1886,10 @@ msgstr "Das Mitglied ist nun als Kontakt dieses Vereins und des entsprechenden B
 msgid "The Member Function Category {0} can only be assigned once per organization."
 msgstr " Die Mitgliedsfunktionskategorie {0} kann nur einmal je Verein vergeben werden."
 
+#: landa/organization_management/contact/contact.py:29
+msgid "The email address {0} is already linked to another LANDA Member. Please use a different one for this contact."
+msgstr "Die E-Mail-Adresse {0} ist bereits mit einem anderen Mitglied verknüpft. Bitte verwenden Sie eine andere E-Mail-Adresse für diesen Kontakt."
+
 #: landa/organization_management/doctype/member_data_import/member_data_import.py:80
 msgid "The selected address does not belong to the selected LANDA Member"
 msgstr "Die ausgewählte Adresse gehört nicht zum ausgewählten Mitglied"
@@ -1898,15 +1902,15 @@ msgstr "Die hochgeladene Datei enthält keine Projekt-ID."
 msgid "The weight of {0} in row {1} diverges from the typical weight by more than 40 %"
 msgstr "Das Gewicht von {0} in Zeile {1} weicht um mehr als 40 % vom typischen Gewicht ab"
 
-#: landa/organization_management/doctype/organization/organization.py:315
+#: landa/organization_management/doctype/organization/organization.py:316
 msgid "There is no Customer linked to {0}."
 msgstr "Es ist kein Bestellwesenkonto mit {0} verknüpft."
 
-#: landa/organization_management/doctype/organization/organization.py:238
+#: landa/organization_management/doctype/organization/organization.py:239
 msgid "There is no single address linked to {0}."
 msgstr "Es ist keine einzelne Adresse mit {0} verknüpft."
 
-#: landa/organization_management/doctype/organization/organization.py:230
+#: landa/organization_management/doctype/organization/organization.py:231
 msgid "There is no single contact linked to {0}."
 msgstr "Es ist kein einzelner Kontakt mit {0} verknüpft."
 
