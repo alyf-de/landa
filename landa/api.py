@@ -2,6 +2,7 @@ import json
 from typing import Dict, List
 
 import frappe
+from frappe.utils.caching import redis_cache
 
 from landa.water_body_management.change_log import ChangeLog
 from landa.water_body_management.doctype.fish_species.fish_species import get_fish_species_data
@@ -10,9 +11,13 @@ from landa.water_body_management.doctype.water_body.water_body import build_wate
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
 <<<<<<< HEAD
+<<<<<<< HEAD
 def organization(id: str = None) -> List[Dict]:
 	filters = []
 =======
+=======
+@redis_cache()
+>>>>>>> 3bbde20 (feat(Organization): cache API response for 1 hour)
 def organization(id: str = None) -> list[dict]:
 	filters = [["disabled", "=", 0]]
 >>>>>>> 4403a7d (feat(Organization): can be disabled, hide in API)
