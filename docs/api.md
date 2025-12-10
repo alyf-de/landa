@@ -215,6 +215,8 @@ Get a the fishing rules applicable to all water bodies.
 
 - `GET /api/method/landa.api.water_body_rules`
 
+Responses are cached for one hour.
+
 ### Example Requests
 
 > Remember to set the environment variable `BASE_URL` to the URL of your LANDA instance. For example like this: `export BASE_URL=https://lvsa-landa.de`
