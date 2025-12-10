@@ -8,28 +8,7 @@ from frappe.utils.data import get_url
 
 
 class FishSpecies(Document):
-	def on_update(self):
-		build_fish_species_cache()
-
-	def after_delete(self):
-		build_fish_species_cache()
-
-	def after_rename(self, old, new, merge):
-		build_fish_species_cache()
-
-
-def get_fish_species_data(id: str = None) -> List[Dict]:
-	"""Return fish species from cache."""
-	if id:
-		# We do not cache ID since it's uniqueness makes the API performant
-		return query_fish_species_data(id)
-
-	return frappe.cache().get_value("fish_species_data", query_fish_species_data)
-
-
-def build_fish_species_cache():
-	"""Rebuild entire fish species data and set in cache."""
-	frappe.cache().set_value("fish_species_data", query_fish_species_data())
+	pass
 
 
 def query_fish_species_data(id: str = None) -> List[Dict]:

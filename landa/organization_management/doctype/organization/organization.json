@@ -27,6 +27,7 @@
   "html_24",
   "section_break_15",
   "is_group",
+  "disabled",
   "lft",
   "rgt",
   "old_parent",
@@ -190,6 +191,13 @@
   {
    "fieldname": "column_break_25",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled",
+   "permlevel": 1
   }
  ],
  "is_tree": 1,
@@ -240,7 +248,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2024-05-10 19:32:42.712947",
+ "modified": "2025-12-10 14:37:18.258588",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",

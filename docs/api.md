@@ -8,6 +8,8 @@ Get a list of organizations organizations with ID, organization name, geojson, a
 
     - `id` (optional): return only data of the organization with this ID.
 
+Responses are cached for one hour.
+
 ### Example Requests
 
 > Remember to set the environment variable `BASE_URL` to the URL of your LANDA instance. For example like this: `export BASE_URL=https://lvsa-landa.de`
@@ -167,6 +169,8 @@ Get a list of fish species along with their data.
 
     - `id` (optional): return only data of the Fish Species with this ID.
 
+Responses are cached for one hour.
+
 ### Example Requests
 
 > Remember to set the environment variable `BASE_URL` to the URL of your LANDA instance. For example like this: `export BASE_URL=https://lvsa-landa.de`
@@ -212,6 +216,8 @@ The response is always a list of dictionaries, like this:
 Get a the fishing rules applicable to all water bodies.
 
 - `GET /api/method/landa.api.water_body_rules`
+
+Responses are cached for one hour.
 
 ### Example Requests
 
@@ -355,6 +361,8 @@ Get a list of custom icons.
     Parameters:
 
     - `id` (optional): return only data of the custom icon with this ID.
+
+Responses are cached for one hour.
 
 ### Example Requests
 
