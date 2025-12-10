@@ -28,6 +28,7 @@ class Organization(NestedSet):
 		from frappe.types import DF
 
 		charitable_until: DF.Date | None
+		disabled: DF.Check
 		fishing_area: DF.Link | None
 		is_charitable: DF.Check
 		is_group: DF.Check

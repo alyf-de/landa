@@ -1,17 +1,19 @@
 import json
 
 import frappe
+from frappe.utils.caching import redis_cache
 
 from landa.water_body_management.change_log import ChangeLog
-from landa.water_body_management.doctype.fish_species.fish_species import get_fish_species_data
+from landa.water_body_management.doctype.fish_species.fish_species import query_fish_species_data
 from landa.water_body_management.doctype.water_body.water_body import build_water_body_data
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@redis_cache()
 def organization(id: str = None) -> list[dict]:
-	filters = []
+	filters = [["disabled", "=", 0]]
 	if id and isinstance(id, str):
-		filters.append(["Organization", "name", "like", id])
+		filters.append(["name", "=", id])
 
 	organizations = frappe.get_all(
 		"Organization",
@@ -84,12 +86,14 @@ def water_body(id: str = None, only_id: int = 0) -> list[dict]:
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@redis_cache()
 def fish_species(id: str = None):
 	"""Return a **CACHED** list of fish species. Uncached if ID is passed."""
-	return get_fish_species_data(id)
+	return query_fish_species_data(id)
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@redis_cache()
 def legal():
 	"""Return water body rules in rich text format."""
 	rules = frappe.get_single("Water Body Rules")
@@ -110,6 +114,7 @@ def change_log(from_datetime: str):
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@redis_cache()
 def custom_icon(id: str = None) -> str:
 	"""Return the custom icon for the given icon name."""
 	from frappe.utils.data import get_url
