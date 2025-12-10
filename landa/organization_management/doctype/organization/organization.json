@@ -248,11 +248,7 @@
    "link_fieldname": "organization"
   }
  ],
-<<<<<<< HEAD
- "modified": "2024-05-10 19:32:42.712947",
-=======
  "modified": "2025-12-10 14:37:18.258588",
->>>>>>> 4403a7d (feat(Organization): can be disabled, hide in API)
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
