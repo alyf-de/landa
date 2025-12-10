@@ -114,6 +114,7 @@ def change_log(from_datetime: str):
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@redis_cache()
 def custom_icon(id: str = None) -> str:
 	"""Return the custom icon for the given icon name."""
 	from frappe.utils.data import get_url

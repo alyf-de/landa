@@ -362,6 +362,8 @@ Get a list of custom icons.
 
     - `id` (optional): return only data of the custom icon with this ID.
 
+Responses are cached for one hour.
+
 ### Example Requests
 
 > Remember set the environment variable `BASE_URL` to the URL of your LANDA instance. For example like this: `export BASE_URL=https://lvsa-landa.de`
