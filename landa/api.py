@@ -92,6 +92,7 @@ def fish_species(id: str = None):
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@redis_cache()
 def legal():
 	"""Return water body rules in rich text format."""
 	rules = frappe.get_single("Water Body Rules")
