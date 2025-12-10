@@ -55,8 +55,11 @@ def build_fish_species_cache():
 		wikipedia_link: DF.Data | None
 
 	# end: auto-generated types
+<<<<<<< HEAD
 	pass
 >>>>>>> f5aa914 (fix(Fish Species): simplify caching)
+=======
+>>>>>>> e152b8c (fix(Fish Species): remove unnecessary pass)
 
 
 def query_fish_species_data(id: str = None) -> List[Dict]:
