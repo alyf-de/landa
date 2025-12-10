@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2025-12-04 19:09+0053\n"
-"PO-Revision-Date: 2025-12-04 19:09+0053\n"
+"POT-Creation-Date: 2025-12-10 21:28+0053\n"
+"PO-Revision-Date: 2025-12-10 21:28+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -216,7 +216,7 @@ msgstr ""
 msgid "Cannot be a member of organization {} because it is a group."
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.py:69
+#: landa/organization_management/doctype/organization/organization.py:70
 msgid "Cannot set Parent Organization to a local group."
 msgstr ""
 
@@ -1435,7 +1435,7 @@ msgstr ""
 msgid "New Member Function Entry"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.py:319
+#: landa/organization_management/doctype/organization/organization.py:320
 msgid "No Company found for Organization {0}."
 msgstr ""
 
@@ -1548,7 +1548,7 @@ msgstr ""
 msgid "Please set a Billing Contact before submitting the Sales Invoice."
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.py:61
+#: landa/organization_management/doctype/organization/organization.py:62
 msgid "Please set a Parent Organization."
 msgstr ""
 
@@ -1886,6 +1886,10 @@ msgstr ""
 msgid "The Member Function Category {0} can only be assigned once per organization."
 msgstr ""
 
+#: landa/organization_management/contact/contact.py:29
+msgid "The email address {0} is already linked to another LANDA Member. Please use a different one for this contact."
+msgstr ""
+
 #: landa/organization_management/doctype/member_data_import/member_data_import.py:80
 msgid "The selected address does not belong to the selected LANDA Member"
 msgstr ""
@@ -1898,15 +1902,15 @@ msgstr ""
 msgid "The weight of {0} in row {1} diverges from the typical weight by more than 40 %"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.py:315
+#: landa/organization_management/doctype/organization/organization.py:316
 msgid "There is no Customer linked to {0}."
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.py:238
+#: landa/organization_management/doctype/organization/organization.py:239
 msgid "There is no single address linked to {0}."
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.py:230
+#: landa/organization_management/doctype/organization/organization.py:231
 msgid "There is no single contact linked to {0}."
 msgstr ""
 
