@@ -30,7 +30,6 @@ class FishSpecies(Document):
 		wikipedia_link: DF.Data | None
 
 	# end: auto-generated types
-	pass
 
 
 def query_fish_species_data(id: str = None) -> list[dict]:
