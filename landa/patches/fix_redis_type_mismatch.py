@@ -2,7 +2,6 @@
 
 import frappe
 
-from landa.water_body_management.doctype.fish_species.fish_species import build_fish_species_cache
 from landa.water_body_management.doctype.water_body.water_body import rebuild_water_body_cache
 
 
@@ -36,4 +35,3 @@ def execute():
 
 	# Now rebuild the caches with the correct type
 	rebuild_water_body_cache()
-	build_fish_species_cache()
