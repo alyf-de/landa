@@ -1,9 +1,35 @@
+import frappe
+from frappe import _
 from frappe.contacts.doctype.contact.contact import Contact
 
 
 def validate(contact: Contact, event: str) -> None:
+	validate_email_address_for_member(contact)
 	set_primary_email_if_missing(contact)
 	set_primary_phone_if_missing(contact)
+
+
+def validate_email_address_for_member(contact: Contact) -> None:
+	"""Validate that the email address is not linked to another LANDA Member."""
+	user = frappe.db.get_value(
+		"User",
+		filters={"email": contact.email_id, "landa_member": ("is", "set")},
+		fieldname=["name", "landa_member"],
+		as_dict=True,
+	)
+
+	if not user:
+		return
+
+	for link in contact.links:
+		if link.link_doctype != "LANDA Member" or link.link_name == user.landa_member:
+			continue
+
+		frappe.throw(
+			_(
+				"The email address {0} is already linked to another LANDA Member. Please use a different one for this contact."
+			).format(contact.email_id)
+		)
 
 
 def set_primary_email_if_missing(contact: Contact) -> bool:
