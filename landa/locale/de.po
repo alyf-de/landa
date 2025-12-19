@@ -2344,3 +2344,14 @@ msgstr ""
 msgid "{0} {1} Created"
 msgstr "{0} {1} erstellt"
 
+#: landa/organization_management/doctype/landa_member/landa_member_list.js
+msgid "Clear Special Fishing Permits"
+msgstr "Erlaubnisscheine Gewässerfonds löschen"
+
+#: landa/organization_management/doctype/landa_member/landa_member_list.js
+msgid "Are you sure you want to clear all Special Yearly Fishing Permits?"
+msgstr "Möchten Sie wirklich alle Erlaubnisscheine Gewässerfonds löschen?"
+
+#: landa/organization_management/doctype/landa_member/landa_member_list.js
+msgid "Special Yearly Fishing Permits cleared."
+msgstr "Erlaubnisscheine Gewässerfonds gelöscht."

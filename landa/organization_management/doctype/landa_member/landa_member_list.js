@@ -52,6 +52,29 @@ frappe.listview_settings["LANDA Member"] = {
 			}
 		}
 
+		if (frappe.model.can_write("LANDA Member")) {
+			list_view.page.add_action_item(__("Clear Special Fishing Permits"), () => {
+				const members = list_view.get_checked_items(true);
+				frappe.confirm(
+					__("Are you sure you want to clear all Special Yearly Fishing Permits?"),
+					() => {
+						frappe
+							.xcall(
+								"landa.organization_management.doctype.landa_member.landa_member.clear_special_yearly_fishing_permits",
+								{ members: members },
+							)
+							.then(() => {
+								frappe.show_alert({
+									message: __("Special Yearly Fishing Permits cleared."),
+									indicator: "green",
+								});
+								list_view.refresh();
+							});
+					},
+				);
+			});
+		}
+
 		if (frappe.model.can_create("Yearly Fishing Permit")) {
 			list_view.page.add_action_item(__("Create Yearly Fishing Permit"), () => {
 				frappe.prompt(
