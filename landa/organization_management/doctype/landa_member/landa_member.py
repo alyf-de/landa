@@ -125,7 +125,7 @@ def clear_special_yearly_fishing_permits(members):
 		doc = frappe.get_doc("LANDA Member", str(member))
 		for field in permit_fields:
 			doc.set(field, 0)
-			doc.save()
+		doc.save()
 
 
 def get_address_or_contact(doctype: str, landa_member: str):
