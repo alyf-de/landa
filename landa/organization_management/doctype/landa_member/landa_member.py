@@ -122,7 +122,7 @@ def clear_special_yearly_fishing_permits(members):
 	]
 
 	for member in members:
-		doc = frappe.get_doc("LANDA Member", member)
+		doc = frappe.get_doc("LANDA Member", str(member))
 		for field in permit_fields:
 			doc.set(field, 0)
 			doc.save()
