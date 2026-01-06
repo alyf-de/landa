@@ -8,6 +8,7 @@ def before_uninstall():
 	remove_custom_fields()
 	remove_property_setters()
 
+
 def remove_custom_fields():
 	print("* removing custom fields...")
 	for doctypes, custom_fields in get_custom_fields().items():

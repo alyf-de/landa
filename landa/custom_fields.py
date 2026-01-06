@@ -11,7 +11,7 @@ def get_custom_fields():
 				"fieldname": "address_info_text",
 				"insert_after": "address_details",
 				"fieldtype": "HTML",
-				"options": "<p>Das Formular für Adressen bezieht sich in LANDA auf einen Ort, also z. B. ein Wohnhaus oder ein Vereinsbüro. Es ist nicht (!) mit einer Person verknüpft. </p>\n\n<p>Das bedeutet, die Adresse beinhaltet in ihrer einfachsten Form nur Straße, Hausnummer, PLZ und Ort, aber nicht den Namen des Vereins und/ oder des Ansprechpartners. Diese werden im Formular <b><a href='/app/contact'>Kontakt </a></b> hinterlegt und erst bei der Adressierung zusammengeführt. </p>\n\n<p>Diese Trennung von Adresse und Kontakt ermöglicht es, Adressen sowohl für ein Mitglied als auch für einen Verein zu verwenden, ohne doppelte Adresspflege zu betreiben.</p>\n\n<p>Damit man Adressen bei der Adressierung (z. B. für Lieferscheine) bzw. in einer Suche leichter zuordnen kann, ist es möglich, eine Adressbezeichnung anzugeben. Diese taucht nicht in der Adresse auf dem Brief auf und dient nur der Suche. Wenn man ein Mitglied, einen Verein oder ein Bestellkonto verknüpft mit der zu erstellenden Adresse verknüpft, ist es nicht notwendig, die Adressbezeichnung selbst zu wählen. Diese wird automatisch ausgefüllt, man darf aber die automatische Bezeichnung ändern (z. B. von \"AVE-003\" zu \"Büro im Vereinshaus Angelverein XY\")</p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=\" https://youtu.be/JENu0W1NmlQ\" style=\"color: blue;\">Vereinsverwaltung #04 Adresse und Kontakt bearbeiten</a> und in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML993pHOo16el5DGrKN5kCzh\" style=\"color: blue;\">LANDA Videotutorials - Vereinsverwaltung / Mitgliederverwaltung </a> </p>",
+				"options": '<p>Das Formular für Adressen bezieht sich in LANDA auf einen Ort, also z. B. ein Wohnhaus oder ein Vereinsbüro. Es ist nicht (!) mit einer Person verknüpft. </p>\n\n<p>Das bedeutet, die Adresse beinhaltet in ihrer einfachsten Form nur Straße, Hausnummer, PLZ und Ort, aber nicht den Namen des Vereins und/ oder des Ansprechpartners. Diese werden im Formular <b><a href=\'/app/contact\'>Kontakt </a></b> hinterlegt und erst bei der Adressierung zusammengeführt. </p>\n\n<p>Diese Trennung von Adresse und Kontakt ermöglicht es, Adressen sowohl für ein Mitglied als auch für einen Verein zu verwenden, ohne doppelte Adresspflege zu betreiben.</p>\n\n<p>Damit man Adressen bei der Adressierung (z. B. für Lieferscheine) bzw. in einer Suche leichter zuordnen kann, ist es möglich, eine Adressbezeichnung anzugeben. Diese taucht nicht in der Adresse auf dem Brief auf und dient nur der Suche. Wenn man ein Mitglied, einen Verein oder ein Bestellkonto verknüpft mit der zu erstellenden Adresse verknüpft, ist es nicht notwendig, die Adressbezeichnung selbst zu wählen. Diese wird automatisch ausgefüllt, man darf aber die automatische Bezeichnung ändern (z. B. von "AVE-003" zu "Büro im Vereinshaus Angelverein XY")</p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=" https://youtu.be/JENu0W1NmlQ" style="color: blue;">Vereinsverwaltung #04 Adresse und Kontakt bearbeiten</a> und in den <a href="https://youtube.com/playlist?list=PLCG04RYNrML993pHOo16el5DGrKN5kCzh" style="color: blue;">LANDA Videotutorials - Vereinsverwaltung / Mitgliederverwaltung </a> </p>',
 			},
 			{
 				"fieldname": "column_break_2",
@@ -113,7 +113,7 @@ def get_custom_fields():
 				"fieldname": "company_info_text",
 				"insert_after": "company_info_section",
 				"fieldtype": "HTML",
-				"options": "<p>Regionalverbände sind in diesem System auch als Unternehmen hinterlegt, weil diese Artikel an die Vereine liefern, welche wiederum als Kunden hinterlegt sind.</p>\n\n<p>Eine Übersicht der Unternehmen finden Sie <b><a href=\"/app/company\">hier</a></b>.</p>",
+				"options": '<p>Regionalverbände sind in diesem System auch als Unternehmen hinterlegt, weil diese Artikel an die Vereine liefern, welche wiederum als Kunden hinterlegt sind.</p>\n\n<p>Eine Übersicht der Unternehmen finden Sie <b><a href="/app/company">hier</a></b>.</p>',
 			},
 			{
 				"label": "Company Register",
@@ -183,7 +183,7 @@ def get_custom_fields():
 				"fieldname": "contact_info",
 				"insert_after": "contact_section",
 				"fieldtype": "HTML",
-				"options": "<p>Das Formular für Kontakt bezieht sich in LANDA auf eine Person, die man erreichen möchte. Es gibt Auskunft über Name und Vorname für die Adressierung sowie Telefonnummern und Emailadressen.</p>\n\n<p>Die Adresse wird nicht in diesem Formular, sondern im Formular <b><a href='/app/address'>Adresse</a></b> hinterlegt und Name und Anschrift werden erst bei der Adressierung zusammengeführt. Diese Trennung von Adresse und Kontakt ermöglicht es, Adressen sowohl für ein Mitglied als auch für einen Verein zu verwenden, ohne doppelte Adresspflege zu betreiben.</p>\n\n<p>Damit man Kontakte bei der Adressierung (z. B. für Lieferscheine) bzw. in einer Suche leichter zuordnen kann, ist es möglich, eine Kontaktbezeichnung anzugeben. Diese taucht nicht in Dokumenten auf und dient nur der Suche. Wenn man ein Mitglied, einen Verein oder ein Bestellkonto verknüpft mit dem zu erstellenden Kontakt verknüpft, ist es nicht notwendig, die Kontaktbezeichnung selbst zu wählen. Diese wird automatisch ausgefüllt, man darf aber die automatische Bezeichnung ändern (z. B. von \"Max Mustermann\" zu \"Max Mustermann junior, Schatzmeister\")</p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=\" https://youtu.be/JENu0W1NmlQ\" style=\"color: blue;\">Vereinsverwaltung #04 Adresse und Kontakt bearbeiten</a> und in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML993pHOo16el5DGrKN5kCzh\" style=\"color: blue;\">LANDA Videotutorials - Vereinsverwaltung / Mitgliederverwaltung </a> </p>",
+				"options": '<p>Das Formular für Kontakt bezieht sich in LANDA auf eine Person, die man erreichen möchte. Es gibt Auskunft über Name und Vorname für die Adressierung sowie Telefonnummern und Emailadressen.</p>\n\n<p>Die Adresse wird nicht in diesem Formular, sondern im Formular <b><a href=\'/app/address\'>Adresse</a></b> hinterlegt und Name und Anschrift werden erst bei der Adressierung zusammengeführt. Diese Trennung von Adresse und Kontakt ermöglicht es, Adressen sowohl für ein Mitglied als auch für einen Verein zu verwenden, ohne doppelte Adresspflege zu betreiben.</p>\n\n<p>Damit man Kontakte bei der Adressierung (z. B. für Lieferscheine) bzw. in einer Suche leichter zuordnen kann, ist es möglich, eine Kontaktbezeichnung anzugeben. Diese taucht nicht in Dokumenten auf und dient nur der Suche. Wenn man ein Mitglied, einen Verein oder ein Bestellkonto verknüpft mit dem zu erstellenden Kontakt verknüpft, ist es nicht notwendig, die Kontaktbezeichnung selbst zu wählen. Diese wird automatisch ausgefüllt, man darf aber die automatische Bezeichnung ändern (z. B. von "Max Mustermann" zu "Max Mustermann junior, Schatzmeister")</p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=" https://youtu.be/JENu0W1NmlQ" style="color: blue;">Vereinsverwaltung #04 Adresse und Kontakt bearbeiten</a> und in den <a href="https://youtube.com/playlist?list=PLCG04RYNrML993pHOo16el5DGrKN5kCzh" style="color: blue;">LANDA Videotutorials - Vereinsverwaltung / Mitgliederverwaltung </a> </p>',
 			},
 			{
 				"fieldname": "contacts_2",
@@ -259,7 +259,7 @@ def get_custom_fields():
 				"fieldname": "cutomer_info_text",
 				"insert_after": "customer_info_section",
 				"fieldtype": "HTML",
-				"options": "<p>Vereine sind in diesem System auch als Kunden hinterlegt, weil diese Artikel bestellen und geliefert bekommen.</p>\n\n<p>Eine Übersicht der Kunden finden Sie <b><a href=\"/app/customer\">hier</a></b>.</p>",
+				"options": '<p>Vereine sind in diesem System auch als Kunden hinterlegt, weil diese Artikel bestellen und geliefert bekommen.</p>\n\n<p>Eine Übersicht der Kunden finden Sie <b><a href="/app/customer">hier</a></b>.</p>',
 			},
 			{
 				"label": "Default Billing Address",
@@ -399,7 +399,7 @@ def get_custom_fields():
 				"fieldname": "delivery_note_info_text",
 				"insert_after": "delivery_note_info_section",
 				"fieldtype": "HTML",
-				"options": "<p>Eine Lieferung bzw. ein Lieferschein kann entweder direkt oder aus einer <b><a href=\"/app/sales-order\">Bestellung</a></b> heraus erzeugt werden. Sollte er aus einer Bestellung heraus erzeugt worden sein ist diese unter Verknüpfungen verlinkt. Nur der Regionalverband kann Lieferscheine erstellen.</p>\n\n<p>Lieferscheine werden beim erstmaligen Speichern als Entwurf im System hinterlegt und können anschließend noch bearbeitet werden. Erst wenn ein Lieferschein gebucht wird ist dieser endgültig bestätigt.</p>\n\n<p>Alle verbuchten Lieferungen werden in der <b><a href=\"/app/query-report/LANDA%20Deliveries%20and%20Payments\">Kostenübersicht</a></b> aufgelistet. </p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=\"https://youtu.be/8NG8tPfTOaU\" style=\"color: blue;\">Bestellwesen #03 Lieferung und Retoure</a> und in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML-cMx1lE7DD1gNFmIdE8cZF\" style=\"color: blue;\">LANDA Videotutorials - Bestellwesen</a></p>",
+				"options": '<p>Eine Lieferung bzw. ein Lieferschein kann entweder direkt oder aus einer <b><a href="/app/sales-order">Bestellung</a></b> heraus erzeugt werden. Sollte er aus einer Bestellung heraus erzeugt worden sein ist diese unter Verknüpfungen verlinkt. Nur der Regionalverband kann Lieferscheine erstellen.</p>\n\n<p>Lieferscheine werden beim erstmaligen Speichern als Entwurf im System hinterlegt und können anschließend noch bearbeitet werden. Erst wenn ein Lieferschein gebucht wird ist dieser endgültig bestätigt.</p>\n\n<p>Alle verbuchten Lieferungen werden in der <b><a href="/app/query-report/LANDA%20Deliveries%20and%20Payments">Kostenübersicht</a></b> aufgelistet. </p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href="https://youtu.be/8NG8tPfTOaU" style="color: blue;">Bestellwesen #03 Lieferung und Retoure</a> und in den <a href="https://youtube.com/playlist?list=PLCG04RYNrML-cMx1lE7DD1gNFmIdE8cZF" style="color: blue;">LANDA Videotutorials - Bestellwesen</a></p>',
 			},
 			{
 				"label": "Organization",
@@ -485,7 +485,7 @@ def get_custom_fields():
 				"fieldname": "item_info_text",
 				"insert_after": "item_info_section",
 				"fieldtype": "HTML",
-				"options": "<p>Im System hinterlegte Artikel können durch den Verein bestellt bzw. angefordert und durch den Regionalverband geliefert werden.</p>\n\n<p>Eine Übersicht der Artikel finden Sie <b><a href=\"/app/item\">hier</a></b>.</p>",
+				"options": '<p>Im System hinterlegte Artikel können durch den Verein bestellt bzw. angefordert und durch den Regionalverband geliefert werden.</p>\n\n<p>Eine Übersicht der Artikel finden Sie <b><a href="/app/item">hier</a></b>.</p>',
 			},
 			{
 				"label": "Item Tax Template",
@@ -535,7 +535,7 @@ def get_custom_fields():
 				"fieldname": "item_attribute_info_text",
 				"insert_after": "item_attribute_info_section",
 				"fieldtype": "HTML",
-				"options": "<p>Ein Artikelattribut bzw. eine Artikeleigenschaft ist etwas, das mehrere Artikel vereint. Dabei handelt es sich um Angaben wie z. B. Gültigkeitsjahr oder Erlaubnisscheinart.</p>\n\n<p>Wenn ein Artikel einer Bestellung oder einem Lieferschein hinzugefügt wird, muss die entsprechende Ausprägung des Artikelattributs gewählt werden, z. B. \"Erlaubnisschein - mit Gültigkeitsjahr 2022 und Erlaubnisscheinart Salmoniden Vollzahler\". Verfügt ein Artikel über ein Gültigkeitsjahr kann dieser nur ausgewählt werden, wenn zuvor das passende Abrechnungsjahr ausgewählt wurde.</p>\n\n<p>Eine Übersicht der Artikelattribute finden Sie <b><a href=\"/app/item-attribute\">hier</a></b>.</p>",
+				"options": '<p>Ein Artikelattribut bzw. eine Artikeleigenschaft ist etwas, das mehrere Artikel vereint. Dabei handelt es sich um Angaben wie z. B. Gültigkeitsjahr oder Erlaubnisscheinart.</p>\n\n<p>Wenn ein Artikel einer Bestellung oder einem Lieferschein hinzugefügt wird, muss die entsprechende Ausprägung des Artikelattributs gewählt werden, z. B. "Erlaubnisschein - mit Gültigkeitsjahr 2022 und Erlaubnisscheinart Salmoniden Vollzahler". Verfügt ein Artikel über ein Gültigkeitsjahr kann dieser nur ausgewählt werden, wenn zuvor das passende Abrechnungsjahr ausgewählt wurde.</p>\n\n<p>Eine Übersicht der Artikelattribute finden Sie <b><a href="/app/item-attribute">hier</a></b>.</p>',
 			},
 			{
 				"fieldname": "section_break_3",
@@ -596,7 +596,7 @@ def get_custom_fields():
 				"fieldname": "payment_entry_info_text",
 				"insert_after": "payment_entry_info_section",
 				"fieldtype": "HTML",
-				"options": "<p>Es gibt Zahlungseingänge und -ausgänge. Gebuchte Zahlungen werden in der <b><a href=\"/app/query-report/LANDA%20Deliveries%20and%20Payments\">Kostenübersicht</a></b> aufgelistet. Bei Zahlungseingang kann direkt aus der dazugehörigen Rechnung heraus ein Zahlungseintrag erzeugt werden.</p>\n\n<p>Eine Übersicht der Zahlungen finden Sie <b><a href=\"/app/payment-entry\">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente unter Verknüpfungen.</p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=\"https://youtu.be/K_dRy4jVUYo\" style=\"color: blue;\">Bestellwesen #04 Zahlung und Kostenübersicht</a> und in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML-cMx1lE7DD1gNFmIdE8cZF\" style=\"color: blue;\">LANDA Videotutorials - Bestellwesen</a></p>",
+				"options": '<p>Es gibt Zahlungseingänge und -ausgänge. Gebuchte Zahlungen werden in der <b><a href="/app/query-report/LANDA%20Deliveries%20and%20Payments">Kostenübersicht</a></b> aufgelistet. Bei Zahlungseingang kann direkt aus der dazugehörigen Rechnung heraus ein Zahlungseintrag erzeugt werden.</p>\n\n<p>Eine Übersicht der Zahlungen finden Sie <b><a href="/app/payment-entry">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente unter Verknüpfungen.</p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href="https://youtu.be/K_dRy4jVUYo" style="color: blue;">Bestellwesen #04 Zahlung und Kostenübersicht</a> und in den <a href="https://youtube.com/playlist?list=PLCG04RYNrML-cMx1lE7DD1gNFmIdE8cZF" style="color: blue;">LANDA Videotutorials - Bestellwesen</a></p>',
 			},
 			{
 				"label": "Year of Settlement",
@@ -741,7 +741,7 @@ def get_custom_fields():
 				"fieldname": "sales_invoice_info_text",
 				"insert_after": "sales_invoice_info_section",
 				"fieldtype": "HTML",
-				"options": "<p>Eine Rechnung wird in der Regel automatisch aus der Lieferung bzw. dem Lieferschein erzeugt und gebucht. Rechnungen können an den Verein gesendet werden und dienen der Buchhaltung. Bei Zahlungseingang kann direkt aus der Rechnung heraus ein Zahlungseintrag erzeugt werden.</p>\n\n<p>Eine Übersicht der Rechnungen finden Sie <b><a href=\"/app/sales-invoice\">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente unter Verknüpfungen.</p>",
+				"options": '<p>Eine Rechnung wird in der Regel automatisch aus der Lieferung bzw. dem Lieferschein erzeugt und gebucht. Rechnungen können an den Verein gesendet werden und dienen der Buchhaltung. Bei Zahlungseingang kann direkt aus der Rechnung heraus ein Zahlungseintrag erzeugt werden.</p>\n\n<p>Eine Übersicht der Rechnungen finden Sie <b><a href="/app/sales-invoice">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente unter Verknüpfungen.</p>',
 			},
 			{
 				"label": "Shipping Contact",
@@ -837,7 +837,7 @@ def get_custom_fields():
 				"fieldname": "sales_order_info_text",
 				"insert_after": "sales_order_info_section",
 				"fieldtype": "HTML",
-				"options": "<p>Eine Bestellung ist eine Bedarfsanmeldung vom Verein (Kunde) an den Regionalverband (Unternehmen). Der Regionalverband erstellt daraus anschließend eine Lieferung, kann dabei aber die bestellten Artikel noch beliebig anpassen.</p>\n\n<p>Wenn Sie eine Bestellung erstmalig speichern wird diese zunächst als Entwurf im System hinterlegt und kann anschließend noch bearbeitet werden. Erst wenn Sie eine Bestellung buchen wird diese festgeschrieben und vom Regionalverband bearbeitet.</p>\n\n<p>Eine Übersicht der Bestellungen finden Sie <b><a href=\"/app/sales-order\">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente unter Verknüpfungen.</p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href=\"https://youtu.be/uA7ifVwLk-M\" style=\"color: blue;\">Bestellwesen #02 Bestellungen</a> und in den <a href=\"https://youtube.com/playlist?list=PLCG04RYNrML-cMx1lE7DD1gNFmIdE8cZF\" style=\"color: blue;\">LANDA Videotutorials - Bestellwesen</a></p>",
+				"options": '<p>Eine Bestellung ist eine Bedarfsanmeldung vom Verein (Kunde) an den Regionalverband (Unternehmen). Der Regionalverband erstellt daraus anschließend eine Lieferung, kann dabei aber die bestellten Artikel noch beliebig anpassen.</p>\n\n<p>Wenn Sie eine Bestellung erstmalig speichern wird diese zunächst als Entwurf im System hinterlegt und kann anschließend noch bearbeitet werden. Erst wenn Sie eine Bestellung buchen wird diese festgeschrieben und vom Regionalverband bearbeitet.</p>\n\n<p>Eine Übersicht der Bestellungen finden Sie <b><a href="/app/sales-order">hier</a></b>. Beachten Sie nach dem Speichern auch die verlinkten Elemente unter Verknüpfungen.</p>\n\n<p>Mehr Infos zum Thema gibt es im Anleitungsvideo: <a href="https://youtu.be/uA7ifVwLk-M" style="color: blue;">Bestellwesen #02 Bestellungen</a> und in den <a href="https://youtube.com/playlist?list=PLCG04RYNrML-cMx1lE7DD1gNFmIdE8cZF" style="color: blue;">LANDA Videotutorials - Bestellwesen</a></p>',
 			},
 			{
 				"label": "Shipping Contact",
