@@ -121,8 +121,8 @@ def make_property_setters():
 				if property_setter[0]:
 					for_doctype = False
 					property_type = docfield_properties.get(
-						property_setter[1], "Data"
-					)  # Data fallback for field_order
+						property_setter[1],
+					)
 				else:
 					for_doctype = True
 					property_type = doctype_properties.get(
