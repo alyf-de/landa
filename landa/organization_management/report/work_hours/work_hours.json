@@ -1,0 +1,43 @@
+{
+ "add_total_row": 0,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2026-01-08 17:06:21.498262",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": null,
+ "modified": "2026-01-08 17:06:56.924267",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "Work Hours",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Work Assignment",
+ "report_name": "Work Hours",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "LANDA Member"
+  },
+  {
+   "role": "LANDA State Organization Employee"
+  },
+  {
+   "role": "LANDA Regional Organization Management"
+  },
+  {
+   "role": "LANDA Local Organization Management"
+  },
+  {
+   "role": "LANDA Local Group Management"
+  }
+ ],
+ "timeout": 0
+}
