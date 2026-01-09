@@ -129,7 +129,7 @@
  ],
  "grid_page_length": 50,
  "links": [],
- "modified": "2026-01-08 10:04:20.853463",
+ "modified": "2026-01-09 09:43:31.823627",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Work Assignment",
@@ -148,11 +148,6 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
-  },
-  {
-   "print": 1,
-   "read": 1,
-   "role": "LANDA Member"
   },
   {
    "create": 1,
@@ -187,11 +182,13 @@
   {
    "create": 1,
    "delete": 1,
+   "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "LANDA Local Group Management",
+   "role": "LANDA Local Water Body Management",
+   "share": 1,
    "write": 1
   }
  ],
