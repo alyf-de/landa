@@ -56,7 +56,10 @@ frappe.listview_settings["LANDA Member"] = {
 			list_view.page.add_action_item(__("Clear Special Fishing Permits"), () => {
 				const members = list_view.get_checked_items(true);
 				frappe.confirm(
-					__("Are you sure you want to clear all Special Yearly Fishing Permits for the {0} selected members?", [members.length]),
+					__(
+						"Are you sure you want to clear all Special Yearly Fishing Permits for the {0} selected members?",
+						[members.length],
+					),
 					() => {
 						frappe
 							.xcall(
