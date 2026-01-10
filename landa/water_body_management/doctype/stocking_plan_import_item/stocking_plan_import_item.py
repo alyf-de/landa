@@ -14,9 +14,8 @@ class StockingPlanImportItem(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-
 	# end: auto-generated types
-	
+
 	def db_insert(self, *args, **kwargs):
 		pass
 
@@ -37,4 +36,3 @@ class StockingPlanImportItem(Document):
 	@staticmethod
 	def get_stats(args):
 		pass
-
