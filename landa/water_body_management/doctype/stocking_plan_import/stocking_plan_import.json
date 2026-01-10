@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-10 12:24:07.171704",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_main",
+  "organization",
+  "water_body",
+  "column_break_main",
+  "year",
+  "date",
+  "section_break_items",
+  "items"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_main",
+   "fieldtype": "Section Break",
+   "label": "Gewässer"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Regional Organization",
+   "options": "Organization",
+   "reqd": 1
+  },
+  {
+   "depends_on": "organization",
+   "fieldname": "water_body",
+   "fieldtype": "Link",
+   "label": "Water Body",
+   "options": "Water Body",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "label": "Year",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_items",
+   "fieldtype": "Section Break",
+   "label": "Fischbesatz"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Besatzpositionen",
+   "options": "Stocking Plan Import Item",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2026-01-10 12:24:07.171704",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Stocking Plan Import",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
