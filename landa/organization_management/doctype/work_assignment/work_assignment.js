@@ -6,16 +6,16 @@ frappe.ui.form.on("Work Assignment", {
 		const can_select_any =
 			frappe.user.has_role("LANDA State Organization Employee") ||
 			frappe.user.has_role("LANDA Regional Organization Management");
-		const organization = frappe.boot.landa?.organization;
+		const local_organization = frappe.boot.landa?.local_organization;
 
-		if (organization) {
-			frm.set_value("organization", organization);
+		if (!can_select_any && local_organization && frm.is_new()) {
+			frm.set_value("organization", local_organization);
 		}
 
 		frm.set_query("organization", function () {
 			let filters = { is_group: 0 };
-			if (!can_select_any && organization) {
-				filters.name = organization;
+			if (!can_select_any && local_organization) {
+				filters.name = local_organization;
 			}
 			return { filters };
 		});
