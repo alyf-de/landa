@@ -1,14 +1,14 @@
 # Translations template for LANDA.
-# Copyright (C) 2025 ALYF GmbH
+# Copyright (C) 2026 ALYF GmbH
 # This file is distributed under the same license as the LANDA project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2025-12-10 21:28+0053\n"
-"PO-Revision-Date: 2025-12-10 21:28+0053\n"
+"POT-Creation-Date: 2026-01-12 09:20+0053\n"
+"PO-Revision-Date: 2026-01-12 09:20+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -94,6 +94,12 @@ msgstr ""
 msgid "Access Level"
 msgstr ""
 
+#. Label of a Data field in DocType 'Work Assignment'
+#: landa/organization_management/doctype/work_assignment/work_assignment.json
+#: landa/organization_management/report/work_hours/work_hours.py:59
+msgid "Activity Title"
+msgstr ""
+
 #. Label of a Data field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
 #: landa/organization_management/report/current_member_data/current_member_data.py:131
@@ -154,6 +160,11 @@ msgstr ""
 
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure_list.js:30
 msgid "Based on your selection, Stocking Targets are created accordingly for the specified year."
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Work Assignment'
+#: landa/organization_management/doctype/work_assignment/work_assignment.json
+msgid "Basic Information"
 msgstr ""
 
 #. Label of a Card Break in the Water Body Management Workspace
@@ -377,6 +388,12 @@ msgstr ""
 #. Label of a Data field in DocType 'LANDA Sales Dummy'
 #: landa/landa_sales/doctype/landa_sales_dummy/landa_sales_dummy.json
 msgid "Dummy"
+msgstr ""
+
+#. Label of a Float field in DocType 'Work Assignment Member'
+#: landa/organization_management/doctype/work_assignment_member/work_assignment_member.json
+#: landa/organization_management/report/work_hours/work_hours.py:71
+msgid "Duration (Hours)"
 msgstr ""
 
 #. Label of a Check field in DocType 'Firebase Settings'
@@ -672,6 +689,10 @@ msgstr ""
 msgid "Group By Fish Species"
 msgstr ""
 
+#: landa/organization_management/report/work_hours/work_hours.js:36
+msgid "Group by Member"
+msgstr ""
+
 #. Label of a Check field in DocType 'Water Body'
 #: landa/water_body_management/doctype/water_body/water_body.json
 #: landa/water_body_management/report/water_body_export/water_body_export.py:55
@@ -951,12 +972,14 @@ msgstr ""
 #: landa/organization_management/doctype/member_function/member_function.json
 #: landa/organization_management/doctype/member_function_category/member_function_category.json
 #: landa/organization_management/doctype/organization/organization.json
+#: landa/organization_management/doctype/work_assignment/work_assignment.json
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.json
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json
 msgid "LANDA Local Organization Management"
 msgstr ""
 
 #. Name of a role
+#: landa/organization_management/doctype/work_assignment/work_assignment.json
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json
 #: landa/water_body_management/doctype/water_body_management_local_organization/water_body_management_local_organization.json
@@ -1029,6 +1052,7 @@ msgstr ""
 #: landa/organization_management/doctype/member_function/member_function.json
 #: landa/organization_management/doctype/member_function_category/member_function_category.json
 #: landa/organization_management/doctype/organization/organization.json
+#: landa/organization_management/doctype/work_assignment/work_assignment.json
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.json
 #: landa/organization_management/doctype/yearly_fishing_permit_type/yearly_fishing_permit_type.json
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json
@@ -1065,6 +1089,7 @@ msgstr ""
 #: landa/organization_management/doctype/member_function/member_function.json
 #: landa/organization_management/doctype/member_function_category/member_function_category.json
 #: landa/organization_management/doctype/organization/organization.json
+#: landa/organization_management/doctype/work_assignment/work_assignment.json
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.json
 #: landa/organization_management/doctype/yearly_fishing_permit_type/yearly_fishing_permit_type.json
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json
@@ -1237,10 +1262,12 @@ msgstr ""
 
 #. Label of a Heading field in DocType 'LANDA Member'
 #. Label of a Link field in DocType 'Member Function'
+#. Label of a Link field in DocType 'Work Assignment Member'
 #. Label of a Link field in DocType 'Yearly Fishing Permit'
 #. Label of a Link in the Organization Management Workspace
 #: landa/organization_management/doctype/landa_member/landa_member.json
 #: landa/organization_management/doctype/member_function/member_function.json
+#: landa/organization_management/doctype/work_assignment_member/work_assignment_member.json
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.json
 #: landa/organization_management/report/magazine_address_list/magazine_address_list.py:150
 #: landa/organization_management/report/member_address_list/member_address_list.js:10
@@ -1249,6 +1276,9 @@ msgstr ""
 #: landa/organization_management/report/member_contact_list/member_contact_list.js:10
 #: landa/organization_management/report/member_contact_list/member_contact_list.py:53
 #: landa/organization_management/report/members_with_member_functions/members_with_member_functions.py:21
+#: landa/organization_management/report/work_hours/work_hours.js:24
+#: landa/organization_management/report/work_hours/work_hours.py:18
+#: landa/organization_management/report/work_hours/work_hours.py:46
 #: landa/organization_management/workspace/organization_management/organization_management.json
 #: landa/water_body_management/report/members_in_water_body_management/members_in_water_body_management.py:17
 msgid "Member"
@@ -1346,6 +1376,13 @@ msgstr ""
 #. Label of a Data field in DocType 'Member Function'
 #: landa/organization_management/doctype/member_function/member_function.json
 msgid "Member Last Name"
+msgstr ""
+
+#. Label of a Data field in DocType 'Work Assignment Member'
+#: landa/organization_management/doctype/work_assignment_member/work_assignment_member.json
+#: landa/organization_management/report/work_hours/work_hours.py:25
+#: landa/organization_management/report/work_hours/work_hours.py:53
+msgid "Member Name"
 msgstr ""
 
 #. Label of a Date field in DocType 'LANDA Member'
@@ -1513,6 +1550,12 @@ msgstr ""
 #. Label of a Date field in DocType 'LANDA Member'
 #: landa/organization_management/doctype/landa_member/landa_member.json
 msgid "Permit Issue Date"
+msgstr ""
+
+#. Label of a Float field in DocType 'Work Assignment'
+#: landa/organization_management/doctype/work_assignment/work_assignment.json
+#: landa/organization_management/report/work_hours/work_hours.py:65
+msgid "Planned Duration (Hours)"
 msgstr ""
 
 #. Label of a Check field in DocType 'Catch Log Fish Table'
@@ -1951,6 +1994,10 @@ msgstr ""
 msgid "Total (only for regional org.)"
 msgstr ""
 
+#: landa/organization_management/report/work_hours/work_hours.py:31
+msgid "Total Hours"
+msgstr ""
+
 #. Label of a Small Text field in DocType 'Fish Species'
 #: landa/water_body_management/doctype/fish_species/fish_species.json
 msgid "Traits"
@@ -2034,6 +2081,7 @@ msgstr ""
 msgid "Vollzahler"
 msgstr ""
 
+#. Label of a Link field in DocType 'Work Assignment'
 #. Label of a Link field in DocType 'Catch Log Entry'
 #. Linked DocType in Fishing Area's connections
 #. Label of a Link field in DocType 'Lease Contract'
@@ -2044,6 +2092,9 @@ msgstr ""
 #. Name of a DocType
 #. Label of a Link field in DocType 'Water Body Management Local Organization'
 #. Label of a Link in the Water Body Management Workspace
+#: landa/organization_management/doctype/work_assignment/work_assignment.json
+#: landa/organization_management/report/work_hours/work_hours.js:30
+#: landa/organization_management/report/work_hours/work_hours.py:77
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json
 #: landa/water_body_management/doctype/fishing_area/fishing_area.json
 #: landa/water_body_management/doctype/lease_contract/lease_contract.json
@@ -2172,11 +2223,13 @@ msgstr ""
 msgid "Water Body Status"
 msgstr ""
 
+#. Label of a Data field in DocType 'Work Assignment'
 #. Label of a Data field in DocType 'Catch Log Entry'
 #. Label of a Data field in DocType 'Lease Contract'
 #. Label of a Data field in DocType 'Stocking Measure'
 #. Label of a Data field in DocType 'Stocking Target'
 #. Label of a Data field in DocType 'Water Body Management Local Organization'
+#: landa/organization_management/doctype/work_assignment/work_assignment.json
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json
 #: landa/water_body_management/doctype/lease_contract/lease_contract.json
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json
@@ -2211,6 +2264,22 @@ msgstr ""
 #. Label of a Data field in DocType 'Fish Species'
 #: landa/water_body_management/doctype/fish_species/fish_species.json
 msgid "Wikipedia Link"
+msgstr ""
+
+#. Name of a DocType
+#: landa/organization_management/doctype/landa_member/landa_member.js:77
+#: landa/organization_management/doctype/work_assignment/work_assignment.json
+msgid "Work Assignment"
+msgstr ""
+
+#. Name of a DocType
+#: landa/organization_management/doctype/work_assignment_member/work_assignment_member.json
+msgid "Work Assignment Member"
+msgstr ""
+
+#. Name of a report
+#: landa/organization_management/report/work_hours/work_hours.json
+msgid "Work Hours"
 msgstr ""
 
 #: landa/water_body_management/stocking_controller.py:23
