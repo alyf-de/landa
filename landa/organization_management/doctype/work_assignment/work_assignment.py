@@ -29,4 +29,4 @@ class WorkAssignment(Document):
 		water_body: DF.Link | None
 		water_body_title: DF.Data | None
 	# end: auto-generated types
-	pass
+
