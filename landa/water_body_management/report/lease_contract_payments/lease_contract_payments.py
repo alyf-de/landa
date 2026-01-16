@@ -104,13 +104,16 @@ def get_data(
 	lease_object: str | None,
 	landlord: str | None,
 ):
+	"""
+	The end date of a lease contract and rent period may be undetermined.
+	Therefore, we don't filter by end_date/to_date in get_list, but if it's set,
+	we skip records that ended before the year start.
+	"""
 	year_end = getdate(f"{year}-12-31")
 	year_start = getdate(f"{year}-01-01")
 	filters = [
 		["start_date", "<=", year_end],
-		["end_date", ">=", year_start],
 		["Lease Contract Rent", "from_date", "<=", year_end],
-		["Lease Contract Rent", "to_date", ">=", year_start],
 	]
 
 	if water_body:
@@ -133,6 +136,7 @@ def get_data(
 			"water_body",
 			"water_body_title",
 			"fishing_area",
+			"end_date",
 			"currency",
 			"lease_object",
 			"payment_reference",
@@ -145,12 +149,22 @@ def get_data(
 		],
 		order_by="payment_due_date ASC",
 	):
+		if lease_contract.end_date and lease_contract.end_date < year_start:
+			continue
+
+		if lease_contract.to_date and lease_contract.to_date < year_start:
+			continue
+
 		# Check if we need to calculate partial rent
 		# Only calculate partial rent if the contract period doesn't fully cover the year
-		contract_start_in_year = max(year_start, lease_contract.from_date)
-		contract_end_in_year = min(year_end, lease_contract.to_date)
+		contract_start_in_year = (
+			max(year_start, lease_contract.from_date) if lease_contract.from_date else year_start
+		)
+		contract_end_in_year = min(year_end, lease_contract.to_date) if lease_contract.to_date else year_end
 
-		if lease_contract.from_date > year_start or lease_contract.to_date < year_end:
+		if (lease_contract.from_date and lease_contract.from_date > year_start) or (
+			lease_contract.to_date and lease_contract.to_date < year_end
+		):
 			# Calculate partial rent using actual days in the year (handles leap years)
 			days_in_contract_period = (contract_end_in_year - contract_start_in_year).days + 1
 			days_in_year = (year_end - year_start).days + 1
