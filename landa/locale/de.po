@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-01-12 09:20+0053\n"
+"POT-Creation-Date: 2026-01-16 09:20+0053\n"
 "PO-Revision-Date: 2025-11-29 18:55+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
@@ -114,6 +114,10 @@ msgstr "Adressbezeichnung und Verknüpfungen sind zwingend erforderlich."
 #: landa/water_body_management/doctype/water_body/water_body.json
 msgid "Allgemeines Angelgewässer"
 msgstr ""
+
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:59
+msgid "Are you sure you want to clear all Special Yearly Fishing Permits for the {0} selected members?"
+msgstr "Möchten Sie wirklich alle Erlaubnisscheine Gewässerfonds für die {0} ausgewählten Mitglieder löschen?"
 
 #. Label of a Data field in DocType 'Fishing Area'
 #: landa/water_body_management/doctype/fishing_area/fishing_area.json
@@ -272,6 +276,10 @@ msgstr "Fanggewicht"
 msgid "Charitable until"
 msgstr "Gemeinnützig bis"
 
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:56
+msgid "Clear Special Fishing Permits"
+msgstr "Erlaubnisscheine Gewässerfonds löschen"
+
 #. Label of a Data field in DocType 'Fish Species'
 #: landa/water_body_management/doctype/fish_species/fish_species.json
 msgid "Close Season"
@@ -297,7 +305,7 @@ msgstr "Neue Besatzmaßnahme"
 msgid "Create Stocking Targets"
 msgstr "Besatzplanungen erstellen"
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:56
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:79
 msgid "Create Yearly Fishing Permit"
 msgstr "Erlaubnisschein erstellen"
 
@@ -1833,6 +1841,10 @@ msgstr "Fangbegrenzung Salmonidengewässer"
 msgid "Special Yearly Fishing Permits"
 msgstr "Erlaubnisscheine Gewässerfonds"
 
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:68
+msgid "Special Yearly Fishing Permits cleared."
+msgstr "Erlaubnisscheine Gewässerfonds gelöscht."
+
 #. Label of a Card Break in the Water Body Management Workspace
 #: landa/water_body_management/workspace/water_body_management/water_body_management.json
 msgid "Stammdaten"
@@ -2344,7 +2356,7 @@ msgstr "Erlaubnisschein für Mitglied {0} und Jahr {1} existiert bereits. Bitte 
 msgid "Yearly Fishing Permits Issued"
 msgstr "Vergebene Erlaubnisscheine"
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:87
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:110
 msgid "Yearly Fishing Permits have been created for {0} members."
 msgstr "Erlaubnisscheine für {0} Mitglieder wurden erstellt."
 
