@@ -1,14 +1,14 @@
 # Translations template for LANDA.
-# Copyright (C) 2025 ALYF GmbH
+# Copyright (C) 2026 ALYF GmbH
 # This file is distributed under the same license as the LANDA project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2025-12-10 21:28+0053\n"
-"PO-Revision-Date: 2025-12-10 21:28+0053\n"
+"POT-Creation-Date: 2026-01-09 09:11+0053\n"
+"PO-Revision-Date: 2026-01-09 09:11+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -107,6 +107,10 @@ msgstr ""
 #. Option for the 'Status' (Select) field in DocType 'Water Body'
 #: landa/water_body_management/doctype/water_body/water_body.json
 msgid "Allgemeines Angelgewässer"
+msgstr ""
+
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:59
+msgid "Are you sure you want to clear all Special Yearly Fishing Permits for the {0} selected members?"
 msgstr ""
 
 #. Label of a Data field in DocType 'Fishing Area'
@@ -261,6 +265,10 @@ msgstr ""
 msgid "Charitable until"
 msgstr ""
 
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:56
+msgid "Clear Special Fishing Permits"
+msgstr ""
+
 #. Label of a Data field in DocType 'Fish Species'
 #: landa/water_body_management/doctype/fish_species/fish_species.json
 msgid "Close Season"
@@ -286,7 +294,7 @@ msgstr ""
 msgid "Create Stocking Targets"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:56
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:79
 msgid "Create Yearly Fishing Permit"
 msgstr ""
 
@@ -1790,6 +1798,10 @@ msgstr ""
 msgid "Special Yearly Fishing Permits"
 msgstr ""
 
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:68
+msgid "Special Yearly Fishing Permits cleared."
+msgstr ""
+
 #. Label of a Card Break in the Water Body Management Workspace
 #: landa/water_body_management/workspace/water_body_management/water_body_management.json
 msgid "Stammdaten"
@@ -2275,7 +2287,7 @@ msgstr ""
 msgid "Yearly Fishing Permits Issued"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:87
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:110
 msgid "Yearly Fishing Permits have been created for {0} members."
 msgstr ""
 
