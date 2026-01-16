@@ -155,3 +155,6 @@ Landlord Name,Verpächter,
 Payment Recipient,Zahlungsempfänger,
 You are not a member of any organization.,Sie sind kein Mitglied eines Vereins.,
 The email address {0} is already linked to another LANDA Member. Please use a different one for this contact.,Die E-Mail-Adresse {0} ist bereits mit einem anderen Mitglied verknüpft. Bitte verwenden Sie eine andere E-Mail-Adresse für diesen Kontakt.
+Are you sure you want to clear all Special Yearly Fishing Permits for the {0} selected members?,Möchten Sie wirklich alle Erlaubnisscheine Gewässerfonds für die {0} ausgewählten Mitglieder löschen?,
+Clear Special Fishing Permits,Erlaubnisscheine Gewässerfonds löschen,
+Special Yearly Fishing Permits cleared.,Erlaubnisscheine Gewässerfonds gelöscht.,
