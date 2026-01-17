@@ -130,7 +130,7 @@ Please set a Billing Contact before submitting the Sales Invoice.,Bitte setzen S
 Please set a Billing Address before submitting the Sales Invoice.,Bitte setzen Sie vor dem Buchen der Rechnung eine Rechnungsadresse.,
 Price List {0} is not valid for Company {1}.,Preisliste {0} ist nicht gültig für das Bestellwesenkonto RV {1}.,
 Customer {0} is not valid for Company {1}.,Bestellwesenkonto Verein {0} ist nicht gültig für das Bestellwesenkonto RV {1}.,
-Yearly Fishing Permit already exists for member {0} and year {1}. Please cancel the existing permit before creating a new one.,"Erlaubnisschein für Mitglied {0} und Jahr {1} existiert bereits. Bitte stornieren Sie den bestehenden Erlaubnisschein, bevor Sie einen neuen erstellen.",
+Yearly Fishing Permit already exists for member {0} and year {1}. Please delete or cancel the existing permit before creating a new one.,"Erlaubnisschein für Mitglied {0} und Jahr {1} existiert bereits. Bitte löschen oder stornieren Sie den bestehenden Erlaubnisschein, bevor Sie einen neuen erstellen.",
 Creating Yearly Fishing Permits...,Erlaubnisscheine werden erstellt...,
 Yearly Fishing Permits have been created for {0} members.,Erlaubnisscheine für {0} Mitglieder wurden erstellt.,
 Create Yearly Fishing Permit,Erlaubnisschein erstellen,
