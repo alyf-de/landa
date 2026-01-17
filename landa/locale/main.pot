@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-01-09 09:11+0053\n"
-"PO-Revision-Date: 2026-01-09 09:11+0053\n"
+"POT-Creation-Date: 2026-01-17 01:15+0053\n"
+"PO-Revision-Date: 2026-01-17 01:15+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -294,13 +294,13 @@ msgstr ""
 msgid "Create Stocking Targets"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:79
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:82
 msgid "Create Yearly Fishing Permit"
 msgstr ""
 
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:83
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:91
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:103
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:89
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:97
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:109
 msgid "Creating Yearly Fishing Permits..."
 msgstr ""
 
@@ -1798,7 +1798,7 @@ msgstr ""
 msgid "Special Yearly Fishing Permits"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:68
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:71
 msgid "Special Yearly Fishing Permits cleared."
 msgstr ""
 
@@ -2229,7 +2229,7 @@ msgstr ""
 msgid "Year must be between {0} and {1}."
 msgstr ""
 
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:65
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:71
 msgid "Year must be either the current year or the next year."
 msgstr ""
 
@@ -2276,8 +2276,8 @@ msgstr ""
 msgid "Yearly Fishing Permit Type"
 msgstr ""
 
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:57
-msgid "Yearly Fishing Permit already exists for member {0} and year {1}. Please cancel the existing permit before creating a new one."
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:63
+msgid "Yearly Fishing Permit already exists for member {0} and year {1}. Please delete or cancel the existing permit before creating a new one."
 msgstr ""
 
 #. Name of a report
@@ -2287,7 +2287,7 @@ msgstr ""
 msgid "Yearly Fishing Permits Issued"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:110
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:113
 msgid "Yearly Fishing Permits have been created for {0} members."
 msgstr ""
 
