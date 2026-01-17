@@ -30,11 +30,17 @@ class YearlyFishingPermit(Document):
 
 		if frappe.db.exists(
 			"Yearly Fishing Permit",
-			{"member": self.member, "year": self.year, "docstatus": 1, "type": ("in", duplicate_types)},
+			{
+				"name": ("!=", self.name),
+				"member": self.member,
+				"year": self.year,
+				"docstatus": ("!=", 2),
+				"type": ("in", duplicate_types),
+			},
 		):
 			frappe.throw(
 				_(
-					"Yearly Fishing Permit already exists for member {0} and year {1}. Please cancel the existing permit before creating a new one."
+					"Yearly Fishing Permit already exists for member {0} and year {1}. Please delete or cancel the existing permit before creating a new one."
 				).format(self.member, self.year),
 				exc=frappe.DuplicateEntryError,
 			)
