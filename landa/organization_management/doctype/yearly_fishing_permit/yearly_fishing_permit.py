@@ -100,6 +100,7 @@ def bulk_create(permit_type: str, year: str, members: str):
 		)
 		yfp = frappe.new_doc("Yearly Fishing Permit")
 		yfp.member = member
+		yfp.organization = frappe.db.get_value("LANDA Member", member, "organization")
 		yfp.year = year
 		yfp.type = permit_type
 		yfp.insert()
