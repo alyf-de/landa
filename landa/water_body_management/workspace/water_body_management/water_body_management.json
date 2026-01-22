@@ -215,8 +215,88 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Berichte",
+   "link_count": 7,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Members in Water Body Management",
+   "link_count": 0,
+   "link_to": "Members in Water Body Management",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Catch Log Statistics",
+   "link_count": 0,
+   "link_to": "Catch Log Statistics",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Catch Log Days and Counts",
+   "link_count": 0,
+   "link_to": "Catch Log Days and Counts",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stocking of Supported Water Bodies",
+   "link_count": 0,
+   "link_to": "Stocking of Supported Water Bodies",
+   "link_type": "Report",
+   "onboard": 0,
+   "only_for": "",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Water Body Development",
+   "link_count": 0,
+   "link_to": "Water Body Development",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Lease Contract Payments",
+   "link_count": 0,
+   "link_to": "Lease Contract Payments",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Meine Berichte",
+   "link_count": 0,
+   "link_to": "Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Stammdaten",
-   "link_count": 13,
+   "link_count": 14,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -237,6 +317,16 @@
    "label": "Besatzma\u00dfnahme",
    "link_count": 0,
    "link_to": "Stocking Measure",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Besatzma\u00dfnahmen Import",
+   "link_count": 0,
+   "link_to": "Stocking Plan Import",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -350,89 +440,9 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Berichte",
-   "link_count": 7,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Members in Water Body Management",
-   "link_count": 0,
-   "link_to": "Members in Water Body Management",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Catch Log Statistics",
-   "link_count": 0,
-   "link_to": "Catch Log Statistics",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Catch Log Days and Counts",
-   "link_count": 0,
-   "link_to": "Catch Log Days and Counts",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Stocking of Supported Water Bodies",
-   "link_count": 0,
-   "link_to": "Stocking of Supported Water Bodies",
-   "link_type": "Report",
-   "onboard": 0,
-   "only_for": "",
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Water Body Development",
-   "link_count": 0,
-   "link_to": "Water Body Development",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Lease Contract Payments",
-   "link_count": 0,
-   "link_to": "Lease Contract Payments",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Meine Berichte",
-   "link_count": 0,
-   "link_to": "Report",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
   }
  ],
- "modified": "2025-07-25 22:36:00.663705",
+ "modified": "2026-01-22 18:03:50.977429",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management",
