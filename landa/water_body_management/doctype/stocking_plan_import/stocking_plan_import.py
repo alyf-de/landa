@@ -24,7 +24,6 @@ class StockingPlanImport(Document):
 		organization: DF.Link
 		water_body: DF.Link
 		year: DF.Int
-
 	# end: auto-generated types
 
 	def db_insert(self, *args, **kwargs):
