@@ -18,11 +18,12 @@
   {
    "fieldname": "section_break_main",
    "fieldtype": "Section Break",
-   "label": "Gewässer"
+   "label": "Gew\u00e4sser"
   },
   {
    "fieldname": "organization",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Regional Organization",
    "options": "Organization",
    "reqd": 1
@@ -31,6 +32,7 @@
    "depends_on": "organization",
    "fieldname": "water_body",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Water Body",
    "options": "Water Body",
    "reqd": 1
@@ -42,6 +44,7 @@
   {
    "fieldname": "year",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "label": "Year",
    "reqd": 1
   },
@@ -49,6 +52,7 @@
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Date",
    "reqd": 1
   },
@@ -69,7 +73,7 @@
  "index_web_pages_for_search": 1,
  "is_virtual": 1,
  "links": [],
- "modified": "2026-01-10 12:24:07.171704",
+ "modified": "2026-01-22 17:45:43.812494",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Plan Import",
@@ -84,6 +88,30 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Local Water Body Management",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee",
    "share": 1,
    "write": 1
   }
