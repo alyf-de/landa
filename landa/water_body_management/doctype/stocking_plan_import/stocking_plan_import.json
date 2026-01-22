@@ -18,7 +18,7 @@
   {
    "fieldname": "section_break_main",
    "fieldtype": "Section Break",
-   "label": "Gew\u00e4sser"
+   "label": "Water Body"
   },
   {
    "fieldname": "organization",
@@ -59,12 +59,12 @@
   {
    "fieldname": "section_break_items",
    "fieldtype": "Section Break",
-   "label": "Fischbesatz"
+   "label": "Stocking Items"
   },
   {
    "fieldname": "items",
    "fieldtype": "Table",
-   "label": "Besatzpositionen",
+   "label": "Items",
    "options": "Stocking Plan Import Item",
    "reqd": 1
   }
@@ -73,7 +73,7 @@
  "index_web_pages_for_search": 1,
  "is_virtual": 1,
  "links": [],
- "modified": "2026-01-22 17:45:43.812494",
+ "modified": "2026-01-22 18:13:25.903484",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Plan Import",
