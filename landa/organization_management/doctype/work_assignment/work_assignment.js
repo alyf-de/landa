@@ -23,7 +23,7 @@ frappe.ui.form.on("Work Assignment", {
 		frm.set_query("member", "members", function (doc) {
 			return {
 				filters: {
-					organization: ["=", doc.organization],
+					organization: doc.organization,
 				},
 			};
 		});
