@@ -3,6 +3,7 @@
 
 import frappe
 from frappe import _
+from frappe.utils import getdate
 
 
 def execute(filters=None):
@@ -96,60 +97,121 @@ def get_columns(filters):
 
 
 def get_data(filters):
-	conditions = get_conditions(filters)
-
-	if filters.get("group_by_member"):
-		return frappe.db.sql(
-			f"""
-			SELECT
-				wam.member,
-				wam.member_name,
-				SUM(wam.duration) as total_hours
-			FROM `tabWork Assignment Member` wam
-			JOIN `tabWork Assignment` wa ON wam.parent = wa.name
-			WHERE 1=1 {conditions}
-			GROUP BY wam.member
-			ORDER BY total_hours DESC
-			""",
-			filters,
-			as_dict=True,
-		)
-
-	return frappe.db.sql(
-		f"""
-		SELECT
-			wa.date,
-			wam.member,
-			wam.member_name,
-			wa.title,
-			wa.planned_duration,
-			wam.duration,
-			wa.water_body,
-			wa.location,
-			wa.description
-		FROM `tabWork Assignment Member` wam
-		JOIN `tabWork Assignment` wa ON wam.parent = wa.name
-		WHERE 1=1 {conditions}
-		ORDER BY wa.date DESC, wam.member
-		""",
-		filters,
-		as_dict=True,
-	)
-
-
-def get_conditions(filters):
-	conditions = []
-
-	if filters.get("year"):
-		conditions.append("AND YEAR(wa.date) = %(year)s")
-
-	if filters.get("organization"):
-		conditions.append("AND wa.organization = %(organization)s")
+	filters = filters or {}
+	assignment_filters = get_assignment_filters(filters)
+	member_filters = {}
 
 	if filters.get("member"):
-		conditions.append("AND wam.member = %(member)s")
+		member_filters["member"] = filters.get("member")
+
+	assignments_by_name = {}
+	if assignment_filters:
+		assignments_list = frappe.get_list(
+			"Work Assignment",
+			filters=assignment_filters,
+			fields=[
+				"name",
+				"date",
+				"title",
+				"planned_duration",
+				"water_body",
+				"location",
+				"description",
+			],
+			limit_page_length=0,
+		)
+		if not assignments_list:
+			return []
+
+		assignments_by_name = {a["name"]: a for a in assignments_list}
+		member_filters["parent"] = ("in", list(assignments_by_name.keys()))
+
+	members = frappe.get_list(
+		"Work Assignment Member",
+		filters=member_filters,
+		fields=["parent", "member", "member_name", "duration"],
+		parent_doctype="Work Assignment",
+		limit_page_length=0,
+	)
+
+	if not members:
+		return []
+
+	if filters.get("group_by_member"):
+		totals = {}
+		for row in members:
+			member = row.get("member")
+			entry = totals.get(member)
+			if entry is None:
+				totals[member] = {
+					"member": member,
+					"member_name": row.get("member_name"),
+					"total_hours": float(row.get("duration") or 0),
+				}
+				continue
+
+			entry["total_hours"] += float(row.get("duration") or 0)
+			if not entry.get("member_name") and row.get("member_name"):
+				entry["member_name"] = row.get("member_name")
+
+		return sorted(totals.values(), key=lambda row: row["total_hours"], reverse=True)
+
+	if not assignments_by_name:
+		parent_names = list({row.get("parent") for row in members if row.get("parent")})
+		if parent_names:
+			assignments_list = frappe.get_list(
+				"Work Assignment",
+				filters={"name": ("in", parent_names)},
+				fields=[
+					"name",
+					"date",
+					"title",
+					"planned_duration",
+					"water_body",
+					"location",
+					"description",
+				],
+				limit_page_length=0,
+			)
+			assignments_by_name = {a["name"]: a for a in assignments_list}
+
+	data = []
+	for row in members:
+		assignment = assignments_by_name.get(row.get("parent"))
+		if not assignment:
+			continue
+
+		data.append(
+			{
+				"date": assignment.get("date"),
+				"member": row.get("member"),
+				"member_name": row.get("member_name"),
+				"title": assignment.get("title"),
+				"planned_duration": assignment.get("planned_duration"),
+				"duration": row.get("duration"),
+				"water_body": assignment.get("water_body"),
+				"location": assignment.get("location"),
+				"description": assignment.get("description"),
+			}
+		)
+
+	default_date = getdate("1900-01-01")
+	data.sort(key=lambda row: (row.get("member") or ""))
+	data.sort(key=lambda row: row.get("date") or default_date, reverse=True)
+	return data
+
+
+def get_assignment_filters(filters):
+	assignment_filters = {}
+
+	if filters.get("year"):
+		year = int(filters.get("year"))
+		assignment_filters["date"] = ["between", [f"{year}-01-01", f"{year}-12-31"]]
+
+	if filters.get("organization"):
+		assignment_filters["organization"] = filters.get("organization")
 
 	if filters.get("water_body"):
-		conditions.append("AND wa.water_body = %(water_body)s")
+		assignment_filters["water_body"] = filters.get("water_body")
 
-	return " ".join(conditions)
+	return assignment_filters
