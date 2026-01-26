@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "naming_series:",
+ "autoname": "hash",
  "creation": "2026-01-08 10:00:00",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -129,11 +129,11 @@
  ],
  "grid_page_length": 50,
  "links": [],
- "modified": "2026-01-09 09:43:31.823627",
+ "modified": "2026-01-26 10:26:01.173455",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Work Assignment",
- "naming_rule": "By \"Naming Series\" field",
+ "naming_rule": "Random",
  "owner": "Administrator",
  "permissions": [
   {
