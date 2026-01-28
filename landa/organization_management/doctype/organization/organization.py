@@ -29,6 +29,7 @@ class Organization(NestedSet):
 
 		charitable_until: DF.Date | None
 		disabled: DF.Check
+		expected_work_hours_per_year: DF.Float
 		fishing_area: DF.Link | None
 		is_charitable: DF.Check
 		is_group: DF.Check

@@ -29,6 +29,8 @@
   "section_break_15",
   "is_group",
   "disabled",
+  "section_break_work_hours",
+  "expected_work_hours_per_year",
   "lft",
   "rgt",
   "old_parent",
@@ -199,6 +201,17 @@
    "fieldtype": "Check",
    "label": "Disabled",
    "permlevel": 1
+  },
+  {
+   "fieldname": "section_break_work_hours",
+   "fieldtype": "Section Break",
+   "label": "Work Hours Account"
+  },
+  {
+   "fieldname": "expected_work_hours_per_year",
+   "fieldtype": "Float",
+   "label": "Expected Work Hours per Year",
+   "non_negative": 1
   }
  ],
  "grid_page_length": 50,
@@ -248,9 +261,14 @@
    "group": "Gew\u00e4sserverwaltung",
    "link_doctype": "Water Body Management Local Organization",
    "link_fieldname": "organization"
+  },
+  {
+   "group": "Vereinsverwaltung",
+   "link_doctype": "Work Ledger Entry",
+   "link_fieldname": "organization"
   }
  ],
- "modified": "2025-12-10 14:37:18.258588",
+ "modified": "2026-01-28 16:05:42.757333",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
