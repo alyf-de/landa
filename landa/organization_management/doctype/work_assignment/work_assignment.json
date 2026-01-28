@@ -22,7 +22,8 @@
   "location",
   "description",
   "section_members",
-  "members"
+  "members",
+  "amended_from"
  ],
  "fields": [
   {
@@ -125,11 +126,22 @@
    "fieldtype": "Table",
    "label": "Members",
    "options": "Work Assignment Member"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Work Assignment",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-01-26 10:26:01.173455",
+ "modified": "2026-01-28 13:06:00.844504",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Work Assignment",
