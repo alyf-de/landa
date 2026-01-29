@@ -217,12 +217,17 @@ def get_prorated_rent(
 
 	Example (report year 2026):
 	    Inputs -> output (rent amount for 2026):
-	        - rent_per_year=500, from_date=2024-01-01, to_date=2024-12-31 -> skipped
+	        - rent_per_year=500, from_date=2024-01-01, to_date=2024-12-31 -> 0
 	        - rent_per_year=1000, from_date=2025-01-01, to_date=2026-06-30 -> 500
 	        - rent_per_year=1500, from_date=2026-07-01, to_date=2027-12-31 -> 750
-	    Invalid inputs:
-	        - to_date < year_start are filtered before this function is called.
 	"""
+	if to_date and to_date < year_start:
+		# Rent period ended before the year start
+		return 0.0
+
+	if from_date and from_date > year_end:
+		# Rent period started after the year end
+		return 0.0
 
 	# Check if we need to calculate partial rent
 	# Only calculate partial rent if the contract period doesn't fully cover the year
