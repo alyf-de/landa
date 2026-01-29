@@ -105,9 +105,10 @@ def get_data(
 	landlord: str | None,
 ):
 	"""
-	The end date of a lease contract and rent period may be undetermined.
-	Therefore, we don't filter by end_date/to_date in get_list, but if it's set,
-	we skip records that ended before the year start.
+	- If a contract has ended before the year start, we skip it regardless of the rent periods
+	- The end date of a lease contract and rent period may be undetermined.
+	    Therefore, we don't filter by end_date/to_date in get_list, but if it's set,
+	    we skip records that ended before the year start.
 	"""
 	year_end = getdate(f"{year}-12-31")
 	year_start = getdate(f"{year}-01-01")
@@ -150,56 +151,96 @@ def get_data(
 		order_by="payment_due_date ASC",
 	):
 		if lease_contract.end_date and lease_contract.end_date < year_start:
+			# Contract ended before the year start, skip it
 			continue
 
 		if lease_contract.to_date and lease_contract.to_date < year_start:
+			# Rent period ended before the year start, skip it
 			continue
 
-		# Check if we need to calculate partial rent
-		# Only calculate partial rent if the contract period doesn't fully cover the year
-		contract_start_in_year = (
-			max(year_start, lease_contract.from_date) if lease_contract.from_date else year_start
+		yield get_rent_payment_row(lease_contract, year_start, year_end)
+
+
+def get_rent_payment_row(lease_contract: dict, year_start: date, year_end: date) -> dict:
+	if lease_contract.landlord_new:
+		payment_recipient, iban = frappe.db.get_value(
+			"Landlord", lease_contract.landlord_new, ["landlord_name", "iban"]
 		)
-		contract_end_in_year = min(year_end, lease_contract.to_date) if lease_contract.to_date else year_end
+	else:
+		payment_recipient = ""
+		iban = ""
 
-		if (lease_contract.from_date and lease_contract.from_date > year_start) or (
-			lease_contract.to_date and lease_contract.to_date < year_end
-		):
-			# Calculate partial rent using actual days in the year (handles leap years)
-			days_in_contract_period = (contract_end_in_year - contract_start_in_year).days + 1
-			days_in_year = (year_end - year_start).days + 1
+	return {
+		"lease_contract": lease_contract.name,
+		"water_body": lease_contract.water_body,
+		"water_body_title": lease_contract.water_body_title,
+		"fishing_area": lease_contract.fishing_area,
+		"lease_object": lease_contract.lease_object,
+		"payment_recipient": payment_recipient,
+		"iban": iban,
+		"rent": get_prorated_rent(
+			year_start=year_start,
+			year_end=year_end,
+			rent_per_year=lease_contract.rent_per_year,
+			from_date=lease_contract.from_date,
+			to_date=lease_contract.to_date,
+		),
+		"currency": lease_contract.currency,
+		"payment_reference": lease_contract.payment_reference,
+		"payment_type": _(lease_contract.payment_type),
+		"payment_due_date": change_year(lease_contract.payment_due_date, year_start.year)
+		if lease_contract.payment_due_date
+		else None,
+	}
 
-			rent = round(
-				lease_contract.rent_per_year * round(days_in_contract_period / days_in_year, 2),
-				2,
-			)
-		else:
-			rent = lease_contract.rent_per_year
 
-		if lease_contract.landlord_new:
-			payment_recipient, iban = frappe.db.get_value(
-				"Landlord", lease_contract.landlord_new, ["landlord_name", "iban"]
-			)
-		else:
-			payment_recipient = ""
-			iban = ""
+def get_prorated_rent(
+	year_start: date,
+	year_end: date,
+	rent_per_year: float,
+	from_date: date | None = None,
+	to_date: date | None = None,
+) -> float:
+	"""
+	- Each year can be subdivided into multiple rent periods with different amounts
+	    In this case we want to produce a row for each rent period
+	- This year can be within a rent period that spans multiple years
+	    In this case we want to produce one row for the entire year
 
-		yield {
-			"lease_contract": lease_contract.name,
-			"water_body": lease_contract.water_body,
-			"water_body_title": lease_contract.water_body_title,
-			"fishing_area": lease_contract.fishing_area,
-			"lease_object": lease_contract.lease_object,
-			"payment_recipient": payment_recipient,
-			"iban": iban,
-			"rent": rent,
-			"currency": lease_contract.currency,
-			"payment_reference": lease_contract.payment_reference,
-			"payment_type": _(lease_contract.payment_type),
-			"payment_due_date": change_year(lease_contract.payment_due_date, year)
-			if lease_contract.payment_due_date
-			else None,
-		}
+	### Example
+
+	Current year: 2026
+	Rent periods in the database:
+	    - 2024-01-01 to 2024-12-31: 500 EUR per year
+	    - 2025-01-01 to 2026-06-30: 1000 EUR per year
+	    - 2026-07-01 to 2027-12-31: 1500 EUR per year
+
+	Result:
+	    - 2026-01-01 to 2026-06-30: 500 EUR
+	    - 2026-07-01 to 2026-12-31: 750 EUR
+
+	Explanation:
+	    - The first rent period ends before the year start, so we skip it.
+	    - The second rent period ends within the year, so we produce a pro-rated row for the period (first half of the year)
+	    - The third rent period starts within the year, so we produce a pro-rated row for the period (second half of the year)
+	"""
+
+	# Check if we need to calculate partial rent
+	# Only calculate partial rent if the contract period doesn't fully cover the year
+	contract_start_in_year = max(year_start, from_date) if from_date else year_start
+	contract_end_in_year = min(year_end, to_date) if to_date else year_end
+
+	if (from_date and from_date > year_start) or (to_date and to_date < year_end):
+		# Calculate partial rent using actual days in the year (handles leap years)
+		days_in_contract_period = (contract_end_in_year - contract_start_in_year).days + 1
+		days_in_year = (year_end - year_start).days + 1
+
+		return round(
+			rent_per_year * round(days_in_contract_period / days_in_year, 2),
+			2,
+		)
+	else:
+		return rent_per_year
 
 
 def change_year(date_to_change: date | None, new_year: int) -> date | None:
