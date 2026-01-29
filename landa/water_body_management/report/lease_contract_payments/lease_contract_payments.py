@@ -104,11 +104,14 @@ def get_data(
 	lease_object: str | None,
 	landlord: str | None,
 ):
-	"""
-	- If a contract has ended before the year start, we skip it regardless of the rent periods
-	- The end date of a lease contract and rent period may be undetermined.
-	    Therefore, we don't filter by end_date/to_date in get_list, but if it's set,
-	    we skip records that ended before the year start.
+	"""Yield report rows for the selected year and filters.
+
+	We query lease contracts joined with their rent periods up to year_end. End dates
+	may be unset, so we do not filter by end_date/to_date in the query. If they are
+	set and end before year_start, we skip those rows.
+
+	Each rent period returned by the join becomes one report row. The rent amount is
+	prorated to the report year by get_prorated_rent.
 	"""
 	year_end = getdate(f"{year}-12-31")
 	year_start = getdate(f"{year}-01-01")
@@ -162,6 +165,11 @@ def get_data(
 
 
 def get_rent_payment_row(lease_contract: dict, year_start: date, year_end: date) -> dict:
+	"""Build a report row for a single rent period.
+
+	Looks up landlord details, prorates the rent for the report year, and aligns
+	the payment due date to the report year.
+	"""
 	if lease_contract.landlord_new:
 		payment_recipient, iban = frappe.db.get_value(
 			"Landlord", lease_contract.landlord_new, ["landlord_name", "iban"]
@@ -201,28 +209,19 @@ def get_prorated_rent(
 	from_date: date | None = None,
 	to_date: date | None = None,
 ) -> float:
-	"""
-	- Each year can be subdivided into multiple rent periods with different amounts
-	    In this case we want to produce a row for each rent period
-	- This year can be within a rent period that spans multiple years
-	    In this case we want to produce one row for the entire year
+	"""Return the rent amount for the report year for a single rent period.
 
-	### Example
+	If the rent period does not cover the full year, prorate by the fraction of
+	days within the year (using actual day counts, so leap years are handled).
+	Open-ended from/to dates are treated as the year boundaries.
 
-	Current year: 2026
-	Rent periods in the database:
-	    - 2024-01-01 to 2024-12-31: 500 EUR per year
-	    - 2025-01-01 to 2026-06-30: 1000 EUR per year
-	    - 2026-07-01 to 2027-12-31: 1500 EUR per year
-
-	Result:
-	    - 2026-01-01 to 2026-06-30: 500 EUR
-	    - 2026-07-01 to 2026-12-31: 750 EUR
-
-	Explanation:
-	    - The first rent period ends before the year start, so we skip it.
-	    - The second rent period ends within the year, so we produce a pro-rated row for the period (first half of the year)
-	    - The third rent period starts within the year, so we produce a pro-rated row for the period (second half of the year)
+	Example (report year 2026):
+	    Inputs -> output (rent amount for 2026):
+	        - rent_per_year=500, from_date=2024-01-01, to_date=2024-12-31 -> skipped
+	        - rent_per_year=1000, from_date=2025-01-01, to_date=2026-06-30 -> 500
+	        - rent_per_year=1500, from_date=2026-07-01, to_date=2027-12-31 -> 750
+	    Invalid inputs:
+	        - to_date < year_start are filtered before this function is called.
 	"""
 
 	# Check if we need to calculate partial rent
