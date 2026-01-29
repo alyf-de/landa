@@ -149,13 +149,12 @@ def get_data(
 		],
 		order_by="payment_due_date ASC",
 	):
-		if (
-			(lease_contract.end_date is None or lease_contract.end_date < year_start)
-			and (lease_contract.to_date is None or lease_contract.to_date < year_start)
-			and (lease_contract.end_date or lease_contract.to_date)
-		):
-			# Skip only if all available end dates (contract and rent period) are before the year start
+		if lease_contract.end_date and lease_contract.end_date < year_start:
 			continue
+
+		if lease_contract.to_date and lease_contract.to_date < year_start:
+			continue
+
 		# Check if we need to calculate partial rent
 		# Only calculate partial rent if the contract period doesn't fully cover the year
 		contract_start_in_year = (
