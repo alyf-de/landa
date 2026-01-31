@@ -3,7 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
-from frappe.utils import getdate, now_datetime
+from frappe.utils.data import now_datetime
 
 
 class WorkLedgerEntry(Document):
@@ -24,3 +24,32 @@ class WorkLedgerEntry(Document):
 		work_assignment: DF.Link | None
 	# end: auto-generated types
 	pass
+
+
+def create_yearly_negative_entries():
+	"""Create negative Work Ledger Entries for all members based on expected work hours per year."""
+
+	organizations = frappe.get_list(
+		"Organization",
+		filters={"expected_work_hours_per_year": [">", 0]},
+		fields=["name", "expected_work_hours_per_year"],
+	)
+
+	if not organizations:
+		return
+
+	# Get all active members for each organization
+	for org in organizations:
+		members = frappe.get_list(
+			"LANDA Member",
+			filters={"organization": org.name},
+			fields=["name"],
+		)
+
+		for member in members:
+			ledger_entry = frappe.new_doc("Work Ledger Entry")
+			ledger_entry.member = member.name
+			ledger_entry.organization = org.name
+			ledger_entry.date = f"{now_datetime().year}-01-01"
+			ledger_entry.hours_change = -org.expected_work_hours_per_year
+			ledger_entry.insert()
