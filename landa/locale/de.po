@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-01-22 18:14+0053\n"
+"POT-Creation-Date: 2026-01-17 01:15+0053\n"
 "PO-Revision-Date: 2025-11-29 18:55+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
@@ -108,6 +108,10 @@ msgstr "Adressbezeichnung und Verknüpfungen sind zwingend erforderlich."
 #: landa/water_body_management/doctype/water_body/water_body.json
 msgid "Allgemeines Angelgewässer"
 msgstr ""
+
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:59
+msgid "Are you sure you want to clear all Special Yearly Fishing Permits for the {0} selected members?"
+msgstr "Möchten Sie wirklich alle Erlaubnisscheine Gewässerfonds für die {0} ausgewählten Mitglieder löschen?"
 
 #. Label of a Data field in DocType 'Fishing Area'
 #: landa/water_body_management/doctype/fishing_area/fishing_area.json
@@ -266,6 +270,10 @@ msgstr "Fanggewicht"
 msgid "Charitable until"
 msgstr "Gemeinnützig bis"
 
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:56
+msgid "Clear Special Fishing Permits"
+msgstr "Erlaubnisscheine Gewässerfonds löschen"
+
 #. Label of a Data field in DocType 'Fish Species'
 #: landa/water_body_management/doctype/fish_species/fish_species.json
 msgid "Close Season"
@@ -291,13 +299,13 @@ msgstr "Neue Besatzmaßnahme"
 msgid "Create Stocking Targets"
 msgstr "Besatzplanungen erstellen"
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:56
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:82
 msgid "Create Yearly Fishing Permit"
 msgstr "Erlaubnisschein erstellen"
 
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:83
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:91
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:103
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:89
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:97
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:109
 msgid "Creating Yearly Fishing Permits..."
 msgstr "Erlaubnisscheine werden erstellt..."
 
@@ -1803,6 +1811,10 @@ msgstr "Fangbegrenzung Salmonidengewässer"
 msgid "Special Yearly Fishing Permits"
 msgstr "Erlaubnisscheine Gewässerfonds"
 
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:71
+msgid "Special Yearly Fishing Permits cleared."
+msgstr "Erlaubnisscheine Gewässerfonds gelöscht."
+
 #. Label of a Card Break in the Water Body Management Workspace
 #: landa/water_body_management/workspace/water_body_management/water_body_management.json
 msgid "Stammdaten"
@@ -2250,7 +2262,7 @@ msgstr ""
 msgid "Year must be between {0} and {1}."
 msgstr "Jahr muss zwischen {0} und {1} liegen."
 
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:65
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:71
 msgid "Year must be either the current year or the next year."
 msgstr "Jahr muss entweder das aktuelle Jahr oder das nächste Jahr sein."
 
@@ -2297,9 +2309,9 @@ msgstr "Erlaubnisschein Info Text"
 msgid "Yearly Fishing Permit Type"
 msgstr "Erlaubnisscheinart"
 
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:57
-msgid "Yearly Fishing Permit already exists for member {0} and year {1}. Please cancel the existing permit before creating a new one."
-msgstr "Erlaubnisschein für Mitglied {0} und Jahr {1} existiert bereits. Bitte stornieren Sie den bestehenden Erlaubnisschein, bevor Sie einen neuen erstellen."
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:63
+msgid "Yearly Fishing Permit already exists for member {0} and year {1}. Please delete or cancel the existing permit before creating a new one."
+msgstr "Erlaubnisschein für Mitglied {0} und Jahr {1} existiert bereits. Bitte löschen oder stornieren Sie den bestehenden Erlaubnisschein, bevor Sie einen neuen erstellen."
 
 #. Name of a report
 #. Label of a Link in the Organization Management Workspace
@@ -2308,7 +2320,7 @@ msgstr "Erlaubnisschein für Mitglied {0} und Jahr {1} existiert bereits. Bitte 
 msgid "Yearly Fishing Permits Issued"
 msgstr "Vergebene Erlaubnisscheine"
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:87
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:113
 msgid "Yearly Fishing Permits have been created for {0} members."
 msgstr "Erlaubnisscheine für {0} Mitglieder wurden erstellt."
 
