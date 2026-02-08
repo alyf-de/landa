@@ -2,10 +2,6 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Stocking Plan Import", {
-	refresh(frm) {
-		frm.page.set_primary_action(__("Create"), () => frm.save());
-	},
-
 	onload(frm) {
 		frm.set_query("organization", function () {
 			return {
