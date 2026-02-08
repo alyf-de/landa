@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-01-17 01:15+0053\n"
+"POT-Creation-Date: 2026-02-08 17:08+0053\n"
 "PO-Revision-Date: 2025-11-29 18:55+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
@@ -172,6 +172,11 @@ msgstr ""
 
 #. Label of a Link in the Water Body Management Workspace
 #: landa/water_body_management/workspace/water_body_management/water_body_management.json
+msgid "Besatzmaßnahmen Import"
+msgstr ""
+
+#. Label of a Link in the Water Body Management Workspace
+#: landa/water_body_management/workspace/water_body_management/water_body_management.json
 msgid "Besatzplanung"
 msgstr ""
 
@@ -300,7 +305,7 @@ msgstr "Erlaubnisschein erstellen"
 
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:89
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:97
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:109
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:110
 msgid "Creating Yearly Fishing Permits..."
 msgstr "Erlaubnisscheine werden erstellt..."
 
@@ -502,6 +507,8 @@ msgstr "Gefangene Fische"
 #. Name of a DocType
 #. Label of a Link field in DocType 'Fish Species Table'
 #. Label of a Link field in DocType 'Stocking Measure'
+#. Label of a Link field in DocType 'Stocking Measure Import History'
+#. Label of a Link field in DocType 'Stocking Measure Import Item'
 #. Label of a Link field in DocType 'Stocking Target'
 #. Label of a Link in the Water Body Management Workspace
 #: landa/water_body_management/doctype/blacklisted_fish_species_table/blacklisted_fish_species_table.json
@@ -509,6 +516,8 @@ msgstr "Gefangene Fische"
 #: landa/water_body_management/doctype/fish_species/fish_species.json
 #: landa/water_body_management/doctype/fish_species_table/fish_species_table.json
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json
+#: landa/water_body_management/doctype/stocking_measure_import_history/stocking_measure_import_history.json
+#: landa/water_body_management/doctype/stocking_measure_import_item/stocking_measure_import_item.json
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.js:28
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.py:92
@@ -537,9 +546,13 @@ msgstr "Fischart Tabelle"
 
 #. Name of a DocType
 #. Label of a Link field in DocType 'Stocking Measure'
+#. Label of a Link field in DocType 'Stocking Measure Import History'
+#. Label of a Link field in DocType 'Stocking Measure Import Item'
 #. Label of a Link field in DocType 'Stocking Target'
 #: landa/water_body_management/doctype/fish_type_for_stocking/fish_type_for_stocking.json
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json
+#: landa/water_body_management/doctype/stocking_measure_import_history/stocking_measure_import_history.json
+#: landa/water_body_management/doctype/stocking_measure_import_item/stocking_measure_import_item.json
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json
 #: landa/water_body_management/report/stocking_of_supported_water_bodies/stocking_of_supported_water_bodies.js:35
 #: landa/water_body_management/report/stocking_of_supported_water_bodies/stocking_of_supported_water_bodies.py:42
@@ -761,6 +774,11 @@ msgstr ""
 msgid "Hat VANT Erlaubnisschein"
 msgstr ""
 
+#. Label of a Section Break field in DocType 'Stocking Measure Import'
+#: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.json
+msgid "History"
+msgstr "Verlauf"
+
 #. Label of a Link field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
 #: landa/organization_management/report/current_member_data/current_member_data.py:178
@@ -966,6 +984,7 @@ msgstr "LANDA Mitgliederverwaltung Verein"
 
 #. Name of a role
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json
+#: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.json
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json
 #: landa/water_body_management/doctype/water_body_management_local_organization/water_body_management_local_organization.json
 msgid "LANDA Local Water Body Management"
@@ -1084,6 +1103,7 @@ msgstr ""
 #: landa/water_body_management/doctype/lease_contract/lease_contract.json
 #: landa/water_body_management/doctype/lease_object/lease_object.json
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json
+#: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.json
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json
 #: landa/water_body_management/doctype/water_body/water_body.json
 #: landa/water_body_management/doctype/water_body_management_local_organization/water_body_management_local_organization.json
@@ -1443,6 +1463,10 @@ msgstr "Neuen Fangbucheintrag anlegen"
 msgid "New Member Function Entry"
 msgstr "Neue Mitgliedsfunktion anlegen"
 
+#: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.js:18
+msgid "New Stocking Measure Import"
+msgstr "Neuer Besatzmaßnahmenimport"
+
 #: landa/organization_management/doctype/organization/organization.py:320
 msgid "No Company found for Organization {0}."
 msgstr "Kein Bestellwesenkonto RV für Verein {0} gefunden."
@@ -1655,6 +1679,7 @@ msgstr ""
 #. Label of a Link field in DocType 'Landlord'
 #. Label of a Link field in DocType 'Lease Contract'
 #. Label of a Link field in DocType 'Stocking Measure'
+#. Label of a Link field in DocType 'Stocking Measure Import'
 #. Label of a Link field in DocType 'Stocking Target'
 #. Label of a Link field in DocType 'Water Body'
 #. Label of a Link field in DocType 'Water Body Management Local Organization'
@@ -1665,6 +1690,7 @@ msgstr ""
 #: landa/water_body_management/doctype/landlord/landlord.json
 #: landa/water_body_management/doctype/lease_contract/lease_contract.json
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json
+#: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.json
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json
 #: landa/water_body_management/doctype/water_body/water_body.json
 #: landa/water_body_management/doctype/water_body_management_local_organization/water_body_management_local_organization.json
@@ -1825,16 +1851,38 @@ msgstr "Beitragsabrechnung"
 msgid "Status and Duration"
 msgstr "Status und Dauer"
 
+#. Label of a Section Break field in DocType 'Stocking Measure Import'
+#: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.json
+msgid "Stocking Items"
+msgstr "Fischbesatz"
+
 #. Linked DocType in External Contact's connections
 #. Name of a DocType
+#. Label of a Link field in DocType 'Stocking Measure Import History'
 #. Linked DocType in Stocking Target's connections
 #. Label of a Link in the Water Body Management Workspace
 #: landa/organization_management/doctype/external_contact/external_contact.json
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json
+#: landa/water_body_management/doctype/stocking_measure_import_history/stocking_measure_import_history.json
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json
 #: landa/water_body_management/workspace/water_body_management/water_body_management.json
 msgid "Stocking Measure"
 msgstr "Besatzmaßnahme"
+
+#. Name of a DocType
+#: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.json
+msgid "Stocking Measure Import"
+msgstr "Besatzmaßnahmenimport"
+
+#. Name of a DocType
+#: landa/water_body_management/doctype/stocking_measure_import_history/stocking_measure_import_history.json
+msgid "Stocking Measure Import History"
+msgstr "Besatzmaßnahmenimport-Verlauf"
+
+#. Name of a DocType
+#: landa/water_body_management/doctype/stocking_measure_import_item/stocking_measure_import_item.json
+msgid "Stocking Measure Import Item"
+msgstr "Besatzmaßnahmenimport-Position"
 
 #: landa/water_body_management/report/water_body_development/water_body_development.py:60
 msgid "Stocking Quantity"
@@ -2051,6 +2099,9 @@ msgstr ""
 #. Label of a Link field in DocType 'Lease Contract'
 #. Label of a Section Break field in DocType 'Stocking Measure'
 #. Label of a Link field in DocType 'Stocking Measure'
+#. Label of a Section Break field in DocType 'Stocking Measure Import'
+#. Label of a Link field in DocType 'Stocking Measure Import'
+#. Label of a Link field in DocType 'Stocking Measure Import History'
 #. Label of a Link field in DocType 'Stocking Target'
 #. Label of a Section Break field in DocType 'Stocking Target'
 #. Name of a DocType
@@ -2060,6 +2111,8 @@ msgstr ""
 #: landa/water_body_management/doctype/fishing_area/fishing_area.json
 #: landa/water_body_management/doctype/lease_contract/lease_contract.json
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json
+#: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.json
+#: landa/water_body_management/doctype/stocking_measure_import_history/stocking_measure_import_history.json
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json
 #: landa/water_body_management/doctype/water_body/water_body.json
 #: landa/water_body_management/doctype/water_body_management_local_organization/water_body_management_local_organization.json
@@ -2203,9 +2256,13 @@ msgstr "Gewässername"
 
 #. Label of a Float field in DocType 'Catch Log Fish Table'
 #. Label of a Float field in DocType 'Stocking Measure'
+#. Label of a Float field in DocType 'Stocking Measure Import History'
+#. Label of a Float field in DocType 'Stocking Measure Import Item'
 #. Label of a Float field in DocType 'Stocking Target'
 #: landa/water_body_management/doctype/catch_log_fish_table/catch_log_fish_table.json
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json
+#: landa/water_body_management/doctype/stocking_measure_import_history/stocking_measure_import_history.json
+#: landa/water_body_management/doctype/stocking_measure_import_item/stocking_measure_import_item.json
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.py:105
 #: landa/water_body_management/report/stocking_of_supported_water_bodies/stocking_of_supported_water_bodies.py:45
@@ -2351,6 +2408,10 @@ msgstr ""
 #: landa/water_body_management/doctype/water_body/water_body.json
 msgid "km"
 msgstr ""
+
+#: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.py:84
+msgid "{0} Stocking Measure(s) created"
+msgstr "{0} Besatzmaßnahme(n) erstellt"
 
 #: landa/water_body_management/utils.py:27
 msgid "{0} {1} Created"

@@ -1,0 +1,67 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-08 16:37:04.095380",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "stocking_measure",
+  "water_body",
+  "fish_species",
+  "fish_type_for_stocking",
+  "weight"
+ ],
+ "fields": [
+  {
+   "fieldname": "stocking_measure",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Stocking Measure",
+   "options": "Stocking Measure"
+  },
+  {
+   "fieldname": "water_body",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Water Body",
+   "options": "Water Body"
+  },
+  {
+   "fieldname": "fish_species",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fish Species",
+   "options": "Fish Species"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight in Kg"
+  },
+  {
+   "fieldname": "fish_type_for_stocking",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fish Type For Stocking",
+   "options": "Fish Type For Stocking"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_virtual": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-08 17:04:21.535653",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Stocking Measure Import History",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
