@@ -39,6 +39,10 @@ class StockingPlanImport(Document):
 				"organization": current_member_data.regional_organization,
 				"date": now.date(),
 				"year": now.year,
+				"creation": now,
+				"modified": now,
+				"owner": frappe.session.user,
+				"modified_by": frappe.session.user,
 			}
 		)
 
