@@ -1,13 +1,16 @@
 # Copyright (c) 2026, ALYF GmbH and contributors
 # For license information, please see license.txt
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import frappe
 from frappe import _
 from frappe.model.document import Document
 
 from landa.utils import get_current_member_data
+from landa.water_body_management.doctype.stocking_measure_import_history.stocking_measure_import_history import (
+	StockingMeasureImportHistory,
+)
 
 
 class StockingMeasureImport(Document):
@@ -19,11 +22,15 @@ class StockingMeasureImport(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
+		from landa.water_body_management.doctype.stocking_measure_import_history.stocking_measure_import_history import (
+			StockingMeasureImportHistory,
+		)
 		from landa.water_body_management.doctype.stocking_measure_import_item.stocking_measure_import_item import (
 			StockingMeasureImportItem,
 		)
 
 		date: DF.Date
+		history: DF.Table[StockingMeasureImportHistory]
 		items: DF.Table[StockingMeasureImportItem]
 		organization: DF.Link
 		water_body: DF.Link
@@ -43,6 +50,7 @@ class StockingMeasureImport(Document):
 				"modified": now,
 				"owner": frappe.session.user,
 				"modified_by": frappe.session.user,
+				"history": self._get_history(),
 			}
 		)
 
@@ -52,10 +60,12 @@ class StockingMeasureImport(Document):
 
 	def db_insert(self, *args, **kwargs):
 		self._create_stocking_measures()
+		self.history = self._get_history()
 		return self.as_dict()
 
 	def db_update(self, *args, **kwargs):
 		self._create_stocking_measures()
+		self.history = self._get_history()
 
 	def _create_stocking_measures(self):
 		for item in self.items:
@@ -80,6 +90,32 @@ class StockingMeasureImport(Document):
 			alert=True,
 			indicator="green",
 		)
+
+	def _get_history(self):
+		now = datetime.now()
+		records = frappe.get_list(
+			"Stocking Measure",
+			filters={
+				"owner": frappe.session.user,
+				"creation": (">", now - timedelta(days=1)),
+			},
+			fields=[
+				"name as stocking_measure",
+				"owner",
+				"modified",
+				"modified_by",
+				"creation",
+				"water_body",
+				"fish_species",
+				"fish_type_for_stocking",
+				"weight",
+			],
+			order_by="creation desc",
+		)
+		return [
+			StockingMeasureImportHistory({"doctype": "Stocking Measure Import History", **record})
+			for record in records
+		]
 
 	def delete(self):
 		pass

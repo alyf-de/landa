@@ -12,7 +12,9 @@
   "year",
   "date",
   "section_break_items",
-  "items"
+  "items",
+  "history_section",
+  "history"
  ],
  "fields": [
   {
@@ -67,13 +69,25 @@
    "label": "Items",
    "options": "Stocking Measure Import Item",
    "reqd": 1
+  },
+  {
+   "fieldname": "history_section",
+   "fieldtype": "Section Break",
+   "label": "History"
+  },
+  {
+   "fieldname": "history",
+   "fieldtype": "Table",
+   "is_virtual": 1,
+   "options": "Stocking Measure Import History",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_virtual": 1,
  "links": [],
- "modified": "2026-01-22 18:13:25.903484",
+ "modified": "2026-02-08 17:05:57.672736",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Measure Import",
