@@ -1,9 +1,13 @@
 # Copyright (c) 2026, ALYF GmbH and contributors
 # For license information, please see license.txt
 
+from datetime import datetime
+
 import frappe
 from frappe import _
 from frappe.model.document import Document
+
+from landa.utils import get_current_member_data
 
 
 class StockingPlanImport(Document):
@@ -26,7 +30,30 @@ class StockingPlanImport(Document):
 		year: DF.Int
 	# end: auto-generated types
 
+	def load_from_db(self):
+		current_member_data = get_current_member_data()
+		now = datetime.now()
+		super(Document, self).__init__(
+			{
+				"name": self.name or frappe.generate_hash(length=8),
+				"organization": current_member_data.regional_organization,
+				"date": now.date(),
+				"year": now.year,
+			}
+		)
+
+	def load_doc_before_save(self, *args, **kwargs):
+		"""Virtual doctype: no DB row to compare against."""
+		self._doc_before_save = None
+
 	def db_insert(self, *args, **kwargs):
+		self._create_stocking_measures()
+		return self.as_dict()
+
+	def db_update(self, *args, **kwargs):
+		self._create_stocking_measures()
+
+	def _create_stocking_measures(self):
 		for item in self.items:
 			frappe.get_doc(
 				{
@@ -49,12 +76,6 @@ class StockingPlanImport(Document):
 			alert=True,
 			indicator="green",
 		)
-
-	def load_from_db(self):
-		pass
-
-	def db_update(self):
-		pass
 
 	def delete(self):
 		pass
