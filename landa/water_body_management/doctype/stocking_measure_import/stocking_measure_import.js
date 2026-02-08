@@ -1,7 +1,7 @@
 // Copyright (c) 2026, ALYF GmbH and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on("Stocking Plan Import", {
+frappe.ui.form.on("Stocking Measure Import", {
 	setup(frm) {
 		// prevent creation of footer with comment box and timeline
 		frm.meta.hide_toolbar = true;
@@ -15,7 +15,7 @@ frappe.ui.form.on("Stocking Plan Import", {
 
 	onload(frm) {
 		if (frm.is_new()) {
-			frappe.set_route("Form", frm.doc.doctype, __("New Stocking Plan Import"));
+			frappe.set_route("Form", frm.doc.doctype, __("New Stocking Measure Import"));
 		}
 
 		frm.set_query("organization", function () {

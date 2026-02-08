@@ -10,7 +10,7 @@ from frappe.model.document import Document
 from landa.utils import get_current_member_data
 
 
-class StockingPlanImport(Document):
+class StockingMeasureImport(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -19,12 +19,12 @@ class StockingPlanImport(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		from landa.water_body_management.doctype.stocking_plan_import_item.stocking_plan_import_item import (
-			StockingPlanImportItem,
+		from landa.water_body_management.doctype.stocking_measure_import_item.stocking_measure_import_item import (
+			StockingMeasureImportItem,
 		)
 
 		date: DF.Date
-		items: DF.Table[StockingPlanImportItem]
+		items: DF.Table[StockingMeasureImportItem]
 		organization: DF.Link
 		water_body: DF.Link
 		year: DF.Int

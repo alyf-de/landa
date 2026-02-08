@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestStockingPlanImport(FrappeTestCase):
+class TestStockingMeasureImport(FrappeTestCase):
 	pass

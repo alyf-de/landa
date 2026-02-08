@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-01-10 12:24:07.171704",
+ "creation": "2026-02-08 16:30:03.436305",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -65,7 +65,7 @@
    "fieldname": "items",
    "fieldtype": "Table",
    "label": "Items",
-   "options": "Stocking Plan Import Item",
+   "options": "Stocking Measure Import Item",
    "reqd": 1
   }
  ],
@@ -76,7 +76,7 @@
  "modified": "2026-01-22 18:13:25.903484",
  "modified_by": "Administrator",
  "module": "Water Body Management",
- "name": "Stocking Plan Import",
+ "name": "Stocking Measure Import",
  "owner": "Administrator",
  "permissions": [
   {
