@@ -23,8 +23,6 @@ frappe.ui.form.on("Stocking Plan Import", {
 		if (!frm.doc.organization && frappe.boot.landa.regional_organization) {
 			frm.set_value("organization", frappe.boot.landa.regional_organization);
 		}
-
-		landa.utils.set_default_year(frm);
 	},
 
 	after_save(frm) {
