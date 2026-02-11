@@ -32,6 +32,7 @@ landa.patches.add_award_types
 landa.patches.multi_to_line
 landa.patches.add_organization_to_tags
 landa.patches.link_external_contact_to_regional_organization
+landa.patches.delete_duplicate_permits
 
 [post_model_sync]
 execute:from landa.utils import reset_workspace; reset_workspace("Organization Management") # 2
