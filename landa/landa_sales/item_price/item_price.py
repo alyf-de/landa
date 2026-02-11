@@ -7,6 +7,6 @@ def validate(item_price, event):
 	"""
 	item_price.customer = ""
 	item_price.supplier = ""
-	item_price.uom = ""
+	item_price.uom = "Anzahl"
 	item_price.batch_no = ""
 	item_price.lead_time_days = 0
