@@ -21,7 +21,7 @@ def execute():
 	print(f"Found {len(duplicates)} duplicate permits")
 
 	total = len(duplicates)
-	for i, (member, year, type, docstatus, number, _count) in enumerate(duplicates):
+	for i, (member, year, permit_type, docstatus, number, _count) in enumerate(duplicates):
 		update_progress_bar("Deleting duplicate permits", i, total)
 
 		keep = frappe.db.get_value(
@@ -29,7 +29,7 @@ def execute():
 			filters={
 				"member": member,
 				"year": year,
-				"type": type,
+				"type": permit_type,
 				"docstatus": docstatus,
 				"number": number,
 			},
@@ -42,7 +42,7 @@ def execute():
 				"name": ("!=", keep),
 				"member": member,
 				"year": year,
-				"type": type,
+				"type": permit_type,
 				"docstatus": docstatus,
 				"number": number,
 			},
