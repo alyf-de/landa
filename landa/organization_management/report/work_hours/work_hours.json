@@ -16,7 +16,7 @@
  "name": "Work Hours",
  "owner": "Administrator",
  "prepared_report": 0,
- "ref_doctype": "Work Assignment",
+ "ref_doctype": "Work Ledger Entry",
  "report_name": "Work Hours",
  "report_type": "Script Report",
  "roles": [
