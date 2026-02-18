@@ -23,7 +23,6 @@ class WorkAssignment(Document):
 		description: DF.SmallText | None
 		location: DF.Data | None
 		members: DF.Table[WorkAssignmentMember]
-		naming_series: DF.Literal["WORK-.YYYY.-.#####"]
 		organization: DF.Link
 		organization_name: DF.Data | None
 		planned_duration: DF.Float

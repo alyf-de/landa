@@ -7,7 +7,6 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "naming_series",
   "section_basic",
   "organization",
   "organization_name",
@@ -26,13 +25,6 @@
   "amended_from"
  ],
  "fields": [
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "hidden": 1,
-   "label": "Naming Series",
-   "options": "WORK-.YYYY.-.#####"
-  },
   {
    "fieldname": "section_basic",
    "fieldtype": "Section Break",
@@ -141,7 +133,7 @@
  "grid_page_length": 50,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-01-28 13:06:00.844504",
+ "modified": "2026-02-18 10:30:22.306657",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Work Assignment",
