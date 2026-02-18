@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.utils import getdate
 from frappe.utils.data import now_datetime
 
 
@@ -53,3 +54,26 @@ def create_yearly_negative_entries():
 			ledger_entry.date = f"{now_datetime().year}-01-01"
 			ledger_entry.hours_change = -org.expected_work_hours_per_year
 			ledger_entry.insert()
+
+
+def create_expected_hours_adjustment_entries(organization: str, hours_change: float):
+	"""
+	Create one Work Ledger Entry per member of the organization for the given hours change.
+	Its called when Organization.expected_work_hours_per_year is updated.
+	"""
+
+	if hours_change == 0:
+		return
+
+	members = frappe.get_list(
+		"LANDA Member",
+		filters={"organization": organization},
+		fields=["name"],
+	)
+	for m in members:
+		entry = frappe.new_doc("Work Ledger Entry")
+		entry.organization = organization
+		entry.member = m.name
+		entry.date = getdate()
+		entry.hours_change = hours_change
+		entry.insert()
