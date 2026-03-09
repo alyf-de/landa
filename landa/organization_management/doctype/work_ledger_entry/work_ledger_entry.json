@@ -73,6 +73,7 @@
    "reqd": 1
   },
   {
+   "description": "If not set, this entry will be treated as an adjustment of expected hours.",
    "fieldname": "work_assignment",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -91,7 +92,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-31 10:48:46.175196",
+ "modified": "2026-03-09 21:22:56.616937",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Work Ledger Entry",

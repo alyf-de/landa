@@ -66,7 +66,7 @@ def get_data(filters):
 	entries = frappe.get_list(
 		"Work Ledger Entry",
 		filters=base_filters,
-		fields=["member", "member_name", "date", "hours_change"],
+		fields=["member", "member_name", "date", "hours_change", "work_assignment"],
 	)
 	if not entries:
 		return []
@@ -86,13 +86,15 @@ def get_data(filters):
 			r["hours_change"] for r in data["rows"] if r["date"] is not None and r["date"] < year_start
 		)
 		in_year = [
-			r["hours_change"]
-			for r in data["rows"]
-			if r["date"] is not None and year_start <= r["date"] <= year_end
+			row for row in data["rows"] if row["date"] is not None and year_start <= row["date"] <= year_end
 		]
-		expected_this_year = sum(h for h in in_year if h < 0)
-		worked_this_year = sum(h for h in in_year if h > 0)
-		balance_end = balance_previous + sum(in_year)
+		expected_this_year = -1 * sum(
+			row.get("hours_change") for row in in_year if row.get("work_assignment") is None
+		)
+		worked_this_year = sum(
+			row.get("hours_change") for row in in_year if row.get("work_assignment") is not None
+		)
+		balance_end = balance_previous - expected_this_year + worked_this_year
 
 		result.append(
 			{
