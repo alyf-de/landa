@@ -19,32 +19,32 @@ def get_columns():
 			"fieldname": "member",
 			"fieldtype": "Link",
 			"options": "LANDA Member",
-			"width": 120,
+			"width": 150,
 		},
 		{"label": _("Member Name"), "fieldname": "member_name", "fieldtype": "Data", "width": 180},
 		{
 			"label": _("Balance End Previous Year"),
 			"fieldname": "balance_previous_year",
 			"fieldtype": "Float",
-			"width": 140,
+			"width": 200,
 		},
 		{
 			"label": _("Expected This Year"),
 			"fieldname": "expected_this_year",
 			"fieldtype": "Float",
-			"width": 120,
+			"width": 200,
 		},
 		{
 			"label": _("Worked This Year"),
 			"fieldname": "worked_this_year",
 			"fieldtype": "Float",
-			"width": 120,
+			"width": 200,
 		},
 		{
 			"label": _("Balance End of Year"),
 			"fieldname": "balance_end_of_year",
 			"fieldtype": "Float",
-			"width": 140,
+			"width": 200,
 		},
 	]
 
@@ -76,7 +76,9 @@ def get_data(filters):
 		m = row["member"]
 		if m not in by_member:
 			by_member[m] = {"member": m, "member_name": row.get("member_name"), "rows": []}
-		by_member[m]["rows"].append({"date": row["date"], "hours_change": float(row.get("hours_change") or 0)})
+		by_member[m]["rows"].append(
+			{"date": row["date"], "hours_change": float(row.get("hours_change") or 0)}
+		)
 
 	result = []
 	for member, data in by_member.items():
@@ -92,14 +94,16 @@ def get_data(filters):
 		worked_this_year = sum(h for h in in_year if h > 0)
 		balance_end = balance_previous + sum(in_year)
 
-		result.append({
-			"member": member,
-			"member_name": data["member_name"],
-			"balance_previous_year": round(balance_previous, 2),
-			"expected_this_year": round(expected_this_year, 2),
-			"worked_this_year": round(worked_this_year, 2),
-			"balance_end_of_year": round(balance_end, 2),
-		})
+		result.append(
+			{
+				"member": member,
+				"member_name": data["member_name"],
+				"balance_previous_year": round(balance_previous, 2),
+				"expected_this_year": round(expected_this_year, 2),
+				"worked_this_year": round(worked_this_year, 2),
+				"balance_end_of_year": round(balance_end, 2),
+			}
+		)
 
 	result.sort(key=lambda r: (r["member_name"] or "", r["member"]))
 	return result
