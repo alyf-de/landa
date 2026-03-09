@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "creation": "2026-01-10 12:26:03.436305",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fish_species",
+  "fish_type_for_stocking",
+  "weight",
+  "quantity",
+  "supplier"
+ ],
+ "fields": [
+  {
+   "fieldname": "fish_species",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fish Species",
+   "options": "Fish Species",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fish_type_for_stocking",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fish Type For Stocking",
+   "options": "Fish Type For Stocking",
+   "reqd": 1
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight in Kg",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Supplier",
+   "options": "External Contact"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_virtual": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-08 16:30:03.436305",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Stocking Measure Import Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

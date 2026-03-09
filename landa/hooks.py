@@ -30,6 +30,7 @@ fixtures = [
 	"Workflow State",
 	"Workflow Action Master",
 	"Workflow",
+	{"dt": "UOM", "filters": {"name": "Anzahl"}},
 ]
 
 boot_session = "landa.startup.boot.boot_session"
