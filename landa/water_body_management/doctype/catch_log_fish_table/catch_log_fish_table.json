@@ -17,7 +17,8 @@
    "in_list_view": 1,
    "label": "Fish Species",
    "options": "Fish Species",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "amount",
@@ -47,7 +48,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-12-04 18:55:22.312758",
+ "modified": "2026-03-18 22:06:16.711831",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Fish Table",

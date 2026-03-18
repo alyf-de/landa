@@ -31,7 +31,8 @@
    "in_standard_filter": 1,
    "label": "Water Body",
    "options": "Water Body",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "year",
@@ -39,7 +40,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Year",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "fishing_days",
@@ -86,7 +88,8 @@
    "in_standard_filter": 1,
    "label": "Fishing Area",
    "options": "Fishing Area",
-   "read_only": 1
+   "read_only": 1,
+   "search_index": 1
   },
   {
    "fieldname": "note",
@@ -138,12 +141,13 @@
    "ignore_user_permissions": 1,
    "label": "Regional Organization",
    "options": "Organization",
-   "read_only": 1
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "links": [],
- "modified": "2025-12-04 18:55:21.678351",
+ "modified": "2026-03-18 22:15:30.654778",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
