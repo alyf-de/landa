@@ -108,11 +108,13 @@ frappe.listview_settings["LANDA Member"] = {
 									members: list_view.get_checked_items(true),
 								}
 							)
-							.then((total_created) => {
+							.then((result) => {
+								const total_created = result.num_created;
+								const total_skipped = result.num_skipped;
 								frappe.show_alert({
 									message: __(
-										"Yearly Fishing Permits have been created for {0} members.",
-										[total_created]
+										"Permits have been created for {0} members and skipped for {1} members.",
+										[total_created, total_skipped]
 									),
 									indicator: "green",
 								});
