@@ -146,11 +146,7 @@
   }
  ],
  "links": [],
-<<<<<<< HEAD
- "modified": "2024-03-01 12:20:30.676170",
-=======
  "modified": "2026-03-18 22:15:30.654778",
->>>>>>> 639b848 (fix(Catch Log Entry): add column indexes (LAN-895) (#313))
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
