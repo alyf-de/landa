@@ -113,13 +113,8 @@ frappe.listview_settings["LANDA Member"] = {
 								const total_skipped = result.num_skipped;
 								frappe.show_alert({
 									message: __(
-<<<<<<< HEAD
-										"Yearly Fishing Permits have been created for {0} members.",
-										[total_created],
-=======
 										"Permits have been created for {0} members and skipped for {1} members.",
-										[total_created, total_skipped]
->>>>>>> dccefea (fix: handle duplicate entry error during bulk creation of yearly fishing permits (LAN-894) (#315))
+										[total_created, total_skipped],
 									),
 									indicator: "green",
 								});
