@@ -17,7 +17,8 @@
    "in_list_view": 1,
    "label": "Fish Species",
    "options": "Fish Species",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "amount",
@@ -46,7 +47,11 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2023-04-24 12:36:52.889403",
+=======
+ "modified": "2026-03-18 22:06:16.711831",
+>>>>>>> 639b848 (fix(Catch Log Entry): add column indexes (LAN-895) (#313))
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Fish Table",
