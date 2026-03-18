@@ -1,6 +1,7 @@
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
+import contextlib
 import json
 from datetime import datetime
 
@@ -84,7 +85,8 @@ def bulk_create(permit_type: str, year: str, members: str):
 		yfp.organization = frappe.db.get_value("LANDA Member", member, "organization")
 		yfp.year = year
 		yfp.type = permit_type
-		yfp.insert()
+		with contextlib.suppress(frappe.DuplicateEntryError):
+			yfp.insert()
 
 	frappe.publish_progress(
 		percent=100,
