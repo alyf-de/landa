@@ -132,7 +132,7 @@ Price List {0} is not valid for Company {1}.,Preisliste {0} ist nicht gültig f�
 Customer {0} is not valid for Company {1}.,Bestellwesenkonto Verein {0} ist nicht gültig für das Bestellwesenkonto RV {1}.,
 Yearly Fishing Permit already exists for member {0} and year {1}. Please delete or cancel the existing permit before creating a new one.,"Erlaubnisschein für Mitglied {0} und Jahr {1} existiert bereits. Bitte löschen oder stornieren Sie den bestehenden Erlaubnisschein, bevor Sie einen neuen erstellen.",
 Creating Yearly Fishing Permits...,Erlaubnisscheine werden erstellt...,
-Yearly Fishing Permits have been created for {0} members.,Erlaubnisscheine für {0} Mitglieder wurden erstellt.,
+Permits have been created for {0} members and skipped for {1} members.,Erlaubnisscheine wurden für {0} Mitglieder erstellt und für {1} Mitglieder übersprungen.,
 Create Yearly Fishing Permit,Erlaubnisschein erstellen,
 "To create a new Yearly Fishing Permit, please remove the ID of the existing permit from the import.","Um einen neuen Erlaubnisschein zu erstellen, entfernen Sie bitte die ID des bestehenden Erlaubnisscheins aus dem Import.",
 You cannot change the type of a Yearly Fishing Permit through Member Data Import.,Sie können den Typ eines Erlaubnisscheins nicht über den Mitgliedsdatenimport ändern.,
