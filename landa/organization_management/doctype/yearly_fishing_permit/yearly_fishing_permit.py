@@ -1,7 +1,6 @@
 # Copyright (c) 2021, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
-import contextlib
 import json
 from datetime import datetime
 
@@ -73,6 +72,7 @@ def bulk_create(permit_type: str, year: str, members: str):
 	)
 
 	num_members = len(parsed_members)
+	num_skipped = 0
 	for i, member in enumerate(parsed_members):
 		frappe.publish_progress(
 			percent=i * 100 / num_members,
@@ -85,8 +85,12 @@ def bulk_create(permit_type: str, year: str, members: str):
 		yfp.organization = frappe.db.get_value("LANDA Member", member, "organization")
 		yfp.year = year
 		yfp.type = permit_type
-		with contextlib.suppress(frappe.DuplicateEntryError):
+		try:
 			yfp.insert()
+		except frappe.DuplicateEntryError:
+			frappe.clear_messages()
+			num_skipped += 1
+			continue
 
 	frappe.publish_progress(
 		percent=100,
@@ -95,4 +99,4 @@ def bulk_create(permit_type: str, year: str, members: str):
 		description=_("Done"),
 	)
 
-	return num_members
+	return {"num_created": num_members - num_skipped, "num_skipped": num_skipped}
