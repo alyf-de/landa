@@ -15,6 +15,18 @@ class LANDACurrentMemberData:
 		return self.get_columns(), self.get_data()
 
 	def get_data(self):
+		"""Assemble rows for the current-member report from several DocTypes.
+
+		Loads LANDA Member master data (respecting the report filters), Yearly
+		Fishing Permit rows keyed by member (keeping one row per member after
+		sorting by year), and Address rows dynamically linked to those members.
+		The frames are merged and ordered to match `get_columns()`, then
+		returned as tuples with empty strings instead of missing values.
+
+		Permissions: every fetch goes through Frappe `get_list`, so the result only
+		contains documents and fields the current user is allowed to read.
+		"""
+
 		def frappe_tuple_to_pandas_df(frappe_tuple, fields):
 			# convert to pandas dataframe
 			df = pd.DataFrame(frappe_tuple, columns=fields)
@@ -56,7 +68,7 @@ class LANDACurrentMemberData:
 			"has_special_yearly_fishing_permit_6",
 			"has_special_yearly_fishing_permit_7",
 		]
-		members = frappe.db.get_list("LANDA Member", filters=self.filter, fields=member_fields, as_list=True)
+		members = frappe.get_list("LANDA Member", filters=self.filter, fields=member_fields, as_list=True)
 		# convert to pandas dataframe
 		member_df = frappe_tuple_to_pandas_df(members, ["member"] + member_fields[1:])
 		# create empty clomuns for yearly fishing permit
