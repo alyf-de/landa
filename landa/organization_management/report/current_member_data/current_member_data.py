@@ -245,4 +245,7 @@ class LANDACurrentMemberData:
 
 
 def execute(filters=None):
+	if not filters.get("organization"):
+		frappe.throw(_("Organization is required"))
+
 	return LANDACurrentMemberData(filters).run()
