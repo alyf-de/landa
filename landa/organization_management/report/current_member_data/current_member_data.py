@@ -28,63 +28,32 @@ def get_data(organization: str):
 	Permissions: every fetch goes through Frappe `get_list`, so the result only
 	contains documents and fields the current user is allowed to read.
 	"""
-
-	def frappe_tuple_to_pandas_df(frappe_tuple, fields):
-		# convert to pandas dataframe
-		df = pd.DataFrame(frappe_tuple, columns=fields)
-		# set by member ID as dataframe index
-		df = df.set_index("member")
-		return df
-
-	def remove_duplicate_indices(df, index="member", sort_by=None, keep="last"):
-		"""Remove rows in dataframe with duplicate indeces.
-		If sort_by is specified the dataframe is firsted sorted by these columns keeping the entry specified in keep, e.g. 'last'"""
-		if sort_by is not None:
-			df = df.sort_values(sort_by)
-		return df.reset_index().drop_duplicates(subset=[index], keep=keep).set_index(index)
-
-	def get_link_filters(frappe_tuple):
-		member_ids = [m[0] for m in frappe_tuple]  # list of member names (ID)
-		link_filters = [
-			["Dynamic Link", "link_doctype", "=", "LANDA Member"],
-			["Dynamic Link", "link_name", "in", member_ids],
-		]
-		return member_ids, link_filters
-
-	# define the member master data that are supposed to be loaded
-	member_fields = [
-		"name",
-		"last_name",
-		"first_name",
-		"date_of_birth",
-		"organization",
-		"is_supporting_member",
-		"has_key",
-		"youth_membership",
-		"additional_information",
-		"has_special_yearly_fishing_permit_1",
-		"has_special_yearly_fishing_permit_2",
-		"has_special_yearly_fishing_permit_3",
-		"has_special_yearly_fishing_permit_4",
-		"has_special_yearly_fishing_permit_5",
-		"has_special_yearly_fishing_permit_6",
-		"has_special_yearly_fishing_permit_7",
-	]
 	members = frappe.get_list(
-		"LANDA Member", filters={"organization": organization}, fields=member_fields, as_list=True
+		"LANDA Member",
+		filters={"organization": organization},
+		fields=[
+			"name as member",
+			"last_name",
+			"first_name",
+			"date_of_birth",
+			"organization",
+			"is_supporting_member",
+			"has_key",
+			"youth_membership",
+			"additional_information",
+			"has_special_yearly_fishing_permit_1",
+			"has_special_yearly_fishing_permit_2",
+			"has_special_yearly_fishing_permit_3",
+			"has_special_yearly_fishing_permit_4",
+			"has_special_yearly_fishing_permit_5",
+			"has_special_yearly_fishing_permit_6",
+			"has_special_yearly_fishing_permit_7",
+		],
 	)
 	if not members:
 		return ()
 
-	# convert to pandas dataframe
-	member_df = frappe_tuple_to_pandas_df(members, ["member"] + member_fields[1:])
-	# create empty clomuns for yearly fishing permit
-	fishing_permit_columns = [
-		"name",
-		"member",
-		"year",
-		"type",
-	]
+	member_df = pd.DataFrame.from_records(members, index="member")
 	this_year = datetime.now().year
 	fishing_permits = frappe.get_list(
 		"Yearly Fishing Permit",
@@ -93,29 +62,38 @@ def get_data(organization: str):
 			"docstatus": 1,
 			"year": ["in", [this_year - 1, this_year, this_year + 1]],
 		},
-		fields=fishing_permit_columns,
-		as_list=True,
+		fields=[
+			"name as yearly_fishing_permit",
+			"member",
+			"year",
+			"type",
+		],
 	)
-	# convert to pandas dataframe
-	fishing_permits_df = frappe_tuple_to_pandas_df(fishing_permits, fishing_permit_columns)
-	fishing_permits_df = fishing_permits_df.rename({"name": "yearly_fishing_permit"}, axis=1)
-	fishing_permits_df = remove_duplicate_indices(fishing_permits_df, sort_by=["year"])
+	fishing_permits_df = pd.DataFrame.from_records(fishing_permits, index="member")
+	# Remove rows in dataframe with duplicate indeces.
+	# The dataframe is firsted sorted by year keeping the 'last' entry.
+	fishing_permits_df = fishing_permits_df.sort_values(["year"])
+	fishing_permits_df = (
+		fishing_permits_df.reset_index().drop_duplicates(subset=["member"], keep="last").set_index("member")
+	)
 
-	# define the labels of db entries that are supposed to be loaded
-	link_field_label = "`tabDynamic Link`.link_name as member"
-	member_ids, link_filters = get_link_filters(members)
 	# load addresses from db
-	address_fields = ["name", "address_line1", "pincode", "city"]
 	addresses = frappe.get_list(
 		"Address",
-		filters=link_filters,
-		fields=address_fields + [link_field_label],
-		as_list=True,
+		filters=[
+			["Dynamic Link", "link_doctype", "=", "LANDA Member"],
+			["Dynamic Link", "link_name", "in", [m.member for m in members]],
+		],
+		fields=[
+			"name as address_name",
+			"address_line1",
+			"pincode",
+			"city",
+			"`tabDynamic Link`.link_name as member",
+		],
 	)
-	# convert to pandas dataframe
-	addresses_df = frappe_tuple_to_pandas_df(addresses, address_fields + ["member"])
-	# rename index column
-	addresses_df = addresses_df.rename({"name": "address_name"}, axis=1)
+
+	addresses_df = pd.DataFrame.from_records(addresses, index="member")
 
 	# merge members and addresses from different doctypes
 	data = pd.concat([member_df, fishing_permits_df], axis=1).reindex(member_df.index)
