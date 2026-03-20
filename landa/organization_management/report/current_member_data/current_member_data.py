@@ -1,6 +1,8 @@
 # Copyright (c) 2013, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
+from datetime import datetime
+
 import frappe
 import pandas as pd
 from frappe import _
@@ -83,7 +85,17 @@ def get_data(organization: str):
 		"year",
 		"type",
 	]
-	fishing_permits = frappe.get_list("Yearly Fishing Permit", fields=fishing_permit_columns, as_list=True)
+	this_year = datetime.now().year
+	fishing_permits = frappe.get_list(
+		"Yearly Fishing Permit",
+		filters={
+			"organization": organization,
+			"docstatus": 1,
+			"year": ["in", [this_year - 1, this_year, this_year + 1]],
+		},
+		fields=fishing_permit_columns,
+		as_list=True,
+	)
 	# convert to pandas dataframe
 	fishing_permits_df = frappe_tuple_to_pandas_df(fishing_permits, fishing_permit_columns)
 	fishing_permits_df = fishing_permits_df.rename({"name": "yearly_fishing_permit"}, axis=1)
