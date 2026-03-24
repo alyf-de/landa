@@ -15,16 +15,6 @@ def execute(filters=None):
 
 	return get_columns(), get_data(organization)
 
-<<<<<<< HEAD
-	def get_data(self):
-		def frappe_tuple_to_pandas_df(frappe_tuple, fields):
-			# convert to pandas dataframe
-			df = pd.DataFrame(frappe_tuple, columns=fields)
-			# set by member ID as dataframe index
-			df.set_index("member", inplace=True)
-			return df
-=======
->>>>>>> 1f8e062 (perf(Current Member Data): make organization filter mandatory, filter yearly fishing permits (LAN-895) (#318))
 
 def get_data(organization: str):
 	"""Assemble rows for the current-member report from several DocTypes.
@@ -58,44 +48,6 @@ def get_data(organization: str):
 			"has_special_yearly_fishing_permit_5",
 			"has_special_yearly_fishing_permit_6",
 			"has_special_yearly_fishing_permit_7",
-<<<<<<< HEAD
-		]
-		members = frappe.db.get_list(
-			"LANDA Member", filters=self.filter, fields=member_fields, as_list=True
-		)
-		# convert to pandas dataframe
-		member_df = frappe_tuple_to_pandas_df(members, ["member"] + member_fields[1:])
-		# create empty clomuns for yearly fishing permit
-		fishing_permit_columns = [
-			"name",
-			"member",
-			"year",
-			"type",
-		]
-		fishing_permits = frappe.get_list(
-			"Yearly Fishing Permit", fields=fishing_permit_columns, as_list=True
-		)
-		# convert to pandas dataframe
-		fishing_permits_df = frappe_tuple_to_pandas_df(fishing_permits, fishing_permit_columns)
-		fishing_permits_df.rename({"name": "yearly_fishing_permit"}, axis=1, inplace=True)
-		fishing_permits_df = remove_duplicate_indices(fishing_permits_df, sort_by=["year"])
-
-		# define the labels of db entries that are supposed to be loaded
-		link_field_label = "`tabDynamic Link`.link_name as member"
-		member_ids, link_filters = get_link_filters(members)
-		# load addresses from db
-		address_fields = ["name", "address_line1", "pincode", "city"]
-		addresses = frappe.get_list(
-			"Address",
-			filters=link_filters,
-			fields=address_fields + [link_field_label],
-			as_list=True,
-		)
-		# convert to pandas dataframe
-		addresses_df = frappe_tuple_to_pandas_df(addresses, address_fields + ["member"])
-		# rename index column
-		addresses_df.rename({"name": "address_name"}, axis=1, inplace=True)
-=======
 		],
 	)
 	if not members:
@@ -122,7 +74,9 @@ def get_data(organization: str):
 	# The dataframe is firsted sorted by year keeping the 'last' entry.
 	fishing_permits_df = fishing_permits_df.sort_values(["year"])
 	fishing_permits_df = (
-		fishing_permits_df.reset_index().drop_duplicates(subset=["member"], keep="last").set_index("member")
+		fishing_permits_df.reset_index()
+		.drop_duplicates(subset=["member"], keep="last")
+		.set_index("member")
 	)
 
 	# load addresses from db
@@ -140,25 +94,12 @@ def get_data(organization: str):
 			"`tabDynamic Link`.link_name as member",
 		],
 	)
->>>>>>> 1f8e062 (perf(Current Member Data): make organization filter mandatory, filter yearly fishing permits (LAN-895) (#318))
 
 	addresses_df = pd.DataFrame.from_records(addresses, index="member")
 
-<<<<<<< HEAD
-		# sort dataframe like report columns
-		sorted_columns = [c["fieldname"] for c in self.get_columns()][1:]
-		data = data[sorted_columns]
-		# replace NaNs with empty strings
-		data.fillna("", inplace=True)
-		# convert data back to tuple
-		data.reset_index(inplace=True)
-		data = tuple(data.itertuples(index=False, name=None))
-		return data
-=======
 	# merge members and addresses from different doctypes
 	data = pd.concat([member_df, fishing_permits_df], axis=1).reindex(member_df.index)
 	data = pd.merge(data, addresses_df, on="member", how="outer")
->>>>>>> 1f8e062 (perf(Current Member Data): make organization filter mandatory, filter yearly fishing permits (LAN-895) (#318))
 
 	# sort dataframe like report columns
 	sorted_columns = [c["fieldname"] for c in get_columns()][1:]
