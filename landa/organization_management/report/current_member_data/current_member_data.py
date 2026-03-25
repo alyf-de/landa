@@ -8,6 +8,15 @@ import pandas as pd
 from frappe import _
 
 
+def _indexed_frame_from_records(records: list[dict], *, index: str, columns: list[str]) -> pd.DataFrame:
+	"""Build an indexed DataFrame that keeps its schema even for empty result sets."""
+	if not records:
+		return pd.DataFrame(columns=columns, index=pd.Index([], name=index))
+
+	df = pd.DataFrame.from_records(records, index=index)
+	return df.reindex(columns=columns)
+
+
 def execute(filters=None):
 	organization = filters.pop("organization", None)
 	if not organization:
@@ -53,7 +62,27 @@ def get_data(organization: str):
 	if not members:
 		return ()
 
-	member_df = pd.DataFrame.from_records(members, index="member")
+	member_df = _indexed_frame_from_records(
+		members,
+		index="member",
+		columns=[
+			"last_name",
+			"first_name",
+			"date_of_birth",
+			"organization",
+			"is_supporting_member",
+			"has_key",
+			"youth_membership",
+			"additional_information",
+			"has_special_yearly_fishing_permit_1",
+			"has_special_yearly_fishing_permit_2",
+			"has_special_yearly_fishing_permit_3",
+			"has_special_yearly_fishing_permit_4",
+			"has_special_yearly_fishing_permit_5",
+			"has_special_yearly_fishing_permit_6",
+			"has_special_yearly_fishing_permit_7",
+		],
+	)
 	this_year = datetime.now().year
 	fishing_permits = frappe.get_list(
 		"Yearly Fishing Permit",
@@ -69,7 +98,11 @@ def get_data(organization: str):
 			"type",
 		],
 	)
-	fishing_permits_df = pd.DataFrame.from_records(fishing_permits, index="member")
+	fishing_permits_df = _indexed_frame_from_records(
+		fishing_permits,
+		index="member",
+		columns=["yearly_fishing_permit", "year", "type"],
+	)
 	# Remove rows in dataframe with duplicate indeces.
 	# The dataframe is firsted sorted by year keeping the 'last' entry.
 	fishing_permits_df = fishing_permits_df.sort_values(["year"])
@@ -93,7 +126,11 @@ def get_data(organization: str):
 		],
 	)
 
-	addresses_df = pd.DataFrame.from_records(addresses, index="member")
+	addresses_df = _indexed_frame_from_records(
+		addresses,
+		index="member",
+		columns=["address_name", "address_line1", "pincode", "city"],
+	)
 
 	# merge members and addresses from different doctypes
 	data = pd.concat([member_df, fishing_permits_df], axis=1).reindex(member_df.index)
