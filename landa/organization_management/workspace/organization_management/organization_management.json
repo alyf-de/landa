@@ -213,6 +213,7 @@
    "link_to": "Yearly Fishing Permits Issued",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Yearly Fishing Permit",
    "type": "Link"
   },
   {
@@ -223,6 +224,39 @@
    "link_to": "External Contacts Addresses and Contacts",
    "link_type": "Report",
    "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Work Hours",
+   "link_count": 0,
+   "link_to": "Work Hours",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Work Assignment",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Work Ledger Balance",
+   "link_count": 0,
+   "link_to": "Work Ledger Balance",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Work Ledger Entry",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Work Hours Per Member and Year",
+   "link_count": 0,
+   "link_to": "Work Hours Per Member and Year",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Work Ledger Entry",
    "type": "Link"
   },
   {
@@ -285,7 +319,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-07-11 14:59:31.302312",
+ "modified": "2026-04-08 09:57:02.702836",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
@@ -308,18 +342,21 @@
    "doc_view": "",
    "label": "Member Address List",
    "link_to": "Member Address List",
+   "report_ref_doctype": "LANDA Member",
    "type": "Report"
   },
   {
    "doc_view": "",
    "label": "Member Contact List",
    "link_to": "Member Contact List",
+   "report_ref_doctype": "LANDA Member",
    "type": "Report"
   },
   {
    "doc_view": "",
    "label": "Member Birthday List",
    "link_to": "Member Birthday List",
+   "report_ref_doctype": "LANDA Member",
    "type": "Report"
   },
   {
