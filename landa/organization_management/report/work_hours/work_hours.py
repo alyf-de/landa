@@ -29,7 +29,7 @@ def get_columns(filters):
 				"width": 200,
 			},
 			{
-				"label": _("Total Hours"),
+				"label": _("Hours Balance"),
 				"fieldname": "total_hours",
 				"fieldtype": "Float",
 				"width": 120,
@@ -116,7 +116,9 @@ def get_data(filters):
 				"duration": row.get("hours_change"),
 				"water_body": assignment.get("water_body"),
 				"location": assignment.get("location"),
-				"description": assignment.get("description"),
+				"description": _("Expected work hours adjustment")
+				if not row.get("work_assignment")
+				else assignment.get("description"),
 			}
 		)
 
