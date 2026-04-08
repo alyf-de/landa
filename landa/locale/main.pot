@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-03-09 20:57+0053\n"
-"PO-Revision-Date: 2026-03-09 20:57+0053\n"
+"POT-Creation-Date: 2026-04-08 10:04+0053\n"
+"PO-Revision-Date: 2026-04-08 10:04+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -433,6 +433,10 @@ msgstr ""
 msgid "Expected Work Hours per Year"
 msgstr ""
 
+#: landa/organization_management/report/work_hours/work_hours.py:119
+msgid "Expected work hours adjustment"
+msgstr ""
+
 #. Name of a DocType
 #. Label of a Heading field in DocType 'External Contact'
 #. Label of a Link in the Organization Management Workspace
@@ -819,6 +823,10 @@ msgstr ""
 msgid "History"
 msgstr ""
 
+#: landa/organization_management/report/work_hours/work_hours.py:32
+msgid "Hours Balance"
+msgstr ""
+
 #. Label of a Float field in DocType 'Work Ledger Entry'
 #: landa/organization_management/doctype/work_ledger_entry/work_ledger_entry.json
 msgid "Hours Change"
@@ -838,6 +846,12 @@ msgstr ""
 #. Label of a Image field in DocType 'Water Body'
 #: landa/water_body_management/doctype/water_body/water_body.json
 msgid "Icon Preview"
+msgstr ""
+
+#. Description of the 'Work Assignment' (Link) field in DocType 'Work Ledger
+#. Entry'
+#: landa/organization_management/doctype/work_ledger_entry/work_ledger_entry.json
+msgid "If not set, this entry will be treated as an adjustment of expected hours."
 msgstr ""
 
 #. Label of a Card Break in the Water Body Management Workspace
@@ -2088,10 +2102,6 @@ msgstr ""
 msgid "Total (only for regional org.)"
 msgstr ""
 
-#: landa/organization_management/report/work_hours/work_hours.py:32
-msgid "Total Hours"
-msgstr ""
-
 #. Label of a Small Text field in DocType 'Fish Species'
 #: landa/water_body_management/doctype/fish_species/fish_species.json
 msgid "Traits"
@@ -2383,7 +2393,9 @@ msgid "Work Assignment Member"
 msgstr ""
 
 #. Name of a report
+#. Label of a Link in the Organization Management Workspace
 #: landa/organization_management/report/work_hours/work_hours.json
+#: landa/organization_management/workspace/organization_management/organization_management.json
 msgid "Work Hours"
 msgstr ""
 
@@ -2392,14 +2404,23 @@ msgstr ""
 msgid "Work Hours Account"
 msgstr ""
 
+#. Label of a Link in the Organization Management Workspace
+#: landa/organization_management/workspace/organization_management/organization_management.json
+msgid "Work Hours Per Member and Year"
+msgstr ""
+
 #. Name of a report
+#. Label of a Link in the Organization Management Workspace
 #: landa/organization_management/report/work_ledger_balance/work_ledger_balance.json
+#: landa/organization_management/workspace/organization_management/organization_management.json
 msgid "Work Ledger Balance"
 msgstr ""
 
 #. Linked DocType in Organization's connections
+#. Linked DocType in Work Assignment's connections
 #. Name of a DocType
 #: landa/organization_management/doctype/organization/organization.json
+#: landa/organization_management/doctype/work_assignment/work_assignment.json
 #: landa/organization_management/doctype/work_ledger_entry/work_ledger_entry.json
 msgid "Work Ledger Entry"
 msgstr ""
