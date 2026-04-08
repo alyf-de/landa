@@ -12,7 +12,7 @@ from frappe.contacts.address_and_contact import (
 from frappe.desk.treeview import make_tree_args
 from frappe.model.naming import make_autoname, revert_series_if_last
 from frappe.permissions import has_permission
-from frappe.utils.data import cint, get_link_to_form
+from frappe.utils.data import cint, flt, get_link_to_form
 from frappe.utils.nestedset import NestedSet
 
 from landa.organization_management.doctype.landa_member.landa_member import get_address_or_contact
@@ -91,7 +91,7 @@ class Organization(NestedSet):
 	def before_save(self):
 		old = 0.0
 		if frappe.db.exists("Organization", self.name):
-			old = frappe.db.get_value("Organization", self.name, "expected_work_hours_per_year")
+			old = flt(frappe.db.get_value("Organization", self.name, "expected_work_hours_per_year"))
 		self._expected_work_hours_before_save = old
 
 	def onload(self):
@@ -99,8 +99,8 @@ class Organization(NestedSet):
 
 	def on_update(self):
 		if getattr(self, "_expected_work_hours_before_save", None) is not None:
-			old = self._expected_work_hours_before_save
-			new = self.expected_work_hours_per_year
+			old = flt(self._expected_work_hours_before_save)
+			new = flt(self.expected_work_hours_per_year)
 			if old != new:
 				create_expected_hours_adjustment_entries(self.name, old - new)
 		super().on_update()
