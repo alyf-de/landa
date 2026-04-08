@@ -132,8 +132,13 @@
  ],
  "grid_page_length": 50,
  "is_submittable": 1,
- "links": [],
- "modified": "2026-02-18 10:30:22.306657",
+ "links": [
+  {
+   "link_doctype": "Work Ledger Entry",
+   "link_fieldname": "work_assignment"
+  }
+ ],
+ "modified": "2026-04-08 09:22:40.975143",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Work Assignment",
