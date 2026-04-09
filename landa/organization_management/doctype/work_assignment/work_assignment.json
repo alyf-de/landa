@@ -138,7 +138,7 @@
    "link_fieldname": "work_assignment"
   }
  ],
- "modified": "2026-04-08 09:22:40.975143",
+ "modified": "2026-04-09 17:26:12.763537",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Work Assignment",
@@ -146,6 +146,8 @@
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -156,9 +158,12 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "export": 1,
@@ -166,9 +171,12 @@
    "read": 1,
    "report": 1,
    "role": "LANDA State Organization Employee",
+   "submit": 1,
    "write": 1
   },
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "export": 1,
@@ -176,9 +184,12 @@
    "read": 1,
    "report": 1,
    "role": "LANDA Regional Organization Management",
+   "submit": 1,
    "write": 1
   },
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "export": 1,
@@ -186,9 +197,12 @@
    "read": 1,
    "report": 1,
    "role": "LANDA Local Organization Management",
+   "submit": 1,
    "write": 1
   },
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -198,6 +212,7 @@
    "report": 1,
    "role": "LANDA Local Water Body Management",
    "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],
