@@ -24,7 +24,6 @@ class WorkLedgerEntry(Document):
 		organization_name: DF.Data | None
 		work_assignment: DF.Link | None
 	# end: auto-generated types
-	pass
 
 
 def create_yearly_negative_entries():
