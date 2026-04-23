@@ -325,8 +325,8 @@ msgid "Create Yearly Fishing Permit"
 msgstr ""
 
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:89
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:97
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:110
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:98
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:116
 msgid "Creating Yearly Fishing Permits..."
 msgstr ""
 
@@ -1637,6 +1637,9 @@ msgstr ""
 #: landa/organization_management/report/work_hours/work_hours.py:51
 msgid "Planned Duration (Hours)"
 msgstr ""
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:115
+msgid "Permits have been created for {0} members and skipped for {1} members."
+msgstr "Erlaubnisscheine wurden für {0} Mitglieder erstellt und für {1} Mitglieder übersprungen."
 
 #. Label of a Check field in DocType 'Catch Log Fish Table'
 #: landa/water_body_management/doctype/catch_log_fish_table/catch_log_fish_table.json
@@ -2489,10 +2492,6 @@ msgstr ""
 #: landa/organization_management/report/yearly_fishing_permits_issued/yearly_fishing_permits_issued.json
 #: landa/organization_management/workspace/organization_management/organization_management.json
 msgid "Yearly Fishing Permits Issued"
-msgstr ""
-
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:113
-msgid "Yearly Fishing Permits have been created for {0} members."
 msgstr ""
 
 #. Description of the 'Payment Due Date' (Date) field in DocType 'Lease

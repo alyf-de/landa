@@ -9,16 +9,17 @@ frappe.query_reports["Current Member Data"] = {
 			fieldtype: "Link",
 			options: "Organization",
 			label: __("Organization"),
-			mandatory: 0,
-			wildcard_filter: 0,
+			mandatory: 1,
 			default: frappe.defaults.get_user_default("Organization"),
 		},
 	],
 	onload: function (query_report) {
 		const b = cur_page.page.page.wrapper.find(".sub-heading");
 		b.html(
-			`
-            Sehen Sie sich bitte unbedingt vor der ersten Benutzung <a href="/how-to/Mitgliedsdatenimport" target=_blank style="color: blue;">diese Anleitung</a> an.</p>
+			`<div>
+                <p>
+                    Sehen Sie sich bitte unbedingt vor der ersten Benutzung <a href="/how-to/Mitgliedsdatenimport" target=_blank style="color: blue;">diese Anleitung</a> an.
+                </p>
         </div>`,
 		).toggleClass("hide", false);
 	},
