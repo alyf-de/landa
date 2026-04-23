@@ -21,6 +21,7 @@ frappe.ui.form.on("Customer", {
 	},
 	refresh: function (frm) {
 		frm.trigger("render_default_addresses");
+		frm.trigger("render_member_functions");
 	},
 	default_billing_address: function (frm) {
 		frm.trigger("render_default_addresses");
@@ -44,6 +45,17 @@ frappe.ui.form.on("Customer", {
 			} else {
 				$(frm.fields_dict[address + "_html"].wrapper).empty();
 			}
+		});
+	},
+	render_member_functions: function (frm) {
+		if (!frm.doc.organization) return;
+
+		frappe.call({
+			method: "landa.landa_sales.customer.customer.get_member_functions_html",
+			args: { organization: frm.doc.organization },
+			callback: (r) => {
+				$(frm.fields_dict.custom_active_member_fuctions.wrapper).html(r.message);
+			},
 		});
 	},
 });
