@@ -18,8 +18,6 @@ from .property_setters import get_property_setters
 
 
 def after_install():
-	make_custom_fields()
-	make_property_setters()
 	complete_setup_wizard_for_test()
 	update_system_settings()
 	sync_customizations()
