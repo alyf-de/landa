@@ -20,6 +20,7 @@ from .property_setters import get_property_setters
 def after_install():
 	complete_setup_wizard_for_test()
 	update_system_settings()
+	ensure_default_link_records()
 	sync_customizations()
 	create_records_from_hooks()
 	disable_modes_of_payment()
@@ -33,6 +34,35 @@ def sync_customizations():
 	make_custom_fields()
 	make_property_setters()
 	make_doc_perms()
+
+
+def ensure_default_link_records():
+	ensure_root_organization()
+	ensure_tax_categories()
+
+
+def ensure_root_organization():
+	if frappe.db.exists("Organization", "LV"):
+		return
+
+	frappe.get_doc(
+		{
+			"doctype": "Organization",
+			"organization_name": "Landesverband",
+			"short_code": "LV",
+			"is_group": 1,
+		}
+	).insert(ignore_permissions=True)
+
+
+def ensure_tax_categories():
+	for title in ("Vorsteuer", "Umsatzsteuer"):
+		if not frappe.db.exists("Tax Category", title):
+			frappe.get_doc({"doctype": "Tax Category", "title": title}).insert(ignore_permissions=True)
+
+
+def before_tests():
+	ensure_tax_categories()
 
 
 def create_records_from_hooks():

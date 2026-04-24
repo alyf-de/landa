@@ -1,6 +1,13 @@
 [
   {
     "doctype": "Organization",
+    "name": "LV",
+    "organization_name": "Landesverband",
+    "short_code": "LV",
+    "is_group": 1
+  },
+  {
+    "doctype": "Organization",
     "organization_name": "State organization",
     "short_code": "ST",
     "is_group": 1

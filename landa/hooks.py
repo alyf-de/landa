@@ -353,7 +353,7 @@ scheduler_events = {
 # Testing
 # -------
 
-# before_tests = "landa.install.before_tests"
+before_tests = "landa.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
