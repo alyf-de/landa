@@ -32,7 +32,8 @@
    "label": "Water Body",
    "options": "Water Body",
    "reqd": 1,
-   "search_index": 1
+   "search_index": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "year",
@@ -47,7 +48,8 @@
    "fieldname": "fishing_days",
    "fieldtype": "Int",
    "label": "Fishing Days",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "column_break_5",
@@ -62,7 +64,8 @@
    "label": "Organization",
    "options": "Organization",
    "remember_last_selected_value": 1,
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fetch_from": "organization.organization_name",
@@ -79,7 +82,8 @@
    "fieldname": "fish_catches",
    "fieldtype": "Table",
    "label": "Fish Catches",
-   "options": "Catch Log Fish Table"
+   "options": "Catch Log Fish Table",
+   "set_only_once": 1
   },
   {
    "fetch_from": "water_body.fishing_area",
