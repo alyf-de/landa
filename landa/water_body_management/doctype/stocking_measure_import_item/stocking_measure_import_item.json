@@ -1,14 +1,15 @@
 {
  "actions": [],
- "creation": "2021-02-22 14:57:25.387217",
+ "creation": "2026-01-10 12:26:03.436305",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "fish_species",
-  "amount",
-  "weight_in_kg",
-  "plausible"
+  "fish_type_for_stocking",
+  "weight",
+  "quantity",
+  "supplier"
  ],
  "fields": [
   {
@@ -17,48 +18,48 @@
    "in_list_view": 1,
    "label": "Fish Species",
    "options": "Fish Species",
-   "reqd": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "amount",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "Number of Fish",
-   "non_negative": 1,
    "reqd": 1
   },
   {
-   "fieldname": "weight_in_kg",
+   "fieldname": "fish_type_for_stocking",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fish Type For Stocking",
+   "options": "Fish Type For Stocking",
+   "reqd": 1
+  },
+  {
+   "fieldname": "weight",
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Weight in Kg",
-   "non_negative": 1,
    "reqd": 1
   },
   {
-   "default": "1",
-   "fieldname": "plausible",
-   "fieldtype": "Check",
-   "label": "Plausible",
-   "read_only": 1
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Supplier",
+   "options": "External Contact"
   }
  ],
- "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_virtual": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-18 22:06:16.711831",
+ "modified": "2026-02-08 16:30:03.436305",
  "modified_by": "Administrator",
  "module": "Water Body Management",
- "name": "Catch Log Fish Table",
+ "name": "Stocking Measure Import Item",
  "owner": "Administrator",
  "permissions": [],
- "quick_entry": 1,
- "row_format": "Dynamic",
- "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
- "track_changes": 1
+ "states": []
 }

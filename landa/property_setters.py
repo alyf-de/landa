@@ -241,8 +241,8 @@ def get_property_setters():
 			("packing_unit", "read_only", "1"),
 			("supplier", "hidden", "1"),
 			("supplier", "read_only", "1"),
-			("uom", "hidden", "1"),
 			("uom", "read_only", "1"),
+			("uom", "default", "Anzahl"),
 		],
 		"Job Card": [
 			("barcode", "hidden", "1"),

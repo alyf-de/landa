@@ -89,8 +89,10 @@ def _get_current_member_data() -> frappe._dict:
 def autocommit():
 	flag_value = frappe.db.auto_commit_on_many_writes
 	frappe.db.auto_commit_on_many_writes = True
-	yield
-	frappe.db.auto_commit_on_many_writes = flag_value
+	try:
+		yield
+	finally:
+		frappe.db.auto_commit_on_many_writes = flag_value
 
 
 def get_default_company(organization: str):
@@ -210,7 +212,7 @@ def pop_from_table(parent_type, parent_name, parent_field, fieldname, value):
 def delete_dynamically_linked(doctype: str, linked_doctype: str, linked_name: str) -> None:
 	"""Delete all records of `doctype` that are linked to `linked_name` of `linked_doctype` via a Dynamic Link table."""
 	dl = frappe.qb.DocType("Dynamic Link")
-	for name, parent_field, idx in (
+	for name, parent_field, _idx in (
 		frappe.qb.from_(dl)
 		.select(dl.parent, dl.parentfield, dl.idx)
 		.where(

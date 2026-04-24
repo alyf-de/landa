@@ -52,6 +52,32 @@ frappe.listview_settings["LANDA Member"] = {
 			}
 		}
 
+		if (frappe.model.can_write("LANDA Member")) {
+			list_view.page.add_action_item(__("Clear Special Fishing Permits"), () => {
+				const members = list_view.get_checked_items(true);
+				frappe.confirm(
+					__(
+						"Are you sure you want to clear all Special Yearly Fishing Permits for the {0} selected members?",
+						[members.length],
+					),
+					() => {
+						frappe
+							.xcall(
+								"landa.organization_management.doctype.landa_member.landa_member.clear_special_yearly_fishing_permits",
+								{ members: members },
+							)
+							.then(() => {
+								frappe.show_alert({
+									message: __("Special Yearly Fishing Permits cleared."),
+									indicator: "green",
+								});
+								list_view.refresh();
+							});
+					},
+				);
+			});
+		}
+
 		if (frappe.model.can_create("Yearly Fishing Permit")) {
 			list_view.page.add_action_item(__("Create Yearly Fishing Permit"), () => {
 				frappe.prompt(
@@ -82,11 +108,13 @@ frappe.listview_settings["LANDA Member"] = {
 									members: list_view.get_checked_items(true),
 								},
 							)
-							.then((total_created) => {
+							.then((result) => {
+								const total_created = result.num_created;
+								const total_skipped = result.num_skipped;
 								frappe.show_alert({
 									message: __(
-										"Yearly Fishing Permits have been created for {0} members.",
-										[total_created],
+										"Permits have been created for {0} members and skipped for {1} members.",
+										[total_created, total_skipped],
 									),
 									indicator: "green",
 								});

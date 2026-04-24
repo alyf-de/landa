@@ -32,6 +32,7 @@ landa.patches.add_award_types
 landa.patches.multi_to_line
 landa.patches.add_organization_to_tags
 landa.patches.link_external_contact_to_regional_organization
+landa.patches.delete_duplicate_permits
 
 [post_model_sync]
 execute:from landa.utils import reset_workspace; reset_workspace("Organization Management") # 2
@@ -48,4 +49,5 @@ landa.patches.rename_landlord_to_external_contact
 execute:frappe.db.set_value("Report", "Water Body Development", "add_total_row", 1, update_modified=False)
 landa.patches.fix_redis_type_mismatch
 landa.patches.delete_duplicate_translations # 5
+landa.patches.set_uom_in_item_price
 execute:from landa.install import after_install; after_install() # 1

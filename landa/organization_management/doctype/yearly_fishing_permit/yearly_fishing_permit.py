@@ -51,11 +51,17 @@ class YearlyFishingPermit(Document):
 
 		if frappe.db.exists(
 			"Yearly Fishing Permit",
-			{"member": self.member, "year": self.year, "docstatus": 1, "type": ("in", duplicate_types)},
+			{
+				"name": ("!=", self.name),
+				"member": self.member,
+				"year": self.year,
+				"docstatus": ("!=", 2),
+				"type": ("in", duplicate_types),
+			},
 		):
 			frappe.throw(
 				_(
-					"Yearly Fishing Permit already exists for member {0} and year {1}. Please cancel the existing permit before creating a new one."
+					"Yearly Fishing Permit already exists for member {0} and year {1}. Please delete or cancel the existing permit before creating a new one."
 				).format(self.member, self.year),
 				exc=frappe.DuplicateEntryError,
 			)
@@ -85,6 +91,7 @@ def bulk_create(permit_type: str, year: str, members: str):
 	)
 
 	num_members = len(parsed_members)
+	num_skipped = 0
 	for i, member in enumerate(parsed_members):
 		frappe.publish_progress(
 			percent=i * 100 / num_members,
@@ -94,9 +101,15 @@ def bulk_create(permit_type: str, year: str, members: str):
 		)
 		yfp = frappe.new_doc("Yearly Fishing Permit")
 		yfp.member = member
+		yfp.organization = frappe.db.get_value("LANDA Member", member, "organization")
 		yfp.year = year
 		yfp.type = permit_type
-		yfp.insert()
+		try:
+			yfp.insert()
+		except frappe.DuplicateEntryError:
+			frappe.clear_messages()
+			num_skipped += 1
+			continue
 
 	frappe.publish_progress(
 		percent=100,
@@ -105,4 +118,4 @@ def bulk_create(permit_type: str, year: str, members: str):
 		description=_("Done"),
 	)
 
-	return num_members
+	return {"num_created": num_members - num_skipped, "num_skipped": num_skipped}
