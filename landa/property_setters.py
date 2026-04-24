@@ -71,7 +71,7 @@ def get_property_setters():
 			("account_manager", "hidden", "1"),
 			("column_break_38", "hidden", "1"),
 			("credit_limit_section", "hidden", "1"),
-			("customer_group", "default", "All Customer Groups"),
+			("customer_group", "default", "Non Profit"),
 			("customer_group", "hidden", "1"),
 			("customer_group", "in_list_view", "0"),
 			("customer_group", "in_standard_filter", "0"),

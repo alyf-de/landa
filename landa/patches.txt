@@ -51,3 +51,4 @@ landa.patches.fix_redis_type_mismatch
 landa.patches.delete_duplicate_translations # 5
 landa.patches.set_uom_in_item_price
 execute:from landa.install import sync_customizations; sync_customizations() # 1
+landa.patches.set_customer_group
