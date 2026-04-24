@@ -21,15 +21,19 @@ def after_install():
 	make_property_setters()
 	complete_setup_wizard_for_test()
 	update_system_settings()
-	make_custom_fields()
-	make_property_setters()
-	make_doc_perms()
+	sync_customizations()
 	create_records_from_hooks()
 	disable_modes_of_payment()
 	add_session_defaults()
 	setup_uoms()
 	update_stock_settings()
 	update_accounts_settings()
+
+
+def sync_customizations():
+	make_custom_fields()
+	make_property_setters()
+	make_doc_perms()
 
 
 def create_records_from_hooks():

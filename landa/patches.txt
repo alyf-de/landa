@@ -50,4 +50,4 @@ execute:frappe.db.set_value("Report", "Water Body Development", "add_total_row",
 landa.patches.fix_redis_type_mismatch
 landa.patches.delete_duplicate_translations # 5
 landa.patches.set_uom_in_item_price
-execute:from landa.install import after_install; after_install() # 1
+execute:from landa.install import sync_customizations; sync_customizations() # 1
