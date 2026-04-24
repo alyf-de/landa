@@ -210,6 +210,7 @@ doctype_list_js = {
 
 # before_install = "landa.install.before_install"
 after_install = "landa.install.after_install"
+before_uninstall = "landa.uninstall.before_uninstall"
 after_migrate = "landa.migrate.after_migrate"
 
 # Desk Notifications
