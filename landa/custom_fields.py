@@ -124,7 +124,7 @@ def get_custom_fields():
 			{
 				"label": "Delivery Note Information text",
 				"fieldname": "delivery_note_information_text",
-				"insert_after": "render_contact_name_first_in_address",
+				"insert_after": "info_document_settings",
 				"fieldtype": "Text Editor",
 				"default": "\n",
 			},
@@ -158,12 +158,6 @@ def get_custom_fields():
 				"fieldname": "invoice_information_text",
 				"insert_after": "delivery_note_information_text",
 				"fieldtype": "Text Editor",
-			},
-			{
-				"label": "Render contact name first in address",
-				"fieldname": "render_contact_name_first_in_address",
-				"insert_after": "info_document_settings",
-				"fieldtype": "Check",
 			},
 			{
 				"label": "Retoure Information Text",
@@ -244,12 +238,6 @@ def get_custom_fields():
 				"fieldtype": "Column Break",
 			},
 			{
-				"label": "Billing Contact Not Required",
-				"fieldname": "custom_billing_contact_not_required",
-				"insert_after": "default_billing_address",
-				"fieldtype": "Check",
-			},
-			{
 				"label": "Customer",
 				"fieldname": "customer_info_section",
 				"fieldtype": "Section Break",
@@ -313,26 +301,6 @@ def get_custom_fields():
 				"insert_after": "column_break0",
 				"fieldtype": "Link",
 				"options": "Organization",
-			},
-		],
-		"Deleted Document": [
-			{
-				"label": "GitHub Sync ID",
-				"fieldname": "github_sync_id",
-				"fieldtype": "Data",
-				"unique": 1,
-				"read_only": 1,
-				"hidden": 1,
-				"no_copy": 1,
-			},
-			{
-				"label": "Hub Sync ID",
-				"fieldname": "hub_sync_id",
-				"fieldtype": "Data",
-				"unique": 1,
-				"read_only": 1,
-				"hidden": 1,
-				"no_copy": 1,
 			},
 		],
 		"Delivery Note": [
@@ -466,24 +434,15 @@ def get_custom_fields():
 				"fieldtype": "Section Break",
 			},
 			{
-				"label": "Hub Sync ID",
-				"fieldname": "hub_sync_id",
-				"fieldtype": "Data",
-				"unique": 1,
-				"read_only": 1,
-				"hidden": 1,
-				"no_copy": 1,
-			},
-			{
 				"label": "Item",
 				"fieldname": "item_info_section",
-				"insert_after": "hub_sync_id",
+				"insert_after": "item_info_text",
 				"fieldtype": "Section Break",
 			},
 			{
 				"label": "Item Info Text",
 				"fieldname": "item_info_text",
-				"insert_after": "item_info_section",
+				"insert_after": "details",
 				"fieldtype": "HTML",
 				"options": '<p>Im System hinterlegte Artikel können durch den Verein bestellt bzw. angefordert und durch den Regionalverband geliefert werden.</p>\n\n<p>Eine Übersicht der Artikel finden Sie <b><a href="/app/item">hier</a></b>.</p>',
 			},
@@ -497,15 +456,9 @@ def get_custom_fields():
 				"allow_in_quick_entry": 1,
 			},
 			{
-				"label": "LANDA",
-				"fieldname": "section_break_52",
-				"insert_after": "serial_no_series",
-				"fieldtype": "Section Break",
-			},
-			{
 				"label": "Valid From Year",
 				"fieldname": "valid_from_year",
-				"insert_after": "section_break_52",
+				"insert_after": "serial_no_series",
 				"length": 4,
 				"fieldtype": "Int",
 				"non_negative": 1,
@@ -560,14 +513,6 @@ def get_custom_fields():
 				"options": "Company",
 			},
 		],
-		"Party Account": [
-			{
-				"label": "Debtor/Creditor Number",
-				"fieldname": "debtor_creditor_number",
-				"insert_after": "account",
-				"fieldtype": "Data",
-			},
-		],
 		"Payment Entry": [
 			{
 				"label": "Get Outstanding Invoices",
@@ -616,40 +561,6 @@ def get_custom_fields():
 				"options": "Company",
 			},
 		],
-		"Print Settings": [
-			{
-				"label": "Compact Item Print",
-				"fieldname": "compact_item_print",
-				"insert_after": "with_letterhead",
-				"fieldtype": "Check",
-				"default": "1",
-			},
-			{
-				"label": "Print taxes with zero amount",
-				"fieldname": "print_taxes_with_zero_amount",
-				"insert_after": "allow_print_for_cancelled",
-				"fieldtype": "Check",
-				"default": "0",
-			},
-			{
-				"label": "Print UOM after Quantity",
-				"fieldname": "print_uom_after_quantity",
-				"insert_after": "compact_item_print",
-				"fieldtype": "Check",
-				"default": "0",
-			},
-		],
-		"Project": [
-			{
-				"label": "GitHub Sync ID",
-				"fieldname": "github_sync_id",
-				"fieldtype": "Data",
-				"unique": 1,
-				"read_only": 1,
-				"hidden": 1,
-				"no_copy": 1,
-			},
-		],
 		"Purchase Invoice": [
 			{
 				"label": "E Invoice Import",
@@ -667,12 +578,6 @@ def get_custom_fields():
 				"options": "Organization",
 				"default": "LV",
 				"reqd": 1,
-			},
-			{
-				"label": "Supplier Invoice File",
-				"fieldname": "supplier_invoice_file",
-				"insert_after": "bill_date",
-				"fieldtype": "Attach",
 			},
 		],
 		"Sales Invoice": [
@@ -790,16 +695,6 @@ def get_custom_fields():
 				"print_hide": 1,
 			},
 			{
-				"label": "Validation Warnings",
-				"fieldname": "validation_warnings",
-				"insert_after": "validation_errors",
-				"fieldtype": "Text",
-				"depends_on": "eval:doc.einvoice_profile && doc.validation_warnings",
-				"read_only": 1,
-				"print_hide": 1,
-				"no_copy": 1,
-			},
-			{
 				"label": "Year of Settlement",
 				"fieldname": "year_of_settlement",
 				"insert_after": "posting_date",
@@ -809,14 +704,6 @@ def get_custom_fields():
 			},
 		],
 		"Sales Order": [
-			{
-				"label": "Buyer Reference",
-				"fieldname": "buyer_reference",
-				"insert_after": "tax_id",
-				"fieldtype": "Data",
-				"fetch_from": "customer.buyer_reference",
-				"fetch_if_empty": 1,
-			},
 			{
 				"label": "Organization",
 				"fieldname": "organization",
@@ -919,17 +806,6 @@ def get_custom_fields():
 				"insert_after": "description",
 				"fieldtype": "Table",
 				"options": "Tag Organization",
-			},
-		],
-		"Task": [
-			{
-				"label": "GitHub Sync ID",
-				"fieldname": "github_sync_id",
-				"fieldtype": "Data",
-				"unique": 1,
-				"read_only": 1,
-				"hidden": 1,
-				"no_copy": 1,
 			},
 		],
 		"User": [

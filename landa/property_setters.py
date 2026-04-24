@@ -101,9 +101,6 @@ def get_property_setters():
 			("territory", "in_standard_filter", "0"),
 			("website", "hidden", "1"),
 		],
-		"Data Import": [
-			("status", "no_copy", "1"),
-		],
 		"Delivery Note": [
 			(None, "default_print_format", "DN DIN Addressfield"),
 			(
@@ -172,12 +169,6 @@ def get_property_setters():
 			("uom", "in_list_view", "0"),
 			("warehouse", "in_list_view", "0"),
 		],
-		"Employee": [
-			("employee_number", "hidden", "1"),
-			("employee_number", "reqd", "0"),
-			("naming_series", "hidden", "0"),
-			("naming_series", "reqd", "1"),
-		],
 		"Item": [
 			(
 				None,
@@ -244,33 +235,12 @@ def get_property_setters():
 			("uom", "read_only", "1"),
 			("uom", "default", "Anzahl"),
 		],
-		"Job Card": [
-			("barcode", "hidden", "1"),
-		],
-		"Journal Entry": [
-			("naming_series", "options", "ACC-JV-.YYYY.-"),
-		],
-		"LANDA Member": [
-			(None, "autoname", ""),
-		],
-		"Lead": [
-			("naming_series", "options", "CRM-LEAD-.YYYY.-"),
-		],
 		"Letter Head": [
 			(
 				None,
 				"field_order",
 				'["custom_company", "letter_head_name", "source", "footer_source", "column_break_3", "disabled", "is_default", "letter_head_image_section", "image", "image_height", "image_width", "align", "header_section", "content", "footer_section", "footer", "footer_image_section", "footer_image", "footer_image_height", "footer_image_width", "footer_align", "scripts_section", "header_script", "footer_script", "instructions"]',
 			),
-		],
-		"Material Request": [
-			("scan_barcode", "hidden", "1"),
-		],
-		"Opportunity": [
-			("naming_series", "options", "CRM-OPP-.YYYY.-"),
-		],
-		"Organization": [
-			(None, "autoname", ""),
 		],
 		"Packed Item": [
 			("rate", "read_only", "1"),
@@ -310,12 +280,6 @@ def get_property_setters():
 			("taxes_and_charges_section", "hidden", "1"),
 			("year_of_settlement", "in_standard_filter", "1"),
 		],
-		"POS Invoice": [
-			("scan_barcode", "hidden", "1"),
-		],
-		"POS Invoice Item": [
-			("barcode", "hidden", "1"),
-		],
 		"Purchase Invoice": [
 			(
 				None,
@@ -353,47 +317,6 @@ def get_property_setters():
 			("use_transaction_date_exchange_rate", "hidden", "1"),
 			("write_off", "hidden", "1"),
 		],
-		"Purchase Invoice Item": [
-			("discount_account", "hidden", "1"),
-			("discount_account", "mandatory_depends_on", ""),
-			("from_warehouse", "hidden", "1"),
-		],
-		"Purchase Order": [
-			("base_rounded_total", "hidden", "0"),
-			("base_rounded_total", "print_hide", "1"),
-			("disable_rounded_total", "default", "0"),
-			("due_date", "print_hide", "0"),
-			("in_words", "hidden", "0"),
-			("in_words", "print_hide", "0"),
-			("payment_schedule", "print_hide", "1"),
-			("rounded_total", "hidden", "0"),
-			("rounded_total", "print_hide", "0"),
-			("scan_barcode", "hidden", "1"),
-		],
-		"Purchase Receipt": [
-			("base_rounded_total", "hidden", "0"),
-			("base_rounded_total", "print_hide", "1"),
-			("disable_rounded_total", "default", "0"),
-			("in_words", "hidden", "0"),
-			("in_words", "print_hide", "0"),
-			("provisional_expense_account", "hidden", "1"),
-			("rounded_total", "hidden", "0"),
-			("rounded_total", "print_hide", "0"),
-			("scan_barcode", "hidden", "1"),
-		],
-		"Purchase Receipt Item": [
-			("barcode", "hidden", "1"),
-			("from_warehouse", "hidden", "1"),
-		],
-		"Quotation": [
-			("base_rounded_total", "hidden", "0"),
-			("base_rounded_total", "print_hide", "1"),
-			("disable_rounded_total", "default", "0"),
-			("in_words", "hidden", "0"),
-			("in_words", "print_hide", "0"),
-			("rounded_total", "hidden", "0"),
-			("rounded_total", "print_hide", "0"),
-		],
 		"Sales Invoice": [
 			(None, "default_print_format", "SO DIN Addressfield"),
 			(
@@ -410,7 +333,8 @@ def get_property_setters():
 			("contact_display", "label", "Billing Contact"),
 			("contact_email", "label", "Email (Billing Contact)"),
 			("contact_mobile", "label", "Mobile No (Billing Contact)"),
-			("contact_person", "fetch_from", ""),
+			("contact_person", "fetch_from", "customer.default_billing_contact"),
+			("contact_person", "fetch_if_empty", "1"),
 			("contact_person", "label", "Billing Contact"),
 			("customer_address", "fetch_from", "customer.default_billing_address"),
 			("customer_address", "fetch_if_empty", "1"),
@@ -528,8 +452,6 @@ def get_property_setters():
 			("shipping_rule", "permlevel", "1"),
 			("subscription_section", "hidden", "1"),
 			("tax_category", "permlevel", "1"),
-			("tax_id", "hidden", "0"),
-			("tax_id", "print_hide", "0"),
 			("taxes_and_charges", "hidden", "1"),
 			("taxes_section", "hidden", "1"),
 			("terms_section_break", "hidden", "1"),
@@ -543,15 +465,6 @@ def get_property_setters():
 			("item_code", "columns", "5"),
 			("rate", "columns", "1"),
 			("rate", "permlevel", "1"),
-		],
-		"Stock Entry": [
-			("scan_barcode", "hidden", "1"),
-		],
-		"Stock Entry Detail": [
-			("barcode", "hidden", "1"),
-		],
-		"Stock Reconciliation Item": [
-			("barcode", "hidden", "1"),
 		],
 		"Supplier": [
 			(
@@ -577,15 +490,6 @@ def get_property_setters():
 			("supplier_group", "default", "Services"),
 			("tax_category", "default", "Vorsteuer"),
 			("tax_withholding_category", "hidden", "1"),
-		],
-		"Supplier Quotation": [
-			("base_rounded_total", "hidden", "0"),
-			("base_rounded_total", "print_hide", "1"),
-			("disable_rounded_total", "default", "0"),
-			("in_words", "hidden", "0"),
-			("in_words", "print_hide", "0"),
-			("rounded_total", "hidden", "0"),
-			("rounded_total", "print_hide", "0"),
 		],
 		"Tag": [
 			(None, "title_field", ""),
