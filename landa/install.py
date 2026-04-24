@@ -12,6 +12,7 @@ from frappe.custom.doctype.property_setter.property_setter import make_property_
 import landa
 
 from .custom_fields import get_custom_fields
+from .doc_perms import get_doc_perms
 from .property_setters import get_property_setters
 
 
@@ -22,6 +23,7 @@ def after_install():
 	update_system_settings()
 	make_custom_fields()
 	make_property_setters()
+	make_doc_perms()
 	create_records_from_hooks()
 	disable_modes_of_payment()
 	add_session_defaults()
@@ -109,6 +111,30 @@ def update_system_settings():
 
 def make_custom_fields():
 	create_custom_fields(get_custom_fields())
+
+
+def make_doc_perms():
+	"""Seed Custom DocPerm rows on fresh installs only.
+
+	Existing sites are left untouched: if any Custom DocPerm already exists for a
+	parent doctype, we assume that's the authoritative state. The legacy fixture
+	JSONs used to wipe and re-insert on every migrate; we deliberately don't
+	reproduce that to avoid clobbering UI-driven changes.
+	"""
+	for doctype, perms in get_doc_perms().items():
+		if frappe.db.exists("Custom DocPerm", {"parent": doctype}):
+			continue
+
+		for perm in perms:
+			frappe.get_doc(
+				{
+					"doctype": "Custom DocPerm",
+					"parent": doctype,
+					"parenttype": "DocType",
+					"parentfield": "permissions",
+					**perm,
+				}
+			).db_insert()
 
 
 def make_property_setters():

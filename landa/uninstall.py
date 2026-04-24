@@ -1,12 +1,14 @@
 import frappe
 
 from .custom_fields import get_custom_fields
+from .doc_perms import get_doc_perms
 from .property_setters import get_property_setters
 
 
 def before_uninstall():
 	remove_custom_fields()
 	remove_property_setters()
+	remove_doc_perms()
 
 
 def remove_custom_fields():
@@ -43,3 +45,9 @@ def remove_property_setters():
 						"value": ps[2],
 					},
 				)
+
+
+def remove_doc_perms():
+	print("* removing custom doc perms...")
+	for doctype in get_doc_perms():
+		frappe.db.delete("Custom DocPerm", {"parent": doctype})
