@@ -2,6 +2,7 @@ import os
 
 import frappe
 from frappe import get_hooks
+from frappe.core.doctype.doctype.doctype import validate_fields_for_doctype
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 from frappe.custom.doctype.customize_form.customize_form import (
 	docfield_properties,
@@ -166,7 +167,10 @@ def make_property_setters():
 					value=property_setter[2],
 					property_type=property_type,
 					for_doctype=for_doctype,
+					validate_fields_for_doctype=False,
 				)
+
+			validate_fields_for_doctype(doctype)
 
 
 def update_stock_settings():
