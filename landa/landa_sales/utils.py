@@ -21,7 +21,7 @@ def validate_company_customer(company: str, customer: str):
 
 	company_abbr = frappe.db.get_value("Company", company, "abbr")
 	customer_organization = frappe.db.get_value("Customer", customer, "organization")
-	if company_abbr not in customer_organization:
+	if customer_organization and (company_abbr not in customer_organization):
 		frappe.throw(_("Customer {0} is not valid for Company {1}.").format(customer, company))
 
 
