@@ -44,6 +44,11 @@ def set_tax_template(item: "Item"):
 
 def autoname(item: "Item", event):
 	"""Create Company-specific Item name."""
+	# ERPNext test records link to their fixed _Test item codes.
+	if frappe.flags.in_test and item.item_code and item.item_code.startswith("_Test"):
+		item.name = item.item_code
+		return
+
 	if item.variant_of:
 		# Variant uses the Company-specific name of the template Item together
 		# with a list of Item Attribute Values.
