@@ -2,24 +2,67 @@ import os
 
 import frappe
 from frappe import get_hooks
+from frappe.core.doctype.doctype.doctype import validate_fields_for_doctype
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
+from frappe.custom.doctype.customize_form.customize_form import (
+	docfield_properties,
+	doctype_properties,
+)
 from frappe.custom.doctype.property_setter.property_setter import make_property_setter
 
 import landa
 
+from .custom_fields import get_custom_fields
+from .doc_perms import get_doc_perms
+from .property_setters import get_property_setters
+
 
 def after_install():
 	complete_setup_wizard_for_test()
-
 	update_system_settings()
-	make_custom_fields()
-	make_property_setters()
+	ensure_default_link_records()
+	sync_customizations()
 	create_records_from_hooks()
 	disable_modes_of_payment()
 	add_session_defaults()
 	setup_uoms()
 	update_stock_settings()
 	update_accounts_settings()
+
+
+def sync_customizations():
+	make_custom_fields()
+	make_property_setters()
+	make_doc_perms()
+
+
+def ensure_default_link_records():
+	ensure_root_organization()
+	ensure_tax_categories()
+
+
+def ensure_root_organization():
+	if frappe.db.exists("Organization", "LV"):
+		return
+
+	frappe.get_doc(
+		{
+			"doctype": "Organization",
+			"organization_name": "Landesverband",
+			"short_code": "LV",
+			"is_group": 1,
+		}
+	).insert(ignore_permissions=True)
+
+
+def ensure_tax_categories():
+	for title in ("Vorsteuer", "Umsatzsteuer"):
+		if not frappe.db.exists("Tax Category", title):
+			frappe.get_doc({"doctype": "Tax Category", "title": title}).insert(ignore_permissions=True)
+
+
+def before_tests():
+	ensure_tax_categories()
 
 
 def create_records_from_hooks():
@@ -100,17 +143,62 @@ def update_system_settings():
 
 
 def make_custom_fields():
-	create_custom_fields(frappe.get_hooks("landa_custom_fields", {}))
+	create_custom_fields(get_custom_fields())
+
+
+def make_doc_perms():
+	"""Seed Custom DocPerm rows on fresh installs only.
+
+	Existing sites are left untouched: if any Custom DocPerm already exists for a
+	parent doctype, we assume that's the authoritative state. The legacy fixture
+	JSONs used to wipe and re-insert on every migrate; we deliberately don't
+	reproduce that to avoid clobbering UI-driven changes.
+	"""
+	for doctype, perms in get_doc_perms().items():
+		if frappe.db.exists("Custom DocPerm", {"parent": doctype}):
+			continue
+
+		for perm in perms:
+			frappe.get_doc(
+				{
+					"doctype": "Custom DocPerm",
+					"parent": doctype,
+					"parenttype": "DocType",
+					"parentfield": "permissions",
+					**perm,
+				}
+			).db_insert()
 
 
 def make_property_setters():
-	for doctypes, property_setters in frappe.get_hooks("landa_property_setters", {}).items():
+	for doctypes, property_setters in get_property_setters().items():
 		if isinstance(doctypes, str):
 			doctypes = (doctypes,)
 
 		for doctype in doctypes:
 			for property_setter in property_setters:
-				make_property_setter(doctype, *property_setter, for_doctype=not property_setter[0])
+				if property_setter[0]:
+					for_doctype = False
+					property_type = docfield_properties.get(
+						property_setter[1],
+					)
+				else:
+					for_doctype = True
+					property_type = doctype_properties.get(
+						property_setter[1], "Data"
+					)  # Data fallback for field_order
+
+				make_property_setter(
+					doctype=doctype,
+					fieldname=property_setter[0],
+					property=property_setter[1],
+					value=property_setter[2],
+					property_type=property_type,
+					for_doctype=for_doctype,
+					validate_fields_for_doctype=False,
+				)
+
+			validate_fields_for_doctype(doctype)
 
 
 def update_stock_settings():

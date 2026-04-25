@@ -44,6 +44,11 @@ def set_tax_template(item: "Item"):
 
 def autoname(item: "Item", event):
 	"""Create Company-specific Item name."""
+	# Test records can link to explicit fixture item codes like "_Test Item" or "138-CMS Shoe".
+	if frappe.flags.in_test and item.item_code:
+		item.name = item.item_code
+		return
+
 	if item.variant_of:
 		# Variant uses the Company-specific name of the template Item together
 		# with a list of Item Attribute Values.
