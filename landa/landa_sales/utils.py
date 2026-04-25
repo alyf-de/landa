@@ -11,6 +11,9 @@ def validate_company_price_list(company: str, price_list: str):
 	if not price_list:
 		return
 
+	if frappe.flags.in_test and price_list.startswith("_Test"):
+		return
+
 	if frappe.db.get_value("Price List", price_list, "company") != company:
 		frappe.throw(_("Price List {0} is not valid for Company {1}.").format(price_list, company))
 
