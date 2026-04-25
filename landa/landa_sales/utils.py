@@ -2,9 +2,16 @@ from typing import TYPE_CHECKING
 
 import frappe
 from frappe import _
+from frappe.utils.data import nowdate
 
 if TYPE_CHECKING:
 	from erpnext.controllers.selling_controller import SellingController
+
+
+def set_default_year_of_settlement(doc):
+	if not doc.year_of_settlement:
+		# mandatory field in forms, set it here for test records
+		doc.year_of_settlement = nowdate()[:4]
 
 
 def validate_company_price_list(company: str, price_list: str):
