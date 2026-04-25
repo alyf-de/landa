@@ -210,6 +210,7 @@ doctype_list_js = {
 
 # before_install = "landa.install.before_install"
 after_install = "landa.install.after_install"
+before_uninstall = "landa.uninstall.before_uninstall"
 after_migrate = "landa.migrate.after_migrate"
 
 # Desk Notifications
@@ -255,7 +256,10 @@ doc_events = {
 		"before_insert": "landa.landa_stock.item.item.before_insert",
 		"autoname": "landa.landa_stock.item.item.autoname",
 	},
-	"Item Price": {"validate": "landa.landa_sales.item_price.item_price.validate"},
+	"Item Price": {
+		"before_validate": "landa.landa_sales.item_price.item_price.before_validate",
+		"validate": "landa.landa_sales.item_price.item_price.validate",
+	},
 	"Sales Order": {
 		"before_validate": "landa.landa_sales.sales_order.sales_order.before_validate",
 		"validate": "landa.landa_sales.sales_order.sales_order.validate",
@@ -352,7 +356,7 @@ scheduler_events = {
 # Testing
 # -------
 
-# before_tests = "landa.install.before_tests"
+before_tests = "landa.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
