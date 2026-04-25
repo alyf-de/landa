@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 def set_default_year_of_settlement(doc):
 	if not doc.year_of_settlement:
 		# mandatory field in forms, set it here for test records
-		doc.year_of_settlement = nowdate()[:4]
+		doc.year_of_settlement = int(nowdate()[:4])
 
 
 def validate_company_price_list(company: str, price_list: str):

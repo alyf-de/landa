@@ -18,7 +18,7 @@ def before_validate(sales_order, event):
 	set_default_year_of_settlement(sales_order)
 
 	for item in sales_order.items:
-		item.delivery_date = get_year_ending(sales_order.year_of_settlement)
+		item.delivery_date = get_year_ending(str(sales_order.year_of_settlement))
 
 	if (not sales_order.tax_category) and frappe.db.exists("Tax Category", "Umsatzsteuer"):
 		sales_order.tax_category = "Umsatzsteuer"
