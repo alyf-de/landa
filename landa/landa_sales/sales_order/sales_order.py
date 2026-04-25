@@ -6,6 +6,7 @@ from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, 
 from frappe.utils.data import get_year_ending
 
 from landa.landa_sales.utils import (
+	set_default_year_of_settlement,
 	validate_company_customer,
 	validate_company_price_list,
 	validate_year_of_settlement,
@@ -14,6 +15,8 @@ from landa.utils import update_doc
 
 
 def before_validate(sales_order, event):
+	set_default_year_of_settlement(sales_order)
+
 	for item in sales_order.items:
 		item.delivery_date = get_year_ending(str(sales_order.year_of_settlement))
 
