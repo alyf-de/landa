@@ -139,11 +139,6 @@ class Address:
 		# replace NaNs with empty strings
 		data.fillna("", inplace=True)
 		# convert data back to tuple
-<<<<<<< HEAD
-		data.reset_index(inplace=True)
-		data = tuple(data.itertuples(index=False, name=None))
-		return data
-=======
 		data = data.reset_index()
 		member_rows = list(data.itertuples(index=False, name=None))
 
@@ -211,7 +206,6 @@ class Address:
 				)
 
 		return member_rows + external_contact_rows
->>>>>>> 8a307a7 (feat(Magazine Address List): retrieve external contacts (LAN-900) (#321))
 
 	def get_columns(self):
 		return [
