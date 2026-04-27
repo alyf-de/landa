@@ -77,7 +77,11 @@ def get_data(filters):
 		if m not in by_member:
 			by_member[m] = {"member": m, "member_name": row.get("member_name"), "rows": []}
 		by_member[m]["rows"].append(
-			{"date": row["date"], "hours_change": float(row.get("hours_change") or 0)}
+			{
+				"date": row["date"],
+				"hours_change": float(row.get("hours_change") or 0),
+				"work_assignment": row.get("work_assignment"),
+			}
 		)
 
 	result = []
