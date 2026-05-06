@@ -264,11 +264,11 @@
   },
   {
    "group": "Vereinsverwaltung",
-   "link_doctype": "Work Ledger Entry",
+   "link_doctype": "Work Assignment",
    "link_fieldname": "organization"
   }
  ],
- "modified": "2026-01-28 16:05:42.757333",
+ "modified": "2026-05-06 10:05:34.112085",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
