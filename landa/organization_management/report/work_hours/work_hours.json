@@ -1,5 +1,5 @@
 {
- "add_total_row": 0,
+ "add_total_row": 1,
  "add_translate_data": 0,
  "columns": [],
  "creation": "2026-01-08 17:06:21.498262",
@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": null,
- "modified": "2026-01-08 17:06:56.924267",
+ "modified": "2026-05-06 10:14:44.943018",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Work Hours",
