@@ -48,8 +48,7 @@
    "fieldname": "fishing_days",
    "fieldtype": "Int",
    "label": "Fishing Days",
-   "reqd": 1,
-   "set_only_once": 1
+   "reqd": 1
   },
   {
    "fieldname": "column_break_5",
@@ -64,8 +63,7 @@
    "label": "Organization",
    "options": "Organization",
    "remember_last_selected_value": 1,
-   "reqd": 1,
-   "set_only_once": 1
+   "reqd": 1
   },
   {
    "fetch_from": "organization.organization_name",
@@ -82,8 +80,7 @@
    "fieldname": "fish_catches",
    "fieldtype": "Table",
    "label": "Fish Catches",
-   "options": "Catch Log Fish Table",
-   "set_only_once": 1
+   "options": "Catch Log Fish Table"
   },
   {
    "fetch_from": "water_body.fishing_area",
@@ -151,7 +148,7 @@
  ],
  "grid_page_length": 50,
  "links": [],
- "modified": "2026-03-18 22:15:30.654778",
+ "modified": "2026-05-06 10:55:03.010668",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
