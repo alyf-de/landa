@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-04-24 10:03+0053\n"
+"POT-Creation-Date: 2026-05-07 17:24+0053\n"
 "PO-Revision-Date: 2025-11-29 18:55+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
@@ -352,7 +352,7 @@ msgstr ""
 msgid "Custom Marker"
 msgstr "Spezielle Markierungen"
 
-#: landa/landa_sales/utils.py:25
+#: landa/landa_sales/utils.py:35
 msgid "Customer {0} is not valid for Company {1}."
 msgstr "Bestellwesenkonto Verein {0} ist nicht gültig für das Bestellwesenkonto RV {1}."
 
@@ -403,6 +403,7 @@ msgstr "Firebase-Benachrichtigungen aktivieren"
 #. Label of a Link in the Water Body Management Workspace
 #: landa/organization_management/doctype/external_contact/external_contact.json
 #: landa/organization_management/report/external_contacts_addresses_and_contacts/external_contacts_addresses_and_contacts.py:16
+#: landa/organization_management/report/magazine_address_list/magazine_address_list.py:193
 #: landa/organization_management/workspace/organization_management/organization_management.json
 #: landa/water_body_management/workspace/water_body_management/water_body_management.json
 msgid "External Contact"
@@ -616,7 +617,7 @@ msgid "From Year"
 msgstr "Von Jahr"
 
 #: landa/organization_management/report/external_contacts_addresses_and_contacts/external_contacts_addresses_and_contacts.py:46
-#: landa/organization_management/report/magazine_address_list/magazine_address_list.py:191
+#: landa/organization_management/report/magazine_address_list/magazine_address_list.py:255
 #: landa/organization_management/report/member_address_list/member_address_list.py:85
 #: landa/organization_management/report/members_with_member_functions/members_with_member_functions.py:59
 #: landa/water_body_management/report/members_in_water_body_management/members_in_water_body_management.py:61
@@ -888,7 +889,7 @@ msgstr "Ist Standard-Lieferkontakt"
 #: landa/organization_management/doctype/landa_member/landa_member.json
 #: landa/organization_management/report/external_contacts_addresses_and_contacts/external_contacts_addresses_and_contacts.js:19
 #: landa/organization_management/report/external_contacts_addresses_and_contacts/external_contacts_addresses_and_contacts.py:29
-#: landa/organization_management/report/magazine_address_list/magazine_address_list.py:168
+#: landa/organization_management/report/magazine_address_list/magazine_address_list.py:232
 msgid "Is Magazine Recipient"
 msgstr "Ist Zeitschrift Empfänger"
 
@@ -1222,7 +1223,7 @@ msgstr "Standort und öffentliche Kontaktdaten"
 msgid "Magazine Address List"
 msgstr "Fischer und Angler Adressverwaltung"
 
-#: landa/organization_management/report/magazine_address_list/magazine_address_list.py:196
+#: landa/organization_management/report/magazine_address_list/magazine_address_list.py:260
 msgid "Magazine Is Active"
 msgstr "Zeitschrift aktiv"
 
@@ -1267,11 +1268,11 @@ msgstr ""
 #. Label of a Link field in DocType 'Member Function'
 #. Label of a Link field in DocType 'Yearly Fishing Permit'
 #. Label of a Link in the Organization Management Workspace
-#: landa/landa_sales/customer/customer.py:19
+#: landa/landa_sales/customer/customer.py:26
 #: landa/organization_management/doctype/landa_member/landa_member.json
 #: landa/organization_management/doctype/member_function/member_function.json
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.json
-#: landa/organization_management/report/magazine_address_list/magazine_address_list.py:150
+#: landa/organization_management/report/magazine_address_list/magazine_address_list.py:214
 #: landa/organization_management/report/member_address_list/member_address_list.js:10
 #: landa/organization_management/report/member_address_list/member_address_list.py:60
 #: landa/organization_management/report/member_birthday_list/member_birthday_list.py:20
@@ -1472,7 +1473,7 @@ msgstr "Neuer Besatzmaßnahmenimport"
 msgid "No Company found for Organization {0}."
 msgstr "Kein Bestellwesenkonto RV für Verein {0} gefunden."
 
-#: landa/landa_sales/customer/customer.py:15
+#: landa/landa_sales/customer/customer.py:22
 msgid "No active member functions."
 msgstr "Keine aktiven Mitgliedsfunktionen vorhanden."
 
@@ -1503,7 +1504,7 @@ msgstr "Vereinsverwaltung"
 
 #: landa/organization_management/report/current_member_data/current_member_data.py:23
 msgid "Organization is required"
-msgstr ""
+msgstr "Verein muss ausgewählt werden"
 
 #. Label of a Select field in DocType 'Catch Log Entry'
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json
@@ -1525,7 +1526,7 @@ msgstr ""
 msgid "Parent Organization"
 msgstr "Übergeordneter Verband"
 
-#: landa/landa_sales/payment_entry/pament_entry.py:15
+#: landa/landa_sales/payment_entry/pament_entry.py:19
 msgid "Payment Entry must be linked to an organization."
 msgstr "Zahlung muss mit einem Verein verknüpft sein."
 
@@ -1542,7 +1543,7 @@ msgstr "Berechtigungen für"
 msgid "Permit Expiration Date"
 msgstr "Ablaufdatum des Fischereischeins"
 
-#: landa/organization_management/report/magazine_address_list/magazine_address_list.py:178
+#: landa/organization_management/report/magazine_address_list/magazine_address_list.py:242
 msgid "Permit Is Active"
 msgstr "Erlaubnisschein aktiv"
 
@@ -1585,11 +1586,11 @@ msgstr "Bitte wählen Sie ein Gewässer, das zu Ihrem eigenen Regionalverband ge
 msgid "Please select your own regional Organization."
 msgstr "Bitte wählen Sie Ihren eigenen Regionalverband aus!"
 
-#: landa/landa_sales/sales_invoice/sales_invoice.py:58
+#: landa/landa_sales/sales_invoice/sales_invoice.py:59
 msgid "Please set a Billing Address before submitting the Sales Invoice."
 msgstr "Bitte tragen Sie vor dem Buchen der Rechnung eine Rechnungsadresse ein."
 
-#: landa/landa_sales/sales_invoice/sales_invoice.py:55
+#: landa/landa_sales/sales_invoice/sales_invoice.py:56
 msgid "Please set a Billing Contact before submitting the Sales Invoice."
 msgstr "Bitte tragen Sie vor dem Buchen der Rechnung einen Rechnungskontakt ein."
 
@@ -1624,7 +1625,7 @@ msgstr "Bitte laden Sie Ihre API-Zugangsdaten hoch."
 msgid "Position Description"
 msgstr "Beschreibung der Position / Aufgabengebiet"
 
-#: landa/landa_sales/utils.py:15
+#: landa/landa_sales/utils.py:25
 msgid "Price List {0} is not valid for Company {1}."
 msgstr "Preisliste {0} ist nicht gültig für das Bestellwesenkonto RV {1}."
 
@@ -1684,7 +1685,6 @@ msgstr "Nachname des Empfängers"
 msgid "Region"
 msgstr ""
 
-#. Label of a Link field in DocType 'External Contact'
 #. Option for the 'Access Level' (Select) field in DocType 'Member Function
 #. Category'
 #. Label of a Link field in DocType 'Catch Log Entry'
@@ -1696,7 +1696,6 @@ msgstr ""
 #. Label of a Link field in DocType 'Stocking Target'
 #. Label of a Link field in DocType 'Water Body'
 #. Label of a Link field in DocType 'Water Body Management Local Organization'
-#: landa/organization_management/doctype/external_contact/external_contact.json
 #: landa/organization_management/doctype/member_function_category/member_function_category.json
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json
 #: landa/water_body_management/doctype/fishing_area/fishing_area.json
@@ -1710,11 +1709,9 @@ msgstr ""
 msgid "Regional Organization"
 msgstr "Regionalverband"
 
-#. Label of a Data field in DocType 'External Contact'
 #. Label of a Data field in DocType 'Fishing Area'
 #. Label of a Data field in DocType 'Lease Contract'
 #. Label of a Data field in DocType 'Water Body'
-#: landa/organization_management/doctype/external_contact/external_contact.json
 #: landa/water_body_management/doctype/fishing_area/fishing_area.json
 #: landa/water_body_management/doctype/lease_contract/lease_contract.json
 #: landa/water_body_management/doctype/water_body/water_body.json
@@ -1758,7 +1755,7 @@ msgstr "Pachtzins pro Jahr"
 msgid "Row {0}: Fish Species {1} cannot occur in {2}"
 msgstr "Zeile {0}: Fischart {1} kann nicht in {2} vorkommen"
 
-#: landa/landa_sales/utils.py:39
+#: landa/landa_sales/utils.py:49
 msgid "Row {0}: Item {1} is not valid for year of settlement {2}."
 msgstr "Zeile {0}: Artikel {1} ist nicht gültig für das Abrechnungsjahr {2}."
 
@@ -1825,7 +1822,7 @@ msgstr "Nur aktuelle Zeitschriftenempfänger anzeigen"
 msgid "Show Organization List"
 msgstr "Vereins- und Verbandsliste anzeigen"
 
-#: landa/landa_sales/customer/customer.py:20
+#: landa/landa_sales/customer/customer.py:27
 msgid "Since"
 msgstr "Seit"
 
@@ -1855,6 +1852,11 @@ msgstr ""
 #: landa/organization_management/doctype/member_function_category/member_function_category.json
 msgid "State Organization"
 msgstr "Landesverband"
+
+#. Label of a Link field in DocType 'External Contact'
+#: landa/organization_management/doctype/external_contact/external_contact.json
+msgid "State or Regional Organization"
+msgstr "Landes- oder Regionalverband"
 
 #. Name of a DocType
 #. Label of a Link in the Order Management Workspace
