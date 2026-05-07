@@ -9,6 +9,7 @@ from erpnext.accounts.doctype.sales_invoice.sales_invoice import make_delivery_n
 from frappe import _
 
 from landa.landa_sales.utils import (
+	set_default_year_of_settlement,
 	validate_company_customer,
 	validate_company_price_list,
 	validate_year_of_settlement,
@@ -18,7 +19,7 @@ from landa.utils import update_doc
 
 def before_validate(doc: "SalesInvoice", event: str):
 	"""Set Tax Category to 'Umsatzsteuer'"""
-	import frappe
+	set_default_year_of_settlement(doc)
 
 	if (not doc.tax_category) and frappe.db.exists("Tax Category", "Umsatzsteuer"):
 		doc.tax_category = "Umsatzsteuer"
