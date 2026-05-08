@@ -270,12 +270,6 @@ def get_custom_fields():
 				"options": "Address",
 			},
 			{
-				"label": "Billing Contact Not Required",
-				"fieldname": "custom_billing_contact_not_required",
-				"insert_after": "default_billing_address",
-				"fieldtype": "Check",
-			},
-			{
 				"fieldname": "default_billing_address_html",
 				"insert_after": "default_billing_address",
 				"fieldtype": "HTML",
