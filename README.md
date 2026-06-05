@@ -36,6 +36,7 @@ There's a daily scheduled job that deletes all **Users** that have been inactive
 ## License
 
 LANDA – Datenmanagementsystem des Landesverband Sächsischer Angler e. V.
+
 Copyright (C) 2022 ALYF GmbH and contributors.
 
 This program is free software: you can redistribute it and/or modify
