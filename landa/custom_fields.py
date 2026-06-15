@@ -234,8 +234,8 @@ def get_custom_fields():
 				"depends_on": "eval:doc.organization",
 			},
 			{
-				"label": "Active Member Fuctions",
-				"fieldname": "custom_active_member_fuctions",
+				"label": "Active Member Functions",
+				"fieldname": "custom_active_member_functions",
 				"insert_after": "custom_member_functions",
 				"fieldtype": "HTML",
 			},
