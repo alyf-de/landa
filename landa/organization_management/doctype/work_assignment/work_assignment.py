@@ -50,4 +50,9 @@ class WorkAssignment(Document):
 			work_ledger_entry.insert()
 
 	def delete_work_ledger_entry(self):
-		frappe.delete_doc("Work Ledger Entry", {"work_assignment": self.name})
+		for name in frappe.get_all(
+			"Work Ledger Entry",
+			filters={"work_assignment": self.name},
+			pluck="name",
+		):
+			frappe.delete_doc("Work Ledger Entry", name)
