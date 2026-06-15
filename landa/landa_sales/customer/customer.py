@@ -1,5 +1,6 @@
 import frappe
 from frappe import _
+from frappe.utils import escape_html
 
 
 @frappe.whitelist()
@@ -30,8 +31,8 @@ def get_member_functions_html(organization: str) -> str:
 	for mf in member_functions:
 		start_date = frappe.format(mf.start_date, {"fieldtype": "Date"})
 		rows += f"""<tr>
-			<td><a href="/app/member-function/{mf.name}">{mf.member_function_category}</a></td>
-			<td><a href="/app/landa-member/{mf.member}">{mf.member_first_name} {mf.member_last_name}</a></td>
+			<td><a href="/app/member-function/{escape_html(mf.name)}">{mf.member_function_category}</a></td>
+			<td><a href="/app/landa-member/{escape_html(mf.member)}">{escape_html(mf.member_first_name)} {escape_html(mf.member_last_name)}</a></td>
 			<td>{start_date}</td>
 		</tr>"""
 
