@@ -9,7 +9,9 @@
   "enable_firebase_notifications",
   "firebase_topic",
   "column_break_sidox",
-  "project_id"
+  "project_id",
+  "section_break_nxri",
+  "credentials"
  ],
  "fields": [
   {
@@ -36,12 +38,22 @@
    "fieldtype": "Data",
    "label": "Project ID",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_nxri",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "credentials",
+   "fieldtype": "Password",
+   "label": "Credentials",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-01-16 17:52:57.937355",
+ "modified": "2026-06-19 16:17:58.901383",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Firebase Settings",

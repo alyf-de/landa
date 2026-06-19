@@ -32,7 +32,8 @@
    "label": "Water Body",
    "options": "Water Body",
    "reqd": 1,
-   "search_index": 1
+   "search_index": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "year",
@@ -146,7 +147,7 @@
   }
  ],
  "links": [],
- "modified": "2026-03-18 22:15:30.654778",
+ "modified": "2026-05-06 10:55:03.010668",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Catch Log Entry",
