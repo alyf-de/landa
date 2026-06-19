@@ -24,7 +24,7 @@ frappe.ui.form.on("Catch Log Entry", {
 					year: frm.doc.year,
 				});
 			});
-
+			frm.change_custom_button_type(__("New Catch Log Entry"), null, "primary");
 			frm.add_custom_button(__("Delete"), () => frm.savetrash());
 		}
 	},
