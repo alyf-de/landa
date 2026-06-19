@@ -53,11 +53,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
-<<<<<<< HEAD
- "modified": "2024-01-16 17:52:57.937355",
-=======
  "modified": "2026-06-19 16:17:58.901383",
->>>>>>> b56db2b (fix(Firebase Settings): store credentials in database instead of filesystem (#330) (#331))
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Firebase Settings",
