@@ -54,7 +54,6 @@ def upload_api_file(*args, **kwargs):
 			title=_("Missing Project ID"),
 		)
 
-	doc = frappe.get_single("Firebase Settings")
 	doc.project_id = project_id
 	doc.credentials = json.dumps(json_data)
 	doc.save()
