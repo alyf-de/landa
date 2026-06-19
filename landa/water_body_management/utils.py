@@ -55,13 +55,10 @@ def create_firebase_notification(doc, event):
 		# firebase doesn't allow nested objects
 		change_log["changes"] = json.dumps(change_log["changes"])
 
-	credentials_info = json.loads(firebase_settings.get_password("credentials"))
-
 	# Send notification to topic
 	frappe.enqueue(
 		send_firebase_notification,
 		queue="default",
-		credentials_info=credentials_info,
 		project_id=firebase_settings.project_id,
 		topic=firebase_settings.firebase_topic,
 		change_log=change_log,
@@ -69,9 +66,15 @@ def create_firebase_notification(doc, event):
 	)
 
 
-def send_firebase_notification(credentials_info, project_id, topic, change_log):
+def send_firebase_notification(project_id, topic, change_log):
 	try:
-		fcm = FirebaseNotification(credentials_info, project_id)
+		credentials = frappe.get_single("Firebase Settings").get_password(
+			"credentials", raise_exception=False
+		)
+		if not credentials:
+			return
+
+		fcm = FirebaseNotification(json.loads(credentials), project_id)
 		fcm.send_to_topic(topic, change_log)
 	except Exception:
 		frappe.log_error(
