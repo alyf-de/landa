@@ -9,23 +9,6 @@ from frappe.model.document import Document
 
 
 class FirebaseSettings(Document):
-<<<<<<< HEAD
-=======
-	# begin: auto-generated types
-	# This code is auto-generated. Do not modify anything in this block.
-
-	from typing import TYPE_CHECKING
-
-	if TYPE_CHECKING:
-		from frappe.types import DF
-
-		credentials: DF.Password | None
-		enable_firebase_notifications: DF.Check
-		firebase_topic: DF.Data | None
-		project_id: DF.Data | None
-
-	# end: auto-generated types
->>>>>>> b56db2b (fix(Firebase Settings): store credentials in database instead of filesystem (#330) (#331))
 	def validate(self):
 		if self.enable_firebase_notifications and not self.project_id:
 			frappe.throw(
