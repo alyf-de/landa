@@ -59,7 +59,6 @@ def create_firebase_notification(doc, event):
 	frappe.enqueue(
 		send_firebase_notification,
 		queue="default",
-		file_path=firebase_settings.credentials_path,
 		project_id=firebase_settings.project_id,
 		topic=firebase_settings.firebase_topic,
 		change_log=change_log,
@@ -67,9 +66,15 @@ def create_firebase_notification(doc, event):
 	)
 
 
-def send_firebase_notification(file_path, project_id, topic, change_log):
+def send_firebase_notification(project_id, topic, change_log):
 	try:
-		fcm = FirebaseNotification(file_path, project_id)
+		credentials = frappe.get_single("Firebase Settings").get_password(
+			"credentials", raise_exception=False
+		)
+		if not credentials:
+			return
+
+		fcm = FirebaseNotification(json.loads(credentials), project_id)
 		fcm.send_to_topic(topic, change_log)
 	except Exception:
 		frappe.log_error(
