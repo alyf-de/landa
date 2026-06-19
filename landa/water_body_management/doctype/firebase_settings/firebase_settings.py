@@ -2,7 +2,6 @@
 # For license information, please see license.txt
 import json
 from io import BytesIO
-from pathlib import Path
 
 import frappe
 from frappe import _
@@ -24,17 +23,14 @@ class FirebaseSettings(Document):
 			)
 
 	@property
-	def credentials_path(self):
-		return get_crendentials_path()
-
-	@property
 	def has_credentials(self):
-		return self.credentials_path.exists()
+		return bool(self.get_password("credentials", raise_exception=False))
 
 
-@frappe.whitelist()
+@frappe.whitelist(methods=["POST"])
 def upload_api_file(*args, **kwargs):
-	frappe.has_permission("Firebase Settings", "write", throw=True)
+	doc = frappe.get_single("Firebase Settings")
+	doc.check_permission("write")
 
 	json_data = json.load(BytesIO(frappe.local.uploaded_file))
 	project_id = json_data.get("project_id")
@@ -44,12 +40,8 @@ def upload_api_file(*args, **kwargs):
 			title=_("Missing Project ID"),
 		)
 
-	credentials_path = get_crendentials_path()
-	credentials_path.parent.mkdir(exist_ok=True)
-	credentials_path.write_text(json.dumps(json_data, indent=1))
+	doc.project_id = project_id
+	doc.credentials = json.dumps(json_data)
+	doc.save()
 
 	return {"doctype": "File", "data": {"project_id": project_id}}
-
-
-def get_crendentials_path():
-	return Path(frappe.local.site_path) / "firebase" / "credentials.json"
