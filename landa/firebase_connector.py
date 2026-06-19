@@ -5,8 +5,8 @@ from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_ex
 
 
 class FirebaseNotification:
-	def __init__(self, cert, project_id):
-		self.cert = cert
+	def __init__(self, credentials_info: dict, project_id: str):
+		self.credentials_info = credentials_info
 		self.url = f"https://fcm.googleapis.com/v1/projects/{project_id}/messages:send"
 		self.token = self._get_access_token()
 
@@ -15,8 +15,8 @@ class FirebaseNotification:
 
 		:return: Access token.
 		"""
-		credentials = service_account.Credentials.from_service_account_file(
-			self.cert,
+		credentials = service_account.Credentials.from_service_account_info(
+			self.credentials_info,
 			scopes=[
 				"https://www.googleapis.com/auth/cloud-platform",
 				"https://www.googleapis.com/auth/firebase",

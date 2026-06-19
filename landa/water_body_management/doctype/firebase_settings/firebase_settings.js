@@ -14,16 +14,12 @@ frappe.ui.form.on("Firebase Settings", {
 				restrictions: {
 					allowed_file_types: [".json"],
 				},
-				on_success: function ({ data }) {
+				on_success: function () {
 					frappe.show_alert({
 						message: __("Firebase credentials uploaded successfully"),
 						indicator: "green",
 					});
-					frm.set_value("project_id", data.project_id);
-					if (frm.is_dirty()) {
-						// project id might be unchanged
-						frm.save();
-					}
+					frm.reload_doc();
 				},
 			});
 		});
