@@ -1,6 +1,17 @@
 // Copyright (c) 2021, Real Experts GmbH and contributors
 // For license information, please see license.txt
 
+frappe.ui.form.on("LANDA Event", {
+	date(frm) {
+		frm.doc.events.sort((a, b) => {
+			if (!a.date) return 1;
+			if (!b.date) return -1;
+			return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+		});
+		frm.refresh_field("events");
+	},
+});
+
 frappe.ui.form.on("Water Body", {
 	setup: function (frm) {
 		frm.fields_dict.location.point_to_layer = pointToLayer;

@@ -99,7 +99,7 @@
    "fieldname": "organization",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Regional Organization",
+   "label": "State or Regional Organization",
    "options": "Organization",
    "reqd": 1
   },
@@ -107,7 +107,7 @@
    "fetch_from": "organization.organization_name",
    "fieldname": "organization_name",
    "fieldtype": "Data",
-   "label": "Regional Organization Name",
+   "label": "Organization Name",
    "read_only": 1
   },
   {
@@ -210,7 +210,7 @@
    "link_fieldname": "supplier"
   }
  ],
- "modified": "2025-12-04 18:44:44.728194",
+ "modified": "2026-05-07 17:06:10.239342",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Contact",
