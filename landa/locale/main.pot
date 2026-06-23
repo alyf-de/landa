@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-05-07 17:07+0053\n"
-"PO-Revision-Date: 2026-05-07 17:07+0053\n"
+"POT-Creation-Date: 2026-05-07 17:24+0053\n"
+"PO-Revision-Date: 2026-05-07 17:24+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -1268,6 +1268,7 @@ msgstr ""
 #. Label of a Link field in DocType 'Member Function'
 #. Label of a Link field in DocType 'Yearly Fishing Permit'
 #. Label of a Link in the Organization Management Workspace
+#: landa/landa_sales/customer/customer.py:26
 #: landa/organization_management/doctype/landa_member/landa_member.json
 #: landa/organization_management/doctype/member_function/member_function.json
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.json
@@ -1470,6 +1471,10 @@ msgstr ""
 
 #: landa/organization_management/doctype/organization/organization.py:320
 msgid "No Company found for Organization {0}."
+msgstr ""
+
+#: landa/landa_sales/customer/customer.py:22
+msgid "No active member functions."
 msgstr ""
 
 #: landa/organization_management/doctype/member_function/member_function.py:84
@@ -1815,6 +1820,10 @@ msgstr ""
 #. Label of a shortcut in the Organization Management Workspace
 #: landa/organization_management/workspace/organization_management/organization_management.json
 msgid "Show Organization List"
+msgstr ""
+
+#: landa/landa_sales/customer/customer.py:27
+msgid "Since"
 msgstr ""
 
 #. Label of a Data field in DocType 'Fish Species'
