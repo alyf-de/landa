@@ -7,7 +7,10 @@ frappe.listview_settings["LANDA Member"] = {
 				.closest("li")
 				.remove();
 
-			if (frappe.model.can_delete(doctype) && !frappe.model.has_workflow(doctype)) {
+			if (
+				frappe.model.can_delete(list_view.doctype) &&
+				!frappe.model.has_workflow(list_view.doctype)
+			) {
 				// add our own delete button with password prompt
 				list_view.page.add_actions_menu_item(
 					__("Delete", null, "Button in list view actions menu"),
@@ -52,7 +55,7 @@ frappe.listview_settings["LANDA Member"] = {
 			}
 		}
 
-		if (frappe.model.can_write("LANDA Member")) {
+		if (frappe.model.can_write(list_view.doctype)) {
 			list_view.page.add_action_item(__("Clear Special Fishing Permits"), () => {
 				const members = list_view.get_checked_items(true);
 				frappe.confirm(
