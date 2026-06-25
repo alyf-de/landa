@@ -54,6 +54,4 @@ execute:from landa.install import sync_customizations; sync_customizations() # 1
 execute:from landa.install import ensure_default_link_records; ensure_default_link_records() # 1
 landa.patches.set_customer_group
 execute:from landa.install import make_custom_fields; make_custom_fields()
-execute:frappe.delete_doc_if_exists("Custom Field", "Customer-custom_active_member_functions")
-execute:frappe.delete_doc_if_exists("Custom Field", "Customer-custom_member_functions")
 
