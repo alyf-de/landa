@@ -18,6 +18,8 @@
   "address_html",
   "column_break_8",
   "contact_html",
+  "member_functions_section",
+  "member_functions",
   "section_break_23",
   "location",
   "column_break_25",
@@ -198,6 +200,16 @@
    "fieldtype": "Check",
    "label": "Disabled",
    "permlevel": 1
+  },
+  {
+   "fieldname": "member_functions_section",
+   "fieldtype": "Section Break",
+   "label": "Member Functions"
+  },
+  {
+   "fieldname": "member_functions",
+   "fieldtype": "HTML",
+   "label": "Member Functions"
   }
  ],
  "grid_page_length": 50,
@@ -249,7 +261,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2026-05-30 19:17:07.406605",
+ "modified": "2026-06-25 12:18:23.493255",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
