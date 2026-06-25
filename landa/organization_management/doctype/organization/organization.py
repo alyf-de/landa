@@ -11,7 +11,6 @@ from frappe.contacts.address_and_contact import (
 )
 from frappe.desk.treeview import make_tree_args
 from frappe.model.naming import make_autoname, revert_series_if_last
-from frappe.permissions import has_permission
 from frappe.utils.data import cint, get_link_to_form
 from frappe.utils.nestedset import NestedSet
 
