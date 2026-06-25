@@ -9,4 +9,10 @@ frappe.ui.form.on("Work Ledger Entry", {
 			};
 		});
 	},
+
+	refresh(frm) {
+		if (!frm.is_new() && frm.doc.work_assignment) {
+			frm.disable_form();
+		}
+	},
 });
