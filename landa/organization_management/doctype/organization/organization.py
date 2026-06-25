@@ -240,15 +240,19 @@ class Organization(NestedSet):
 
 def create_customer(organization_id: str, organization_name: str):
 	"""Create a Customer corresponding to this organization."""
-	# check permission here so we can ignore it later
-	customer = frappe.new_doc("Customer")
-	# Name (ID) of Customer is determined by customer_name on insert ...
-	customer.customer_name = organization_id
-	customer.organization = organization_id
-	customer.insert()
-	# ... so we can set the correct value only after insertion.
-	customer.customer_name = organization_name
-	customer.save()
+	if customer_id := frappe.db.exists("Customer", {"organization": organization_id}):
+		customer = frappe.get_doc("Customer", customer_id)
+	else:
+		customer = frappe.new_doc("Customer")
+		# Name (ID) of Customer is determined by customer_name on insert ...
+		customer.customer_name = organization_id
+		customer.organization = organization_id
+		customer.insert()
+
+	if customer.customer_name != organization_name:
+		# ... so we can set the correct value only after insertion.
+		customer.customer_name = organization_name
+		customer.save()
 
 
 def add_links(address_or_contact, organization: str):
