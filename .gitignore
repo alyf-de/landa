@@ -6,4 +6,4 @@ tags
 landa/docs/current
 build/
 dist/
-node_modules/
+node_modules

@@ -227,6 +227,19 @@ def get_custom_fields():
 				"depends_on": 'eval: frappe.user.has_role("Sales Master Manager")\n|| frappe.user.has_role("Sales User")\n|| doc.default_billing_contact\n|| doc.default_billing_address\n|| doc.default_shipping_contact\n|| doc.default_shipping_address',
 			},
 			{
+				"label": "Member Functions",
+				"fieldname": "custom_member_functions",
+				"insert_after": "contact_html",
+				"fieldtype": "Section Break",
+				"depends_on": "eval:doc.organization",
+			},
+			{
+				"label": "Active Member Functions",
+				"fieldname": "custom_active_member_functions",
+				"insert_after": "custom_member_functions",
+				"fieldtype": "HTML",
+			},
+			{
 				"label": "Buyer Reference",
 				"fieldname": "buyer_reference",
 				"insert_after": "language",

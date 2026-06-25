@@ -138,8 +138,72 @@ class Address:
 		data = data.fillna("")
 		# convert data back to tuple
 		data = data.reset_index()
-		data = tuple(data.itertuples(index=False, name=None))
-		return data
+		member_rows = list(data.itertuples(index=False, name=None))
+
+		ec_filters = {"is_magazine_recipient": 1}
+		for key in ["first_name", "last_name"]:
+			if key in self.filter_name:
+				ec_filters[key] = self.filter_name[key]
+		if "organization" in self.filter_member:
+			ec_filters["organization"] = self.filter_member["organization"]
+
+		external_contacts = frappe.get_list(
+			"External Contact",
+			filters=ec_filters,
+			fields=["name", "first_name", "last_name", "organization"],
+			as_list=True,
+		)
+
+		external_contact_rows = []
+		if external_contacts:
+			ec_ids = [ec[0] for ec in external_contacts]
+			addresses = frappe.get_list(
+				"Address",
+				filters=[
+					["Dynamic Link", "link_doctype", "=", "External Contact"],
+					["Dynamic Link", "link_name", "in", ec_ids],
+					["disabled", "=", 0],
+				],
+				fields=[
+					"address_line1",
+					"pincode",
+					"city",
+					"country",
+					"`tabDynamic Link`.link_name as ec_name",
+				],
+				as_list=True,
+			)
+			address_map = {}
+			for address_line1, pincode, city, country, ec_name in addresses:
+				if ec_name not in address_map:
+					address_map[ec_name] = (address_line1, pincode, city, country)
+
+			for ec_name, first_name, last_name, organization in external_contacts:
+				address_line1, pincode, city, country = address_map.get(ec_name, ("", "", "", ""))
+				full_address = f"{address_line1}, {pincode} {city}" if address_line1 else ""
+				if country and country != "Germany":
+					full_address = f"{full_address}, {country}"
+
+				external_contact_rows.append(
+					(
+						"",
+						first_name,
+						last_name,
+						organization,
+						_("External Contact"),
+						1,
+						"",
+						0,
+						address_line1,
+						pincode,
+						city,
+						"" if country == "Germany" else (country or ""),
+						full_address,
+						1,
+					)
+				)
+
+		return member_rows + external_contact_rows
 
 	def get_columns(self):
 		return [

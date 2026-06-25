@@ -2,7 +2,6 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "beta": 1,
  "creation": "2021-02-18 17:40:08.627933",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -268,7 +267,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2026-05-06 10:05:34.112085",
+ "modified": "2026-05-30 19:17:07.406605",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
