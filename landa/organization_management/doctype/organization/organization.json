@@ -83,6 +83,7 @@
    "options": "Organization"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "parent_organization",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
@@ -249,7 +250,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2026-05-30 19:17:07.406605",
+ "modified": "2026-06-25 16:20:07.802703",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
