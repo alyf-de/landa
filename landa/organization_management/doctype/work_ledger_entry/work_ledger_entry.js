@@ -11,7 +11,7 @@ frappe.ui.form.on("Work Ledger Entry", {
 	},
 
 	refresh(frm) {
-		if (!frm.is_new() && frm.doc.work_assignment) {
+		if (!frm.is_new() && (frm.doc.work_assignment || frm.doc.is_system_generated)) {
 			frm.disable_form();
 		}
 	},
