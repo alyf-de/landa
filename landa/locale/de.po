@@ -7,7 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2026-05-07 17:24+0053\n"
+=======
+"POT-Creation-Date: 2026-07-02 10:51+0053\n"
+>>>>>>> 35745c7 (feat: update translations)
 "PO-Revision-Date: 2025-11-29 18:55+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
@@ -1557,6 +1561,11 @@ msgstr "Neue Mitgliedsfunktion anlegen"
 msgid "New Stocking Measure Import"
 msgstr "Neuer Besatzmaßnahmenimport"
 
+#. Label of a shortcut in the Organization Management Workspace
+#: landa/organization_management/workspace/organization_management/organization_management.json
+msgid "New Work Assignment"
+msgstr "Neuer Arbeitseinsatz"
+
 #: landa/organization_management/doctype/organization/organization.py:335
 msgid "No Company found for Organization {0}."
 msgstr "Kein Bestellwesenkonto RV für Verein {0} gefunden."
@@ -1592,7 +1601,11 @@ msgstr "Vereinsverwaltung"
 
 #: landa/organization_management/report/current_member_data/current_member_data.py:23
 msgid "Organization is required"
+<<<<<<< HEAD
 msgstr "Verein muss ausgewählt werden"
+=======
+msgstr ""
+>>>>>>> 35745c7 (feat: update translations)
 
 #. Label of a Select field in DocType 'Catch Log Entry'
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json
@@ -1645,14 +1658,15 @@ msgstr "Lebenslange Gültigkeit des Fischereischeins"
 msgid "Permit Issue Date"
 msgstr "Ausgabedatum Fischereischein"
 
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:115
+msgid "Permits have been created for {0} members and skipped for {1} members."
+msgstr ""
+
 #. Label of a Float field in DocType 'Work Assignment'
 #: landa/organization_management/doctype/work_assignment/work_assignment.json
 #: landa/organization_management/report/work_hours/work_hours.py:51
 msgid "Planned Duration (Hours)"
 msgstr "Geplante Dauer (Stunden)"
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:115
-msgid "Permits have been created for {0} members and skipped for {1} members."
-msgstr ""
 
 #. Label of a Check field in DocType 'Catch Log Fish Table'
 #: landa/water_body_management/doctype/catch_log_fish_table/catch_log_fish_table.json
@@ -1915,9 +1929,16 @@ msgstr "Nur aktuelle Zeitschriftenempfänger anzeigen"
 msgid "Show Organization List"
 msgstr "Vereins- und Verbandsliste anzeigen"
 
+<<<<<<< HEAD
 #: landa/landa_sales/customer/customer.py:27
 msgid "Since"
 msgstr "Seit"
+=======
+#. Label of a shortcut in the Organization Management Workspace
+#: landa/organization_management/workspace/organization_management/organization_management.json
+msgid "Show Work Assignment List"
+msgstr "Arbeitseinsätze anzeigen"
+>>>>>>> 35745c7 (feat: update translations)
 
 #. Label of a Data field in DocType 'Fish Species'
 #: landa/water_body_management/doctype/fish_species/fish_species.json
@@ -2400,9 +2421,11 @@ msgstr "Gewicht pro Gewässer Fläche/Länge"
 msgid "Wikipedia Link"
 msgstr ""
 
+#. Linked DocType in Organization's connections
 #. Name of a DocType
 #. Label of a Link field in DocType 'Work Ledger Entry'
 #: landa/organization_management/doctype/landa_member/landa_member.js:77
+#: landa/organization_management/doctype/organization/organization.json
 #: landa/organization_management/doctype/work_assignment/work_assignment.json
 #: landa/organization_management/doctype/work_ledger_entry/work_ledger_entry.json
 msgid "Work Assignment"
@@ -2425,11 +2448,6 @@ msgstr "Arbeitsstunden"
 msgid "Work Hours Account"
 msgstr "Arbeitsstundenkonto"
 
-#. Label of a Link in the Organization Management Workspace
-#: landa/organization_management/workspace/organization_management/organization_management.json
-msgid "Work Hours Per Member and Year"
-msgstr "Arbeitsstunden pro Mitglied und Jahr"
-
 #. Name of a report
 #. Label of a Link in the Organization Management Workspace
 #: landa/organization_management/report/work_ledger_balance/work_ledger_balance.json
@@ -2437,10 +2455,8 @@ msgstr "Arbeitsstunden pro Mitglied und Jahr"
 msgid "Work Ledger Balance"
 msgstr "Arbeitszeit je Verein und Jahr"
 
-#. Linked DocType in Organization's connections
 #. Linked DocType in Work Assignment's connections
 #. Name of a DocType
-#: landa/organization_management/doctype/organization/organization.json
 #: landa/organization_management/doctype/work_assignment/work_assignment.json
 #: landa/organization_management/doctype/work_ledger_entry/work_ledger_entry.json
 msgid "Work Ledger Entry"
@@ -2567,6 +2583,11 @@ msgstr ""
 #: landa/water_body_management/doctype/water_body/water_body.json
 msgid "ha"
 msgstr ""
+
+#. Label of a Check field in DocType 'Work Ledger Entry'
+#: landa/organization_management/doctype/work_ledger_entry/work_ledger_entry.json
+msgid "is system generated"
+msgstr "Systemgeneriert"
 
 #. Option for the 'Water Body Size Unit' (Select) field in DocType 'Water Body'
 #: landa/water_body_management/doctype/water_body/water_body.json
