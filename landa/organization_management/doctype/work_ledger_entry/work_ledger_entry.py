@@ -18,6 +18,7 @@ class WorkLedgerEntry(Document):
 
 		date: DF.Date
 		hours_change: DF.Float
+		is_system_generated: DF.Check
 		member: DF.Link
 		member_name: DF.Data | None
 		organization: DF.Link
@@ -29,30 +30,39 @@ class WorkLedgerEntry(Document):
 def create_yearly_negative_entries():
 	"""Create negative Work Ledger Entries for all members based on expected work hours per year."""
 
-	organizations = frappe.get_list(
-		"Organization",
-		filters={"expected_work_hours_per_year": [">", 0]},
-		fields=["name", "expected_work_hours_per_year"],
+	entry_date = f"{now_datetime().year}-01-11"
+	org = frappe.qb.DocType("Organization")
+	member = frappe.qb.DocType("LANDA Member")
+	ledger_entry = frappe.qb.DocType("Work Ledger Entry")
+
+	query = (
+		frappe.qb.from_(org)
+		.join(member)
+		.on(member.organization == org.name)
+		.left_join(ledger_entry)
+		.on(
+			(ledger_entry.member == member.name)
+			& (ledger_entry.organization == org.name)
+			& (ledger_entry.date == entry_date)
+			& (ledger_entry.work_assignment == "")
+		)
+		.select(
+			member.name.as_("member"),
+			org.name.as_("organization"),
+			org.expected_work_hours_per_year,
+		)
+		.where(org.expected_work_hours_per_year > 0)
+		.where(ledger_entry.name.isnull())
 	)
 
-	if not organizations:
-		return
-
-	# Get all active members for each organization
-	for org in organizations:
-		members = frappe.get_list(
-			"LANDA Member",
-			filters={"organization": org.name},
-			fields=["name"],
-		)
-
-		for member in members:
-			ledger_entry = frappe.new_doc("Work Ledger Entry")
-			ledger_entry.member = member.name
-			ledger_entry.organization = org.name
-			ledger_entry.date = f"{now_datetime().year}-01-01"
-			ledger_entry.hours_change = -org.expected_work_hours_per_year
-			ledger_entry.insert()
+	for row in query.run(as_dict=True):
+		entry = frappe.new_doc("Work Ledger Entry")
+		entry.member = row.member
+		entry.organization = row.organization
+		entry.date = entry_date
+		entry.hours_change = -row.expected_work_hours_per_year
+		entry.is_system_generated = 1
+		entry.insert(ignore_permissions=True)
 
 
 def create_expected_hours_adjustment_entries(organization: str, hours_change: float):
@@ -75,4 +85,5 @@ def create_expected_hours_adjustment_entries(organization: str, hours_change: fl
 		entry.member = m.name
 		entry.date = getdate()
 		entry.hours_change = hours_change
+		entry.is_system_generated = 1
 		entry.insert()
