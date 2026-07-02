@@ -51,6 +51,7 @@ frappe.ui.form.on("Organization", {
 			frappe.contacts.clear_address_and_contact(frm);
 		} else {
 			frappe.contacts.render_address_and_contact(frm);
+			frm.trigger("render_member_functions");
 		}
 
 		if (frappe.user.has_role("System Manager") && !frm.is_dirty()) {
@@ -175,6 +176,15 @@ frappe.ui.form.on("Organization", {
 		frappe.model.open_mapped_doc({
 			method: "landa.organization_management.doctype.organization.organization.make_payment_entry",
 			frm: frm,
+		});
+	},
+	render_member_functions: function (frm) {
+		frappe.call({
+			method: "landa.landa_sales.customer.customer.get_member_functions_html",
+			args: { organization: frm.doc.name },
+			callback: (r) => {
+				$(frm.fields_dict.member_functions.wrapper).html(r.message);
+			},
 		});
 	},
 });

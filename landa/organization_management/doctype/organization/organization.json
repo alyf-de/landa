@@ -18,6 +18,8 @@
   "address_html",
   "column_break_8",
   "contact_html",
+  "member_functions_section",
+  "member_functions",
   "section_break_23",
   "location",
   "column_break_25",
@@ -85,6 +87,7 @@
    "options": "Organization"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "parent_organization",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
@@ -202,6 +205,7 @@
    "permlevel": 1
   },
   {
+<<<<<<< lan-885
    "fieldname": "section_break_work_hours",
    "fieldtype": "Section Break",
    "label": "Work Hours Account"
@@ -211,6 +215,16 @@
    "fieldtype": "Float",
    "label": "Expected Work Hours per Year",
    "non_negative": 1
+=======
+   "fieldname": "member_functions_section",
+   "fieldtype": "Section Break",
+   "label": "Member Functions"
+  },
+  {
+   "fieldname": "member_functions",
+   "fieldtype": "HTML",
+   "label": "Member Functions"
+>>>>>>> version-15-hotfix
   }
  ],
  "grid_page_length": 50,
@@ -267,7 +281,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2026-05-30 19:17:07.406605",
+ "modified": "2026-06-25 16:20:07.802703",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",

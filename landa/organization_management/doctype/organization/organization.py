@@ -11,8 +11,12 @@ from frappe.contacts.address_and_contact import (
 )
 from frappe.desk.treeview import make_tree_args
 from frappe.model.naming import make_autoname, revert_series_if_last
+<<<<<<< lan-885
 from frappe.permissions import has_permission
 from frappe.utils.data import cint, flt, get_link_to_form
+=======
+from frappe.utils.data import cint, get_link_to_form
+>>>>>>> version-15-hotfix
 from frappe.utils.nestedset import NestedSet
 
 from landa.organization_management.doctype.landa_member.landa_member import get_address_or_contact
@@ -79,7 +83,15 @@ class Organization(NestedSet):
 			self.create_company()
 		elif self.is_level(2):
 			# Local Organizations
-			self.create_customer()
+
+			# Enqueue so that organization already exists when the customer is
+			# created and permissions check works.
+			frappe.enqueue(
+				create_customer,
+				enqueue_after_commit=True,
+				organization_id=self.name,
+				organization_name=self.organization_name,
+			)
 
 		# Clear user permissions cache, so users can work with the new
 		# Organization right away. If we don't do this, users will get a
@@ -147,20 +159,6 @@ class Organization(NestedSet):
 		else:
 			return frappe.get_doc(self.doctype, self.parent_organization).is_level(n - 1)
 
-	def create_customer(self):
-		"""Create a Customer corresponding to this organization."""
-		# check permission here so we can ignore it later
-		self.check_permission_on_parent("create")
-
-		customer = frappe.new_doc("Customer")
-		# Name (ID) of Customer is determined by customer_name on insert ...
-		customer.customer_name = self.name
-		customer.organization = self.name
-		customer.insert(ignore_permissions=True)
-		# ... so we can set the correct value only after insertion.
-		customer.customer_name = self.organization_name
-		customer.save(ignore_permissions=True)
-
 	def create_company(self):
 		def create_bank_account(bank_account, account_number, company_name):
 			bank_account_group = frappe.db.get_value(
@@ -225,17 +223,6 @@ class Organization(NestedSet):
 			frappe.get_value("Company", company.name, "default_cash_account"),
 		)
 
-	def check_permission_on_parent(self, ptype):
-		"""Check if current user has `ptype` permission on parent Organization.
-
-		User Permission check against this DocType will fail during initial creation.
-		Therefore we check if we have permission on the parent doctype and can safely
-		ignore permissions afterwards.
-		"""
-		parent_organization = frappe.get_doc("Organization", self.parent_organization)
-		if not has_permission("Organization", ptype=ptype, doc=parent_organization):
-			frappe.throw(_("Not permitted"), frappe.PermissionError)
-
 	@frappe.whitelist()
 	def link_contact(self, landa_member: str, is_default_billing: int = 0, is_default_shipping: int = 0):
 		self.has_permission("write")
@@ -267,6 +254,23 @@ class Organization(NestedSet):
 			customer.default_shipping_contact = contact.name
 			customer.default_shipping_address = address.name
 
+		customer.save()
+
+
+def create_customer(organization_id: str, organization_name: str):
+	"""Create a Customer corresponding to this organization."""
+	if customer_id := frappe.db.exists("Customer", {"organization": organization_id}):
+		customer = frappe.get_doc("Customer", customer_id)
+	else:
+		customer = frappe.new_doc("Customer")
+		# Name (ID) of Customer is determined by customer_name on insert ...
+		customer.customer_name = organization_id
+		customer.organization = organization_id
+		customer.insert()
+
+	if customer.customer_name != organization_name:
+		# ... so we can set the correct value only after insertion.
+		customer.customer_name = organization_name
 		customer.save()
 
 
@@ -310,9 +314,7 @@ def add_node():
 	if args.parent_organization == "All Organizations":
 		args.parent_organization = None
 
-	doc = frappe.get_doc(args)
-	doc.check_permission_on_parent("create")
-	doc.insert(ignore_permissions=True)
+	frappe.get_doc(args).insert()
 
 
 def get_supported_water_bodies(organization: str) -> list[str]:
