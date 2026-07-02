@@ -30,7 +30,7 @@ class WorkLedgerEntry(Document):
 def create_yearly_negative_entries():
 	"""Create negative Work Ledger Entries for all members based on expected work hours per year."""
 
-	entry_date = f"{now_datetime().year}-01-11"
+	entry_date = f"{now_datetime().year}-01-01"
 	org = frappe.qb.DocType("Organization")
 	member = frappe.qb.DocType("LANDA Member")
 	ledger_entry = frappe.qb.DocType("Work Ledger Entry")
@@ -44,7 +44,7 @@ def create_yearly_negative_entries():
 			(ledger_entry.member == member.name)
 			& (ledger_entry.organization == org.name)
 			& (ledger_entry.date == entry_date)
-			& (ledger_entry.work_assignment == "")
+			& (ledger_entry.is_system_generated == 1)
 		)
 		.select(
 			member.name.as_("member"),
