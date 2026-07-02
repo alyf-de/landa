@@ -11,12 +11,8 @@ from frappe.contacts.address_and_contact import (
 )
 from frappe.desk.treeview import make_tree_args
 from frappe.model.naming import make_autoname, revert_series_if_last
-<<<<<<< lan-885
 from frappe.permissions import has_permission
 from frappe.utils.data import cint, flt, get_link_to_form
-=======
-from frappe.utils.data import cint, get_link_to_form
->>>>>>> version-15-hotfix
 from frappe.utils.nestedset import NestedSet
 
 from landa.organization_management.doctype.landa_member.landa_member import get_address_or_contact

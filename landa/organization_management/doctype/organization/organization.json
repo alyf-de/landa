@@ -205,7 +205,16 @@
    "permlevel": 1
   },
   {
-<<<<<<< lan-885
+   "fieldname": "member_functions_section",
+   "fieldtype": "Section Break",
+   "label": "Member Functions"
+  },
+  {
+   "fieldname": "member_functions",
+   "fieldtype": "HTML",
+   "label": "Member Functions"
+  },
+  {
    "fieldname": "section_break_work_hours",
    "fieldtype": "Section Break",
    "label": "Work Hours Account"
@@ -215,16 +224,6 @@
    "fieldtype": "Float",
    "label": "Expected Work Hours per Year",
    "non_negative": 1
-=======
-   "fieldname": "member_functions_section",
-   "fieldtype": "Section Break",
-   "label": "Member Functions"
-  },
-  {
-   "fieldname": "member_functions",
-   "fieldtype": "HTML",
-   "label": "Member Functions"
->>>>>>> version-15-hotfix
   }
  ],
  "grid_page_length": 50,
