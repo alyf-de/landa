@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
 from frappe.model.document import Document
 
 
@@ -30,6 +31,10 @@ class WorkAssignment(Document):
 		water_body: DF.Link | None
 		water_body_title: DF.Data | None
 	# end: auto-generated types
+
+	def validate(self):
+		if not self.members:
+			frappe.throw(_("At least one member is required to submit a Work Assignment."))
 
 	def on_submit(self):
 		self.create_work_ledger_entry()
