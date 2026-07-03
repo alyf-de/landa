@@ -101,7 +101,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-02 10:23:07.805775",
+ "modified": "2026-07-03 10:10:49.584406",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Work Ledger Entry",
@@ -149,6 +149,18 @@
    "read": 1,
    "report": 1,
    "role": "LANDA Local Organization Management",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Local Water Body Management",
+   "share": 1,
    "write": 1
   }
  ],
