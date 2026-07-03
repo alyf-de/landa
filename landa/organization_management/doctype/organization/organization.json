@@ -30,6 +30,8 @@
   "section_break_15",
   "is_group",
   "disabled",
+  "section_break_work_hours",
+  "expected_work_hours_per_year",
   "lft",
   "rgt",
   "old_parent",
@@ -211,6 +213,17 @@
    "fieldname": "member_functions",
    "fieldtype": "HTML",
    "label": "Member Functions"
+  },
+  {
+   "fieldname": "section_break_work_hours",
+   "fieldtype": "Section Break",
+   "label": "Work Hours Account"
+  },
+  {
+   "fieldname": "expected_work_hours_per_year",
+   "fieldtype": "Float",
+   "label": "Expected Work Hours per Year",
+   "non_negative": 1
   }
  ],
  "grid_page_length": 50,
@@ -259,6 +272,11 @@
   {
    "group": "Gew\u00e4sserverwaltung",
    "link_doctype": "Water Body Management Local Organization",
+   "link_fieldname": "organization"
+  },
+  {
+   "group": "Vereinsverwaltung",
+   "link_doctype": "Work Assignment",
    "link_fieldname": "organization"
   }
  ],

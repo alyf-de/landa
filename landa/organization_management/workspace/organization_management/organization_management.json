@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"1uTyrJlebP\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Schnellzugriff</span>\",\"col\":12}},{\"id\":\"vSObTmx5FJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Neues Mitglied anlegen\",\"col\":4}},{\"id\":\"kIubCGyGa6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Address List\",\"col\":4}},{\"id\":\"hxillFj4xC\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Contact List\",\"col\":4}},{\"id\":\"TdmgLajXcz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Birthday List\",\"col\":4}},{\"id\":\"pyW2rRoxN5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Award Entry\",\"col\":4}},{\"id\":\"LhkZgoe7J6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Member Function Entry\",\"col\":4}},{\"id\":\"M6BGPcbTdL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Show Organization List\",\"col\":4}},{\"id\":\"4XErd7BVw_\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"RgNOYMq0fd\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Berichte &amp; Stammdaten</span>\",\"col\":12}},{\"id\":\"Vs8PWZl7sT\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"T-qvfB98nf\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"ce1489-Jj0\",\"type\":\"card\",\"data\":{\"card_name\":\"Imports\",\"col\":4}},{\"id\":\"KN8t-FsoLs\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}}]",
+ "content": "[{\"id\":\"1uTyrJlebP\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Schnellzugriff</span>\",\"col\":12}},{\"id\":\"vSObTmx5FJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Neues Mitglied anlegen\",\"col\":4}},{\"id\":\"kIubCGyGa6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Address List\",\"col\":4}},{\"id\":\"hxillFj4xC\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Contact List\",\"col\":4}},{\"id\":\"TdmgLajXcz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Birthday List\",\"col\":4}},{\"id\":\"pyW2rRoxN5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Award Entry\",\"col\":4}},{\"id\":\"LhkZgoe7J6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Member Function Entry\",\"col\":4}},{\"id\":\"M6BGPcbTdL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Show Organization List\",\"col\":4}},{\"id\":\"js1RQK6MeL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Work Assignment\",\"col\":4}},{\"id\":\"rCLi2ifrHP\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Show Work Assignment List\",\"col\":4}},{\"id\":\"4XErd7BVw_\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"RgNOYMq0fd\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Berichte &amp; Stammdaten</span>\",\"col\":12}},{\"id\":\"Vs8PWZl7sT\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"T-qvfB98nf\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"ce1489-Jj0\",\"type\":\"card\",\"data\":{\"card_name\":\"Imports\",\"col\":4}},{\"id\":\"KN8t-FsoLs\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}}]",
  "creation": "2021-04-19 18:01:23.947644",
  "custom_blocks": [],
  "docstatus": 0,
@@ -213,6 +213,7 @@
    "link_to": "Yearly Fishing Permits Issued",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Yearly Fishing Permit",
    "type": "Link"
   },
   {
@@ -223,6 +224,28 @@
    "link_to": "External Contacts Addresses and Contacts",
    "link_type": "Report",
    "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Work Hours",
+   "link_count": 0,
+   "link_to": "Work Hours",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Work Assignment",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Work Ledger Balance",
+   "link_count": 0,
+   "link_to": "Work Ledger Balance",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Work Ledger Entry",
    "type": "Link"
   },
   {
@@ -285,7 +308,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-07-11 14:59:31.302312",
+ "modified": "2026-05-05 16:36:15.445843",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
@@ -305,21 +328,40 @@
    "type": "DocType"
   },
   {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "New Work Assignment",
+   "link_to": "Work Assignment",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
    "doc_view": "",
    "label": "Member Address List",
    "link_to": "Member Address List",
+   "report_ref_doctype": "LANDA Member",
    "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Show Work Assignment List",
+   "link_to": "Work Assignment",
+   "stats_filter": "[]",
+   "type": "DocType"
   },
   {
    "doc_view": "",
    "label": "Member Contact List",
    "link_to": "Member Contact List",
+   "report_ref_doctype": "LANDA Member",
    "type": "Report"
   },
   {
    "doc_view": "",
    "label": "Member Birthday List",
    "link_to": "Member Birthday List",
+   "report_ref_doctype": "LANDA Member",
    "type": "Report"
   },
   {

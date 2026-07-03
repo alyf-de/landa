@@ -340,6 +340,9 @@ scheduler_events = {
 		"0 0 1 10 *": [  # every 1st october at 00:00
 			"landa.water_body_management.doctype.stocking_target.stocking_target.copy_to_next_year",
 		],
+		"0 0 1 1 *": [  # every 1st january at 00:00
+			"landa.organization_management.doctype.work_ledger_entry.work_ledger_entry.create_yearly_negative_entries",
+		],
 	},
 	# "all": ["landa.tasks.all"],
 	# 	, "hourly": [
