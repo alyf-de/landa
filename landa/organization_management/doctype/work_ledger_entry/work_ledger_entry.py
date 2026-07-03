@@ -95,4 +95,4 @@ def create_expected_hours_adjustment_entries(organization: str, hours_change: fl
 		entry.date = getdate()
 		entry.hours_change = hours_change
 		entry.is_system_generated = 1
-		entry.insert()
+		entry.insert(ignore_permissions=True)
