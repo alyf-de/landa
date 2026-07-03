@@ -86,7 +86,7 @@ def get_data(filters):
 	entries = frappe.get_list(
 		"Work Ledger Entry",
 		filters=ledger_filters,
-		fields=["date", "member", "member_name", "work_assignment", "hours_change"],
+		fields=["date", "member", "member_name", "work_assignment", "hours_change", "is_system_generated"],
 		order_by="date desc",
 	)
 
@@ -116,9 +116,7 @@ def get_data(filters):
 				"duration": row.get("hours_change"),
 				"water_body": assignment.get("water_body"),
 				"location": assignment.get("location"),
-				"description": _("Expected work hours adjustment")
-				if not row.get("work_assignment")
-				else assignment.get("description"),
+				"description": _get_entry_description(row, assignment),
 			}
 		)
 
@@ -152,3 +150,11 @@ def _get_ledger_filters(filters):
 		ledger_filters["work_assignment"] = ("in", assignment_names)
 
 	return ledger_filters
+
+
+def _get_entry_description(row, assignment):
+	if row.get("work_assignment"):
+		return assignment.get("description")
+	if row.get("is_system_generated"):
+		return _("Expected work hours adjustment")
+	return _("Manual adjustment")

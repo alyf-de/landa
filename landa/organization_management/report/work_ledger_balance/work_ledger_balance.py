@@ -66,7 +66,7 @@ def get_data(filters):
 	entries = frappe.get_list(
 		"Work Ledger Entry",
 		filters=base_filters,
-		fields=["member", "member_name", "date", "hours_change", "work_assignment"],
+		fields=["member", "member_name", "date", "hours_change", "is_system_generated"],
 	)
 	if not entries:
 		return []
@@ -80,7 +80,7 @@ def get_data(filters):
 			{
 				"date": row["date"],
 				"hours_change": float(row.get("hours_change") or 0),
-				"work_assignment": row.get("work_assignment"),
+				"is_system_generated": row.get("is_system_generated"),
 			}
 		)
 
@@ -92,12 +92,9 @@ def get_data(filters):
 		in_year = [
 			row for row in data["rows"] if row["date"] is not None and year_start <= row["date"] <= year_end
 		]
-		expected_this_year = -1 * sum(
-			row.get("hours_change") for row in in_year if row.get("work_assignment") is None
-		)
-		worked_this_year = sum(
-			row.get("hours_change") for row in in_year if row.get("work_assignment") is not None
-		)
+		obligation = sum(row["hours_change"] for row in in_year if row.get("is_system_generated"))
+		worked_this_year = sum(row["hours_change"] for row in in_year if not row.get("is_system_generated"))
+		expected_this_year = -obligation
 		balance_end = balance_previous - expected_this_year + worked_this_year
 
 		result.append(
