@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-05-07 17:24+0053\n"
-"PO-Revision-Date: 2026-05-07 17:24+0053\n"
+"POT-Creation-Date: 2026-07-03 17:53+0053\n"
+"PO-Revision-Date: 2026-07-03 17:53+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -109,7 +109,7 @@ msgstr ""
 msgid "Allgemeines Angelgewässer"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:59
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:62
 msgid "Are you sure you want to clear all Special Yearly Fishing Permits for the {0} selected members?"
 msgstr ""
 
@@ -199,7 +199,7 @@ msgstr ""
 #. Label of a Link in the Order Management Workspace
 #: landa/landa_sales/report/billing_history/billing_history.json
 #: landa/landa_sales/workspace/order_management/order_management.json
-#: landa/organization_management/doctype/organization/organization.js:122
+#: landa/organization_management/doctype/organization/organization.js:123
 msgid "Billing History"
 msgstr ""
 
@@ -213,7 +213,7 @@ msgstr ""
 msgid "Blacklisted Fish Species Table"
 msgstr ""
 
-#: landa/water_body_management/doctype/water_body/water_body.py:91
+#: landa/water_body_management/doctype/water_body/water_body.py:103
 msgid "Blacklisted Fish Species {0} cannot also be a Main Fish Species."
 msgstr ""
 
@@ -225,7 +225,7 @@ msgstr ""
 msgid "Cannot be a member of organization {} because it is a group."
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.py:70
+#: landa/organization_management/doctype/organization/organization.py:69
 msgid "Cannot set Parent Organization to a local group."
 msgstr ""
 
@@ -270,7 +270,7 @@ msgstr ""
 msgid "Charitable until"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:56
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:59
 msgid "Clear Special Fishing Permits"
 msgstr ""
 
@@ -299,7 +299,7 @@ msgstr ""
 msgid "Create Stocking Targets"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:82
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:85
 msgid "Create Yearly Fishing Permit"
 msgstr ""
 
@@ -307,6 +307,11 @@ msgstr ""
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:98
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:116
 msgid "Creating Yearly Fishing Permits..."
+msgstr ""
+
+#. Label of a Password field in DocType 'Firebase Settings'
+#: landa/water_body_management/doctype/firebase_settings/firebase_settings.json
+msgid "Credentials"
 msgstr ""
 
 #. Option for the 'Payment Type' (Select) field in DocType 'Lease Contract'
@@ -368,7 +373,7 @@ msgstr ""
 msgid "Datenimport von (Excel-) Tabellen"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:46
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:49
 msgid "Delete {0} items permanently?"
 msgstr ""
 
@@ -466,7 +471,7 @@ msgstr ""
 msgid "Fangbucheintrag"
 msgstr ""
 
-#: landa/water_body_management/utils.py:77
+#: landa/water_body_management/utils.py:82
 msgid "Firebase Notification Error"
 msgstr ""
 
@@ -816,7 +821,7 @@ msgstr ""
 msgid "Incoming Payment"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:39
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:42
 msgid "Incorrect password"
 msgstr ""
 
@@ -846,7 +851,7 @@ msgid "Institution or Company Name"
 msgstr ""
 
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.py:67
-#: landa/water_body_management/doctype/water_body/water_body.py:94
+#: landa/water_body_management/doctype/water_body/water_body.py:106
 msgid "Invalid Species"
 msgstr ""
 
@@ -870,7 +875,7 @@ msgstr ""
 msgid "Is Decadal Birthday"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:82
+#: landa/organization_management/doctype/organization/organization.js:83
 msgid "Is Default Billing Contact"
 msgstr ""
 
@@ -879,7 +884,7 @@ msgstr ""
 msgid "Is Default Fish Species For Population"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:88
+#: landa/organization_management/doctype/organization/organization.js:89
 msgid "Is Default Shipping Contact"
 msgstr ""
 
@@ -1008,7 +1013,7 @@ msgstr ""
 #: landa/organization_management/doctype/landa_member/landa_member.json
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
 #: landa/organization_management/doctype/member_function/member_function.json
-#: landa/organization_management/doctype/organization/organization.js:68
+#: landa/organization_management/doctype/organization/organization.js:69
 #: landa/organization_management/doctype/organization/organization.json
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.json
 #: landa/organization_management/doctype/yearly_fishing_permit_type/yearly_fishing_permit_type.json
@@ -1191,11 +1196,11 @@ msgstr ""
 msgid "Lieferungen"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:63
+#: landa/organization_management/doctype/organization/organization.js:64
 msgid "Link Member as Contact"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:98
+#: landa/organization_management/doctype/organization/organization.js:99
 msgid "Linking Contact ..."
 msgstr ""
 
@@ -1268,7 +1273,7 @@ msgstr ""
 #. Label of a Link field in DocType 'Member Function'
 #. Label of a Link field in DocType 'Yearly Fishing Permit'
 #. Label of a Link in the Organization Management Workspace
-#: landa/landa_sales/customer/customer.py:26
+#: landa/landa_sales/customer/customer.py:27
 #: landa/organization_management/doctype/landa_member/landa_member.json
 #: landa/organization_management/doctype/member_function/member_function.json
 #: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.json
@@ -1367,6 +1372,12 @@ msgstr ""
 msgid "Member Function Info Text"
 msgstr ""
 
+#. Label of a Section Break field in DocType 'Organization'
+#. Label of a HTML field in DocType 'Organization'
+#: landa/organization_management/doctype/organization/organization.json
+msgid "Member Functions"
+msgstr ""
+
 #. Label of a Data field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
 #: landa/organization_management/report/current_member_data/current_member_data.py:153
@@ -1411,7 +1422,7 @@ msgid "Missing Credentials"
 msgstr ""
 
 #: landa/water_body_management/doctype/firebase_settings/firebase_settings.py:30
-#: landa/water_body_management/doctype/firebase_settings/firebase_settings.py:57
+#: landa/water_body_management/doctype/firebase_settings/firebase_settings.py:54
 msgid "Missing Project ID"
 msgstr ""
 
@@ -1420,7 +1431,7 @@ msgstr ""
 msgid "My Reports"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:152
+#: landa/organization_management/doctype/organization/organization.js:153
 msgid "Naming Series Updated"
 msgstr ""
 
@@ -1456,6 +1467,7 @@ msgstr ""
 
 #. Label of a shortcut in the Water Body Management Workspace
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.js:21
+#: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.js:27
 #: landa/water_body_management/workspace/water_body_management/water_body_management.json
 msgid "New Catch Log Entry"
 msgstr ""
@@ -1469,11 +1481,11 @@ msgstr ""
 msgid "New Stocking Measure Import"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.py:320
+#: landa/organization_management/doctype/organization/organization.py:317
 msgid "No Company found for Organization {0}."
 msgstr ""
 
-#: landa/landa_sales/customer/customer.py:22
+#: landa/landa_sales/customer/customer.py:23
 msgid "No active member functions."
 msgstr ""
 
@@ -1557,7 +1569,7 @@ msgstr ""
 msgid "Permit Issue Date"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:115
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:118
 msgid "Permits have been created for {0} members and skipped for {1} members."
 msgstr ""
 
@@ -1594,7 +1606,7 @@ msgstr ""
 msgid "Please set a Billing Contact before submitting the Sales Invoice."
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.py:62
+#: landa/organization_management/doctype/organization/organization.py:61
 msgid "Please set a Parent Organization."
 msgstr ""
 
@@ -1822,7 +1834,7 @@ msgstr ""
 msgid "Show Organization List"
 msgstr ""
 
-#: landa/landa_sales/customer/customer.py:27
+#: landa/landa_sales/customer/customer.py:28
 msgid "Since"
 msgstr ""
 
@@ -1838,7 +1850,7 @@ msgstr ""
 msgid "Special Yearly Fishing Permits"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member_list.js:71
+#: landa/organization_management/doctype/landa_member/landa_member_list.js:74
 msgid "Special Yearly Fishing Permits cleared."
 msgstr ""
 
@@ -1957,7 +1969,7 @@ msgstr ""
 msgid "Template for Member Data Import"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:107
+#: landa/organization_management/doctype/organization/organization.js:108
 msgid "The LANDA Member is now linked as a contact of this Organization and the related Customer"
 msgstr ""
 
@@ -1973,7 +1985,7 @@ msgstr ""
 msgid "The selected address does not belong to the selected LANDA Member"
 msgstr ""
 
-#: landa/water_body_management/doctype/firebase_settings/firebase_settings.py:56
+#: landa/water_body_management/doctype/firebase_settings/firebase_settings.py:53
 msgid "The uploaded file does not contain a project id."
 msgstr ""
 
@@ -1981,15 +1993,15 @@ msgstr ""
 msgid "The weight of {0} in row {1} diverges from the typical weight by more than 40 %"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.py:316
+#: landa/organization_management/doctype/organization/organization.py:313
 msgid "There is no Customer linked to {0}."
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.py:239
+#: landa/organization_management/doctype/organization/organization.py:221
 msgid "There is no single address linked to {0}."
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.py:231
+#: landa/organization_management/doctype/organization/organization.py:213
 msgid "There is no single contact linked to {0}."
 msgstr ""
 
@@ -2076,8 +2088,8 @@ msgstr ""
 msgid "Upcoming Birthday"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:57
-#: landa/organization_management/doctype/organization/organization.js:133
+#: landa/organization_management/doctype/organization/organization.js:58
+#: landa/organization_management/doctype/organization/organization.js:134
 msgid "Update Naming Series"
 msgstr ""
 
@@ -2184,6 +2196,10 @@ msgstr ""
 #: landa/water_body_management/doctype/water_body_management_local_organization/water_body_management_local_organization.json
 #: landa/water_body_management/workspace/water_body_management/water_body_management.json
 msgid "Water Body Management Local Organization"
+msgstr ""
+
+#: landa/water_body_management/doctype/water_body/water_body.js:76
+msgid "Water Body Management Local Organizations"
 msgstr ""
 
 #: landa/water_body_management/report/water_body_development/water_body_development.py:36
@@ -2373,7 +2389,7 @@ msgstr ""
 msgid "You are not a member of any organization."
 msgstr ""
 
-#: landa/water_body_management/doctype/water_body/water_body.py:82
+#: landa/water_body_management/doctype/water_body/water_body.py:94
 msgid "You can only edit a Water Body if it belongs to your regional Organization."
 msgstr ""
 
