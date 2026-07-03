@@ -47,7 +47,7 @@ frappe.ui.form.on("Water Body", {
 	render_water_body_management_local_organizations: function (frm) {
 		// Copying the HTML structure from frappe/frappe/public/js/frappe/form/grid.js here
 		// to make it look like the other grids.
-		const orgs = frm.doc.__onload.water_body_management_local_organizations;
+		const orgs = (frm.doc.__onload || {}).water_body_management_local_organizations || [];
 		const rows = orgs
 			.map(
 				(org) => `<div class="grid-row">
