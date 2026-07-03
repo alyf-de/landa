@@ -23,6 +23,7 @@ class WaterBodyManagementLocalOrganization(Document):
 
 		disabled: DF.Check
 		fishing_area: DF.Link | None
+		note: DF.SmallText | None
 		organization: DF.Link
 		organization_name: DF.Data | None
 		regional_organization: DF.Link | None
