@@ -39,6 +39,8 @@ frappe.ui.form.on("Organization", {
 		});
 	},
 	refresh: function (frm) {
+		frm._expected_work_hours_edited = false;
+
 		// Automatically add the backlink to Organization when a new Address or
 		// Contact is added.
 		frappe.dynamic_link = { doc: frm.doc, fieldname: "name", doctype: "Organization" };
@@ -126,6 +128,27 @@ frappe.ui.form.on("Organization", {
 				});
 			});
 		}
+	},
+	expected_work_hours_per_year(frm) {
+		frm._expected_work_hours_edited = true;
+	},
+	before_save(frm) {
+		if (!frm._expected_work_hours_edited) {
+			return;
+		}
+
+		return new Promise((resolve, reject) => {
+			frappe.confirm(
+				__(
+					"Changing Expected Work Hours per Year will create Work Ledger Entries for all members of this organization. Do you want to continue?",
+				),
+				() => resolve(),
+				() => {
+					frappe.validated = false;
+					reject();
+				},
+			);
+		});
 	},
 	update_naming_series: function (frm) {
 		frm.call("get_series_current").then((r) => {
