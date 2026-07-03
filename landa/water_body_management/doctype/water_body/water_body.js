@@ -41,6 +41,72 @@ frappe.ui.form.on("Water Body", {
 				},
 			};
 		});
+
+		frm.trigger("render_water_body_management_local_organizations");
+	},
+	render_water_body_management_local_organizations: function (frm) {
+		// Copying the HTML structure from frappe/frappe/public/js/frappe/form/grid.js here
+		// to make it look like the other grids.
+		const orgs = frm.doc.__onload.water_body_management_local_organizations;
+		const rows = orgs
+			.map(
+				(org) => `<div class="grid-row">
+				<div class="data-row row">
+					<div class="col grid-static-col col-xs-6" data-fieldname="organization" data-fieldtype="Link">
+						<div class="static-area ellipsis">
+							<a
+								href="${frappe.utils.escape_html(frappe.router.make_url(["organization", org.organization]))}"
+								target="_blank"
+							>
+								${frappe.utils.escape_html(org.organization_name)}
+							</a>
+						</div>
+					</div>
+					<div class="col grid-static-col col-xs-6" data-fieldname="note" data-fieldtype="Small Text">
+						<div class="static-area ellipsis">${frappe.utils.escape_html(org.note || "")}</div>
+					</div>
+				</div>
+			</div>`,
+			)
+			.join("");
+
+		frm.fields_dict.water_body_management_local_organizations.wrapper.innerHTML = `
+	<div class="grid-field">
+		<label class="control-label" for="water_body_management_local_organizations_grid">
+			${__("Water Body Management Local Organizations")}
+		</label>
+		<div class="form-grid-container" id="water_body_management_local_organizations_grid">
+			<div class="form-grid">
+				<div class="grid-heading-row">
+					<div class="grid-row">
+						<div class="data-row row">
+							<div class="col grid-static-col col-xs-6" data-fieldname="organization" data-fieldtype="Link">
+								<div class="static-area ellipsis">${__("Organization")}</div>
+							</div>
+							<div class="col grid-static-col col-xs-6" data-fieldname="note" data-fieldtype="Small Text">
+								<div class="static-area ellipsis">${__("Note")}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="grid-body">
+					<div class="rows">${rows}</div>
+					${
+						orgs.length
+							? ""
+							: `<div class="grid-empty text-center">
+								<img
+									src="/assets/frappe/images/ui-states/grid-empty-state.svg"
+									alt="Grid Empty State"
+									class="grid-empty-illustration"
+								>
+								${__("No Data")}
+							</div>`
+					}
+				</div>
+			</div>
+		</div>
+	</div>`;
 	},
 	location: function (frm) {
 		frm.trigger("update_draw");
