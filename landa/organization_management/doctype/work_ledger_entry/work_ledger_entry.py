@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
 from frappe.model.document import Document
 from frappe.utils import getdate
 from frappe.utils.data import now_datetime
@@ -25,6 +26,14 @@ class WorkLedgerEntry(Document):
 		organization_name: DF.Data | None
 		work_assignment: DF.Link | None
 	# end: auto-generated types
+
+	def validate(self):
+		if self.is_new():
+			return
+
+		before = self.get_doc_before_save()
+		if before.work_assignment or before.is_system_generated:
+			frappe.throw(_("This Work Ledger Entry cannot be modified."))
 
 
 def create_yearly_negative_entries():
