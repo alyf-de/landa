@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-07-03 18:00+0053\n"
+"POT-Creation-Date: 2026-07-04 19:42+0053\n"
 "PO-Revision-Date: 2025-11-29 18:55+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
@@ -1513,6 +1513,11 @@ msgstr "Mitglieder in der Gewässerbetreuung"
 msgid "Members with Member Functions"
 msgstr "Mitglieder mit Mitgliedsfunktion"
 
+#. Group in LANDA Member's connections
+#: landa/organization_management/doctype/landa_member/landa_member.json
+msgid "Membership"
+msgstr "Mitgliedschaft"
+
 #. Label of a Data field in DocType 'Fish Species'
 #: landa/water_body_management/doctype/fish_species/fish_species.json
 msgid "Minimum Size"
@@ -2444,10 +2449,12 @@ msgstr "Gewicht pro Gewässer Fläche/Länge"
 msgid "Wikipedia Link"
 msgstr ""
 
+#. Linked DocType in LANDA Member's connections
 #. Linked DocType in Organization's connections
 #. Name of a DocType
 #. Label of a Link field in DocType 'Work Ledger Entry'
-#: landa/organization_management/doctype/landa_member/landa_member.js:77
+#: landa/organization_management/doctype/landa_member/landa_member.js:81
+#: landa/organization_management/doctype/landa_member/landa_member.json
 #: landa/organization_management/doctype/organization/organization.json
 #: landa/organization_management/doctype/work_assignment/work_assignment.json
 #: landa/organization_management/doctype/work_ledger_entry/work_ledger_entry.json
