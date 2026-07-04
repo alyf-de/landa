@@ -33,6 +33,7 @@
   "disabled",
   "section_break_work_hours",
   "expected_work_hours_per_year",
+  "section_break_gbwo",
   "lft",
   "rgt",
   "old_parent"
@@ -215,15 +216,21 @@
    "label": "Member Functions"
   },
   {
+   "depends_on": "eval:!doc.is_group",
    "fieldname": "section_break_work_hours",
    "fieldtype": "Section Break",
    "label": "Work Hours Account"
   },
   {
+   "depends_on": "eval:!doc.is_group",
    "fieldname": "expected_work_hours_per_year",
    "fieldtype": "Float",
    "label": "Expected Work Hours per Year",
    "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_gbwo",
+   "fieldtype": "Section Break"
   }
  ],
  "grid_page_length": 50,
@@ -280,7 +287,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2026-07-04 20:08:26.336449",
+ "modified": "2026-07-04 20:15:06.962296",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
