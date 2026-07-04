@@ -298,23 +298,33 @@
  "grid_page_length": 50,
  "links": [
   {
-   "link_doctype": "Award",
-   "link_fieldname": "member"
+   "group": "Account",
+   "link_doctype": "User",
+   "link_fieldname": "landa_member"
   },
   {
+   "group": "Membership",
    "link_doctype": "Member Function",
    "link_fieldname": "member"
   },
   {
+   "group": "Membership",
+   "link_doctype": "Award",
+   "link_fieldname": "member"
+  },
+  {
+   "group": "Transactions",
    "link_doctype": "Yearly Fishing Permit",
    "link_fieldname": "member"
   },
   {
-   "link_doctype": "User",
-   "link_fieldname": "landa_member"
+   "group": "Transactions",
+   "link_doctype": "Work Assignment",
+   "link_fieldname": "member",
+   "table_fieldname": "members"
   }
  ],
- "modified": "2025-12-04 18:47:58.310365",
+ "modified": "2026-07-04 19:34:48.949464",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",

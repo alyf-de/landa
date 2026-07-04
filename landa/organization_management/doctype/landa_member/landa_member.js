@@ -67,9 +67,13 @@ frappe.ui.form.on("LANDA Member", {
 							return;
 						}
 
-						frm.add_custom_button(__("Create User"), function () {
-							frm.make_methods["User"]();
-						});
+						frm.add_custom_button(
+							__("User"),
+							function () {
+								frm.make_methods["User"]();
+							},
+							__("Create"),
+						);
 					});
 			});
 
