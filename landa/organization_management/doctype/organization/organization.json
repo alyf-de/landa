@@ -7,13 +7,14 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "organization_name",
   "short_code",
-  "section_break_3",
-  "fishing_area",
+  "organization_name",
   "register_number",
   "is_charitable",
   "charitable_until",
+  "section_break_3",
+  "fishing_area",
+  "parent_organization",
   "section_break_10",
   "address_html",
   "column_break_8",
@@ -34,8 +35,7 @@
   "expected_work_hours_per_year",
   "lft",
   "rgt",
-  "old_parent",
-  "parent_organization"
+  "old_parent"
  ],
  "fields": [
   {
@@ -49,10 +49,10 @@
   {
    "allow_in_quick_entry": 1,
    "depends_on": "is_group",
-   "fetch_if_empty": 1,
    "fieldname": "short_code",
    "fieldtype": "Data",
    "label": "Short Code",
+   "set_only_once": 1,
    "unique": 1
   },
   {
@@ -280,7 +280,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2026-06-25 16:20:07.802703",
+ "modified": "2026-07-04 20:08:26.336449",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",
