@@ -75,6 +75,8 @@
   {
    "fieldname": "year",
    "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Year",
    "reqd": 1
   }
@@ -82,7 +84,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-07 22:09:24.605644",
+ "modified": "2026-07-07 22:25:36.085785",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Supporting Membership",
