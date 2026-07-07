@@ -294,13 +294,11 @@ def create_yearly_fishing_permit(member: str, year: int, type: str, organization
 
 
 def create_supporting_membership(member: str, year: int, organization: str) -> None:
-	data = {"member": member, "year": year, "organization": organization}
-
-	if frappe.db.exists("Supporting Membership", data):
+	if frappe.db.exists("Supporting Membership", {"member": member, "year": year}):
 		return
 
 	supporting_membership = frappe.new_doc("Supporting Membership")
-	supporting_membership.update(data)
+	supporting_membership.update({"member": member, "year": year, "organization": organization})
 	supporting_membership.insert()
 
 
