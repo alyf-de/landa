@@ -15,8 +15,67 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Masters",
+   "label": "Imports",
    "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Data Import Tool",
+   "link_count": 0,
+   "link_to": "Data Import",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Template for Member Data Import",
+   "link_count": 0,
+   "link_to": "Current Member Data",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Setup",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "",
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Member Function Category",
+   "link_count": 0,
+   "link_to": "Member Function Category",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Yearly Fishing Permit Type",
+   "link_count": 0,
+   "link_to": "Yearly Fishing Permit Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Masters",
+   "link_count": 22,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -74,6 +133,16 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Supporting Membership",
+   "link_count": 0,
+   "link_to": "Supporting Membership",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Award",
    "link_count": 0,
    "link_to": "Award",
@@ -120,15 +189,6 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Reports",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -234,7 +294,6 @@
    "link_to": "Work Hours",
    "link_type": "Report",
    "onboard": 0,
-   "report_ref_doctype": "Work Assignment",
    "type": "Link"
   },
   {
@@ -245,32 +304,21 @@
    "link_to": "Work Ledger Balance",
    "link_type": "Report",
    "onboard": 0,
-   "report_ref_doctype": "Work Ledger Entry",
    "type": "Link"
   },
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Imports",
-   "link_count": 0,
+   "label": "Reports",
+   "link_count": 11,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Data Import Tool",
-   "link_count": 0,
-   "link_to": "Data Import",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
    "is_query_report": 1,
-   "label": "Template for Member Data Import",
+   "label": "Aktuelle Mitgliedsdaten",
    "link_count": 0,
    "link_to": "Current Member Data",
    "link_type": "Report",
@@ -278,37 +326,113 @@
    "type": "Link"
   },
   {
+   "dependencies": "LANDA Member",
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Setup",
+   "is_query_report": 1,
+   "label": "Adressliste Mitglieder",
    "link_count": 0,
-   "link_type": "DocType",
+   "link_to": "Member Address List",
+   "link_type": "Report",
    "onboard": 0,
-   "only_for": "",
-   "type": "Card Break"
+   "type": "Link"
   },
   {
+   "dependencies": "LANDA Member",
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Member Function Category",
+   "is_query_report": 1,
+   "label": "Kontaktliste Mitglieder",
    "link_count": 0,
-   "link_to": "Member Function Category",
-   "link_type": "DocType",
+   "link_to": "Member Contact List",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "LANDA Member",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Geburtstagsliste Mitglieder",
+   "link_count": 0,
+   "link_to": "Member Birthday List",
+   "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Yearly Fishing Permit Type",
+   "is_query_report": 1,
+   "label": "Mitglieder mit Mitgliedsfunktion",
    "link_count": 0,
-   "link_to": "Yearly Fishing Permit Type",
-   "link_type": "DocType",
+   "link_to": "Members with Member Functions",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Delivery Note",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Mitgliedszahlen",
+   "link_count": 0,
+   "link_to": "LANDA Member Count",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Fischer und Angler Adressverwaltung",
+   "link_count": 0,
+   "link_to": "Magazine Address List",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Yearly Fishing Permit",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Vergebene Erlaubnisscheine",
+   "link_count": 0,
+   "link_to": "Yearly Fishing Permits Issued",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Yearly Fishing Permit",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Kontakt- und Adressliste Externe Kontakte",
+   "link_count": 0,
+   "link_to": "External Contacts Addresses and Contacts",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Work Hours",
+   "link_count": 0,
+   "link_to": "Work Hours",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Work Ledger Balance",
+   "link_count": 0,
+   "link_to": "Work Ledger Balance",
+   "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2026-05-05 16:36:15.445843",
+ "modified": "2026-07-07 22:37:26.272398",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
