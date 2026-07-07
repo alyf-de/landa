@@ -7,6 +7,7 @@ from datetime import datetime
 import frappe
 from frappe import _
 from frappe.model.document import Document
+from frappe.utils.data import cint
 
 from landa.organization_management.membership_permit_validation import (
 	validate_no_active_yearly_fishing_permit,
@@ -32,6 +33,8 @@ class SupportingMembership(Document):
 	# end: auto-generated types
 
 	def before_validate(self):
+		if self.year:
+			self.year = cint(self.year)
 		self.status = self.get_status()
 
 	def validate(self):
@@ -87,12 +90,13 @@ def get_supporting_memberships_to_update():
 
 
 @frappe.whitelist()
-def bulk_create(year: str, members: str):
+def bulk_create(year: str | int, members: str):
 	parsed_members = json.loads(members)
+	year = cint(year)
 
 	assert isinstance(parsed_members, list), "Members must be a list"
 	assert all(isinstance(member, str) for member in parsed_members), "Members must be a list of strings"
-	assert isinstance(year, str), "Year must be a string"
+	assert isinstance(year, int), "Year must be an integer"
 
 	frappe.publish_progress(
 		percent=0,
