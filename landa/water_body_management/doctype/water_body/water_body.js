@@ -53,12 +53,10 @@ frappe.ui.form.on("Water Body", {
 				data: orgs,
 				columns: [
 					{
-						fieldname: "organization",
+						fieldname: "organization_name",
 						label: __("Organization"),
-						fieldtype: "Link",
+						fieldtype: "Data",
 						width: 6,
-						value: (org) => org.organization_name,
-						route: (org) => ["organization", org.organization],
 					},
 					{
 						fieldname: "note",
