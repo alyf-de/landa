@@ -53,9 +53,6 @@ class SupportingMembership(Document):
 		if self.member and self.status == "Active":
 			validate_no_active_yearly_fishing_permit(self.member, self.year)
 
-	def on_trash(self):
-		self.status = "Inactive"
-
 	def get_status(self):
 		if self.is_planned():
 			return "Planned"
