@@ -1,6 +1,7 @@
 # Copyright (c) 2026, ALYF GmbH and contributors
 # For license information, please see license.txt
 
+import json
 from datetime import datetime
 
 import frappe
@@ -86,3 +87,47 @@ def get_supporting_memberships_to_update():
 		filters={"year": ["in", [this_year - 1, this_year, this_year + 1]]},
 		fields=["name", "year", "status"],
 	)
+
+
+@frappe.whitelist()
+def bulk_create(year: str, members: str):
+	parsed_members = json.loads(members)
+
+	assert isinstance(parsed_members, list), "Members must be a list"
+	assert all(isinstance(member, str) for member in parsed_members), "Members must be a list of strings"
+	assert isinstance(year, str), "Year must be a string"
+
+	frappe.publish_progress(
+		percent=0,
+		title=_("Creating Supporting Memberships..."),
+		doctype="LANDA Member",
+	)
+
+	num_members = len(parsed_members)
+	num_skipped = 0
+	for i, member in enumerate(parsed_members):
+		frappe.publish_progress(
+			percent=i * 100 / num_members,
+			title=_("Creating Supporting Memberships..."),
+			doctype="LANDA Member",
+			description=member,
+		)
+		supporting_membership = frappe.new_doc("Supporting Membership")
+		supporting_membership.member = member
+		supporting_membership.organization = frappe.db.get_value("LANDA Member", member, "organization")
+		supporting_membership.year = year
+		try:
+			supporting_membership.insert()
+		except (frappe.DuplicateEntryError, frappe.ValidationError):
+			frappe.clear_messages()
+			num_skipped += 1
+			continue
+
+	frappe.publish_progress(
+		percent=100,
+		title=_("Creating Supporting Memberships..."),
+		doctype="LANDA Member",
+		description=_("Done"),
+	)
+
+	return {"num_created": num_members - num_skipped, "num_skipped": num_skipped}

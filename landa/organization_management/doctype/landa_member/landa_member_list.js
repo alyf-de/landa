@@ -127,6 +127,44 @@ frappe.listview_settings["LANDA Member"] = {
 				);
 			});
 		}
+
+		if (frappe.model.can_create("Supporting Membership")) {
+			list_view.page.add_action_item(__("Create Supporting Membership"), () => {
+				frappe.prompt(
+					[
+						{
+							fieldname: "year",
+							fieldtype: "Int",
+							label: __("Year"),
+							default: landa.utils.get_default_year(),
+							reqd: 1,
+						},
+					],
+					(values) => {
+						frappe
+							.xcall(
+								"landa.organization_management.doctype.supporting_membership.supporting_membership.bulk_create",
+								{
+									year: values.year,
+									members: list_view.get_checked_items(true),
+								},
+							)
+							.then((result) => {
+								const total_created = result.num_created;
+								const total_skipped = result.num_skipped;
+								frappe.show_alert({
+									message: __(
+										"Supporting memberships have been created for {0} members and skipped for {1} members.",
+										[total_created, total_skipped],
+									),
+									indicator: "green",
+								});
+								list_view.refresh();
+							});
+					},
+				);
+			});
+		}
 	},
 };
 
