@@ -53,5 +53,5 @@ landa.patches.set_uom_in_item_price
 execute:from landa.install import sync_customizations; sync_customizations() # 1
 execute:from landa.install import ensure_default_link_records; ensure_default_link_records() # 1
 landa.patches.set_customer_group
-execute:from landa.install import make_custom_fields; make_custom_fields()
-
+execute:from landa.install import make_custom_fields; make_custom_fields() # 1
+execute:from landa.install import make_property_setters; make_property_setters()

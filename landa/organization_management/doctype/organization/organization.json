@@ -155,6 +155,7 @@
    "label": "Charitable until"
   },
   {
+   "depends_on": "eval:!doc.__islocal",
    "fieldname": "section_break_10",
    "fieldtype": "Section Break",
    "label": "Address and Contacts"
@@ -206,9 +207,9 @@
    "permlevel": 1
   },
   {
+   "depends_on": "eval:!doc.__islocal",
    "fieldname": "member_functions_section",
-   "fieldtype": "Section Break",
-   "label": "Member Functions"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "member_functions",
@@ -287,7 +288,7 @@
    "link_fieldname": "organization"
   }
  ],
- "modified": "2026-07-04 20:15:06.962296",
+ "modified": "2026-07-07 20:43:21.403503",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",

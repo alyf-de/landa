@@ -48,14 +48,42 @@ frappe.ui.form.on("Customer", {
 		});
 	},
 	render_member_functions: function (frm) {
-		if (!frm.doc.organization) return;
-
-		frappe.call({
-			method: "landa.landa_sales.customer.customer.get_member_functions_html",
-			args: { organization: frm.doc.organization },
-			callback: (r) => {
-				$(frm.fields_dict.custom_active_member_functions.wrapper).html(r.message);
-			},
-		});
+		const member_functions = (frm.doc.__onload || {}).active_member_functions || [];
+		frm.fields_dict.custom_active_member_functions.wrapper.innerHTML =
+			landa.utils.render_static_grid({
+				id: "customer_member_functions_grid",
+				label: __("Member Functions"),
+				data: member_functions,
+				columns: get_customer_member_function_columns(),
+			});
 	},
 });
+
+function get_customer_member_function_columns() {
+	return [
+		{
+			fieldname: "member_function_category",
+			label: __("Function"),
+			fieldtype: "Link",
+			width: 4,
+			route: (row) => ["member-function", row.name],
+		},
+		{
+			fieldname: "member",
+			label: __("Member"),
+			fieldtype: "Link",
+			width: 5,
+			value: (row) =>
+				[row.member_first_name, row.member_last_name].filter(Boolean).join(" ") ||
+				row.member,
+			route: (row) => ["landa-member", row.member],
+		},
+		{
+			fieldname: "start_date",
+			label: __("Since"),
+			fieldtype: "Date",
+			width: 3,
+			formatter: (value) => (value ? frappe.datetime.str_to_user(value) : ""),
+		},
+	];
+}

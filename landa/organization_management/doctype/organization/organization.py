@@ -14,6 +14,7 @@ from frappe.model.naming import make_autoname, revert_series_if_last
 from frappe.utils.data import cint, flt, get_link_to_form
 from frappe.utils.nestedset import NestedSet
 
+from landa.landa_sales.customer.customer import get_active_member_functions
 from landa.organization_management.doctype.landa_member.landa_member import get_address_or_contact
 from landa.organization_management.doctype.work_ledger_entry.work_ledger_entry import (
 	create_expected_hours_adjustment_entries,
@@ -103,6 +104,7 @@ class Organization(NestedSet):
 
 	def onload(self):
 		load_address_and_contact(self)
+		self.set_onload("active_member_functions", get_active_member_functions(self.name))
 
 	def on_update(self):
 		if getattr(self, "_expected_work_hours_before_save", None) is not None:

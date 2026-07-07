@@ -290,6 +290,9 @@ doc_events = {
 		],
 		"on_trash": "landa.address_and_contact.on_trash",
 	},
+	"Customer": {
+		"onload": "landa.landa_sales.customer.customer.onload",
+	},
 	"User": {
 		"before_validate": "landa.organization_management.user.user.before_validate",
 		"validate": "landa.organization_management.user.user.validate",
