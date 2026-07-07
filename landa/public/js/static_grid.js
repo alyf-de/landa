@@ -28,7 +28,8 @@ export function render_static_grid({ id, label, data = [], columns = [] }) {
 
 function render_static_grid_row(row, columns) {
 	return `<div class="grid-row">
-		<div class="data-row row">
+		<!-- Static grids differ from standard grids: rows are not clickable. -->
+		<div class="data-row row" style="cursor: default;">
 			${columns.map((column) => render_static_grid_cell(row, column, columns)).join("")}
 		</div>
 	</div>`;
