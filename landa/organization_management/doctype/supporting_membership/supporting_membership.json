@@ -1,0 +1,156 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "creation": "2026-07-07 21:26:42.277439",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member_function_section",
+  "member",
+  "member_first_name",
+  "member_last_name",
+  "organization",
+  "organization_name",
+  "year",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "member_function_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Member",
+   "options": "LANDA Member",
+   "reqd": 1,
+   "search_index": 1,
+   "set_only_once": 1
+  },
+  {
+   "fetch_from": "member.first_name",
+   "fieldname": "member_first_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "First Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "member.last_name",
+   "fieldname": "member_last_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Last Name",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fetch_from": "member.organization",
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Organization",
+   "options": "Organization",
+   "search_index": 1
+  },
+  {
+   "fetch_from": "organization.organization_name",
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Organization Name"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Planned\nActive\nInactive",
+   "read_only": 1
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "label": "Year",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-07 22:09:24.605644",
+ "modified_by": "Administrator",
+ "module": "Organization Management",
+ "name": "Supporting Membership",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "LANDA Member"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA State Organization Employee",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "import": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Regional Organization Management",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "LANDA Regional Water Body Management"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Local Organization Management",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LANDA Local Group Management",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "member",
+ "track_changes": 1
+}

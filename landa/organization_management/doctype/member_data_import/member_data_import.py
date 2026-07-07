@@ -35,11 +35,11 @@ class MemberDataImport(Document):
 		has_special_yearly_fishing_permit_5: DF.Check
 		has_special_yearly_fishing_permit_6: DF.Check
 		has_special_yearly_fishing_permit_7: DF.Check
-		is_supporting_member: DF.Check
 		last_name: DF.Data | None
 		member: DF.Data | None
 		organization: DF.Link | None
 		pincode: DF.Data | None
+		supporting_membership_in_year: DF.Int
 		type: DF.Link | None
 		year: DF.Int
 		yearly_fishing_permit: DF.Link | None
@@ -49,7 +49,6 @@ class MemberDataImport(Document):
 		"first_name",
 		"last_name",
 		"date_of_birth",
-		"is_supporting_member",
 		"has_key",
 		"has_special_yearly_fishing_permit_1",
 		"has_special_yearly_fishing_permit_2",
@@ -88,6 +87,7 @@ class MemberDataImport(Document):
 		self.create_or_update_member()
 		self.create_or_update_address()
 		self.create_permit()
+		self.create_supporting_membership()
 		return {}
 
 	def load_from_db(self):
@@ -189,6 +189,16 @@ class MemberDataImport(Document):
 			organization=self.organization,
 		)
 
+	def create_supporting_membership(self):
+		if not self.supporting_membership_in_year or not all([self.member, self.organization]):
+			return
+
+		create_supporting_membership(
+			member=self.member,
+			year=self.supporting_membership_in_year,
+			organization=self.organization,
+		)
+
 	def validate_existing_permit(self):
 		if not self.yearly_fishing_permit:
 			return
@@ -281,6 +291,17 @@ def create_yearly_fishing_permit(member: str, year: int, type: str, organization
 	yfp = frappe.new_doc("Yearly Fishing Permit")
 	yfp.update(data)
 	yfp.insert()
+
+
+def create_supporting_membership(member: str, year: int, organization: str) -> None:
+	data = {"member": member, "year": year, "organization": organization}
+
+	if frappe.db.exists("Supporting Membership", data):
+		return
+
+	supporting_membership = frappe.new_doc("Supporting Membership")
+	supporting_membership.update(data)
+	supporting_membership.insert()
 
 
 def parse_checkbox_value(value: str) -> int:

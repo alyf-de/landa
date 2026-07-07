@@ -28,11 +28,12 @@ def execute(filters=None):
 def get_data(organization: str):
 	"""Assemble rows for the current-member report from several DocTypes.
 
-	Loads LANDA Member master data (respecting the organization filter), Yearly
-	Fishing Permit rows keyed by member (keeping one row per member after
-	sorting by year), and Address rows dynamically linked to those members.
-	The frames are merged and ordered to match `get_columns()`, then
-	returned as tuples with empty strings instead of missing values.
+	Loads LANDA Member master data (respecting the organization filter), active
+	Supporting Membership rows for the same organization, Yearly Fishing Permit
+	rows keyed by member (keeping one row per member after sorting by year), and
+	Address rows dynamically linked to those members. The frames are merged and
+	ordered to match `get_columns()`, then returned as tuples with empty strings
+	instead of missing values.
 
 	Permissions: every fetch goes through Frappe `get_list`, so the result only
 	contains documents and fields the current user is allowed to read.
@@ -46,7 +47,6 @@ def get_data(organization: str):
 			"first_name",
 			"date_of_birth",
 			"organization",
-			"is_supporting_member",
 			"has_key",
 			"youth_membership",
 			"additional_information",
@@ -70,7 +70,6 @@ def get_data(organization: str):
 			"first_name",
 			"date_of_birth",
 			"organization",
-			"is_supporting_member",
 			"has_key",
 			"youth_membership",
 			"additional_information",
@@ -84,6 +83,15 @@ def get_data(organization: str):
 		],
 	)
 	this_year = datetime.now().year
+	supporting_members = {
+		membership.member
+		for membership in frappe.get_list(
+			"Supporting Membership",
+			filters={"organization": organization, "year": this_year},
+			fields=["member"],
+		)
+	}
+	member_df["is_supporting_member"] = member_df.index.isin(supporting_members).astype(int)
 	fishing_permits = frappe.get_list(
 		"Yearly Fishing Permit",
 		filters={

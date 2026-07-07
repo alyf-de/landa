@@ -286,9 +286,14 @@
    "group": "Vereinsverwaltung",
    "link_doctype": "Work Assignment",
    "link_fieldname": "organization"
+  },
+  {
+   "group": "Vereinsverwaltung",
+   "link_doctype": "Supporting Membership",
+   "link_fieldname": "organization"
   }
  ],
- "modified": "2026-07-07 20:43:21.403503",
+ "modified": "2026-07-07 21:34:57.074179",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization",

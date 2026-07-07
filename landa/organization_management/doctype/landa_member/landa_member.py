@@ -38,7 +38,6 @@ class LANDAMember(Document):
 		has_special_yearly_fishing_permit_5: DF.Check
 		has_special_yearly_fishing_permit_6: DF.Check
 		has_special_yearly_fishing_permit_7: DF.Check
-		is_supporting_member: DF.Check
 		issuing_authority: DF.Data | None
 		last_name: DF.Data | None
 		magazine_recipient: DF.Check
