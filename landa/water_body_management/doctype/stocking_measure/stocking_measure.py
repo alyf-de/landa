@@ -26,6 +26,7 @@ class StockingMeasure(StockingController):
 		quantity: DF.Float
 		quantity_per_water_body_size: DF.Float
 		status: DF.Literal["In Progress", "Completed"]
+		stocking_site: DF.Link | None
 		stocking_target: DF.Link | None
 		supplier: DF.Link | None
 		unit_of_quantity_per_water_body_size: DF.Data | None
