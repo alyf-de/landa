@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
 
 from landa.water_body_management.stocking_controller import StockingController
 
@@ -26,6 +27,7 @@ class StockingMeasure(StockingController):
 		quantity: DF.Float
 		quantity_per_water_body_size: DF.Float
 		status: DF.Literal["In Progress", "Completed"]
+		stocking_site: DF.Link | None
 		stocking_target: DF.Link | None
 		supplier: DF.Link | None
 		unit_of_quantity_per_water_body_size: DF.Data | None
@@ -39,6 +41,27 @@ class StockingMeasure(StockingController):
 		year: DF.Int
 
 	# end: auto-generated types
+	def validate(self):
+		super().validate()
+		self.validate_stocking_site()
+
+	def validate_stocking_site(self):
+		if not self.stocking_site:
+			return
+
+		if frappe.db.get_value("Stocking Site", self.stocking_site, "water_body") != self.water_body:
+			frappe.throw(_("Stocking Site must belong to the selected Water Body."))
+
+		if not frappe.db.exists(
+			"Fish Species Table",
+			{
+				"parent": self.stocking_site,
+				"parenttype": "Stocking Site",
+				"fish_species": self.fish_species,
+			},
+		):
+			frappe.throw(_("Stocking Site does not support the selected Fish Species."))
+
 	def on_change(self):
 		self.update_stocking_target()
 

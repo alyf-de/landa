@@ -28,6 +28,7 @@
   "weight",
   "weight_per_water_body_size",
   "unit_of_weight_per_water_body_size",
+  "stocking_site",
   "data_14",
   "quantity",
   "quantity_per_water_body_size",
@@ -238,16 +239,23 @@
    "fieldtype": "Data",
    "label": "Water Body Title",
    "read_only": 1
+  },
+  {
+   "fieldname": "stocking_site",
+   "fieldtype": "Link",
+   "label": "Stocking Site",
+   "options": "Stocking Site",
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-04 18:55:19.951039",
+ "modified": "2026-07-11 17:54:40.151120",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Measure",
- "naming_rule": "Expression",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
