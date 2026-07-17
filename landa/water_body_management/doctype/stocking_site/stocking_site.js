@@ -147,6 +147,9 @@ function set_location_value(field) {
 }
 
 function remove_water_body_layer(field) {
+	if (!field.map) {
+		return;
+	}
 	if (field.water_body_layer) {
 		field.map.removeLayer(field.water_body_layer);
 		delete field.water_body_layer;
