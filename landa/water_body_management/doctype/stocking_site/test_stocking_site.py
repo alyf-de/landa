@@ -13,7 +13,9 @@ from landa.water_body_management.doctype.stocking_site.stocking_site import (
 	get_location_point,
 	point_in_polygon,
 	point_in_ring,
+	point_near_line,
 	point_near_polygon,
+	point_near_water_body,
 )
 
 EARTH_RADIUS_METERS = 6371000
@@ -53,6 +55,50 @@ class TestStockingSite(FrappeTestCase):
 			point_near_polygon(
 				[self.longitude_for_distance(WATER_BODY_MARGIN_METERS + 1), 0],
 				polygon,
+			)
+		)
+
+	def test_point_near_line_within_and_beyond_margin(self):
+		line = [[0, -0.01], [0, 0.01]]
+
+		self.assertTrue(
+			point_near_line(
+				[self.longitude_for_distance(WATER_BODY_MARGIN_METERS - 1), 0],
+				line,
+			)
+		)
+		self.assertFalse(
+			point_near_line(
+				[self.longitude_for_distance(WATER_BODY_MARGIN_METERS + 1), 0],
+				line,
+			)
+		)
+
+	def test_point_near_water_body_line_string(self):
+		geojson = {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"properties": {},
+					"geometry": {
+						"type": "LineString",
+						"coordinates": [[0, -0.01], [0, 0.01]],
+					},
+				}
+			],
+		}
+
+		self.assertTrue(
+			point_near_water_body(
+				[self.longitude_for_distance(WATER_BODY_MARGIN_METERS - 1), 0],
+				geojson,
+			)
+		)
+		self.assertFalse(
+			point_near_water_body(
+				[self.longitude_for_distance(WATER_BODY_MARGIN_METERS + 1), 0],
+				geojson,
 			)
 		)
 

@@ -11,6 +11,7 @@ from frappe.model.document import Document
 
 Coordinate: TypeAlias = Sequence[float]
 Ring: TypeAlias = Sequence[Coordinate]
+Line: TypeAlias = Sequence[Coordinate]
 Polygon: TypeAlias = Sequence[Ring]
 GeoJSON: TypeAlias = dict[str, Any]
 WATER_BODY_MARGIN_METERS = 500
@@ -113,11 +114,17 @@ def point_near_water_body(point: Coordinate, geojson: GeoJSON) -> bool:
 	"""Return whether a point is within the allowed margin of the Water Body."""
 	for feature in geojson.get("features", []):
 		geometry = feature.get("geometry", {})
-		if geometry.get("type") == "Polygon" and point_near_polygon(point, geometry["coordinates"]):
+		geometry_type = geometry.get("type")
+		coordinates = geometry.get("coordinates")
+		if geometry_type == "Polygon" and point_near_polygon(point, coordinates):
 			return True
-		if geometry.get("type") == "MultiPolygon" and any(
-			point_near_polygon(point, polygon) for polygon in geometry["coordinates"]
+		if geometry_type == "MultiPolygon" and any(
+			point_near_polygon(point, polygon) for polygon in coordinates
 		):
+			return True
+		if geometry_type == "LineString" and point_near_line(point, coordinates):
+			return True
+		if geometry_type == "MultiLineString" and any(point_near_line(point, line) for line in coordinates):
 			return True
 	return False
 
@@ -128,6 +135,14 @@ def point_near_polygon(point: Coordinate, rings: Polygon) -> bool:
 		distance_to_segment(point, coordinate, ring[(index + 1) % len(ring)]) <= WATER_BODY_MARGIN_METERS
 		for ring in rings
 		for index, coordinate in enumerate(ring)
+	)
+
+
+def point_near_line(point: Coordinate, line: Line) -> bool:
+	"""Return whether a point is within the allowed margin of a line."""
+	return any(
+		distance_to_segment(point, line[index], line[index + 1]) <= WATER_BODY_MARGIN_METERS
+		for index in range(len(line) - 1)
 	)
 
 
