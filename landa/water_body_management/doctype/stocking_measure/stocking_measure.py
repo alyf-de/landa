@@ -52,16 +52,6 @@ class StockingMeasure(StockingController):
 		if frappe.db.get_value("Stocking Site", self.stocking_site, "water_body") != self.water_body:
 			frappe.throw(_("Stocking Site must belong to the selected Water Body."))
 
-		if not frappe.db.exists(
-			"Fish Species Table",
-			{
-				"parent": self.stocking_site,
-				"parenttype": "Stocking Site",
-				"fish_species": self.fish_species,
-			},
-		):
-			frappe.throw(_("Stocking Site does not support the selected Fish Species."))
-
 	def on_change(self):
 		self.update_stocking_target()
 

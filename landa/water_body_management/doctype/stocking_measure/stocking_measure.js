@@ -9,12 +9,9 @@ cur_frm.script_manager.make(landa.water_body_management.StockingMeasure);
 
 frappe.ui.form.on("Stocking Measure", {
 	setup(frm) {
-		frm.set_query("stocking_site", (doc, cdt, cdn) => {
+		frm.set_query("stocking_site", (doc) => {
 			return {
-				filters: [
-					["Stocking Site", "water_body", "=", doc.water_body],
-					["Fish Species Table", "fish_species", "=", doc.fish_species],
-				]
+				filters: [["Stocking Site", "water_body", "=", doc.water_body]],
 			};
 		});
 	},
