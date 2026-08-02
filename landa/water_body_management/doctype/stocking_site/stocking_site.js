@@ -45,11 +45,19 @@ frappe.ui.form.on("Stocking Site", {
 				field.water_body_margin_meters = margin_meters;
 				field.water_body_geojson = JSON.parse(location);
 				field.water_body_layer = window.L.geoJSON(field.water_body_geojson, {
-					filter: ({ geometry }) => ["Polygon", "MultiPolygon"].includes(geometry.type),
-					style: ({ properties }) => ({
-						color: properties.is_restricted_area ? "red" : frappe.ui.color.get("blue"),
-						fillOpacity: 0.08,
-					}),
+					filter: ({ geometry }) =>
+						["Polygon", "MultiPolygon", "LineString", "MultiLineString"].includes(
+							geometry.type,
+						),
+					style: ({ geometry, properties }) => {
+						const color = properties.is_restricted_area
+							? "red"
+							: frappe.ui.color.get("blue");
+						if (["LineString", "MultiLineString"].includes(geometry.type)) {
+							return { color, weight: 5, opacity: 0.85 };
+						}
+						return { color, fillOpacity: 0.08 };
+					},
 				}).addTo(field.map);
 
 				const bounds = field.water_body_layer.getBounds();
