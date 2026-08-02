@@ -27,11 +27,13 @@ class StockingSite(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		from landa.water_body_management.doctype.fish_species_table.fish_species_table import FishSpeciesTable
+		from landa.water_body_management.doctype.fish_species_and_type.fish_species_and_type import (
+			FishSpeciesAndType,
+		)
 
 		description: DF.SmallText | None
 		disabled: DF.Check
-		fish_species: DF.Table[FishSpeciesTable]
+		fish_species: DF.Table[FishSpeciesAndType]
 		title: DF.Data
 		water_body: DF.Link
 	# end: auto-generated types

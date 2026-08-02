@@ -63,7 +63,7 @@
    "fieldname": "fish_species",
    "fieldtype": "Table",
    "label": "Fish Species",
-   "options": "Fish Species Table"
+   "options": "Fish Species And Type"
   },
   {
    "fieldname": "section_break_oobz",
@@ -72,7 +72,7 @@
  ],
  "grid_page_length": 50,
  "links": [],
- "modified": "2026-07-11 17:21:24.745985",
+ "modified": "2026-08-02 16:41:32.595641",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Site",
