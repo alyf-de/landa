@@ -65,13 +65,10 @@ class StockingMeasure(StockingController):
 				"parent": self.stocking_site,
 				"parenttype": "Stocking Site",
 				"fish_species": self.fish_species,
-				"fish_type_for_stocking": self.fish_type_for_stocking,
 			},
 		):
 			frappe.msgprint(
-				_(
-					"The selected Fish Species and Fish Type For Stocking are not among the recommendations for this Stocking Site."
-				),
+				_("The selected Fish Species is not among the recommendations for this Stocking Site."),
 				indicator="orange",
 				alert=True,
 			)
@@ -88,6 +85,81 @@ class StockingMeasure(StockingController):
 
 		# saving a Stocking Target triggers validation, including a status update
 		frappe.get_doc("Stocking Target", self.stocking_target).save()
+
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def stocking_site_query(doctype, txt, searchfield, start, page_len, filters):
+	"""Stocking Sites for a Water Body, with recommended species/type matches first."""
+	filters = frappe._dict(filters or {})
+	if not filters.water_body:
+		return []
+
+	sites = frappe.get_list(
+		"Stocking Site",
+		filters={"water_body": filters.water_body},
+		or_filters={
+			"name": ("like", f"%{txt}%"),
+			"title": ("like", f"%{txt}%"),
+		},
+		fields=["name", "title"],
+		order_by="title",
+	)
+	if not sites:
+		return []
+
+	recommendations_by_site = {}
+	for row in frappe.get_all(
+		"Fish Species And Type",
+		filters={
+			"parenttype": "Stocking Site",
+			"parent": ["in", [site.name for site in sites]],
+		},
+		fields=["parent", "fish_species", "fish_type_for_stocking"],
+		order_by="idx",
+	):
+		recommendations_by_site.setdefault(row.parent, []).append(row)
+
+	fish_species = filters.fish_species or ""
+	fish_type = filters.fish_type_for_stocking or ""
+
+	def match_rank(row):
+		if row.fish_species != fish_species:
+			return 2
+		if row.fish_type_for_stocking == fish_type:
+			return 0
+		return 1
+
+	def format_recommendation(row):
+		species = frappe.bold(row.fish_species) if row.fish_species == fish_species else row.fish_species
+		stocking_type = (
+			frappe.bold(row.fish_type_for_stocking)
+			if row.fish_type_for_stocking == fish_type
+			else row.fish_type_for_stocking
+		)
+		if row.fish_species and row.fish_type_for_stocking:
+			return f"{species} ({stocking_type})"
+		return species or stocking_type or ""
+
+	def site_match_rank(site_name):
+		ranks = [match_rank(row) for row in recommendations_by_site.get(site_name, [])]
+		return min(ranks) if ranks else 2
+
+	sites = sorted(
+		sites,
+		key=lambda site: (site_match_rank(site.name), site.title or site.name),
+	)[start : start + page_len]
+
+	results = []
+	for site in sites:
+		recommendations = sorted(
+			recommendations_by_site.get(site.name, []),
+			key=lambda row: (match_rank(row), row.fish_species or "", row.fish_type_for_stocking or ""),
+		)
+		description = ", ".join(format_recommendation(row) for row in recommendations)
+		results.append((site.name, site.title, description) if description else (site.name, site.title))
+
+	return results
 
 
 @frappe.whitelist()

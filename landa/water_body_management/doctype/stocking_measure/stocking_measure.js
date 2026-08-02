@@ -11,7 +11,12 @@ frappe.ui.form.on("Stocking Measure", {
 	setup(frm) {
 		frm.set_query("stocking_site", (doc) => {
 			return {
-				filters: [["Stocking Site", "water_body", "=", doc.water_body]],
+				query: "landa.water_body_management.doctype.stocking_measure.stocking_measure.stocking_site_query",
+				filters: {
+					water_body: doc.water_body,
+					fish_species: doc.fish_species,
+					fish_type_for_stocking: doc.fish_type_for_stocking,
+				},
 			};
 		});
 	},
