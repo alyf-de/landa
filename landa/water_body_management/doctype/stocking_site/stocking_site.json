@@ -63,7 +63,7 @@
    "fieldname": "fish_species",
    "fieldtype": "Table",
    "label": "Fish Species",
-   "options": "Fish Species Table"
+   "options": "Fish Species And Type"
   },
   {
    "fieldname": "section_break_oobz",
@@ -71,8 +71,13 @@
   }
  ],
  "grid_page_length": 50,
- "links": [],
- "modified": "2026-07-11 17:21:24.745985",
+ "links": [
+  {
+   "link_doctype": "Stocking Measure",
+   "link_fieldname": "stocking_site"
+  }
+ ],
+ "modified": "2026-08-02 17:48:09.679627",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Site",
@@ -118,6 +123,7 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
