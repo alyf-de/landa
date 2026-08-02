@@ -89,7 +89,9 @@ class StockingMeasure(StockingController):
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
-def stocking_site_query(doctype, txt, searchfield, start, page_len, filters):
+def stocking_site_query(
+	doctype: str, txt: str, searchfield: str, start: int, page_len: int, filters: dict
+) -> list[tuple]:
 	"""Stocking Sites for a Water Body, with recommended species/type matches first."""
 	filters = frappe._dict(filters or {})
 	if not filters.water_body:
