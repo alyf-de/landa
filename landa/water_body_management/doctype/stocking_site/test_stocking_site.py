@@ -102,6 +102,38 @@ class TestStockingSite(FrappeTestCase):
 			)
 		)
 
+	def test_point_near_water_body_multi_line_string(self):
+		# Match a point near the second line only, so the MultiLineString loop is exercised.
+		geojson = {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"properties": {},
+					"geometry": {
+						"type": "MultiLineString",
+						"coordinates": [
+							[[1, -0.01], [1, 0.01]],
+							[[0, -0.01], [0, 0.01]],
+						],
+					},
+				}
+			],
+		}
+
+		self.assertTrue(
+			point_near_water_body(
+				[self.longitude_for_distance(WATER_BODY_MARGIN_METERS - 1), 0],
+				geojson,
+			)
+		)
+		self.assertFalse(
+			point_near_water_body(
+				[self.longitude_for_distance(WATER_BODY_MARGIN_METERS + 1), 0],
+				geojson,
+			)
+		)
+
 	def test_get_location_point(self):
 		self.assertIsNone(get_location_point(None))
 		self.assertIsNone(get_location_point(json.dumps({"type": "FeatureCollection", "features": []})))
