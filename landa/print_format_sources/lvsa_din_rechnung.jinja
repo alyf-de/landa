@@ -198,6 +198,15 @@
     </div>
     <br>
 
+    {%- set delivery_notes = doc.items | map(attribute="delivery_note") | select | unique | list %}
+    {% if delivery_notes %}
+        {% if delivery_notes | length == 1 %}
+            <p>Dieser Rechnung liegt folgende Lieferung zugrunde: {{ delivery_notes[0] }}</p>
+        {% else %}
+            <p>Dieser Rechnung liegen folgende Lieferungen zugrunde: {{ delivery_notes | join(", ") }}</p>
+        {% endif %}
+    {% endif %}
+
     <div class="epilogue">
         {% if doc.terms %}
             {{ doc.terms }}
