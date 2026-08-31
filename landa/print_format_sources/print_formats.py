@@ -99,21 +99,30 @@ def _package_dir() -> Path:
 	return Path(__file__).resolve().parent
 
 
-def read_built_css() -> str:
-	"""Read the compiled `CSS_BUNDLE` that `bench build` wrote under `sites/assets`."""
+def read_built_css() -> str | None:
+	"""Read the compiled `CSS_BUNDLE` that `bench build` wrote under `sites/assets`.
+
+	Returns `None` when the bundle is not built. Some flows install or migrate
+	before assets exist -- apps.json installs pass `skip_assets=True`, and
+	`bench update` patches sites before it builds -- and a missing stylesheet
+	must never abort them. The caller keeps the CSS already on each doc instead.
+	"""
 	import frappe
 
 	url = frappe.utils.get_assets_json().get(CSS_BUNDLE)
-	if not url:
-		frappe.throw(
-			f"{CSS_BUNDLE} is not in assets.json. Run `bench build --app landa` "
-			f"before migrating, so print formats pick up the compiled stylesheet."
-		)
+	path = Path(frappe.local.sites_path) / url.lstrip("/") if url else None
+	if path and path.is_file():
+		return path.read_text(encoding="utf-8")
 
-	path = Path(frappe.local.sites_path) / url.lstrip("/")
-	if not path.is_file():
-		frappe.throw(f"{CSS_BUNDLE} resolves to {path}, which does not exist. Run `bench build --app landa`.")
-	return path.read_text(encoding="utf-8")
+	frappe.log_error(
+		title="Print format stylesheet missing",
+		message=(
+			f"{CSS_BUNDLE} is not built, so print formats keep their current CSS. "
+			f"Run `bench build --app landa` and migrate again."
+		),
+	)
+	print(f"WARNING: {CSS_BUNDLE} is not built. Print formats keep their current CSS.")
+	return None
 
 
 def sync_print_formats() -> None:
@@ -123,8 +132,9 @@ def sync_print_formats() -> None:
 		import_doc as import_doc_from_path,
 	)
 
-	docs = build_print_format_docs(_package_dir(), read_built_css())
-	_preserve_existing_creation(docs)
+	css = read_built_css()
+	docs = build_print_format_docs(_package_dir(), css or "")
+	_carry_over_existing(docs, keep_css=css is None)
 	print(f"Syncing {len(docs)} print formats from sources...")
 	frappe.logger().info("Syncing %s print formats from source", len(docs))
 
@@ -140,15 +150,19 @@ def sync_print_formats() -> None:
 			Path(tmp_path).unlink(missing_ok=True)
 
 
-def _preserve_existing_creation(docs: list[dict[str, Any]]) -> None:
-	"""For each doc that already exists, copy its `creation` timestamp forward.
+def _carry_over_existing(docs: list[dict[str, Any]], keep_css: bool) -> None:
+	"""Copy values forward from the docs already in the database.
 
 	`import_doc` does delete+insert, which would reset `creation`, but it
-	respects an explicit value if we set one.
+	respects an explicit value if we set one. `keep_css` additionally keeps the
+	stored stylesheet, for when the bundle is not built yet.
 	"""
 	import frappe
 
 	for doc in docs:
-		existing = frappe.db.get_value(doc["doctype"], doc["name"], "creation")
-		if existing:
-			doc["creation"] = str(existing)
+		existing = frappe.db.get_value(doc["doctype"], doc["name"], ["creation", "css"], as_dict=True)
+		if not existing:
+			continue
+		doc["creation"] = str(existing.creation)
+		if keep_css:
+			doc["css"] = existing.css or ""
