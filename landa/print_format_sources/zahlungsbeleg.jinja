@@ -1,0 +1,138 @@
+<style>
+    .print-format {
+        margin-left: 0mm;
+        margin-right: 0mm;
+        margin-top: 10mm;
+        margin-bottom: 60mm;
+        font-size: 10pt;
+    }
+
+    /* Overrides the shared bundle: the contact block carries longer organization names. */
+    .print-format #contact {
+        max-width: 84mm;
+    }
+
+    .print-format #contact td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 42mm;
+    }
+</style>
+
+{% set company = frappe.get_doc("Company", doc.company) %}
+{% set customer = frappe.get_doc("Customer", doc.party) %}
+{% set company_address_name = frappe.db.get_value("Dynamic Link", {"parenttype": "Address", "link_doctype": "Company", "link_name": doc.company}, "parent") %}
+{% set company_address = frappe.get_doc("Address", company_address_name) if company_address_name else None %}
+{% set pay_addr = frappe.get_doc("Address", customer.default_billing_address) if customer.default_billing_address else None %}
+
+{% if customer.default_billing_contact %}
+    {% set contact = frappe.get_doc("Contact", customer.default_billing_contact) %}
+{% endif %}
+
+<!-- HEAD -->
+<div id="header">
+    {% if company.company_logo %}
+        <img id="logo" src="{{company.company_logo}}">
+    {% endif %}
+</div>
+
+<div class="contact-row">
+    <div id="address">
+        <div id="sender">
+            <p>{{ company.name }}<br>
+                {% if company_address %}
+                    {{ company_address.address_line1 }} &#183;
+                    {% if company_address.address_line2 %}{{ company_address.address_line2 }} <br>{% endif %}
+                    {{ company_address.pincode }} {{ company_address.city }}
+                    {% if company_address.country and company_address.country != pay_addr.country -%}
+                        &#183; {{ company_address.country.upper() }}
+                    {%- endif %}
+                {% else %}
+                    <i>{{ _("Address not set!") }}</i>
+                {% endif %}
+            </p>
+        </div>
+        {% if contact %}
+            <strong>{{ contact.first_name }}{% if contact.last_name %} {{ contact.last_name }}{% endif %}</strong><br>
+            {{ customer.customer_name }}<br/>
+        {% else %}
+            <strong>{{ customer.customer_name }}</strong><br />
+        {% endif %}
+        {% if not pay_addr %}
+            <i>{{ _("Address not set!") }}</i>
+        {% else %}
+            {{ pay_addr.address_line1 }}<br>
+            {% if pay_addr.address_line2 %}{{ pay_addr.address_line2 }}<br>{% endif %}
+            {{ pay_addr.pincode }} {{ pay_addr.city }}
+            {% if pay_addr.country and company_address and pay_addr.country != company_address.country -%}
+                &#183; {{ pay_addr.country.upper() }}
+            {%- endif %}
+        {% endif %}
+    </div>
+
+    <div id="contact">
+        <table>
+            <tr>
+                <td class="text-right">{{ _("Date") }}:</td>
+                <td class="text-right">{{ frappe.utils.formatdate(doc.posting_date, "dd. MMMM yyyy") }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Phone") }}:</td>
+                <td class="text-right">{{ company.phone_no }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Email") }}:</td>
+                <td class="text-right">{{ company.email.replace("@", "@&#8203;") if company.email else "" }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Organization ID") }}:</td>
+                <td class="text-right">{{ customer.organization }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Year of Settlement") }}:</td>
+                <td class="text-right">{{ doc.year_of_settlement }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="din-mark" id="fold-mark-1"></div>
+<div class="din-mark" id="punch-mark"></div>
+<div class="din-mark" id="fold-mark-2"></div>
+
+<!-- CONTENT -->
+<div id="text" class="">
+	<div id="subject">
+		<strong>Zahlungsbeleg</strong>
+    </div>
+    <div class="salutation">
+        {% if doc.payment_type == "Receive" %}
+            <p>Hiermit bestätigen wir den Erhalt Ihrer Zahlung über {{ doc.get_formatted("paid_amount") }} in bar.</p>
+        {% elif doc.payment_type == "Pay" %}
+            <p>Hiermit wird die Barauszahlung von {{ doc.get_formatted("paid_amount") }} bestätigt.</p>
+        {% endif %}
+
+        {% if doc.references %}
+            <br>
+            <p>Davon entfallen auf:</p>
+            <ul>
+                {% for entry in doc.references %}
+                    <li>{{ entry.reference_name }}: {{ frappe.utils.fmt_money(entry.allocated_amount, currency=doc.paid_to_account_currency) }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <br>
+        <p>Mit freundlichen Grüßen</p>
+        <p>{{ doc.company }} </p>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer-html" class="visible-pdf">
+    <p id="pagenum">
+        {{ _("Page {0} of {1}").format('<span class="page"></span>', '<span class="topage"></span>') }}
+    </p>
+    <div class="print-format-footer">
+         {{ footer }}
+    </div>
+</div>
