@@ -14,6 +14,7 @@ import landa
 
 from .custom_fields import get_custom_fields
 from .doc_perms import get_doc_perms
+from .print_format_sources.print_formats import sync_print_formats
 from .property_setters import get_property_setters
 
 
@@ -28,6 +29,7 @@ def after_install():
 	setup_uoms()
 	update_stock_settings()
 	update_accounts_settings()
+	sync_print_formats()
 
 
 def sync_customizations():

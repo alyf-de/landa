@@ -12,8 +12,8 @@
 {% set customer = frappe.get_doc("Customer", doc.customer) %}
 {% set company_address_name = frappe.db.get_value("Dynamic Link", filters={"link_doctype": "Company", "link_name": doc.company, "parenttype": "Address"}, fieldname="parent") %}
 {% set company_address = frappe.get_doc("Address", company_address_name) if company_address_name else None %}
-{% set pay_addr = frappe.get_doc("Address", doc.customer_address) if doc.customer_address else None %}
-
+{% set shipping_addr = frappe.get_doc("Address", doc.shipping_address_name) if doc.shipping_address_name else None %}
+  
 {% if doc.contact_person %}
     {% set contact = frappe.get_doc("Contact", doc.contact_person) %}
 {% endif %}
@@ -39,7 +39,7 @@
                     {{ company_address.address_line1 }} &#183;
                     {% if company_address.address_line2 %}{{ company_address.address_line2 }} <br>{% endif %}
                     {{ company_address.pincode }} {{ company_address.city }}
-                    {% if company_address.country and company_address.country != pay_addr.country -%}
+                    {% if company_address.country and company_address.country != shipping_addr.country -%}
                         &#183; {{ company_address.country.upper() }}
                     {%- endif %}
                 {% else %}
@@ -53,7 +53,7 @@
         {% else %}
             <strong>{{ doc.customer_name }}</strong><br />
         {% endif %}
-        {{ doc.address_display if doc.address_display else "<i>" + _("Address not set!") + "</i>" }}
+        {{ doc.shipping_address if doc.shipping_address else "<i>" + _("Address not set!") + "</i>" }}
     </div>
 
     <div id="contact">
@@ -85,15 +85,13 @@
 <!-- CONTENT -->
 <div id="text" class="">
 	<div id="subject">
-		<strong>{% if doc.is_return %}{{ _("Retoure") }}{% else %}{{ _("Invoice") }}{% endif %} {{ doc.name }}</strong>
+		<strong>{{ _("Delivery Note") }} {{ doc.name }}</strong>
     </div>
     <div class="salutation">
-    {% if not doc.is_return %}
-        {% if frappe.form_dict.get("_lang", doc.language) == "de" %}
-            <p>Den für Sie ausgeführten Auftrag berechnen wir wie folgt:</p>
-        {% else %}
-            <p>We charge the order executed for you as follows:</p>
-        {% endif %}
+    {% if frappe.form_dict.get("_lang", doc.language) == "de" %}
+        <p>Hiermit erhalten Sie von uns folgende Artikelpositionen:</p>
+    {% else %}
+        <p>Herewith you will receive the following item positions from us:</p>
     {% endif %}
     </div>
     <br>
@@ -205,12 +203,57 @@
             <br>
         {% endif %}
 
-        {% if doc.is_return and company.retoure_information_text %}
-            {{ company.retoure_information_text }}
-        {% elif not doc.is_return and company.invoice_information_text %}
-            {{ company.invoice_information_text }}
+        {% if company.delivery_note_information_text %}
+            {{ company.delivery_note_information_text }}
         {% endif %}
     </div>
+
+    {% if doc.timesheets -%}
+    <div style="page-break-after: always"></div>
+    <div class="timesheets">
+        <h3>Zeiterfassung</h3>
+        <div data-fieldname="timesheets" data-fieldtype="Table">
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th style="width: 40px" class="table-sr">{{ _("Sr") }}</th>
+                        <th style="width: 150px;" class="" data-fieldname="timesheets" data-fieldtype="Table">
+                            {{_("Date")}}</th>
+                        <th style="width: 300px;" class="" data-fieldname="timesheets" data-fieldtype="Table">
+                            {{_("Note")}}</th>
+                        <th style="width: 80px;" class="text-right" data-fieldname="timesheets" data-fieldtype="Table">
+                            {{_("Hours")}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ts in doc.timesheets | sort(attribute='start_date') %}
+                    {% set timesheet = frappe.get_doc("Timesheet", ts.time_sheet)%}
+                        {% if timesheet.total_billable_amount > 0 and timesheet.customer_note %}
+                            <tr style="page-break-inside: avoid;">
+                                <td class="table-sr">{{ loop.index }}</td>
+                                <td class="" data-fieldname="timesheets" data-fieldtype="Table">
+                                    <div class="value">
+                                        {{ timesheet.get_formatted('start_date') }}
+                                    </div>
+                                </td>
+                                <td class="" data-fieldname="timesheets" data-fieldtype="Table">
+                                    <div class="value">
+                                        {{ timesheet.note }}
+                                    </div>
+                                </td>
+                                <td class="text-right" data-fieldname="timesheets" data-fieldtype="Table">
+                                    <div class="value">
+                                        {{ "{:.2f}".format(timesheet.total_billable_hours) | replace(".", ",") }}
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {%- endif %}
 </div>
 
 <!-- FOOTER -->
