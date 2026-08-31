@@ -107,8 +107,8 @@
                     {% else %}
                         <th style="width: 50%">{{ _("Description") }}</th>
                     {%- endif %}
-                    <th style="width: 10%">{{ _("Qty") }}</th>
-                    <th style="width: 10%">{{ _("Price") }}</th>
+                    <th style="width: 8%">{{ _("Qty") }}</th>
+                    <th style="width: 12%">{{ _("Price") }}</th>
                     <th style="width: 15%" class="text-right">{{ _("Amount") }}</th>
                 </tr>
             </thead>
@@ -146,10 +146,12 @@
                         {{ doc.get_formatted('discount_amount') }}
                     </td>
                 </tr>
-                <tr>
-                    <td>{{ _("Net Total") }}</td>
-                    <td class="text-right">{{ doc.get_formatted('net_total') }}</td>
-                </tr>
+            {% endif %}
+            {% if doc.net_total != doc.total %}
+            <tr>
+                <td>{{ _("Net Total") }}</td>
+                <td class="text-right">{{ doc.get_formatted('net_total') }}</td>
+            </tr>
             {% endif %}
             {% if doc.tax_category == "Reverse Charge" -%}
                 <tr>
