@@ -162,6 +162,7 @@ class Address:
 		data = data.fillna("")
 		# convert data back to tuple
 		data = data.reset_index()
+		data.insert(3, "external_organization_name", "")
 		member_rows = list(data.itertuples(index=False, name=None))
 
 		ec_filters = {"is_magazine_recipient": 1}
@@ -174,7 +175,7 @@ class Address:
 		external_contacts = frappe.get_list(
 			"External Contact",
 			filters=ec_filters,
-			fields=["name", "first_name", "last_name", "organization"],
+			fields=["name", "first_name", "last_name", "external_organization_name", "organization"],
 			as_list=True,
 		)
 
@@ -202,7 +203,13 @@ class Address:
 				if ec_name not in address_map:
 					address_map[ec_name] = (address_line1, pincode, city, country)
 
-			for ec_name, first_name, last_name, organization in external_contacts:
+			for (
+				ec_name,
+				first_name,
+				last_name,
+				external_organization_name,
+				organization,
+			) in external_contacts:
 				address_line1, pincode, city, country = address_map.get(ec_name, ("", "", "", ""))
 				full_address = f"{address_line1}, {pincode} {city}" if address_line1 else ""
 				if country and country != "Germany":
@@ -213,6 +220,7 @@ class Address:
 						"",
 						first_name,
 						last_name,
+						external_organization_name or "",
 						organization,
 						_("External Contact"),
 						1,
@@ -239,6 +247,11 @@ class Address:
 			},
 			{"fieldname": "first_name", "fieldtype": "Data", "label": _("First Name")},
 			{"fieldname": "last_name", "fieldtype": "Data", "label": _("Last Name")},
+			{
+				"fieldname": "external_organization_name",
+				"fieldtype": "Data",
+				"label": _("Institution or Company Name"),
+			},
 			{
 				"fieldname": "organization",
 				"fieldtype": "Link",

@@ -10,8 +10,7 @@
 
 {% set company = frappe.get_doc("Company", doc.company) %}
 {% set customer = frappe.get_doc("Customer", doc.customer) %}
-{% set company_address_name = frappe.db.get_value("Dynamic Link", filters={"link_doctype": "Company", "link_name": doc.company, "parenttype": "Address"}, fieldname="parent") %}
-{% set company_address = frappe.get_doc("Address", company_address_name) if company_address_name else None %}
+{% set company_address = frappe.get_doc("Address", doc.company_address) if doc.company_address else None %}
 {% set pay_addr = frappe.get_doc("Address", doc.customer_address) if doc.customer_address else None %}
 
 {% if doc.contact_person %}
@@ -20,7 +19,7 @@
 
 {% set serial_nos = [] %}
 {% for n in doc.items %}
-    {% if n.serial_no is not none %} {% set temp = serial_nos.append(n.serial_no) %}{% endif %}
+    {% if n.serial_no is not none %} {% set temp = serial_nos.append(1) %}{% endif %}
 {% endfor %}
 {% set serial_no_set=serial_nos|length > 0 %}
 
@@ -49,7 +48,7 @@
         </div>
         {% if contact %}
             <strong>{{ contact.first_name }}{% if contact.last_name %} {{ contact.last_name }}{% endif %}</strong><br>
-            {{ doc.customer_name }}<br />
+            {{ doc.customer_name }}<br/>
         {% else %}
             <strong>{{ doc.customer_name }}</strong><br />
         {% endif %}
@@ -108,8 +107,8 @@
                     {% else %}
                         <th style="width: 50%">{{ _("Description") }}</th>
                     {%- endif %}
-                    <th style="width: 10%">{{ _("Qty") }}</th>
-                    <th style="width: 10%">{{ _("Price") }}</th>
+                    <th style="width: 8%">{{ _("Qty") }}</th>
+                    <th style="width: 12%">{{ _("Price") }}</th>
                     <th style="width: 15%" class="text-right">{{ _("Amount") }}</th>
                 </tr>
             </thead>
@@ -147,10 +146,12 @@
                         {{ doc.get_formatted('discount_amount') }}
                     </td>
                 </tr>
-                <tr>
-                    <td>{{ _("Net Total") }}</td>
-                    <td class="text-right">{{ doc.get_formatted('net_total') }}</td>
-                </tr>
+            {% endif %}
+            {% if doc.net_total != doc.total %}
+            <tr>
+                <td>{{ _("Net Total") }}</td>
+                <td class="text-right">{{ doc.get_formatted('net_total') }}</td>
+            </tr>
             {% endif %}
             {% if doc.tax_category == "Reverse Charge" -%}
                 <tr>
@@ -198,6 +199,15 @@
         </table>
     </div>
     <br>
+
+    {%- set delivery_notes = doc.items | map(attribute="delivery_note") | select | unique | list %}
+    {% if delivery_notes %}
+        {% if delivery_notes | length == 1 %}
+            <p>Dieser Rechnung liegt folgende Lieferung zugrunde: {{ delivery_notes[0] }}</p>
+        {% else %}
+            <p>Dieser Rechnung liegen folgende Lieferungen zugrunde: {{ delivery_notes | join(", ") }}</p>
+        {% endif %}
+    {% endif %}
 
     <div class="epilogue">
         {% if doc.terms %}

@@ -13,39 +13,11 @@ EMPTY_CONTACT = {
 
 
 @frappe.whitelist()
-def get_landa_party_details(
-	party=None,
-	account=None,
-	party_type="Customer",
-	company=None,
-	posting_date=None,
-	bill_date=None,
-	price_list=None,
-	currency=None,
-	doctype=None,
-	ignore_permissions=False,
-	fetch_payment_terms_template=True,
-	party_address=None,
-	company_address=None,
-	shipping_address=None,
-	pos_profile=None,
-):
-	party_details = get_party_details(
-		party,
-		account,
-		party_type,
-		company,
-		posting_date,
-		bill_date,
-		price_list,
-		currency,
-		doctype,
-		ignore_permissions,
-		fetch_payment_terms_template,
-		party_address,
-		company_address,
-		shipping_address,
-		pos_profile,
+def get_landa_party_details(party=None, party_type="Customer", doctype=None, **kwargs):
+	# frappe.call: pass by keyword (erpnext's positional order is not stable) and drop
+	# any kwargs get_party_details doesn't accept (form dict keys, ignore_permissions, ...)
+	party_details = frappe.call(
+		get_party_details, party=party, party_type=party_type, doctype=doctype, **kwargs
 	)
 
 	if party_type == "Customer" and party:
