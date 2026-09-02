@@ -55,3 +55,4 @@ execute:from landa.install import ensure_default_link_records; ensure_default_li
 landa.patches.set_customer_group
 execute:from landa.install import make_custom_fields; make_custom_fields()
 landa.patches.remove_address_fetch_from
+landa.patches.link_default_address_and_contact_to_customer
