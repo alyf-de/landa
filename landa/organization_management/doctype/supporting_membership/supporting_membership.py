@@ -53,7 +53,7 @@ class SupportingMembership(Document):
 				exc=frappe.DuplicateEntryError,
 			)
 
-		if self.member and self.status == "Active":
+		if self.member:
 			validate_no_active_yearly_fishing_permit(self.member, self.year)
 
 	def get_status(self):
@@ -76,7 +76,12 @@ def update_supporting_membership_statuses():
 		doc = frappe.get_doc("Supporting Membership", supporting_membership.name)
 		if doc.status == doc.get_status():
 			continue
-		doc.save()
+		try:
+			doc.save()
+		except Exception:
+			frappe.log_error(
+				title=f"Failed to update status of Supporting Membership {doc.name}",
+			)
 
 
 def get_supporting_memberships_to_update():
