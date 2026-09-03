@@ -14,10 +14,10 @@
   "last_name",
   "date_of_birth",
   "organization",
+  "supporting_membership_in_year",
   "additional_information",
   "column_break_7",
   "has_key",
-  "is_supporting_member",
   "youth_membership",
   "special_yearly_fishing_permits_section",
   "has_special_yearly_fishing_permit_1",
@@ -74,12 +74,6 @@
    "fieldname": "city",
    "fieldtype": "Data",
    "label": "City"
-  },
-  {
-   "default": "0",
-   "fieldname": "is_supporting_member",
-   "fieldtype": "Check",
-   "label": "Is Supporting Member"
   },
   {
    "default": "0",
@@ -209,12 +203,17 @@
    "fieldname": "has_special_yearly_fishing_permit_7",
    "fieldtype": "Check",
    "label": "Hat VANT Erlaubnisschein"
+  },
+  {
+   "fieldname": "supporting_membership_in_year",
+   "fieldtype": "Int",
+   "label": "Supporting Membership In Year"
   }
  ],
  "grid_page_length": 50,
  "is_virtual": 1,
  "links": [],
- "modified": "2025-12-04 18:46:53.842189",
+ "modified": "2026-07-07 22:03:54.230984",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Data Import",

@@ -345,6 +345,7 @@ scheduler_events = {
 		],
 		"0 0 1 1 *": [  # every 1st january at 00:00
 			"landa.organization_management.doctype.work_ledger_entry.work_ledger_entry.create_yearly_negative_entries",
+			"landa.organization_management.doctype.supporting_membership.supporting_membership.update_supporting_membership_statuses",
 		],
 	},
 	# "all": ["landa.tasks.all"],

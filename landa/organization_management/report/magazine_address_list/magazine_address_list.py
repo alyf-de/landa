@@ -105,32 +105,56 @@ class Address:
 		addresses_df["country"] = addresses_df["country"].apply(lambda x: x if x != "Germany" else None)
 		addresses_df["full_address"] = addresses_df.apply(append_country_if_exists, axis=1)
 
-		# load addresses from db
-		permit_fields = ["year", "member", "docstatus"]
-		permits = frappe.get_list(
-			"Yearly Fishing Permit",
-			filters=[["Yearly Fishing Permit", "member", "in", get_member_filter(members)]],
-			fields=permit_fields,
-			as_list=True,
-		)
-		# convert to pandas dataframe
-		permits_df = frappe_tuple_to_pandas_df(permits, permit_fields)
-		permits_df = permits_df[permits_df["docstatus"] == 1]
-		# remove column 'status'
-		permits_df = permits_df.drop("docstatus", axis=1)
-		permits_df = remove_duplicate_indices(permits_df, sort_by="year")
-
 		now = datetime.now()
 		this_year = now.year
 		this_month = now.month
-		# if this month is January to June: members need a permit for this year or last year:
-		if this_month < 7:
-			permits_df["permit_active"] = [int((this_year - int(y)) <= 1) for y in permits_df["year"].values]
-		# if this month is July to December: members need a permit for this year:
+
+		def year_is_active(year):
+			# January to June: membership for this year or last year counts as active
+			if this_month < 7:
+				return int((this_year - int(year)) <= 1)
+			return int(this_year == int(year))
+
+		member_ids = get_member_filter(members)
+
+		permit_fields = ["year", "member", "docstatus"]
+		permits = frappe.get_list(
+			"Yearly Fishing Permit",
+			filters=[["Yearly Fishing Permit", "member", "in", member_ids]],
+			fields=permit_fields,
+			as_list=True,
+		)
+		if permits:
+			permits_df = frappe_tuple_to_pandas_df(permits, permit_fields)
+			permits_df = permits_df[permits_df["docstatus"] == 1].drop("docstatus", axis=1)
+			permits_df = remove_duplicate_indices(permits_df, sort_by="year")
+			permits_df["permit_active"] = [year_is_active(y) for y in permits_df["year"].values]
 		else:
-			permits_df["permit_active"] = [int(this_year == int(y)) for y in permits_df["year"].values]
+			permits_df = pd.DataFrame(columns=["year", "permit_active"])
+
+		supporting_fields = ["year", "member"]
+		supporting_memberships = frappe.get_list(
+			"Supporting Membership",
+			filters=[["Supporting Membership", "member", "in", member_ids]],
+			fields=supporting_fields,
+			as_list=True,
+		)
+		if supporting_memberships:
+			supporting_df = frappe_tuple_to_pandas_df(supporting_memberships, supporting_fields)
+			supporting_df = remove_duplicate_indices(supporting_df, sort_by="year")
+			supporting_df["supporting_active"] = [year_is_active(y) for y in supporting_df["year"].values]
+		else:
+			supporting_df = pd.DataFrame(columns=["year", "supporting_active"])
+
+		activity_df = permits_df.join(supporting_df, how="outer", rsuffix="_supporting")
+		activity_df["permit_active"] = (
+			activity_df[["permit_active", "supporting_active"]].fillna(0).max(axis=1).astype(int)
+		)
+		activity_df["year"] = activity_df["year"].combine_first(activity_df["year_supporting"])
+		activity_df = activity_df[["year", "permit_active"]]
+
 		# merge all dataframes from different doctypes
-		data = pd.concat([member_df, permits_df, addresses_df], axis=1).reindex(member_df.index)
+		data = pd.concat([member_df, activity_df, addresses_df], axis=1).reindex(member_df.index)
 		data["magazine_active"] = data["permit_active"] * data["magazine_recipient"]
 		if self.only_active_magazine:
 			data = data[data["magazine_active"] == 1]

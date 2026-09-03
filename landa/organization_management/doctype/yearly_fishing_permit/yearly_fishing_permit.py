@@ -8,6 +8,10 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
+from landa.organization_management.membership_permit_validation import (
+	validate_no_active_supporting_membership,
+)
+
 
 class YearlyFishingPermit(Document):
 	# begin: auto-generated types
@@ -69,6 +73,9 @@ class YearlyFishingPermit(Document):
 		current_year = datetime.now().year
 		if int(self.year) not in [current_year, current_year + 1]:
 			frappe.throw(_("Year must be either the current year or the next year."))
+
+		if self.member and self.docstatus != 2:
+			validate_no_active_supporting_membership(self.member, int(self.year))
 
 	def on_update(self):
 		if self.has_permission("submit") and self.docstatus == 0:
