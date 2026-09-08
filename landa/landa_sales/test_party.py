@@ -19,6 +19,28 @@ class TestPartyAddressDefaults(TestCase):
 			present = {(field, prop) for field, prop, _value in setters[doctype] if field}
 			self.assertFalse(removed & present)
 
+	def test_group_same_items_is_off_and_hidden(self):
+		setters = get_property_setters()
+		expected = {
+			("group_same_items", "default", "0"),
+			("group_same_items", "hidden", "1"),
+		}
+		for doctype in (
+			"Delivery Note",
+			"POS Invoice",
+			"Purchase Invoice",
+			"Purchase Order",
+			"Purchase Receipt",
+			"Quotation",
+			"Sales Invoice",
+			"Sales Order",
+			"Supplier Quotation",
+		):
+			present = {
+				(field, prop, value) for field, prop, value in setters[doctype] if field == "group_same_items"
+			}
+			self.assertEqual(expected, present, doctype)
+
 	@patch("landa.landa_sales.party.get_address_display", side_effect=lambda addr: f"display:{addr}")
 	def test_party_details_use_customer_default_addresses(self, _mock_display):
 		customer = Mock(

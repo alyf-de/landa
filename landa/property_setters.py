@@ -133,6 +133,8 @@ def get_property_setters():
 				'<p>Infos zum Thema Bestellwesen in den <a href="https://youtube.com/playlist?list=PLCG04RYNrML-cMx1lE7DD1gNFmIdE8cZF" target="_blank">LANDA Videotutorials - Bestellwesen</a></p>',
 			),
 			("dispatch_address_name", "hidden", "1"),
+			("group_same_items", "default", "0"),
+			("group_same_items", "hidden", "1"),
 			("ignore_pricing_rule", "hidden", "1"),
 			("more_info", "hidden", "1"),
 			("naming_series", "options", "MAT-DN-.YYYY.-\nMAT-DN-RET-.YYYY.-"),
@@ -277,6 +279,10 @@ def get_property_setters():
 			("taxes_and_charges_section", "hidden", "1"),
 			("year_of_settlement", "in_standard_filter", "1"),
 		],
+		"POS Invoice": [
+			("group_same_items", "default", "0"),
+			("group_same_items", "hidden", "1"),
+		],
 		"Purchase Invoice": [
 			(
 				None,
@@ -292,6 +298,7 @@ def get_property_setters():
 			("disable_rounded_total", "default", "1"),
 			("disable_rounded_total", "hidden", "1"),
 			("due_date", "print_hide", "0"),
+			("group_same_items", "default", "0"),
 			("group_same_items", "hidden", "1"),
 			("in_words", "hidden", "1"),
 			("in_words", "print_hide", "0"),
@@ -313,6 +320,18 @@ def get_property_setters():
 			("use_company_roundoff_cost_center", "hidden", "1"),
 			("use_transaction_date_exchange_rate", "hidden", "1"),
 			("write_off", "hidden", "1"),
+		],
+		"Purchase Order": [
+			("group_same_items", "default", "0"),
+			("group_same_items", "hidden", "1"),
+		],
+		"Purchase Receipt": [
+			("group_same_items", "default", "0"),
+			("group_same_items", "hidden", "1"),
+		],
+		"Quotation": [
+			("group_same_items", "default", "0"),
+			("group_same_items", "hidden", "1"),
 		],
 		"Sales Invoice": [
 			(None, "default_print_format", "SO DIN Addressfield"),
@@ -336,6 +355,8 @@ def get_property_setters():
 			("customer_address", "label", "Billing Address"),
 			("customer_po_details", "hidden", "1"),
 			("dispatch_address_name", "hidden", "1"),
+			("group_same_items", "default", "0"),
+			("group_same_items", "hidden", "1"),
 			("loyalty_points_redemption", "hidden", "1"),
 			("naming_series", "options", "ACC-SINV-.YYYY.-\nACC-SINV-RET-.YYYY.-"),
 			("outstanding_amount", "in_list_view", "1"),
@@ -408,6 +429,8 @@ def get_property_setters():
 			("disable_rounded_total", "default", "1"),
 			("disable_rounded_total", "hidden", "1"),
 			("dispatch_address_name", "hidden", "1"),
+			("group_same_items", "default", "0"),
+			("group_same_items", "hidden", "1"),
 			("ignore_pricing_rule", "hidden", "1"),
 			("in_words", "hidden", "1"),
 			("more_info", "hidden", "1"),
@@ -483,6 +506,10 @@ def get_property_setters():
 			("supplier_group", "default", "Services"),
 			("tax_category", "default", "Vorsteuer"),
 			("tax_withholding_category", "hidden", "1"),
+		],
+		"Supplier Quotation": [
+			("group_same_items", "default", "0"),
+			("group_same_items", "hidden", "1"),
 		],
 		"Tag": [
 			(None, "title_field", ""),
