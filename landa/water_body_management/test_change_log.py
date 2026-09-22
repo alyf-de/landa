@@ -63,3 +63,12 @@ class TestChangeLog(FrappeTestCase):
 		# The current state decides, so both visibility changes are reported as created
 		events = self.get_events()
 		self.assertEqual([event["event"] for event in events], ["Created", "Created", "Created"])
+
+	def test_deleted_hidden_water_body(self):
+		self.update_water_body(is_active=0)
+		frappe.delete_doc("Water Body", self.water_body_name)
+
+		# Deleting a document deletes its Versions. The deletion is the only remaining
+		# event, so it must be reported even if the Water Body was hidden before.
+		events = self.get_events()
+		self.assertEqual([event["event"] for event in events], ["Deleted"])
