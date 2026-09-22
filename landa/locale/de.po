@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-09-22 20:52+0053\n"
+"POT-Creation-Date: 2026-09-22 21:08+0053\n"
 "PO-Revision-Date: 2025-11-29 18:55+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
@@ -378,19 +378,19 @@ msgstr "Erlaubnisschein erstellen"
 msgid "Create Yearly Fishing Permit Gewaesserfonds"
 msgstr "Erlaubnisschein Gewässerfonds erstellen"
 
-#: landa/organization_management/doctype/supporting_membership/supporting_membership.py:108
-#: landa/organization_management/doctype/supporting_membership/supporting_membership.py:117
-#: landa/organization_management/doctype/supporting_membership/supporting_membership.py:134
+#: landa/organization_management/doctype/supporting_membership/supporting_membership.py:107
+#: landa/organization_management/doctype/supporting_membership/supporting_membership.py:116
+#: landa/organization_management/doctype/supporting_membership/supporting_membership.py:133
 msgid "Creating Supporting Memberships..."
 msgstr "Fördermitgliedschaften werden erstellt..."
 
-#: landa/organization_management/doctype/yearly_fishing_permit_gewaesserfonds/yearly_fishing_permit_gewaesserfonds.py:122
+#: landa/organization_management/doctype/yearly_fishing_permit_gewaesserfonds/yearly_fishing_permit_gewaesserfonds.py:124
 msgid "Creating Yearly Fishing Permits Gewaesserfonds..."
 msgstr "Erlaubnisscheine Gewässerfonds werden erstellt..."
 
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:96
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:105
-#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:123
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:94
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:103
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:121
 msgid "Creating Yearly Fishing Permits..."
 msgstr "Erlaubnisscheine werden erstellt..."
 
@@ -1583,6 +1583,12 @@ msgstr "Mitglied {0} hat einen aktiven Erlaubnisschein. Ein Mitglied kann nicht 
 msgid "Members in Water Body Management"
 msgstr "Mitglieder in der Gewässerbetreuung"
 
+#: landa/organization_management/doctype/supporting_membership/supporting_membership.py:103
+#: landa/organization_management/doctype/yearly_fishing_permit/yearly_fishing_permit.py:90
+#: landa/organization_management/doctype/yearly_fishing_permit_gewaesserfonds/yearly_fishing_permit_gewaesserfonds.py:119
+msgid "Members must be a list of strings"
+msgstr "Mitglieder muss eine Liste von Strings sein"
+
 #. Name of a report
 #. Label of a Link in the Organization Management Workspace
 #: landa/organization_management/report/members_with_member_functions/members_with_member_functions.json
@@ -2374,6 +2380,10 @@ msgstr "Einheit Menge pro Gewässer Fläche/Länge"
 #: landa/water_body_management/report/stocking_of_supported_water_bodies/stocking_of_supported_water_bodies.py:55
 msgid "Unit of Weight per Water Body Size"
 msgstr "Einheit Gewicht pro Gewässer Fläche/Länge"
+
+#: landa/organization_management/doctype/yearly_fishing_permit_gewaesserfonds/yearly_fishing_permit_gewaesserfonds.py:122
+msgid "Unknown association or state: {0}"
+msgstr "Unbekannter Verband / Bundesland: {0}"
 
 #: landa/organization_management/report/member_birthday_list/member_birthday_list.py:33
 #: landa/organization_management/report/members_with_member_functions/members_with_member_functions.py:78

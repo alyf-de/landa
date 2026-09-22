@@ -115,9 +115,11 @@ def bulk_create(year: str | int, association_or_state: str, members: str):
 	parsed_members = json.loads(members)
 	year = cint(year)
 
-	assert isinstance(parsed_members, list), "Members must be a list"
-	assert all(isinstance(member, str) for member in parsed_members), "Members must be a list of strings"
-	assert association_or_state in ASSOCIATIONS_AND_STATES, "Unknown association or state"
+	if not isinstance(parsed_members, list) or not all(isinstance(m, str) for m in parsed_members):
+		frappe.throw(_("Members must be a list of strings"))
+
+	if association_or_state not in ASSOCIATIONS_AND_STATES:
+		frappe.throw(_("Unknown association or state: {0}").format(association_or_state))
 
 	title = _("Creating Yearly Fishing Permits Gewaesserfonds...")
 	frappe.publish_progress(percent=0, title=title, doctype="LANDA Member")

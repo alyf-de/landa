@@ -86,10 +86,8 @@ class YearlyFishingPermit(Document):
 def bulk_create(permit_type: str, year: str, members: str):
 	parsed_members = json.loads(members)
 
-	assert isinstance(parsed_members, list), "Members must be a list"
-	assert all(isinstance(member, str) for member in parsed_members), "Members must be a list of strings"
-	assert isinstance(permit_type, str), "Permit type must be a string"
-	assert isinstance(year, str), "Year must be a string"
+	if not isinstance(parsed_members, list) or not all(isinstance(m, str) for m in parsed_members):
+		frappe.throw(_("Members must be a list of strings"))
 
 	frappe.publish_progress(
 		percent=0,

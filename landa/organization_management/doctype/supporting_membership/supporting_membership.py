@@ -99,9 +99,8 @@ def bulk_create(year: str | int, members: str):
 	parsed_members = json.loads(members)
 	year = cint(year)
 
-	assert isinstance(parsed_members, list), "Members must be a list"
-	assert all(isinstance(member, str) for member in parsed_members), "Members must be a list of strings"
-	assert isinstance(year, int), "Year must be an integer"
+	if not isinstance(parsed_members, list) or not all(isinstance(m, str) for m in parsed_members):
+		frappe.throw(_("Members must be a list of strings"))
 
 	frappe.publish_progress(
 		percent=0,
