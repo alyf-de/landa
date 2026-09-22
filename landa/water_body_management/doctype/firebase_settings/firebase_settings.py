@@ -42,7 +42,7 @@ class FirebaseSettings(Document):
 
 
 @frappe.whitelist(methods=["POST"])
-def upload_api_file(*args, **kwargs):
+def upload_api_file(*args, **kwargs) -> None:
 	doc = frappe.get_single("Firebase Settings")
 	doc.check_permission("write")
 

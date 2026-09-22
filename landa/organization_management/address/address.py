@@ -110,7 +110,7 @@ def rename_addresses(limit: int):
 
 
 @frappe.whitelist()
-def get_address_display(address_dict):
+def get_address_display(address_dict: str | dict) -> str | None:
 	"""Overwrite frappe.contacts.doctype.address.address.get_address_display
 
 	Changes: Siltenly return None if the user does not have permission to view the address.
