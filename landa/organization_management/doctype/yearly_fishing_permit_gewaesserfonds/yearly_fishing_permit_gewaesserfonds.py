@@ -145,3 +145,11 @@ def bulk_create(year: str | int, association_or_state: str, members: str):
 	frappe.publish_progress(percent=100, title=title, doctype="LANDA Member", description=_("Done"))
 
 	return {"num_created": num_members - num_skipped, "num_skipped": num_skipped}
+
+
+def on_doctype_update():
+	frappe.db.add_unique(
+		"Yearly Fishing Permit Gewaesserfonds",
+		["member", "year", "association_or_state"],
+		constraint_name="unique_member_year_association_or_state",
+	)
