@@ -71,7 +71,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Year",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "status",
@@ -86,19 +87,23 @@
   {
    "fieldname": "number",
    "fieldtype": "Data",
-   "label": "Number"
+   "label": "Number",
+   "set_only_once": 1
   },
   {
    "fieldname": "association_or_state",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Association or State",
    "options": "Sachsen-Anhalt\nBrandenburg\nBerlin\nMecklenburg-Vorpommern\nSaalekaskade\nLAVT\nVANT",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   }
  ],
  "grid_page_length": 50,
  "links": [],
- "modified": "2026-09-22 15:18:02.601976",
+ "modified": "2026-09-22 20:30:42.887806",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Yearly Fishing Permit Gewaesserfonds",
