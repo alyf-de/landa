@@ -16,6 +16,30 @@ from landa.organization_management.report.current_member_data.current_member_dat
 class TestYearlyFishingPermitGewaesserfonds(FrappeTestCase):
 	test_dependencies = ["Organization"]
 
+	def test_organization_comes_from_the_member(self):
+		"""`organization` is fetched from the member, so a permit cannot land in another organization."""
+		organizations = frappe.get_all("Organization", filters={"is_group": 0}, limit=2, pluck="name")
+		member_organization, other_organization = organizations
+		member = frappe.get_doc(
+			{
+				"doctype": "LANDA Member",
+				"organization": member_organization,
+				"last_name": "Gewaesserfonds",
+			}
+		).insert()
+
+		permit = frappe.get_doc(
+			{
+				"doctype": "Yearly Fishing Permit Gewaesserfonds",
+				"member": member.name,
+				"organization": other_organization,
+				"year": datetime.now().year,
+				"association_or_state": "Berlin",
+			}
+		).insert()
+
+		self.assertEqual(permit.organization, member_organization)
+
 	def test_status_follows_year(self):
 		organization = frappe.get_all("Organization", filters={"is_group": 0}, limit=1, pluck="name")[0]
 		member = frappe.get_doc(

@@ -210,7 +210,7 @@ class MemberDataImport(Document):
 		)
 
 	def create_gewaesserfonds_permits(self):
-		if not all([self.member, self.organization]):
+		if not self.member:
 			return
 
 		for index, association_or_state in enumerate(ASSOCIATIONS_AND_STATES, start=1):
@@ -222,7 +222,6 @@ class MemberDataImport(Document):
 				member=self.member,
 				year=year,
 				association_or_state=association_or_state,
-				organization=self.organization,
 			)
 
 	def validate_existing_permit(self):
@@ -328,9 +327,8 @@ def create_supporting_membership(member: str, year: int, organization: str) -> N
 	supporting_membership.insert()
 
 
-def create_gewaesserfonds_permit(
-	member: str, year: int, association_or_state: str, organization: str
-) -> None:
+def create_gewaesserfonds_permit(member: str, year: int, association_or_state: str) -> None:
+	"""Create a permit for `member`. Its organization is fetched from the member."""
 	data = {"member": member, "year": year, "association_or_state": association_or_state}
 
 	if frappe.db.exists("Yearly Fishing Permit Gewaesserfonds", data):
@@ -338,7 +336,6 @@ def create_gewaesserfonds_permit(
 
 	permit = frappe.new_doc("Yearly Fishing Permit Gewaesserfonds")
 	permit.update(data)
-	permit.organization = organization
 	permit.insert()
 
 

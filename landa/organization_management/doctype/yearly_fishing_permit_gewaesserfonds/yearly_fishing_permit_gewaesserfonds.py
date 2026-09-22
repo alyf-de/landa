@@ -133,7 +133,6 @@ def bulk_create(year: str | int, association_or_state: str, members: str):
 		)
 		permit = frappe.new_doc("Yearly Fishing Permit Gewaesserfonds")
 		permit.member = member
-		permit.organization = frappe.db.get_value("LANDA Member", member, "organization")
 		permit.year = year
 		permit.association_or_state = association_or_state
 		try:
