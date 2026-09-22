@@ -172,7 +172,7 @@ def add_gewaesserfonds_permit_years(member_df: pd.DataFrame, organization: str, 
 			if permit.association_or_state == association_or_state
 		}
 		member_df[f"has_special_yearly_fishing_permit_{index}"] = [
-			years_by_member.get(member, "") for member in member_df.index
+			years_by_member.get(member, None) for member in member_df.index
 		]
 
 
@@ -265,37 +265,37 @@ def get_columns():
 		},
 		{
 			"label": _("Sachsen-Anhalt Erlaubnisschein im Jahr"),
-			"fieldtype": "Int",
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_1",
 		},
 		{
 			"label": _("Brandenburg Erlaubnisschein im Jahr"),
-			"fieldtype": "Int",
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_2",
 		},
 		{
 			"label": _("Berlin Erlaubnisschein im Jahr"),
-			"fieldtype": "Int",
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_3",
 		},
 		{
 			"label": _("Mecklenburg-Vorpommern Erlaubnisschein im Jahr"),
-			"fieldtype": "Int",
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_4",
 		},
 		{
 			"label": _("Saalekaskade Erlaubnisschein im Jahr"),
-			"fieldtype": "Int",
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_5",
 		},
 		{
 			"label": _("LAVT Erlaubnisschein im Jahr"),
-			"fieldtype": "Int",
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_6",
 		},
 		{
 			"label": _("VANT Erlaubnisschein im Jahr"),
-			"fieldtype": "Int",
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_7",
 		},
 	]
