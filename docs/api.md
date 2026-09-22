@@ -267,6 +267,8 @@ Events covered by the change log are:
 
 The change log contains only Water Bodies that the Water Body API returns (active and displayed in the fishing guide), and only the fields that the Water Body and Fish Species APIs return. If a Water Body becomes visible, the change log reports it as "Created". If it becomes hidden, the change log reports it as "Deleted".
 
+This endpoint allows 30 requests per minute for each IP address.
+
 ### Example Request
 
 ```bash
