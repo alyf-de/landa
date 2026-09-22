@@ -1,6 +1,7 @@
 import json
 
 import frappe
+from frappe.rate_limiter import rate_limit
 from frappe.utils.caching import redis_cache
 
 from landa.water_body_management.change_log import ChangeLog
@@ -105,6 +106,7 @@ def legal() -> dict[str, str | None]:
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@rate_limit(limit=30, seconds=60)
 def change_log(from_datetime: str) -> list[dict]:
 	"""Return a list of version logs of documents created/updated/deleted after the given datetime."""
 	if not isinstance(from_datetime, str):
