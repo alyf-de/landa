@@ -99,18 +99,6 @@
    "options": "Yearly Fishing Permit Type"
   },
   {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_1",
-   "fieldtype": "Check",
-   "label": "Hat Sachsen-Anhalt Erlaubnisschein"
-  },
-  {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_2",
-   "fieldtype": "Check",
-   "label": "Hat Brandenburg Erlaubnisschein"
-  },
-  {
    "fieldname": "additional_information",
    "fieldtype": "Data",
    "label": "Additional Information"
@@ -171,49 +159,54 @@
    "label": "Special Yearly Fishing Permits"
   },
   {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_3",
-   "fieldtype": "Check",
-   "label": "Hat Berlin Erlaubnisschein"
+   "fieldname": "supporting_membership_in_year",
+   "fieldtype": "Int",
+   "label": "Supporting Membership In Year"
   },
   {
-   "default": "0",
+   "fieldname": "has_special_yearly_fishing_permit_1",
+   "fieldtype": "Int",
+   "label": "Sachsen-Anhalt Erlaubnisschein im Jahr"
+  },
+  {
+   "fieldname": "has_special_yearly_fishing_permit_2",
+   "fieldtype": "Int",
+   "label": "Brandenburg Erlaubnisschein im Jahr"
+  },
+  {
+   "fieldname": "has_special_yearly_fishing_permit_3",
+   "fieldtype": "Int",
+   "label": "Berlin Erlaubnisschein im Jahr"
+  },
+  {
    "fieldname": "has_special_yearly_fishing_permit_4",
-   "fieldtype": "Check",
-   "label": "Hat Mecklenburg-Vorpommern Erlaubnisschein"
+   "fieldtype": "Int",
+   "label": "Mecklenburg-Vorpommern Erlaubnisschein im Jahr"
   },
   {
    "fieldname": "column_break_m5jmg",
    "fieldtype": "Column Break"
   },
   {
-   "default": "0",
    "fieldname": "has_special_yearly_fishing_permit_5",
-   "fieldtype": "Check",
-   "label": "Hat Saalekaskade Erlaubnisschein"
-  },
-  {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_6",
-   "fieldtype": "Check",
-   "label": "Hat LAVT Erlaubnisschein"
-  },
-  {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_7",
-   "fieldtype": "Check",
-   "label": "Hat VANT Erlaubnisschein"
-  },
-  {
-   "fieldname": "supporting_membership_in_year",
    "fieldtype": "Int",
-   "label": "Supporting Membership In Year"
+   "label": "Saalekaskade Erlaubnisschein im Jahr"
+  },
+  {
+   "fieldname": "has_special_yearly_fishing_permit_6",
+   "fieldtype": "Int",
+   "label": "LAVT Erlaubnisschein im Jahr"
+  },
+  {
+   "fieldname": "has_special_yearly_fishing_permit_7",
+   "fieldtype": "Int",
+   "label": "VANT Erlaubnisschein im Jahr"
   }
  ],
  "grid_page_length": 50,
  "is_virtual": 1,
  "links": [],
- "modified": "2026-07-07 22:03:54.230984",
+ "modified": "2026-09-22 15:35:01.792003",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Data Import",
