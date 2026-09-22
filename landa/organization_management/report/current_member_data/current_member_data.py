@@ -13,12 +13,16 @@ from landa.organization_management.doctype.yearly_fishing_permit_gewaesserfonds.
 
 
 def _indexed_frame_from_records(records: list[dict], *, index: str, columns: list[str]) -> pd.DataFrame:
-	"""Build an indexed DataFrame that keeps its schema even for empty result sets."""
+	"""Build an indexed DataFrame that keeps its schema even for empty result sets.
+
+	Columns are kept as `object`, so that members without a matching row don't
+	turn integer columns (like permit years) into floats ("2026.0").
+	"""
 	if not records:
 		return pd.DataFrame(columns=columns, index=pd.Index([], name=index))
 
 	df = pd.DataFrame.from_records(records, index=index)
-	return df.reindex(columns=columns)
+	return df.reindex(columns=columns).astype(object)
 
 
 def execute(filters=None):
@@ -172,7 +176,7 @@ def add_gewaesserfonds_permit_years(member_df: pd.DataFrame, organization: str, 
 			if permit.association_or_state == association_or_state
 		}
 		member_df[f"has_special_yearly_fishing_permit_{index}"] = [
-			years_by_member.get(member, None) for member in member_df.index
+			years_by_member.get(member, "") for member in member_df.index
 		]
 
 

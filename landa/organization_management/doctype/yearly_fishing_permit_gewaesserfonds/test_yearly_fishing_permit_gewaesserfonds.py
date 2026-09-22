@@ -100,6 +100,10 @@ class TestYearlyFishingPermitGewaesserfonds(FrappeTestCase):
 		member = frappe.get_doc(
 			{"doctype": "LANDA Member", "organization": organization, "last_name": "Gewaesserfonds"}
 		).insert()
+		# a second member without any permit, so that the report mixes years and blanks
+		frappe.get_doc(
+			{"doctype": "LANDA Member", "organization": organization, "last_name": "Kein Schein"}
+		).insert()
 
 		frappe.get_doc(
 			{
@@ -121,5 +125,8 @@ class TestYearlyFishingPermitGewaesserfonds(FrappeTestCase):
 		fieldnames = [column["fieldname"] for column in columns]
 		row = next(row for row in data if row[0] == member.name)
 
-		self.assertEqual(row[fieldnames.index("has_special_yearly_fishing_permit_3")], year)
+		berlin_year = row[fieldnames.index("has_special_yearly_fishing_permit_3")]
+		self.assertEqual(berlin_year, year)
+		# the blank of the other member must not turn this into "2026.0"
+		self.assertEqual(str(berlin_year), str(year))
 		self.assertEqual(row[fieldnames.index("has_special_yearly_fishing_permit_1")], "")
