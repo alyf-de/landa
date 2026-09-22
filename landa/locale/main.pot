@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-09-22 20:44+0053\n"
-"PO-Revision-Date: 2026-09-22 20:44+0053\n"
+"POT-Creation-Date: 2026-09-22 20:52+0053\n"
+"PO-Revision-Date: 2026-09-22 20:52+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -102,7 +102,7 @@ msgstr ""
 
 #. Label of a Data field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:207
+#: landa/organization_management/report/current_member_data/current_member_data.py:219
 msgid "Address ID"
 msgstr ""
 
@@ -216,7 +216,7 @@ msgstr ""
 
 #. Label of a Int field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:281
+#: landa/organization_management/report/current_member_data/current_member_data.py:293
 msgid "Berlin Erlaubnisschein im Jahr"
 msgstr ""
 
@@ -280,7 +280,7 @@ msgstr ""
 
 #. Label of a Int field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:276
+#: landa/organization_management/report/current_member_data/current_member_data.py:288
 msgid "Brandenburg Erlaubnisschein im Jahr"
 msgstr ""
 
@@ -844,7 +844,7 @@ msgstr ""
 #. Label of a Check field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/landa_member/landa_member.json
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:233
+#: landa/organization_management/report/current_member_data/current_member_data.py:245
 msgid "Has Key"
 msgstr ""
 
@@ -870,7 +870,7 @@ msgstr ""
 
 #. Label of a Link field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:254
+#: landa/organization_management/report/current_member_data/current_member_data.py:266
 msgid "ID Yearly Fishing Permit"
 msgstr ""
 
@@ -991,10 +991,6 @@ msgstr ""
 #. Label of a Check field in DocType 'Water Body'
 #: landa/water_body_management/doctype/water_body/water_body.json
 msgid "Is Property Water Body"
-msgstr ""
-
-#: landa/organization_management/report/current_member_data/current_member_data.py:228
-msgid "Is Supporting Member"
 msgstr ""
 
 #. Label of a Data field in DocType 'LANDA Member'
@@ -1244,7 +1240,7 @@ msgstr ""
 
 #. Label of a Int field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:296
+#: landa/organization_management/report/current_member_data/current_member_data.py:308
 msgid "LAVT Erlaubnisschein im Jahr"
 msgstr ""
 
@@ -1406,7 +1402,7 @@ msgstr ""
 
 #. Label of a Int field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:286
+#: landa/organization_management/report/current_member_data/current_member_data.py:298
 msgid "Mecklenburg-Vorpommern Erlaubnisschein im Jahr"
 msgstr ""
 
@@ -1541,7 +1537,7 @@ msgstr ""
 
 #. Label of a Data field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:186
+#: landa/organization_management/report/current_member_data/current_member_data.py:198
 msgid "Member ID"
 msgstr ""
 
@@ -1990,7 +1986,7 @@ msgstr ""
 
 #. Label of a Int field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:291
+#: landa/organization_management/report/current_member_data/current_member_data.py:303
 msgid "Saalekaskade Erlaubnisschein im Jahr"
 msgstr ""
 
@@ -2002,7 +1998,7 @@ msgstr ""
 
 #. Label of a Int field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:271
+#: landa/organization_management/report/current_member_data/current_member_data.py:283
 msgid "Sachsen-Anhalt Erlaubnisschein im Jahr"
 msgstr ""
 
@@ -2228,6 +2224,7 @@ msgstr ""
 
 #. Label of a Int field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
+#: landa/organization_management/report/current_member_data/current_member_data.py:240
 msgid "Supporting Membership In Year"
 msgstr ""
 
@@ -2401,7 +2398,7 @@ msgstr ""
 
 #. Label of a Int field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:301
+#: landa/organization_management/report/current_member_data/current_member_data.py:313
 msgid "VANT Erlaubnisschein im Jahr"
 msgstr ""
 
@@ -2698,7 +2695,7 @@ msgstr ""
 
 #. Label of a Int field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:260
+#: landa/organization_management/report/current_member_data/current_member_data.py:272
 msgid "Year of Yearly Fishing Permit"
 msgstr ""
 
@@ -2734,7 +2731,7 @@ msgstr ""
 #: landa/landa_sales/workspace/order_management/order_management.json
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
 #: landa/organization_management/doctype/yearly_fishing_permit_type/yearly_fishing_permit_type.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:265
+#: landa/organization_management/report/current_member_data/current_member_data.py:277
 #: landa/organization_management/workspace/organization_management/organization_management.json
 msgid "Yearly Fishing Permit Type"
 msgstr ""
@@ -2792,7 +2789,7 @@ msgstr ""
 #. Label of a Check field in DocType 'Member Data Import'
 #: landa/organization_management/doctype/landa_member/landa_member.json
 #: landa/organization_management/doctype/member_data_import/member_data_import.json
-#: landa/organization_management/report/current_member_data/current_member_data.py:238
+#: landa/organization_management/report/current_member_data/current_member_data.py:250
 msgid "Youth Membership"
 msgstr ""
 

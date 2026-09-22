@@ -36,8 +36,8 @@ def execute(filters=None):
 def get_data(organization: str):
 	"""Assemble rows for the current-member report from several DocTypes.
 
-	Loads LANDA Member master data (respecting the organization filter), active
-	Supporting Membership rows for the same organization, Yearly Fishing Permit
+	Loads LANDA Member master data (respecting the organization filter),
+	Supporting Membership years for the same organization, Yearly Fishing Permit
 	Gewaesserfonds years per association or state, Yearly Fishing Permit rows
 	keyed by member (keeping one row per member after sorting by year), and
 	Address rows dynamically linked to those members. The frames are merged and
@@ -78,15 +78,7 @@ def get_data(organization: str):
 		],
 	)
 	this_year = datetime.now().year
-	supporting_members = {
-		membership.member
-		for membership in frappe.get_list(
-			"Supporting Membership",
-			filters={"organization": organization, "year": this_year},
-			fields=["member"],
-		)
-	}
-	member_df["is_supporting_member"] = member_df.index.isin(supporting_members).astype(int)
+	add_supporting_membership_years(member_df, organization, this_year)
 	add_gewaesserfonds_permit_years(member_df, organization, this_year)
 	fishing_permits = frappe.get_list(
 		"Yearly Fishing Permit",
@@ -149,6 +141,26 @@ def get_data(organization: str):
 	data = data.reset_index()
 	data = tuple(data.itertuples(index=False, name=None))
 	return data
+
+
+def add_supporting_membership_years(member_df: pd.DataFrame, organization: str, this_year: int) -> None:
+	"""Add the year of the member's supporting membership, matching the Member Data Import field.
+
+	If a member has supporting memberships for several years, the most recent one wins.
+	"""
+	memberships = frappe.get_list(
+		"Supporting Membership",
+		filters={
+			"organization": organization,
+			"year": ["in", [this_year - 1, this_year, this_year + 1]],
+		},
+		fields=["member", "year"],
+		order_by="year asc",
+	)
+	years_by_member = {membership.member: membership.year for membership in memberships}
+	member_df["supporting_membership_in_year"] = [
+		years_by_member.get(member, "") for member in member_df.index
+	]
 
 
 def add_gewaesserfonds_permit_years(member_df: pd.DataFrame, organization: str, this_year: int) -> None:
@@ -225,9 +237,9 @@ def get_columns():
 			"fieldname": "city",
 		},
 		{
-			"label": _("Is Supporting Member"),
-			"fieldtype": "Check",
-			"fieldname": "is_supporting_member",
+			"label": _("Supporting Membership In Year"),
+			"fieldtype": "Data",
+			"fieldname": "supporting_membership_in_year",
 		},
 		{
 			"label": _("Has Key"),
