@@ -4,6 +4,47 @@ import frappe
 from frappe.query_builder.custom import ConstantColumn
 from frappe.utils import cint
 
+# Fields that the public API returns. Changes to other fields must not leak through the change log.
+PUBLIC_FIELDS = {
+	"Water Body": {
+		"title",
+		"fishing_area",
+		"fishing_area_name",
+		"organization",
+		"organization_name",
+		"has_master_key_system",
+		"guest_passes_available",
+		"general_public_information",
+		"current_public_information",
+		"water_body_size",
+		"water_body_size_unit",
+		"geojson",
+		"status",
+		"fish_species",
+		"water_body_special_provisions",
+		"events",
+		"files",
+		"organizations",
+	},
+	"Fish Species": {
+		"title",
+		"short_code",
+		"scientific_name",
+		"close_season",
+		"minimum_size",
+		"general_fishing_limit",
+		"special_fishing_limit",
+		"traits",
+		"wikipedia_link",
+		"image",
+		"thumbnail",
+	},
+	"Water Body Rules": {"water_body_rules", "privacy_policy", "imprint"},
+}
+
+# A Water Body is public only if both fields are set
+WATER_BODY_VISIBILITY_FIELDS = {"is_active", "display_in_fishing_guide"}
+
 
 class ChangeLog:
 	def get_logs(self, from_datetime: str):
@@ -40,22 +81,53 @@ class ChangeLog:
 		changed_data = frappe._dict(json.loads(entry.data))
 		event = self._get_event(entry, changed_data)
 
-		# Modified dependencies (File and WBMLO)
 		if entry.doctype in ("File", "Water Body Management Local Organization"):
-			return self._build_dependency_change_log(entry, changed_data)
-
-		# Created/Deleted Water Body/Fish Species
-		if event in ("Created", "Deleted"):
-			return {
+			# Modified dependencies (File and WBMLO)
+			change_log = self._build_dependency_change_log(entry, changed_data)
+		elif event in ("Created", "Deleted"):
+			# Created/Deleted Water Body/Fish Species
+			change_log = {
 				"id": entry.name,
 				"doctype": entry.doctype,
 				"docname": entry.docname,
 				"event": event,
 				"datetime": entry.creation,
 			}
+		else:
+			# Modified Water Body/Fish Species Log
+			change_log = self._build_modified_change_log(entry, changed_data, event)
 
-		# Modified Water Body/Fish Species Log
-		return self._build_modified_change_log(entry, changed_data, event)
+		if change_log and change_log["doctype"] == "Water Body" and change_log["event"] != "Deleted":
+			change_log = self._apply_water_body_visibility(change_log)
+
+		if change_log and "changes" in change_log:
+			public_fields = PUBLIC_FIELDS[change_log["doctype"]]
+			change_log["changes"] = {
+				key: value for key, value in change_log["changes"].items() if key in public_fields
+			}
+			if not change_log["changes"]:
+				return None
+
+		return change_log
+
+	def _apply_water_body_visibility(self, change_log: dict):
+		"""Hide Water Bodies that are not public. Report a changed visibility as created or deleted."""
+		is_public = frappe.db.exists(
+			"Water Body",
+			{"name": change_log["docname"], "is_active": 1, "display_in_fishing_guide": 1},
+		)
+		visibility_changed = bool(WATER_BODY_VISIBILITY_FIELDS & change_log.get("changes", {}).keys())
+
+		if visibility_changed:
+			return {
+				"id": change_log["id"],
+				"doctype": change_log["doctype"],
+				"docname": change_log["docname"],
+				"event": "Created" if is_public else "Deleted",
+				"datetime": change_log["datetime"],
+			}
+
+		return change_log if is_public else None
 
 	def _get_version_log_query(self, from_datetime: str):
 		version = frappe.qb.DocType("Version")
@@ -146,11 +218,11 @@ class ChangeLog:
 		# Table fields changes
 		for key in ["added", "removed", "row_changed"]:
 			change_log["changes"].update(
-				{row[0]: None for row in changed_data.get(key) if row[0] not in change_log["changes"]}
+				{row[0]: None for row in changed_data.get(key, []) if row[0] not in change_log["changes"]}
 			)
 
 		# Other fields changes
-		for row in changed_data.get("changed"):
+		for row in changed_data.get("changed", []):
 			key, data = row[0], row[2]
 
 			# Newlines have been converted to <br> in the Version log

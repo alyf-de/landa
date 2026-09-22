@@ -265,6 +265,8 @@ Events covered by the change log are:
     - Modified
     - Deleted
 
+The change log contains only Water Bodies that the Water Body API returns (active and displayed in the fishing guide), and only the fields that the Water Body and Fish Species APIs return. If a Water Body becomes visible, the change log reports it as "Created". If it becomes hidden, the change log reports it as "Deleted".
+
 ### Example Request
 
 ```bash
@@ -332,7 +334,7 @@ curl --location "$BASE_URL/api/method/landa.api.change_log?from_datetime=2023-01
       "docname": "D09-205",
       "datetime": "2023-06-06 15:24:17.019050",
       "event": "Modified",
-      "changes": { "blacklisted_fish_species": null }
+      "changes": { "fish_species": null }
     },
     {
       "doctype": "Water Body",
