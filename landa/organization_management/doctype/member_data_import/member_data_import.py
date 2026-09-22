@@ -82,7 +82,7 @@ class MemberDataImport(Document):
 		"""Reject obvious typos in any of the year columns. An empty year means "skip"."""
 		for field in self.meta.get("fields", {"fieldtype": "Int"}):
 			year = self.get(field.fieldname)
-			if year and not 2000 < year < 2100:
+			if year and not 2000 <= year <= 2100:
 				frappe.throw(
 					_("{0} must be a year between 2000 and 2100, not {1}.").format(
 						frappe.bold(_(field.label)), year
