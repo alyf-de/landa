@@ -94,8 +94,8 @@ def get_supporting_memberships_to_update():
 	)
 
 
-@frappe.whitelist()
-def bulk_create(year: str | int, members: str):
+@frappe.whitelist(methods=["POST"])
+def bulk_create(year: str | int, members: str) -> dict[str, int]:
 	parsed_members = json.loads(members)
 	year = cint(year)
 

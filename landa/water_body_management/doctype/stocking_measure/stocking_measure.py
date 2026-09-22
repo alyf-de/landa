@@ -164,8 +164,8 @@ def stocking_site_query(
 	return results
 
 
-@frappe.whitelist()
-def create_stocking_targets(stocking_measure_names, year):
+@frappe.whitelist(methods=["POST"])
+def create_stocking_targets(stocking_measure_names: str | list[str], year: str | int) -> None:
 	import json
 
 	if isinstance(stocking_measure_names, str):

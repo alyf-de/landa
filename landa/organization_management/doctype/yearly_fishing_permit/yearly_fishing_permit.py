@@ -82,8 +82,8 @@ class YearlyFishingPermit(Document):
 			self.submit()
 
 
-@frappe.whitelist()
-def bulk_create(permit_type: str, year: str, members: str):
+@frappe.whitelist(methods=["POST"])
+def bulk_create(permit_type: str, year: str, members: str) -> dict[str, int]:
 	parsed_members = json.loads(members)
 
 	if not isinstance(parsed_members, list) or not all(isinstance(m, str) for m in parsed_members):

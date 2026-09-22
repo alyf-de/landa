@@ -7,6 +7,7 @@ if TYPE_CHECKING:
 
 from erpnext.accounts.doctype.sales_invoice.sales_invoice import make_delivery_note
 from frappe import _
+from frappe.model.document import Document
 
 from landa.landa_sales.utils import (
 	set_default_year_of_settlement,
@@ -42,7 +43,7 @@ def autoname(doc: "SalesInvoice", event: str):
 
 
 @frappe.whitelist()
-def make_landa_delivery_note(source_name, target_doc=None):
+def make_landa_delivery_note(source_name: str, target_doc: str | None = None) -> Document:
 	source_doc = frappe.get_doc("Sales Invoice", source_name)
 	target_doc = make_delivery_note(source_name, target_doc)
 

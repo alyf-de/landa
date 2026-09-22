@@ -111,7 +111,7 @@ def get_gewaesserfonds_permits_to_update():
 
 
 @frappe.whitelist(methods=["POST"])
-def bulk_create(year: str | int, association_or_state: str, members: str):
+def bulk_create(year: str | int, association_or_state: str, members: str) -> dict[str, int]:
 	parsed_members = json.loads(members)
 	year = cint(year)
 

@@ -339,5 +339,5 @@ def unset_value(doctype: str, name: str | None, fieldname: str) -> None:
 
 
 @frappe.whitelist()
-def no_liked_by(*args, **kwargs):
+def no_liked_by(*args, **kwargs) -> None:
 	pass

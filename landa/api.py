@@ -10,7 +10,7 @@ from landa.water_body_management.doctype.water_body.water_body import build_wate
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
 @redis_cache()
-def organization(id: str = None) -> list[dict]:
+def organization(id: str | None = None) -> list[dict]:
 	filters = [["disabled", "=", 0]]
 	if id and isinstance(id, str):
 		filters.append(["name", "=", id])
@@ -74,7 +74,7 @@ def organization(id: str = None) -> list[dict]:
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
-def water_body(id: str = None, only_id: int = 0) -> list[dict]:
+def water_body(id: str | None = None, only_id: int = 0) -> list[dict]:
 	"""Return a list of water bodies with fish species and special provisions."""
 	if id:
 		# We do not cache ID since it's uniqueness makes the API performant
@@ -87,14 +87,14 @@ def water_body(id: str = None, only_id: int = 0) -> list[dict]:
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
 @redis_cache()
-def fish_species(id: str = None):
+def fish_species(id: str | None = None) -> list[dict]:
 	"""Return a **CACHED** list of fish species. Uncached if ID is passed."""
 	return query_fish_species_data(id)
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
 @redis_cache()
-def legal():
+def legal() -> dict[str, str | None]:
 	"""Return water body rules in rich text format."""
 	rules = frappe.get_single("Water Body Rules")
 	return {
@@ -105,7 +105,7 @@ def legal():
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
-def change_log(from_datetime: str):
+def change_log(from_datetime: str) -> list[dict]:
 	"""Return a list of version logs of documents created/updated/deleted after the given datetime."""
 	if not isinstance(from_datetime, str):
 		raise TypeError("`from_datetime` must be a string")
@@ -115,7 +115,7 @@ def change_log(from_datetime: str):
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
 @redis_cache()
-def custom_icon(id: str = None) -> str:
+def custom_icon(id: str | None = None) -> list[dict]:
 	"""Return the custom icon for the given icon name."""
 	from frappe.utils.data import get_url
 

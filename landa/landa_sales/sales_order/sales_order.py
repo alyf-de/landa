@@ -3,6 +3,7 @@
 
 import frappe
 from erpnext.selling.doctype.sales_order.sales_order import make_delivery_note, make_sales_invoice
+from frappe.model.document import Document
 from frappe.utils.data import get_year_ending
 
 from landa.landa_sales.utils import (
@@ -48,7 +49,9 @@ def get_dashboard_data(data):
 
 
 @frappe.whitelist()
-def make_landa_sales_invoice(source_name, target_doc=None, ignore_permissions=False):
+def make_landa_sales_invoice(
+	source_name: str, target_doc: str | None = None, ignore_permissions: bool = False
+) -> Document:
 	source_doc = frappe.get_doc("Sales Order", source_name)
 	target_doc = make_sales_invoice(source_name, target_doc, ignore_permissions)
 
@@ -58,7 +61,9 @@ def make_landa_sales_invoice(source_name, target_doc=None, ignore_permissions=Fa
 
 
 @frappe.whitelist()
-def make_landa_delivery_note(source_name, target_doc=None, skip_item_mapping=False):
+def make_landa_delivery_note(
+	source_name: str, target_doc: str | None = None, skip_item_mapping: bool = False
+) -> Document:
 	source_doc = frappe.get_doc("Sales Order", source_name)
 	target_doc = make_delivery_note(source_name, target_doc, skip_item_mapping)
 
