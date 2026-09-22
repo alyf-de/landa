@@ -6,9 +6,13 @@ from datetime import datetime
 import frappe
 from frappe import _
 from frappe.model.document import Document
+from frappe.utils.data import cint
 from frappe.utils.dateutils import parse_date
 
 from landa.organization_management.doctype.landa_member.landa_member import LANDAMember
+from landa.organization_management.doctype.yearly_fishing_permit_gewaesserfonds.yearly_fishing_permit_gewaesserfonds import (
+	ASSOCIATIONS_AND_STATES,
+)
 from landa.utils import get_member_and_organization
 
 
@@ -28,13 +32,13 @@ class MemberDataImport(Document):
 		date_of_birth: DF.Date | None
 		first_name: DF.Data | None
 		has_key: DF.Check
-		has_special_yearly_fishing_permit_1: DF.Check
-		has_special_yearly_fishing_permit_2: DF.Check
-		has_special_yearly_fishing_permit_3: DF.Check
-		has_special_yearly_fishing_permit_4: DF.Check
-		has_special_yearly_fishing_permit_5: DF.Check
-		has_special_yearly_fishing_permit_6: DF.Check
-		has_special_yearly_fishing_permit_7: DF.Check
+		has_special_yearly_fishing_permit_1: DF.Int
+		has_special_yearly_fishing_permit_2: DF.Int
+		has_special_yearly_fishing_permit_3: DF.Int
+		has_special_yearly_fishing_permit_4: DF.Int
+		has_special_yearly_fishing_permit_5: DF.Int
+		has_special_yearly_fishing_permit_6: DF.Int
+		has_special_yearly_fishing_permit_7: DF.Int
 		last_name: DF.Data | None
 		member: DF.Data | None
 		organization: DF.Link | None
@@ -50,13 +54,6 @@ class MemberDataImport(Document):
 		"last_name",
 		"date_of_birth",
 		"has_key",
-		"has_special_yearly_fishing_permit_1",
-		"has_special_yearly_fishing_permit_2",
-		"has_special_yearly_fishing_permit_3",
-		"has_special_yearly_fishing_permit_4",
-		"has_special_yearly_fishing_permit_5",
-		"has_special_yearly_fishing_permit_6",
-		"has_special_yearly_fishing_permit_7",
 		"youth_membership",
 		"additional_information",
 	]
@@ -79,6 +76,18 @@ class MemberDataImport(Document):
 			frappe.throw(_("The selected address does not belong to the selected LANDA Member"))
 
 		self.validate_existing_permit()
+		self.validate_years()
+
+	def validate_years(self):
+		"""Reject obvious typos in any of the year columns. An empty year means "skip"."""
+		for field in self.meta.get("fields", {"fieldtype": "Int"}):
+			year = self.get(field.fieldname)
+			if year and not 2000 <= year <= 2100:
+				frappe.throw(
+					_("{0} must be a year between 2000 and 2100, not {1}.").format(
+						frappe.bold(_(field.label)), year
+					)
+				)
 
 	def before_insert(self, *args, **kwargs):
 		self.preprocess()
@@ -88,6 +97,7 @@ class MemberDataImport(Document):
 		self.create_or_update_address()
 		self.create_permit()
 		self.create_supporting_membership()
+		self.create_gewaesserfonds_permits()
 		return {}
 
 	def load_from_db(self):
@@ -133,7 +143,7 @@ class MemberDataImport(Document):
 					continue
 				self.set(field.fieldname, parse_date(value))
 			elif field.fieldtype == "Int":
-				self.set(field.fieldname, int(value))
+				self.set(field.fieldname, cint(value))
 
 	def create_or_update_member(self):
 		if self.member:
@@ -198,6 +208,21 @@ class MemberDataImport(Document):
 			year=self.supporting_membership_in_year,
 			organization=self.organization,
 		)
+
+	def create_gewaesserfonds_permits(self):
+		if not self.member:
+			return
+
+		for index, association_or_state in enumerate(ASSOCIATIONS_AND_STATES, start=1):
+			year = self.get(f"has_special_yearly_fishing_permit_{index}")
+			if not year:
+				continue
+
+			create_gewaesserfonds_permit(
+				member=self.member,
+				year=year,
+				association_or_state=association_or_state,
+			)
 
 	def validate_existing_permit(self):
 		if not self.yearly_fishing_permit:
@@ -300,6 +325,18 @@ def create_supporting_membership(member: str, year: int, organization: str) -> N
 	supporting_membership = frappe.new_doc("Supporting Membership")
 	supporting_membership.update({"member": member, "year": year, "organization": organization})
 	supporting_membership.insert()
+
+
+def create_gewaesserfonds_permit(member: str, year: int, association_or_state: str) -> None:
+	"""Create a permit for `member`. Its organization is fetched from the member."""
+	data = {"member": member, "year": year, "association_or_state": association_or_state}
+
+	if frappe.db.exists("Yearly Fishing Permit Gewaesserfonds", data):
+		return
+
+	permit = frappe.new_doc("Yearly Fishing Permit Gewaesserfonds")
+	permit.update(data)
+	permit.insert()
 
 
 def parse_checkbox_value(value: str) -> int:

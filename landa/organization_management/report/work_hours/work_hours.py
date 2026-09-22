@@ -121,7 +121,7 @@ def get_data(filters):
 		)
 
 	default_date = getdate("1900-01-01")
-	data.sort(key=lambda r: (r.get("member") or ""))
+	data.sort(key=lambda r: r.get("member") or "")
 	data.sort(key=lambda r: r.get("date") or default_date, reverse=True)
 	return data
 

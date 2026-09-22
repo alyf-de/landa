@@ -55,32 +55,6 @@ frappe.listview_settings["LANDA Member"] = {
 			}
 		}
 
-		if (frappe.model.can_write(list_view.doctype)) {
-			list_view.page.add_action_item(__("Clear Special Fishing Permits"), () => {
-				const members = list_view.get_checked_items(true);
-				frappe.confirm(
-					__(
-						"Are you sure you want to clear all Special Yearly Fishing Permits for the {0} selected members?",
-						[members.length],
-					),
-					() => {
-						frappe
-							.xcall(
-								"landa.organization_management.doctype.landa_member.landa_member.clear_special_yearly_fishing_permits",
-								{ members: members },
-							)
-							.then(() => {
-								frappe.show_alert({
-									message: __("Special Yearly Fishing Permits cleared."),
-									indicator: "green",
-								});
-								list_view.refresh();
-							});
-					},
-				);
-			});
-		}
-
 		if (frappe.model.can_create("Yearly Fishing Permit")) {
 			list_view.page.add_action_item(__("Create Yearly Fishing Permit"), () => {
 				frappe.prompt(
@@ -126,6 +100,61 @@ frappe.listview_settings["LANDA Member"] = {
 					},
 				);
 			});
+		}
+
+		if (frappe.model.can_create("Yearly Fishing Permit Gewaesserfonds")) {
+			const doctype = "Yearly Fishing Permit Gewaesserfonds";
+			list_view.page.add_action_item(
+				__("Create Yearly Fishing Permit Gewaesserfonds"),
+				() => {
+					frappe.model.with_doctype(doctype, () => {
+						frappe.prompt(
+							[
+								{
+									fieldname: "association_or_state",
+									fieldtype: "Select",
+									label: __("Association or State"),
+									options: frappe.meta.get_docfield(
+										doctype,
+										"association_or_state",
+									).options,
+									reqd: 1,
+								},
+								{
+									fieldname: "year",
+									fieldtype: "Int",
+									label: __("Year"),
+									default: landa.utils.get_default_year(),
+									reqd: 1,
+								},
+							],
+							(values) => {
+								frappe
+									.xcall(
+										"landa.organization_management.doctype.yearly_fishing_permit_gewaesserfonds.yearly_fishing_permit_gewaesserfonds.bulk_create",
+										{
+											year: values.year,
+											association_or_state: values.association_or_state,
+											members: list_view.get_checked_items(true),
+										},
+									)
+									.then((result) => {
+										const total_created = result.num_created;
+										const total_skipped = result.num_skipped;
+										frappe.show_alert({
+											message: __(
+												"Permits have been created for {0} members and skipped for {1} members.",
+												[total_created, total_skipped],
+											),
+											indicator: "green",
+										});
+										list_view.refresh();
+									});
+							},
+						);
+					});
+				},
+			);
 		}
 
 		if (frappe.model.can_create("Supporting Membership")) {
