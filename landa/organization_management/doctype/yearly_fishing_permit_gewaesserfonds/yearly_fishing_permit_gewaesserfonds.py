@@ -87,7 +87,7 @@ class YearlyFishingPermitGewaesserfonds(Document):
 		return self.year and self.year < datetime.now().year
 
 
-def update_gewaesserfonds_permit_statuses():
+def update_status():
 	for permit in get_gewaesserfonds_permits_to_update():
 		doc = frappe.get_doc("Yearly Fishing Permit Gewaesserfonds", permit.name)
 		if doc.status == doc.get_status():
