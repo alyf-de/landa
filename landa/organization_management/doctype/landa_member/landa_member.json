@@ -235,6 +235,11 @@
   },
   {
    "group": "Membership",
+   "link_doctype": "Supporting Membership",
+   "link_fieldname": "member"
+  },
+  {
+   "group": "Membership",
    "link_doctype": "Member Function",
    "link_fieldname": "member"
   },
@@ -245,27 +250,22 @@
   },
   {
    "group": "Membership",
-   "link_doctype": "Supporting Membership",
-   "link_fieldname": "member"
-  },
-  {
-   "group": "Transactions",
-   "link_doctype": "Yearly Fishing Permit",
-   "link_fieldname": "member"
-  },
-  {
-   "group": "Transactions",
    "link_doctype": "Work Assignment",
    "link_fieldname": "member",
    "table_fieldname": "members"
   },
   {
-   "group": "Transactions",
+   "group": "Fishing Permit",
+   "link_doctype": "Yearly Fishing Permit",
+   "link_fieldname": "member"
+  },
+  {
+   "group": "Fishing Permit",
    "link_doctype": "Yearly Fishing Permit Gewaesserfonds",
    "link_fieldname": "member"
   }
  ],
- "modified": "2026-09-22 15:20:36.900955",
+ "modified": "2026-09-29 14:28:53.458605",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",
