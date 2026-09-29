@@ -33,14 +33,14 @@ class LANDAMember(Document):
 		has_key: DF.Check
 		issuing_authority: DF.Data | None
 		last_name: DF.Data | None
+		license_expiration_date: DF.Date | None
+		license_is_valid_for_life: DF.Check
+		license_issue_date: DF.Date | None
 		magazine_recipient: DF.Check
 		member_since: DF.Date | None
 		nationality: DF.Data | None
 		organization: DF.Link
 		organization_name: DF.Data | None
-		permit_expiration_date: DF.Date | None
-		permit_is_valid_for_life: DF.Check
-		permit_issue_date: DF.Date | None
 		youth_membership: DF.Check
 
 	# end: auto-generated types
