@@ -32,9 +32,9 @@
   "fishing_permit_number",
   "issuing_authority",
   "column_break_hsdce",
-  "permit_is_valid_for_life",
-  "permit_issue_date",
-  "permit_expiration_date"
+  "license_is_valid_for_life",
+  "license_issue_date",
+  "license_expiration_date"
  ],
  "fields": [
   {
@@ -153,29 +153,14 @@
   {
    "fieldname": "section_break_9",
    "fieldtype": "Section Break",
-   "label": "Fishing Permit"
+   "label": "Fishing License"
   },
   {
    "allow_in_quick_entry": 1,
    "default": "0",
    "fieldname": "has_fishing_permit",
    "fieldtype": "Check",
-   "label": "Has Fishing Permit"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "default": "0",
-   "depends_on": "eval:doc.has_fishing_permit==1",
-   "fieldname": "permit_is_valid_for_life",
-   "fieldtype": "Check",
-   "label": "Permit Is Valid For Life"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "depends_on": "eval:doc.has_fishing_permit==1 & doc.permit_is_valid_for_life==0",
-   "fieldname": "permit_expiration_date",
-   "fieldtype": "Date",
-   "label": "Permit Expiration Date"
+   "label": "Has Fishing License"
   },
   {
    "fieldname": "section_break_master_data",
@@ -192,7 +177,7 @@
    "depends_on": "eval:doc.has_fishing_permit==1",
    "fieldname": "fishing_permit_number",
    "fieldtype": "Data",
-   "label": "Fishing Permit Number"
+   "label": "Fishing License Number"
   },
   {
    "fieldname": "full_name",
@@ -216,14 +201,29 @@
    "label": "Issuing Authority"
   },
   {
-   "depends_on": "eval:doc.has_fishing_permit==1",
-   "fieldname": "permit_issue_date",
-   "fieldtype": "Date",
-   "label": "Permit Issue Date"
-  },
-  {
    "fieldname": "column_break_hsdce",
    "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "0",
+   "depends_on": "eval:doc.has_fishing_permit==1",
+   "fieldname": "license_is_valid_for_life",
+   "fieldtype": "Check",
+   "label": "License Is Valid For Life"
+  },
+  {
+   "depends_on": "eval:doc.has_fishing_permit==1",
+   "fieldname": "license_issue_date",
+   "fieldtype": "Date",
+   "label": "License Issue Date"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval:doc.has_fishing_permit==1 && doc.license_is_valid_for_life==0",
+   "fieldname": "license_expiration_date",
+   "fieldtype": "Date",
+   "label": "License Expiration Date"
   }
  ],
  "grid_page_length": 50,
@@ -265,7 +265,7 @@
    "link_fieldname": "member"
   }
  ],
- "modified": "2026-09-29 14:28:53.458605",
+ "modified": "2026-09-29 14:36:52.027363",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",

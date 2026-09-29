@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-09-22 21:08+0053\n"
+"POT-Creation-Date: 2026-09-29 14:41+0053\n"
 "PO-Revision-Date: 2025-11-29 18:55+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
@@ -288,11 +288,11 @@ msgstr ""
 msgid "Can contain suborganizations"
 msgstr "Kann untergeordnete Vereine enthalten"
 
-#: landa/organization_management/doctype/landa_member/landa_member.py:63
+#: landa/organization_management/doctype/landa_member/landa_member.py:62
 msgid "Cannot be a member of organization {} because it is a group."
 msgstr "Kann kein Mitglied von Verein/Verband {} sein, da nur Vereine bzw. Ortsgruppen Mitglieder haben dürfen, keine Regional- und Landesverbände."
 
-#: landa/organization_management/doctype/organization/organization.py:74
+#: landa/organization_management/doctype/organization/organization.py:75
 msgid "Cannot set Parent Organization to a local group."
 msgstr "Kann Elternverein nicht auf eine Ortsgruppe setzen."
 
@@ -732,13 +732,18 @@ msgstr "Angeltage"
 
 #. Label of a Section Break field in DocType 'LANDA Member'
 #: landa/organization_management/doctype/landa_member/landa_member.json
-msgid "Fishing Permit"
+msgid "Fishing License"
 msgstr "Fischereischein"
 
 #. Label of a Data field in DocType 'LANDA Member'
 #: landa/organization_management/doctype/landa_member/landa_member.json
-msgid "Fishing Permit Number"
+msgid "Fishing License Number"
 msgstr "Fischereischein Nummer"
+
+#. Group in LANDA Member's connections
+#: landa/organization_management/doctype/landa_member/landa_member.json
+msgid "Fishing Permit"
+msgstr "Angelberechtigung"
 
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.js:10
 #: landa/water_body_management/report/water_body_development/water_body_development.js:10
@@ -840,7 +845,7 @@ msgstr "Gastkarten verfügbar"
 
 #. Label of a Check field in DocType 'LANDA Member'
 #: landa/organization_management/doctype/landa_member/landa_member.json
-msgid "Has Fishing Permit"
+msgid "Has Fishing License"
 msgstr "Hat Fischereischein"
 
 #. Label of a Check field in DocType 'LANDA Member'
@@ -1013,7 +1018,7 @@ msgstr "Ausgebender Verein/Verband"
 msgid "Issuing statistics"
 msgstr "Ausgabestatistik"
 
-#: landa/landa_stock/delivery_note/delivery_note.py:25
+#: landa/landa_stock/delivery_note/delivery_note.py:26
 msgid "Item {} cannot be returned"
 msgstr "Artikel {} kann nicht zurückgegeben werden"
 
@@ -1319,6 +1324,21 @@ msgstr "Der Pachtvertrag muss zum selben Regionalverband gehören wie das im Pac
 #: landa/water_body_management/report/lease_contract_payments/lease_contract_payments.py:45
 msgid "Lease Object"
 msgstr "Pachtgegenstand"
+
+#. Label of a Date field in DocType 'LANDA Member'
+#: landa/organization_management/doctype/landa_member/landa_member.json
+msgid "License Expiration Date"
+msgstr "Ablaufdatum des Fischereischeins"
+
+#. Label of a Check field in DocType 'LANDA Member'
+#: landa/organization_management/doctype/landa_member/landa_member.json
+msgid "License Is Valid For Life"
+msgstr "Lebenslange Gültigkeit des Fischereischeins"
+
+#. Label of a Date field in DocType 'LANDA Member'
+#: landa/organization_management/doctype/landa_member/landa_member.json
+msgid "License Issue Date"
+msgstr "Ausgabedatum Fischereischein"
 
 #. Label of a Link in the Order Management Workspace
 #: landa/landa_sales/workspace/order_management/order_management.json
@@ -1685,7 +1705,7 @@ msgstr "Neuer Besatzmaßnahmenimport"
 msgid "New Work Assignment"
 msgstr "Neuer Arbeitseinsatz"
 
-#: landa/organization_management/doctype/organization/organization.py:334
+#: landa/organization_management/doctype/organization/organization.py:339
 msgid "No Company found for Organization {0}."
 msgstr "Kein Bestellwesenkonto RV für Verein {0} gefunden."
 
@@ -1755,24 +1775,9 @@ msgstr "Zahlungsempfänger"
 msgid "Permissions for"
 msgstr "Berechtigungen für"
 
-#. Label of a Date field in DocType 'LANDA Member'
-#: landa/organization_management/doctype/landa_member/landa_member.json
-msgid "Permit Expiration Date"
-msgstr "Ablaufdatum des Fischereischeins"
-
 #: landa/organization_management/report/magazine_address_list/magazine_address_list.py:279
 msgid "Permit Is Active"
 msgstr "Erlaubnisschein aktiv"
-
-#. Label of a Check field in DocType 'LANDA Member'
-#: landa/organization_management/doctype/landa_member/landa_member.json
-msgid "Permit Is Valid For Life"
-msgstr "Lebenslange Gültigkeit des Fischereischeins"
-
-#. Label of a Date field in DocType 'LANDA Member'
-#: landa/organization_management/doctype/landa_member/landa_member.json
-msgid "Permit Issue Date"
-msgstr "Ausgabedatum Fischereischein"
 
 #: landa/organization_management/doctype/landa_member/landa_member_list.js:92
 #: landa/organization_management/doctype/landa_member/landa_member_list.js:145
@@ -1810,23 +1815,23 @@ msgstr "Bitte wählen Sie ein Gewässer, das zu Ihrem eigenen Regionalverband ge
 msgid "Please select your own regional Organization."
 msgstr "Bitte wählen Sie Ihren eigenen Regionalverband aus!"
 
-#: landa/landa_sales/sales_invoice/sales_invoice.py:59
+#: landa/landa_sales/sales_invoice/sales_invoice.py:60
 msgid "Please set a Billing Address before submitting the Sales Invoice."
 msgstr "Bitte tragen Sie vor dem Buchen der Rechnung eine Rechnungsadresse ein."
 
-#: landa/landa_sales/sales_invoice/sales_invoice.py:56
+#: landa/landa_sales/sales_invoice/sales_invoice.py:57
 msgid "Please set a Billing Contact before submitting the Sales Invoice."
 msgstr "Bitte tragen Sie vor dem Buchen der Rechnung einen Rechnungskontakt ein."
 
-#: landa/organization_management/doctype/organization/organization.py:66
+#: landa/organization_management/doctype/organization/organization.py:67
 msgid "Please set a Parent Organization."
 msgstr "Bitte tragen Sie einen übergeordneten Verein ein."
 
-#: landa/landa_stock/delivery_note/delivery_note.py:44
+#: landa/landa_stock/delivery_note/delivery_note.py:45
 msgid "Please set a Shipping Address before submitting the Delivery Note."
 msgstr "Bitte tragen Sie vor dem Buchen des Lieferscheins eine Lieferadresse ein."
 
-#: landa/landa_stock/delivery_note/delivery_note.py:47
+#: landa/landa_stock/delivery_note/delivery_note.py:48
 msgid "Please set a Shipping Contact before submitting the Delivery Note."
 msgstr "Bitte tragen Sie vor dem Buchen des Lieferscheins einen Lieferkontakt ein."
 
@@ -1839,7 +1844,7 @@ msgstr "Bitte tragen Sie entweder {0} oder {1} ein."
 msgid "Please set the corresponding LANDA Member"
 msgstr "Bitte tragen Sie das entsprechende Mitglied ein"
 
-#: landa/water_body_management/doctype/stocking_target/stocking_target.py:65
+#: landa/water_body_management/doctype/stocking_target/stocking_target.py:66
 msgid "Please update the existing record: {0}"
 msgstr "Bitte aktualisieren Sie stattdessen den bestehenden Eintrag: {0}"
 
@@ -2292,15 +2297,15 @@ msgstr "Die hochgeladene Datei enthält keine Projekt-ID."
 msgid "The weight of {0} in row {1} diverges from the typical weight by more than 40 %"
 msgstr "Das Gewicht von {0} in Zeile {1} weicht um mehr als 40 % vom typischen Gewicht ab"
 
-#: landa/organization_management/doctype/organization/organization.py:330
+#: landa/organization_management/doctype/organization/organization.py:335
 msgid "There is no Customer linked to {0}."
 msgstr "Es ist kein Bestellwesenkonto mit {0} verknüpft."
 
-#: landa/organization_management/doctype/organization/organization.py:238
+#: landa/organization_management/doctype/organization/organization.py:241
 msgid "There is no single address linked to {0}."
 msgstr "Es ist keine einzelne Adresse mit {0} verknüpft."
 
-#: landa/organization_management/doctype/organization/organization.py:230
+#: landa/organization_management/doctype/organization/organization.py:233
 msgid "There is no single contact linked to {0}."
 msgstr "Es ist kein einzelner Kontakt mit {0} verknüpft."
 
@@ -2790,7 +2795,7 @@ msgstr "Sie können das Jahr eines Erlaubnisscheins nicht über den Mitgliedsdat
 msgid "You cannot delete standard user."
 msgstr "Sie können Standardbenutzer nicht löschen."
 
-#: landa/organization_management/doctype/landa_member/landa_member.py:71
+#: landa/organization_management/doctype/landa_member/landa_member.py:70
 msgid "You cannot delete your own member record."
 msgstr "Sie können Ihren eigenen Mitgliedsdatensatz nicht löschen."
 
