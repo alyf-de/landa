@@ -1,6 +1,7 @@
 import frappe
 from erpnext.stock.doctype.delivery_note.delivery_note import make_sales_invoice
 from frappe import _
+from frappe.model.document import Document
 
 from landa.landa_sales.utils import (
 	validate_company_customer,
@@ -58,7 +59,9 @@ def autoname(doc, event):
 
 
 @frappe.whitelist()
-def make_landa_sales_invoice(source_name, target_doc=None, args=None):
+def make_landa_sales_invoice(
+	source_name: str, target_doc: str | None = None, args: dict | None = None
+) -> Document:
 	source_doc = frappe.get_doc("Delivery Note", source_name)
 	target_doc = make_sales_invoice(source_name, target_doc, args)
 

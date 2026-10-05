@@ -10,11 +10,16 @@ from frappe.contacts.address_and_contact import (
 	load_address_and_contact,
 )
 from frappe.desk.treeview import make_tree_args
+from frappe.model.document import Document
 from frappe.model.naming import make_autoname, revert_series_if_last
-from frappe.utils.data import cint, get_link_to_form
+from frappe.utils.data import cint, flt, get_link_to_form
 from frappe.utils.nestedset import NestedSet
 
+from landa.landa_sales.customer.customer import get_active_member_functions
 from landa.organization_management.doctype.landa_member.landa_member import get_address_or_contact
+from landa.organization_management.doctype.work_ledger_entry.work_ledger_entry import (
+	create_expected_hours_adjustment_entries,
+)
 
 
 class Organization(NestedSet):
@@ -28,6 +33,7 @@ class Organization(NestedSet):
 
 		charitable_until: DF.Date | None
 		disabled: DF.Check
+		expected_work_hours_per_year: DF.Float
 		fishing_area: DF.Link | None
 		is_charitable: DF.Check
 		is_group: DF.Check
@@ -91,10 +97,22 @@ class Organization(NestedSet):
 		# of it yet.
 		frappe.cache().delete_key("user_permissions")
 
+	def before_save(self):
+		old = 0.0
+		if frappe.db.exists("Organization", self.name):
+			old = flt(frappe.db.get_value("Organization", self.name, "expected_work_hours_per_year"))
+		self._expected_work_hours_before_save = old
+
 	def onload(self):
 		load_address_and_contact(self)
+		self.set_onload("active_member_functions", get_active_member_functions(self.name))
 
 	def on_update(self):
+		if getattr(self, "_expected_work_hours_before_save", None) is not None:
+			old = flt(self._expected_work_hours_before_save)
+			new = flt(self.expected_work_hours_per_year)
+			if old != new:
+				create_expected_hours_adjustment_entries(self.name, old - new)
 		super().on_update()
 
 	def on_trash(self):
@@ -106,12 +124,12 @@ class Organization(NestedSet):
 		super().on_trash(allow_root_deletion=True)
 
 	@frappe.whitelist()
-	def get_series_current(self):
+	def get_series_current(self) -> int:
 		frappe.only_for("System Manager")
 		return frappe.db.get_value("Series", self.name + "-", "current", order_by="name") or 0
 
-	@frappe.whitelist()
-	def set_series_current(self, current):
+	@frappe.whitelist(methods=["POST"])
+	def set_series_current(self, current: str | int) -> None:
 		frappe.only_for("System Manager")
 		series = self.name + "-"
 
@@ -203,8 +221,10 @@ class Organization(NestedSet):
 			frappe.get_value("Company", company.name, "default_cash_account"),
 		)
 
-	@frappe.whitelist()
-	def link_contact(self, landa_member: str, is_default_billing: int = 0, is_default_shipping: int = 0):
+	@frappe.whitelist(methods=["POST"])
+	def link_contact(
+		self, landa_member: str, is_default_billing: int = 0, is_default_shipping: int = 0
+	) -> None:
 		self.has_permission("write")
 
 		contact = get_address_or_contact("Contact", landa_member)
@@ -270,7 +290,9 @@ def add_links(address_or_contact, organization: str):
 
 
 @frappe.whitelist()
-def get_children(doctype, parent=None, organization=None, is_root=False):
+def get_children(
+	doctype: str, parent: str | None = None, organization: str | None = None, is_root: bool = False
+) -> list[dict]:
 	if parent is None or parent == "All Organizations":
 		parent = ""
 
@@ -286,8 +308,8 @@ def get_children(doctype, parent=None, organization=None, is_root=False):
 	)
 
 
-@frappe.whitelist()
-def add_node():
+@frappe.whitelist(methods=["POST"])
+def add_node() -> None:
 	args = frappe.form_dict
 	args = make_tree_args(**args)
 
@@ -307,7 +329,7 @@ def get_supported_water_bodies(organization: str) -> list[str]:
 
 
 @frappe.whitelist()
-def make_payment_entry(source_name, target_doc=None):
+def make_payment_entry(source_name: str, target_doc: str | None = None) -> Document:
 	customer = frappe.db.get_value("Customer", {"organization": source_name})
 	if not customer:
 		frappe.throw(_("There is no Customer linked to {0}.").format(source_name))

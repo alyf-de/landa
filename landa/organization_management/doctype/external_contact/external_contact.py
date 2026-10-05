@@ -1,13 +1,12 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
+import frappe
+from frappe import _
 from frappe.contacts.address_and_contact import (
 	delete_contact_and_address,
 	load_address_and_contact,
 )
-
-# import frappe
-# from frappe import _
 from frappe.model.document import Document
 from frappe.model.naming import make_autoname, revert_series_if_last
 
@@ -32,7 +31,7 @@ class ExternalContact(Document):
 		date_of_birth: DF.Date | None
 		disabled: DF.Check
 		external_contact_since: DF.Date | None
-		external_organization_name: DF.Data
+		external_organization_name: DF.Data | None
 		first_name: DF.Data | None
 		full_name: DF.Data | None
 		functions: DF.TableMultiSelect[ExternalContactFunction]
@@ -59,6 +58,15 @@ class ExternalContact(Document):
 		self.full_name = get_full_name(self.first_name, self.last_name)
 		if not self.organization:
 			self.organization = get_current_member_data().regional_organization
+
+	def validate(self):
+		if not self.full_name and not self.external_organization_name:
+			frappe.throw(
+				_("Please set either {0} or {1}.").format(
+					self.meta.get_translated_label("full_name"),
+					self.meta.get_translated_label("external_organization_name"),
+				)
+			)
 
 	def onload(self):
 		load_address_and_contact(self)

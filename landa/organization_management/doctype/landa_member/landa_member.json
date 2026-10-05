@@ -19,20 +19,10 @@
   "organization_name",
   "column_break_11",
   "member_since",
-  "is_supporting_member",
   "magazine_recipient",
   "has_key",
   "youth_membership",
   "additional_information",
-  "special_yearly_fishing_permits_section",
-  "has_special_yearly_fishing_permit_1",
-  "has_special_yearly_fishing_permit_2",
-  "has_special_yearly_fishing_permit_3",
-  "has_special_yearly_fishing_permit_4",
-  "column_break_qhrfl",
-  "has_special_yearly_fishing_permit_5",
-  "has_special_yearly_fishing_permit_6",
-  "has_special_yearly_fishing_permit_7",
   "section_address_and_contact",
   "address_html",
   "column_break_5",
@@ -42,9 +32,9 @@
   "fishing_permit_number",
   "issuing_authority",
   "column_break_hsdce",
-  "permit_is_valid_for_life",
-  "permit_issue_date",
-  "permit_expiration_date"
+  "license_is_valid_for_life",
+  "license_issue_date",
+  "license_expiration_date"
  ],
  "fields": [
   {
@@ -163,37 +153,14 @@
   {
    "fieldname": "section_break_9",
    "fieldtype": "Section Break",
-   "label": "Fishing Permit"
+   "label": "Fishing License"
   },
   {
    "allow_in_quick_entry": 1,
    "default": "0",
    "fieldname": "has_fishing_permit",
    "fieldtype": "Check",
-   "label": "Has Fishing Permit"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "default": "0",
-   "depends_on": "eval:doc.has_fishing_permit==1",
-   "fieldname": "permit_is_valid_for_life",
-   "fieldtype": "Check",
-   "label": "Permit Is Valid For Life"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "depends_on": "eval:doc.has_fishing_permit==1 & doc.permit_is_valid_for_life==0",
-   "fieldname": "permit_expiration_date",
-   "fieldtype": "Date",
-   "label": "Permit Expiration Date"
-  },
-  {
-   "default": "0",
-   "fieldname": "is_supporting_member",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Is Supporting Member"
+   "label": "Has Fishing License"
   },
   {
    "fieldname": "section_break_master_data",
@@ -210,7 +177,7 @@
    "depends_on": "eval:doc.has_fishing_permit==1",
    "fieldname": "fishing_permit_number",
    "fieldtype": "Data",
-   "label": "Fishing Permit Number"
+   "label": "Fishing License Number"
   },
   {
    "fieldname": "full_name",
@@ -234,87 +201,71 @@
    "label": "Issuing Authority"
   },
   {
-   "depends_on": "eval:doc.has_fishing_permit==1",
-   "fieldname": "permit_issue_date",
-   "fieldtype": "Date",
-   "label": "Permit Issue Date"
-  },
-  {
    "fieldname": "column_break_hsdce",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "special_yearly_fishing_permits_section",
-   "fieldtype": "Section Break",
-   "label": "Special Yearly Fishing Permits"
-  },
-  {
-   "fieldname": "column_break_qhrfl",
-   "fieldtype": "Column Break"
-  },
-  {
+   "allow_in_quick_entry": 1,
    "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_1",
+   "depends_on": "eval:doc.has_fishing_permit==1",
+   "fieldname": "license_is_valid_for_life",
    "fieldtype": "Check",
-   "label": "Hat Sachsen-Anhalt Erlaubnisschein"
+   "label": "License Is Valid For Life"
   },
   {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_2",
-   "fieldtype": "Check",
-   "label": "Hat Brandenburg Erlaubnisschein"
+   "depends_on": "eval:doc.has_fishing_permit==1",
+   "fieldname": "license_issue_date",
+   "fieldtype": "Date",
+   "label": "License Issue Date"
   },
   {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_3",
-   "fieldtype": "Check",
-   "label": "Hat Berlin Erlaubnisschein"
-  },
-  {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_4",
-   "fieldtype": "Check",
-   "label": "Hat Mecklenburg-Vorpommern Erlaubnisschein"
-  },
-  {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_5",
-   "fieldtype": "Check",
-   "label": "Hat Saalekaskade Erlaubnisschein"
-  },
-  {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_6",
-   "fieldtype": "Check",
-   "label": "Hat LAVT Erlaubnisschein"
-  },
-  {
-   "default": "0",
-   "fieldname": "has_special_yearly_fishing_permit_7",
-   "fieldtype": "Check",
-   "label": "Hat VANT Erlaubnisschein"
+   "allow_in_quick_entry": 1,
+   "depends_on": "eval:doc.has_fishing_permit==1 && doc.license_is_valid_for_life==0",
+   "fieldname": "license_expiration_date",
+   "fieldtype": "Date",
+   "label": "License Expiration Date"
   }
  ],
  "grid_page_length": 50,
  "links": [
   {
-   "link_doctype": "Award",
+   "group": "Account",
+   "link_doctype": "User",
+   "link_fieldname": "landa_member"
+  },
+  {
+   "group": "Membership",
+   "link_doctype": "Supporting Membership",
    "link_fieldname": "member"
   },
   {
+   "group": "Membership",
    "link_doctype": "Member Function",
    "link_fieldname": "member"
   },
   {
+   "group": "Membership",
+   "link_doctype": "Award",
+   "link_fieldname": "member"
+  },
+  {
+   "group": "Membership",
+   "link_doctype": "Work Assignment",
+   "link_fieldname": "member",
+   "table_fieldname": "members"
+  },
+  {
+   "group": "Fishing Permit",
    "link_doctype": "Yearly Fishing Permit",
    "link_fieldname": "member"
   },
   {
-   "link_doctype": "User",
-   "link_fieldname": "landa_member"
+   "group": "Fishing Permit",
+   "link_doctype": "Yearly Fishing Permit Gewaesserfonds",
+   "link_fieldname": "member"
   }
  ],
- "modified": "2025-12-04 18:47:58.310365",
+ "modified": "2026-09-29 14:36:52.027363",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "LANDA Member",

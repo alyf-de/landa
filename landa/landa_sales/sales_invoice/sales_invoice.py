@@ -7,6 +7,7 @@ if TYPE_CHECKING:
 
 from erpnext.accounts.doctype.sales_invoice.sales_invoice import make_delivery_note
 from frappe import _
+from frappe.model.document import Document
 
 from landa.landa_sales.utils import (
 	set_default_year_of_settlement,
@@ -14,7 +15,7 @@ from landa.landa_sales.utils import (
 	validate_company_price_list,
 	validate_year_of_settlement,
 )
-from landa.utils import update_doc
+from landa.utils import get_current_member_data, update_doc
 
 
 def before_validate(doc: "SalesInvoice", event: str):
@@ -42,7 +43,7 @@ def autoname(doc: "SalesInvoice", event: str):
 
 
 @frappe.whitelist()
-def make_landa_delivery_note(source_name, target_doc=None):
+def make_landa_delivery_note(source_name: str, target_doc: str | None = None) -> Document:
 	source_doc = frappe.get_doc("Sales Invoice", source_name)
 	target_doc = make_delivery_note(source_name, target_doc)
 
@@ -52,7 +53,7 @@ def make_landa_delivery_note(source_name, target_doc=None):
 
 
 def on_submit(doc: "SalesInvoice", event: str):
-	if not doc.contact_person:
+	if not doc.contact_person and doc.organization != get_current_member_data().state_organization:
 		frappe.throw(_("Please set a Billing Contact before submitting the Sales Invoice."))
 
 	if not doc.customer_address:

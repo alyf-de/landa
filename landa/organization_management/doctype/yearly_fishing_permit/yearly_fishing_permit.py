@@ -8,6 +8,10 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
+from landa.organization_management.membership_permit_validation import (
+	validate_no_active_supporting_membership,
+)
+
 
 class YearlyFishingPermit(Document):
 	# begin: auto-generated types
@@ -70,19 +74,20 @@ class YearlyFishingPermit(Document):
 		if int(self.year) not in [current_year, current_year + 1]:
 			frappe.throw(_("Year must be either the current year or the next year."))
 
+		if self.member and self.docstatus != 2:
+			validate_no_active_supporting_membership(self.member, int(self.year))
+
 	def on_update(self):
 		if self.has_permission("submit") and self.docstatus == 0:
 			self.submit()
 
 
-@frappe.whitelist()
-def bulk_create(permit_type: str, year: str, members: str):
+@frappe.whitelist(methods=["POST"])
+def bulk_create(permit_type: str, year: str, members: str) -> dict[str, int]:
 	parsed_members = json.loads(members)
 
-	assert isinstance(parsed_members, list), "Members must be a list"
-	assert all(isinstance(member, str) for member in parsed_members), "Members must be a list of strings"
-	assert isinstance(permit_type, str), "Permit type must be a string"
-	assert isinstance(year, str), "Year must be a string"
+	if not isinstance(parsed_members, list) or not all(isinstance(m, str) for m in parsed_members):
+		frappe.throw(_("Members must be a list of strings"))
 
 	frappe.publish_progress(
 		percent=0,

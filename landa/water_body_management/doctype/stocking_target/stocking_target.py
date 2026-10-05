@@ -3,6 +3,7 @@
 
 import frappe
 from frappe import _
+from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
 from frappe.utils.data import get_link_to_form
 
@@ -118,7 +119,7 @@ def copy_to_next_year() -> None:
 
 
 @frappe.whitelist()
-def create_stocking_measure(source_name, target_doc=None):
+def create_stocking_measure(source_name: str, target_doc: str | None = None) -> Document:
 	def set_missing_values(source, target):
 		target.validate()
 

@@ -31,24 +31,16 @@ class LANDAMember(Document):
 		full_name: DF.Data | None
 		has_fishing_permit: DF.Check
 		has_key: DF.Check
-		has_special_yearly_fishing_permit_1: DF.Check
-		has_special_yearly_fishing_permit_2: DF.Check
-		has_special_yearly_fishing_permit_3: DF.Check
-		has_special_yearly_fishing_permit_4: DF.Check
-		has_special_yearly_fishing_permit_5: DF.Check
-		has_special_yearly_fishing_permit_6: DF.Check
-		has_special_yearly_fishing_permit_7: DF.Check
-		is_supporting_member: DF.Check
 		issuing_authority: DF.Data | None
 		last_name: DF.Data | None
+		license_expiration_date: DF.Date | None
+		license_is_valid_for_life: DF.Check
+		license_issue_date: DF.Date | None
 		magazine_recipient: DF.Check
 		member_since: DF.Date | None
 		nationality: DF.Data | None
 		organization: DF.Link
 		organization_name: DF.Data | None
-		permit_expiration_date: DF.Date | None
-		permit_is_valid_for_life: DF.Check
-		permit_issue_date: DF.Date | None
 		youth_membership: DF.Check
 
 	# end: auto-generated types
@@ -104,28 +96,6 @@ class LANDAMember(Document):
 
 def get_full_name(first_name, last_name):
 	return (first_name or "") + (" " if (last_name and first_name) else "") + (last_name or "")
-
-
-@frappe.whitelist()
-def clear_special_yearly_fishing_permits(members):
-	"""Remove all checkboxes in "Erlaubnisscheine Gewässerfonds" for the given members."""
-	members = frappe.parse_json(members)
-
-	permit_fields = [
-		"has_special_yearly_fishing_permit_1",
-		"has_special_yearly_fishing_permit_2",
-		"has_special_yearly_fishing_permit_3",
-		"has_special_yearly_fishing_permit_4",
-		"has_special_yearly_fishing_permit_5",
-		"has_special_yearly_fishing_permit_6",
-		"has_special_yearly_fishing_permit_7",
-	]
-
-	for member in members:
-		doc = frappe.get_doc("LANDA Member", str(member))
-		for field in permit_fields:
-			doc.set(field, 0)
-		doc.save()
 
 
 def get_address_or_contact(doctype: str, landa_member: str):

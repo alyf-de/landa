@@ -44,8 +44,8 @@ def before_insert(doc, method):
 	doc.append("organizations", {"organization": get_current_member_data().get("organization")})
 
 
-@frappe.whitelist()
-def add_tag(tag, dt, dn, color=None):
+@frappe.whitelist(methods=["POST"])
+def add_tag(tag: str, dt: str, dn: str, color: str | None = None) -> str:
 	organization = get_current_member_data().get("organization")
 
 	if organization and frappe.db.exists("Tag", tag):

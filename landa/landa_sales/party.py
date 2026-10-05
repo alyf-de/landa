@@ -13,7 +13,9 @@ EMPTY_CONTACT = {
 
 
 @frappe.whitelist()
-def get_landa_party_details(party=None, party_type="Customer", doctype=None, **kwargs):
+def get_landa_party_details(
+	party: str | None = None, party_type: str = "Customer", doctype: str | None = None, **kwargs
+) -> dict:
 	# frappe.call: pass by keyword (erpnext's positional order is not stable) and drop
 	# any kwargs get_party_details doesn't accept (form dict keys, ignore_permissions, ...)
 	party_details = frappe.call(

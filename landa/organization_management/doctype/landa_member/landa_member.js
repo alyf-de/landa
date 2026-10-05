@@ -21,6 +21,21 @@ frappe.ui.form.on("LANDA Member", {
 					organization: frm.doc.organization,
 				});
 			},
+			"Work Assignment": () => {
+				frappe.model.with_doctype("Work Assignment", () => {
+					let new_doc = frappe.model.get_new_doc("Work Assignment");
+					new_doc.organization = frm.doc.organization;
+
+					let child = frappe.model.add_child(
+						new_doc,
+						"Work Assignment Member",
+						"members",
+					);
+					child.member = frm.doc.name;
+
+					frappe.set_route("Form", "Work Assignment", new_doc.name);
+				});
+			},
 		};
 	},
 	refresh: function (frm) {
@@ -52,11 +67,23 @@ frappe.ui.form.on("LANDA Member", {
 							return;
 						}
 
-						frm.add_custom_button(__("Create User"), function () {
-							frm.make_methods["User"]();
-						});
+						frm.add_custom_button(
+							__("User"),
+							function () {
+								frm.make_methods["User"]();
+							},
+							__("Create"),
+						);
 					});
 			});
+
+			frm.add_custom_button(
+				__("Work Assignment"),
+				function () {
+					frm.make_methods["Work Assignment"]();
+				},
+				__("Create"),
+			);
 		}
 	},
 });

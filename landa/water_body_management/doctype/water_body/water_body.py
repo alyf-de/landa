@@ -62,6 +62,18 @@ class WaterBody(Document):
 		water_body_special_provisions: DF.Table[WaterBodySpecialProvisionTable]
 
 	# end: auto-generated types
+	def onload(self):
+		self.set_onload(
+			"water_body_management_local_organizations", self.get_water_body_management_local_organizations()
+		)
+
+	def get_water_body_management_local_organizations(self):
+		return frappe.get_all(
+			"Water Body Management Local Organization",
+			filters={"water_body": self.name, "disabled": 0},
+			fields=["organization", "organization_name", "note"],
+		)
+
 	def on_update(self):
 		if not self.flags.skip_cache_rebuild:
 			rebuild_water_body_cache()

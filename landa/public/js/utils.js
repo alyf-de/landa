@@ -1,3 +1,5 @@
+import { render_static_grid } from "./static_grid.js";
+
 frappe.provide("landa");
 
 landa.utils = {
@@ -41,4 +43,5 @@ landa.utils = {
 			frm.set_value(_customer_field, frappe.boot.landa.local_organization);
 		}
 	},
+	render_static_grid,
 };

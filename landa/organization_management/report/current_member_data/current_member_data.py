@@ -7,14 +7,22 @@ import frappe
 import pandas as pd
 from frappe import _
 
+from landa.organization_management.doctype.yearly_fishing_permit_gewaesserfonds.yearly_fishing_permit_gewaesserfonds import (
+	ASSOCIATIONS_AND_STATES,
+)
+
 
 def _indexed_frame_from_records(records: list[dict], *, index: str, columns: list[str]) -> pd.DataFrame:
-	"""Build an indexed DataFrame that keeps its schema even for empty result sets."""
+	"""Build an indexed DataFrame that keeps its schema even for empty result sets.
+
+	Columns are kept as `object`, so that members without a matching row don't
+	turn integer columns (like permit years) into floats ("2026.0").
+	"""
 	if not records:
 		return pd.DataFrame(columns=columns, index=pd.Index([], name=index))
 
 	df = pd.DataFrame.from_records(records, index=index)
-	return df.reindex(columns=columns)
+	return df.reindex(columns=columns).astype(object)
 
 
 def execute(filters=None):
@@ -28,11 +36,13 @@ def execute(filters=None):
 def get_data(organization: str):
 	"""Assemble rows for the current-member report from several DocTypes.
 
-	Loads LANDA Member master data (respecting the organization filter), Yearly
-	Fishing Permit rows keyed by member (keeping one row per member after
-	sorting by year), and Address rows dynamically linked to those members.
-	The frames are merged and ordered to match `get_columns()`, then
-	returned as tuples with empty strings instead of missing values.
+	Loads LANDA Member master data (respecting the organization filter),
+	Supporting Membership years for the same organization, Yearly Fishing Permit
+	Gewaesserfonds years per association or state, Yearly Fishing Permit rows
+	keyed by member (keeping one row per member after sorting by year), and
+	Address rows dynamically linked to those members. The frames are merged and
+	ordered to match `get_columns()`, then returned as tuples with empty strings
+	instead of missing values.
 
 	Permissions: every fetch goes through Frappe `get_list`, so the result only
 	contains documents and fields the current user is allowed to read.
@@ -46,17 +56,9 @@ def get_data(organization: str):
 			"first_name",
 			"date_of_birth",
 			"organization",
-			"is_supporting_member",
 			"has_key",
 			"youth_membership",
 			"additional_information",
-			"has_special_yearly_fishing_permit_1",
-			"has_special_yearly_fishing_permit_2",
-			"has_special_yearly_fishing_permit_3",
-			"has_special_yearly_fishing_permit_4",
-			"has_special_yearly_fishing_permit_5",
-			"has_special_yearly_fishing_permit_6",
-			"has_special_yearly_fishing_permit_7",
 		],
 	)
 	if not members:
@@ -70,20 +72,14 @@ def get_data(organization: str):
 			"first_name",
 			"date_of_birth",
 			"organization",
-			"is_supporting_member",
 			"has_key",
 			"youth_membership",
 			"additional_information",
-			"has_special_yearly_fishing_permit_1",
-			"has_special_yearly_fishing_permit_2",
-			"has_special_yearly_fishing_permit_3",
-			"has_special_yearly_fishing_permit_4",
-			"has_special_yearly_fishing_permit_5",
-			"has_special_yearly_fishing_permit_6",
-			"has_special_yearly_fishing_permit_7",
 		],
 	)
 	this_year = datetime.now().year
+	add_supporting_membership_years(member_df, organization, this_year)
+	add_gewaesserfonds_permit_years(member_df, organization, this_year)
 	fishing_permits = frappe.get_list(
 		"Yearly Fishing Permit",
 		filters={
@@ -147,6 +143,55 @@ def get_data(organization: str):
 	return data
 
 
+def add_supporting_membership_years(member_df: pd.DataFrame, organization: str, this_year: int) -> None:
+	"""Add the year of the member's supporting membership, matching the Member Data Import field.
+
+	If a member has supporting memberships for several years, the most recent one wins.
+	"""
+	memberships = frappe.get_list(
+		"Supporting Membership",
+		filters={
+			"organization": organization,
+			"year": ["in", [this_year - 1, this_year, this_year + 1]],
+		},
+		fields=["member", "year"],
+		order_by="year asc",
+	)
+	years_by_member = {membership.member: membership.year for membership in memberships}
+	member_df["supporting_membership_in_year"] = [
+		years_by_member.get(member, "") for member in member_df.index
+	]
+
+
+def add_gewaesserfonds_permit_years(member_df: pd.DataFrame, organization: str, this_year: int) -> None:
+	"""Flatten Yearly Fishing Permit Gewaesserfonds back into one year column per association.
+
+	`has_special_yearly_fishing_permit_{n}` holds the year of the member's
+	permit, where `n` is the position of the association or state in
+	`ASSOCIATIONS_AND_STATES`. If a member has permits for several years, the
+	most recent one wins.
+	"""
+	permits = frappe.get_list(
+		"Yearly Fishing Permit Gewaesserfonds",
+		filters={
+			"organization": organization,
+			"year": ["in", [this_year - 1, this_year, this_year + 1]],
+		},
+		fields=["member", "year", "association_or_state"],
+		order_by="year asc",
+	)
+
+	for index, association_or_state in enumerate(ASSOCIATIONS_AND_STATES, start=1):
+		years_by_member = {
+			permit.member: permit.year
+			for permit in permits
+			if permit.association_or_state == association_or_state
+		}
+		member_df[f"has_special_yearly_fishing_permit_{index}"] = [
+			years_by_member.get(member, "") for member in member_df.index
+		]
+
+
 def get_columns():
 	return [
 		{
@@ -192,9 +237,9 @@ def get_columns():
 			"fieldname": "city",
 		},
 		{
-			"label": _("Is Supporting Member"),
-			"fieldtype": "Check",
-			"fieldname": "is_supporting_member",
+			"label": _("Supporting Membership In Year"),
+			"fieldtype": "Data",
+			"fieldname": "supporting_membership_in_year",
 		},
 		{
 			"label": _("Has Key"),
@@ -235,38 +280,38 @@ def get_columns():
 			"options": "Yearly Fishing Permit Type",
 		},
 		{
-			"label": _("Hat Sachsen-Anhalt Erlaubnisschein"),
-			"fieldtype": "Check",
+			"label": _("Sachsen-Anhalt Erlaubnisschein im Jahr"),
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_1",
 		},
 		{
-			"label": _("Hat Brandenburg Erlaubnisschein"),
-			"fieldtype": "Check",
+			"label": _("Brandenburg Erlaubnisschein im Jahr"),
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_2",
 		},
 		{
-			"label": _("Hat Berlin Erlaubnisschein"),
-			"fieldtype": "Check",
+			"label": _("Berlin Erlaubnisschein im Jahr"),
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_3",
 		},
 		{
-			"label": _("Hat Mecklenburg-Vorpommern Erlaubnisschein"),
-			"fieldtype": "Check",
+			"label": _("Mecklenburg-Vorpommern Erlaubnisschein im Jahr"),
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_4",
 		},
 		{
-			"label": _("Hat Saalekaskade Erlaubnisschein"),
-			"fieldtype": "Check",
+			"label": _("Saalekaskade Erlaubnisschein im Jahr"),
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_5",
 		},
 		{
-			"label": _("Hat LAVT Erlaubnisschein"),
-			"fieldtype": "Check",
+			"label": _("LAVT Erlaubnisschein im Jahr"),
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_6",
 		},
 		{
-			"label": _("Hat VANT Erlaubnisschein"),
-			"fieldtype": "Check",
+			"label": _("VANT Erlaubnisschein im Jahr"),
+			"fieldtype": "Data",
 			"fieldname": "has_special_yearly_fishing_permit_7",
 		},
 	]

@@ -290,6 +290,9 @@ doc_events = {
 		],
 		"on_trash": "landa.address_and_contact.on_trash",
 	},
+	"Customer": {
+		"onload": "landa.landa_sales.customer.customer.onload",
+	},
 	"User": {
 		"before_validate": "landa.organization_management.user.user.before_validate",
 		"validate": "landa.organization_management.user.user.validate",
@@ -339,6 +342,11 @@ scheduler_events = {
 	"cron": {
 		"0 0 1 10 *": [  # every 1st october at 00:00
 			"landa.water_body_management.doctype.stocking_target.stocking_target.copy_to_next_year",
+		],
+		"0 0 1 1 *": [  # every 1st january at 00:00
+			"landa.organization_management.doctype.work_ledger_entry.work_ledger_entry.create_yearly_negative_entries",
+			"landa.organization_management.doctype.supporting_membership.supporting_membership.update_supporting_membership_statuses",
+			"landa.organization_management.doctype.yearly_fishing_permit_gewaesserfonds.yearly_fishing_permit_gewaesserfonds.update_status",
 		],
 	},
 	# "all": ["landa.tasks.all"],

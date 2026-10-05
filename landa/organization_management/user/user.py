@@ -115,8 +115,14 @@ def delete_or_disable_inactive_users():
 		pluck="name",
 	)
 
-	assert getdate(cutoff_date).year <= datetime.now().year - 1
-	assert len(users_to_delete) / frappe.db.count("User", filters={"name": ("not in", STANDARD_USERS)}) < 0.3
+	if getdate(cutoff_date).year > datetime.now().year - 1:
+		raise ValueError(f"Cutoff date {cutoff_date} is too recent, refusing to delete users.")
+
+	total_users = frappe.db.count("User", filters={"name": ("not in", STANDARD_USERS)})
+	if len(users_to_delete) / total_users >= 0.3:
+		raise ValueError(
+			f"Refusing to delete {len(users_to_delete)} of {total_users} users, that's too many."
+		)
 
 	for user in users_to_delete:
 		if "System Manager" in get_roles(user):

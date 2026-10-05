@@ -41,6 +41,31 @@ frappe.ui.form.on("Water Body", {
 				},
 			};
 		});
+
+		frm.trigger("render_water_body_management_local_organizations");
+	},
+	render_water_body_management_local_organizations: function (frm) {
+		const orgs = (frm.doc.__onload || {}).water_body_management_local_organizations || [];
+		frm.fields_dict.water_body_management_local_organizations.wrapper.innerHTML =
+			landa.utils.render_static_grid({
+				id: "water_body_management_local_organizations_grid",
+				label: __("Water Body Management Local Organizations"),
+				data: orgs,
+				columns: [
+					{
+						fieldname: "organization_name",
+						label: __("Organization"),
+						fieldtype: "Data",
+						width: 6,
+					},
+					{
+						fieldname: "note",
+						label: __("Note"),
+						fieldtype: "Small Text",
+						width: 6,
+					},
+				],
+			});
 	},
 	location: function (frm) {
 		frm.trigger("update_draw");

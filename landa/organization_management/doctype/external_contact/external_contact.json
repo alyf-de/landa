@@ -165,7 +165,6 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Institution or Company Name",
-   "reqd": 1,
    "search_index": 1
   },
   {
@@ -210,7 +209,7 @@
    "link_fieldname": "supplier"
   }
  ],
- "modified": "2026-05-07 17:06:10.239342",
+ "modified": "2026-08-31 20:52:58.820919",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "External Contact",

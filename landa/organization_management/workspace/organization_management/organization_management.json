@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"1uTyrJlebP\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Schnellzugriff</span>\",\"col\":12}},{\"id\":\"vSObTmx5FJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Neues Mitglied anlegen\",\"col\":4}},{\"id\":\"kIubCGyGa6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Address List\",\"col\":4}},{\"id\":\"hxillFj4xC\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Contact List\",\"col\":4}},{\"id\":\"TdmgLajXcz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Birthday List\",\"col\":4}},{\"id\":\"pyW2rRoxN5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Award Entry\",\"col\":4}},{\"id\":\"LhkZgoe7J6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Member Function Entry\",\"col\":4}},{\"id\":\"M6BGPcbTdL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Show Organization List\",\"col\":4}},{\"id\":\"4XErd7BVw_\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"RgNOYMq0fd\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Berichte &amp; Stammdaten</span>\",\"col\":12}},{\"id\":\"Vs8PWZl7sT\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"T-qvfB98nf\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"ce1489-Jj0\",\"type\":\"card\",\"data\":{\"card_name\":\"Imports\",\"col\":4}},{\"id\":\"KN8t-FsoLs\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}}]",
+ "content": "[{\"id\":\"1uTyrJlebP\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Schnellzugriff</span>\",\"col\":12}},{\"id\":\"vSObTmx5FJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Neues Mitglied anlegen\",\"col\":4}},{\"id\":\"kIubCGyGa6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Address List\",\"col\":4}},{\"id\":\"hxillFj4xC\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Contact List\",\"col\":4}},{\"id\":\"TdmgLajXcz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member Birthday List\",\"col\":4}},{\"id\":\"pyW2rRoxN5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Award Entry\",\"col\":4}},{\"id\":\"LhkZgoe7J6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Member Function Entry\",\"col\":4}},{\"id\":\"M6BGPcbTdL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Show Organization List\",\"col\":4}},{\"id\":\"js1RQK6MeL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Work Assignment\",\"col\":4}},{\"id\":\"rCLi2ifrHP\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Show Work Assignment List\",\"col\":4}},{\"id\":\"4XErd7BVw_\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"RgNOYMq0fd\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Berichte &amp; Stammdaten</span>\",\"col\":12}},{\"id\":\"Vs8PWZl7sT\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"T-qvfB98nf\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"ce1489-Jj0\",\"type\":\"card\",\"data\":{\"card_name\":\"Imports\",\"col\":4}},{\"id\":\"KN8t-FsoLs\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}}]",
  "creation": "2021-04-19 18:01:23.947644",
  "custom_blocks": [],
  "docstatus": 0,
@@ -12,219 +12,6 @@
  "is_hidden": 0,
  "label": "Organization Management",
  "links": [
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Masters",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Organization",
-   "link_count": 0,
-   "link_to": "Organization",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Member",
-   "link_count": 0,
-   "link_to": "LANDA Member",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Member Function",
-   "link_count": 0,
-   "link_to": "Member Function",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "User",
-   "link_count": 0,
-   "link_to": "User",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Yearly Fishing Permit",
-   "link_count": 0,
-   "link_to": "Yearly Fishing Permit",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Award",
-   "link_count": 0,
-   "link_to": "Award",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Address",
-   "link_count": 0,
-   "link_to": "Address",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Contact",
-   "link_count": 0,
-   "link_to": "Contact",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "External Contact",
-   "link_count": 0,
-   "link_to": "External Contact",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "External Function",
-   "link_count": 0,
-   "link_to": "External Function",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Reports",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Current Member Data",
-   "link_count": 0,
-   "link_to": "Current Member Data",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "LANDA Member",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Member Address List",
-   "link_count": 0,
-   "link_to": "Member Address List",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "LANDA Member",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Member Contact List",
-   "link_count": 0,
-   "link_to": "Member Contact List",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "LANDA Member",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Member Birthday List",
-   "link_count": 0,
-   "link_to": "Member Birthday List",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Members with Member Functions",
-   "link_count": 0,
-   "link_to": "Members with Member Functions",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Delivery Note",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Member Count",
-   "link_count": 0,
-   "link_to": "LANDA Member Count",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Magazine Address List",
-   "link_count": 0,
-   "link_to": "Magazine Address List",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Yearly Fishing Permit",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Yearly Fishing Permits Issued",
-   "link_count": 0,
-   "link_to": "Yearly Fishing Permits Issued",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "External Contacts Addresses and Contacts",
-   "link_count": 0,
-   "link_to": "External Contacts Addresses and Contacts",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
   {
    "hidden": 0,
    "is_query_report": 0,
@@ -283,9 +70,263 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 11,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Aktuelle Mitgliedsdaten",
+   "link_count": 0,
+   "link_to": "Current Member Data",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "LANDA Member",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Adressliste Mitglieder",
+   "link_count": 0,
+   "link_to": "Member Address List",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "LANDA Member",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Kontaktliste Mitglieder",
+   "link_count": 0,
+   "link_to": "Member Contact List",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "LANDA Member",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Geburtstagsliste Mitglieder",
+   "link_count": 0,
+   "link_to": "Member Birthday List",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Mitglieder mit Mitgliedsfunktion",
+   "link_count": 0,
+   "link_to": "Members with Member Functions",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Delivery Note",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Mitgliedszahlen",
+   "link_count": 0,
+   "link_to": "LANDA Member Count",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Fischer und Angler Adressverwaltung",
+   "link_count": 0,
+   "link_to": "Magazine Address List",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Yearly Fishing Permit",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Vergebene Erlaubnisscheine",
+   "link_count": 0,
+   "link_to": "Yearly Fishing Permits Issued",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Yearly Fishing Permit",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Kontakt- und Adressliste Externe Kontakte",
+   "link_count": 0,
+   "link_to": "External Contacts Addresses and Contacts",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Work Hours",
+   "link_count": 0,
+   "link_to": "Work Hours",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Work Ledger Balance",
+   "link_count": 0,
+   "link_to": "Work Ledger Balance",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Masters",
+   "link_count": 12,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Organization",
+   "link_count": 0,
+   "link_to": "Organization",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Member",
+   "link_count": 0,
+   "link_to": "LANDA Member",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Member Function",
+   "link_count": 0,
+   "link_to": "Member Function",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "User",
+   "link_count": 0,
+   "link_to": "User",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Yearly Fishing Permit",
+   "link_count": 0,
+   "link_to": "Yearly Fishing Permit",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Yearly Fishing Permit Gewaesserfonds",
+   "link_count": 0,
+   "link_to": "Yearly Fishing Permit Gewaesserfonds",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Supporting Membership",
+   "link_count": 0,
+   "link_to": "Supporting Membership",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Award",
+   "link_count": 0,
+   "link_to": "Award",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Address",
+   "link_count": 0,
+   "link_to": "Address",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contact",
+   "link_count": 0,
+   "link_to": "Contact",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "External Contact",
+   "link_count": 0,
+   "link_to": "External Contact",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "External Function",
+   "link_count": 0,
+   "link_to": "External Function",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-07-11 14:59:31.302312",
+ "modified": "2026-10-05 18:24:44.286424",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Organization Management",
@@ -305,21 +346,40 @@
    "type": "DocType"
   },
   {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "New Work Assignment",
+   "link_to": "Work Assignment",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
    "doc_view": "",
    "label": "Member Address List",
    "link_to": "Member Address List",
+   "report_ref_doctype": "LANDA Member",
    "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Show Work Assignment List",
+   "link_to": "Work Assignment",
+   "stats_filter": "[]",
+   "type": "DocType"
   },
   {
    "doc_view": "",
    "label": "Member Contact List",
    "link_to": "Member Contact List",
+   "report_ref_doctype": "LANDA Member",
    "type": "Report"
   },
   {
    "doc_view": "",
    "label": "Member Birthday List",
    "link_to": "Member Birthday List",
+   "report_ref_doctype": "LANDA Member",
    "type": "Report"
   },
   {
