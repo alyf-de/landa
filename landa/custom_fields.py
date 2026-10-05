@@ -412,6 +412,14 @@ def get_custom_fields():
 				"in_list_view": 1,
 				"columns": 1,
 			},
+			{
+				"label": "Serial No",
+				"fieldname": "serial_numbers",
+				"insert_after": "cannot_be_returned",
+				"fieldtype": "Data",
+				"in_list_view": 1,
+				"columns": 2,
+			},
 		],
 		"Item": [
 			{

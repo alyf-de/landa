@@ -163,7 +163,7 @@ def get_property_setters():
 			("item_code", "columns", "4"),
 			("qty", "columns", "1"),
 			("rate", "columns", "1"),
-			("serial_no", "columns", "2"),
+			("serial_numbers", "columns", "2"),
 			("uom", "columns", "1"),
 			("uom", "in_list_view", "0"),
 			("warehouse", "in_list_view", "0"),
