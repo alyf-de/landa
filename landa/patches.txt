@@ -58,3 +58,4 @@ landa.patches.remove_address_fetch_from
 landa.patches.link_default_address_and_contact_to_customer
 landa.patches.disable_group_same_items
 landa.patches.rename_permit_to_license_fields
+landa.patches.remove_delivery_note_item_serial_no_columns
