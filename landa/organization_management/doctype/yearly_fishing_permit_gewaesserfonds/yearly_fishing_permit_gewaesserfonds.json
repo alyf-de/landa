@@ -87,8 +87,7 @@
   {
    "fieldname": "number",
    "fieldtype": "Data",
-   "label": "Number",
-   "set_only_once": 1
+   "label": "Number"
   },
   {
    "fieldname": "association_or_state",
@@ -103,7 +102,7 @@
  ],
  "grid_page_length": 50,
  "links": [],
- "modified": "2026-09-22 20:30:42.887806",
+ "modified": "2026-10-07 16:38:10.446607",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Yearly Fishing Permit Gewaesserfonds",
