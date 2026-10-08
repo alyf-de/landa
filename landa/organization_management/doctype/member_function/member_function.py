@@ -140,10 +140,37 @@ class MemberFunction(Document):
 			)
 
 
+def update_member_function_status():
+	# Expire first, so a successor does not conflict with its predecessor in `validate_unique_roles`.
+	disable_expired_member_functions()
+	activate_planned_member_functions()
+
+
 def disable_expired_member_functions():
-	for member_function in get_expired_member_functions():
-		doc = frappe.get_doc("Member Function", member_function.name)
-		doc.save()
+	save_member_functions(member_function.name for member_function in get_expired_member_functions())
+
+
+def activate_planned_member_functions():
+	save_member_functions(
+		frappe.get_all(
+			"Member Function",
+			filters=[["status", "=", "Planned"], ["start_date", "<=", today()]],
+			pluck="name",
+		)
+	)
+
+
+def save_member_functions(names):
+	"""Save each Member Function to update its status, roles and permissions."""
+	for name in names:
+		# One invalid Member Function must not block the others.
+		frappe.db.savepoint("save_member_function")
+		try:
+			doc = frappe.get_doc("Member Function", name)
+			doc.save()
+		except Exception:
+			frappe.db.rollback(save_point="save_member_function")
+			frappe.log_error(f"Could not update the status of Member Function {name}")
 
 
 def apply_active_member_functions(filters):
