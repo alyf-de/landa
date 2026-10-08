@@ -2,6 +2,11 @@ Prerequisites:
 
 - [Organizations and Members](organizations-and-members.md)
 
+User permissions only work on records that link to the restricted DocType. Because of this, every relevant record links to an **Organization**, a **LANDA Member**, or both. The DocTypes of LANDA have these links in their definitions. The standard Frappe and ERPNext DocTypes get them as custom fields (see `landa/custom_fields.py`):
+
+- `organization` and `landa_member`: **User**, **Contact**, **Address**
+- `organization`: **Customer**, **Supplier**, **Sales Order**, **Delivery Note**, **Sales Invoice**, **Purchase Invoice**, **Payment Entry**
+
 A **LANDA Member** always belongs to a Local Organization or to a Local Group. By default, new **Users** are restricted to see only data of their own **Organization** and **LANDA Member**. For example, a member AVL-001-001 has the following **User Permissions** by default:
 
 - _Allow **Organization** for value "AVL-001"_, and
