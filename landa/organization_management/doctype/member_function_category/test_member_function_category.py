@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.tests.utils import FrappeTestCase
+from frappe.utils import add_days, today
 
 test_dependencies = ["Organization"]
 
@@ -23,6 +24,17 @@ class TestMemberFunctionCategory(FrappeTestCase):
 		member, user = make_member_with_user("REG-001")
 
 		make_member_function(member, category)
+
+		self.assertEqual(get_allowed_organizations(user), ["REG-001"])
+
+	def test_planned_member_function_grants_no_access(self):
+		"""A member function that starts in the future doesn't grant access yet."""
+		regional_category = make_category("Regional Organization", member_administration=1)
+		local_category = make_category("Local Group", member_administration=1)
+		member, user = make_member_with_user("REG-001")
+
+		make_member_function(member, regional_category, start_date=add_days(today(), 10))
+		make_member_function(member, local_category)
 
 		self.assertEqual(get_allowed_organizations(user), ["REG-001"])
 
@@ -58,12 +70,13 @@ def make_member_with_user(organization):
 	return member, user
 
 
-def make_member_function(member, category):
+def make_member_function(member, category, start_date=None):
 	return frappe.get_doc(
 		{
 			"doctype": "Member Function",
 			"member": member.name,
 			"member_function_category": category.name,
+			"start_date": start_date,
 		}
 	).insert()
 
