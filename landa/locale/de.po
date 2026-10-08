@@ -822,8 +822,8 @@ msgstr ""
 #. Description of the 'Access Level' (Select) field in DocType 'Member Function
 #. Category'
 #: landa/organization_management/doctype/member_function_category/member_function_category.json
-msgid "Grant access to all organizations below this level."
-msgstr "Zugriff auf bestimmte Daten von Vereinen / Verbänden unterhalb dieses Levels geben."
+msgid "The organization level of this function. Only users with management roles at this level or above can assign it. With Member Administration, it also grants access to all organizations below this level."
+msgstr "Die Organisationsebene dieser Funktion. Nur Benutzer mit Verwaltungsrollen auf dieser Ebene oder darüber können sie zuweisen. Mit Mitgliedsdatenverwaltung gibt sie außerdem Zugriff auf alle Organisationen unterhalb dieser Ebene."
 
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.js:54
 msgid "Group By Fish Species"

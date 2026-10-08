@@ -819,7 +819,7 @@ msgstr ""
 #. Description of the 'Access Level' (Select) field in DocType 'Member Function
 #. Category'
 #: landa/organization_management/doctype/member_function_category/member_function_category.json
-msgid "Grant access to all organizations below this level."
+msgid "The organization level of this function. Only users with management roles at this level or above can assign it. With Member Administration, it also grants access to all organizations below this level."
 msgstr ""
 
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.js:54
