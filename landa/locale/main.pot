@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-10-05 18:28+0053\n"
-"PO-Revision-Date: 2026-10-05 18:28+0053\n"
+"POT-Creation-Date: 2026-10-08 17:15+0053\n"
+"PO-Revision-Date: 2026-10-08 17:15+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -814,12 +814,6 @@ msgstr ""
 #. Group in Organization's connections
 #: landa/organization_management/doctype/organization/organization.json
 msgid "Gewässerverwaltung"
-msgstr ""
-
-#. Description of the 'Access Level' (Select) field in DocType 'Member Function
-#. Category'
-#: landa/organization_management/doctype/member_function_category/member_function_category.json
-msgid "Grant access to all organizations below this level."
 msgstr ""
 
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.js:54
@@ -2256,6 +2250,12 @@ msgstr ""
 #: landa/water_body_management/doctype/stocking_site/stocking_site.js:135
 #: landa/water_body_management/doctype/stocking_site/stocking_site.py:54
 msgid "The location marker must be within {0} m of the Water Body."
+msgstr ""
+
+#. Description of the 'Access Level' (Select) field in DocType 'Member Function
+#. Category'
+#: landa/organization_management/doctype/member_function_category/member_function_category.json
+msgid "The organization level of this function. Only users with management roles at this level or above can assign it. With Member Administration, it also grants access to all organizations below this level."
 msgstr ""
 
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.py:71

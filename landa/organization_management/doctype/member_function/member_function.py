@@ -190,9 +190,10 @@ def get_expired_member_functions():
 
 
 def get_active_member_functions(filters: dict = None, pluck: str = None):
+	"""Return member functions that have started (or have no start date) and have not ended."""
 	return frappe.get_all(
 		"Member Function",
-		filters=filters,
+		filters={**(filters or {}), "start_date": ("<=", today())},
 		or_filters=[["end_date", "is", "not set"], ["end_date", ">=", today()]],
 		pluck=pluck,
 	)
