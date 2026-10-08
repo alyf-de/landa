@@ -146,6 +146,16 @@ def disable_expired_member_functions():
 		doc.save()
 
 
+def activate_planned_member_functions():
+	for member_function in frappe.get_all(
+		"Member Function",
+		filters=[["status", "=", "Planned"], ["start_date", "<=", today()]],
+		pluck="name",
+	):
+		doc = frappe.get_doc("Member Function", member_function)
+		doc.save()
+
+
 def apply_active_member_functions(filters):
 	for member_function in get_active_member_functions(filters=filters, pluck="name"):
 		doc = frappe.get_doc("Member Function", member_function)

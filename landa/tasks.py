@@ -7,6 +7,10 @@ def daily():
 		queue="long",
 	)
 	enqueue(
+		"landa.organization_management.doctype.member_function.member_function.activate_planned_member_functions",
+		queue="long",
+	)
+	enqueue(
 		"landa.water_body_management.doctype.lease_contract.lease_contract.deactivate_lease_contracts",
 		queue="long",
 	)
