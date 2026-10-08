@@ -23,17 +23,17 @@ If a member/user is allowed access to lower level organizations, the default **U
 
 ```mermaid
 erDiagram
-    USER ||--|{ USER-PERMISSION : restricted-by
-    ANY-DOCTYPE ||--|| ORGANIZATION : linked-to
-    USER ||--o{ ROLE : has
-    USER-PERMISSION ||--|{ ORGANIZATION : restricts-to
-    USER-PERMISSION |o--o| LANDA-MEMBER : restricts-to
-    USER ||--|| LANDA-MEMBER : belongs-to
-    LANDA-MEMBER ||--|| ORGANIZATION : belongs-to
+    USER ||--o{ USER-PERMISSION : restricted-by
+    ANY-DOCTYPE }o--|| ORGANIZATION : linked-to
+    USER }o--o{ ROLE : has
+    USER-PERMISSION }o--|| ORGANIZATION : restricts-to
+    USER-PERMISSION }o--o| LANDA-MEMBER : restricts-to
+    USER |o--o| LANDA-MEMBER : belongs-to
+    LANDA-MEMBER }o--|| ORGANIZATION : belongs-to
     LANDA-MEMBER ||--o{ MEMBER-FUNCTION : has
-    MEMBER-FUNCTION ||--|| MEMBER-FUNCTION-CATEGORY : has-type
-    MEMBER-FUNCTION-CATEGORY ||--o{ ROLE : grants
-    MEMBER-FUNCTION-CATEGORY ||--o{ USER-PERMISSION : removes
+    MEMBER-FUNCTION }o--|| MEMBER-FUNCTION-CATEGORY : has-type
+    MEMBER-FUNCTION-CATEGORY }o--o{ ROLE : grants
+    MEMBER-FUNCTION-CATEGORY }o--o{ USER-PERMISSION : removes-or-widens
 ```
 
 
