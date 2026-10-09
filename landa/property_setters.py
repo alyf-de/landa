@@ -392,6 +392,7 @@ def get_property_setters():
 			("warehouse", "in_list_view", "0"),
 		],
 		"Sales Order": [
+			(None, "default_print_format", "Bestellung"),
 			(
 				None,
 				"field_order",
