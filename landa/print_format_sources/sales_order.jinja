@@ -25,24 +25,25 @@
 
 <div class="contact-row">
     <div id="address">
-        {% if cmp_addr %}
         <div id="sender">
-            <p>{{ cmp_addr.address_title }} &#183; {{ cmp_addr.address_line1 }} &#183;
-            {% if cmp_addr.address_line2 %}{{ cmp_addr.address_line2 }}<br>{% endif %}
-            {{ cmp_addr.pincode }} {{ cmp_addr.city }}
-            {% if pay_addr and (cmp_addr.country != pay_addr.country) -%}
-                    &#183; {{ cmp_addr.country | upper }}
-            {%- endif %}
+            <p>{{ company.name }}<br>
+                {% if cmp_addr %}
+                    {{ cmp_addr.address_line1 }} &#183;
+                    {% if cmp_addr.address_line2 %}{{ cmp_addr.address_line2 }} <br>{% endif %}
+                    {{ cmp_addr.pincode }} {{ cmp_addr.city }}
+                    {% if cmp_addr.country and pay_addr and cmp_addr.country != pay_addr.country -%}
+                        &#183; {{ cmp_addr.country.upper() }}
+                    {%- endif %}
+                {% else %}
+                    <i>{{ _("Address not set!") }}</i>
+                {% endif %}
             </p>
         </div>
-        {% endif %}
-        {{ doc.customer_name }}<br />
         {% if contact %}
-                {%- if contact.salutation -%}
-                    {{ contact.salutation }}
-                {%- endif %}
-                {%- if contact.salutation in ["Hr.", "Herr"] %}n{% endif %}
-                {{ contact.first_name }} {{ contact.last_name }}<br>
+            <strong>{{ contact.first_name }}{% if contact.last_name %} {{ contact.last_name }}{% endif %}</strong><br>
+            {{ doc.customer_name }}<br />
+        {% else %}
+            <strong>{{ doc.customer_name }}</strong><br />
         {% endif %}
         {{ doc.address_display or "" }}
     </div>
