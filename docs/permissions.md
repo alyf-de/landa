@@ -2,6 +2,11 @@ Prerequisites:
 
 - [Organizations and Members](organizations-and-members.md)
 
+User permissions only work on records that link to the restricted DocType. Because of this, every relevant record links to an **Organization**, a **LANDA Member**, or both. The DocTypes of LANDA have these links in their definitions. The standard Frappe and ERPNext DocTypes get them as custom fields (see `landa/custom_fields.py`):
+
+- `organization` and `landa_member`: **User**, **Contact**, **Address**
+- `organization`: **Customer**, **Supplier**, **Sales Order**, **Delivery Note**, **Sales Invoice**, **Purchase Invoice**, **Payment Entry**
+
 A **LANDA Member** always belongs to a Local Organization or to a Local Group. By default, new **Users** are restricted to see only data of their own **Organization** and **LANDA Member**. For example, a member AVL-001-001 has the following **User Permissions** by default:
 
 - _Allow **Organization** for value "AVL-001"_, and
@@ -21,20 +26,37 @@ If a member/user is allowed to view/edit the personal data of other members, the
 
 If a member/user is allowed access to lower level organizations, the default **User Permission** _Allow **Organization** for value "AVL-001"_ will be adjusted. For example, to _Allow **Organization** for value "AVL"_.
 
+The data model:
+
 ```mermaid
 erDiagram
-    USER ||--|{ USER-PERMISSION : restricted-by
-    ANY-DOCTYPE ||--|| ORGANIZATION : linked-to
-    USER ||--o{ ROLE : has
-    USER-PERMISSION ||--|{ ORGANIZATION : restricts-to
-    USER-PERMISSION |o--o| LANDA-MEMBER : restricts-to
-    USER ||--|| LANDA-MEMBER : belongs-to
-    LANDA-MEMBER ||--|| ORGANIZATION : belongs-to
+    USER |o--o| LANDA-MEMBER : belongs-to
+    LANDA-MEMBER }o--|| ORGANIZATION : belongs-to
     LANDA-MEMBER ||--o{ MEMBER-FUNCTION : has
-    MEMBER-FUNCTION ||--|| MEMBER-FUNCTION-CATEGORY : has-type
-    MEMBER-FUNCTION-CATEGORY ||--o{ ROLE : grants
-    MEMBER-FUNCTION-CATEGORY ||--o{ USER-PERMISSION : removes
+    MEMBER-FUNCTION }o--|| MEMBER-FUNCTION-CATEGORY : has-type
+    MEMBER-FUNCTION-CATEGORY }o--o{ ROLE : grants
+    USER }o--o{ ROLE : has
 ```
+
+What happens when a **Member Function** becomes active or inactive (on save, on delete, or by the daily job for expired functions). This only applies if the member has an enabled **User**.
+
+```mermaid
+flowchart TD
+    A[Member Function becomes active / inactive] --> B[Collect all active Member Function Categories of the member]
+    B --> C[Roles: add the category's roles, or remove the roles<br/>that no other active category grants. LANDA Member is always kept.]
+    B --> D{Any category with<br/>member administration?}
+    D -- yes --> E[Remove User Permission on LANDA Member]
+    D -- no --> F[Restrict to own LANDA Member]
+    B --> G[Highest access level of all categories]
+    G --> H[Replace User Permission on Organization<br/>with the member's ancestor at that level]
+```
+
+Example for member "AVL-001-001" of organization "AVL-001":
+
+| Active Member Functions | Roles | User Permissions |
+|---|---|---|
+| None | "LANDA Member" | **Organization** "AVL-001", **LANDA Member** "AVL-001-001" |
+| One category with _Access Level_ "Regional Organization" and _Member Administration_ | "LANDA Member" + roles of the category | **Organization** "AVL" |
 
 
 ### Tag permissions

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-09-29 14:41+0053\n"
-"PO-Revision-Date: 2026-09-29 14:41+0053\n"
+"POT-Creation-Date: 2026-10-05 18:28+0053\n"
+"PO-Revision-Date: 2026-10-05 18:28+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -288,7 +288,7 @@ msgstr ""
 msgid "Can contain suborganizations"
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member.py:62
+#: landa/organization_management/doctype/landa_member/landa_member.py:63
 msgid "Cannot be a member of organization {} because it is a group."
 msgstr ""
 
@@ -415,9 +415,7 @@ msgid "Current Information Expires On"
 msgstr ""
 
 #. Name of a report
-#. Label of a Link in the Organization Management Workspace
 #: landa/organization_management/report/current_member_data/current_member_data.json
-#: landa/organization_management/workspace/organization_management/organization_management.json
 msgid "Current Member Data"
 msgstr ""
 
@@ -535,9 +533,7 @@ msgid "External Contact Since"
 msgstr ""
 
 #. Name of a report
-#. Label of a Link in the Organization Management Workspace
 #: landa/organization_management/report/external_contacts_addresses_and_contacts/external_contacts_addresses_and_contacts.json
-#: landa/organization_management/workspace/organization_management/organization_management.json
 msgid "External Contacts Addresses and Contacts"
 msgstr ""
 
@@ -1368,9 +1364,7 @@ msgid "Location and Public Contact"
 msgstr ""
 
 #. Name of a report
-#. Label of a Link in the Organization Management Workspace
 #: landa/organization_management/report/magazine_address_list/magazine_address_list.json
-#: landa/organization_management/workspace/organization_management/organization_management.json
 msgid "Magazine Address List"
 msgstr ""
 
@@ -1466,7 +1460,6 @@ msgid "Member"
 msgstr ""
 
 #. Name of a report
-#. Label of a Link in the Organization Management Workspace
 #. Label of a shortcut in the Organization Management Workspace
 #: landa/organization_management/report/member_address_list/member_address_list.json
 #: landa/organization_management/workspace/organization_management/organization_management.json
@@ -1479,7 +1472,6 @@ msgid "Member Administration"
 msgstr ""
 
 #. Name of a report
-#. Label of a Link in the Organization Management Workspace
 #. Label of a shortcut in the Organization Management Workspace
 #: landa/organization_management/report/member_birthday_list/member_birthday_list.json
 #: landa/organization_management/workspace/organization_management/organization_management.json
@@ -1487,17 +1479,11 @@ msgid "Member Birthday List"
 msgstr ""
 
 #. Name of a report
-#. Label of a Link in the Organization Management Workspace
 #. Label of a shortcut in the Organization Management Workspace
 #: landa/organization_management/report/member_contact_list/member_contact_list.js:5
 #: landa/organization_management/report/member_contact_list/member_contact_list.json
 #: landa/organization_management/workspace/organization_management/organization_management.json
 msgid "Member Contact List"
-msgstr ""
-
-#. Label of a Link in the Organization Management Workspace
-#: landa/organization_management/workspace/organization_management/organization_management.json
-msgid "Member Count"
 msgstr ""
 
 #. Name of a DocType
@@ -1607,9 +1593,7 @@ msgid "Members must be a list of strings"
 msgstr ""
 
 #. Name of a report
-#. Label of a Link in the Organization Management Workspace
 #: landa/organization_management/report/members_with_member_functions/members_with_member_functions.json
-#: landa/organization_management/workspace/organization_management/organization_management.json
 msgid "Members with Member Functions"
 msgstr ""
 
@@ -2729,8 +2713,10 @@ msgstr ""
 
 #. Linked DocType in LANDA Member's connections
 #. Name of a DocType
+#. Label of a Link in the Organization Management Workspace
 #: landa/organization_management/doctype/landa_member/landa_member.json
 #: landa/organization_management/doctype/yearly_fishing_permit_gewaesserfonds/yearly_fishing_permit_gewaesserfonds.json
+#: landa/organization_management/workspace/organization_management/organization_management.json
 msgid "Yearly Fishing Permit Gewaesserfonds"
 msgstr ""
 
@@ -2756,9 +2742,7 @@ msgid "Yearly Fishing Permit already exists for member {0} and year {1}. Please 
 msgstr ""
 
 #. Name of a report
-#. Label of a Link in the Organization Management Workspace
 #: landa/organization_management/report/yearly_fishing_permits_issued/yearly_fishing_permits_issued.json
-#: landa/organization_management/workspace/organization_management/organization_management.json
 msgid "Yearly Fishing Permits Issued"
 msgstr ""
 
@@ -2792,7 +2776,7 @@ msgstr ""
 msgid "You cannot delete standard user."
 msgstr ""
 
-#: landa/organization_management/doctype/landa_member/landa_member.py:70
+#: landa/organization_management/doctype/landa_member/landa_member.py:71
 msgid "You cannot delete your own member record."
 msgstr ""
 

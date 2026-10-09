@@ -124,6 +124,15 @@ def bulk_create(year: str | int, association_or_state: str, members: str) -> dic
 	title = _("Creating Yearly Fishing Permits Gewaesserfonds...")
 	frappe.publish_progress(percent=0, title=title, doctype="LANDA Member")
 
+	member_organizations = dict(
+		frappe.get_all(
+			"LANDA Member",
+			filters={"name": ("in", parsed_members)},
+			fields=["name", "organization"],
+			as_list=True,
+		)
+	)
+
 	num_members = len(parsed_members)
 	num_skipped = 0
 	for i, member in enumerate(parsed_members):
@@ -135,6 +144,8 @@ def bulk_create(year: str | int, association_or_state: str, members: str) -> dic
 		)
 		permit = frappe.new_doc("Yearly Fishing Permit Gewaesserfonds")
 		permit.member = member
+		# Set before insert: the create permission check runs before fetch_from fills it
+		permit.organization = member_organizations.get(member)
 		permit.year = year
 		permit.association_or_state = association_or_state
 		try:
