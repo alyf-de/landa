@@ -46,7 +46,7 @@
         {% else %}
             <strong>{{ doc.customer_name }}</strong><br />
         {% endif %}
-        {{ doc.address_display or "" }}
+        {{ doc.address_display if doc.address_display else "<i>" + _("Address not set!") + "</i>" }}
     </div>
 
     <div id="contact">
@@ -67,6 +67,12 @@
                 <td class="text-right">{{ _("Organization ID") }}:</td>
                 <td class="text-right">{{ customer.organization }}</td>
             </tr>
+            {% if doc.po_no %}
+            <tr>
+                <td class="text-right">{{ _("Your PO No.") }}:</td>
+                <td class="text-right">{{ doc.po_no }}</td>
+            </tr>
+            {% endif %}
         </table>
     </div>
 </div>
@@ -76,161 +82,123 @@
 <div class="din-mark" id="fold-mark-2"></div>
 
 <!-- CONTENT -->
-<div id="text">
+<div id="text" class="">
     <div id="subject">
         <strong>{{ _("Sales Order") }} {{ doc.name }}</strong>
     </div>
 
-    <table class="w-100 text-small">
-        <thead class="black-border">
-            <tr>
-                <th style="width: 5%">{{ _("Sr") }}</th>
-                <th style="width: 45%">{{ _("Description") }}</th>
-                <th style="width: 10%">{{ _("Unit") if not print_settings.print_uom_after_quantity else '&nbsp;'}}</th>
-                <th style="width: 10%">{{ _("Qty") }}</th>
-                <th style="width: 12%">{{ _("Price") }}</th>
-                <!-- <th style="width: 15%">{{ _("Discount") }}</th> -->
-                <th style="width: 18%" class="text-right">{{ _("Amount") }}</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            {% for n in doc.items %}
+    <div class="salutation">
+    {% if frappe.form_dict.get("_lang", doc.language) == "de" %}
+        <p>Hiermit bestätigen wir Ihnen den folgenden Auftrag:</p>
+    {% else %}
+        <p>We hereby confirm the following order:</p>
+    {% endif %}
+    </div>
+    <br>
+    <div class="invoice">
+        <table class="w-100">
+            <thead class="black-border">
                 <tr>
-                    <td>{{ loop.index }}</td>
-                    <td><b>{{ _(n.item_name) }}</b></td>
-                    <td>{{ _(n.uom) if not print_settings.print_uom_after_quantity else '&nbsp;'}}</td>
+                    <th style="width: 5%">{{ _("Sr") }}</th>
+                    <th style="width: 50%">{{ _("Description") }}</th>
+                    <th style="width: 8%">{{ _("Qty") }}</th>
+                    <th style="width: 12%">{{ _("Price") }}</th>
+                    <th style="width: 15%" class="text-right">{{ _("Amount") }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for n in doc.items %}
+                <tr>
                     <td>
-                        {{ n.get_formatted("qty") }}
-                        {% if print_settings.print_uom_after_quantity %}
-                            {{ _(n.uom) }}
-                        {% endif %}
+                        {{ loop.index }}
                     </td>
-                    <td>{{ n.get_formatted("rate") }}</td>
-                    <!-- <td>{{ n.get_formatted("discount_amount") }}</td> -->
-                    <td class="text-right">{{ n.get_formatted("amount") }}</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td colspan="4">
-                        {{ n.description }}
-                        {% if n.prevdoc_docname %}
-                            <!-- Angebot: A-2020-001 -->
-                            ({{ _("Quotation") }}: {{ n.prevdoc_docname }})
-                        {% endif %}
+                    <td>
+                        <strong>{{ _(n.item_name) }}</strong>
+                        {% if not doc.flags.print_settings.compact_item_print %}<br>{{ n.description }}{% endif %}
+                        {% if n.prevdoc_docname %}<br>({{ _("Quotation") }}: {{ n.prevdoc_docname }}){% endif %}
                     </td>
-                    <td></td>
+                    <td>{{ n.qty|int }}</td>
+                    <td>{{ n.get_formatted('rate') }}</td>
+                    <td class="text-right">{{ n.get_formatted('amount') }}</td>
                 </tr>
-            {% endfor %}
-        </tbody>
-
-        <tfoot class="black-border">
+                {% endfor %}
+            </tbody>
+        </table>
+        <p></p>
+        <table class="w-100 black-border">
+            <tr>
+                <td>{{ _("Total") }}</td>
+                <td class="text-right">{{ doc.get_formatted('total') }}</td>
+            </tr>
             {% if doc.discount_amount %}
                 <tr>
-                    <td></td>
-                    <td>{{ _("Total") }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="text-right">{{ doc.get_formatted("total") }}</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>{{ _("Discount") }}</td>
-                    <td></td>
-                    <td></td>
                     <td>
+                        {{ _("Discount") }}
                         {% if doc.additional_discount_percentage %}
-                            {{ doc.get_formatted("additional_discount_percentage") }} &percnt;
+                            {{ doc.get_formatted('additional_discount_percentage') }} &percnt;
                         {% endif %}
                     </td>
                     <td class="text-right">
-                        {{ doc.get_formatted("discount_amount") }}
+                        {{ doc.get_formatted('discount_amount') }}
                     </td>
                 </tr>
             {% endif %}
+            {% if doc.net_total != doc.total %}
             <tr>
-                <td></td>
                 <td>{{ _("Net Total") }}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="text-right">{{ doc.get_formatted("net_total") }}</td>
+                <td class="text-right">{{ doc.get_formatted('net_total') }}</td>
             </tr>
+            {% endif %}
             {% if doc.tax_category == "Reverse Charge" -%}
                 <tr>
-                    <td></td>
-                    <td>Steuerschuldnerschaft des Leistungsempfängers / The recipient of the supply is liable for tax</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>Steuerschuldnerschaft des Leistungsempfängers.</td>
                     <td class="text-right"></td>
                 </tr>
             {% else %}
                 {% for tax_row in doc.taxes -%}
-                    {% if tax_row.tax_amount or print_settings.print_taxes_with_zero_amount %}
+                    {% if doc.flags.print_settings.print_taxes_with_zero_amount or tax_row.tax_amount > 0 %}
                         <tr>
-                            <td></td>
                             <td>
-                            {{ tax_row.description }}
+                                {{ tax_row.description }}
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                             <td class="text-right">
-                                {{ tax_row.get_formatted("tax_amount") }}
+                                {{ tax_row.get_formatted('tax_amount') }}
                             </td>
                         </tr>
-                  {% endif %}
+                    {% endif %}
                 {%- endfor %}
-
-                {% if doc.tax_exemption_reason %}
-                    <tr>
-                        <td></td>
-                        <td>{{ _(doc.tax_exemption_reason) }}</td>
-                        <td></td>
-                        <td></td>
-                        <td colspan="2"></td>
-                    </tr>
-                {% endif %}
             {%- endif %}
             <tr>
-                <td></td>
                 <td>
                     <strong>{{ _("Grand Total") }}</strong>
                 </td>
-                <td></td>
-                <td></td>
-                <td></td>
                 <td class="text-right">
-                    <strong>{{ doc.get_formatted("grand_total") }}</strong>
+                    <strong>{{ doc.get_formatted('grand_total') }}</strong>
                 </td>
             </tr>
             {% if doc.advance_paid %}
                 <tr>
-                    <td></td>
                     <td>
-                    {{ _("Total Advance") }}
+                        {{ _("Total Advance") }}
                     </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                     <td class="text-right">
-                        {{ doc.get_formatted("advance_paid") }}
+                        {{ doc.get_formatted('advance_paid') }}
                     </td>
                 </tr>
             {% endif %}
-        </tfoot>
-    </table>
+        </table>
+    </div>
+    <br>
 
+    <div class="epilogue">
     {% if doc.incoterm %}
         <p>{{ _("Terms of delivery") }}: Incoterms® 2020 {{ doc.incoterm }}{% if doc.named_place %} {{ doc.named_place }}{% endif %}</p><br>
     {% endif %}
 
     {% if doc.terms and (doc.terms | striptags) %}
-        <br>
         {{ doc.terms }}
     {% endif %}
+    </div>
 </div>
 
 <!-- FOOTER -->
