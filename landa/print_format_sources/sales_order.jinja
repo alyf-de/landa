@@ -9,6 +9,7 @@
 </style>
 
 {% set company = frappe.get_doc("Company", doc.company) %}
+{% set customer = frappe.get_doc("Customer", doc.customer) %}
 {% set cmp_addr = frappe.get_doc("Address", doc.company_address) if doc.company_address else None %}
 {% set pay_addr = frappe.get_doc("Address", doc.customer_address) if doc.customer_address else None %}
 
@@ -49,30 +50,23 @@
     </div>
 
     <div id="contact">
-        <table class="w-100 text-small">
-            {% if company.phone_no %}
+        <table>
             <tr>
-                <td>{{ _("Phone") }}:</td>
+                <td class="text-right">{{ _("Date") }}:</td>
+                <td class="text-right">{{ frappe.utils.formatdate(doc.transaction_date, "dd. MMMM yyyy") }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Phone") }}:</td>
                 <td class="text-right">{{ company.phone_no }}</td>
             </tr>
-            {% endif %}
-
-            {% if company.email %}
             <tr>
-                <td>{{ _("Email") }}:</td>
+                <td class="text-right">{{ _("Email") }}:</td>
                 <td class="text-right">{{ company.email }}</td>
             </tr>
-            {% endif %}
             <tr>
-                <td>{{ _("Date") }}:</td>
-                <td class="text-right">{{ frappe.utils.formatdate(doc.transaction_date, "long") }}</td>
+                <td class="text-right">{{ _("Organization ID") }}:</td>
+                <td class="text-right">{{ customer.organization }}</td>
             </tr>
-            {% if doc.po_no %}
-            <tr>
-                <td>{{ _("Your PO No.") }}:</td>
-                <td class="text-right">{{ doc.po_no }}</td>
-            </tr>
-            {% endif %}
         </table>
     </div>
 </div>
