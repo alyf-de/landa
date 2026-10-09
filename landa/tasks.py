@@ -3,7 +3,7 @@ from frappe import enqueue
 
 def daily():
 	enqueue(
-		"landa.organization_management.doctype.member_function.member_function.disable_expired_member_functions",
+		"landa.organization_management.doctype.member_function.member_function.update_member_function_status",
 		queue="long",
 	)
 	enqueue(
