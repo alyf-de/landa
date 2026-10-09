@@ -20,7 +20,7 @@
 
 {% set serial_nos = [] %}
 {% for n in doc.items %}
-    {% if n.serial_no is not none %} {% set temp = serial_nos.append(n.serial_no) %}{% endif %}
+    {% if n.custom_serial_numbers is not none %} {% set temp = serial_nos.append(n.custom_serial_numbers) %}{% endif %}
 {% endfor %}
 {% set serial_no_set=serial_nos|length > 0 %}
 
@@ -119,7 +119,7 @@
                         <strong>{{ _(n.item_name) }}</strong>
                         {% if not doc.flags.print_settings.compact_item_print %}<br>{{ n.description }}{% endif %}
                     </td>
-                    {% if serial_no_set %}<td>{{  n.serial_no if  n.serial_no is not none }}</td>{%- endif %}
+                    {% if serial_no_set %}<td>{{ n.custom_serial_numbers if n.custom_serial_numbers is not none }}</td>{%- endif %}
                     <td>{{ n.qty|int }}</td>
                     <td>{{ n.get_formatted('rate') }}</td>
                     <td class="text-right">{{ n.get_formatted('amount') }}</td>
