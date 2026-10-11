@@ -1,0 +1,212 @@
+<style>
+    .print-format {
+        margin-left: 0mm;
+        margin-right: 0mm;
+        margin-top: 10mm;
+        margin-bottom: 60mm;
+        font-size: 10pt;
+    }
+</style>
+
+{% set company = frappe.get_doc("Company", doc.company) %}
+{% set customer = frappe.get_doc("Customer", doc.customer) %}
+{% set cmp_addr = frappe.get_doc("Address", doc.company_address) if doc.company_address else None %}
+{% set pay_addr = frappe.get_doc("Address", doc.customer_address) if doc.customer_address else None %}
+
+{% if doc.contact_person %}
+    {% set contact = frappe.get_doc("Contact", doc.contact_person) %}
+{% endif %}
+
+<!-- HEAD -->
+<div id="header">
+    {% if company.company_logo %}
+        <img id="logo" src="{{company.company_logo}}">
+    {% endif %}
+</div>
+
+<div class="contact-row">
+    <div id="address">
+        <div id="sender">
+            <p>{{ company.name }}<br>
+                {% if cmp_addr %}
+                    {{ cmp_addr.address_line1 }} &#183;
+                    {% if cmp_addr.address_line2 %}{{ cmp_addr.address_line2 }} <br>{% endif %}
+                    {{ cmp_addr.pincode }} {{ cmp_addr.city }}
+                    {% if cmp_addr.country and pay_addr and cmp_addr.country != pay_addr.country -%}
+                        &#183; {{ cmp_addr.country.upper() }}
+                    {%- endif %}
+                {% else %}
+                    <i>{{ _("Address not set!") }}</i>
+                {% endif %}
+            </p>
+        </div>
+        {% if contact %}
+            <strong>{{ contact.first_name }}{% if contact.last_name %} {{ contact.last_name }}{% endif %}</strong><br>
+            {{ doc.customer_name }}<br />
+        {% else %}
+            <strong>{{ doc.customer_name }}</strong><br />
+        {% endif %}
+        {{ doc.address_display if doc.address_display else "<i>" + _("Address not set!") + "</i>" }}
+    </div>
+
+    <div id="contact">
+        <table>
+            <tr>
+                <td class="text-right">{{ _("Date") }}:</td>
+                <td class="text-right">{{ frappe.utils.formatdate(doc.transaction_date, "dd. MMMM yyyy") }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Phone") }}:</td>
+                <td class="text-right">{{ company.phone_no }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Email") }}:</td>
+                <td class="text-right">{{ company.email }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Organization ID") }}:</td>
+                <td class="text-right">{{ customer.organization }}</td>
+            </tr>
+            {% if doc.po_no %}
+            <tr>
+                <td class="text-right">{{ _("Your PO No.") }}:</td>
+                <td class="text-right">{{ doc.po_no }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+</div>
+
+<div class="din-mark" id="fold-mark-1"></div>
+<div class="din-mark" id="punch-mark"></div>
+<div class="din-mark" id="fold-mark-2"></div>
+
+<!-- CONTENT -->
+<div id="text" class="">
+    <div id="subject">
+        <strong>{{ _("Sales Order") }} {{ doc.name }}</strong>
+    </div>
+
+    <div class="salutation">
+    {% if frappe.form_dict.get("_lang", doc.language) == "de" %}
+        <p>Hiermit bestätigen wir Ihnen den folgenden Auftrag:</p>
+    {% else %}
+        <p>We hereby confirm the following order:</p>
+    {% endif %}
+    </div>
+    <br>
+    <div class="invoice">
+        <table class="w-100">
+            <thead class="black-border">
+                <tr>
+                    <th style="width: 5%">{{ _("Sr") }}</th>
+                    <th style="width: 50%">{{ _("Description") }}</th>
+                    <th style="width: 8%">{{ _("Qty") }}</th>
+                    <th style="width: 12%">{{ _("Price") }}</th>
+                    <th style="width: 15%" class="text-right">{{ _("Amount") }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for n in doc.items %}
+                <tr>
+                    <td>
+                        {{ loop.index }}
+                    </td>
+                    <td>
+                        <strong>{{ _(n.item_name) }}</strong>
+                        {% if not doc.flags.print_settings.compact_item_print %}<br>{{ n.description }}{% endif %}
+                        {% if n.prevdoc_docname %}<br>({{ _("Quotation") }}: {{ n.prevdoc_docname }}){% endif %}
+                    </td>
+                    <td>{{ n.qty|int }}</td>
+                    <td>{{ n.get_formatted('rate') }}</td>
+                    <td class="text-right">{{ n.get_formatted('amount') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p></p>
+        <table class="w-100 black-border">
+            <tr>
+                <td>{{ _("Total") }}</td>
+                <td class="text-right">{{ doc.get_formatted('total') }}</td>
+            </tr>
+            {% if doc.discount_amount %}
+                <tr>
+                    <td>
+                        {{ _("Discount") }}
+                        {% if doc.additional_discount_percentage %}
+                            {{ doc.get_formatted('additional_discount_percentage') }} &percnt;
+                        {% endif %}
+                    </td>
+                    <td class="text-right">
+                        {{ doc.get_formatted('discount_amount') }}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if doc.net_total != doc.total %}
+            <tr>
+                <td>{{ _("Net Total") }}</td>
+                <td class="text-right">{{ doc.get_formatted('net_total') }}</td>
+            </tr>
+            {% endif %}
+            {% if doc.tax_category == "Reverse Charge" -%}
+                <tr>
+                    <td>Steuerschuldnerschaft des Leistungsempfängers.</td>
+                    <td class="text-right"></td>
+                </tr>
+            {% else %}
+                {% for tax_row in doc.taxes -%}
+                    {% if doc.flags.print_settings.print_taxes_with_zero_amount or tax_row.tax_amount > 0 %}
+                        <tr>
+                            <td>
+                                {{ tax_row.description }}
+                            </td>
+                            <td class="text-right">
+                                {{ tax_row.get_formatted('tax_amount') }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {%- endfor %}
+            {%- endif %}
+            <tr>
+                <td>
+                    <strong>{{ _("Grand Total") }}</strong>
+                </td>
+                <td class="text-right">
+                    <strong>{{ doc.get_formatted('grand_total') }}</strong>
+                </td>
+            </tr>
+            {% if doc.advance_paid %}
+                <tr>
+                    <td>
+                        {{ _("Total Advance") }}
+                    </td>
+                    <td class="text-right">
+                        {{ doc.get_formatted('advance_paid') }}
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+    <br>
+
+    <div class="epilogue">
+    {% if doc.incoterm %}
+        <p>{{ _("Terms of delivery") }}: Incoterms® 2020 {{ doc.incoterm }}{% if doc.named_place %} {{ doc.named_place }}{% endif %}</p><br>
+    {% endif %}
+
+    {% if doc.terms and (doc.terms | striptags) %}
+        {{ doc.terms }}
+    {% endif %}
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer-html" class="visible-pdf">
+    <p id="pagenum">
+        {{ _("Page {0} of {1}").format('<span class="page"></span>', '<span class="topage"></span>') }}
+    </p>
+    <div class="print-format-footer">
+         {{ footer }}
+    </div>
+</div>
