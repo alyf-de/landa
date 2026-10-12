@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-10-05 18:28+0053\n"
-"PO-Revision-Date: 2026-10-05 18:28+0053\n"
+"POT-Creation-Date: 2026-10-12 08:58+0053\n"
+"PO-Revision-Date: 2026-10-12 08:58+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -719,8 +719,14 @@ msgstr ""
 #. Label of a Int field in DocType 'Catch Log Entry'
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json
 #: landa/water_body_management/report/catch_log_days_and_counts/catch_log_days_and_counts.py:90
+#: landa/water_body_management/report/fishing_days_by_organization/fishing_days_by_organization.py:31
 #: landa/water_body_management/report/water_body_development/water_body_development.py:71
 msgid "Fishing Days"
+msgstr ""
+
+#. Name of a report
+#: landa/water_body_management/report/fishing_days_by_organization/fishing_days_by_organization.json
+msgid "Fishing Days by Organization"
 msgstr ""
 
 #. Label of a Section Break field in DocType 'LANDA Member'
@@ -739,6 +745,7 @@ msgid "Fishing Permit"
 msgstr ""
 
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.js:10
+#: landa/water_body_management/report/fishing_days_by_organization/fishing_days_by_organization.js:24
 #: landa/water_body_management/report/water_body_development/water_body_development.js:10
 msgid "From Year"
 msgstr ""
@@ -2315,6 +2322,7 @@ msgid "Titel"
 msgstr ""
 
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.js:16
+#: landa/water_body_management/report/fishing_days_by_organization/fishing_days_by_organization.js:30
 #: landa/water_body_management/report/water_body_development/water_body_development.js:16
 msgid "To Year"
 msgstr ""
@@ -2462,6 +2470,7 @@ msgstr ""
 #: landa/water_body_management/report/catch_log_days_and_counts/catch_log_days_and_counts.py:38
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.js:22
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.py:38
+#: landa/water_body_management/report/fishing_days_by_organization/fishing_days_by_organization.js:17
 #: landa/water_body_management/report/lease_contract_payments/lease_contract_payments.js:16
 #: landa/water_body_management/report/lease_contract_payments/lease_contract_payments.py:27
 #: landa/water_body_management/report/members_in_water_body_management/members_in_water_body_management.js:11
