@@ -1,0 +1,37 @@
+{
+ "add_total_row": 1,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2026-10-12 08:29:00",
+ "disable_prepared_report_automation": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "doctype_to_sync": [],
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": null,
+ "modified": "2026-10-12 08:55:17.833245",
+ "modified_by": "Administrator",
+ "module": "Water Body Management",
+ "name": "Fishing Days by Organization",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Catch Log Entry",
+ "report_name": "Fishing Days by Organization",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "LANDA State Organization Employee"
+  },
+  {
+   "role": "LANDA Regional Organization Management"
+  }
+ ],
+ "snapshot_report": 0,
+ "timeout": 0
+}
