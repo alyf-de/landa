@@ -12,7 +12,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": null,
- "modified": "2026-10-12 08:55:17.833245",
+ "modified": "2026-10-13 10:17:18.668570",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Fishing Days by Organization",
@@ -30,6 +30,9 @@
   },
   {
    "role": "LANDA Regional Organization Management"
+  },
+  {
+   "role": "LANDA Regional Water Body Management"
   }
  ],
  "snapshot_report": 0,
