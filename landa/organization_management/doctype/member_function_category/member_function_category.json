@@ -35,7 +35,7 @@
    "read_only": 1
   },
   {
-   "description": "Grant access to all organizations below this level.",
+   "description": "The organization level of this function. Only users with management roles at this level or above can assign it. With Member Administration, it also grants access to all organizations below this level.",
    "fieldname": "access_level",
    "fieldtype": "Select",
    "in_list_view": 1,
@@ -70,7 +70,7 @@
    "link_fieldname": "member_function_category"
   }
  ],
- "modified": "2025-12-04 18:50:21.245425",
+ "modified": "2026-10-08 17:00:27.245160",
  "modified_by": "Administrator",
  "module": "Organization Management",
  "name": "Member Function Category",
