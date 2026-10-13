@@ -119,7 +119,7 @@ def copy_to_next_year() -> None:
 
 
 @frappe.whitelist()
-def create_stocking_measure(source_name: str, target_doc: str | None = None) -> Document:
+def create_stocking_measure(source_name: str, target_doc: Document | str | None = None) -> Document:
 	def set_missing_values(source, target):
 		target.validate()
 
