@@ -36,21 +36,18 @@ def get_columns():
 
 def get_data(filters):
 	entry = frappe.qb.DocType("Catch Log Entry")
-	organization = frappe.qb.DocType("Organization")
 
 	query = (
 		frappe.qb.from_(entry)
-		.join(organization)
-		.on(entry.organization == organization.name)
 		.select(
 			entry.organization,
-			organization.organization_name,
+			entry.organization_name,
 			Sum(entry.fishing_days).as_("fishing_days"),
 		)
 		.where(entry.workflow_state == "Approved")
-		.groupby(entry.organization, organization.organization_name)
+		.groupby(entry.organization, entry.organization_name)
 		.orderby(Sum(entry.fishing_days), order=frappe.qb.desc)
-		.orderby(organization.organization_name)
+		.orderby(entry.organization_name)
 	)
 
 	if water_body := filters.get("water_body"):
