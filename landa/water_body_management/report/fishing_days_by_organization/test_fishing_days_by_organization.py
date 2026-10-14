@@ -29,8 +29,8 @@ class TestFishingDaysByOrganization(FrappeTestCase):
 			data = get_data(filters)
 
 		self.assertEqual(
-			{row.organization: row.fishing_days for row in data},
-			{"REG-001": 12, "REG-002-01": 3},
+			[(row.organization, row.fishing_days) for row in data],
+			[("REG-001", 12), ("REG-002-01", 3)],
 		)
 
 		with patch(

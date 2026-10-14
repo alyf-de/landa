@@ -49,6 +49,7 @@ def get_data(filters):
 		)
 		.where(entry.workflow_state == "Approved")
 		.groupby(entry.organization, organization.organization_name)
+		.orderby(Sum(entry.fishing_days), order=frappe.qb.desc)
 		.orderby(organization.organization_name)
 	)
 
