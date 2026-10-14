@@ -9,7 +9,6 @@ frappe.query_reports["Fishing Days by Organization"] = {
 			fieldtype: "Link",
 			label: __("Organization"),
 			options: "Organization",
-			get_query: () => ({ filters: { is_group: 0 } }),
 		},
 		{
 			fieldname: "water_body",
