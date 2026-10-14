@@ -20,8 +20,11 @@ class TestFishingDaysByOrganization(FrappeTestCase):
 
 		filters = {"water_body": "A01-001", "from_year": 2023, "to_year": 2023}
 		with patch(
-			"landa.water_body_management.report.fishing_days_by_organization.fishing_days_by_organization.get_current_member_data",
+			"landa.water_body_management.report.utils.get_current_member_data",
 			return_value=frappe._dict(regional_organization="REG"),
+		), patch(
+			"landa.water_body_management.report.utils.get_user_roles",
+			return_value={"LANDA Regional Organization Management"},
 		):
 			data = get_data(filters)
 
@@ -31,10 +34,27 @@ class TestFishingDaysByOrganization(FrappeTestCase):
 		)
 
 		with patch(
-			"landa.water_body_management.report.fishing_days_by_organization.fishing_days_by_organization.get_current_member_data",
+			"landa.water_body_management.report.utils.get_current_member_data",
 			return_value=frappe._dict(regional_organization="OTHER"),
+		), patch(
+			"landa.water_body_management.report.utils.get_user_roles",
+			return_value={"LANDA Regional Organization Management"},
 		):
 			self.assertEqual(get_data(filters), [])
+
+		with patch(
+			"landa.water_body_management.report.utils.get_current_member_data",
+			return_value=frappe._dict(regional_organization="OTHER"),
+		), patch(
+			"landa.water_body_management.report.utils.get_user_roles",
+			return_value={"LANDA State Organization Employee"},
+		):
+			data = get_data(filters)
+
+		self.assertEqual(
+			{row.organization: row.fishing_days for row in data},
+			{"REG-001": 12, "REG-002-01": 3},
+		)
 
 
 def create_catch_log_entry(organization, fishing_days):

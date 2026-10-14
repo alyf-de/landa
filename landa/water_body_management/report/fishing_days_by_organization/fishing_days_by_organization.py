@@ -2,7 +2,7 @@ import frappe
 from frappe import _
 from pypika.functions import Sum
 
-from landa.utils import get_current_member_data
+from landa.water_body_management.report.utils import add_or_filters
 
 
 def execute(filters=None):
@@ -61,7 +61,5 @@ def get_data(filters):
 	if selected_organization := filters.get("organization"):
 		query = query.where(entry.organization == selected_organization)
 
-	if regional_organization := get_current_member_data().regional_organization:
-		query = query.where(entry.organization.like(f"{regional_organization}-%"))
-
+	query = add_or_filters(query, entry)
 	return query.run(as_dict=True)
