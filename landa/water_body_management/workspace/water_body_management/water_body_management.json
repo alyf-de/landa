@@ -216,7 +216,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Berichte",
-   "link_count": 7,
+   "link_count": 8,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -268,6 +268,16 @@
    "label": "Water Body Development",
    "link_count": 0,
    "link_to": "Water Body Development",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Fishing Days by Organization",
+   "link_count": 0,
+   "link_to": "Fishing Days by Organization",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
@@ -442,7 +452,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-01-22 18:03:50.977429",
+ "modified": "2026-10-28 15:16:35.353592",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management",
