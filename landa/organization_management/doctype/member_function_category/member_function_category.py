@@ -196,8 +196,12 @@ def get_highest_access_level(member_name, disabled_member_function=None):
 		"Local Organization": 2,
 		"Local Group": 3,
 	}
+	# The access level only applies together with member administration
 	access_levels = get_values_from_categories(
-		member_name, {"access_level": ("is", "set")}, "access_level", disabled_member_function
+		member_name,
+		{"access_level": ("is", "set"), "member_administration": 1},
+		"access_level",
+		disabled_member_function,
 	)
 
 	min_level = max(ACCESS_LEVEL_MAP.values())
@@ -224,11 +228,7 @@ def get_values_from_categories(member_name, filters, fieldname=None, disabled_me
 	active_categories = get_active_member_functions(member_function_filters, pluck="member_function_category")
 	filters["name"] = ("in", active_categories)
 
-	return frappe.get_all(
-		"Member Function Category",
-		{"name": ("in", active_categories), "member_administration": 1},
-		pluck=fieldname,
-	)
+	return frappe.get_all("Member Function Category", filters, pluck=fieldname)
 
 
 def get_user(member_name: str):

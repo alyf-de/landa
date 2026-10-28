@@ -20,7 +20,14 @@ A **Member Function Category** is similar to a **Role Profile** in that it defin
 
 A **Member Function** assigns a **Member Function Category** to a **LANDA Member**, for a specific period of time. When a **Member Function** is enabled, the member/user gets the additional permissions defined in the **Member Function Category**. When a **Member Function** is disabled, the member/user loses the additional permissions defined in the **Member Function Category**.
 
-When there are multiple active **Member Function Categories** for a member/user, they get the highest permissions possible. This means the union of all roles, access at the maximum allowed level, and access to member data, if any.
+The _Access Level_ is the organization level of the function. It has two purposes:
+
+- It controls who can assign the category. Anybody who can create a **Member Function** can assign a category at level "Local Group". Level "Local Organization" needs the role "LANDA Local Organization Management" or higher, level "Regional Organization" needs "LANDA Regional Organization Management" or higher, and level "State Organization" needs "LANDA State Organization Employee".
+- Only together with _Member Administration_: it gives access to all organizations below this level. The _Access Level_ of a category without _Member Administration_ does not change the access to organizations.
+
+When there are multiple active **Member Function Categories** for a member/user, they get the highest permissions possible. This means the union of all roles, access to member data, if any, and access at the maximum level of the categories with _Member Administration_.
+
+A **Member Function** is active from its _Start Date_ (if set) until its _End Date_ (if set).
 
 If a member/user is allowed to view/edit the personal data of other members, the default **User Permission** _Allow **LANDA Member** for value "AVL-001-001"_ will be removed.
 
@@ -47,7 +54,7 @@ flowchart TD
     B --> D{Any category with<br/>member administration?}
     D -- yes --> E[Remove User Permission on LANDA Member]
     D -- no --> F[Restrict to own LANDA Member]
-    B --> G[Highest access level of all categories]
+    B --> G[Highest access level of the categories<br/>with member administration]
     G --> H[Replace User Permission on Organization<br/>with the member's ancestor at that level]
 ```
 
@@ -57,6 +64,7 @@ Example for member "AVL-001-001" of organization "AVL-001":
 |---|---|---|
 | None | "LANDA Member" | **Organization** "AVL-001", **LANDA Member** "AVL-001-001" |
 | One category with _Access Level_ "Regional Organization" and _Member Administration_ | "LANDA Member" + roles of the category | **Organization** "AVL" |
+| One category with _Access Level_ "Regional Organization" without _Member Administration_ | "LANDA Member" + roles of the category | **Organization** "AVL-001", **LANDA Member** "AVL-001-001" |
 
 
 ### Tag permissions

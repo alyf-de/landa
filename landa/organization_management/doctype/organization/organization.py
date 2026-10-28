@@ -329,7 +329,7 @@ def get_supported_water_bodies(organization: str) -> list[str]:
 
 
 @frappe.whitelist()
-def make_payment_entry(source_name: str, target_doc: str | None = None) -> Document:
+def make_payment_entry(source_name: str, target_doc: Document | str | None = None) -> Document:
 	customer = frappe.db.get_value("Customer", {"organization": source_name})
 	if not customer:
 		frappe.throw(_("There is no Customer linked to {0}.").format(source_name))
