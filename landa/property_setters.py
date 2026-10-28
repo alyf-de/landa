@@ -168,6 +168,9 @@ def get_property_setters():
 			("uom", "in_list_view", "0"),
 			("warehouse", "in_list_view", "0"),
 		],
+		"Dunning": [
+			(None, "default_print_format", "Mahnung"),
+		],
 		"Item": [
 			(
 				None,
