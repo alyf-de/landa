@@ -2,7 +2,8 @@ import frappe
 from frappe import _
 from pypika.functions import Sum
 
-from landa.water_body_management.report.utils import add_or_filters
+from landa.utils import get_current_member_data
+from landa.water_body_management.report.utils import STATE_ROLES, get_user_roles
 
 
 def execute(filters=None):
@@ -61,7 +62,12 @@ def get_data(filters):
 	if to_year := filters.get("to_year"):
 		query = query.where(entry.year <= to_year)
 	if selected_organization := filters.get("organization"):
-		query = query.where(entry.organization == selected_organization)
+		# Include the local groups of the selected club
+		query = query.where(entry.organization.like(f"{selected_organization}%"))
 
-	query = add_or_filters(query, entry)
+	# Regional organizations may only see their own clubs, not other clubs fishing on their water bodies
+	if not STATE_ROLES.intersection(get_user_roles()):
+		regional_organization = get_current_member_data().regional_organization
+		query = query.where(entry.organization.like(f"{regional_organization}-%"))
+
 	return query.run(as_dict=True)

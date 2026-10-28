@@ -719,7 +719,7 @@ msgstr ""
 #. Label of a Int field in DocType 'Catch Log Entry'
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json
 #: landa/water_body_management/report/catch_log_days_and_counts/catch_log_days_and_counts.py:90
-#: landa/water_body_management/report/fishing_days_by_organization/fishing_days_by_organization.py:31
+#: landa/water_body_management/report/fishing_days_by_organization/fishing_days_by_organization.py:32
 #: landa/water_body_management/report/water_body_development/water_body_development.py:71
 msgid "Fishing Days"
 msgstr ""
