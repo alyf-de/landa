@@ -56,6 +56,26 @@ class TestFishingDaysByOrganization(FrappeTestCase):
 			{"REG-001": 12, "REG-002-01": 3},
 		)
 
+	def test_renamed_organization_stays_in_one_row(self):
+		frappe.db.delete("Catch Log Entry")
+		old_entry = create_catch_log_entry("REG-001", 4)
+		create_catch_log_entry("REG-001", 8)
+		# Simulate an entry created before the organization was renamed
+		frappe.db.set_value("Catch Log Entry", old_entry.name, "organization_name", "Old Name")
+
+		filters = {"water_body": "A01-001", "from_year": 2023, "to_year": 2023}
+		with patch(
+			"landa.water_body_management.report.utils.get_user_roles",
+			return_value={"LANDA State Organization Employee"},
+		):
+			data = get_data(filters)
+
+		current_name = frappe.db.get_value("Organization", "REG-001", "organization_name")
+		self.assertEqual(
+			[(row.organization, row.organization_name, row.fishing_days) for row in data],
+			[("REG-001", current_name, 12)],
+		)
+
 
 def create_catch_log_entry(organization, fishing_days):
 	entry = frappe.get_doc(
@@ -72,3 +92,4 @@ def create_catch_log_entry(organization, fishing_days):
 	entry.save()
 	apply_workflow(entry, "File this record")
 	apply_workflow(entry, "Approve")
+	return entry
