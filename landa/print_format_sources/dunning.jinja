@@ -1,0 +1,153 @@
+<style>
+    .print-format {
+        margin-left: 0mm;
+        margin-right: 0mm;
+        margin-top: 10mm;
+        margin-bottom: 60mm;
+        font-size: 10pt;
+    }
+</style>
+
+{% set company = frappe.get_doc("Company", doc.company) %}
+{% set customer = frappe.get_doc("Customer", doc.customer) %}
+{% set cmp_addr = frappe.get_doc("Address", doc.company_address) if doc.company_address else None %}
+{% set pay_addr = frappe.get_doc("Address", doc.customer_address) if doc.customer_address else None %}
+
+{% if doc.contact_person %}
+    {% set contact = frappe.get_doc("Contact", doc.contact_person) %}
+{% endif %}
+
+<!-- HEAD -->
+<div id="header">
+    {% if company.company_logo %}
+        <img id="logo" src="{{company.company_logo}}">
+    {% endif %}
+</div>
+
+<div class="contact-row">
+    <div id="address">
+        <div id="sender">
+            <p>{{ company.name }}<br>
+                {% if cmp_addr %}
+                    {{ cmp_addr.address_line1 }} &#183;
+                    {% if cmp_addr.address_line2 %}{{ cmp_addr.address_line2 }} <br>{% endif %}
+                    {{ cmp_addr.pincode }} {{ cmp_addr.city }}
+                    {% if cmp_addr.country and pay_addr and cmp_addr.country != pay_addr.country -%}
+                        &#183; {{ cmp_addr.country.upper() }}
+                    {%- endif %}
+                {% else %}
+                    <i>{{ _("Address not set!") }}</i>
+                {% endif %}
+            </p>
+        </div>
+        {% if contact %}
+            <strong>{{ contact.first_name }}{% if contact.last_name %} {{ contact.last_name }}{% endif %}</strong><br>
+            {{ doc.customer_name }}<br />
+        {% else %}
+            <strong>{{ doc.customer_name }}</strong><br />
+        {% endif %}
+        {{ doc.address_display if doc.address_display else "<i>" + _("Address not set!") + "</i>" }}
+    </div>
+
+    <div id="contact">
+        <table>
+            <tr>
+                <td class="text-right">{{ _("Date") }}:</td>
+                <td class="text-right">{{ frappe.utils.formatdate(doc.posting_date, "dd. MMMM yyyy") }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Phone") }}:</td>
+                <td class="text-right">{{ company.phone_no }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Email") }}:</td>
+                <td class="text-right">{{ company.email }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">{{ _("Organization ID") }}:</td>
+                <td class="text-right">{{ customer.organization }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="din-mark" id="fold-mark-1"></div>
+<div class="din-mark" id="punch-mark"></div>
+<div class="din-mark" id="fold-mark-2"></div>
+
+<!-- CONTENT -->
+<div id="text">
+    <div id="subject">
+        <strong>{{ doc.dunning_type or _("Dunning") }} {{ doc.name }}</strong>
+    </div>
+    <div class="salutation">
+    {% if doc.body_text and (doc.body_text | striptags) %}
+        {{ doc.body_text }}
+    {% endif %}
+    </div>
+    <br>
+    <div class="invoice">
+        <table class="w-100">
+            <thead class="black-border">
+                <tr>
+                    <th style="width: 5%">{{ _("Sr") }}</th>
+                    <th style="width: 25%">{{ _("Invoice Number") }}</th>
+                    <th style="width: 20%">{{ _("Due Date") }}</th>
+                    <th style="width: 25%">{{ _("Overdue Days") }}</th>
+                    <th style="width: 25%" class="text-right">{{ _("Outstanding Amount") }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for overdue_payment in doc.overdue_payments %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ overdue_payment.sales_invoice }}</td>
+                    <td>{{ overdue_payment.get_formatted("due_date") }}</td>
+                    <td>{{ overdue_payment.overdue_days }}</td>
+                    <td class="text-right">{{ overdue_payment.get_formatted("outstanding") }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p></p>
+        <table class="w-100 black-border">
+            <tr>
+                <td>{{ _("Total Outstanding") }}</td>
+                <td class="text-right">{{ doc.get_formatted("total_outstanding") }}</td>
+            </tr>
+            {% if doc.total_interest -%}
+                <tr>
+                    <td>{{ _("Interest") }} {{ doc.get_formatted("rate_of_interest") }} % p.a.</td>
+                    <td class="text-right">{{ doc.get_formatted("total_interest") }}</td>
+                </tr>
+            {% endif %}
+            {% if doc.dunning_fee -%}
+                <tr>
+                    <td>{{ _("Dunning Fee") }}</td>
+                    <td class="text-right">{{ doc.get_formatted("dunning_fee") }}</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <td><strong>{{ _("Grand Total") }}</strong></td>
+                <td class="text-right"><strong>{{ doc.get_formatted("grand_total") }}</strong></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+
+    <div class="epilogue">
+        {% if doc.closing_text and (doc.closing_text | striptags) %}
+            {{ doc.closing_text }}
+        {% endif %}
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer-html" class="visible-pdf">
+    <p id="pagenum">
+        {{ _("Page {0} of {1}").format('<span class="page"></span>', '<span class="topage"></span>') }}
+    </p>
+    <div class="print-format-footer">
+         {{ footer }}
+    </div>
+</div>
