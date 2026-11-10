@@ -170,6 +170,7 @@ def get_property_setters():
 		],
 		"Dunning": [
 			(None, "default_print_format", "Mahnung"),
+			("naming_series", "hidden", "1"),
 		],
 		"Item": [
 			(
