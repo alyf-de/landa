@@ -3,7 +3,7 @@ from frappe import _
 from pypika.functions import Sum
 
 from landa.utils import get_current_member_data
-from landa.water_body_management.report.utils import STATE_ROLES, get_user_roles
+from landa.water_body_management.report.utils import REGIONAL_ROLES, STATE_ROLES, get_user_roles
 
 
 def execute(filters=None):
@@ -55,19 +55,39 @@ def get_data(filters):
 		.orderby(organization.organization_name)
 	)
 
-	if water_body := filters.get("water_body"):
-		query = query.where(entry.water_body == water_body)
+	water_body = filters.get("water_body")
+	if not water_body:
+		frappe.throw(_("{0} is mandatory").format(_("Water Body")))
+
+	query = query.where(entry.water_body == water_body)
+
 	if from_year := filters.get("from_year"):
 		query = query.where(entry.year >= from_year)
 	if to_year := filters.get("to_year"):
 		query = query.where(entry.year <= to_year)
 	if selected_organization := filters.get("organization"):
 		# Include the local groups of the selected club
-		query = query.where(entry.organization.like(f"{selected_organization}%"))
+		query = query.where(
+			(entry.organization == selected_organization)
+			| entry.organization.like(f"{selected_organization}-%")
+		)
 
-	# Regional organizations may only see their own clubs, not other clubs fishing on their water bodies
-	if not STATE_ROLES.intersection(get_user_roles()):
-		regional_organization = get_current_member_data().regional_organization
-		query = query.where(entry.organization.like(f"{regional_organization}-%"))
+	return restrict_to_own_clubs(query, entry).run(as_dict=True)
 
-	return query.run(as_dict=True)
+
+def restrict_to_own_clubs(query, entry):
+	"""State roles see all clubs. Regional roles see only the clubs of their own
+	regional organization, not other clubs fishing on their water bodies. All
+	other roles are denied, even if they get access to the report later."""
+	user_roles = get_user_roles()
+	if STATE_ROLES.intersection(user_roles):
+		return query
+
+	if not REGIONAL_ROLES.intersection(user_roles):
+		frappe.throw(_("Not permitted"), frappe.PermissionError)
+
+	member_data = get_current_member_data()
+	if not member_data:
+		frappe.throw(_("You are not a member of any organization."))
+
+	return query.where(entry.organization.like(f"{member_data.regional_organization}-%"))

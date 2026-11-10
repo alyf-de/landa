@@ -56,6 +56,29 @@ class TestFishingDaysByOrganization(FrappeTestCase):
 			[("REG-002-01", 3)],
 		)
 
+	def test_organization_filter_does_not_match_other_prefixes(self):
+		frappe.db.delete("Catch Log Entry")
+		create_catch_log_entry("REG-001", 4)
+		create_catch_log_entry("REG-002-01", 3)
+
+		self.assertEqual(run_report({**FILTERS, "organization": "REG-00"}, "REG", REGIONAL_ROLE), [])
+
+	def test_other_roles_are_denied(self):
+		self.assertRaises(
+			frappe.PermissionError,
+			run_report,
+			FILTERS,
+			"REG",
+			"LANDA Local Organization Management",
+		)
+
+	def test_regional_user_without_membership_is_rejected(self):
+		self.assertRaises(frappe.ValidationError, run_report, FILTERS, None, REGIONAL_ROLE)
+
+	def test_water_body_is_mandatory(self):
+		filters = {"from_year": 2023, "to_year": 2023}
+		self.assertRaises(frappe.ValidationError, run_report, filters, "OTHER", STATE_ROLE)
+
 	def test_renamed_organization_stays_in_one_row(self):
 		frappe.db.delete("Catch Log Entry")
 		old_entry = create_catch_log_entry("REG-001", 4)
@@ -73,12 +96,21 @@ class TestFishingDaysByOrganization(FrappeTestCase):
 
 
 def run_report(filters, regional_organization, role):
-	with patch(
-		f"{REPORT_MODULE}.get_current_member_data",
-		return_value=frappe._dict(regional_organization=regional_organization),
-	), patch(
-		f"{REPORT_MODULE}.get_user_roles",
-		return_value={role},
+	"""Run the report as a user with `role`. Pass `regional_organization=None`
+	for a user who is not a member of any organization."""
+	member_data = frappe._dict()
+	if regional_organization:
+		member_data.regional_organization = regional_organization
+
+	with (
+		patch(
+			f"{REPORT_MODULE}.get_current_member_data",
+			return_value=member_data,
+		),
+		patch(
+			f"{REPORT_MODULE}.get_user_roles",
+			return_value={role},
+		),
 	):
 		return get_data(filters)
 
