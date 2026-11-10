@@ -12,6 +12,7 @@
 {% set customer = frappe.get_doc("Customer", doc.customer) %}
 {% set cmp_addr = frappe.get_doc("Address", doc.company_address) if doc.company_address else None %}
 {% set pay_addr = frappe.get_doc("Address", doc.customer_address) if doc.customer_address else None %}
+{% set dunning_type_label = frappe.db.get_value("Dunning Type", doc.dunning_type, "dunning_type") if doc.dunning_type else _("Dunning") %}
 
 {% if doc.contact_person %}
     {% set contact = frappe.get_doc("Contact", doc.contact_person) %}
@@ -78,7 +79,7 @@
 <!-- CONTENT -->
 <div id="text">
     <div id="subject">
-        <strong>{{ doc.dunning_type or _("Dunning") }} {{ doc.name }}</strong>
+        <strong>{{ dunning_type_label }} {{ doc.name }}</strong>
     </div>
     <div class="salutation">
     {% if doc.body_text and (doc.body_text | striptags) %}
