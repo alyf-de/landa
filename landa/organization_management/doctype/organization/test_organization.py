@@ -4,6 +4,8 @@
 import frappe
 from frappe.tests.utils import FrappeTestCase
 
+from landa.organization_management.doctype.organization.organization import create_customer
+
 
 class TestOrganization(FrappeTestCase):
 	def test_autoname(self):
@@ -19,3 +21,32 @@ class TestOrganization(FrappeTestCase):
 		self.assertTrue(frappe.db.exists("Company", {"abbr": "REG"}))
 		self.assertTrue(frappe.db.exists("Customer", "REG-001"))
 		self.assertTrue(frappe.db.exists("Customer", "REG-002"))
+
+	def test_customer_gets_price_list_of_company(self):
+		# ERPNext sets the root group as default for tests, but a customer needs a leaf group
+		self.addCleanup(frappe.db.set_default, "customer_group", frappe.db.get_default("customer_group"))
+		frappe.db.set_default("customer_group", "Non Profit")
+
+		company = frappe.db.get_value("Company", {"abbr": "REG"})
+		price_list = frappe.get_doc(
+			{
+				"doctype": "Price List",
+				"price_list_name": "Standard - REG",
+				"currency": "EUR",
+				"selling": 1,
+				"company": company,
+			}
+		).insert()
+		organization = frappe.get_doc(
+			{
+				"doctype": "Organization",
+				"organization_name": "Local Organization with Price List",
+				"parent_organization": "REG",
+			}
+		).insert()
+
+		create_customer(organization.name, organization.organization_name)
+
+		self.assertEqual(
+			frappe.db.get_value("Customer", organization.name, "default_price_list"), price_list.name
+		)

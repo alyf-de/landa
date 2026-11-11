@@ -20,6 +20,7 @@ from landa.organization_management.doctype.landa_member.landa_member import get_
 from landa.organization_management.doctype.work_ledger_entry.work_ledger_entry import (
 	create_expected_hours_adjustment_entries,
 )
+from landa.utils import get_default_company
 
 
 class Organization(NestedSet):
@@ -266,6 +267,11 @@ def create_customer(organization_id: str, organization_name: str):
 		# Name (ID) of Customer is determined by customer_name on insert ...
 		customer.customer_name = organization_id
 		customer.organization = organization_id
+		# Sales Order takes the price list from the customer
+		company = get_default_company(organization_id)
+		customer.default_price_list = frappe.db.get_value(
+			"Price List", {"company": company, "selling": 1, "enabled": 1}
+		)
 		customer.insert()
 
 	if customer.customer_name != organization_name:
