@@ -724,6 +724,16 @@ def get_custom_fields():
 				"reqd": 1,
 			},
 		],
+		"Sales Invoice Item": [
+			{
+				"label": "Serial No",
+				"fieldname": "custom_serial_numbers",
+				"insert_after": "item_name",
+				"fieldtype": "Small Text",
+				"in_list_view": 1,
+				"columns": 2,
+			},
+		],
 		"Sales Order": [
 			{
 				"label": "Organization",

@@ -390,7 +390,6 @@ def get_property_setters():
 			("discount_account", "mandatory_depends_on", ""),
 			("qty", "columns", "1"),
 			("rate", "columns", "1"),
-			("serial_no", "columns", "2"),
 			("target_warehouse", "hidden", "1"),
 			("warehouse", "in_list_view", "0"),
 		],
