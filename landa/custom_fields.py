@@ -416,7 +416,7 @@ def get_custom_fields():
 				"label": "Serial No",
 				"fieldname": "custom_serial_numbers",
 				"insert_after": "cannot_be_returned",
-				"fieldtype": "Data",
+				"fieldtype": "Small Text",
 				"in_list_view": 1,
 				"columns": 2,
 			},
