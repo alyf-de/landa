@@ -412,6 +412,14 @@ def get_custom_fields():
 				"in_list_view": 1,
 				"columns": 1,
 			},
+			{
+				"label": "Serial No",
+				"fieldname": "custom_serial_numbers",
+				"insert_after": "cannot_be_returned",
+				"fieldtype": "Small Text",
+				"in_list_view": 1,
+				"columns": 2,
+			},
 		],
 		"Item": [
 			{
@@ -714,6 +722,16 @@ def get_custom_fields():
 				"fieldtype": "Int",
 				"non_negative": 1,
 				"reqd": 1,
+			},
+		],
+		"Sales Invoice Item": [
+			{
+				"label": "Serial No",
+				"fieldname": "custom_serial_numbers",
+				"insert_after": "item_name",
+				"fieldtype": "Small Text",
+				"in_list_view": 1,
+				"columns": 2,
 			},
 		],
 		"Sales Order": [

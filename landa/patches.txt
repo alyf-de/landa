@@ -52,9 +52,10 @@ landa.patches.set_uom_in_item_price
 execute:from landa.install import sync_customizations; sync_customizations() # 2
 execute:from landa.install import ensure_default_link_records; ensure_default_link_records() # 1
 landa.patches.set_customer_group
-execute:from landa.install import make_custom_fields; make_custom_fields() # 1
+execute:from landa.install import make_custom_fields; make_custom_fields() # 3
 execute:from landa.install import make_property_setters; make_property_setters() # 1
 landa.patches.remove_address_fetch_from
 landa.patches.link_default_address_and_contact_to_customer
 landa.patches.disable_group_same_items
 landa.patches.rename_permit_to_license_fields
+landa.patches.move_serial_numbers_to_custom_field
