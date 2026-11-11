@@ -23,6 +23,10 @@ class TestOrganization(FrappeTestCase):
 		self.assertTrue(frappe.db.exists("Customer", "REG-002"))
 
 	def test_customer_gets_price_list_of_company(self):
+		# ERPNext sets the root group as default for tests, but a customer needs a leaf group
+		self.addCleanup(frappe.db.set_default, "customer_group", frappe.db.get_default("customer_group"))
+		frappe.db.set_default("customer_group", "Non Profit")
+
 		company = frappe.db.get_value("Company", {"abbr": "REG"})
 		price_list = frappe.get_doc(
 			{
