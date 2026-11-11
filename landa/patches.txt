@@ -43,7 +43,7 @@ landa.patches.create_individual_letter_heads
 execute:frappe.db.set_value("Report", "LANDA Member Count", "add_total_row", 1, update_modified=False)
 landa.patches.remove_company_restriction_for_state
 landa.patches.move_lease_rent_to_table # 2025-03-24
-landa.patches.set_customer_price_list
+landa.patches.set_customer_price_list #2026-11-11
 landa.patches.rename_landlord_to_external_contact
 execute:frappe.db.set_value("Report", "Water Body Development", "add_total_row", 1, update_modified=False)
 landa.patches.fix_redis_type_mismatch
