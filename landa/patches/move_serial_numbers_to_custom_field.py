@@ -1,5 +1,6 @@
 import frappe
 from frappe.custom.doctype.property_setter.property_setter import delete_property_setter
+from frappe.query_builder.functions import IfNull
 
 ITEM_DOCTYPES = ("Delivery Note Item", "Sales Invoice Item")
 
@@ -11,9 +12,12 @@ def execute():
 	"""
 	for doctype in ITEM_DOCTYPES:
 		delete_property_setter(doctype, property="columns", field_name="serial_no")
-		frappe.db.sql(f"""
-			UPDATE `tab{doctype}`
-			SET custom_serial_numbers = serial_no,
-				serial_no = NULL
-			WHERE IFNULL(serial_no, '') != ''
-		""")
+
+		# MariaDB evaluates the assignments from left to right, so the value is copied before it is cleared.
+		item = frappe.qb.DocType(doctype)
+		(
+			frappe.qb.update(item)
+			.set(item.custom_serial_numbers, item.serial_no)
+			.set(item.serial_no, None)
+			.where(IfNull(item.serial_no, "") != "")
+		).run()
