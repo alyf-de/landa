@@ -251,6 +251,9 @@ doc_events = {
 		"validate": "landa.landa_stock.delivery_note.delivery_note.validate",
 		"autoname": "landa.landa_stock.delivery_note.delivery_note.autoname",
 	},
+	"Dunning": {
+		"autoname": "landa.landa_sales.dunning.dunning.autoname",
+	},
 	"Item": {
 		"before_validate": "landa.landa_stock.item.item.before_validate",
 		"before_insert": "landa.landa_stock.item.item.before_insert",

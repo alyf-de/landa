@@ -168,6 +168,10 @@ def get_property_setters():
 			("uom", "in_list_view", "0"),
 			("warehouse", "in_list_view", "0"),
 		],
+		"Dunning": [
+			(None, "default_print_format", "Mahnung"),
+			("naming_series", "hidden", "1"),
+		],
 		"Item": [
 			(
 				None,
@@ -392,6 +396,7 @@ def get_property_setters():
 			("warehouse", "in_list_view", "0"),
 		],
 		"Sales Order": [
+			(None, "default_print_format", "Bestellung"),
 			(
 				None,
 				"field_order",
