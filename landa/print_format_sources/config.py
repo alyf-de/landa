@@ -28,6 +28,16 @@ COMMON_FIELDS = {
 }
 
 PRINT_FORMATS: dict[str, dict] = {
+	"Bestellung": {
+		"DocType": "Sales Order",
+		"template": "sales_order.jinja",
+		"fields": {**COMMON_FIELDS, "module": "LANDA Sales"},
+	},
+	"Mahnung": {
+		"DocType": "Dunning",
+		"template": "dunning.jinja",
+		"fields": {**COMMON_FIELDS, "module": "LANDA Sales"},
+	},
 	"SO DIN Addressfield": {
 		"DocType": "Sales Invoice",
 		"template": "so_din_addressfield.jinja",

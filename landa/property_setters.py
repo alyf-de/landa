@@ -163,10 +163,13 @@ def get_property_setters():
 			("item_code", "columns", "4"),
 			("qty", "columns", "1"),
 			("rate", "columns", "1"),
-			("serial_no", "columns", "2"),
 			("uom", "columns", "1"),
 			("uom", "in_list_view", "0"),
 			("warehouse", "in_list_view", "0"),
+		],
+		"Dunning": [
+			(None, "default_print_format", "Mahnung"),
+			("naming_series", "hidden", "1"),
 		],
 		"Item": [
 			(
@@ -387,11 +390,11 @@ def get_property_setters():
 			("discount_account", "mandatory_depends_on", ""),
 			("qty", "columns", "1"),
 			("rate", "columns", "1"),
-			("serial_no", "columns", "2"),
 			("target_warehouse", "hidden", "1"),
 			("warehouse", "in_list_view", "0"),
 		],
 		"Sales Order": [
+			(None, "default_print_format", "Bestellung"),
 			(
 				None,
 				"field_order",
