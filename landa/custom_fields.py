@@ -802,7 +802,7 @@ def get_custom_fields():
 				"fieldname": "year_of_settlement",
 				"insert_after": "transaction_date",
 				"fieldtype": "Int",
-				"depends_on": "eval: doc.customer",
+				"depends_on": "",  # explicitly empty to clear the old value on existing sites
 				"non_negative": 1,
 				"reqd": 1,
 			},
