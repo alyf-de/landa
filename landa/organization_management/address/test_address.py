@@ -3,6 +3,8 @@ from frappe.tests.utils import FrappeTestCase
 
 from landa.organization_management.address.address import autoname
 
+test_dependencies = ["Organization"]
+
 
 class TestAddressAutoname(FrappeTestCase):
 	def get_address_title(self, external_contact: dict) -> str:
