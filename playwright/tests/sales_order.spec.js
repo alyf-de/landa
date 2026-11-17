@@ -132,6 +132,9 @@ test.describe("Sales Order", () => {
 
 		await set_year_of_settlement(desk, data.next_year);
 		await expect(item_codes(page)).toHaveText(containing(data.items_next_year));
+		expect(await page.evaluate(() => cur_frm.doc.delivery_date)).toBe(
+			`${data.next_year}-12-31`,
+		);
 	});
 
 	test("no year of settlement empties the items", async ({ desk, page }) => {

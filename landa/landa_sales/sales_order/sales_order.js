@@ -70,7 +70,10 @@ frappe.ui.form.on("Sales Order", {
 		frm.trigger("prefill_items_if_empty");
 	},
 	year_of_settlement: function (frm) {
-		frm.doc.delivery_date = new Date(frm.doc.year_of_settlement, 11, 31); // the month is 0-indexed
+		// A date string, not a `Date`: a `Date` is sent as a UTC timestamp, which the
+		// database rejects or which is the day before in a time zone east of UTC.
+		const year = frm.doc.year_of_settlement;
+		frm.doc.delivery_date = year ? `${year}-12-31` : null;
 		frm.trigger("prefill_items");
 	},
 	prefill_items_if_empty: function (frm) {
