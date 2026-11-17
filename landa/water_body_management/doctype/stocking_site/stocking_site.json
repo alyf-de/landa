@@ -11,6 +11,10 @@
   "disabled",
   "section_break_klnp",
   "location",
+  "section_break_coordinates",
+  "latitude",
+  "column_break_coordinates",
+  "longitude",
   "section_break_oobz",
   "description",
   "fish_species"
@@ -68,6 +72,29 @@
   {
    "fieldname": "section_break_oobz",
    "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.latitude || doc.longitude",
+   "fieldname": "section_break_coordinates",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude",
+   "precision": "6",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_coordinates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude",
+   "precision": "6",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
@@ -80,7 +107,7 @@
    "table_fieldname": "stocking_sites"
   }
  ],
- "modified": "2026-11-17 22:57:21.392113",
+ "modified": "2026-11-17 23:58:19.388664",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Site",

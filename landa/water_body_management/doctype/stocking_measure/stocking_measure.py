@@ -8,7 +8,6 @@ import frappe
 import requests
 from frappe import _
 
-from landa.water_body_management.doctype.stocking_site.stocking_site import get_location_point
 from landa.water_body_management.stocking_controller import StockingController
 
 # Small map of each Stocking Site in the print format "Besatz"
@@ -112,18 +111,14 @@ class StockingMeasure(StockingController):
 		details = []
 		for row in self.stocking_sites:
 			site = frappe.db.get_value(
-				"Stocking Site", row.stocking_site, ["title", "description", "location"], as_dict=True
+				"Stocking Site",
+				row.stocking_site,
+				["title", "description", "longitude", "latitude"],
+				as_dict=True,
 			)
-			point = get_location_point(site.location)
-			details.append(
-				{
-					"title": site.title,
-					"description": site.description,
-					"longitude": point[0] if point else None,
-					"latitude": point[1] if point else None,
-					"map_tiles": get_map_tiles(point[0], point[1]) if point else [],
-				}
-			)
+			has_coordinates = bool(site.longitude and site.latitude)
+			site.map_tiles = get_map_tiles(site.longitude, site.latitude) if has_coordinates else []
+			details.append(site)
 		return details
 
 

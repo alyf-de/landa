@@ -18,6 +18,13 @@ frappe.ui.form.on("Stocking Site", {
 
 	location(frm) {
 		frm.trigger("show_water_body");
+		frm.trigger("set_coordinates");
+	},
+
+	set_coordinates(frm) {
+		// Same as `sync_location` in stocking_site.py, so the form shows what will be saved
+		const [longitude, latitude] = get_location_point(frm.doc.location) || [0, 0];
+		frm.set_value({ longitude: flt(longitude, 6), latitude: flt(latitude, 6) });
 	},
 
 	show_water_body(frm) {
