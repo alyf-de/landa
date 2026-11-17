@@ -539,6 +539,42 @@ def get_doc_perms():
 				"share": 1,
 			},
 		],
+		"Item": [
+			# ERPNext standard permissions, which a Custom DocPerm replaces entirely
+			{
+				"role": "Item Manager",
+				"permlevel": 0,
+				"read": 1,
+				"write": 1,
+				"create": 1,
+				"delete": 1,
+				"report": 1,
+				"import": 1,
+				"export": 1,
+				"print": 1,
+				"email": 1,
+				"share": 1,
+			},
+			{"role": "Stock Manager", "permlevel": 0, "read": 1, "report": 1, "print": 1, "email": 1},
+			{"role": "Stock User", "permlevel": 0, "read": 1, "report": 1, "print": 1, "email": 1},
+			{"role": "Sales User", "permlevel": 0, "read": 1},
+			{"role": "Purchase User", "permlevel": 0, "read": 1},
+			{"role": "Maintenance User", "permlevel": 0, "read": 1},
+			{"role": "Accounts User", "permlevel": 0, "read": 1},
+			{"role": "Manufacturing User", "permlevel": 0, "read": 1},
+			{
+				"role": "Desk User",
+				"permlevel": 0,
+				"select": 1,
+				"report": 1,
+				"export": 1,
+				"print": 1,
+				"email": 1,
+				"share": 1,
+			},
+			# ERPNext checks this permission when it gets the item details in a Sales Order
+			{"role": "LANDA Local Organization Management", "permlevel": 0, "read": 1},
+		],
 		"Item Tax Template": [
 			{
 				"role": "Accounts Manager",
