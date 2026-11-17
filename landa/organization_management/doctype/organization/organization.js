@@ -63,62 +63,9 @@ frappe.ui.form.on("Organization", {
 		}
 
 		if (!frm.is_dirty() && frm.has_perm("write")) {
-			frm.page.add_menu_item(__("Link Member as Contact"), () => {
-				frappe.prompt(
-					[
-						{
-							fieldname: "landa_member",
-							label: __("LANDA Member"),
-							fieldtype: "Link",
-							options: "LANDA Member",
-							reqd: 1,
-							get_query: function () {
-								return {
-									filters: {
-										organization: frm.doc.name,
-									},
-								};
-							},
-						},
-						{
-							fieldname: "is_default_billing",
-							label: __("Is Default Billing Contact"),
-							fieldtype: "Check",
-							reqd: 1,
-						},
-						{
-							fieldname: "is_default_shipping",
-							label: __("Is Default Shipping Contact"),
-							fieldtype: "Check",
-							reqd: 1,
-						},
-					],
-					(values) => {
-						frm.call({
-							method: "link_contact",
-							doc: frm.doc,
-							freeze: true,
-							freeze_message: __("Linking Contact ..."),
-							args: {
-								landa_member: values.landa_member,
-								is_default_billing: values.is_default_billing,
-								is_default_shipping: values.is_default_shipping,
-							},
-							callback: (r) => {
-								if (!r.exc) {
-									frappe.show_alert({
-										message: __(
-											"The LANDA Member is now linked as a contact of this Organization and the related Customer",
-										),
-										indicator: "green",
-									});
-									frm.reload_doc();
-								}
-							},
-						});
-					},
-				);
-			});
+			frm.page.add_menu_item(__("Link Member as Contact"), () =>
+				prompt_link_member_as_contact(frm),
+			);
 		}
 
 		if (!frm.is_new() && frappe.model.can_read("Sales Invoice")) {
@@ -214,6 +161,145 @@ frappe.ui.form.on("Organization", {
 		});
 	},
 });
+
+function prompt_link_member_as_contact(frm) {
+	const dialog = new frappe.ui.Dialog({
+		title: __("Link Member as Contact"),
+		fields: [
+			{
+				fieldname: "landa_member",
+				label: __("LANDA Member"),
+				fieldtype: "Link",
+				options: "LANDA Member",
+				reqd: 1,
+				onchange() {
+					fill_single_address_and_contact(this.layout);
+				},
+				get_query() {
+					return {
+						query: "landa.organization_management.doctype.organization.organization.member_with_address_and_contact_query",
+						filters: {
+							organization: frm.doc.name,
+						},
+					};
+				},
+			},
+			{
+				fieldname: "contact",
+				label: __("Contact"),
+				fieldtype: "Link",
+				options: "Contact",
+				reqd: 1,
+				depends_on: "eval:doc.landa_member",
+				get_query() {
+					return member_link_query(
+						"frappe.contacts.doctype.contact.contact.contact_query",
+						dialog.get_value("landa_member"),
+					);
+				},
+			},
+			{
+				fieldname: "address",
+				label: __("Address"),
+				fieldtype: "Link",
+				options: "Address",
+				reqd: 1,
+				depends_on: "eval:doc.landa_member",
+				get_query() {
+					return member_link_query(
+						"frappe.contacts.doctype.address.address.address_query",
+						dialog.get_value("landa_member"),
+						{ disabled: 0 },
+					);
+				},
+			},
+			{
+				fieldname: "is_default_billing",
+				label: __("Is Default Billing Contact"),
+				fieldtype: "Check",
+				reqd: 1,
+			},
+			{
+				fieldname: "is_default_shipping",
+				label: __("Is Default Shipping Contact"),
+				fieldtype: "Check",
+				reqd: 1,
+			},
+		],
+		primary_action(values) {
+			dialog.hide();
+			frm.call({
+				method: "link_contact",
+				doc: frm.doc,
+				freeze: true,
+				freeze_message: __("Linking Contact ..."),
+				args: {
+					landa_member: values.landa_member,
+					contact: values.contact,
+					address: values.address,
+					is_default_billing: values.is_default_billing,
+					is_default_shipping: values.is_default_shipping,
+				},
+				callback: (r) => {
+					if (!r.exc) {
+						frappe.show_alert({
+							message: __(
+								"The LANDA Member is now linked as a contact of this Organization and the related Customer",
+							),
+							indicator: "green",
+						});
+						frm.reload_doc();
+					}
+				},
+			});
+		},
+	});
+	dialog.show();
+}
+
+function member_link_query(query, landa_member, filters = {}) {
+	return {
+		query,
+		filters: {
+			link_doctype: "LANDA Member",
+			link_name: landa_member || "",
+			...filters,
+		},
+	};
+}
+
+function fill_single_address_and_contact(dialog) {
+	const member = dialog.get_value("landa_member");
+	const request_id = (dialog._member_link_request || 0) + 1;
+	dialog._member_link_request = request_id;
+
+	frappe.run_serially([
+		() => dialog.set_value("contact", ""),
+		() => dialog.set_value("address", ""),
+		() => {
+			if (!member || dialog._member_link_request !== request_id) {
+				return;
+			}
+
+			return frappe
+				.call({
+					method: "landa.organization_management.doctype.organization.organization.get_single_address_and_contact",
+					args: { landa_member: member },
+				})
+				.then((r) => {
+					if (dialog._member_link_request !== request_id) {
+						return;
+					}
+
+					const values = r.message || {};
+					return frappe.run_serially([
+						() => values.contact && dialog.set_value("contact", values.contact),
+						() => values.address && dialog.set_value("address", values.address),
+					]);
+				});
+		},
+	]);
+}
 
 function get_organization_member_function_columns() {
 	return [
