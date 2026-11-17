@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-11-17 21:27+0053\n"
-"PO-Revision-Date: 2026-11-17 21:27+0053\n"
+"POT-Creation-Date: 2026-11-17 23:42+0053\n"
+"PO-Revision-Date: 2026-11-17 23:42+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -111,6 +111,25 @@ msgstr ""
 msgid "Address Title and Links are mandatory."
 msgstr ""
 
+#: landa/print_format_sources/beitragsabrechnung.jinja:49
+#: landa/print_format_sources/beitragsabrechnung.jinja:59
+#: landa/print_format_sources/dn_din_addressfield.jinja:42
+#: landa/print_format_sources/dn_din_addressfield.jinja:52
+#: landa/print_format_sources/dunning.jinja:40
+#: landa/print_format_sources/dunning.jinja:50
+#: landa/print_format_sources/lvsa_din_rechnung.jinja:41
+#: landa/print_format_sources/lvsa_din_rechnung.jinja:49
+#: landa/print_format_sources/mf_din_addressfield.jinja:41
+#: landa/print_format_sources/mf_din_addressfield.jinja:51
+#: landa/print_format_sources/sales_order.jinja:39
+#: landa/print_format_sources/sales_order.jinja:49
+#: landa/print_format_sources/so_din_addressfield.jinja:41
+#: landa/print_format_sources/so_din_addressfield.jinja:51
+#: landa/print_format_sources/zahlungsbeleg.jinja:51
+#: landa/print_format_sources/zahlungsbeleg.jinja:62
+msgid "Address not set!"
+msgstr ""
+
 #. Label of a Link in the Organization Management Workspace
 #: landa/organization_management/workspace/organization_management/organization_management.json:97
 msgid "Adressliste Mitglieder"
@@ -151,8 +170,8 @@ msgid "At least one member is required to submit a Work Assignment."
 msgstr ""
 
 #: landa/water_body_management/doctype/stocking_site/stocking_site.js:185
-#: landa/water_body_management/doctype/stocking_site/stocking_site.py:102
-#: landa/water_body_management/doctype/stocking_site/stocking_site.py:110
+#: landa/water_body_management/doctype/stocking_site/stocking_site.py:103
+#: landa/water_body_management/doctype/stocking_site/stocking_site.py:111
 msgid "At most one location marker is allowed."
 msgstr ""
 
@@ -257,7 +276,7 @@ msgstr ""
 #. Label of a Link in the Order Management Workspace
 #: landa/landa_sales/report/billing_history/billing_history.json:20
 #: landa/landa_sales/workspace/order_management/order_management.json:116
-#: landa/organization_management/doctype/organization/organization.js:70
+#: landa/organization_management/doctype/organization/organization.js:72
 msgid "Billing History"
 msgstr ""
 
@@ -271,7 +290,7 @@ msgstr ""
 msgid "Blacklisted Fish Species Table"
 msgstr ""
 
-#: landa/water_body_management/doctype/water_body/water_body.py:103
+#: landa/water_body_management/doctype/water_body/water_body.py:117
 #, python-brace-format
 msgid "Blacklisted Fish Species {0} cannot also be a Main Fish Species."
 msgstr ""
@@ -337,7 +356,7 @@ msgstr ""
 msgid "Catch Weight"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:87
+#: landa/organization_management/doctype/organization/organization.js:89
 msgid "Changing Expected Work Hours per Year will create Work Ledger Entries for all members of this organization. Do you want to continue?"
 msgstr ""
 
@@ -353,6 +372,7 @@ msgstr ""
 
 #. Label of a Data field in DocType 'Stocking Measure'
 #. Label of a Data field in DocType 'Stocking Target'
+#: landa/print_format_sources/besatz.jinja:123
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:227
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json:168
 msgid "Company of Supplier"
@@ -360,6 +380,10 @@ msgstr ""
 
 #: landa/address_and_contact.py:108
 msgid "Contacts of users must be linked to a LANDA Member"
+msgstr ""
+
+#: landa/print_format_sources/besatz.jinja:157
+msgid "Coordinates"
 msgstr ""
 
 #: landa/water_body_management/doctype/stocking_target/stocking_target.js:10
@@ -633,6 +657,7 @@ msgstr ""
 #. Label of a Table field in DocType 'Stocking Site'
 #. Label of a Link field in DocType 'Stocking Target'
 #. Label of a Link in the Water Body Management Workspace
+#: landa/print_format_sources/besatz.jinja:104
 #: landa/water_body_management/doctype/blacklisted_fish_species_table/blacklisted_fish_species_table.json:16
 #: landa/water_body_management/doctype/catch_log_fish_table/catch_log_fish_table.json:18
 #: landa/water_body_management/doctype/fish_species/fish_species.json:116
@@ -679,6 +704,7 @@ msgstr ""
 #. Label of a Link field in DocType 'Stocking Measure Import History'
 #. Label of a Link field in DocType 'Stocking Measure Import Item'
 #. Label of a Link field in DocType 'Stocking Target'
+#: landa/print_format_sources/besatz.jinja:108
 #: landa/water_body_management/doctype/fish_species_and_type/fish_species_and_type.json:31
 #: landa/water_body_management/doctype/fish_type_for_stocking/fish_type_for_stocking.json:38
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:81
@@ -953,7 +979,7 @@ msgid "Institution or Company Name"
 msgstr ""
 
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.py:67
-#: landa/water_body_management/doctype/water_body/water_body.py:106
+#: landa/water_body_management/doctype/water_body/water_body.py:120
 msgid "Invalid Species"
 msgstr ""
 
@@ -977,7 +1003,7 @@ msgstr ""
 msgid "Is Decadal Birthday"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:216
+#: landa/organization_management/doctype/organization/organization.js:218
 msgid "Is Default Billing Contact"
 msgstr ""
 
@@ -986,7 +1012,7 @@ msgstr ""
 msgid "Is Default Fish Species For Population"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:222
+#: landa/organization_management/doctype/organization/organization.js:224
 msgid "Is Default Shipping Contact"
 msgstr ""
 
@@ -1104,7 +1130,7 @@ msgstr ""
 #: landa/organization_management/doctype/work_ledger_entry/work_ledger_entry.json:162
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json:213
 #: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.json:116
-#: landa/water_body_management/doctype/stocking_site/stocking_site.json:119
+#: landa/water_body_management/doctype/stocking_site/stocking_site.json:122
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json:310
 #: landa/water_body_management/doctype/water_body_management_local_organization/water_body_management_local_organization.json:158
 msgid "LANDA Local Water Body Management"
@@ -1128,7 +1154,7 @@ msgstr ""
 #: landa/organization_management/doctype/landa_member/landa_member.json:289
 #: landa/organization_management/doctype/member_data_import/member_data_import.json:140
 #: landa/organization_management/doctype/member_function/member_function.json:139
-#: landa/organization_management/doctype/organization/organization.js:169
+#: landa/organization_management/doctype/organization/organization.js:171
 #: landa/organization_management/doctype/organization/organization.json:242
 #: landa/organization_management/doctype/organization/organization.json:321
 #: landa/organization_management/doctype/supporting_membership/supporting_membership.json:107
@@ -1203,8 +1229,8 @@ msgstr ""
 #: landa/water_body_management/doctype/landlord/landlord.json:96
 #: landa/water_body_management/doctype/lease_contract/lease_contract.json:235
 #: landa/water_body_management/doctype/lease_object/lease_object.json:56
-#: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:282
-#: landa/water_body_management/doctype/stocking_site/stocking_site.json:107
+#: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:281
+#: landa/water_body_management/doctype/stocking_site/stocking_site.json:110
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json:289
 #: landa/water_body_management/doctype/water_body/water_body.json:364
 #: landa/water_body_management/doctype/water_body_management_local_organization/water_body_management_local_organization.json:149
@@ -1239,7 +1265,7 @@ msgstr ""
 #: landa/water_body_management/doctype/landlord/landlord.json:84
 #: landa/water_body_management/doctype/lease_contract/lease_contract.json:223
 #: landa/water_body_management/doctype/lease_object/lease_object.json:50
-#: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:295
+#: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:294
 #: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.json:128
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json:302
 #: landa/water_body_management/doctype/water_body/water_body.json:352
@@ -1359,11 +1385,11 @@ msgid "Lieferungen"
 msgstr ""
 
 #: landa/organization_management/doctype/organization/organization.js:66
-#: landa/organization_management/doctype/organization/organization.js:165
+#: landa/organization_management/doctype/organization/organization.js:167
 msgid "Link Member as Contact"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:233
+#: landa/organization_management/doctype/organization/organization.js:235
 msgid "Linking Contact ..."
 msgstr ""
 
@@ -1457,7 +1483,7 @@ msgstr ""
 #: landa/landa_sales/customer/customer.js:73
 #: landa/organization_management/doctype/landa_member/landa_member.json:43
 #: landa/organization_management/doctype/member_function/member_function.json:36
-#: landa/organization_management/doctype/organization/organization.js:313
+#: landa/organization_management/doctype/organization/organization.js:315
 #: landa/organization_management/doctype/supporting_membership/supporting_membership.json:27
 #: landa/organization_management/doctype/work_assignment_member/work_assignment_member.json:17
 #: landa/organization_management/doctype/work_ledger_entry/work_ledger_entry.json:34
@@ -1558,7 +1584,7 @@ msgstr ""
 
 #. Label of a HTML field in DocType 'Organization'
 #: landa/landa_sales/customer/customer.js:55
-#: landa/organization_management/doctype/organization/organization.js:156
+#: landa/organization_management/doctype/organization/organization.js:158
 #: landa/organization_management/doctype/organization/organization.json:217
 msgid "Member Functions"
 msgstr ""
@@ -1626,6 +1652,10 @@ msgstr ""
 msgid "Membership"
 msgstr ""
 
+#: landa/print_format_sources/mf_din_addressfield.jinja:83
+msgid "Membership Fee Invoice"
+msgstr ""
+
 #. Label of a Data field in DocType 'Fish Species'
 #: landa/water_body_management/doctype/fish_species/fish_species.json:67
 msgid "Minimum Size"
@@ -1655,7 +1685,7 @@ msgstr ""
 msgid "My Reports"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:121
+#: landa/organization_management/doctype/organization/organization.js:123
 msgid "Naming Series Updated"
 msgstr ""
 
@@ -1736,9 +1766,24 @@ msgstr ""
 msgid "Only one location marker is allowed."
 msgstr ""
 
+#: landa/water_body_management/doctype/water_body/water_body.js:48
+msgid "Open Stocking Site Map"
+msgstr ""
+
 #. Name of a Workspace
 #: landa/landa_sales/workspace/order_management/order_management.json:13
 msgid "Order Management"
+msgstr ""
+
+#: landa/print_format_sources/beitragsabrechnung.jinja:77
+#: landa/print_format_sources/dn_din_addressfield.jinja:70
+#: landa/print_format_sources/dunning.jinja:68
+#: landa/print_format_sources/lvsa_din_rechnung.jinja:67
+#: landa/print_format_sources/mf_din_addressfield.jinja:69
+#: landa/print_format_sources/sales_order.jinja:67
+#: landa/print_format_sources/so_din_addressfield.jinja:69
+#: landa/print_format_sources/zahlungsbeleg.jinja:88
+msgid "Organization ID"
 msgstr ""
 
 #. Name of a Workspace
@@ -1995,6 +2040,12 @@ msgstr ""
 msgid "Rent per Year"
 msgstr ""
 
+#: landa/print_format_sources/lvsa_din_rechnung.jinja:81
+#: landa/print_format_sources/mf_din_addressfield.jinja:83
+#: landa/print_format_sources/so_din_addressfield.jinja:83
+msgid "Retoure"
+msgstr ""
+
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.py:64
 #, python-brace-format
 msgid "Row {0}: Fish Species {1} cannot occur in {2}"
@@ -2046,6 +2097,13 @@ msgstr ""
 
 #: landa/water_body_management/doctype/stocking_site/stocking_site.js:117
 msgid "Select a Water Body before placing a marker."
+msgstr ""
+
+#: landa/print_format_sources/dn_din_addressfield.jinja:101
+#: landa/print_format_sources/lvsa_din_rechnung.jinja:100
+#: landa/print_format_sources/mf_din_addressfield.jinja:95
+#: landa/print_format_sources/so_din_addressfield.jinja:102
+msgid "Ser. No"
 msgstr ""
 
 #: landa/water_body_management/report/catch_log_days_and_counts/catch_log_days_and_counts.js:95
@@ -2104,7 +2162,7 @@ msgid "Show Work Assignment List"
 msgstr ""
 
 #: landa/landa_sales/customer/customer.js:83
-#: landa/organization_management/doctype/organization/organization.js:323
+#: landa/organization_management/doctype/organization/organization.js:325
 msgid "Since"
 msgstr ""
 
@@ -2138,6 +2196,7 @@ msgstr ""
 #. Label of a Link in the Order Management Workspace
 #: landa/landa_sales/doctype/statement_of_fees_and_payments/statement_of_fees_and_payments.json:180
 #: landa/landa_sales/workspace/order_management/order_management.json:254
+#: landa/print_format_sources/beitragsabrechnung.jinja:91
 msgid "Statement of Fees and Payments"
 msgstr ""
 
@@ -2154,13 +2213,12 @@ msgstr ""
 #. Linked DocType in External Contact's connections
 #. Name of a DocType
 #. Label of a Link field in DocType 'Stocking Measure Import History'
-#. Linked DocType in Stocking Site's connections
 #. Linked DocType in Stocking Target's connections
 #. Label of a Link in the Water Body Management Workspace
 #: landa/organization_management/doctype/external_contact/external_contact.json:204
-#: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:257
+#: landa/print_format_sources/besatz.jinja:85
+#: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:256
 #: landa/water_body_management/doctype/stocking_measure_import_history/stocking_measure_import_history.json:20
-#: landa/water_body_management/doctype/stocking_site/stocking_site.json:76
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json:258
 #: landa/water_body_management/workspace/water_body_management/water_body_management.json:28
 msgid "Stocking Measure"
@@ -2181,21 +2239,35 @@ msgstr ""
 msgid "Stocking Measure Import Item"
 msgstr ""
 
+#. Name of a DocType
+#. Linked DocType in Stocking Site's connections
+#: landa/water_body_management/doctype/stocking_measure_site/stocking_measure_site.json:28
+#: landa/water_body_management/doctype/stocking_site/stocking_site.json:77
+msgid "Stocking Measure Site"
+msgstr ""
+
 #: landa/water_body_management/report/water_body_development/water_body_development.py:60
 msgid "Stocking Quantity"
 msgstr ""
 
-#. Label of a Link field in DocType 'Stocking Measure'
+#. Label of a Link field in DocType 'Stocking Measure Site'
 #. Name of a DocType
 #. Linked DocType in Water Body's connections
-#: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:246
-#: landa/water_body_management/doctype/stocking_site/stocking_site.json:83
+#: landa/print_format_sources/besatz.jinja:142
+#: landa/water_body_management/doctype/stocking_measure_site/stocking_measure_site.json:16
+#: landa/water_body_management/doctype/stocking_site/stocking_site.json:86
 #: landa/water_body_management/doctype/water_body/water_body.json:304
 msgid "Stocking Site"
 msgstr ""
 
-#: landa/water_body_management/doctype/stocking_measure/stocking_measure.py:53
-msgid "Stocking Site must belong to the selected Water Body."
+#: landa/water_body_management/doctype/stocking_measure/stocking_measure.py:71
+#, python-brace-format
+msgid "Stocking Site {0} must belong to the selected Water Body."
+msgstr ""
+
+#. Label of a Table MultiSelect field in DocType 'Stocking Measure'
+#: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:246
+msgid "Stocking Sites"
 msgstr ""
 
 #. Linked DocType in External Contact's connections
@@ -2275,7 +2347,11 @@ msgstr ""
 msgid "Template for Member Data Import"
 msgstr ""
 
-#: landa/organization_management/doctype/organization/organization.js:244
+#: landa/print_format_sources/sales_order.jinja:195
+msgid "Terms of delivery"
+msgstr ""
+
+#: landa/organization_management/doctype/organization/organization.js:246
 msgid "The LANDA Member is now linked as a contact of this Organization and the related Customer"
 msgstr ""
 
@@ -2290,7 +2366,7 @@ msgid "The email address {0} is already linked to another LANDA Member. Please u
 msgstr ""
 
 #: landa/water_body_management/doctype/stocking_site/stocking_site.js:135
-#: landa/water_body_management/doctype/stocking_site/stocking_site.py:54
+#: landa/water_body_management/doctype/stocking_site/stocking_site.py:55
 #, python-brace-format
 msgid "The location marker must be within {0} m of the Water Body."
 msgstr ""
@@ -2301,11 +2377,12 @@ msgstr ""
 msgid "The organization level of this function. Only users with management roles at this level or above can assign it. With Member Administration, it also grants access to all organizations below this level."
 msgstr ""
 
-#: landa/water_body_management/doctype/stocking_measure/stocking_measure.py:71
-msgid "The selected Fish Species is not among the recommendations for this Stocking Site."
+#: landa/water_body_management/doctype/stocking_measure/stocking_measure.py:91
+#, python-brace-format
+msgid "The selected Fish Species is not among the recommendations for Stocking Site {0}."
 msgstr ""
 
-#: landa/water_body_management/doctype/stocking_site/stocking_site.py:50
+#: landa/water_body_management/doctype/stocking_site/stocking_site.py:51
 msgid "The selected Water Body has no location boundary."
 msgstr ""
 
@@ -2417,7 +2494,7 @@ msgid "Upcoming Birthday"
 msgstr ""
 
 #: landa/organization_management/doctype/organization/organization.js:60
-#: landa/organization_management/doctype/organization/organization.js:102
+#: landa/organization_management/doctype/organization/organization.js:104
 msgid "Update Naming Series"
 msgstr ""
 
@@ -2490,6 +2567,7 @@ msgstr ""
 #: landa/organization_management/doctype/work_assignment/work_assignment.json:87
 #: landa/organization_management/report/work_hours/work_hours.js:30
 #: landa/organization_management/report/work_hours/work_hours.py:58
+#: landa/print_format_sources/besatz.jinja:94
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json:32
 #: landa/water_body_management/doctype/fishing_area/fishing_area.json:61
 #: landa/water_body_management/doctype/lease_contract/lease_contract.json:58
@@ -2553,7 +2631,7 @@ msgstr ""
 msgid "Water Body Management Local Organization"
 msgstr ""
 
-#: landa/water_body_management/doctype/water_body/water_body.js:52
+#: landa/water_body_management/doctype/water_body/water_body.js:58
 msgid "Water Body Management Local Organizations"
 msgstr ""
 
@@ -2580,6 +2658,7 @@ msgstr ""
 #. Label of a Float field in DocType 'Stocking Target'
 #. Label of a Float field in DocType 'Water Body'
 #. Label of a Section Break field in DocType 'Water Body'
+#: landa/print_format_sources/besatz.jinja:99
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:122
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json:137
 #: landa/water_body_management/doctype/water_body/water_body.json:97
@@ -2652,6 +2731,7 @@ msgstr ""
 #. Label of a Float field in DocType 'Stocking Measure Import History'
 #. Label of a Float field in DocType 'Stocking Measure Import Item'
 #. Label of a Float field in DocType 'Stocking Target'
+#: landa/print_format_sources/besatz.jinja:118
 #: landa/water_body_management/doctype/catch_log_fish_table/catch_log_fish_table.json:35
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:161
 #: landa/water_body_management/doctype/stocking_measure_import_history/stocking_measure_import_history.json:41
@@ -2735,6 +2815,7 @@ msgstr ""
 #: landa/landa_sales/doctype/statement_of_fees_and_payments/statement_of_fees_and_payments.json:55
 #: landa/landa_sales/report/summarized_billing_history/summarized_billing_history.py:37
 #: landa/landa_stock/report/issuing_statistics/issuing_statistics.js:9
+#: landa/print_format_sources/zahlungsbeleg.jinja:92
 msgid "Year of Settlement"
 msgstr ""
 
@@ -2804,7 +2885,7 @@ msgstr ""
 msgid "You are not a member of any organization."
 msgstr ""
 
-#: landa/water_body_management/doctype/water_body/water_body.py:94
+#: landa/water_body_management/doctype/water_body/water_body.py:108
 msgid "You can only edit a Water Body if it belongs to your regional Organization."
 msgstr ""
 
@@ -2830,6 +2911,10 @@ msgstr ""
 
 #: landa/organization_management/user/user.py:75
 msgid "You cannot delete your own user account."
+msgstr ""
+
+#: landa/print_format_sources/sales_order.jinja:72
+msgid "Your PO No."
 msgstr ""
 
 #. Label of a Check field in DocType 'LANDA Member'
