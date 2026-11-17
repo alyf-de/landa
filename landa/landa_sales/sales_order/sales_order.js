@@ -91,7 +91,14 @@ frappe.ui.form.on("Sales Order", {
 		}
 
 		frm.landa_prefill_key = prefill_key;
-		landa.selling.prefill_items(frm); // clears the table if a prerequisite is missing
+		const request = landa.selling.prefill_items(frm); // clears the table if a prerequisite is missing
+
+		// A failed request leaves the table unfilled. Let the next trigger try again.
+		request?.catch(() => {
+			if (frm.landa_prefill_key === prefill_key) {
+				frm.landa_prefill_key = "";
+			}
+		});
 	},
 	shipping_contact: function (frm) {
 		landa.selling.set_contact_details(frm, "shipping");

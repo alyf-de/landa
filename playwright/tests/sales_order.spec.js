@@ -52,6 +52,26 @@ test.describe("Sales Order", () => {
 		await expect(item_codes(page)).toHaveText(containing(data.items));
 	});
 
+	test("a failed item request is repeated on the next change", async ({ admin, desk, page }) => {
+		await desk.login(data.regional_user);
+		await admin.call("landa.tests.ui_test_helpers.clear_default_customer", {
+			user: data.regional_user,
+		});
+		await desk.new_form("Sales Order");
+		await expect(desk.get_field("customer", "Link")).toHaveValue("");
+
+		await page.route(`**${ITEM_QUERY}`, (route) => route.abort(), { times: 1 });
+		const failed_request = page.waitForEvent("requestfailed", (request) =>
+			request.url().endsWith(ITEM_QUERY),
+		);
+		await desk.fill_field("customer", data.regional_office_customer, "Link");
+		await failed_request;
+		await expect(item_codes(page)).toHaveCount(0);
+
+		await replace_customer(desk, data.customer);
+		await expect(item_codes(page)).toHaveText(containing(data.items));
+	});
+
 	test("new order from the organization gets the items once", async ({ desk, page }) => {
 		const prefills = count_prefills(page);
 
