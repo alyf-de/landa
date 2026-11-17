@@ -1,0 +1,132 @@
+<style>
+    .print-format {
+        margin-left: 0mm;
+        margin-right: 0mm;
+        margin-top: 10mm;
+        margin-bottom: 30mm;
+        font-size: 10pt;
+    }
+
+    .print-format .stocking-details td {
+        padding: 2pt 4pt;
+        vertical-align: top;
+    }
+
+    .print-format .stocking-details td:first-child {
+        font-weight: bold;
+        width: 35%;
+    }
+
+    .print-format .stocking-sites {
+        margin-top: 2em;
+    }
+
+    .print-format .stocking-sites td,
+    .print-format .stocking-sites th {
+        padding: 2pt 4pt;
+        vertical-align: top;
+    }
+</style>
+
+{% set company = frappe.get_doc("Company", {"abbr": doc.organization}) %}
+
+<!-- HEAD -->
+<div id="header">
+    {% if company.company_logo %}
+        <img id="logo" src="{{ company.company_logo }}">
+    {% endif %}
+</div>
+
+<!-- CONTENT -->
+<div id="text">
+    <div id="subject">
+        <strong>{{ _("Stocking Measure") }} {{ doc.name }}</strong>
+    </div>
+
+    <table class="w-100 stocking-details">
+        <tr>
+            <td>{{ _("Date") }}</td>
+            <td>{{ frappe.utils.formatdate(doc.date, "dd. MMMM yyyy") }}</td>
+        </tr>
+        <tr>
+            <td>{{ _("Water Body") }}</td>
+            <td>{{ doc.water_body_title }} ({{ doc.water_body }})</td>
+        </tr>
+        {% if doc.water_body_size %}
+        <tr>
+            <td>{{ _("Water Body Size") }}</td>
+            <td>{{ doc.get_formatted("water_body_size") }} {{ doc.water_body_size_unit or "" }}</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td>{{ _("Fish Species") }}</td>
+            <td>{{ doc.fish_species }}</td>
+        </tr>
+        <tr>
+            <td>{{ _("Fish Type For Stocking") }}</td>
+            <td>{{ doc.fish_type_for_stocking }}</td>
+        </tr>
+        {% if doc.quantity %}
+        <tr>
+            <td>{{ _("Quantity") }}</td>
+            <td>{{ doc.get_formatted("quantity") }}</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td>{{ _("Weight in Kg") }}</td>
+            <td>{{ doc.get_formatted("weight") }}</td>
+        </tr>
+        {% if doc.company_of_supplier %}
+        <tr>
+            <td>{{ _("Company of Supplier") }}</td>
+            <td>{{ doc.company_of_supplier }}</td>
+        </tr>
+        {% endif %}
+        {% if doc.additional_information %}
+        <tr>
+            <td>{{ _("Additional Information") }}</td>
+            <td>{{ doc.additional_information | e | replace("\n", "<br>") }}</td>
+        </tr>
+        {% endif %}
+    </table>
+
+    {% set stocking_sites = doc.get_stocking_site_details() %}
+    {% if stocking_sites %}
+    <div class="invoice stocking-sites">
+        <table class="w-100">
+            <thead class="black-border">
+                <tr>
+                    <th style="width: 5%">{{ _("Sr") }}</th>
+                    <th style="width: 30%">{{ _("Stocking Site") }}</th>
+                    <th style="width: 40%">{{ _("Description") }}</th>
+                    <th style="width: 25%">{{ _("Coordinates") }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for site in stocking_sites %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><strong>{{ site.title }}</strong></td>
+                    <td>{{ (site.description or "") | e | replace("\n", "<br>") }}</td>
+                    <td>
+                        {% if site.latitude is not none %}
+                            {{ "%.6f, %.6f" | format(site.latitude, site.longitude) }}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</div>
+
+<!-- FOOTER -->
+<div id="footer-html" class="visible-pdf">
+    <p id="pagenum">
+        {{ _("Page {0} of {1}").format('<span class="page"></span>', '<span class="topage"></span>') }}
+    </p>
+    <div class="print-format-footer">
+         {{ footer }}
+    </div>
+</div>

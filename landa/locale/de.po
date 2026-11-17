@@ -362,6 +362,10 @@ msgstr "Unternehmen des Lieferanten"
 msgid "Contacts of users must be linked to a LANDA Member"
 msgstr "Kontakte von Benutzern müssen mit einem Mitglied verknüpft sein"
 
+#: landa/print_format_sources/besatz.jinja:99
+msgid "Coordinates"
+msgstr "Koordinaten"
+
 #: landa/water_body_management/doctype/stocking_target/stocking_target.js:10
 msgid "Create Stocking Measure"
 msgstr "Neue Besatzmaßnahme"

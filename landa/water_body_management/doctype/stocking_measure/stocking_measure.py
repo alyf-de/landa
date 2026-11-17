@@ -4,6 +4,7 @@
 import frappe
 from frappe import _
 
+from landa.water_body_management.doctype.stocking_site.stocking_site import get_location_point
 from landa.water_body_management.stocking_controller import StockingController
 
 
@@ -94,6 +95,24 @@ class StockingMeasure(StockingController):
 
 		# saving a Stocking Target triggers validation, including a status update
 		frappe.get_doc("Stocking Target", self.stocking_target).save()
+
+	def get_stocking_site_details(self) -> list[dict]:
+		"""Return title, description and coordinates of each Stocking Site, for printing."""
+		details = []
+		for row in self.stocking_sites:
+			site = frappe.db.get_value(
+				"Stocking Site", row.stocking_site, ["title", "description", "location"], as_dict=True
+			)
+			point = get_location_point(site.location)
+			details.append(
+				{
+					"title": site.title,
+					"description": site.description,
+					"longitude": point[0] if point else None,
+					"latitude": point[1] if point else None,
+				}
+			)
+		return details
 
 
 @frappe.whitelist()
