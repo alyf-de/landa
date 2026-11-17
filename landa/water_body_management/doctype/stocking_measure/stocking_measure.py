@@ -1,11 +1,22 @@
 # Copyright (c) 2022, Real Experts GmbH and contributors
 # For license information, please see license.txt
 
+from base64 import b64encode
+from math import cos, log, pi, radians, tan
+
 import frappe
+import requests
 from frappe import _
 
 from landa.water_body_management.doctype.stocking_site.stocking_site import get_location_point
 from landa.water_body_management.stocking_controller import StockingController
+
+# Small map of each Stocking Site in the print format "Besatz"
+TILE_SIZE = 256
+MAP_ZOOM = 15
+MAP_WIDTH = 240
+MAP_HEIGHT = 160
+MAP_TILE_CACHE_SECONDS = 7 * 24 * 60 * 60
 
 
 class StockingMeasure(StockingController):
@@ -110,9 +121,61 @@ class StockingMeasure(StockingController):
 					"description": site.description,
 					"longitude": point[0] if point else None,
 					"latitude": point[1] if point else None,
+					"map_tiles": get_map_tiles(point[0], point[1]) if point else [],
 				}
 			)
 		return details
+
+
+def get_map_tiles(longitude: float, latitude: float) -> list[dict]:
+	"""Return the OpenStreetMap tiles around a point, positioned to center it in the print map.
+
+	The print format places each tile at `left`/`top` (px) inside a box of
+	`MAP_WIDTH` x `MAP_HEIGHT` px and draws the marker in the middle of the box.
+	Each tile comes as a `data:` URL, so the browser preview and the PDF need
+	no access to the tile server. Returns no tiles if the tile server fails.
+	"""
+	world_size = TILE_SIZE * 2**MAP_ZOOM
+	latitude_radians = radians(latitude)
+	point_x = (longitude + 180) / 360 * world_size
+	point_y = (1 - log(tan(latitude_radians) + 1 / cos(latitude_radians)) / pi) / 2 * world_size
+	center_tile_x = int(point_x // TILE_SIZE)
+	center_tile_y = int(point_y // TILE_SIZE)
+
+	tiles = []
+	for tile_y in range(center_tile_y - 1, center_tile_y + 2):
+		for tile_x in range(center_tile_x - 1, center_tile_x + 2):
+			left = round(MAP_WIDTH / 2 + tile_x * TILE_SIZE - point_x)
+			top = round(MAP_HEIGHT / 2 + tile_y * TILE_SIZE - point_y)
+			is_visible = -TILE_SIZE < left < MAP_WIDTH and -TILE_SIZE < top < MAP_HEIGHT
+			if not is_visible:
+				continue
+
+			try:
+				url = get_map_tile_data_url(tile_x, tile_y)
+			except requests.RequestException:
+				return []
+
+			tiles.append({"url": url, "left": left, "top": top})
+	return tiles
+
+
+def get_map_tile_data_url(tile_x: int, tile_y: int) -> str:
+	"""Return an OpenStreetMap tile as `data:` URL, cached to respect the tile usage policy."""
+	cache_key = f"landa_map_tile:{MAP_ZOOM}:{tile_x}:{tile_y}"
+	data_url = frappe.cache.get_value(cache_key)
+	if data_url:
+		return data_url
+
+	response = requests.get(
+		f"https://tile.openstreetmap.org/{MAP_ZOOM}/{tile_x}/{tile_y}.png",
+		headers={"User-Agent": f"LANDA (+{frappe.utils.get_url('/contact')})"},
+		timeout=10,
+	)
+	response.raise_for_status()
+	data_url = f"data:image/png;base64,{b64encode(response.content).decode()}"
+	frappe.cache.set_value(cache_key, data_url, expires_in_sec=MAP_TILE_CACHE_SECONDS)
+	return data_url
 
 
 @frappe.whitelist()
