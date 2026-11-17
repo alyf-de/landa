@@ -40,7 +40,7 @@ class StockingMeasureImport(Document):
 	def load_from_db(self):
 		current_member_data = get_current_member_data()
 		now = datetime.now()
-		super(Document, self).__init__(
+		self.init_from_dict(
 			{
 				"name": self.name or frappe.generate_hash(length=8),
 				"organization": current_member_data.regional_organization,

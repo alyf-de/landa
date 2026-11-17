@@ -19,4 +19,3 @@ class Landlord(Document):
 		landlord_name: DF.Data
 		regional_organization: DF.Link
 	# end: auto-generated types
-	pass

@@ -10,7 +10,6 @@ def execute():
 	doctype = "Address"
 	all_addresses = frappe.get_all(doctype)
 	total_addresses = len(all_addresses)
-	last_duration = 0.0
 	total_duration = 0.0
 
 	for counter, address in enumerate(all_addresses):
@@ -44,6 +43,7 @@ def execute():
 				show_alert=False,  # no need to show a UI alert, we're in the console
 			)
 		except frappe.exceptions.ValidationError:
+			# One rejected rename must not stop the remaining addresses.
 			pass
 
 		if counter > 0 and counter % 100 == 0:

@@ -16,4 +16,3 @@ class LeaseObject(Document):
 
 		lease_object: DF.Data | None
 	# end: auto-generated types
-	pass

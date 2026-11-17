@@ -20,4 +20,3 @@ class WaterBodySpecialProvisionTable(Document):
 		short_code: DF.Data | None
 		water_body_special_provision: DF.Link
 	# end: auto-generated types
-	pass

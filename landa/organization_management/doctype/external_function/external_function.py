@@ -18,4 +18,3 @@ class ExternalFunction(Document):
 		organization: DF.Link
 		title: DF.Data | None
 	# end: auto-generated types
-	pass

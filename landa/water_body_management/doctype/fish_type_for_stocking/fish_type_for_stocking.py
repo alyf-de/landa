@@ -17,4 +17,3 @@ class FishTypeForStocking(Document):
 		short_code: DF.Data | None
 		title: DF.Data
 	# end: auto-generated types
-	pass
