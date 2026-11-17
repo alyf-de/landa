@@ -16,6 +16,10 @@ class StockingMeasure(StockingController):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
+		from landa.water_body_management.doctype.stocking_measure_site.stocking_measure_site import (
+			StockingMeasureSite,
+		)
+
 		additional_information: DF.SmallText | None
 		company_of_supplier: DF.Data | None
 		date: DF.Date
@@ -27,7 +31,7 @@ class StockingMeasure(StockingController):
 		quantity: DF.Float
 		quantity_per_water_body_size: DF.Float
 		status: DF.Literal["In Progress", "Completed"]
-		stocking_site: DF.Link | None
+		stocking_sites: DF.TableMultiSelect[StockingMeasureSite]
 		stocking_target: DF.Link | None
 		supplier: DF.Link | None
 		unit_of_quantity_per_water_body_size: DF.Data | None
@@ -43,35 +47,40 @@ class StockingMeasure(StockingController):
 	# end: auto-generated types
 	def validate(self):
 		super().validate()
-		self.validate_stocking_site()
+		self.validate_stocking_sites()
 
-	def validate_stocking_site(self):
-		if not self.stocking_site:
-			return
-
-		if frappe.db.get_value("Stocking Site", self.stocking_site, "water_body") != self.water_body:
-			frappe.throw(_("Stocking Site must belong to the selected Water Body."))
-
-		site_has_recommendations = frappe.db.exists(
-			"Fish Species And Type",
-			{"parent": self.stocking_site, "parenttype": "Stocking Site"},
-		)
-		if not site_has_recommendations:
-			return
-
-		if not frappe.db.exists(
-			"Fish Species And Type",
-			{
-				"parent": self.stocking_site,
-				"parenttype": "Stocking Site",
-				"fish_species": self.fish_species,
-			},
-		):
-			frappe.msgprint(
-				_("The selected Fish Species is not among the recommendations for this Stocking Site."),
-				indicator="orange",
-				alert=True,
+	def validate_stocking_sites(self):
+		for row in self.stocking_sites:
+			site_title, site_water_body = frappe.db.get_value(
+				"Stocking Site", row.stocking_site, ["title", "water_body"]
 			)
+			if site_water_body != self.water_body:
+				frappe.throw(
+					_("Stocking Site {0} must belong to the selected Water Body.").format(site_title)
+				)
+
+			site_has_recommendations = frappe.db.exists(
+				"Fish Species And Type",
+				{"parent": row.stocking_site, "parenttype": "Stocking Site"},
+			)
+			if not site_has_recommendations:
+				continue
+
+			if not frappe.db.exists(
+				"Fish Species And Type",
+				{
+					"parent": row.stocking_site,
+					"parenttype": "Stocking Site",
+					"fish_species": self.fish_species,
+				},
+			):
+				frappe.msgprint(
+					_(
+						"The selected Fish Species is not among the recommendations for Stocking Site {0}."
+					).format(site_title),
+					indicator="orange",
+					alert=True,
+				)
 
 	def on_change(self):
 		self.update_stocking_target()

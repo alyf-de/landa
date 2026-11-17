@@ -35,6 +35,7 @@ class StockingSite(Document):
 		description: DF.SmallText | None
 		disabled: DF.Check
 		fish_species: DF.Table[FishSpeciesAndType]
+		location: DF.Geolocation | None
 		title: DF.Data
 		water_body: DF.Link
 	# end: auto-generated types
