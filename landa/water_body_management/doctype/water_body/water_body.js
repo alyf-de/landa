@@ -43,6 +43,12 @@ frappe.ui.form.on("Water Body", {
 		});
 
 		frm.trigger("render_water_body_management_local_organizations");
+
+		if ((frm.doc.__onload || {}).has_stocking_site_map) {
+			frm.add_custom_button(__("Open Stocking Site Map"), () => {
+				frappe.set_route("List", "Stocking Site", "Map", { water_body: frm.doc.name });
+			});
+		}
 	},
 	render_water_body_management_local_organizations: function (frm) {
 		const orgs = (frm.doc.__onload || {}).water_body_management_local_organizations || [];

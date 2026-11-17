@@ -66,6 +66,20 @@ class WaterBody(Document):
 		self.set_onload(
 			"water_body_management_local_organizations", self.get_water_body_management_local_organizations()
 		)
+		self.set_onload("has_stocking_site_map", self.has_stocking_site_map())
+
+	def has_stocking_site_map(self) -> bool:
+		"""Return whether the user can read at least one Stocking Site of this Water Body with a marker."""
+		if not frappe.has_permission("Stocking Site", "read"):
+			return False
+
+		return bool(
+			frappe.get_list(
+				"Stocking Site",
+				filters={"water_body": self.name, "location": ["is", "set"]},
+				limit=1,
+			)
+		)
 
 	def get_water_body_management_local_organizations(self):
 		return frappe.get_all(
