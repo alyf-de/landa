@@ -16,6 +16,9 @@ MAP_ZOOM = 15
 MAP_WIDTH = 240
 MAP_HEIGHT = 160
 MAP_TILE_CACHE_SECONDS = 7 * 24 * 60 * 60
+# After a failed tile request, print without maps for a while instead of waiting for each site
+MAP_TILES_UNAVAILABLE_CACHE_KEY = "landa_map_tiles_unavailable"
+MAP_TILES_RETRY_SECONDS = 60
 
 
 class StockingMeasure(StockingController):
@@ -130,6 +133,9 @@ def get_map_tiles(longitude: float, latitude: float) -> list[dict]:
 	Each tile comes as a `data:` URL, so the browser preview and the PDF need
 	no access to the tile server. Returns no tiles if the tile server fails.
 	"""
+	if frappe.cache.get_value(MAP_TILES_UNAVAILABLE_CACHE_KEY, expires=True):
+		return []
+
 	world_size = TILE_SIZE * 2**MAP_ZOOM
 	latitude_radians = radians(latitude)
 	point_x = (longitude + 180) / 360 * world_size
@@ -149,6 +155,9 @@ def get_map_tiles(longitude: float, latitude: float) -> list[dict]:
 			try:
 				url = get_map_tile_data_url(tile_x, tile_y)
 			except requests.RequestException:
+				frappe.cache.set_value(
+					MAP_TILES_UNAVAILABLE_CACHE_KEY, True, expires_in_sec=MAP_TILES_RETRY_SECONDS
+				)
 				return []
 
 			tiles.append({"url": url, "left": left, "top": top})
