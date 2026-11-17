@@ -10,6 +10,10 @@ Datenmanagementsystem des Landesverbands Sächsischer Angler.
 
    How to create demo accounts or import GeoJSON files using the command line interface.
 
+- [UI Tests](docs/ui-tests.md)
+
+   How to run and write browser tests with Playwright.
+
 - [System Updates](docs/system-updates.md)
 - [API](docs/api.md)
 - [Translation](docs/translation.md)
