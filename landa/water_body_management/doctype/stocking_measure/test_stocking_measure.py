@@ -46,6 +46,29 @@ class TestStockingMeasure(FrappeTestCase):
 
 		self.assertRaises(frappe.ValidationError, self.make_stocking_measure, sites)
 
+	def test_print_format(self):
+		site_with_marker = make_stocking_site(self.water_body, "Bridge")
+		# Set the marker directly: the test Water Body has no boundary to validate against.
+		marker = {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"properties": {},
+					"geometry": {"type": "Point", "coordinates": [13.95, 50.99]},
+				}
+			],
+		}
+		frappe.db.set_value("Stocking Site", site_with_marker, "location", frappe.as_json(marker))
+		site_without_marker = make_stocking_site(self.water_body, "Meadow")
+		measure = self.make_stocking_measure([site_with_marker, site_without_marker])
+
+		html = frappe.get_print("Stocking Measure", measure.name, "Besatz")
+
+		self.assertIn("Bridge", html)
+		self.assertIn("Meadow", html)
+		self.assertIn("50.990000, 13.950000", html)
+
 	def make_stocking_measure(self, stocking_sites: list[str]):
 		return frappe.get_doc(
 			{

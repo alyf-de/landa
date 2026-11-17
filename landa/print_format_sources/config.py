@@ -68,4 +68,9 @@ PRINT_FORMATS: dict[str, dict] = {
 		"template": "dn_din_addressfield.jinja",
 		"fields": {**COMMON_FIELDS, "module": "LANDA Stock"},
 	},
+	"Besatz": {
+		"DocType": "Stocking Measure",
+		"template": "besatz.jinja",
+		"fields": {**COMMON_FIELDS, "module": "Water Body Management"},
+	},
 }
