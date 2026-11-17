@@ -89,6 +89,25 @@ test.describe("Sales Order", () => {
 		expect(prefills.count).toBe(1);
 	});
 
+	test("new order from the organization gets the default year", async ({ desk, page }) => {
+		// From november on, the default year of settlement is the next year.
+		await page.clock.setFixedTime(new Date(data.year, 10, 15));
+
+		await desk.login(data.local_user);
+		await page.goto(`/app/organization/${data.customer}`);
+		await page.locator('.document-link[data-doctype="Sales Order"] .btn-new').click();
+		await expect(page.locator("body")).toHaveAttribute(
+			"data-route",
+			/^Form\/Sales Order\/new-sales-order-/,
+		);
+		await form_is_settled(page);
+
+		await expect(desk.get_field("year_of_settlement", "Int")).toHaveValue(
+			String(data.next_year),
+		);
+		await expect(item_codes(page)).toHaveText(containing(data.items_next_year));
+	});
+
 	test("new order from the list keeps the year of the filter", async ({ desk, page }) => {
 		await desk.login(data.local_user);
 		await page.goto(`/app/sales-order?year_of_settlement=${data.next_year}`);

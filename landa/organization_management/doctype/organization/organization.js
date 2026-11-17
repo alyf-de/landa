@@ -187,7 +187,10 @@ frappe.ui.form.on("Organization", {
 		});
 	},
 	create_sales_order: function (frm) {
-		frappe.new_doc("Sales Order", get_basic_sales_data(frm.doc));
+		frappe.new_doc("Sales Order", {
+			...get_basic_sales_data(frm.doc),
+			year_of_settlement: landa.utils.get_default_year(),
+		});
 	},
 	create_sales_invoice: function (frm) {
 		frappe.new_doc("Sales Invoice", get_basic_sales_data(frm.doc));
