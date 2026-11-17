@@ -19,4 +19,3 @@ class StockingMeasureSite(Document):
 		parenttype: DF.Data
 		stocking_site: DF.Link
 	# end: auto-generated types
-	pass
