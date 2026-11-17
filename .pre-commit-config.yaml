@@ -49,9 +49,10 @@ repos:
 
 
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v9.39.1
+    rev: v10.15.0
     hooks:
       - id: eslint
+        language_version: "22.23.5"
         types_or: [javascript]
         args: ['--quiet']
         # Ignore any files that might contain jinja / bundles
