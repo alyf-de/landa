@@ -7,6 +7,10 @@ import frappe
 import requests
 from frappe.tests.utils import FrappeTestCase
 
+from landa.water_body_management.doctype.stocking_measure.stocking_measure import (
+	MAP_TILES_UNAVAILABLE_CACHE_KEY,
+)
+
 STOCKING_MEASURE_MODULE = "landa.water_body_management.doctype.stocking_measure.stocking_measure"
 FAKE_TILE = "data:image/png;base64,TILE"
 
@@ -56,8 +60,12 @@ class TestStockingMeasure(FrappeTestCase):
 		site_with_marker = make_stocking_site(self.water_body, "Bridge")
 		# Set the coordinates directly: the test Water Body has no boundary to validate against.
 		frappe.db.set_value("Stocking Site", site_with_marker, {"longitude": 13.95, "latitude": 50.99})
+		other_site_with_marker = make_stocking_site(self.water_body, "Jetty")
+		frappe.db.set_value("Stocking Site", other_site_with_marker, {"longitude": 13.96, "latitude": 50.98})
 		site_without_marker = make_stocking_site(self.water_body, "Meadow")
-		measure = self.make_stocking_measure([site_with_marker, site_without_marker])
+		measure = self.make_stocking_measure([site_with_marker, other_site_with_marker, site_without_marker])
+		frappe.cache.delete_value(MAP_TILES_UNAVAILABLE_CACHE_KEY)
+		self.addCleanup(frappe.cache.delete_value, MAP_TILES_UNAVAILABLE_CACHE_KEY)
 
 		with patch(f"{STOCKING_MEASURE_MODULE}.get_map_tile_data_url", return_value=FAKE_TILE):
 			html = frappe.get_print("Stocking Measure", measure.name, "Besatz")
@@ -68,11 +76,14 @@ class TestStockingMeasure(FrappeTestCase):
 		self.assertIn(f'src="{FAKE_TILE}"', html)
 
 		tile_server_down = requests.ConnectionError()
-		with patch(f"{STOCKING_MEASURE_MODULE}.get_map_tile_data_url", side_effect=tile_server_down):
+		with patch(
+			f"{STOCKING_MEASURE_MODULE}.get_map_tile_data_url", side_effect=tile_server_down
+		) as get_map_tile_data_url:
 			html = frappe.get_print("Stocking Measure", measure.name, "Besatz")
 
 		self.assertIn("50.990000, 13.950000", html)
 		self.assertNotIn('class="site-map"', html)
+		get_map_tile_data_url.assert_called_once()  # No more requests after the first failure
 
 	def make_stocking_measure(self, stocking_sites: list[str]):
 		return frappe.get_doc(
