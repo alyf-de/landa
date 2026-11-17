@@ -118,7 +118,6 @@ export default defineConfig([
 				localforage: true,
 				extend_cscript: true,
 				erpnext: true,
-				html_beautify: true,
 				doctype: true,
 			},
 
