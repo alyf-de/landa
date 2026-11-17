@@ -1,0 +1,81 @@
+name: UI
+
+on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      - 'license.txt'
+
+concurrency:
+  group: version-15-hotfix-landa-ui-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    name: UI Tests (Playwright)
+
+    services:
+      mariadb:
+        image: mariadb:10.6
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 18
+          check-latest: true
+
+      - name: Add to Hosts
+        run: echo "127.0.0.1 test_site" | sudo tee -a /etc/hosts
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
+
+      - name: Install
+        run: |
+          bash ${GITHUB_WORKSPACE}/.github/helper/install.sh
+
+      - name: Build Assets
+        working-directory: /home/runner/frappe-bench
+        run: |
+          bench build
+          bench --site test_site clear-cache
+
+      - name: Run Tests
+        working-directory: /home/runner/frappe-bench
+        run: |
+          bench --site test_site run-ui-tests landa --headless
+
+      - name: Upload Playwright Report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            /home/runner/frappe-bench/apps/landa/playwright-report
+            /home/runner/frappe-bench/apps/landa/test-results
+
+      - name: Show bench output
+        if: always()
+        run: cat ~/frappe-bench/bench_run_logs.txt || true
