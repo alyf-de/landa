@@ -158,6 +158,16 @@
 		font-family: inherit;
 		color: inherit;
 		line-height: inherit;
+		// Quill sets `height: 100%; overflow-y: auto`, which renders a scrollbar in print.
+		height: auto;
+		overflow: visible;
+		text-align: inherit;
+		white-space: normal;
+
+		// The editor saves font sizes as inline styles; print everything in the document's size.
+		* {
+			font-size: inherit !important;
+		}
 
 		p {
 			margin-top: 5pt;
