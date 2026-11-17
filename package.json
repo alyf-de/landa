@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "js-beautify": "^1.15.1"
+    "prettier": "^3.10.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
