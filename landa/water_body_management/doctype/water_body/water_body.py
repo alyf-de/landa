@@ -76,7 +76,8 @@ class WaterBody(Document):
 		return bool(
 			frappe.get_list(
 				"Stocking Site",
-				filters={"water_body": self.name, "location": ["is", "set"]},
+				# A deleted marker leaves an empty `location`, but no coordinates
+				filters={"water_body": self.name, "latitude": ["!=", 0]},
 				limit=1,
 			)
 		)

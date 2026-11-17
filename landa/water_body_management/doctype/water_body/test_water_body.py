@@ -1,6 +1,8 @@
 # Copyright (c) 2021, Real Experts GmbH and Contributors
 # See license.txt
 
+import json
+
 import frappe
 from frappe.tests.utils import FrappeTestCase
 
@@ -15,6 +17,7 @@ MARKER = {
 		{"type": "Feature", "properties": {}, "geometry": {"type": "Point", "coordinates": [13.95, 50.99]}}
 	],
 }
+EMPTY_MARKER = {"type": "FeatureCollection", "features": []}
 
 
 class TestWaterBody(FrappeTestCase):
@@ -39,8 +42,16 @@ class TestWaterBody(FrappeTestCase):
 		site = make_stocking_site(water_body.name, "Meadow")
 		self.assertFalse(water_body.has_stocking_site_map(), "Site without marker")
 
+		# This remains after deleting the marker in the form
+		frappe.db.set_value("Stocking Site", site, "location", json.dumps(EMPTY_MARKER))
+		self.assertFalse(water_body.has_stocking_site_map(), "Site with deleted marker")
+
 		# Set the marker directly: the test Water Body has no boundary to validate against.
-		frappe.db.set_value("Stocking Site", site, "location", frappe.as_json(MARKER))
+		frappe.db.set_value(
+			"Stocking Site",
+			site,
+			{"location": frappe.as_json(MARKER), "longitude": 13.95, "latitude": 50.99},
+		)
 		self.assertTrue(water_body.has_stocking_site_map())
 
 		with self.set_user("Guest"):
