@@ -11,14 +11,8 @@ frappe.ui.form.on("Sales Order", {
 
 		if (frm.is_new()) {
 			landa.utils.set_company_and_customer(frm);
-
-			if (
-				frm.doc.year_of_settlement &&
-				frm.doc.items.length <= 1 &&
-				!frm.doc.items[0].item_code
-			) {
-				frm.trigger("year_of_settlement");
-			}
+			landa.utils.set_default_year(frm, "year_of_settlement");
+			frm.trigger("prefill_items_if_empty");
 		}
 
 		frm.set_query("selling_price_list", function (doc) {
@@ -69,9 +63,45 @@ frappe.ui.form.on("Sales Order", {
 	before_save: function (frm) {
 		frm.doc.items = landa.selling.remove_zero_qty_items(frm.doc.items);
 	},
+	customer: function (frm) {
+		frm.trigger("prefill_items_if_empty");
+	},
+	company: function (frm) {
+		frm.trigger("prefill_items_if_empty");
+	},
 	year_of_settlement: function (frm) {
-		landa.selling.prefill_items(frm);
-		frm.doc.delivery_date = new Date(frm.doc.year_of_settlement, 11, 31); // the month is 0-indexed
+		// A date string, not a `Date`: a `Date` is sent as a UTC timestamp, which the
+		// database rejects or which is the day before in a time zone east of UTC.
+		const year = frm.doc.year_of_settlement;
+		frm.doc.delivery_date = year ? `${year}-12-31` : null;
+		frm.trigger("prefill_items");
+	},
+	prefill_items_if_empty: function (frm) {
+		const has_items = frm.doc.items.some((row) => row.item_code);
+		if (!has_items) {
+			frm.trigger("prefill_items");
+		}
+	},
+	prefill_items: function (frm) {
+		const { name, customer, company, year_of_settlement } = frm.doc;
+		const is_complete = customer && company && year_of_settlement;
+		const prefill_key = is_complete ? [name, company, year_of_settlement].join("|") : "";
+
+		// Several fields can trigger this for the same document, company and year
+		// (e.g. the defaults set on refresh). Fill the table only once per combination.
+		if (is_complete && frm.landa_prefill_key === prefill_key) {
+			return;
+		}
+
+		frm.landa_prefill_key = prefill_key;
+		const request = landa.selling.prefill_items(frm); // clears the table if a prerequisite is missing
+
+		// A failed request leaves the table unfilled. Let the next trigger try again.
+		request?.catch(() => {
+			if (frm.landa_prefill_key === prefill_key) {
+				frm.landa_prefill_key = "";
+			}
+		});
 	},
 	shipping_contact: function (frm) {
 		landa.selling.set_contact_details(frm, "shipping");
