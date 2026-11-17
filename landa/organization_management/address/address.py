@@ -3,6 +3,8 @@ from frappe import _
 from frappe.model.naming import make_autoname
 from frappe.utils import cstr
 
+from landa.organization_management.doctype.landa_member.landa_member import get_full_name
+
 
 def autoname(address, event):
 	"""
@@ -13,14 +15,19 @@ def autoname(address, event):
 	if address.links:
 		for link in address.links:
 			if link.link_doctype == "LANDA Member":
-				link.link_title = " ".join(
-					frappe.get_value("LANDA Member", link.link_name, ["first_name", "last_name"])
+				first_name, last_name = frappe.get_value(
+					"LANDA Member", link.link_name, ["first_name", "last_name"]
 				)
+				link.link_title = get_full_name(first_name, last_name)
 
 			if link.link_doctype == "External Contact":
-				link.link_title = " ".join(
-					frappe.get_value("External Contact", link.link_name, ["first_name", "last_name"])
+				# An External Contact has a person name, an organization name, or both.
+				first_name, last_name, external_organization_name = frappe.get_value(
+					"External Contact",
+					link.link_name,
+					["first_name", "last_name", "external_organization_name"],
 				)
+				link.link_title = get_full_name(first_name, last_name) or external_organization_name
 
 			for dt, field in (
 				("Company", "company_name"),
