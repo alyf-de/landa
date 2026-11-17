@@ -7,10 +7,12 @@ from math import pi
 import frappe
 from frappe.tests.utils import FrappeTestCase
 
+from landa.water_body_management.doctype.stocking_measure.test_stocking_measure import make_water_body
 from landa.water_body_management.doctype.stocking_site.stocking_site import (
 	WATER_BODY_MARGIN_METERS,
 	distance_to_segment,
 	get_location_point,
+	make_location,
 	point_in_polygon,
 	point_in_ring,
 	point_near_line,
@@ -177,6 +179,59 @@ class TestStockingSite(FrappeTestCase):
 			with self.subTest(location=location), self.assertRaises(frappe.ValidationError):
 				get_location_point(location)
 
+	def test_sync_location_and_coordinates(self):
+		site = frappe.get_doc(
+			{
+				"doctype": "Stocking Site",
+				"water_body": make_water_body_with_boundary(),
+				"title": "Imported",
+				"longitude": "13.95",
+				"latitude": "50.99",
+			}
+		).insert()
+		self.assertEqual(get_location_point(site.location), [13.95, 50.99], "Import creates the marker")
+
+		site.location = make_location(13.951234567, 50.991234567)
+		site.save()
+		self.assertEqual((site.longitude, site.latitude), (13.951235, 50.991235), "Marker sets coordinates")
+
+		site.longitude, site.latitude = 13.952, 50.992
+		site.save()
+		self.assertEqual(get_location_point(site.location), [13.952, 50.992], "Import moves the marker")
+
+		site.latitude = 0
+		self.assertRaises(frappe.ValidationError, site.save)
+
+		site.reload()
+		site.longitude, site.latitude = 0, 0
+		site.save()
+		self.assertIsNone(site.location, "Import removes the marker")
+
 	@staticmethod
 	def longitude_for_distance(distance: float) -> float:
 		return distance / EARTH_RADIUS_METERS * 180 / pi
+
+
+def make_water_body_with_boundary() -> str:
+	state_organizations = frappe.get_all(
+		"Organization", filters={"parent_organization": ("is", "not set")}, pluck="name"
+	)
+	organization = frappe.db.get_value("Organization", {"parent_organization": ("in", state_organizations)})
+	fishing_area = frappe.get_doc(
+		{
+			"doctype": "Fishing Area",
+			"area_code": "TEST-SS",
+			"area_name": "Test Stocking Site",
+			"organization": organization,
+		}
+	).insert()
+	water_body = make_water_body(fishing_area.name, "1")
+	boundary = [[[13.94, 50.98], [13.96, 50.98], [13.96, 51.0], [13.94, 51.0], [13.94, 50.98]]]
+	location = {
+		"type": "FeatureCollection",
+		"features": [
+			{"type": "Feature", "properties": {}, "geometry": {"type": "Polygon", "coordinates": boundary}}
+		],
+	}
+	frappe.db.set_value("Water Body", water_body, "location", json.dumps(location))
+	return water_body

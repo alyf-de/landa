@@ -152,7 +152,7 @@
                         {% if site.description %}
                             <p>{{ site.description | e | replace("\n", "<br>") }}</p>
                         {% endif %}
-                        {% if site.latitude is not none %}
+                        {% if site.latitude and site.longitude %}
                             <p class="text-small">
                                 {{ _("Coordinates") }}: {{ "%.6f, %.6f" | format(site.latitude, site.longitude) }}
                             </p>

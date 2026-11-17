@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LANDA VERSION\n"
 "Report-Msgid-Bugs-To: hallo@alyf.de\n"
-"POT-Creation-Date: 2026-11-17 23:42+0053\n"
-"PO-Revision-Date: 2026-11-17 23:42+0053\n"
+"POT-Creation-Date: 2026-11-18 00:00+0053\n"
+"PO-Revision-Date: 2026-11-18 00:00+0053\n"
 "Last-Translator: hallo@alyf.de\n"
 "Language-Team: hallo@alyf.de\n"
 "MIME-Version: 1.0\n"
@@ -170,8 +170,8 @@ msgid "At least one member is required to submit a Work Assignment."
 msgstr ""
 
 #: landa/water_body_management/doctype/stocking_site/stocking_site.js:185
-#: landa/water_body_management/doctype/stocking_site/stocking_site.py:103
-#: landa/water_body_management/doctype/stocking_site/stocking_site.py:111
+#: landa/water_body_management/doctype/stocking_site/stocking_site.py:132
+#: landa/water_body_management/doctype/stocking_site/stocking_site.py:140
 msgid "At most one location marker is allowed."
 msgstr ""
 
@@ -666,7 +666,7 @@ msgstr ""
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:71
 #: landa/water_body_management/doctype/stocking_measure_import_history/stocking_measure_import_history.json:34
 #: landa/water_body_management/doctype/stocking_measure_import_item/stocking_measure_import_item.json:19
-#: landa/water_body_management/doctype/stocking_site/stocking_site.json:65
+#: landa/water_body_management/doctype/stocking_site/stocking_site.json:69
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json:55
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.js:28
 #: landa/water_body_management/report/catch_log_statistics/catch_log_statistics.py:92
@@ -1130,7 +1130,7 @@ msgstr ""
 #: landa/organization_management/doctype/work_ledger_entry/work_ledger_entry.json:162
 #: landa/water_body_management/doctype/catch_log_entry/catch_log_entry.json:213
 #: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.json:116
-#: landa/water_body_management/doctype/stocking_site/stocking_site.json:122
+#: landa/water_body_management/doctype/stocking_site/stocking_site.json:149
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json:310
 #: landa/water_body_management/doctype/water_body_management_local_organization/water_body_management_local_organization.json:158
 msgid "LANDA Local Water Body Management"
@@ -1230,7 +1230,7 @@ msgstr ""
 #: landa/water_body_management/doctype/lease_contract/lease_contract.json:235
 #: landa/water_body_management/doctype/lease_object/lease_object.json:56
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:281
-#: landa/water_body_management/doctype/stocking_site/stocking_site.json:110
+#: landa/water_body_management/doctype/stocking_site/stocking_site.json:137
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json:289
 #: landa/water_body_management/doctype/water_body/water_body.json:364
 #: landa/water_body_management/doctype/water_body_management_local_organization/water_body_management_local_organization.json:149
@@ -1888,6 +1888,10 @@ msgstr ""
 msgid "Please set a Shipping Contact before submitting the Delivery Note."
 msgstr ""
 
+#: landa/water_body_management/doctype/stocking_site/stocking_site.py:151
+msgid "Please set both Latitude and Longitude."
+msgstr ""
+
 #: landa/organization_management/doctype/external_contact/external_contact.py:65
 #, python-brace-format
 msgid "Please set either {0} or {1}."
@@ -2242,7 +2246,7 @@ msgstr ""
 #. Name of a DocType
 #. Linked DocType in Stocking Site's connections
 #: landa/water_body_management/doctype/stocking_measure_site/stocking_measure_site.json:28
-#: landa/water_body_management/doctype/stocking_site/stocking_site.json:77
+#: landa/water_body_management/doctype/stocking_site/stocking_site.json:104
 msgid "Stocking Measure Site"
 msgstr ""
 
@@ -2255,12 +2259,12 @@ msgstr ""
 #. Linked DocType in Water Body's connections
 #: landa/print_format_sources/besatz.jinja:142
 #: landa/water_body_management/doctype/stocking_measure_site/stocking_measure_site.json:16
-#: landa/water_body_management/doctype/stocking_site/stocking_site.json:86
+#: landa/water_body_management/doctype/stocking_site/stocking_site.json:113
 #: landa/water_body_management/doctype/water_body/water_body.json:304
 msgid "Stocking Site"
 msgstr ""
 
-#: landa/water_body_management/doctype/stocking_measure/stocking_measure.py:71
+#: landa/water_body_management/doctype/stocking_measure/stocking_measure.py:70
 #, python-brace-format
 msgid "Stocking Site {0} must belong to the selected Water Body."
 msgstr ""
@@ -2366,7 +2370,7 @@ msgid "The email address {0} is already linked to another LANDA Member. Please u
 msgstr ""
 
 #: landa/water_body_management/doctype/stocking_site/stocking_site.js:135
-#: landa/water_body_management/doctype/stocking_site/stocking_site.py:55
+#: landa/water_body_management/doctype/stocking_site/stocking_site.py:84
 #, python-brace-format
 msgid "The location marker must be within {0} m of the Water Body."
 msgstr ""
@@ -2377,12 +2381,12 @@ msgstr ""
 msgid "The organization level of this function. Only users with management roles at this level or above can assign it. With Member Administration, it also grants access to all organizations below this level."
 msgstr ""
 
-#: landa/water_body_management/doctype/stocking_measure/stocking_measure.py:91
+#: landa/water_body_management/doctype/stocking_measure/stocking_measure.py:90
 #, python-brace-format
 msgid "The selected Fish Species is not among the recommendations for Stocking Site {0}."
 msgstr ""
 
-#: landa/water_body_management/doctype/stocking_site/stocking_site.py:51
+#: landa/water_body_management/doctype/stocking_site/stocking_site.py:80
 msgid "The selected Water Body has no location boundary."
 msgstr ""
 
@@ -2574,7 +2578,7 @@ msgstr ""
 #: landa/water_body_management/doctype/stocking_measure/stocking_measure.json:105
 #: landa/water_body_management/doctype/stocking_measure_import/stocking_measure_import.json:23
 #: landa/water_body_management/doctype/stocking_measure_import_history/stocking_measure_import_history.json:27
-#: landa/water_body_management/doctype/stocking_site/stocking_site.json:32
+#: landa/water_body_management/doctype/stocking_site/stocking_site.json:36
 #: landa/water_body_management/doctype/stocking_target/stocking_target.json:121
 #: landa/water_body_management/doctype/water_body/water_body.json:319
 #: landa/water_body_management/doctype/water_body_management_local_organization/water_body_management_local_organization.json:29
