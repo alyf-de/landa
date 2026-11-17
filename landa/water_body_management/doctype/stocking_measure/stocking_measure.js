@@ -9,7 +9,7 @@ cur_frm.script_manager.make(landa.water_body_management.StockingMeasure);
 
 frappe.ui.form.on("Stocking Measure", {
 	setup(frm) {
-		frm.set_query("stocking_site", (doc) => {
+		frm.set_query("stocking_sites", (doc) => {
 			return {
 				query: "landa.water_body_management.doctype.stocking_measure.stocking_measure.stocking_site_query",
 				filters: {

@@ -20,7 +20,7 @@
   "organization",
   "water_body",
   "water_body_title",
-  "stocking_site",
+  "stocking_sites",
   "column_break_8",
   "fishing_area",
   "water_body_size",
@@ -241,17 +241,16 @@
    "read_only": 1
   },
   {
-   "fieldname": "stocking_site",
-   "fieldtype": "Link",
-   "label": "Stocking Site",
-   "options": "Stocking Site",
-   "search_index": 1
+   "fieldname": "stocking_sites",
+   "fieldtype": "Table MultiSelect",
+   "label": "Stocking Sites",
+   "options": "Stocking Measure Site"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-08-02 17:48:57.104599",
+ "modified": "2026-11-17 22:54:12.218236",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Measure",

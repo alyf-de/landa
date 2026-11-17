@@ -73,11 +73,14 @@
  "grid_page_length": 50,
  "links": [
   {
-   "link_doctype": "Stocking Measure",
-   "link_fieldname": "stocking_site"
+   "is_child_table": 1,
+   "link_doctype": "Stocking Measure Site",
+   "link_fieldname": "stocking_site",
+   "parent_doctype": "Stocking Measure",
+   "table_fieldname": "stocking_sites"
   }
  ],
- "modified": "2026-08-02 17:48:09.679627",
+ "modified": "2026-11-17 22:57:21.392113",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Stocking Site",
