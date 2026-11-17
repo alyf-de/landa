@@ -102,7 +102,7 @@ class MemberDataImport(Document):
 
 	def load_from_db(self):
 		__, member_organization = get_member_and_organization(frappe.session.user)
-		super(Document, self).__init__(
+		self.init_from_dict(
 			{
 				"name": frappe.generate_hash(length=8),
 				"organization": member_organization,

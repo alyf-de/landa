@@ -16,4 +16,3 @@ class AwardType(Document):
 
 		award_type: DF.Data
 	# end: auto-generated types
-	pass

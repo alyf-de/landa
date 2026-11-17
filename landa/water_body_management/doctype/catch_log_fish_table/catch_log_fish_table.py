@@ -43,17 +43,3 @@ class CatchLogFishTable(Document):
 			alert=True,
 		)
 		return False
-
-	# TODO: switch to blacklist
-	# def validate_species(self, main_species: List[str]):
-	# 	if self.fish_species in main_species:
-	# 		return True
-
-	# 	msgprint(
-	# 		_("The fish species {0} in row {1} is not a main species of the water body").format(
-	# 			self.fish_species, self.idx
-	# 		),
-	# 		indicator="orange",
-	# 		alert=True,
-	# 	)
-	# 	return False

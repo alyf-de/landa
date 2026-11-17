@@ -20,4 +20,3 @@ class FishSpeciesTable(Document):
 		parenttype: DF.Data
 		short_code: DF.Data | None
 	# end: auto-generated types
-	pass

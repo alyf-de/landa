@@ -21,4 +21,3 @@ class LeaseContractRent(Document):
 		rent_per_year: DF.Currency
 		to_date: DF.Date | None
 	# end: auto-generated types
-	pass

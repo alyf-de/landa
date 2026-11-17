@@ -22,4 +22,3 @@ class Award(Document):
 		recipient_first_name: DF.Data | None
 		recipient_last_name: DF.Data | None
 	# end: auto-generated types
-	pass

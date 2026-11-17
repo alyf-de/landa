@@ -25,4 +25,3 @@ class LANDAItemSalesSummary(Document):
 		parenttype: DF.Data
 		rate: DF.Currency
 	# end: auto-generated types
-	pass

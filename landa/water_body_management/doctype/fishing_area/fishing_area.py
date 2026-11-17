@@ -19,4 +19,3 @@ class FishingArea(Document):
 		organization: DF.Link
 		organization_name: DF.Data | None
 	# end: auto-generated types
-	pass

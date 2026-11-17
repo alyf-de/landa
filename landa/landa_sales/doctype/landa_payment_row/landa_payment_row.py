@@ -22,4 +22,3 @@ class LANDAPaymentRow(Document):
 		payment_type: DF.Literal["Receive", "Pay"]
 		reference_date: DF.Date | None
 	# end: auto-generated types
-	pass

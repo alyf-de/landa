@@ -18,4 +18,3 @@ class WaterBodyRules(Document):
 		privacy_policy: DF.TextEditor | None
 		water_body_rules: DF.TextEditor | None
 	# end: auto-generated types
-	pass
