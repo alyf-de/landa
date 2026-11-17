@@ -224,38 +224,116 @@ class Organization(NestedSet):
 
 	@frappe.whitelist(methods=["POST"])
 	def link_contact(
-		self, landa_member: str, is_default_billing: int = 0, is_default_shipping: int = 0
+		self,
+		landa_member: str,
+		contact: str,
+		address: str,
+		is_default_billing: int = 0,
+		is_default_shipping: int = 0,
 	) -> None:
 		self.has_permission("write")
 
-		contact = get_address_or_contact("Contact", landa_member)
-		if not contact:
+		if frappe.db.get_value("LANDA Member", landa_member, "organization") != self.name:
 			frappe.throw(
-				_("There is no single contact linked to {0}.").format(
+				_("{0} does not belong to this Organization.").format(
 					get_link_to_form("LANDA Member", landa_member)
 				)
 			)
 
-		address = get_address_or_contact("Address", landa_member)
-		if not address:
-			frappe.throw(
-				_("There is no single address linked to {0}.").format(
-					get_link_to_form("LANDA Member", landa_member)
-				)
-			)
+		contact_doc = frappe.get_doc("Contact", contact)
+		address_doc = frappe.get_doc("Address", address)
+		require_member_link(contact_doc, landa_member)
+		require_member_link(address_doc, landa_member)
+		if address_doc.disabled:
+			frappe.throw(_("{0} is disabled.").format(get_link_to_form("Address", address)))
 
-		add_links(contact, self.name)
-		add_links(address, self.name)
+		add_links(contact_doc, self.name)
+		add_links(address_doc, self.name)
 
 		customer = frappe.get_doc("Customer", self.name)
 		if is_default_billing:
-			customer.default_billing_contact = contact.name
-			customer.default_billing_address = address.name
+			customer.default_billing_contact = contact_doc.name
+			customer.default_billing_address = address_doc.name
 		if is_default_shipping:
-			customer.default_shipping_contact = contact.name
-			customer.default_shipping_address = address.name
+			customer.default_shipping_contact = contact_doc.name
+			customer.default_shipping_address = address_doc.name
 
 		customer.save()
+
+
+@frappe.whitelist()
+def get_single_address_and_contact(landa_member: str) -> dict:
+	"""Return the member's Contact and Address when each exists exactly once."""
+	contact = get_address_or_contact("Contact", landa_member)
+	address = get_address_or_contact("Address", landa_member)
+	return {
+		"contact": contact.name if contact else None,
+		"address": address.name if address else None,
+	}
+
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def member_with_address_and_contact_query(
+	doctype: str,
+	txt: str,
+	searchfield: str,
+	start: int,
+	page_len: int,
+	filters: dict | None,
+) -> list[tuple]:
+	"""Members of one Organization with at least one Contact and one enabled Address."""
+	if doctype != "LANDA Member":
+		return []
+
+	organization = frappe._dict(filters or {}).organization
+	if not organization:
+		return []
+
+	member = frappe.qb.DocType("LANDA Member")
+	contact_link = frappe.qb.DocType("Dynamic Link").as_("contact_link")
+	address_link = frappe.qb.DocType("Dynamic Link").as_("address_link")
+	address = frappe.qb.DocType("Address")
+	like_txt = f"%{txt}%"
+
+	rows = (
+		frappe.qb.from_(member)
+		.join(contact_link)
+		.on(
+			(contact_link.parenttype == "Contact")
+			& (contact_link.link_doctype == "LANDA Member")
+			& (contact_link.link_name == member.name)
+		)
+		.join(address_link)
+		.on(
+			(address_link.parenttype == "Address")
+			& (address_link.link_doctype == "LANDA Member")
+			& (address_link.link_name == member.name)
+		)
+		.join(address)
+		.on((address.name == address_link.parent) & (address.disabled == 0))
+		.select(member.name, member.full_name)
+		.where(member.organization == organization)
+		.where((member.name.like(like_txt)) | (member.full_name.like(like_txt)))
+		.groupby(member.name, member.full_name)
+		.orderby(member.full_name)
+		.orderby(member.name)
+		.limit(page_len)
+		.offset(start)
+		.run()
+	)
+	if not rows:
+		return []
+
+	permitted = set(
+		frappe.get_list(
+			"LANDA Member",
+			filters={"name": ["in", [row[0] for row in rows]]},
+			pluck="name",
+			limit_page_length=len(rows),
+		)
+	)
+	return [row for row in rows if row[0] in permitted]
 
 
 def create_customer(organization_id: str, organization_name: str):
@@ -278,6 +356,19 @@ def create_customer(organization_id: str, organization_name: str):
 		# ... so we can set the correct value only after insertion.
 		customer.customer_name = organization_name
 		customer.save()
+
+
+def require_member_link(address_or_contact, landa_member: str) -> None:
+	for link in address_or_contact.links:
+		if link.link_doctype == "LANDA Member" and link.link_name == landa_member:
+			return
+
+	frappe.throw(
+		_("{0} is not linked to {1}.").format(
+			get_link_to_form(address_or_contact.doctype, address_or_contact.name),
+			get_link_to_form("LANDA Member", landa_member),
+		)
+	)
 
 
 def add_links(address_or_contact, organization: str):
