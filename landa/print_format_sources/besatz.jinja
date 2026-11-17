@@ -23,8 +23,50 @@
 
     .print-format .stocking-sites td,
     .print-format .stocking-sites th {
-        padding: 2pt 4pt;
+        padding: 4pt;
         vertical-align: top;
+    }
+
+    /* Keep in sync with MAP_WIDTH and MAP_HEIGHT in stocking_measure.py */
+    .print-format .site-map {
+        position: relative;
+        overflow: hidden;
+        width: 240px;
+        height: 160px;
+        border: 1px solid #ccc;
+    }
+
+    /*
+     * Frappe's `.print-format img { max-width: 100% }` and, in the browser preview,
+     * `body:last-child .print-format td img { width: 100% !important }` would shrink
+     * the tiles to the box width. This selector is more specific than both.
+     */
+    .print-format .stocking-sites td .site-map img {
+        position: absolute;
+        width: 256px !important;
+        height: 256px !important;
+        max-width: none !important;
+    }
+
+    .print-format .site-map .marker {
+        position: absolute;
+        left: 113px;
+        top: 73px;
+        width: 10px;
+        height: 10px;
+        border: 2px solid white;
+        border-radius: 50%;
+        background-color: #d9230f;
+    }
+
+    .print-format .site-map .attribution {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        padding: 0 2px;
+        font-size: 6pt;
+        white-space: nowrap;
+        background-color: rgba(255, 255, 255, 0.7);
     }
 </style>
 
@@ -97,20 +139,34 @@
             <thead class="black-border">
                 <tr>
                     <th style="width: 5%">{{ _("Sr") }}</th>
-                    <th style="width: 30%">{{ _("Stocking Site") }}</th>
-                    <th style="width: 40%">{{ _("Description") }}</th>
-                    <th style="width: 25%">{{ _("Coordinates") }}</th>
+                    <th>{{ _("Stocking Site") }}</th>
+                    <th style="width: 250px"></th>
                 </tr>
             </thead>
             <tbody>
                 {% for site in stocking_sites %}
                 <tr>
                     <td>{{ loop.index }}</td>
-                    <td><strong>{{ site.title }}</strong></td>
-                    <td>{{ (site.description or "") | e | replace("\n", "<br>") }}</td>
                     <td>
+                        <strong>{{ site.title }}</strong>
+                        {% if site.description %}
+                            <p>{{ site.description | e | replace("\n", "<br>") }}</p>
+                        {% endif %}
                         {% if site.latitude is not none %}
-                            {{ "%.6f, %.6f" | format(site.latitude, site.longitude) }}
+                            <p class="text-small">
+                                {{ _("Coordinates") }}: {{ "%.6f, %.6f" | format(site.latitude, site.longitude) }}
+                            </p>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if site.map_tiles %}
+                        <div class="site-map">
+                            {% for tile in site.map_tiles %}
+                                <img src="{{ tile.url }}" style="left: {{ tile.left }}px; top: {{ tile.top }}px">
+                            {% endfor %}
+                            <div class="marker"></div>
+                            <div class="attribution">&copy; OpenStreetMap</div>
+                        </div>
                         {% endif %}
                     </td>
                 </tr>

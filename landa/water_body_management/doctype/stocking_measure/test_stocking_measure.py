@@ -1,8 +1,14 @@
 # Copyright (c) 2022, Real Experts GmbH and Contributors
 # See license.txt
 
+from unittest.mock import patch
+
 import frappe
+import requests
 from frappe.tests.utils import FrappeTestCase
+
+STOCKING_MEASURE_MODULE = "landa.water_body_management.doctype.stocking_measure.stocking_measure"
+FAKE_TILE = "data:image/png;base64,TILE"
 
 
 class TestStockingMeasure(FrappeTestCase):
@@ -63,11 +69,20 @@ class TestStockingMeasure(FrappeTestCase):
 		site_without_marker = make_stocking_site(self.water_body, "Meadow")
 		measure = self.make_stocking_measure([site_with_marker, site_without_marker])
 
-		html = frappe.get_print("Stocking Measure", measure.name, "Besatz")
+		with patch(f"{STOCKING_MEASURE_MODULE}.get_map_tile_data_url", return_value=FAKE_TILE):
+			html = frappe.get_print("Stocking Measure", measure.name, "Besatz")
 
 		self.assertIn("Bridge", html)
 		self.assertIn("Meadow", html)
 		self.assertIn("50.990000, 13.950000", html)
+		self.assertIn(f'src="{FAKE_TILE}"', html)
+
+		tile_server_down = requests.ConnectionError()
+		with patch(f"{STOCKING_MEASURE_MODULE}.get_map_tile_data_url", side_effect=tile_server_down):
+			html = frappe.get_print("Stocking Measure", measure.name, "Besatz")
+
+		self.assertIn("50.990000, 13.950000", html)
+		self.assertNotIn('class="site-map"', html)
 
 	def make_stocking_measure(self, stocking_sites: list[str]):
 		return frappe.get_doc(
