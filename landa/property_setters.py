@@ -485,6 +485,9 @@ def get_property_setters():
 			("rate", "columns", "1"),
 			("rate", "permlevel", "1"),
 		],
+		"Stocking Measure": [
+			(None, "default_print_format", "Besatz"),
+		],
 		"Supplier": [
 			(
 				None,
