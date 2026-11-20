@@ -614,20 +614,6 @@ def get_doc_perms():
 				"share": 1,
 			},
 		],
-		"Note": [
-			{
-				"role": "System Manager",
-				"permlevel": 0,
-				"read": 1,
-				"write": 1,
-				"create": 1,
-				"delete": 1,
-				"print": 1,
-				"email": 1,
-				"report": 1,
-				"export": 1,
-			},
-		],
 		"Payment Entry": [
 			{
 				"role": "Accounts Manager",
