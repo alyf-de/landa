@@ -306,7 +306,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Stammdaten",
-   "link_count": 14,
+   "link_count": 15,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -347,6 +347,16 @@
    "label": "Besatzplanung",
    "link_count": 0,
    "link_to": "Stocking Target",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Besatzort",
+   "link_count": 0,
+   "link_to": "Stocking Site",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -424,7 +434,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Landlord",
+   "label": "Verp\u00e4chter",
    "link_count": 0,
    "link_to": "Landlord",
    "link_type": "DocType",
@@ -452,7 +462,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-10-28 15:16:35.353592",
+ "modified": "2026-11-24 19:04:46.452854",
  "modified_by": "Administrator",
  "module": "Water Body Management",
  "name": "Water Body Management",
