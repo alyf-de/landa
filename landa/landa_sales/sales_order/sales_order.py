@@ -65,10 +65,10 @@ def make_landa_sales_invoice(
 
 @frappe.whitelist()
 def make_landa_delivery_note(
-	source_name: str, target_doc: Document | str | None = None, skip_item_mapping: bool = False
+	source_name: str, target_doc: Document | str | None = None, kwargs: dict | None = None
 ) -> Document:
 	source_doc = frappe.get_doc("Sales Order", source_name)
-	target_doc = make_delivery_note(source_name, target_doc, skip_item_mapping)
+	target_doc = make_delivery_note(source_name, target_doc, kwargs=kwargs)
 
 	update_doc(source_doc, target_doc)
 
