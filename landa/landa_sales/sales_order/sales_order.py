@@ -50,10 +50,13 @@ def get_dashboard_data(data):
 
 @frappe.whitelist()
 def make_landa_sales_invoice(
-	source_name: str, target_doc: Document | str | None = None, ignore_permissions: bool = False
+	source_name: str,
+	target_doc: Document | str | None = None,
+	args: str | dict | None = None,
+	ignore_permissions: bool = False,
 ) -> Document:
 	source_doc = frappe.get_doc("Sales Order", source_name)
-	target_doc = make_sales_invoice(source_name, target_doc, ignore_permissions)
+	target_doc = make_sales_invoice(source_name, target_doc, args=args, ignore_permissions=ignore_permissions)
 
 	update_doc(source_doc, target_doc)
 
