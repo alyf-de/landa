@@ -62,6 +62,7 @@ frappe.ui.form.on("Sales Order", {
 	},
 	before_save: function (frm) {
 		frm.doc.items = landa.selling.remove_zero_qty_items(frm.doc.items);
+		set_delivery_date(frm);
 	},
 	customer: function (frm) {
 		frm.trigger("prefill_items_if_empty");
@@ -70,10 +71,6 @@ frappe.ui.form.on("Sales Order", {
 		frm.trigger("prefill_items_if_empty");
 	},
 	year_of_settlement: function (frm) {
-		// A date string, not a `Date`: a `Date` is sent as a UTC timestamp, which the
-		// database rejects or which is the day before in a time zone east of UTC.
-		const year = frm.doc.year_of_settlement;
-		frm.doc.delivery_date = year ? `${year}-12-31` : null;
 		frm.trigger("prefill_items");
 	},
 	prefill_items_if_empty: function (frm) {
@@ -107,3 +104,22 @@ frappe.ui.form.on("Sales Order", {
 		landa.selling.set_contact_details(frm, "shipping");
 	},
 });
+
+function set_delivery_date(frm) {
+	// ERPNext makes the hidden delivery date of the items mandatory. Field events do not
+	// always set it: a year from the route options or a duplicate fires no change event,
+	// and a new transaction date clears it. Set it on save, before the mandatory check.
+	// The server sets the same date again.
+	const year = frm.doc.year_of_settlement;
+	if (!year) {
+		return; // the mandatory check reports the missing year
+	}
+
+	// A date string, not a `Date`: a `Date` is sent as a UTC timestamp, which the
+	// database rejects or which is the day before in a time zone east of UTC.
+	const delivery_date = `${year}-12-31`;
+	frm.doc.delivery_date = delivery_date;
+	frm.doc.items.forEach((row) => {
+		row.delivery_date = delivery_date;
+	});
+}
