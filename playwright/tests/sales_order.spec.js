@@ -87,6 +87,11 @@ test.describe("Sales Order", () => {
 		await expect(desk.get_field("customer", "Link")).toHaveValue(data.customer);
 		await expect(item_codes(page)).toHaveText(containing(data.items));
 		expect(prefills.count).toBe(1);
+
+		// The year comes from the route options. No change event sets the delivery date.
+		await set_qty(desk, page, 1, 3);
+		await save(desk);
+		await expect_delivery_dates(page, data.year);
 	});
 
 	test("new order from the organization gets the default year", async ({ desk, page }) => {
@@ -122,6 +127,11 @@ test.describe("Sales Order", () => {
 			String(data.next_year),
 		);
 		await expect(item_codes(page)).toHaveText(containing(data.items_next_year));
+
+		// The year comes from the list filter. No change event sets the delivery date.
+		await set_qty(desk, page, 1, 3);
+		await save(desk);
+		await expect_delivery_dates(page, data.next_year);
 	});
 
 	test("duplicated order keeps the copied items", async ({ desk, page }) => {
@@ -141,6 +151,28 @@ test.describe("Sales Order", () => {
 
 		await expect(item_codes(page)).toHaveText(containing([data.items[1]]));
 		await expect.poll(() => quantities(page)).toEqual([3]);
+
+		// The delivery date is not copied.
+		await save(desk);
+		await expect_delivery_dates(page, data.year);
+	});
+
+	test("a new date keeps the order valid", async ({ desk, page }) => {
+		await desk.login(data.local_user);
+		await desk.new_form("Sales Order");
+		await form_is_settled(page);
+		await expect(item_codes(page)).toHaveText(containing(data.items));
+		await set_qty(desk, page, 1, 3);
+
+		// ERPNext clears the delivery date of the order and of each row on a new date.
+		await page.evaluate(
+			(date) => cur_frm.set_value("transaction_date", date),
+			`${data.year}-06-16`,
+		);
+		await requests_are_done(page);
+
+		await save(desk);
+		await expect_delivery_dates(page, data.year);
 	});
 
 	test("a new year of settlement replaces the items", async ({ desk, page }) => {
@@ -151,9 +183,10 @@ test.describe("Sales Order", () => {
 
 		await set_year_of_settlement(desk, data.next_year);
 		await expect(item_codes(page)).toHaveText(containing(data.items_next_year));
-		expect(await page.evaluate(() => cur_frm.doc.delivery_date)).toBe(
-			`${data.next_year}-12-31`,
-		);
+
+		await set_qty(desk, page, 1, 3);
+		await save(desk);
+		await expect_delivery_dates(page, data.next_year);
 	});
 
 	test("no year of settlement empties the items", async ({ desk, page }) => {
@@ -280,6 +313,14 @@ async function set_qty(desk, page, row_idx, qty) {
 	await input.blur();
 	await priced;
 	await requests_are_done(page);
+}
+
+async function expect_delivery_dates(page, year) {
+	const delivery_dates = await page.evaluate(() =>
+		cur_frm.doc.items.map((row) => row.delivery_date),
+	);
+	expect(delivery_dates.length).toBeGreaterThan(0);
+	expect(new Set(delivery_dates)).toEqual(new Set([`${year}-12-31`]));
 }
 
 async function save(desk) {
